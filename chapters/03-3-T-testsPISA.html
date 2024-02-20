@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MASTEMR - 07 T-tests</title>
+<title>MASTEMR - T-tests</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,7 +141,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-1-Descriptive.html">Introduction to Stats</a></li><li class="breadcrumb-item"><a href="../chapters/03-3-T-testsPISA.html">07 T-tests</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-1-Descriptive.html">Introduction to Stats</a></li><li class="breadcrumb-item"><a href="../chapters/03-3-T-testsPISA.html">T-tests</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,19 +202,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-1-Descriptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 Descriptive Statistics</span></a>
+ <span class="menu-text">Descriptive Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-2-ChisqPISA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 Hypothesis testing and Chi-square tests</span></a>
+ <span class="menu-text">Hypothesis testing and Chi-square tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-3-T-testsPISA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">07 T-tests</span></a>
+ <span class="menu-text">T-tests</span></a>
   </div>
 </li>
       </ul>
@@ -228,7 +228,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-Correlation_and_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10 Correlation and regression</span></a>
+ <span class="menu-text">Correlation and regression</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,6 +240,12 @@ div.csl-indent {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-1-SEM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SEM</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -330,7 +336,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">07 T-tests</h1>
+<h1 class="title">T-tests</h1>
 </div>
 
 
@@ -551,23 +557,23 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">line 2 - select the variables of interest</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-4" data-code-annotation="2">line 2 - select the variables of interest</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">line 3 - filter for the UK and for girls</span>
+<span data-code-lines="4" data-code-cell="annotated-cell-4" data-code-annotation="3">line 3 - filter for the UK and for girls</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="4">line 4 - pass the data to <code>ggplot</code></span>
+<span data-code-lines="7" data-code-cell="annotated-cell-4" data-code-annotation="4">line 4 - pass the data to <code>ggplot</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="5">line 5 - put reading scores (<code>PV1READ</code>) on the x-axis</span>
+<span data-code-lines="8" data-code-cell="annotated-cell-4" data-code-annotation="5">line 5 - put reading scores (<code>PV1READ</code>) on the x-axis</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="9" data-code-annotation="6">line 6 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
+<span data-code-lines="9" data-code-cell="annotated-cell-4" data-code-annotation="6">line 6 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
 </dd>
 </dl>
 </div>
@@ -645,27 +651,27 @@ mean of x
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2">line 2 - select the variables of interest, country, maths scores, and gender</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-6" data-code-annotation="2">line 2 - select the variables of interest, country, maths scores, and gender</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3">line 3 - filter for the US</span>
+<span data-code-lines="4" data-code-cell="annotated-cell-6" data-code-annotation="3">line 3 - filter for the US</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="4">line 4 - create a new data frame <code>USMATHGIRLS</code> of the data for girls</span>
+<span data-code-lines="7" data-code-cell="annotated-cell-6" data-code-annotation="4">line 4 - create a new data frame <code>USMATHGIRLS</code> of the data for girls</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="10" data-code-annotation="6">line 7 - pass the data to <code>ggplot</code></span>
+<span data-code-lines="10" data-code-cell="annotated-cell-6" data-code-annotation="6">line 7 - pass the data to <code>ggplot</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="13" data-code-annotation="7">line 8 - put maths scores (<code>PV1MATH</code>) on the x-axis</span>
+<span data-code-lines="13" data-code-cell="annotated-cell-6" data-code-annotation="7">line 8 - put maths scores (<code>PV1MATH</code>) on the x-axis</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="14" data-code-annotation="8">line 9 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
+<span data-code-lines="14" data-code-cell="annotated-cell-6" data-code-annotation="8">line 9 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
 </dd>
 </dl>
 </div>
@@ -848,20 +854,20 @@ mean in group Female   mean in group Male
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="2">line 2 - select the variables of interest, country, and maths scores</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-14" data-code-annotation="2">line 2 - select the variables of interest, country, and maths scores</span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="3">line 3 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
+<span data-code-lines="4" data-code-cell="annotated-cell-14" data-code-annotation="3">line 3 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="5" data-code-annotation="4">line 4 - we produce a summary of the output <code>summary(resaov)</code><br>
+<span data-code-lines="5" data-code-cell="annotated-cell-14" data-code-annotation="4">line 4 - we produce a summary of the output <code>summary(resaov)</code><br>
 </span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="6" data-code-annotation="5">line 5 - print the result</span>
+<span data-code-lines="6" data-code-cell="annotated-cell-14" data-code-annotation="5">line 5 - print the result</span>
 </dd>
 </dl>
 </div>
@@ -929,23 +935,23 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="2" data-code-annotation="2">line 2 - select the variables of interest, country, and maths scores</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-16" data-code-annotation="2">line 2 - select the variables of interest, country, and maths scores</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="3" data-code-annotation="3">line 3 - filter for countries of interest. Note a shorter way to do the filter is <code>filter(CNT %in% c("United Kingdom", "United States", "Germany", "France"))</code></span>
+<span data-code-lines="3" data-code-cell="annotated-cell-16" data-code-annotation="3">line 3 - filter for countries of interest. Note a shorter way to do the filter is <code>filter(CNT %in% c("United Kingdom", "United States", "Germany", "France"))</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="6" data-code-annotation="5">line 6 - produce a summary of <code>resaov</code></span>
+<span data-code-lines="6" data-code-cell="annotated-cell-16" data-code-annotation="5">line 6 - produce a summary of <code>resaov</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="7" data-code-annotation="6">line 8 - use <code>etaSquared(resaov)</code> to find the eta squared value. We convert this to a data frame so we can perform the next steps</span>
+<span data-code-lines="7" data-code-cell="annotated-cell-16" data-code-annotation="6">line 8 - use <code>etaSquared(resaov)</code> to find the eta squared value. We convert this to a data frame so we can perform the next steps</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="10" data-code-annotation="8">line 10 - print the result</span>
+<span data-code-lines="10" data-code-cell="annotated-cell-16" data-code-annotation="8">line 10 - print the result</span>
 </dd>
 </dl>
 </div>
