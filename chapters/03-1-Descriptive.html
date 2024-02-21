@@ -246,6 +246,12 @@ div.csl-indent {
  <span class="menu-text">SEM</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-2-Bayesian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian Statistics</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -285,6 +291,18 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../chapters/A5-Self_Study_Tasks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Self Study Tasks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A6-selecting_statistical_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11 Selecting statistical tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A7-QandA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Questions and Answers</span></a>
   </div>
 </li>
       </ul>
@@ -657,23 +675,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="3">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-3" data-code-lines="4">line 2 <code>filters</code> out any results that are not from the UK by finding all the rows where <code>CNT</code> equals <code>==</code> <code>"United Kingdom"</code>. Note the <code>==</code> for checking equality. The result is then piped (<code>%&gt;%</code>) to the next line</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">line 2 <code>filters</code> out any results that are not from the UK by finding all the rows where <code>CNT</code> equals <code>==</code> <code>"United Kingdom"</code>. Note the <code>==</code> for checking equality. The result is then piped (<code>%&gt;%</code>) to the next line</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-3" data-code-lines="5">line 3 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
+<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">line 3 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-3" data-code-lines="6">line 4 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
+<span data-code-cell="annotated-cell-3" data-code-lines="6" data-code-annotation="4">line 4 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-3" data-code-lines="7">line 5 uses the <code>n()</code> function to count the number of students in the UK sample</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="7" data-code-annotation="5">line 5 uses the <code>n()</code> function to count the number of students in the UK sample</span>
 </dd>
 </dl>
 </div>
@@ -737,23 +755,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="2">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="3">line 2 uses <code>group_by</code> to use the values in <code>CNT</code> to group the data - i.e.&nbsp;the calculate the means for each country</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">line 2 uses <code>group_by</code> to use the values in <code>CNT</code> to group the data - i.e.&nbsp;the calculate the means for each country</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-4" data-code-lines="4">line 3 uses <code>summarise</code> to calculate the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
+<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">line 3 uses <code>summarise</code> to calculate the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-4" data-code-lines="5">line 4 uses <code>summarise</code> to calculate the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
+<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="4">line 4 uses <code>summarise</code> to calculate the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-4" data-code-lines="6">line 5 uses the <code>n()</code> function to count the number of students the sample</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="5">line 5 uses the <code>n()</code> function to count the number of students the sample</span>
 </dd>
 </dl>
 </div>
@@ -830,27 +848,27 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-5" data-code-lines="3">line 1 creates a new data frame, <code>GenderUK</code> into which the results manipulated <code>PISA_2022</code> will be placed - <code>PISA_2022</code> is piped to the next steps</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="1">line 1 creates a new data frame, <code>GenderUK</code> into which the results manipulated <code>PISA_2022</code> will be placed - <code>PISA_2022</code> is piped to the next steps</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-5" data-code-lines="4">line 2 uses <code>select</code> to select the columns of interest <code>CNT</code> (country) and <code>ST004D01T</code> (gender)</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="2">line 2 uses <code>select</code> to select the columns of interest <code>CNT</code> (country) and <code>ST004D01T</code> (gender)</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-5" data-code-lines="5">line 3 uses <code>filter</code> to filter for only the entries for the UK</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="3">line 3 uses <code>filter</code> to filter for only the entries for the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-5" data-code-lines="6">line 4 - as we have filtered for the UK, we would get 0 entires for all the other levels (all the other countries). To stop those 0s confusing our table we use <code>droplevels()</code> to ignore the levels we don’t need</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="4">line 4 - as we have filtered for the UK, we would get 0 entires for all the other levels (all the other countries). To stop those 0s confusing our table we use <code>droplevels()</code> to ignore the levels we don’t need</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-5" data-code-lines="9">line 5 - to create summary of the counts, we use <code>table</code> to create a summary table. We turn the table into a data frame with <code>as.data.frame</code> to make it easier to manipulate</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="9" data-code-annotation="5">line 5 - to create summary of the counts, we use <code>table</code> to create a summary table. We turn the table into a data frame with <code>as.data.frame</code> to make it easier to manipulate</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-5" data-code-lines="10">line 6 - print the table</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="10" data-code-annotation="6">line 6 - print the table</span>
 </dd>
 </dl>
 </div>
@@ -873,16 +891,16 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-6" data-code-lines="3">line 1 - to calculate a percentage, you first need to find the total of the frequency column in <code>GenderUKSummary</code>. We use <code>GenderUKSummary$Freq</code> to indicate the column and <code>sum</code> to find the total<br>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="1">line 1 - to calculate a percentage, you first need to find the total of the frequency column in <code>GenderUKSummary</code>. We use <code>GenderUKSummary$Freq</code> to indicate the column and <code>sum</code> to find the total<br>
 </span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-6" data-code-lines="4">line 2 - pipe <code>GenderUKSummary</code> so we can manipulate it</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="2">line 2 - pipe <code>GenderUKSummary</code> so we can manipulate it</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-6" data-code-lines="5">line 3 - to add a new column (with the percentage in) we use <code>mutate</code>. We give the name of the new column <code>PerSch =</code> and set out the calculation we want to perform, dividing the frequency in each row, by the total and multiplying by 100: <code>100*(Freq / total)</code></span>
+<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="3">line 3 - to add a new column (with the percentage in) we use <code>mutate</code>. We give the name of the new column <code>PerSch =</code> and set out the calculation we want to perform, dividing the frequency in each row, by the total and multiplying by 100: <code>100*(Freq / total)</code></span>
 </dd>
 </dl>
 </div>
@@ -1235,19 +1253,19 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-13" data-code-lines="4">line 2 - select the variables of interest</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="4" data-code-annotation="2">line 2 - select the variables of interest</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-13" data-code-lines="5">line 3 - treat the data as grouped by country (<code>group_by(CNT)</code>)</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="5" data-code-annotation="3">line 3 - treat the data as grouped by country (<code>group_by(CNT)</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-13" data-code-lines="6">line 4 - summarise to calculate the mean score of <code>HOMEPOS</code> in a new column <code>meanwealth</code>, setting <code>na.rm=TRUE</code> to ignore NA values</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="4">line 4 - summarise to calculate the mean score of <code>HOMEPOS</code> in a new column <code>meanwealth</code>, setting <code>na.rm=TRUE</code> to ignore NA values</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-13" data-code-lines="7">line 5 - arrange in descending order by <code>meanwealth</code></span>
+<span data-code-cell="annotated-cell-13" data-code-lines="7" data-code-annotation="5">line 5 - arrange in descending order by <code>meanwealth</code></span>
 </dd>
 </dl>
 </div>
@@ -1297,15 +1315,15 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-14" data-code-lines="3">line 1 - pass the <code>PISA2022WealthRank</code> to <code>ggplot</code> and set the x and y variables</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="1">line 1 - pass the <code>PISA2022WealthRank</code> to <code>ggplot</code> and set the x and y variables</span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-14" data-code-lines="4">line 2 - as the data are already summarised, we don’t want <code>geom_bar</code> to count items, but tell it to just plot the data as it is</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="2">line 2 - as the data are already summarised, we don’t want <code>geom_bar</code> to count items, but tell it to just plot the data as it is</span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-14" data-code-lines="5">line 3 - rotate the x-axis text</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="5" data-code-annotation="3">line 3 - rotate the x-axis text</span>
 </dd>
 </dl>
 </div>
@@ -1324,7 +1342,7 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-15" data-code-lines="3">line 1 - rather than simply specifying the x axis (e.g.&nbsp;<code>x=CNT</code>) to change the order of the x-axis by the <code>meanwealth</code> score we can use <code>x=reorder(CNT, -meanwealth)</code>. Note the <code>-</code> before <code>meanwealth</code> sets the order is descending.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="1">line 1 - rather than simply specifying the x axis (e.g.&nbsp;<code>x=CNT</code>) to change the order of the x-axis by the <code>meanwealth</code> score we can use <code>x=reorder(CNT, -meanwealth)</code>. Note the <code>-</code> before <code>meanwealth</code> sets the order is descending.</span>
 </dd>
 </dl>
 </div>
@@ -1347,15 +1365,15 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-16" data-code-lines="5">line 3 - set the bar fill colour to sky blue (<code>fill = "skyblue"</code>)</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="3">line 3 - set the bar fill colour to sky blue (<code>fill = "skyblue"</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-16" data-code-lines="7">line 6 - set the x-axis title</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="7" data-code-annotation="5">line 6 - set the x-axis title</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-16" data-code-lines="8">line 7 - set the y-axis title</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="8" data-code-annotation="6">line 7 - set the y-axis title</span>
 </dd>
 </dl>
 </div>
@@ -1401,23 +1419,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-18" data-code-lines="9">line 4 - set the data to plot and set which variable goes on the x and y axis</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="9" data-code-annotation="4">line 4 - set the data to plot and set which variable goes on the x and y axis</span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-18" data-code-lines="10">line 5 - set the point size (<code>size=0.1</code>), colour (<code>colour = "red"</code>) and opacity (<code>alpha = 0.6</code>)</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="10" data-code-annotation="5">line 5 - set the point size (<code>size=0.1</code>), colour (<code>colour = "red"</code>) and opacity (<code>alpha = 0.6</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-18" data-code-lines="11">line 6 - set the x-axis title</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="11" data-code-annotation="6">line 6 - set the x-axis title</span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-cell="annotated-cell-18" data-code-lines="12">line 7 - set the y-axis title</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="12" data-code-annotation="7">line 7 - set the y-axis title</span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-cell="annotated-cell-18" data-code-lines="13">line 8 - plot a straight line (<code>method = "lm"</code>) and set its colour to black</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="13" data-code-annotation="8">line 8 - plot a straight line (<code>method = "lm"</code>) and set its colour to black</span>
 </dd>
 </dl>
 </div>
@@ -1479,15 +1497,15 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-20" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-20" data-code-lines="9">line 5 - pass the data to plot <code>Mathplot</code> and set the x axis (no y is needed for a <code>geom_density</code> plot) - set that we want two series, with the colour set by gender (<code>ST004D01T</code>)</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="9" data-code-annotation="5">line 5 - pass the data to plot <code>Mathplot</code> and set the x axis (no y is needed for a <code>geom_density</code> plot) - set that we want two series, with the colour set by gender (<code>ST004D01T</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-20" data-code-lines="10">line 6 - set fill (<code>alpha = 0.6</code>) so both gender plots are visible where they overlap</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="10" data-code-annotation="6">line 6 - set fill (<code>alpha = 0.6</code>) so both gender plots are visible where they overlap</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-cell="annotated-cell-20" data-code-lines="11">line 7 - <code>facet_wrap</code> repeats the initial graph for some variable. In this case we specify we want the same graph as above (<code>.</code>) but we want to produce versions for each country (<code>~CNT</code>) to give <code>facet_wrap(. ~ CNT)</code></span>
+<span data-code-cell="annotated-cell-20" data-code-lines="11" data-code-annotation="7">line 7 - <code>facet_wrap</code> repeats the initial graph for some variable. In this case we specify we want the same graph as above (<code>.</code>) but we want to produce versions for each country (<code>~CNT</code>) to give <code>facet_wrap(. ~ CNT)</code></span>
 </dd>
 </dl>
 </div>
@@ -1514,7 +1532,7 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-21" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-21" data-code-lines="5">line 4 - mutate to create a new column <code>wealthclass</code> - if HOMEPOS is more than mean(HOMEPOS), set the column to “High” otherwise set it to “Low”</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="5" data-code-annotation="4">line 4 - mutate to create a new column <code>wealthclass</code> - if HOMEPOS is more than mean(HOMEPOS), set the column to “High” otherwise set it to “Low”</span>
 </dd>
 </dl>
 </div>
