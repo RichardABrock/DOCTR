@@ -296,7 +296,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/A6-selecting_statistical_tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11 Selecting statistical tools</span></a>
+ <span class="menu-text">Selecting statistical tools</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -659,12 +659,12 @@ mean of x
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7"></a>  <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Female"</span>)</span>
 <span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a></span>
 <span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a>USMATHBOYS <span class="ot">&lt;-</span> USMATH <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10"></a>  <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Male"</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10"></a>  <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Male"</span>)</span>
 <span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a><span class="co"># Plot histogram</span></span>
 <span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a><span class="co"># For girls</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-6-13" class="code-annotation-target"><a href="#annotated-cell-6-13"></a><span class="fu">ggplot</span>(<span class="at">data =</span> USMATHGIRLS,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-6-14" class="code-annotation-target"><a href="#annotated-cell-6-14"></a>       <span class="fu">aes</span>(<span class="at">x =</span> PV1MATH)) <span class="sc">+</span></span>
-<span id="annotated-cell-6-15"><a href="#annotated-cell-6-15"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"darkseagreen4"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-6-13" class="code-annotation-target"><a href="#annotated-cell-6-13"></a><span class="fu">ggplot</span>(<span class="at">data =</span> USMATHGIRLS,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-6-14" class="code-annotation-target"><a href="#annotated-cell-6-14"></a>       <span class="fu">aes</span>(<span class="at">x =</span> PV1MATH)) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-6-15" class="code-annotation-target"><a href="#annotated-cell-6-15"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"darkseagreen4"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
@@ -679,17 +679,21 @@ mean of x
 <dd>
 <span data-code-lines="7" data-code-cell="annotated-cell-6" data-code-annotation="4">line 4 - create a new data frame <code>USMATHGIRLS</code> of the data for girls</span>
 </dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-lines="10" data-code-cell="annotated-cell-6" data-code-annotation="5">line 6 - create a new data frame <code>USMATHBOYSS</code> of the data for boys</span>
+</dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-6" data-code-annotation="6">line 7 - pass the data to <code>ggplot</code></span>
+<span data-code-lines="13" data-code-cell="annotated-cell-6" data-code-annotation="6">line 7 - pass the data to <code>ggplot</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="13" data-code-cell="annotated-cell-6" data-code-annotation="7">line 8 - put maths scores (<code>PV1MATH</code>) on the x-axis</span>
+<span data-code-lines="14" data-code-cell="annotated-cell-6" data-code-annotation="7">line 8 - put maths scores (<code>PV1MATH</code>) on the x-axis</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="14" data-code-cell="annotated-cell-6" data-code-annotation="8">line 9 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
+<span data-code-lines="15" data-code-cell="annotated-cell-6" data-code-annotation="8">line 9 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
 </dd>
 </dl>
 </div>
@@ -863,29 +867,29 @@ mean in group Female   mean in group Male
 <p>We pass the function the data we wish to focus on (<code>PV1MATH</code>) and then indicate we wish to look for variation in the <code>PV1MATH</code>, by <code>CNT</code>. We then summarise the result to get a table.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>ALLPISAMATH<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  <span class="fu">select</span>(CNT, PV1MATH)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  <span class="fu">select</span>(CNT, PV1MATH)</span>
 <span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> ALLPISAMATH, PV1MATH <span class="sc">~</span> CNT)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6"></a>sumresaov</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> ALLPISAMATH, PV1MATH <span class="sc">~</span> CNT)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6"></a>sumresaov</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="2" data-code-cell="annotated-cell-14" data-code-annotation="1">line 2 - select the variables of interest, country, and maths scores</span>
+</dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-14" data-code-annotation="2">line 2 - select the variables of interest, country, and maths scores</span>
+<span data-code-lines="4" data-code-cell="annotated-cell-14" data-code-annotation="2">line 3 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-14" data-code-annotation="3">line 3 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
+<span data-code-lines="5" data-code-cell="annotated-cell-14" data-code-annotation="3">line 4 - we produce a summary of the output <code>summary(resaov)</code><br>
+</span>
 </dd>
 <dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-14" data-code-annotation="4">line 4 - we produce a summary of the output <code>summary(resaov)</code><br>
-</span>
-</dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-14" data-code-annotation="5">line 5 - print the result</span>
+<span data-code-lines="6" data-code-cell="annotated-cell-14" data-code-annotation="4">line 5 - print the result</span>
 </dd>
 </dl>
 </div>
@@ -938,38 +942,47 @@ Note
 <p>Consider the question: Are there statistically significant differences in the variance of science scores of the UK, US, France and Germany? To determine if such differences exist, we create a new subset for those countries’ science scores, and then run an anova test by country, reporting the eta squared value.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a>PISAMULTI <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">|</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">|</span></span>
 <span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a>           CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"France"</span>)</span>
 <span id="annotated-cell-16-5"><a href="#annotated-cell-16-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1SCIE <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1SCIE <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
 <span id="annotated-cell-16-8"><a href="#annotated-cell-16-8"></a>sumresaov</span>
 <span id="annotated-cell-16-9"><a href="#annotated-cell-16-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-16-10" class="code-annotation-target"><a href="#annotated-cell-16-10"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
-<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
-<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12"></a>eta</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-16-10" class="code-annotation-target"><a href="#annotated-cell-16-10"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-16-11" class="code-annotation-target"><a href="#annotated-cell-16-11"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-16-12" class="code-annotation-target"><a href="#annotated-cell-16-12"></a>eta</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="2" data-code-cell="annotated-cell-16" data-code-annotation="1">line 2 - select the variables of interest, country, and maths scores</span>
+</dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-16" data-code-annotation="2">line 2 - select the variables of interest, country, and maths scores</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-16" data-code-annotation="2">line 3 - filter for countries of interest. Note a shorter way to do the filter is <code>filter(CNT %in% c("United Kingdom", "United States", "Germany", "France"))</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-16" data-code-annotation="3">line 3 - filter for countries of interest. Note a shorter way to do the filter is <code>filter(CNT %in% c("United Kingdom", "United States", "Germany", "France"))</code></span>
+<span data-code-lines="6" data-code-cell="annotated-cell-16" data-code-annotation="3">line 5 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-lines="7" data-code-cell="annotated-cell-16" data-code-annotation="4">line 6 - produce a summary of <code>resaov</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-16" data-code-annotation="5">line 6 - produce a summary of <code>resaov</code></span>
+<span data-code-lines="10" data-code-cell="annotated-cell-16" data-code-annotation="5">line 8 - use <code>etaSquared(resaov)</code> to find the eta squared value. We convert this to a data frame so we can perform the next steps</span>
 </dd>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="7" data-code-cell="annotated-cell-16" data-code-annotation="6">line 8 - use <code>etaSquared(resaov)</code> to find the eta squared value. We convert this to a data frame so we can perform the next steps</span>
+<span data-code-lines="11" data-code-cell="annotated-cell-16" data-code-annotation="6">line 9 - to convert the eta squared value into a percentage of variance explained, we multiply by 100<br>
+</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-16" data-code-annotation="8">line 10 - print the result</span>
+<span data-code-lines="12" data-code-cell="annotated-cell-16" data-code-annotation="7">line 10 - print the result</span>
 </dd>
 </dl>
 </div>
