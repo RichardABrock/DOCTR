@@ -1,8 +1,8 @@
 /*GLOBAL VARIABLES*/
 :root {
   --brdr_col: #484848;
-  --pad: 5px;
-  --brdr_rad: 3px;
+  --pad: 10px;
+  --brdr_rad: 10px;
 }
 
 img.figure-img{
@@ -56,8 +56,8 @@ img.figure-img{
 }
 
 .question{
-	background-color: #bdd0c4;
-	border: 2px solid var(--brdr_col);
+	background-color: #13122e;
+	border: 5px solid var(--brdr_col);
 	padding: var(--pad);
 	border-radius: var(--brdr_rad);
 	width: 100%;
