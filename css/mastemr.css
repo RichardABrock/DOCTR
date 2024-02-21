@@ -56,7 +56,7 @@ img.figure-img{
 }
 
 .question{
-	background-color: #25236b;
+	background-color: #3e3d5c;
 	border: 2px solid var(--brdr_col);
 	padding: var(--pad);
 	border-radius: var(--brdr_rad);
