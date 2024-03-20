@@ -321,21 +321,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#packages-and-libraries" id="toc-packages-and-libraries" class="nav-link" data-scroll-target="#packages-and-libraries"><span class="header-section-number">6</span> Packages and libraries</a>
   <ul class="collapse">
 <li><a href="#sec-load-run-pckges" id="toc-sec-load-run-pckges" class="nav-link" data-scroll-target="#sec-load-run-pckges"><span class="header-section-number">6.1</span> Installing and loading packages</a></li>
+  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse"><span class="header-section-number">6.2</span> The Tidyverse</a></li>
   </ul>
 </li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">7</span> </a></li>
-  <li><a href="#sec-loading" id="toc-sec-loading" class="nav-link" data-scroll-target="#sec-loading"><span class="header-section-number">8</span> Loading data</a></li>
-  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes"><span class="header-section-number">9</span> Dataframes</a></li>
-  <li><a href="#loading-data-from-the-web" id="toc-loading-data-from-the-web" class="nav-link" data-scroll-target="#loading-data-from-the-web"><span class="header-section-number">10</span> Loading data from the web</a></li>
-  <li><a href="#sec-loading-computer" id="toc-sec-loading-computer" class="nav-link" data-scroll-target="#sec-loading-computer"><span class="header-section-number">11</span> Loading data from your computer</a></li>
+  <li><a href="#sec-loading" id="toc-sec-loading" class="nav-link" data-scroll-target="#sec-loading"><span class="header-section-number">7</span> Loading data</a></li>
+  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes"><span class="header-section-number">8</span> Dataframes</a></li>
+  <li><a href="#loading-data-from-the-web" id="toc-loading-data-from-the-web" class="nav-link" data-scroll-target="#loading-data-from-the-web"><span class="header-section-number">9</span> Loading data from the web</a></li>
+  <li><a href="#sec-loading-computer" id="toc-sec-loading-computer" class="nav-link" data-scroll-target="#sec-loading-computer"><span class="header-section-number">10</span> Loading data from your computer</a></li>
   <li>
-<a href="#setting-working-directories" id="toc-setting-working-directories" class="nav-link" data-scroll-target="#setting-working-directories"><span class="header-section-number">12</span> Setting working directories</a>
+<a href="#setting-working-directories" id="toc-setting-working-directories" class="nav-link" data-scroll-target="#setting-working-directories"><span class="header-section-number">11</span> Setting working directories</a>
   <ul class="collapse">
-<li><a href="#proper-addresses" id="toc-proper-addresses" class="nav-link" data-scroll-target="#proper-addresses"><span class="header-section-number">12.1</span> Proper addresses</a></li>
+<li><a href="#proper-addresses" id="toc-proper-addresses" class="nav-link" data-scroll-target="#proper-addresses"><span class="header-section-number">11.1</span> Proper addresses</a></li>
   </ul>
 </li>
-  <li><a href="#sec-parquet" id="toc-sec-parquet" class="nav-link" data-scroll-target="#sec-parquet"><span class="header-section-number">13</span> .parquet files</a></li>
-  <li><a href="#csv-files" id="toc-csv-files" class="nav-link" data-scroll-target="#csv-files"><span class="header-section-number">14</span> .csv files</a></li>
+  <li><a href="#sec-parquet" id="toc-sec-parquet" class="nav-link" data-scroll-target="#sec-parquet"><span class="header-section-number">12</span> .parquet files</a></li>
+  <li><a href="#csv-files" id="toc-csv-files" class="nav-link" data-scroll-target="#csv-files"><span class="header-section-number">13</span> .csv files</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -497,7 +497,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you need help with finding the full folder location of your file, often a hurdle for Mac users, go to <a href="#sec-loading-computer">Chapter&nbsp;11</a></p>
+<p>If you need help with finding the full folder location of your file, often a hurdle for Mac users, go to <a href="#sec-loading-computer">Chapter&nbsp;10</a></p>
 </div>
 </div>
 <ol start="10" type="1">
@@ -1168,8 +1168,8 @@ Important
 <p>Some packages might use the same function names as other packages, for example <code>select</code> might do different things depending on which package you loaded last. As a rule of thumb, when you start RStudio afresh, make sure that you load the <code>tidyverse</code> package after you have loaded all your other packages. To read more about this problem see <strong>?@sec-QANDA</strong></p>
 </div>
 </div>
-</section></section><section id="section" class="level1" data-number="7"><h1 data-number="7">
-<span class="header-section-number">7</span> </h1>
+</section><section id="the-tidyverse" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="the-tidyverse">
+<span class="header-section-number">6.2</span> The Tidyverse</h2>
 <p>This course focuses on using the <em>tidyverse</em>; a free collection of programming <em>packages</em> that will allow you to write code that imports data, tidys it, transforms it into useful datasets, visualises findings, creates statistical models and communicates findings to others data using a standardised set of commands.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/data-science-workflow.png" class="img-fluid figure-img"></p>
@@ -1190,8 +1190,8 @@ Note
 <p>The code above transforms data and converts it into a graph. It doesn’t have any comments, but you should hopefully be able to understand what a lot of the code does by just reading it. Can you guess what each line does? Try running the code by selecting parts of it and pressing <code>control</code> | <code>command ⌘</code> and <code>Enter</code></p>
 </div>
 </div>
-</section><section id="sec-loading" class="level1" data-number="8"><h1 data-number="8">
-<span class="header-section-number">8</span> Loading data</h1>
+</section></section><section id="sec-loading" class="level1" data-number="7"><h1 data-number="7">
+<span class="header-section-number">7</span> Loading data</h1>
 <p>We can’t do much with R without loading data from elsewhere. Data will come in many formats and R should be able to deal with all of them. Some of the datasets you access will be a few rows and columns; others, like the ones we are going to use on this course, might run into hundreds of thousands or even millions of rows and hundreds or thousands of columns. Depending on the format you are using, you might need to use specific packages. A few of the data file types you might meet are described below:</p>
 <table class="table">
 <colgroup>
@@ -1245,8 +1245,8 @@ Note
 </tbody>
 </table>
 <p>For this course we will be looking at <code>.csv</code>, <code>excel</code>, <code>.rds</code> and <code>parquet</code> files.</p>
-</section><section id="dataframes" class="level1" data-number="9"><h1 data-number="9">
-<span class="header-section-number">9</span> Dataframes</h1>
+</section><section id="dataframes" class="level1" data-number="8"><h1 data-number="8">
+<span class="header-section-number">8</span> Dataframes</h1>
 <p>Loading datasets into R will normally store them as <em>dataframes</em> (also known as <em>tibbles</em> when using the tidyverse). Dataframes are the equivalent of tables in a spreadsheet, with rows, columns and datatypes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
@@ -1330,8 +1330,8 @@ Tip
 </div>
 </div>
 <p>First we need to get some data into R so we can start analysing them. We can load large datatables into R by either providing the online web address, or by loading it from a local file directory on your hard drive. Both methods are covered below:</p>
-</section><section id="loading-data-from-the-web" class="level1" data-number="10"><h1 data-number="10">
-<span class="header-section-number">10</span> Loading data from the web</h1>
+</section><section id="loading-data-from-the-web" class="level1" data-number="9"><h1 data-number="9">
+<span class="header-section-number">9</span> Loading data from the web</h1>
 <p>To download files from the web you’ll need to find the exact location of the file you are using. For example below we will need another package, <code>openxlsx</code>, which you need to <em>install</em> before you load it (see: <a href="#sec-packages">Section&nbsp;1.2</a>, or use line 1 below). The code shown will download the files from an online Google drive directly into objects in R using <code>read.xlsx(&lt;file_web_address&gt;, &lt;sheet_name&gt;)</code>:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1355,8 +1355,8 @@ Tip
 <span id="cb83-6"><a href="#cb83-6"></a>schools <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
 <span id="cb83-7"><a href="#cb83-7"></a>                      <span class="at">sheet=</span><span class="st">"Schools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="sec-loading-computer" class="level1" data-number="11"><h1 data-number="11">
-<span class="header-section-number">11</span> Loading data from your computer</h1>
+</section><section id="sec-loading-computer" class="level1" data-number="10"><h1 data-number="10">
+<span class="header-section-number">10</span> Loading data from your computer</h1>
 <p>Downloading files directly from web addresses can be slow and you might want to prefer to use files saved to your computer’s hard drive. You can do this by following the steps below:</p>
 <p>Download the <code>PISA_student_2022_subset.parquet</code> file from <a href="https://emckclac-my.sharepoint.com/:u:/g/personal/k1926273_kcl_ac_uk/EUT13jrQxKJCp64WnH1MG3MBHoDqkzx1NJZIoVpUFHUYvg?e=pi2ZoD">here</a> and save it to your computer where your R code file is.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1408,8 +1408,8 @@ Note
 <span id="cb84-3"><a href="#cb84-3"></a></span>
 <span id="cb84-4"><a href="#cb84-4"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:/Users/Peter/code/PISA_2022_student_subset.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="setting-working-directories" class="level1" data-number="12"><h1 data-number="12">
-<span class="header-section-number">12</span> Setting working directories</h1>
+</section><section id="setting-working-directories" class="level1" data-number="11"><h1 data-number="11">
+<span class="header-section-number">11</span> Setting working directories</h1>
 <p>Using the <code>setwd(&lt;location&gt;)</code> you can specify where R will look by default for any datasets. In the example below, the <code>dfe_data.xlsx</code> will have been downloaded and stored in <code>C:/Users/Peter/code</code>. By running <code>setwd("C:/Users/Peter/code")</code> R will always look in that location when trying to load files, meaning that <code>read_parquet(r"[C:/Users/Peter/code/PISA_student_2022.parquet]")</code> will be treated the same as <code>read_parquet(r"[PISA_student_2022.parquet]")</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="co"># context: setup</span></span>
@@ -1417,8 +1417,8 @@ Note
 <span id="cb85-3"><a href="#cb85-3"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[PISA_student_2022.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To work out what your current working directory is, you can use <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>.</p>
-<section id="proper-addresses" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="proper-addresses">
-<span class="header-section-number">12.1</span> Proper addresses</h2>
+<section id="proper-addresses" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="proper-addresses">
+<span class="header-section-number">11.1</span> Proper addresses</h2>
 <p>You might have found that you get an error if you don’t convert your backslashes <code>\</code> into forwardslashes <code>/</code>. It’s common mistake and very annoying. In most programming languages a backslash signifies the start of a special command, for example <code>\n</code> signifies a <code>newline</code>.</p>
 <p>With R there are three ways to get around the problem of backslashes in file locations, for the location:<code>"C:\myfolder\"</code> we could:</p>
 <ul>
@@ -1428,8 +1428,8 @@ Note
 </li>
 <li>use the inbuilt R command to deal with filenames: <code>r"[C:\myfolder\]"</code>
 </li>
-</ul></section></section><section id="sec-parquet" class="level1" data-number="13"><h1 data-number="13">
-<span class="header-section-number">13</span> .parquet files</h1>
+</ul></section></section><section id="sec-parquet" class="level1" data-number="12"><h1 data-number="12">
+<span class="header-section-number">12</span> .parquet files</h1>
 <p>For the majority of this workbook you will be using a cutdown version of the <code>PISA_2022</code> student table. This dataset is huge and we have loaded it into R, selected fields we think are useful, converted column types to work with R and saved in the <code>.parquet</code> format. <code>.parquet</code> files are quick to load and small in size. To load a <code>.parquet</code> file you can use the <code>read_parquet(&lt;location&gt;)</code> command from the <code>arrow</code> package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">library</span>(arrow)</span>
@@ -1440,8 +1440,8 @@ Note
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb87-2"><a href="#cb87-2"></a><span class="fu">write_parquet</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>), <span class="st">"&lt;yourfolder&gt;/pisa_france_2022.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="csv-files" class="level1" data-number="14"><h1 data-number="14">
-<span class="header-section-number">14</span> .csv files</h1>
+</section><section id="csv-files" class="level1" data-number="13"><h1 data-number="13">
+<span class="header-section-number">13</span> .csv files</h1>
 <p>A very common way of distributing data is through <code>.csv</code> files. These files can be easily compressed and opened in common office spreadsheet tools such as Excel. To load a <code>.csv</code> we can use <code>read_csv("&lt;file_location&gt;")</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">library</span>(tidyverse)</span>
