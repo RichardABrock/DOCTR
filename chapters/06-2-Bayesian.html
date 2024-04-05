@@ -564,23 +564,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="2" data-code-cell="annotated-cell-7">line 5 run a frequentist linear model on the data using <code>lm</code></span>
+<span data-code-lines="2" data-code-annotation="4" data-code-cell="annotated-cell-7">line 5 run a frequentist linear model on the data using <code>lm</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="3" data-code-cell="annotated-cell-7">line 6 print the output of the frequentist model</span>
+<span data-code-lines="3" data-code-annotation="5" data-code-cell="annotated-cell-7">line 6 print the output of the frequentist model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-lines="6" data-code-cell="annotated-cell-7">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
+<span data-code-lines="6" data-code-annotation="6" data-code-cell="annotated-cell-7">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-lines="7" data-code-cell="annotated-cell-7">line 8 print the output of the Bayesian model</span>
+<span data-code-lines="7" data-code-annotation="7" data-code-cell="annotated-cell-7">line 8 print the output of the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-lines="10" data-code-cell="annotated-cell-7">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
+<span data-code-lines="10" data-code-annotation="8" data-code-cell="annotated-cell-7">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
 </dd>
 </dl>
 </div>
@@ -828,59 +828,59 @@ R2 0.9579884 0.002935827 0.949992 0.9605754</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="6" data-code-cell="annotated-cell-8">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
+<span data-code-lines="6" data-code-annotation="1" data-code-cell="annotated-cell-8">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="7" data-code-cell="annotated-cell-8">line 2 Select the maths and country items</span>
+<span data-code-lines="7" data-code-annotation="2" data-code-cell="annotated-cell-8">line 2 Select the maths and country items</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="8" data-code-cell="annotated-cell-8">line 3 Filter for the UK</span>
+<span data-code-lines="8" data-code-annotation="3" data-code-cell="annotated-cell-8">line 3 Filter for the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="9" data-code-cell="annotated-cell-8">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
+<span data-code-lines="9" data-code-annotation="4" data-code-cell="annotated-cell-8">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-8">line 5 Print the summary table</span>
+<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-8">line 5 Print the summary table</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-lines="14" data-code-cell="annotated-cell-8">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
+<span data-code-lines="14" data-code-annotation="6" data-code-cell="annotated-cell-8">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-lines="15" data-code-cell="annotated-cell-8">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
+<span data-code-lines="15" data-code-annotation="7" data-code-cell="annotated-cell-8">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-lines="22" data-code-cell="annotated-cell-8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
+<span data-code-lines="22" data-code-annotation="8" data-code-cell="annotated-cell-8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-annotation="9" data-code-lines="26" data-code-cell="annotated-cell-8">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
+<span data-code-lines="26" data-code-annotation="9" data-code-cell="annotated-cell-8">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-annotation="10" data-code-lines="30" data-code-cell="annotated-cell-8">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
+<span data-code-lines="30" data-code-annotation="10" data-code-cell="annotated-cell-8">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-annotation="11" data-code-lines="31" data-code-cell="annotated-cell-8">line 15 Print the summary</span>
+<span data-code-lines="31" data-code-annotation="11" data-code-cell="annotated-cell-8">line 15 Print the summary</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-annotation="12" data-code-lines="32" data-code-cell="annotated-cell-8">line 16 Print the R<sup>2</sup> equivalent</span>
+<span data-code-lines="32" data-code-annotation="12" data-code-cell="annotated-cell-8">line 16 Print the R<sup>2</sup> equivalent</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-annotation="13" data-code-lines="35" data-code-cell="annotated-cell-8">line 17 Run the frequentist linear model as a comparison</span>
+<span data-code-lines="35" data-code-annotation="13" data-code-cell="annotated-cell-8">line 17 Run the frequentist linear model as a comparison</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-annotation="14" data-code-lines="37" data-code-cell="annotated-cell-8">line 19 Print the frequentist linear model</span>
+<span data-code-lines="37" data-code-annotation="14" data-code-cell="annotated-cell-8">line 19 Print the frequentist linear model</span>
 </dd>
 </dl>
 </div>
@@ -1088,35 +1088,35 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-9">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-9">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="10" data-code-cell="annotated-cell-9">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
+<span data-code-lines="10" data-code-annotation="2" data-code-cell="annotated-cell-9">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="13" data-code-cell="annotated-cell-9">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
+<span data-code-lines="13" data-code-annotation="3" data-code-cell="annotated-cell-9">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="23" data-code-cell="annotated-cell-9">line 17 Set the prior distributions, as above, here for maths</span>
+<span data-code-lines="23" data-code-annotation="4" data-code-cell="annotated-cell-9">line 17 Set the prior distributions, as above, here for maths</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="25" data-code-cell="annotated-cell-9">line 19 Set the prior distribution for reading</span>
+<span data-code-lines="25" data-code-annotation="5" data-code-cell="annotated-cell-9">line 19 Set the prior distribution for reading</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-lines="29" data-code-cell="annotated-cell-9">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
+<span data-code-lines="29" data-code-annotation="6" data-code-cell="annotated-cell-9">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-lines="33" data-code-cell="annotated-cell-9">line 23 Run the Bayesian model</span>
+<span data-code-lines="33" data-code-annotation="7" data-code-cell="annotated-cell-9">line 23 Run the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-lines="39" data-code-cell="annotated-cell-9">line 27 plot a graph of the distribution of the coefficients</span>
+<span data-code-lines="39" data-code-annotation="8" data-code-cell="annotated-cell-9">line 27 plot a graph of the distribution of the coefficients</span>
 </dd>
 </dl>
 </div>
@@ -1314,19 +1314,19 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-10">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-10">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="12" data-code-cell="annotated-cell-10">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
+<span data-code-lines="12" data-code-annotation="2" data-code-cell="annotated-cell-10">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="16" data-code-cell="annotated-cell-10">Select only the Bayes factor, and covert to a data frame for sort</span>
+<span data-code-lines="16" data-code-annotation="3" data-code-cell="annotated-cell-10">Select only the Bayes factor, and covert to a data frame for sort</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="20" data-code-cell="annotated-cell-10">Sort the output in descending order of Bayes Factor and print the output</span>
+<span data-code-lines="20" data-code-annotation="4" data-code-cell="annotated-cell-10">Sort the output in descending order of Bayes Factor and print the output</span>
 </dd>
 </dl>
 </div>
@@ -1367,23 +1367,23 @@ PV1READ + ESCS                     Fri Apr  5 09:55:57 2024 1ca04e7b1b83
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-11">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-11">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-11">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-11">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="3" data-code-cell="annotated-cell-11">line 3 Plot a column graph</span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-11">line 3 Plot a column graph</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="4" data-code-cell="annotated-cell-11">line 4 Rotate the axis text</span>
+<span data-code-lines="4" data-code-annotation="4" data-code-cell="annotated-cell-11">line 4 Rotate the axis text</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="5" data-code-cell="annotated-cell-11">line 5 Set the axis labels</span>
+<span data-code-lines="5" data-code-annotation="5" data-code-cell="annotated-cell-11">line 5 Set the axis labels</span>
 </dd>
 </dl>
 </div>
