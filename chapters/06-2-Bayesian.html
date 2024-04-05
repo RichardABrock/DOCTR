@@ -389,9 +389,9 @@ mean of x mean of y
 </section>
 <section id="the-bayesian-approach-to-statistics" class="level2" data-number="0.2">
 <h2 data-number="0.2" class="anchored" data-anchor-id="the-bayesian-approach-to-statistics"><span class="header-section-number">0.2</span> The Bayesian Approach to Statistics</h2>
-<p>The Bayesian approach was developed by the English statistician and Presbyterian minister, Thomas Bayes. The Bayesian approach proposes a different model to expressing the outcome of statistical tests. Bayesian statistics report a probability expressing a degree of belief an event. Central to Bayesian statistics is the assumption that the degree of belief should be revised based on prior knowledge. This contrasts with frequentist statistics in which the null hypothesis is assumed, even though it is rare to genuinely believe in the null hypothesis - there are rarely no differences between groups <span class="citation" data-cites="murphy1990if">(<a href="#ref-murphy1990if" role="doc-biblioref"><strong>murphy1990if?</strong></a>)</span>. In Bayesian statistics, analysis is carried out in light of prior knowledge of probabilities of relevant events. In the case of the classes above, for example, information about prior achivement, and hence the likelihood of the two classes having the same mean score could be used in the calculation.</p>
+<p>The Bayesian approach was developed by the English statistician and Presbyterian minister, Thomas Bayes. The Bayesian approach proposes a different model to expressing the outcome of statistical tests. Bayesian statistics report a probability expressing a degree of belief an event. Central to Bayesian statistics is the assumption that the degree of belief should be revised based on prior knowledge. This contrasts with frequentist statistics in which the null hypothesis is assumed, even though it is rare to genuinely believe in the null hypothesis - there are rarely no differences between groups <span class="citation" data-cites="murphy1990if">(<a href="#ref-murphy1990if" role="doc-biblioref">Murphy 1990</a>)</span>. In Bayesian statistics, analysis is carried out in light of prior knowledge of probabilities of relevant events. In the case of the classes above, for example, information about prior achievement, and hence the likelihood of the two classes having the same mean score could be used in the calculation.</p>
 <blockquote class="blockquote">
-<p>“’The key ideas of Bayesian statistics: that probability is orderly opinion, and that inference from data is nothing other than the revision of such opinion in the light of relevant new information” - <span class="citation" data-cites="edwards1963">(<a href="#ref-edwards1963" role="doc-biblioref">Edwards, Lindman, and Savage 1963, 194</a>)</span></p>
+<p>“’The key ideas of Bayesian statistics: that probability is orderly opinion, and that inference from data is nothing other than the revision of such opinion in the light of relevant new information” <span class="citation" data-cites="edwards1963">(<a href="#ref-edwards1963" role="doc-biblioref">Edwards, Lindman, and Savage 1963, 194</a>)</span></p>
 </blockquote>
 <p>Bayes’ theorem can be stated mathematically as:<span class="math inline">\(P(A\vert B)=\frac{P(B \vert A)P(A)}{P(B)}, \text{ if } P(B) \neq 0\)</span></p>
 <p>A and B represent two events. <span class="math inline">\(P(A)\)</span> represents the probability of A occurring and <span class="math inline">\(P(A)\)</span> the probability of B happening. The formula assumes that <span class="math inline">\(P(B)\ne0\)</span>, that is there is some probability the event B will happen.</p>
@@ -405,7 +405,8 @@ mean of x mean of y
 <p>If we select 1000 people at random for PMLD testing, 10 will have PMLD. 990 students will not have PMLD. Of those 990 people, 5% will receive a positive screening. 5% of 990 is 49.5 people. So there are 10 (correct screenings) + 49.5 (false positives) = 59.5 people who test positive. The probability that someone has PMLD, given a positive test is <span class="math inline">\(P(HasPMLD\vert PositiveTest)\)</span> is <span class="math inline">\(10/59.5=0.17\)</span> surprisingly low.</p>
 <p>We can use the formula to get to the same result:</p>
 <p><span class="math inline">\(P(HasPMLD\vert PositiveTest)=\frac{P(PositiveTest \vert HasPMLD)P(HasPMLD)}{P(PositiveTest)}\)</span></p>
-<p><span class="math inline">\(P(PositiveTest \vert HasPMLD)=1\)</span> <span class="math inline">\(P(HasPMLD)=0.01\)</span></p>
+<p><span class="math inline">\(P(PositiveTest \vert HasPMLD)=1\)</span></p>
+<p><span class="math inline">\(P(HasPMLD)=0.01\)</span></p>
 <p><span class="math inline">\(P(PositiveTest)=(1*10/1000)+(0.05*990/1000)=0.0595\)</span></p>
 <p><span class="math inline">\(P(HasPSMLD\vert PositiveTest)=\frac{(1)(0.01)}{(0.0595)}=0.17\)</span></p>
 <p>The example indicates the value of taking prior information into account when making inferences. Intuitively, it might be expected that, with the low rate of false positives (5%) a positive test would mean a high certainty of diagnosis. However, combined with knowledge of the prevalence of PMLD in the population, the probability of having PSMLD after a positive test is only around 1 in 5.</p>
@@ -564,23 +565,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="4" data-code-cell="annotated-cell-7">line 5 run a frequentist linear model on the data using <code>lm</code></span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="4">line 5 run a frequentist linear model on the data using <code>lm</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="5" data-code-cell="annotated-cell-7">line 6 print the output of the frequentist model</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="5">line 6 print the output of the frequentist model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="6" data-code-annotation="6" data-code-cell="annotated-cell-7">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="6">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="7" data-code-annotation="7" data-code-cell="annotated-cell-7">line 8 print the output of the Bayesian model</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="7">line 8 print the output of the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="10" data-code-annotation="8" data-code-cell="annotated-cell-7">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="10" data-code-annotation="8">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
 </dd>
 </dl>
 </div>
@@ -606,18 +607,18 @@ lm(formula = Var1 ~ Var2, data = testdata)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--4.7509 -1.4660  0.1618  1.4103  4.6141 
+-5.1705 -1.3060 -0.1091  1.3023  3.6630 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -3.20174    0.82017  -3.904 0.000295 ***
-Var2         0.95502    0.02852  33.491  &lt; 2e-16 ***
+(Intercept)  -4.8042     0.9003  -5.336 2.54e-06 ***
+Var2          0.9788     0.0280  34.960  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.994 on 48 degrees of freedom
-Multiple R-squared:  0.959, Adjusted R-squared:  0.9581 
-F-statistic:  1122 on 1 and 48 DF,  p-value: &lt; 2.2e-16
+Residual standard error: 2.115 on 48 degrees of freedom
+Multiple R-squared:  0.9622,    Adjusted R-squared:  0.9614 
+F-statistic:  1222 on 1 and 48 DF,  p-value: &lt; 2.2e-16
 
 Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
 using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
@@ -653,9 +654,9 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.009 seconds (Warm-up)
-Chain 1:                0.008 seconds (Sampling)
-Chain 1:                0.017 seconds (Total)
+Chain 1:  Elapsed Time: 0.012 seconds (Warm-up)
+Chain 1:                0.012 seconds (Sampling)
+Chain 1:                0.024 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
@@ -678,9 +679,9 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.009 seconds (Warm-up)
-Chain 2:                0.008 seconds (Sampling)
-Chain 2:                0.017 seconds (Total)
+Chain 2:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 2:                0.01 seconds (Sampling)
+Chain 2:                0.023 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
@@ -703,15 +704,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.009 seconds (Warm-up)
-Chain 3:                0.007 seconds (Sampling)
-Chain 3:                0.016 seconds (Total)
+Chain 3:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 3:                0.012 seconds (Sampling)
+Chain 3:                0.025 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1e-06 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
+Chain 4: Gradient evaluation took 1.4e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.14 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -728,9 +729,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.01 seconds (Warm-up)
-Chain 4:                0.009 seconds (Sampling)
-Chain 4:                0.019 seconds (Total)
+Chain 4:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 4:                0.011 seconds (Sampling)
+Chain 4:                0.024 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -741,18 +742,18 @@ Formula: Var1 ~ Var2
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    -3.20      0.85    -4.86    -1.55 1.00     4231     2753
-Var2          0.96      0.03     0.90     1.01 1.00     4212     2711
+Intercept    -4.79      0.94    -6.64    -2.94 1.00     3773     2545
+Var2          0.98      0.03     0.92     1.03 1.00     3510     2450
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma     2.05      0.21     1.67     2.50 1.00     3775     3033
+sigma     2.17      0.23     1.78     2.66 1.00     3336     2362
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error     Q2.5     Q97.5
-R2 0.9579884 0.002935827 0.949992 0.9605754</code></pre>
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.9612457 0.002699378 0.9540305 0.9635823</code></pre>
 </div>
 </div>
 <p>You can see that the frequentist and Bayesian approaches give similar results:</p>
@@ -828,59 +829,59 @@ R2 0.9579884 0.002935827 0.949992 0.9605754</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6" data-code-annotation="1" data-code-cell="annotated-cell-8">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
+<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="1">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="7" data-code-annotation="2" data-code-cell="annotated-cell-8">line 2 Select the maths and country items</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="7" data-code-annotation="2">line 2 Select the maths and country items</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="8" data-code-annotation="3" data-code-cell="annotated-cell-8">line 3 Filter for the UK</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="3">line 3 Filter for the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="9" data-code-annotation="4" data-code-cell="annotated-cell-8">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="4">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-8">line 5 Print the summary table</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="12" data-code-annotation="5">line 5 Print the summary table</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="14" data-code-annotation="6" data-code-cell="annotated-cell-8">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
+<span data-code-cell="annotated-cell-8" data-code-lines="14" data-code-annotation="6">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="15" data-code-annotation="7" data-code-cell="annotated-cell-8">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
+<span data-code-cell="annotated-cell-8" data-code-lines="15" data-code-annotation="7">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="22" data-code-annotation="8" data-code-cell="annotated-cell-8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="22" data-code-annotation="8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-lines="26" data-code-annotation="9" data-code-cell="annotated-cell-8">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="26" data-code-annotation="9">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-lines="30" data-code-annotation="10" data-code-cell="annotated-cell-8">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="30" data-code-annotation="10">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-lines="31" data-code-annotation="11" data-code-cell="annotated-cell-8">line 15 Print the summary</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="31" data-code-annotation="11">line 15 Print the summary</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-lines="32" data-code-annotation="12" data-code-cell="annotated-cell-8">line 16 Print the R<sup>2</sup> equivalent</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="32" data-code-annotation="12">line 16 Print the R<sup>2</sup> equivalent</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-lines="35" data-code-annotation="13" data-code-cell="annotated-cell-8">line 17 Run the frequentist linear model as a comparison</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="35" data-code-annotation="13">line 17 Run the frequentist linear model as a comparison</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-lines="37" data-code-annotation="14" data-code-cell="annotated-cell-8">line 19 Print the frequentist linear model</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="37" data-code-annotation="14">line 19 Print the frequentist linear model</span>
 </dd>
 </dl>
 </div>
@@ -923,15 +924,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 1.008 seconds (Warm-up)
-Chain 1:                0.496 seconds (Sampling)
-Chain 1:                1.504 seconds (Total)
+Chain 1:  Elapsed Time: 0.352 seconds (Warm-up)
+Chain 1:                0.123 seconds (Sampling)
+Chain 1:                0.475 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 0.000165 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 1.65 seconds.
+Chain 2: Gradient evaluation took 2.4e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -948,9 +949,9 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.438 seconds (Warm-up)
-Chain 2:                0.107 seconds (Sampling)
-Chain 2:                0.545 seconds (Total)
+Chain 2:  Elapsed Time: 0.341 seconds (Warm-up)
+Chain 2:                0.125 seconds (Sampling)
+Chain 2:                0.466 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
@@ -973,15 +974,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.375 seconds (Warm-up)
-Chain 3:                0.138 seconds (Sampling)
-Chain 3:                0.513 seconds (Total)
+Chain 3:  Elapsed Time: 0.216 seconds (Warm-up)
+Chain 3:                0.136 seconds (Sampling)
+Chain 3:                0.352 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2.3e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.
+Chain 4: Gradient evaluation took 2.5e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.25 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -998,9 +999,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.297 seconds (Warm-up)
-Chain 4:                0.117 seconds (Sampling)
-Chain 4:                0.414 seconds (Total)
+Chain 4:  Elapsed Time: 0.349 seconds (Warm-up)
+Chain 4:                0.131 seconds (Sampling)
+Chain 4:                0.48 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1011,18 +1012,18 @@ Formula: PV1SCIE ~ PV1MATH
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    42.29      2.27    37.78    46.75 1.00     5067     2856
-PV1MATH       0.93      0.00     0.92     0.94 1.00     5177     2843
+Intercept    42.34      2.21    38.06    46.74 1.00     4798     3412
+PV1MATH       0.93      0.00     0.92     0.94 1.00     4944     3206
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    50.75      0.31    50.14    51.37 1.00     4278     2634
+sigma    50.74      0.31    50.13    51.36 1.00     4120     2837
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
     Estimate   Est.Error      Q2.5     Q97.5
-R2 0.7532993 0.001837054 0.7495784 0.7568527
+R2 0.7532659 0.001791018 0.7496761 0.7567054
 
 Call:
 lm(formula = PV1SCIE ~ PV1MATH, data = UKPISA_2022)
@@ -1088,35 +1089,35 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-9">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="1">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="10" data-code-annotation="2" data-code-cell="annotated-cell-9">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
+<span data-code-cell="annotated-cell-9" data-code-lines="10" data-code-annotation="2">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="13" data-code-annotation="3" data-code-cell="annotated-cell-9">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
+<span data-code-cell="annotated-cell-9" data-code-lines="13" data-code-annotation="3">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="23" data-code-annotation="4" data-code-cell="annotated-cell-9">line 17 Set the prior distributions, as above, here for maths</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="23" data-code-annotation="4">line 17 Set the prior distributions, as above, here for maths</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="25" data-code-annotation="5" data-code-cell="annotated-cell-9">line 19 Set the prior distribution for reading</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="25" data-code-annotation="5">line 19 Set the prior distribution for reading</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="29" data-code-annotation="6" data-code-cell="annotated-cell-9">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="29" data-code-annotation="6">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="33" data-code-annotation="7" data-code-cell="annotated-cell-9">line 23 Run the Bayesian model</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="33" data-code-annotation="7">line 23 Run the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="39" data-code-annotation="8" data-code-cell="annotated-cell-9">line 27 plot a graph of the distribution of the coefficients</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="39" data-code-annotation="8">line 27 plot a graph of the distribution of the coefficients</span>
 </dd>
 </dl>
 </div>
@@ -1148,8 +1149,8 @@ make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 4.4e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.44 seconds.
+Chain 1: Gradient evaluation took 4.6e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.46 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -1166,15 +1167,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.571 seconds (Warm-up)
-Chain 1:                0.248 seconds (Sampling)
-Chain 1:                0.819 seconds (Total)
+Chain 1:  Elapsed Time: 0.81 seconds (Warm-up)
+Chain 1:                0.253 seconds (Sampling)
+Chain 1:                1.063 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 3e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
+Chain 2: Gradient evaluation took 2.8e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -1191,15 +1192,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.539 seconds (Warm-up)
-Chain 2:                0.447 seconds (Sampling)
-Chain 2:                0.986 seconds (Total)
+Chain 2:  Elapsed Time: 0.633 seconds (Warm-up)
+Chain 2:                0.302 seconds (Sampling)
+Chain 2:                0.935 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.8e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
+Chain 3: Gradient evaluation took 3e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -1216,9 +1217,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.59 seconds (Warm-up)
-Chain 3:                0.255 seconds (Sampling)
-Chain 3:                0.845 seconds (Total)
+Chain 3:  Elapsed Time: 0.641 seconds (Warm-up)
+Chain 3:                0.289 seconds (Sampling)
+Chain 3:                0.93 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
@@ -1241,9 +1242,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.583 seconds (Warm-up)
-Chain 4:                0.337 seconds (Sampling)
-Chain 4:                0.92 seconds (Total)
+Chain 4:  Elapsed Time: 0.652 seconds (Warm-up)
+Chain 4:                0.228 seconds (Sampling)
+Chain 4:                0.88 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1254,19 +1255,19 @@ Formula: PV1SCIE ~ PV1MATH + PV1READ
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    25.66      2.29    21.27    30.18 1.00     5341     3354
-PV1MATH       0.71      0.01     0.70     0.73 1.00     2059     2249
-PV1READ       0.25      0.01     0.24     0.26 1.00     2246     2520
+Intercept    25.70      2.27    21.21    30.18 1.00     4936     3328
+PV1MATH       0.71      0.01     0.70     0.73 1.00     2125     2521
+PV1READ       0.25      0.01     0.24     0.26 1.00     2238     2634
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    48.19      0.30    47.60    48.77 1.00     3956     2816
+sigma    48.19      0.30    47.61    48.80 1.00     3470     2349
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5    Q97.5
-R2 0.7774652 0.001684356 0.7740989 0.780632</code></pre>
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.7774475 0.001657467 0.7741626 0.7806466</code></pre>
 </div>
 </div>
 </section>
@@ -1314,19 +1315,19 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-10">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="4" data-code-annotation="1">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="12" data-code-annotation="2" data-code-cell="annotated-cell-10">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="12" data-code-annotation="2">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="16" data-code-annotation="3" data-code-cell="annotated-cell-10">Select only the Bayes factor, and covert to a data frame for sort</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="16" data-code-annotation="3">Select only the Bayes factor, and covert to a data frame for sort</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="20" data-code-annotation="4" data-code-cell="annotated-cell-10">Sort the output in descending order of Bayes Factor and print the output</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="20" data-code-annotation="4">Sort the output in descending order of Bayes Factor and print the output</span>
 </dd>
 </dl>
 </div>
@@ -1343,16 +1344,16 @@ PV1MATH                            7497.489 8.858089e-05
 PV1READ + HOMEPOS + ESCS           5254.970 6.513346e-06
 PV1READ + ESCS                     5242.466 3.000504e-06
                                                        time         code
-PV1MATH + PV1READ + HOMEPOS        Fri Apr  5 09:55:57 2024 1ca07ff551b8
-PV1MATH + PV1READ + HOMEPOS + ESCS Fri Apr  5 09:55:57 2024 1ca02fdc2e46
-PV1MATH + PV1READ + ESCS           Fri Apr  5 09:55:57 2024 1ca042c848a9
-PV1MATH + PV1READ                  Fri Apr  5 09:55:57 2024 1ca07d05831b
-PV1MATH + HOMEPOS                  Fri Apr  5 09:55:57 2024 1ca074e2a1bc
-PV1MATH + HOMEPOS + ESCS           Fri Apr  5 09:55:57 2024 1ca06b1a717f
-PV1MATH + ESCS                     Fri Apr  5 09:55:57 2024 1ca04ae87997
-PV1MATH                            Fri Apr  5 09:55:57 2024 1ca01278f12b
-PV1READ + HOMEPOS + ESCS           Fri Apr  5 09:55:57 2024 1ca015117fc8
-PV1READ + ESCS                     Fri Apr  5 09:55:57 2024 1ca04e7b1b83
+PV1MATH + PV1READ + HOMEPOS        Fri Apr  5 10:47:36 2024 3e9224ca1c36
+PV1MATH + PV1READ + HOMEPOS + ESCS Fri Apr  5 10:47:36 2024 3e924188c6ef
+PV1MATH + PV1READ + ESCS           Fri Apr  5 10:47:36 2024 3e9251023018
+PV1MATH + PV1READ                  Fri Apr  5 10:47:36 2024 3e926cd5f401
+PV1MATH + HOMEPOS                  Fri Apr  5 10:47:36 2024 3e925286a579
+PV1MATH + HOMEPOS + ESCS           Fri Apr  5 10:47:36 2024 3e9266a3a134
+PV1MATH + ESCS                     Fri Apr  5 10:47:36 2024  3e925d9d543
+PV1MATH                            Fri Apr  5 10:47:36 2024 3e922643a46f
+PV1READ + HOMEPOS + ESCS           Fri Apr  5 10:47:36 2024   3e92ac9191
+PV1READ + ESCS                     Fri Apr  5 10:47:36 2024 3e925329f79d
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 </div>
 </div>
@@ -1367,23 +1368,23 @@ PV1READ + ESCS                     Fri Apr  5 09:55:57 2024 1ca04e7b1b83
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-11">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-11">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="2">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-11">line 3 Plot a column graph</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="3">line 3 Plot a column graph</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="4" data-code-annotation="4" data-code-cell="annotated-cell-11">line 4 Rotate the axis text</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="4">line 4 Rotate the axis text</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="5" data-code-annotation="5" data-code-cell="annotated-cell-11">line 5 Set the axis labels</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="5">line 5 Set the axis labels</span>
 </dd>
 </dl>
 </div>
@@ -1806,6 +1807,9 @@ Edwards, Ward, Harold Lindman, and Leonard J. Savage. 1963. <span>“Bayesian St
 </div>
 <div id="ref-kass1995" class="csl-entry" role="listitem">
 Kass, Robert E., and Adrian E. Raftery. 1995. <span>“Bayes Factors.”</span> <em>Journal of the American Statistical Association</em> 90 (430): 773–95. <a href="https://doi.org/10.1080/01621459.1995.10476572">https://doi.org/10.1080/01621459.1995.10476572</a>.
+</div>
+<div id="ref-murphy1990if" class="csl-entry" role="listitem">
+Murphy, Kevin R. 1990. <span>“If the Null Hypothesis Is Impossible, Why Test It?”</span> <em>American Psychologist</em> 45 (3): 403.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
