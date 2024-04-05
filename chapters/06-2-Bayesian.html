@@ -336,6 +336,7 @@ div.csl-indent {
   <li><a href="#task-4-bayesian-linear-models" id="toc-task-4-bayesian-linear-models" class="nav-link" data-scroll-target="#task-4-bayesian-linear-models"><span class="header-section-number">0.3.4</span> Task 4 Bayesian linear models</a></li>
   <li><a href="#task-5-bayesian-comparison-of-models" id="toc-task-5-bayesian-comparison-of-models" class="nav-link" data-scroll-target="#task-5-bayesian-comparison-of-models"><span class="header-section-number">0.3.5</span> Task 5 Bayesian comparison of models</a></li>
   </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">0.4</span> Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -383,12 +384,12 @@ mean of x mean of y
 </div>
 </div>
 <p>In this case, the p-value of the frequentist t-test is 0.0002, less than 0.05. We conclude that, if we assume the null hypothesis (that the means of the classes are the same), there is a probability of 0.0002 (1 in 5000) than results like this, or more extreme, could have arisen by chance.</p>
-<p>The p-value here can be thought of as indicating the probability of a false positive. That is, it reports the probability that a difference in means of this size or larger could have arise by chance.</p>
+<p>The p-value here can be thought of as indicating the probability of a false positive. That is, it reports the probability that a difference in means of this size or larger could have arise by chance. Alternatively, the p-value is sometimes described as a measure of how surprised one ought to be by the results - if we assume the classes should get the same results, the p-value of 0.0002 suggests we ought to be considerably surprised (shocked!) to get results as different as this (50 in one class, 80 in the other) by chance.</p>
 <p>The trouble with the frequentist p-value is that is doesn’t tell us what we typically want to know - what is the probability that the scores in the condition group are different from the control (and hence there is a difference in the teaching approaches). The Frequentist approach reports, after a number of trials, the limit of the relative frequency of an event. For example, after 13 students in each class have sat the test, and assuming that the two classes have the same mean score, there is a 1 in 5000 chance that the results like this, or more extreme, would occur. This is not an intuitive approach to reporting probability - the Bayesian approach offers an alternative.</p>
 </section>
 <section id="the-bayesian-approach-to-statistics" class="level2" data-number="0.2">
 <h2 data-number="0.2" class="anchored" data-anchor-id="the-bayesian-approach-to-statistics"><span class="header-section-number">0.2</span> The Bayesian Approach to Statistics</h2>
-<p>The Bayesian approach was developed by the English statistician and Presbyterian minister, Thomas Bayes. The Bayesian approach proposes a different model to expressing the outcome of statistical tests. Bayesian statistics report a probability which expresses a degree of belief an event. Central to Bayesian statistics is the assumption that the degree of belief should be revised based on prior knowledge.</p>
+<p>The Bayesian approach was developed by the English statistician and Presbyterian minister, Thomas Bayes. The Bayesian approach proposes a different model to expressing the outcome of statistical tests. Bayesian statistics report a probability expressing a degree of belief an event. Central to Bayesian statistics is the assumption that the degree of belief should be revised based on prior knowledge. This contrasts with frequentist statistics in which the null hypothesis is assumed, even though it is rare to genuinely believe in the null hypothesis - there are rarely no differences between groups <span class="citation" data-cites="murphy1990if">(<a href="#ref-murphy1990if" role="doc-biblioref"><strong>murphy1990if?</strong></a>)</span>. In Bayesian statistics, analysis is carried out in light of prior knowledge of probabilities of relevant events. In the case of the classes above, for example, information about prior achivement, and hence the likelihood of the two classes having the same mean score could be used in the calculation.</p>
 <blockquote class="blockquote">
 <p>“’The key ideas of Bayesian statistics: that probability is orderly opinion, and that inference from data is nothing other than the revision of such opinion in the light of relevant new information” - <span class="citation" data-cites="edwards1963">(<a href="#ref-edwards1963" role="doc-biblioref">Edwards, Lindman, and Savage 1963, 194</a>)</span></p>
 </blockquote>
@@ -408,27 +409,29 @@ mean of x mean of y
 <p><span class="math inline">\(P(PositiveTest)=(1*10/1000)+(0.05*990/1000)=0.0595\)</span></p>
 <p><span class="math inline">\(P(HasPSMLD\vert PositiveTest)=\frac{(1)(0.01)}{(0.0595)}=0.17\)</span></p>
 <p>The example indicates the value of taking prior information into account when making inferences. Intuitively, it might be expected that, with the low rate of false positives (5%) a positive test would mean a high certainty of diagnosis. However, combined with knowledge of the prevalence of PMLD in the population, the probability of having PSMLD after a positive test is only around 1 in 5.</p>
+<p>There are Bayesian versions of the inferential tests we have covered so far (t-tests, chi-squared, correlationa dn linear regression).</p>
 <section id="the-bayesian-t-test" class="level3" data-number="0.2.1">
 <h3 data-number="0.2.1" class="anchored" data-anchor-id="the-bayesian-t-test"><span class="header-section-number">0.2.1</span> The Bayesian t-test</h3>
-<p>The <code>BayesFactor</code> package can be used to perform a Bayesian version of the t-test.</p>
+<p>The <code>BayesFactor</code> package can be used to perform a Bayesian version of the t-test. Let us perform the Bayesian test on the same class data we used above, for which we found a p-value of 0.0002.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(BayesFactor)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Create two dummy class exam scores, as dataframes this time, as that is what the Bayesian t-test taskes as an input</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>ClassA <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Scores =</span> <span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">53</span>,<span class="dv">72</span>,<span class="dv">31</span>,<span class="dv">25</span>,<span class="dv">34</span>,<span class="dv">87</span>,<span class="dv">45</span>,<span class="dv">26</span>,<span class="dv">42</span>,<span class="dv">54</span>,<span class="dv">58</span>,<span class="dv">80</span>))</span>
-<span id="cb3-4"><a href="#cb3-4"></a>ClassB <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Scores =</span> <span class="fu">c</span>(<span class="dv">82</span>,<span class="dv">94</span>,<span class="dv">88</span>,<span class="dv">76</span>,<span class="dv">82</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">90</span>,<span class="dv">75</span>,<span class="dv">77</span>,<span class="dv">96</span>,<span class="dv">61</span>,<span class="dv">74</span>))</span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Label the classes A and B</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>ClassA <span class="ot">&lt;-</span> ClassA <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">mutate</span>(<span class="at">Class=</span><span class="st">"A"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a>ClassB <span class="ot">&lt;-</span> ClassB <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">mutate</span>(<span class="at">Class=</span><span class="st">"B"</span>)</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Combine into one data frame</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>Totaldata <span class="ot">&lt;-</span> <span class="fu">rbind</span>(ClassA, ClassB)</span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co"># Perform the Bayesian test</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="fu">ttestBF</span>(<span class="at">data =</span> Totaldata, <span class="at">formula =</span> Scores <span class="sc">~</span> Class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Create two dummy class exam scores, as dataframes this time, as that is what the Bayesian t-test takes as an input</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>ClassA <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Scores =</span> <span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">53</span>,<span class="dv">72</span>,<span class="dv">31</span>,<span class="dv">25</span>,<span class="dv">34</span>,<span class="dv">87</span>,<span class="dv">45</span>,<span class="dv">26</span>,<span class="dv">42</span>,<span class="dv">54</span>,<span class="dv">58</span>,<span class="dv">80</span>))</span>
+<span id="cb3-5"><a href="#cb3-5"></a>ClassB <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Scores =</span> <span class="fu">c</span>(<span class="dv">82</span>,<span class="dv">94</span>,<span class="dv">88</span>,<span class="dv">76</span>,<span class="dv">82</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">90</span>,<span class="dv">75</span>,<span class="dv">77</span>,<span class="dv">96</span>,<span class="dv">61</span>,<span class="dv">74</span>))</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Label the classes A and B</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>ClassA <span class="ot">&lt;-</span> ClassA <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">mutate</span>(<span class="at">Class=</span><span class="st">"A"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>ClassB <span class="ot">&lt;-</span> ClassB <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">mutate</span>(<span class="at">Class=</span><span class="st">"B"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># Combine into one data frame</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>Totaldata <span class="ot">&lt;-</span> <span class="fu">rbind</span>(ClassA, ClassB)</span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co"># Perform the Bayesian test</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="fu">ttestBF</span>(<span class="at">data =</span> Totaldata, <span class="at">formula =</span> Scores <span class="sc">~</span> Class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
@@ -440,13 +443,17 @@ Against denominator:
 Bayes factor type: BFindepSample, JZS</code></pre>
 </div>
 </div>
-<p>The value of interest here is the Bayes factor, 194.1877, followed by the confidence interval ±0%.The Bayes factor can be thought of as a measure of the relative likelihood of a difference (in this case, a different in scores between the groups). here the factor can be interpreted to mean: It is 194 times more likely that there is a difference between the two classes than there is no difference.</p>
-<p>By comparison with a p-value, which acts only as a cut of for significance, the Bayes facor tells you the relative likelihood, a more useful piece of information.</p>
+<p>The value of interest here is the Bayes factor, 194.1877, followed by the confidence interval ±0%.The Bayes factor can be thought of as a measure of the relative likelihood of a difference (in this case, a different in scores between the groups). Here the factor can be interpreted to mean: It is 194 times more likely that there is a difference between the two classes than there is no difference.</p>
+<p>By comparison with a p-value, which acts only as a cut of for significance, the Bayes factor tells you the relative likelihood, a more useful piece of information.</p>
 <p>(Note that to calculate the Bayesian t-test, some assumptions have to be made. One is the assumption of a distribution of effect sizes, in this case a kind of distribution known as a Cauchy distribution is assumed, r=0.707 refers to a parameter of that distribution).</p>
 <p>Null, mu1-mu2 = 0 tells us that the null hypothesis is that the means (the mus) of the two groups are the same.</p>
+<p><code>Against denominator: Null, mu1-mu2 = 0</code> refers to the denominator (i.e the part below the line), in the Bayes theorem:</p>
+<p><span class="math inline">\(P(A\vert B)=\frac{P(B \vert A)P(A)}{P(B)}, \text{ if } P(B) \neq 0\)</span></p>
+<p>In this case <span class="math inline">\(P(B)\)</span> refers to the probability that there is no difference between the classes.</p>
 </section>
 <section id="the-bayesian-chi-square-test" class="level3" data-number="0.2.2">
 <h3 data-number="0.2.2" class="anchored" data-anchor-id="the-bayesian-chi-square-test"><span class="header-section-number">0.2.2</span> The Bayesian chi-square test</h3>
+<p>The <code>BayesFactor</code> package also contains a Bayesian version of the chi-square test. In the example below, there is some example data: the gender of 14 people is reported as well as whether each has a degree (expressed as 1 (has a degree), and 0 (has no degree)). The chi square test attempts to examine whether the distribution of degrees in the male and female groups is statistically signficant.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Create two a dataframe 1=has degree, 0=has no degree</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>DegreeGender <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">"Male"</span>,<span class="st">"Male"</span>,<span class="st">"Female"</span>,<span class="st">"Male"</span>,<span class="st">"Female"</span>,<span class="st">"Female"</span>,</span>
@@ -454,11 +461,18 @@ Bayes factor type: BFindepSample, JZS</code></pre>
 <span id="cb5-4"><a href="#cb5-4"></a>                                      <span class="st">"Female"</span>,<span class="st">"Female"</span>,<span class="st">"Male"</span>),</span>
 <span id="cb5-5"><a href="#cb5-5"></a>                           <span class="at">Degree =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
 <span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> DegreeGender, <span class="sc">~</span> Degree <span class="sc">+</span> Gender)</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> DegreeGender, <span class="sc">~</span> Degree <span class="sc">+</span> Gender)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>conttab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Gender
+Degree Female Male
+     0      5    3
+     1      2    4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
@@ -469,8 +483,8 @@ Against denominator:
 ---
 Bayes factor type: BFcontingencyTable, joint multinomial</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># For comparison, perform the frequentist Chi square test</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">chisq.test</span>(conttab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># For comparison, perform the frequentist Chi square test</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">chisq.test</span>(conttab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -518,60 +532,73 @@ X-squared = 0.29167, df = 1, p-value = 0.5892</code></pre>
 </section>
 <section id="the-bayesian-linear-model" class="level3" data-number="0.2.3">
 <h3 data-number="0.2.3" class="anchored" data-anchor-id="the-bayesian-linear-model"><span class="header-section-number">0.2.3</span> The Bayesian linear model</h3>
-<p>We covered linear models in an earlier sessions using the <code>lm</code> function - there is an alternative Bayesian version, in the</p>
+<p>We covered linear models in an earlier sessions using the <code>lm</code> function - there is an alternative Bayesian version, in the <code>brms</code> package.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that, when using <code>brm</code> the function can take some time to run!</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a><span class="co"># Load the package to perform the Bayesian linear model</span></span>
-<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a><span class="fu">library</span>(brms)</span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a><span class="co"># BRM is not the quickest Bayesian lm function, but it allows the calculation of an R2 equivalent which is really helpful</span></span>
-<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4"></a></span>
-<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5"></a><span class="co"># Create a dummy data frame with a random normally distributed variable, Var 1. Then add a second random variable offset from the first</span></span>
-<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6"></a>testdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Var1 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean=</span><span class="dv">25</span>, <span class="at">sd=</span><span class="dv">10</span>))</span>
-<span id="annotated-cell-5-7"><a href="#annotated-cell-5-7"></a></span>
-<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8"></a>testdata <span class="ot">&lt;-</span> testdata <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9"></a>  <span class="fu">mutate</span>(<span class="at">Var2 =</span> Var1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">2</span>))</span>
-<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10"></a></span>
-<span id="annotated-cell-5-11"><a href="#annotated-cell-5-11"></a><span class="co"># Plot the data</span></span>
-<span id="annotated-cell-5-12"><a href="#annotated-cell-5-12"></a><span class="fu">ggplot</span>(<span class="at">data=</span>testdata, <span class="fu">aes</span>(<span class="at">x=</span>Var1, <span class="at">y=</span>Var2)) <span class="sc">+</span></span>
-<span id="annotated-cell-5-13"><a href="#annotated-cell-5-13"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="co"># Load the package to perform the Bayesian linear model</span></span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a><span class="fu">library</span>(brms)</span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a><span class="co"># BRM is not the quickest Bayesian lm function, but it allows the calculation of an R2 equivalent which is really helpful</span></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a><span class="co"># Create a dummy data frame with a random normally distributed variable, Var 1. Then add a second random variable offset from the first</span></span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6"></a>testdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Var1 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean=</span><span class="dv">25</span>, <span class="at">sd=</span><span class="dv">10</span>))</span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a></span>
+<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a>testdata <span class="ot">&lt;-</span> testdata <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a>  <span class="fu">mutate</span>(<span class="at">Var2 =</span> Var1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean=</span><span class="dv">5</span>, <span class="at">sd=</span><span class="dv">2</span>))</span>
+<span id="annotated-cell-6-10"><a href="#annotated-cell-6-10"></a></span>
+<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a><span class="co"># Plot the data</span></span>
+<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a><span class="fu">ggplot</span>(<span class="at">data=</span>testdata, <span class="fu">aes</span>(<span class="at">x=</span>Var1, <span class="at">y=</span>Var2)) <span class="sc">+</span></span>
+<span id="annotated-cell-6-13"><a href="#annotated-cell-6-13"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-6" data-code-lines="2">line 5 run a frequentist linear model on the data using <code>lm</code></span>
+<span data-code-annotation="4" data-code-lines="2" data-code-cell="annotated-cell-7">line 5 run a frequentist linear model on the data using <code>lm</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-6" data-code-lines="3">line 6 print the output of the frequentist model</span>
+<span data-code-annotation="5" data-code-lines="3" data-code-cell="annotated-cell-7">line 6 print the output of the frequentist model</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-6" data-code-lines="6">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
+<span data-code-annotation="6" data-code-lines="6" data-code-cell="annotated-cell-7">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-cell="annotated-cell-6" data-code-lines="7">line 8 print the output of the Bayesian model</span>
+<span data-code-annotation="7" data-code-lines="7" data-code-cell="annotated-cell-7">line 8 print the output of the Bayesian model</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-cell="annotated-cell-6" data-code-lines="10">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
+<span data-code-annotation="8" data-code-lines="10" data-code-cell="annotated-cell-7">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" style="width:95.0%"></p>
 </div>
-<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="co"># Perform the frequentist linear model</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>testdata, Var1 <span class="sc">~</span> Var2)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a><span class="fu">summary</span>(mod)</span>
-<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a></span>
-<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a><span class="co"># Perform the Bayesian linear model</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>testdata, Var1 <span class="sc">~</span> Var2)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7"></a><span class="fu">summary</span>(mod)</span>
-<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a></span>
-<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10"></a><span class="fu">bayes_R2</span>(mod)</span>
-<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a></span>
-<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a><span class="co"># The R2 for the model is 0.97 so 97% of the variance is explained</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="co"># Perform the frequentist linear model</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>testdata, Var1 <span class="sc">~</span> Var2)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a><span class="fu">summary</span>(mod)</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a><span class="co"># Perform the Bayesian linear model</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>testdata, Var1 <span class="sc">~</span> Var2)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7"></a><span class="fu">summary</span>(mod)</span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a></span>
+<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-7-10" class="code-annotation-target"><a href="#annotated-cell-7-10"></a><span class="fu">bayes_R2</span>(mod)</span>
+<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11"></a></span>
+<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12"></a><span class="co"># The R2 for the model is 0.97 so 97% of the variance is explained</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -579,24 +606,37 @@ lm(formula = Var1 ~ Var2, data = testdata)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.2550 -1.1541  0.0039  1.3487  3.3881 
+-4.7509 -1.4660  0.1618  1.4103  4.6141 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -3.22925    0.74434  -4.338 7.35e-05 ***
-Var2         0.95520    0.02301  41.521  &lt; 2e-16 ***
+(Intercept) -3.20174    0.82017  -3.904 0.000295 ***
+Var2         0.95502    0.02852  33.491  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.788 on 48 degrees of freedom
-Multiple R-squared:  0.9729,    Adjusted R-squared:  0.9723 
-F-statistic:  1724 on 1 and 48 DF,  p-value: &lt; 2.2e-16
+Residual standard error: 1.994 on 48 degrees of freedom
+Multiple R-squared:  0.959, Adjusted R-squared:  0.9581 
+F-statistic:  1122 on 1 and 48 DF,  p-value: &lt; 2.2e-16
 
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
+using SDK: ‘MacOSX14.2.sdk’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+In file included from &lt;built-in&gt;:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
+/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+#include &lt;cmath&gt;
+         ^~~~~~~
+1 error generated.
+make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 2.7e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.27 seconds.
+Chain 1: Gradient evaluation took 2.8e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -613,15 +653,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.021 seconds (Warm-up)
-Chain 1:                0.02 seconds (Sampling)
-Chain 1:                0.041 seconds (Total)
+Chain 1:  Elapsed Time: 0.009 seconds (Warm-up)
+Chain 1:                0.008 seconds (Sampling)
+Chain 1:                0.017 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 3e-06 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
+Chain 2: Gradient evaluation took 1e-06 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -638,15 +678,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.022 seconds (Warm-up)
-Chain 2:                0.019 seconds (Sampling)
-Chain 2:                0.041 seconds (Total)
+Chain 2:  Elapsed Time: 0.009 seconds (Warm-up)
+Chain 2:                0.008 seconds (Sampling)
+Chain 2:                0.017 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 4e-06 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.04 seconds.
+Chain 3: Gradient evaluation took 1e-06 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -663,15 +703,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.023 seconds (Warm-up)
-Chain 3:                0.02 seconds (Sampling)
-Chain 3:                0.043 seconds (Total)
+Chain 3:  Elapsed Time: 0.009 seconds (Warm-up)
+Chain 3:                0.007 seconds (Sampling)
+Chain 3:                0.016 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2e-06 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
+Chain 4: Gradient evaluation took 1e-06 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -688,9 +728,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.02 seconds (Warm-up)
-Chain 4:                0.02 seconds (Sampling)
-Chain 4:                0.04 seconds (Total)
+Chain 4:  Elapsed Time: 0.01 seconds (Warm-up)
+Chain 4:                0.009 seconds (Sampling)
+Chain 4:                0.019 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -701,119 +741,146 @@ Formula: Var1 ~ Var2
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    -3.23      0.77    -4.75    -1.72 1.00     3750     3071
-Var2          0.96      0.02     0.91     1.00 1.00     3704     2841
+Intercept    -3.20      0.85    -4.86    -1.55 1.00     4231     2753
+Var2          0.96      0.03     0.90     1.01 1.00     4212     2711
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma     1.83      0.19     1.51     2.26 1.00     3011     2558
+sigma     2.05      0.21     1.67     2.50 1.00     3775     3033
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
     Estimate   Est.Error     Q2.5     Q97.5
-R2 0.9722722 0.001666486 0.967538 0.9736239</code></pre>
+R2 0.9579884 0.002935827 0.949992 0.9605754</code></pre>
 </div>
 </div>
+<p>You can see that the frequentist and Bayesian approaches give similar results:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Frequentist (<code>lm</code>)</th>
+<th>Bayesian (<code>brm</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>-4.3068</td>
+<td>-4.33</td>
+</tr>
+<tr class="even">
+<td>Beta</td>
+<td>0.96280</td>
+<td>0.96</td>
+</tr>
+<tr class="odd">
+<td>R^2</td>
+<td>0.9649</td>
+<td>0.9641715</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="using-prior-data-in-a-bayesian-linear-model" class="level3" data-number="0.2.4">
 <h3 data-number="0.2.4" class="anchored" data-anchor-id="using-prior-data-in-a-bayesian-linear-model"><span class="header-section-number">0.2.4</span> Using prior data in a Bayesian linear model</h3>
 <p>A central principle of Bayesian statistics is that a model is based on knowledge of prior outcomes. The Bayesian Regression Model function <code>brm</code> in the <code>brms</code> package extends the <code>lm</code> function by allowing us to provide a prior model of the independent variable. We do this by passing the mean and standard deviation of our independent variable to the <code>set_prior</code> function (we also specify the shape of the distribution, in our case, normal, and specify the name of our independent variable (<code>PV1MATH</code>)).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="co"># To predict 2022 PISA data, I am going to use prior information from the 2018 results</span></span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a><span class="co">#PISA2015studentbayes &lt;- read_parquet("/Users/k1765032/Library/CloudStorage/GoogleDrive-richardandrewbrock@gmail.com/.shortcut-targets-by-id/1c3CkaEBOICzepArDfjQUP34W2BYhFjM4/PISR/Data/PISA/2015/PISA2015studentbayes.parquet")</span></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a><span class="co"># PISA_2018 &lt;- read_parquet(glue("{datafolder}/PISA_2015_student_subset.parquet"))</span></span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a></span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a><span class="co"># Find the prior distribution of UK mathematics scores we expect from previous years </span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>math_summary <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7"></a>  <span class="fu">select</span>(PV1MATH, CNT) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12"></a>math_summary</span>
-<span id="annotated-cell-7-13"><a href="#annotated-cell-7-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-7-14" class="code-annotation-target"><a href="#annotated-cell-7-14"></a>math_mean <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-7-15" class="code-annotation-target"><a href="#annotated-cell-7-15"></a>math_sd   <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16"></a></span>
-<span id="annotated-cell-7-17"><a href="#annotated-cell-7-17"></a><span class="fu">library</span>(brms)</span>
-<span id="annotated-cell-7-18"><a href="#annotated-cell-7-18"></a></span>
-<span id="annotated-cell-7-19"><a href="#annotated-cell-7-19"></a><span class="co"># Specify the prior distribution using set_prior from the `BMS` package</span></span>
-<span id="annotated-cell-7-20"><a href="#annotated-cell-7-20"></a></span>
-<span id="annotated-cell-7-21"><a href="#annotated-cell-7-21"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({math_mean},{math_sd})"</span>), </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-7-22" class="code-annotation-target"><a href="#annotated-cell-7-22"></a>                         <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1MATH"</span>))</span>
-<span id="annotated-cell-7-23"><a href="#annotated-cell-7-23"></a></span>
-<span id="annotated-cell-7-24"><a href="#annotated-cell-7-24"></a><span class="co"># Create the data frame of UK scores in 2018 to model</span></span>
-<span id="annotated-cell-7-25"><a href="#annotated-cell-7-25"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-7-26" class="code-annotation-target"><a href="#annotated-cell-7-26"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="annotated-cell-7-27"><a href="#annotated-cell-7-27"></a></span>
-<span id="annotated-cell-7-28"><a href="#annotated-cell-7-28"></a><span class="co"># Use the Bayesian regression model function 'brm' to fir the model, specifying the prior</span></span>
-<span id="annotated-cell-7-29"><a href="#annotated-cell-7-29"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data =</span> UKPISA_2022, </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-7-30" class="code-annotation-target"><a href="#annotated-cell-7-30"></a>              <span class="at">formula =</span> PV1SCIE <span class="sc">~</span> PV1MATH, <span class="at">prior =</span> prior2018)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-7-31" class="code-annotation-target"><a href="#annotated-cell-7-31"></a><span class="fu">summary</span>(modbay)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-7-32" class="code-annotation-target"><a href="#annotated-cell-7-32"></a><span class="fu">bayes_R2</span>(modbay)</span>
-<span id="annotated-cell-7-33"><a href="#annotated-cell-7-33"></a></span>
-<span id="annotated-cell-7-34"><a href="#annotated-cell-7-34"></a><span class="co"># Compare to the simple linear model</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-7-35" class="code-annotation-target"><a href="#annotated-cell-7-35"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> UKPISA_2022,</span>
-<span id="annotated-cell-7-36"><a href="#annotated-cell-7-36"></a>          <span class="at">formula =</span> PV1SCIE <span class="sc">~</span> PV1MATH)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-7-37" class="code-annotation-target"><a href="#annotated-cell-7-37"></a><span class="fu">summary</span>(mod)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="co"># To predict 2022 PISA data, I am going to use prior information from the 2018 results</span></span>
+<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a><span class="co">#PISA2015studentbayes &lt;- read_parquet("/Users/k1765032/Library/CloudStorage/GoogleDrive-richardandrewbrock@gmail.com/.shortcut-targets-by-id/1c3CkaEBOICzepArDfjQUP34W2BYhFjM4/PISR/Data/PISA/2015/PISA2015studentbayes.parquet")</span></span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a><span class="co"># PISA_2018 &lt;- read_parquet(glue("{datafolder}/PISA_2015_student_subset.parquet"))</span></span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a></span>
+<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a><span class="co"># Find the prior distribution of UK mathematics scores we expect from previous years </span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>math_summary <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7"></a>  <span class="fu">select</span>(PV1MATH, CNT) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-12" class="code-annotation-target"><a href="#annotated-cell-8-12"></a>math_summary</span>
+<span id="annotated-cell-8-13"><a href="#annotated-cell-8-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-14" class="code-annotation-target"><a href="#annotated-cell-8-14"></a>math_mean <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-8-15" class="code-annotation-target"><a href="#annotated-cell-8-15"></a>math_sd   <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16"></a></span>
+<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17"></a><span class="fu">library</span>(brms)</span>
+<span id="annotated-cell-8-18"><a href="#annotated-cell-8-18"></a></span>
+<span id="annotated-cell-8-19"><a href="#annotated-cell-8-19"></a><span class="co"># Specify the prior distribution using set_prior from the `BMS` package</span></span>
+<span id="annotated-cell-8-20"><a href="#annotated-cell-8-20"></a></span>
+<span id="annotated-cell-8-21"><a href="#annotated-cell-8-21"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({math_mean},{math_sd})"</span>), </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-8-22" class="code-annotation-target"><a href="#annotated-cell-8-22"></a>                         <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1MATH"</span>))</span>
+<span id="annotated-cell-8-23"><a href="#annotated-cell-8-23"></a></span>
+<span id="annotated-cell-8-24"><a href="#annotated-cell-8-24"></a><span class="co"># Create the data frame of UK scores in 2018 to model</span></span>
+<span id="annotated-cell-8-25"><a href="#annotated-cell-8-25"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-8-26" class="code-annotation-target"><a href="#annotated-cell-8-26"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="annotated-cell-8-27"><a href="#annotated-cell-8-27"></a></span>
+<span id="annotated-cell-8-28"><a href="#annotated-cell-8-28"></a><span class="co"># Use the Bayesian regression model function 'brm' to fir the model, specifying the prior</span></span>
+<span id="annotated-cell-8-29"><a href="#annotated-cell-8-29"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data =</span> UKPISA_2022, </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-8-30" class="code-annotation-target"><a href="#annotated-cell-8-30"></a>              <span class="at">formula =</span> PV1SCIE <span class="sc">~</span> PV1MATH, <span class="at">prior =</span> prior2018)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-8-31" class="code-annotation-target"><a href="#annotated-cell-8-31"></a><span class="fu">summary</span>(modbay)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-8-32" class="code-annotation-target"><a href="#annotated-cell-8-32"></a><span class="fu">bayes_R2</span>(modbay)</span>
+<span id="annotated-cell-8-33"><a href="#annotated-cell-8-33"></a></span>
+<span id="annotated-cell-8-34"><a href="#annotated-cell-8-34"></a><span class="co"># Compare to the simple linear model</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-8-35" class="code-annotation-target"><a href="#annotated-cell-8-35"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> UKPISA_2022,</span>
+<span id="annotated-cell-8-36"><a href="#annotated-cell-8-36"></a>          <span class="at">formula =</span> PV1SCIE <span class="sc">~</span> PV1MATH)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-8-37" class="code-annotation-target"><a href="#annotated-cell-8-37"></a><span class="fu">summary</span>(mod)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-7" data-code-lines="6">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
+<span data-code-annotation="1" data-code-lines="6" data-code-cell="annotated-cell-8">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-7" data-code-lines="7">line 2 Select the maths and country items</span>
+<span data-code-annotation="2" data-code-lines="7" data-code-cell="annotated-cell-8">line 2 Select the maths and country items</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-7" data-code-lines="8">line 3 Filter for the UK</span>
+<span data-code-annotation="3" data-code-lines="8" data-code-cell="annotated-cell-8">line 3 Filter for the UK</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-7" data-code-lines="9">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
+<span data-code-annotation="4" data-code-lines="9" data-code-cell="annotated-cell-8">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-7" data-code-lines="12">line 5 Print the summary table</span>
+<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-8">line 5 Print the summary table</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-7" data-code-lines="14">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
+<span data-code-annotation="6" data-code-lines="14" data-code-cell="annotated-cell-8">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-cell="annotated-cell-7" data-code-lines="15">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
+<span data-code-annotation="7" data-code-lines="15" data-code-cell="annotated-cell-8">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-cell="annotated-cell-7" data-code-lines="22">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
+<span data-code-annotation="8" data-code-lines="22" data-code-cell="annotated-cell-8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-annotation="9" data-code-cell="annotated-cell-7" data-code-lines="26">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
+<span data-code-annotation="9" data-code-lines="26" data-code-cell="annotated-cell-8">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="10">10</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-annotation="10" data-code-cell="annotated-cell-7" data-code-lines="30">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
+<span data-code-annotation="10" data-code-lines="30" data-code-cell="annotated-cell-8">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="11">11</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-annotation="11" data-code-cell="annotated-cell-7" data-code-lines="31">line 15 Print the summary</span>
+<span data-code-annotation="11" data-code-lines="31" data-code-cell="annotated-cell-8">line 15 Print the summary</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="12">12</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-annotation="12" data-code-cell="annotated-cell-7" data-code-lines="32">line 16 Print the R<sup>2</sup> equivalent</span>
+<span data-code-annotation="12" data-code-lines="32" data-code-cell="annotated-cell-8">line 16 Print the R<sup>2</sup> equivalent</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="13">13</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-annotation="13" data-code-cell="annotated-cell-7" data-code-lines="35">line 17 Run the frequentist linear model as a comparison</span>
+<span data-code-annotation="13" data-code-lines="35" data-code-cell="annotated-cell-8">line 17 Run the frequentist linear model as a comparison</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="14">14</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-annotation="14" data-code-cell="annotated-cell-7" data-code-lines="37">line 19 Print the frequentist linear model</span>
+<span data-code-annotation="14" data-code-lines="37" data-code-cell="annotated-cell-8">line 19 Print the frequentist linear model</span>
 </dd>
 </dl>
 </div>
@@ -822,11 +889,24 @@ R2 0.9722722 0.001666486 0.967538 0.9736239</code></pre>
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
 1  483.  95.1
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
+using SDK: ‘MacOSX14.2.sdk’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+In file included from &lt;built-in&gt;:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
+/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+#include &lt;cmath&gt;
+         ^~~~~~~
+1 error generated.
+make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 6.4e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.64 seconds.
+Chain 1: Gradient evaluation took 3.8e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.38 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -843,15 +923,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.295 seconds (Warm-up)
-Chain 1:                0.159 seconds (Sampling)
-Chain 1:                0.454 seconds (Total)
+Chain 1:  Elapsed Time: 1.008 seconds (Warm-up)
+Chain 1:                0.496 seconds (Sampling)
+Chain 1:                1.504 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 3.1e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.31 seconds.
+Chain 2: Gradient evaluation took 0.000165 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 1.65 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -868,15 +948,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.313 seconds (Warm-up)
-Chain 2:                0.175 seconds (Sampling)
-Chain 2:                0.488 seconds (Total)
+Chain 2:  Elapsed Time: 0.438 seconds (Warm-up)
+Chain 2:                0.107 seconds (Sampling)
+Chain 2:                0.545 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 3e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
+Chain 3: Gradient evaluation took 2.4e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -893,15 +973,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.258 seconds (Warm-up)
-Chain 3:                0.152 seconds (Sampling)
-Chain 3:                0.41 seconds (Total)
+Chain 3:  Elapsed Time: 0.375 seconds (Warm-up)
+Chain 3:                0.138 seconds (Sampling)
+Chain 3:                0.513 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 3.1e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.31 seconds.
+Chain 4: Gradient evaluation took 2.3e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -918,9 +998,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.315 seconds (Warm-up)
-Chain 4:                0.158 seconds (Sampling)
-Chain 4:                0.473 seconds (Total)
+Chain 4:  Elapsed Time: 0.297 seconds (Warm-up)
+Chain 4:                0.117 seconds (Sampling)
+Chain 4:                0.414 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -931,18 +1011,18 @@ Formula: PV1SCIE ~ PV1MATH
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    42.30      2.29    37.83    46.73 1.00     4436     2892
-PV1MATH       0.93      0.00     0.92     0.94 1.00     4532     3180
+Intercept    42.29      2.27    37.78    46.75 1.00     5067     2856
+PV1MATH       0.93      0.00     0.92     0.94 1.00     5177     2843
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    50.74      0.32    50.11    51.37 1.00     4069     2847
+sigma    50.75      0.31    50.14    51.37 1.00     4278     2634
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate  Est.Error      Q2.5     Q97.5
-R2 0.7532955 0.00186339 0.7496283 0.7568188
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.7532993 0.001837054 0.7495784 0.7568527
 
 Call:
 lm(formula = PV1SCIE ~ PV1MATH, data = UKPISA_2022)
@@ -963,81 +1043,80 @@ Multiple R-squared:  0.7533,    Adjusted R-squared:  0.7533
 F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Notice we get fairly similar models from the linear and Bayesian model</p>
 <p>Another useful feature of Bayesian models is that the model parameters, e.g.&nbsp;the intercept and coefficient, are not represented only as single values, but as distributions. This gives greater insight into the fit of the model</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="co"># What's nice with a Bayesian model is our model parameters are not simply values, but probability distributions which gives more insight into the confidence in the model</span></span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a><span class="co"># For example, lets predict science scores based on mathematics scores and reading scores</span></span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a><span class="co"># Find the prior distribution of UK mathematics scores we expect from previous years </span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4"></a>math_summary <span class="ot">&lt;-</span>PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a>  <span class="fu">select</span>(PV1MATH,CNT) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8"></a>            <span class="at">sd   =</span> <span class="fu">sd</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9"></a>math_summary</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-10" class="code-annotation-target"><a href="#annotated-cell-8-10"></a>math_mean <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11"></a>math_sd   <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12"></a> </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-13" class="code-annotation-target"><a href="#annotated-cell-8-13"></a>read_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-14"><a href="#annotated-cell-8-14"></a>  <span class="fu">select</span>(PV1READ, CNT) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-15"><a href="#annotated-cell-8-15"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17"></a>            <span class="at">sd   =</span> <span class="fu">sd</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="annotated-cell-8-18"><a href="#annotated-cell-8-18"></a>read_summary</span>
-<span id="annotated-cell-8-19"><a href="#annotated-cell-8-19"></a>read_mean <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<span id="annotated-cell-8-20"><a href="#annotated-cell-8-20"></a>read_sd   <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="annotated-cell-8-21"><a href="#annotated-cell-8-21"></a></span>
-<span id="annotated-cell-8-22"><a href="#annotated-cell-8-22"></a><span class="co"># Specify the prior distribution using set priors from the `BMS` package</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-23" class="code-annotation-target"><a href="#annotated-cell-8-23"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({math_mean},{math_sd})"</span>),</span>
-<span id="annotated-cell-8-24"><a href="#annotated-cell-8-24"></a>                         <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1MATH"</span>),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-25" class="code-annotation-target"><a href="#annotated-cell-8-25"></a>               <span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({read_mean},{read_sd})"</span>),</span>
-<span id="annotated-cell-8-26"><a href="#annotated-cell-8-26"></a>                         <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1READ"</span>))</span>
-<span id="annotated-cell-8-27"><a href="#annotated-cell-8-27"></a></span>
-<span id="annotated-cell-8-28"><a href="#annotated-cell-8-28"></a><span class="co"># Create the data frame of UK scores in 2022 to model</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-29" class="code-annotation-target"><a href="#annotated-cell-8-29"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-8-30"><a href="#annotated-cell-8-30"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="annotated-cell-8-31"><a href="#annotated-cell-8-31"></a></span>
-<span id="annotated-cell-8-32"><a href="#annotated-cell-8-32"></a><span class="co"># Use the Bayesian regression model function 'brm' to fit the model, specifying the prior</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-8-33" class="code-annotation-target"><a href="#annotated-cell-8-33"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data =</span> UKPISA_2022,</span>
-<span id="annotated-cell-8-34"><a href="#annotated-cell-8-34"></a>              <span class="at">formula =</span> PV1SCIE <span class="sc">~</span> PV1MATH <span class="sc">+</span> PV1READ, <span class="at">prior =</span> prior2018)</span>
-<span id="annotated-cell-8-35"><a href="#annotated-cell-8-35"></a><span class="fu">summary</span>(modbay)</span>
-<span id="annotated-cell-8-36"><a href="#annotated-cell-8-36"></a><span class="fu">bayes_R2</span>(modbay)</span>
-<span id="annotated-cell-8-37"><a href="#annotated-cell-8-37"></a></span>
-<span id="annotated-cell-8-38"><a href="#annotated-cell-8-38"></a><span class="co"># Plot the distribution of the coefficients</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-8-39" class="code-annotation-target"><a href="#annotated-cell-8-39"></a><span class="fu">plot</span>(modbay)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="co"># What's nice with a Bayesian model is our model parameters are not simply values, but probability distributions which gives more insight into the confidence in the model</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a><span class="co"># For example, lets predict science scores based on mathematics scores and reading scores</span></span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a><span class="co"># Find the prior distribution of UK mathematics scores we expect from previous years </span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>math_summary <span class="ot">&lt;-</span>PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a>  <span class="fu">select</span>(PV1MATH,CNT) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a>            <span class="at">sd   =</span> <span class="fu">sd</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9"></a>math_summary</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-10" class="code-annotation-target"><a href="#annotated-cell-9-10"></a>math_mean <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11"></a>math_sd   <span class="ot">&lt;-</span> math_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="annotated-cell-9-12"><a href="#annotated-cell-9-12"></a> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-13" class="code-annotation-target"><a href="#annotated-cell-9-13"></a>read_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-14"><a href="#annotated-cell-9-14"></a>  <span class="fu">select</span>(PV1READ, CNT) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-15"><a href="#annotated-cell-9-15"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-16"><a href="#annotated-cell-9-16"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="annotated-cell-9-17"><a href="#annotated-cell-9-17"></a>            <span class="at">sd   =</span> <span class="fu">sd</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="annotated-cell-9-18"><a href="#annotated-cell-9-18"></a>read_summary</span>
+<span id="annotated-cell-9-19"><a href="#annotated-cell-9-19"></a>read_mean <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<span id="annotated-cell-9-20"><a href="#annotated-cell-9-20"></a>read_sd   <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="annotated-cell-9-21"><a href="#annotated-cell-9-21"></a></span>
+<span id="annotated-cell-9-22"><a href="#annotated-cell-9-22"></a><span class="co"># Specify the prior distribution using set priors from the `BMS` package</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-23" class="code-annotation-target"><a href="#annotated-cell-9-23"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({math_mean},{math_sd})"</span>),</span>
+<span id="annotated-cell-9-24"><a href="#annotated-cell-9-24"></a>                         <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1MATH"</span>),</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-9-25" class="code-annotation-target"><a href="#annotated-cell-9-25"></a>               <span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({read_mean},{read_sd})"</span>),</span>
+<span id="annotated-cell-9-26"><a href="#annotated-cell-9-26"></a>                         <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1READ"</span>))</span>
+<span id="annotated-cell-9-27"><a href="#annotated-cell-9-27"></a></span>
+<span id="annotated-cell-9-28"><a href="#annotated-cell-9-28"></a><span class="co"># Create the data frame of UK scores in 2022 to model</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-9-29" class="code-annotation-target"><a href="#annotated-cell-9-29"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-30"><a href="#annotated-cell-9-30"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="annotated-cell-9-31"><a href="#annotated-cell-9-31"></a></span>
+<span id="annotated-cell-9-32"><a href="#annotated-cell-9-32"></a><span class="co"># Use the Bayesian regression model function 'brm' to fit the model, specifying the prior</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-9-33" class="code-annotation-target"><a href="#annotated-cell-9-33"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data =</span> UKPISA_2022,</span>
+<span id="annotated-cell-9-34"><a href="#annotated-cell-9-34"></a>              <span class="at">formula =</span> PV1SCIE <span class="sc">~</span> PV1MATH <span class="sc">+</span> PV1READ, <span class="at">prior =</span> prior2018)</span>
+<span id="annotated-cell-9-35"><a href="#annotated-cell-9-35"></a><span class="fu">summary</span>(modbay)</span>
+<span id="annotated-cell-9-36"><a href="#annotated-cell-9-36"></a><span class="fu">bayes_R2</span>(modbay)</span>
+<span id="annotated-cell-9-37"><a href="#annotated-cell-9-37"></a></span>
+<span id="annotated-cell-9-38"><a href="#annotated-cell-9-38"></a><span class="co"># Plot the distribution of the coefficients</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-9-39" class="code-annotation-target"><a href="#annotated-cell-9-39"></a><span class="fu">plot</span>(modbay)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-8" data-code-lines="4">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
+<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-9">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-8" data-code-lines="10">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
+<span data-code-annotation="2" data-code-lines="10" data-code-cell="annotated-cell-9">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-8" data-code-lines="13">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
+<span data-code-annotation="3" data-code-lines="13" data-code-cell="annotated-cell-9">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-8" data-code-lines="23">line 17 Set the prior distributions, as above, here for maths</span>
+<span data-code-annotation="4" data-code-lines="23" data-code-cell="annotated-cell-9">line 17 Set the prior distributions, as above, here for maths</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-8" data-code-lines="25">line 19 Set the prior distribution for reading</span>
+<span data-code-annotation="5" data-code-lines="25" data-code-cell="annotated-cell-9">line 19 Set the prior distribution for reading</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-8" data-code-lines="29">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
+<span data-code-annotation="6" data-code-lines="29" data-code-cell="annotated-cell-9">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-cell="annotated-cell-8" data-code-lines="33">line 23 Run the Bayesian model</span>
+<span data-code-annotation="7" data-code-lines="33" data-code-cell="annotated-cell-9">line 23 Run the Bayesian model</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-cell="annotated-cell-8" data-code-lines="39">line 27 plot a graph of the distribution of the coefficients</span>
+<span data-code-annotation="8" data-code-lines="39" data-code-cell="annotated-cell-9">line 27 plot a graph of the distribution of the coefficients</span>
 </dd>
 </dl>
 </div>
@@ -1053,11 +1132,24 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
 1  500.  97.8
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
+using SDK: ‘MacOSX14.2.sdk’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+In file included from &lt;built-in&gt;:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
+/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+#include &lt;cmath&gt;
+         ^~~~~~~
+1 error generated.
+make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 6.6e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.66 seconds.
+Chain 1: Gradient evaluation took 4.4e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.44 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -1074,15 +1166,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.662 seconds (Warm-up)
-Chain 1:                0.426 seconds (Sampling)
-Chain 1:                1.088 seconds (Total)
+Chain 1:  Elapsed Time: 0.571 seconds (Warm-up)
+Chain 1:                0.248 seconds (Sampling)
+Chain 1:                0.819 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 4e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.4 seconds.
+Chain 2: Gradient evaluation took 3e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -1099,15 +1191,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.724 seconds (Warm-up)
-Chain 2:                0.333 seconds (Sampling)
-Chain 2:                1.057 seconds (Total)
+Chain 2:  Elapsed Time: 0.539 seconds (Warm-up)
+Chain 2:                0.447 seconds (Sampling)
+Chain 2:                0.986 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 4.3e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.43 seconds.
+Chain 3: Gradient evaluation took 2.8e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -1124,15 +1216,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.657 seconds (Warm-up)
-Chain 3:                0.398 seconds (Sampling)
-Chain 3:                1.055 seconds (Total)
+Chain 3:  Elapsed Time: 0.59 seconds (Warm-up)
+Chain 3:                0.255 seconds (Sampling)
+Chain 3:                0.845 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 3.8e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.38 seconds.
+Chain 4: Gradient evaluation took 3e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -1149,9 +1241,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.772 seconds (Warm-up)
-Chain 4:                0.401 seconds (Sampling)
-Chain 4:                1.173 seconds (Total)
+Chain 4:  Elapsed Time: 0.583 seconds (Warm-up)
+Chain 4:                0.337 seconds (Sampling)
+Chain 4:                0.92 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1162,19 +1254,19 @@ Formula: PV1SCIE ~ PV1MATH + PV1READ
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    25.73      2.24    21.36    30.06 1.00     4913     3119
-PV1MATH       0.71      0.01     0.70     0.73 1.00     2148     2748
-PV1READ       0.25      0.01     0.24     0.26 1.00     2296     2735
+Intercept    25.66      2.29    21.27    30.18 1.00     5341     3354
+PV1MATH       0.71      0.01     0.70     0.73 1.00     2059     2249
+PV1READ       0.25      0.01     0.24     0.26 1.00     2246     2520
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    48.19      0.29    47.63    48.78 1.00     3696     2723
+sigma    48.19      0.30    47.60    48.77 1.00     3956     2816
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error   Q2.5    Q97.5
-R2 0.7774206 0.001626061 0.7742 0.780546</code></pre>
+    Estimate   Est.Error      Q2.5    Q97.5
+R2 0.7774652 0.001684356 0.7740989 0.780632</code></pre>
 </div>
 </div>
 </section>
@@ -1196,102 +1288,102 @@ Note
 </div>
 <p>Nonetheless, once you have thought clearly about a range of models ranking the potential Bayesian models can provide insights. This can be done using the <code>regressionBF</code> function of the <code>BayesFactor</code> package. We call <code>models &lt;- regressionBF(PV1SCIE ~ ., data = PISAUK)</code> which asks for regression to predict science scores (<code>PV1SCIE~</code>) by all of the variables (<code>.</code>) in the data frame (<code>data=PISAUK</code>) Note that variables need to be converted to factor variables. The function returns a <code>data.frame</code> ranking the models, the one with the highest Bayes factor <code>bf</code> is a candidate for the best fit.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="fu">library</span>(BayesFactor)</span>
-<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a><span class="co"># Create a UK subset                                                     </span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>PISAUK <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a>  <span class="fu">select</span>(PV1MATH, PV1READ, PV1SCIE, HOMEPOS, ESCS, CNT) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a>  <span class="fu">select</span>(<span class="sc">-</span>CNT) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a>  <span class="fu">na.omit</span>()</span>
-<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9"></a></span>
-<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10"></a><span class="co"># Use regressionBF to create a dataframe of the models</span></span>
-<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-12" class="code-annotation-target"><a href="#annotated-cell-9-12"></a>models <span class="ot">&lt;-</span> <span class="fu">regressionBF</span>(PV1SCIE <span class="sc">~</span> ., <span class="at">data =</span> PISAUK)</span>
-<span id="annotated-cell-9-13"><a href="#annotated-cell-9-13"></a></span>
-<span id="annotated-cell-9-14"><a href="#annotated-cell-9-14"></a><span class="co"># Select only the relevant part of the output</span></span>
-<span id="annotated-cell-9-15"><a href="#annotated-cell-9-15"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-16" class="code-annotation-target"><a href="#annotated-cell-9-16"></a>output <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(models<span class="sc">@</span>bayesFactor)</span>
-<span id="annotated-cell-9-17"><a href="#annotated-cell-9-17"></a></span>
-<span id="annotated-cell-9-18"><a href="#annotated-cell-9-18"></a><span class="co"># Arrange the output</span></span>
-<span id="annotated-cell-9-19"><a href="#annotated-cell-9-19"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-20" class="code-annotation-target"><a href="#annotated-cell-9-20"></a>output <span class="ot">&lt;-</span> output <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-9-21"><a href="#annotated-cell-9-21"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bf))</span>
-<span id="annotated-cell-9-22"><a href="#annotated-cell-9-22"></a>output</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="fu">library</span>(BayesFactor)</span>
+<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a></span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3"></a><span class="co"># Create a UK subset                                                     </span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4"></a>PISAUK <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a>  <span class="fu">select</span>(PV1MATH, PV1READ, PV1SCIE, HOMEPOS, ESCS, CNT) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7"></a>  <span class="fu">select</span>(<span class="sc">-</span>CNT) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8"></a>  <span class="fu">na.omit</span>()</span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a></span>
+<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10"></a><span class="co"># Use regressionBF to create a dataframe of the models</span></span>
+<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-12" class="code-annotation-target"><a href="#annotated-cell-10-12"></a>models <span class="ot">&lt;-</span> <span class="fu">regressionBF</span>(PV1SCIE <span class="sc">~</span> ., <span class="at">data =</span> PISAUK)</span>
+<span id="annotated-cell-10-13"><a href="#annotated-cell-10-13"></a></span>
+<span id="annotated-cell-10-14"><a href="#annotated-cell-10-14"></a><span class="co"># Select only the relevant part of the output</span></span>
+<span id="annotated-cell-10-15"><a href="#annotated-cell-10-15"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-16" class="code-annotation-target"><a href="#annotated-cell-10-16"></a>output <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(models<span class="sc">@</span>bayesFactor)</span>
+<span id="annotated-cell-10-17"><a href="#annotated-cell-10-17"></a></span>
+<span id="annotated-cell-10-18"><a href="#annotated-cell-10-18"></a><span class="co"># Arrange the output</span></span>
+<span id="annotated-cell-10-19"><a href="#annotated-cell-10-19"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-10-20" class="code-annotation-target"><a href="#annotated-cell-10-20"></a>output <span class="ot">&lt;-</span> output <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-10-21"><a href="#annotated-cell-10-21"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bf))</span>
+<span id="annotated-cell-10-22"><a href="#annotated-cell-10-22"></a>output</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-9" data-code-lines="4">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
+<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-10">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-9" data-code-lines="12">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
+<span data-code-annotation="2" data-code-lines="12" data-code-cell="annotated-cell-10">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-9" data-code-lines="16">Select only the Bayes factor, and covert to a data frame for sort</span>
+<span data-code-annotation="3" data-code-lines="16" data-code-cell="annotated-cell-10">Select only the Bayes factor, and covert to a data frame for sort</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-9" data-code-lines="20">Sort the output in descending order of Bayes Factor and print the output</span>
+<span data-code-annotation="4" data-code-lines="20" data-code-cell="annotated-cell-10">Sort the output in descending order of Bayes Factor and print the output</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                         bf        error
-PV1MATH + PV1READ + HOMEPOS        8062.475 1.573491e-06
+PV1MATH + PV1READ + HOMEPOS        8062.475 1.573489e-06
 PV1MATH + PV1READ + HOMEPOS + ESCS 8061.225 1.088549e-04
-PV1MATH + PV1READ + ESCS           8059.345 1.571908e-06
+PV1MATH + PV1READ + ESCS           8059.345 1.571910e-06
 PV1MATH + PV1READ                  8036.480 3.141224e-06
-PV1MATH + HOMEPOS                  7537.090 3.468844e-06
-PV1MATH + HOMEPOS + ESCS           7534.309 1.336024e-06
-PV1MATH + ESCS                     7525.691 3.476921e-06
-PV1MATH                            7497.489 8.858090e-05
-PV1READ + HOMEPOS + ESCS           5254.970 6.513348e-06
+PV1MATH + HOMEPOS                  7537.090 3.468842e-06
+PV1MATH + HOMEPOS + ESCS           7534.309 1.336025e-06
+PV1MATH + ESCS                     7525.691 3.476922e-06
+PV1MATH                            7497.489 8.858089e-05
+PV1READ + HOMEPOS + ESCS           5254.970 6.513346e-06
 PV1READ + ESCS                     5242.466 3.000504e-06
-                                                       time        code
-PV1MATH + PV1READ + HOMEPOS        Wed Feb 21 08:13:40 2024 bd467e85588
-PV1MATH + PV1READ + HOMEPOS + ESCS Wed Feb 21 08:13:40 2024 bd468f0a77a
-PV1MATH + PV1READ + ESCS           Wed Feb 21 08:13:40 2024 bd446478903
-PV1MATH + PV1READ                  Wed Feb 21 08:13:40 2024 bd41fd6ed2d
-PV1MATH + HOMEPOS                  Wed Feb 21 08:13:40 2024 bd4576d35af
-PV1MATH + HOMEPOS + ESCS           Wed Feb 21 08:13:40 2024  bd42744801
-PV1MATH + ESCS                     Wed Feb 21 08:13:40 2024 bd442dfa100
-PV1MATH                            Wed Feb 21 08:13:39 2024 bd4323b3dd3
-PV1READ + HOMEPOS + ESCS           Wed Feb 21 08:13:40 2024 bd420233ae9
-PV1READ + ESCS                     Wed Feb 21 08:13:40 2024 bd43dcc71cc
+                                                       time         code
+PV1MATH + PV1READ + HOMEPOS        Fri Apr  5 09:55:57 2024 1ca07ff551b8
+PV1MATH + PV1READ + HOMEPOS + ESCS Fri Apr  5 09:55:57 2024 1ca02fdc2e46
+PV1MATH + PV1READ + ESCS           Fri Apr  5 09:55:57 2024 1ca042c848a9
+PV1MATH + PV1READ                  Fri Apr  5 09:55:57 2024 1ca07d05831b
+PV1MATH + HOMEPOS                  Fri Apr  5 09:55:57 2024 1ca074e2a1bc
+PV1MATH + HOMEPOS + ESCS           Fri Apr  5 09:55:57 2024 1ca06b1a717f
+PV1MATH + ESCS                     Fri Apr  5 09:55:57 2024 1ca04ae87997
+PV1MATH                            Fri Apr  5 09:55:57 2024 1ca01278f12b
+PV1READ + HOMEPOS + ESCS           Fri Apr  5 09:55:57 2024 1ca015117fc8
+PV1READ + ESCS                     Fri Apr  5 09:55:57 2024 1ca04e7b1b83
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 </div>
 </div>
 <p>We can compare the Bayes Factors of the models in a chart:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1"></a><span class="fu">ggplot</span>(output, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(<span class="fu">rownames</span>(output), <span class="sc">-</span>bf),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2"></a>                   <span class="at">y =</span> bf, <span class="at">fill =</span> <span class="fu">rownames</span>(output))) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"model"</span>, <span class="at">y=</span><span class="st">"Bayes Factor"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a><span class="fu">ggplot</span>(output, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(<span class="fu">rownames</span>(output), <span class="sc">-</span>bf),</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2"></a>                   <span class="at">y =</span> bf, <span class="at">fill =</span> <span class="fu">rownames</span>(output))) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"model"</span>, <span class="at">y=</span><span class="st">"Bayes Factor"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-10" data-code-lines="1">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-11">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-10" data-code-lines="2">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
+<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-11">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-10" data-code-lines="3">line 3 Plot a column graph</span>
+<span data-code-annotation="3" data-code-lines="3" data-code-cell="annotated-cell-11">line 3 Plot a column graph</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-10" data-code-lines="4">line 4 Rotate the axis text</span>
+<span data-code-annotation="4" data-code-lines="4" data-code-cell="annotated-cell-11">line 4 Rotate the axis text</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-10" data-code-lines="5">line 5 Set the axis labels</span>
+<span data-code-annotation="5" data-code-lines="5" data-code-cell="annotated-cell-11">line 5 Set the axis labels</span>
 </dd>
 </dl>
 </div>
@@ -1314,14 +1406,14 @@ PV1READ + ESCS                     Wed Feb 21 08:13:40 2024 bd43dcc71cc
 <p>::: callout hint</p>
 <p>When analysing by country, after filtering for the countries of interest, it can be helpful to <code>drop_levels(&lt;dataframe&gt;)</code>. After filtering the other countries in the data frame will remain as levels, and will create a contingency table with many zero entries if not dropped. For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Create a data frame for having a computer in the UK and the US</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>) </span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
-<span id="cb13-8"><a href="#cb13-8"></a>conttab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Create a data frame for having a computer in the UK and the US</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>) </span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
+<span id="cb15-8"><a href="#cb15-8"></a>conttab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                              ST250Q02JA
 CNT                              Yes    No Valid Skip Not Applicable Invalid
@@ -1344,16 +1436,16 @@ CNT                            No Response
 </div>
 <p>Adding <code>drop_levels</code> solves this issues</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Create a data frame for having a computer to study at in the UK and the US</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">droplevels</span>() <span class="co"># Remove levels with 0 responses</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a></span>
-<span id="cb15-7"><a href="#cb15-7"></a></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
-<span id="cb15-10"><a href="#cb15-10"></a>conttab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Create a data frame for having a computer to study at in the UK and the US</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">droplevels</span>() <span class="co"># Remove levels with 0 responses</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
+<span id="cb17-10"><a href="#cb17-10"></a>conttab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                ST250Q02JA
 CNT                Yes    No
@@ -1365,17 +1457,17 @@ CNT                Yes    No
 <div class="cell">
 <details>
 <summary>Answer A</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Create a dataframe for having a computer</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, ST250Q02JA) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> ST004D01T <span class="sc">+</span> ST250Q02JA)</span>
-<span id="cb17-9"><a href="#cb17-9"></a></span>
-<span id="cb17-10"><a href="#cb17-10"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
-<span id="cb17-11"><a href="#cb17-11"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Create a dataframe for having a computer</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, ST250Q02JA) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb19-6"><a href="#cb19-6"></a></span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> ST004D01T <span class="sc">+</span> ST250Q02JA)</span>
+<span id="cb19-9"><a href="#cb19-9"></a></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
@@ -1389,11 +1481,11 @@ Bayes factor type: BFcontingencyTable, joint multinomial</code></pre>
 </div>
 <details>
 <summary>Answer A</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Returns a base factor of 4642.279 -  likely there is a difference by gender in having a computer</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="fu">chisq.test</span>(conttab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Returns a base factor of 4642.279 -  likely there is a difference by gender in having a computer</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">chisq.test</span>(conttab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1404,34 +1496,34 @@ X-squared = 24.515, df = 1, p-value = 7.374e-07</code></pre>
 </div>
 <details>
 <summary>Answer A</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># p-value = 5.017e-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># p-value = 5.017e-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Answer B</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Create a data frame for having a computer in the UK, US, France and Germany</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="co"># Drop levels of uneeded countries</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT<span class="sc">==</span><span class="st">"United States"</span> <span class="sc">|</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>         CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb22-9"><a href="#cb22-9"></a></span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb22-11"><a href="#cb22-11"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
-<span id="cb22-12"><a href="#cb22-12"></a></span>
-<span id="cb22-13"><a href="#cb22-13"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
-<span id="cb22-14"><a href="#cb22-14"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span>
-<span id="cb22-15"><a href="#cb22-15"></a></span>
-<span id="cb22-16"><a href="#cb22-16"></a><span class="co"># Returns a base factor of 1.310056 -  likely there is a difference by country in having a computer</span></span>
-<span id="cb22-17"><a href="#cb22-17"></a></span>
-<span id="cb22-18"><a href="#cb22-18"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
-<span id="cb22-19"><a href="#cb22-19"></a></span>
-<span id="cb22-20"><a href="#cb22-20"></a><span class="fu">chisq.test</span>(conttab)</span>
-<span id="cb22-21"><a href="#cb22-21"></a></span>
-<span id="cb22-22"><a href="#cb22-22"></a><span class="co"># p-value = 5.017e-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Create a data frame for having a computer in the UK, US, France and Germany</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># Drop levels of uneeded countries</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT<span class="sc">==</span><span class="st">"United States"</span> <span class="sc">|</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>         CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb24-9"><a href="#cb24-9"></a></span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
+<span id="cb24-12"><a href="#cb24-12"></a></span>
+<span id="cb24-13"><a href="#cb24-13"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span>
+<span id="cb24-15"><a href="#cb24-15"></a></span>
+<span id="cb24-16"><a href="#cb24-16"></a><span class="co"># Returns a base factor of 1.310056 -  likely there is a difference by country in having a computer</span></span>
+<span id="cb24-17"><a href="#cb24-17"></a></span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
+<span id="cb24-19"><a href="#cb24-19"></a></span>
+<span id="cb24-20"><a href="#cb24-20"></a><span class="fu">chisq.test</span>(conttab)</span>
+<span id="cb24-21"><a href="#cb24-21"></a></span>
+<span id="cb24-22"><a href="#cb24-22"></a><span class="co"># p-value = 5.017e-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1443,22 +1535,22 @@ X-squared = 24.515, df = 1, p-value = 7.374e-07</code></pre>
 <div class="cell">
 <details>
 <summary>Answer</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Create a data frame for having a Reading scores in the UK including gender</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>Read <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1READ) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb23-6"><a href="#cb23-6"></a></span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="co"># Perform the Bayesian test</span></span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="fu">ttestBF</span>(<span class="at">data =</span> Read, <span class="at">formula =</span> PV1READ <span class="sc">~</span> ST004D01T)</span>
-<span id="cb23-9"><a href="#cb23-9"></a></span>
-<span id="cb23-10"><a href="#cb23-10"></a><span class="co"># The Bayes factor is 3.646098e+20 - it is highly likely that are differences between the genders in reading in the UK</span></span>
-<span id="cb23-11"><a href="#cb23-11"></a></span>
-<span id="cb23-12"><a href="#cb23-12"></a><span class="co"># Compare to frequentist test</span></span>
-<span id="cb23-13"><a href="#cb23-13"></a></span>
-<span id="cb23-14"><a href="#cb23-14"></a><span class="fu">t.test</span>(<span class="at">data =</span> Read, PV1READ <span class="sc">~</span> ST004D01T )</span>
-<span id="cb23-15"><a href="#cb23-15"></a></span>
-<span id="cb23-16"><a href="#cb23-16"></a><span class="co"># p-value &lt; 2.2e-16, less than 0.05 so there are differences in mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Create a data frame for having a Reading scores in the UK including gender</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>Read <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1READ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb25-6"><a href="#cb25-6"></a></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="co"># Perform the Bayesian test</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="fu">ttestBF</span>(<span class="at">data =</span> Read, <span class="at">formula =</span> PV1READ <span class="sc">~</span> ST004D01T)</span>
+<span id="cb25-9"><a href="#cb25-9"></a></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="co"># The Bayes factor is 3.646098e+20 - it is highly likely that are differences between the genders in reading in the UK</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co"># Compare to frequentist test</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a></span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="fu">t.test</span>(<span class="at">data =</span> Read, PV1READ <span class="sc">~</span> ST004D01T )</span>
+<span id="cb25-15"><a href="#cb25-15"></a></span>
+<span id="cb25-16"><a href="#cb25-16"></a><span class="co"># p-value &lt; 2.2e-16, less than 0.05 so there are differences in mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="question">
@@ -1467,23 +1559,23 @@ X-squared = 24.515, df = 1, p-value = 7.374e-07</code></pre>
 <div class="cell">
 <details>
 <summary>Answer</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Create a data frame for having a mathematics scores in the UK and US </span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>PISAMath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">select</span>(CNT, PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb24-6"><a href="#cb24-6"></a></span>
-<span id="cb24-7"><a href="#cb24-7"></a></span>
-<span id="cb24-8"><a href="#cb24-8"></a><span class="co"># Perform the Bayesian test</span></span>
-<span id="cb24-9"><a href="#cb24-9"></a><span class="fu">ttestBF</span>(<span class="at">data =</span> PISAMath, <span class="at">formula =</span> PV1MATH <span class="sc">~</span> CNT)</span>
-<span id="cb24-10"><a href="#cb24-10"></a></span>
-<span id="cb24-11"><a href="#cb24-11"></a><span class="co"># The Bayes factor is 4.576009e+32 - it is highly likely that there is a difference in mean mathematics scores between the US and UK</span></span>
-<span id="cb24-12"><a href="#cb24-12"></a></span>
-<span id="cb24-13"><a href="#cb24-13"></a><span class="co"># Compare to frequentist test</span></span>
-<span id="cb24-14"><a href="#cb24-14"></a></span>
-<span id="cb24-15"><a href="#cb24-15"></a><span class="fu">t.test</span>(<span class="at">data =</span> PISAMath, PV1MATH <span class="sc">~</span> CNT)</span>
-<span id="cb24-16"><a href="#cb24-16"></a></span>
-<span id="cb24-17"><a href="#cb24-17"></a><span class="co"># p-value &lt; 2.2e-16, less than 0.05 so there are differences in mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Create a data frame for having a mathematics scores in the UK and US </span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>PISAMath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">select</span>(CNT, PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb26-6"><a href="#cb26-6"></a></span>
+<span id="cb26-7"><a href="#cb26-7"></a></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co"># Perform the Bayesian test</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="fu">ttestBF</span>(<span class="at">data =</span> PISAMath, <span class="at">formula =</span> PV1MATH <span class="sc">~</span> CNT)</span>
+<span id="cb26-10"><a href="#cb26-10"></a></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="co"># The Bayes factor is 4.576009e+32 - it is highly likely that there is a difference in mean mathematics scores between the US and UK</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a></span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="co"># Compare to frequentist test</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="fu">t.test</span>(<span class="at">data =</span> PISAMath, PV1MATH <span class="sc">~</span> CNT)</span>
+<span id="cb26-16"><a href="#cb26-16"></a></span>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="co"># p-value &lt; 2.2e-16, less than 0.05 so there are differences in mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1508,20 +1600,20 @@ Warning
 <div class="cell">
 <details>
 <summary>Answer</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Create a data frame for having a Reading scores in the UK including gender</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>UKMath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH, HOMEPOS, PV1READ) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb25-6"><a href="#cb25-6"></a></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="co"># Perform the Bayesian linear model</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>UKMath, PV1MATH <span class="sc">~</span> PV1READ <span class="sc">+</span> ST004D01T <span class="sc">+</span> HOMEPOS)</span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="fu">summary</span>(mod)</span>
-<span id="cb25-10"><a href="#cb25-10"></a></span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
-<span id="cb25-12"><a href="#cb25-12"></a><span class="fu">bayes_R2</span>(mod)</span>
-<span id="cb25-13"><a href="#cb25-13"></a></span>
-<span id="cb25-14"><a href="#cb25-14"></a><span class="co"># The model explains 64% of the variance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Create a data frame for having a Reading scores in the UK including gender</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>UKMath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH, HOMEPOS, PV1READ) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb27-6"><a href="#cb27-6"></a></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="co"># Perform the Bayesian linear model</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>UKMath, PV1MATH <span class="sc">~</span> PV1READ <span class="sc">+</span> ST004D01T <span class="sc">+</span> HOMEPOS)</span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="fu">summary</span>(mod)</span>
+<span id="cb27-10"><a href="#cb27-10"></a></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="fu">bayes_R2</span>(mod)</span>
+<span id="cb27-13"><a href="#cb27-13"></a></span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="co"># The model explains 64% of the variance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="question">
@@ -1531,87 +1623,87 @@ Warning
 <div class="cell">
 <details>
 <summary>Hint</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Creating the data frame for analysis</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="co"># Create a data frame for having a mathematics scores by  gender</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a>MathScore <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">summarise</span>(<span class="at">math=</span><span class="fu">mean</span>(PV1MATH)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb26-8"><a href="#cb26-8"></a></span>
-<span id="cb26-9"><a href="#cb26-9"></a><span class="co"># Use pviot_wider to create side-by-sde columns for mathematics score</span></span>
-<span id="cb26-10"><a href="#cb26-10"></a></span>
-<span id="cb26-11"><a href="#cb26-11"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>MathScore, <span class="at">names_from=</span>ST004D01T, <span class="at">values_from=</span>math)</span>
-<span id="cb26-12"><a href="#cb26-12"></a></span>
-<span id="cb26-13"><a href="#cb26-13"></a>MathScore <span class="ot">&lt;-</span> MathScore <span class="sc">%&gt;%</span></span>
-<span id="cb26-14"><a href="#cb26-14"></a>  <span class="fu">mutate</span>(<span class="at">genddiff =</span> Female <span class="sc">-</span> Male)</span>
-<span id="cb26-15"><a href="#cb26-15"></a></span>
-<span id="cb26-16"><a href="#cb26-16"></a><span class="co"># Create a summary of means of the indepedent variables (e.g. WEALTH, reading etc) by country</span></span>
-<span id="cb26-17"><a href="#cb26-17"></a>Independents <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="cb26-18"><a href="#cb26-18"></a>  <span class="fu">select</span>(CNT, PV1READ, WEALTH, ESCS) <span class="sc">%&gt;%</span></span>
-<span id="cb26-19"><a href="#cb26-19"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb26-20"><a href="#cb26-20"></a>  <span class="fu">summarise</span>(<span class="at">read=</span><span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb26-21"><a href="#cb26-21"></a>            <span class="at">wealth=</span><span class="fu">mean</span>(WEALTH, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb26-22"><a href="#cb26-22"></a>            <span class="at">ESCS=</span><span class="fu">mean</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-23"><a href="#cb26-23"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb26-24"><a href="#cb26-24"></a></span>
-<span id="cb26-25"><a href="#cb26-25"></a><span class="co"># join the independents to the maths scores gender differences</span></span>
-<span id="cb26-26"><a href="#cb26-26"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">left_join</span>(MathScore, Independents, <span class="at">by=</span><span class="st">"CNT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Creating the data frame for analysis</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Create a data frame for having a mathematics scores by  gender</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>MathScore <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">summarise</span>(<span class="at">math=</span><span class="fu">mean</span>(PV1MATH)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb28-8"><a href="#cb28-8"></a></span>
+<span id="cb28-9"><a href="#cb28-9"></a><span class="co"># Use pviot_wider to create side-by-sde columns for mathematics score</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a></span>
+<span id="cb28-11"><a href="#cb28-11"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>MathScore, <span class="at">names_from=</span>ST004D01T, <span class="at">values_from=</span>math)</span>
+<span id="cb28-12"><a href="#cb28-12"></a></span>
+<span id="cb28-13"><a href="#cb28-13"></a>MathScore <span class="ot">&lt;-</span> MathScore <span class="sc">%&gt;%</span></span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="fu">mutate</span>(<span class="at">genddiff =</span> Female <span class="sc">-</span> Male)</span>
+<span id="cb28-15"><a href="#cb28-15"></a></span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="co"># Create a summary of means of the indepedent variables (e.g. WEALTH, reading etc) by country</span></span>
+<span id="cb28-17"><a href="#cb28-17"></a>Independents <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="cb28-18"><a href="#cb28-18"></a>  <span class="fu">select</span>(CNT, PV1READ, WEALTH, ESCS) <span class="sc">%&gt;%</span></span>
+<span id="cb28-19"><a href="#cb28-19"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb28-20"><a href="#cb28-20"></a>  <span class="fu">summarise</span>(<span class="at">read=</span><span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb28-21"><a href="#cb28-21"></a>            <span class="at">wealth=</span><span class="fu">mean</span>(WEALTH, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb28-22"><a href="#cb28-22"></a>            <span class="at">ESCS=</span><span class="fu">mean</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-23"><a href="#cb28-23"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb28-24"><a href="#cb28-24"></a></span>
+<span id="cb28-25"><a href="#cb28-25"></a><span class="co"># join the independents to the maths scores gender differences</span></span>
+<span id="cb28-26"><a href="#cb28-26"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">left_join</span>(MathScore, Independents, <span class="at">by=</span><span class="st">"CNT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Full Answer</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Create a data frame for having a mathematics scores by  gender</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>MathScore <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">summarise</span>(<span class="at">math=</span><span class="fu">mean</span>(PV1MATH)) <span class="sc">%&gt;%</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb27-7"><a href="#cb27-7"></a></span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="co"># Use pviot_wider to create side-by-sde columns for mathematics score</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a></span>
-<span id="cb27-10"><a href="#cb27-10"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>MathScore, <span class="at">names_from=</span>ST004D01T, <span class="at">values_from=</span>math)</span>
-<span id="cb27-11"><a href="#cb27-11"></a>MathScore <span class="ot">&lt;-</span> MathScore <span class="sc">%&gt;%</span></span>
-<span id="cb27-12"><a href="#cb27-12"></a>  <span class="fu">mutate</span>(<span class="at">genddiff =</span> Female <span class="sc">-</span> Male)</span>
-<span id="cb27-13"><a href="#cb27-13"></a></span>
-<span id="cb27-14"><a href="#cb27-14"></a><span class="co"># Create a summary of means of the independent variables (e.g. WEALTH, reading etc) by country</span></span>
-<span id="cb27-15"><a href="#cb27-15"></a></span>
-<span id="cb27-16"><a href="#cb27-16"></a>Independents <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb27-17"><a href="#cb27-17"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS, ESCS) <span class="sc">%&gt;%</span></span>
-<span id="cb27-18"><a href="#cb27-18"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb27-19"><a href="#cb27-19"></a>  <span class="fu">summarise</span>(<span class="at">read   =</span> <span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb27-20"><a href="#cb27-20"></a>            <span class="at">wealth =</span> <span class="fu">mean</span>(HOMEPOS, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb27-21"><a href="#cb27-21"></a>            <span class="at">ESCS   =</span> <span class="fu">mean</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb27-22"><a href="#cb27-22"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb27-23"><a href="#cb27-23"></a><span class="co"># join the independents to the maths scores gender differences</span></span>
-<span id="cb27-24"><a href="#cb27-24"></a></span>
-<span id="cb27-25"><a href="#cb27-25"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">left_join</span>(MathScore, Independents, <span class="at">by=</span><span class="st">"CNT"</span>)</span>
-<span id="cb27-26"><a href="#cb27-26"></a></span>
-<span id="cb27-27"><a href="#cb27-27"></a><span class="co"># Perform the Bayesian linear model with reading alone</span></span>
-<span id="cb27-28"><a href="#cb27-28"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data =</span> MathScore, genddiff <span class="sc">~</span> read)</span>
-<span id="cb27-29"><a href="#cb27-29"></a><span class="fu">summary</span>(mod)</span>
-<span id="cb27-30"><a href="#cb27-30"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
-<span id="cb27-31"><a href="#cb27-31"></a><span class="fu">bayes_R2</span>(mod)</span>
-<span id="cb27-32"><a href="#cb27-32"></a><span class="co"># The reading only model explains 8% of the variance</span></span>
-<span id="cb27-33"><a href="#cb27-33"></a></span>
-<span id="cb27-34"><a href="#cb27-34"></a><span class="co"># Perform the Bayesian linear model with reading and wealth</span></span>
-<span id="cb27-35"><a href="#cb27-35"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>MathScore, genddiff <span class="sc">~</span> read <span class="sc">+</span> wealth)</span>
-<span id="cb27-36"><a href="#cb27-36"></a><span class="fu">summary</span>(mod)</span>
-<span id="cb27-37"><a href="#cb27-37"></a></span>
-<span id="cb27-38"><a href="#cb27-38"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
-<span id="cb27-39"><a href="#cb27-39"></a><span class="fu">bayes_R2</span>(mod)</span>
-<span id="cb27-40"><a href="#cb27-40"></a></span>
-<span id="cb27-41"><a href="#cb27-41"></a><span class="co"># The reading and wealth model explains 19% of the variance</span></span>
-<span id="cb27-42"><a href="#cb27-42"></a></span>
-<span id="cb27-43"><a href="#cb27-43"></a><span class="co"># Perform the Bayesian linear model with reading, wealth and ESCS</span></span>
-<span id="cb27-44"><a href="#cb27-44"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>MathScore, genddiff <span class="sc">~</span> read <span class="sc">+</span> wealth <span class="sc">+</span> ESCS)</span>
-<span id="cb27-45"><a href="#cb27-45"></a><span class="fu">summary</span>(mod)</span>
-<span id="cb27-46"><a href="#cb27-46"></a></span>
-<span id="cb27-47"><a href="#cb27-47"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
-<span id="cb27-48"><a href="#cb27-48"></a><span class="fu">bayes_R2</span>(mod)</span>
-<span id="cb27-49"><a href="#cb27-49"></a></span>
-<span id="cb27-50"><a href="#cb27-50"></a><span class="co"># The reading, wealth and ESCS model explains 20% of the variance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Create a data frame for having a mathematics scores by  gender</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>MathScore <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">summarise</span>(<span class="at">math=</span><span class="fu">mean</span>(PV1MATH)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb29-7"><a href="#cb29-7"></a></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co"># Use pviot_wider to create side-by-sde columns for mathematics score</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>MathScore, <span class="at">names_from=</span>ST004D01T, <span class="at">values_from=</span>math)</span>
+<span id="cb29-11"><a href="#cb29-11"></a>MathScore <span class="ot">&lt;-</span> MathScore <span class="sc">%&gt;%</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>  <span class="fu">mutate</span>(<span class="at">genddiff =</span> Female <span class="sc">-</span> Male)</span>
+<span id="cb29-13"><a href="#cb29-13"></a></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="co"># Create a summary of means of the independent variables (e.g. WEALTH, reading etc) by country</span></span>
+<span id="cb29-15"><a href="#cb29-15"></a></span>
+<span id="cb29-16"><a href="#cb29-16"></a>Independents <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS, ESCS) <span class="sc">%&gt;%</span></span>
+<span id="cb29-18"><a href="#cb29-18"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb29-19"><a href="#cb29-19"></a>  <span class="fu">summarise</span>(<span class="at">read   =</span> <span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb29-20"><a href="#cb29-20"></a>            <span class="at">wealth =</span> <span class="fu">mean</span>(HOMEPOS, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb29-21"><a href="#cb29-21"></a>            <span class="at">ESCS   =</span> <span class="fu">mean</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-22"><a href="#cb29-22"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb29-23"><a href="#cb29-23"></a><span class="co"># join the independents to the maths scores gender differences</span></span>
+<span id="cb29-24"><a href="#cb29-24"></a></span>
+<span id="cb29-25"><a href="#cb29-25"></a>MathScore <span class="ot">&lt;-</span> <span class="fu">left_join</span>(MathScore, Independents, <span class="at">by=</span><span class="st">"CNT"</span>)</span>
+<span id="cb29-26"><a href="#cb29-26"></a></span>
+<span id="cb29-27"><a href="#cb29-27"></a><span class="co"># Perform the Bayesian linear model with reading alone</span></span>
+<span id="cb29-28"><a href="#cb29-28"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data =</span> MathScore, genddiff <span class="sc">~</span> read)</span>
+<span id="cb29-29"><a href="#cb29-29"></a><span class="fu">summary</span>(mod)</span>
+<span id="cb29-30"><a href="#cb29-30"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
+<span id="cb29-31"><a href="#cb29-31"></a><span class="fu">bayes_R2</span>(mod)</span>
+<span id="cb29-32"><a href="#cb29-32"></a><span class="co"># The reading only model explains 8% of the variance</span></span>
+<span id="cb29-33"><a href="#cb29-33"></a></span>
+<span id="cb29-34"><a href="#cb29-34"></a><span class="co"># Perform the Bayesian linear model with reading and wealth</span></span>
+<span id="cb29-35"><a href="#cb29-35"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>MathScore, genddiff <span class="sc">~</span> read <span class="sc">+</span> wealth)</span>
+<span id="cb29-36"><a href="#cb29-36"></a><span class="fu">summary</span>(mod)</span>
+<span id="cb29-37"><a href="#cb29-37"></a></span>
+<span id="cb29-38"><a href="#cb29-38"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
+<span id="cb29-39"><a href="#cb29-39"></a><span class="fu">bayes_R2</span>(mod)</span>
+<span id="cb29-40"><a href="#cb29-40"></a></span>
+<span id="cb29-41"><a href="#cb29-41"></a><span class="co"># The reading and wealth model explains 19% of the variance</span></span>
+<span id="cb29-42"><a href="#cb29-42"></a></span>
+<span id="cb29-43"><a href="#cb29-43"></a><span class="co"># Perform the Bayesian linear model with reading, wealth and ESCS</span></span>
+<span id="cb29-44"><a href="#cb29-44"></a>mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>MathScore, genddiff <span class="sc">~</span> read <span class="sc">+</span> wealth <span class="sc">+</span> ESCS)</span>
+<span id="cb29-45"><a href="#cb29-45"></a><span class="fu">summary</span>(mod)</span>
+<span id="cb29-46"><a href="#cb29-46"></a></span>
+<span id="cb29-47"><a href="#cb29-47"></a><span class="co"># Calculate the Bayesian equivalent of R2</span></span>
+<span id="cb29-48"><a href="#cb29-48"></a><span class="fu">bayes_R2</span>(mod)</span>
+<span id="cb29-49"><a href="#cb29-49"></a></span>
+<span id="cb29-50"><a href="#cb29-50"></a><span class="co"># The reading, wealth and ESCS model explains 20% of the variance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1623,40 +1715,40 @@ Warning
 <div class="cell">
 <details>
 <summary>Answer</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Determine prior distribution parameters</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>scie_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">select</span>(PV1SCIE, CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb28-6"><a href="#cb28-6"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb28-7"><a href="#cb28-7"></a></span>
-<span id="cb28-8"><a href="#cb28-8"></a>scie_mean <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<span id="cb28-9"><a href="#cb28-9"></a>scie_sd   <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="cb28-10"><a href="#cb28-10"></a></span>
-<span id="cb28-11"><a href="#cb28-11"></a>read_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="cb28-12"><a href="#cb28-12"></a>  <span class="fu">select</span>(PV1READ,CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb28-13"><a href="#cb28-13"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-14"><a href="#cb28-14"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb28-15"><a href="#cb28-15"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb28-16"><a href="#cb28-16"></a></span>
-<span id="cb28-17"><a href="#cb28-17"></a>read_mean <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<span id="cb28-18"><a href="#cb28-18"></a>read_sd   <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="cb28-19"><a href="#cb28-19"></a></span>
-<span id="cb28-20"><a href="#cb28-20"></a><span class="co"># Specify the prior distribution using set priors from the `BMS` package</span></span>
-<span id="cb28-21"><a href="#cb28-21"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({scie_mean},{scie_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1SCIE"</span>),</span>
-<span id="cb28-22"><a href="#cb28-22"></a>               <span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({read_mean},{read_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1READ"</span>))</span>
-<span id="cb28-23"><a href="#cb28-23"></a></span>
-<span id="cb28-24"><a href="#cb28-24"></a><span class="co"># Create the data frame of UK scores in 2018 to model</span></span>
-<span id="cb28-25"><a href="#cb28-25"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb28-26"><a href="#cb28-26"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)</span>
-<span id="cb28-27"><a href="#cb28-27"></a></span>
-<span id="cb28-28"><a href="#cb28-28"></a><span class="co"># Use the Bayesian regression model function 'brm' to fir the model, specifying the prior</span></span>
-<span id="cb28-29"><a href="#cb28-29"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>UKPISA_2022, <span class="at">formula =</span> PV1MATH <span class="sc">~</span> PV1SCIE <span class="sc">+</span> PV1READ, <span class="at">prior=</span>prior2018)</span>
-<span id="cb28-30"><a href="#cb28-30"></a><span class="fu">summary</span>(modbay)</span>
-<span id="cb28-31"><a href="#cb28-31"></a><span class="fu">bayes_R2</span>(modbay)</span>
-<span id="cb28-32"><a href="#cb28-32"></a></span>
-<span id="cb28-33"><a href="#cb28-33"></a><span class="co"># Plot the distribution of the coefficients</span></span>
-<span id="cb28-34"><a href="#cb28-34"></a><span class="fu">plot</span>(modbay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Determine prior distribution parameters</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>scie_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">select</span>(PV1SCIE, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb30-6"><a href="#cb30-6"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb30-7"><a href="#cb30-7"></a></span>
+<span id="cb30-8"><a href="#cb30-8"></a>scie_mean <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<span id="cb30-9"><a href="#cb30-9"></a>scie_sd   <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="cb30-10"><a href="#cb30-10"></a></span>
+<span id="cb30-11"><a href="#cb30-11"></a>read_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a>  <span class="fu">select</span>(PV1READ,CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb30-15"><a href="#cb30-15"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb30-16"><a href="#cb30-16"></a></span>
+<span id="cb30-17"><a href="#cb30-17"></a>read_mean <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<span id="cb30-18"><a href="#cb30-18"></a>read_sd   <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="cb30-19"><a href="#cb30-19"></a></span>
+<span id="cb30-20"><a href="#cb30-20"></a><span class="co"># Specify the prior distribution using set priors from the `BMS` package</span></span>
+<span id="cb30-21"><a href="#cb30-21"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({scie_mean},{scie_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1SCIE"</span>),</span>
+<span id="cb30-22"><a href="#cb30-22"></a>               <span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({read_mean},{read_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1READ"</span>))</span>
+<span id="cb30-23"><a href="#cb30-23"></a></span>
+<span id="cb30-24"><a href="#cb30-24"></a><span class="co"># Create the data frame of UK scores in 2018 to model</span></span>
+<span id="cb30-25"><a href="#cb30-25"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb30-26"><a href="#cb30-26"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)</span>
+<span id="cb30-27"><a href="#cb30-27"></a></span>
+<span id="cb30-28"><a href="#cb30-28"></a><span class="co"># Use the Bayesian regression model function 'brm' to fir the model, specifying the prior</span></span>
+<span id="cb30-29"><a href="#cb30-29"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>UKPISA_2022, <span class="at">formula =</span> PV1MATH <span class="sc">~</span> PV1SCIE <span class="sc">+</span> PV1READ, <span class="at">prior=</span>prior2018)</span>
+<span id="cb30-30"><a href="#cb30-30"></a><span class="fu">summary</span>(modbay)</span>
+<span id="cb30-31"><a href="#cb30-31"></a><span class="fu">bayes_R2</span>(modbay)</span>
+<span id="cb30-32"><a href="#cb30-32"></a></span>
+<span id="cb30-33"><a href="#cb30-33"></a><span class="co"># Plot the distribution of the coefficients</span></span>
+<span id="cb30-34"><a href="#cb30-34"></a><span class="fu">plot</span>(modbay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1668,37 +1760,41 @@ Warning
 <div class="cell">
 <details>
 <summary>Answer</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Create a UK subset</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>PISAUK <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">select</span>(PV1MATH, PV1READ, PV1SCIE, HOMEPOS, ESCS, CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">select</span>(<span class="sc">-</span>CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb29-7"><a href="#cb29-7"></a></span>
-<span id="cb29-8"><a href="#cb29-8"></a><span class="co"># Convert variables to numeric</span></span>
-<span id="cb29-9"><a href="#cb29-9"></a>PISAUK<span class="sc">$</span>HOMEPOS <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>HOMEPOS)</span>
-<span id="cb29-10"><a href="#cb29-10"></a>PISAUK<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>PV1SCIE)</span>
-<span id="cb29-11"><a href="#cb29-11"></a>PISAUK<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>PV1READ)</span>
-<span id="cb29-12"><a href="#cb29-12"></a>PISAUK<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>PV1MATH)</span>
-<span id="cb29-13"><a href="#cb29-13"></a>PISAUK<span class="sc">$</span>ESCS    <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>ESCS)</span>
-<span id="cb29-14"><a href="#cb29-14"></a></span>
-<span id="cb29-15"><a href="#cb29-15"></a><span class="co"># Use regressionBF to create a dataframe of the models</span></span>
-<span id="cb29-16"><a href="#cb29-16"></a>models <span class="ot">&lt;-</span> <span class="fu">regressionBF</span>(PV1MATH <span class="sc">~</span> ., <span class="at">data =</span> PISAUK)</span>
-<span id="cb29-17"><a href="#cb29-17"></a></span>
-<span id="cb29-18"><a href="#cb29-18"></a><span class="co"># Select only the relevant part of the output</span></span>
-<span id="cb29-19"><a href="#cb29-19"></a>output <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(models<span class="sc">@</span>bayesFactor)</span>
-<span id="cb29-20"><a href="#cb29-20"></a></span>
-<span id="cb29-21"><a href="#cb29-21"></a><span class="co"># Arrange the output</span></span>
-<span id="cb29-22"><a href="#cb29-22"></a>output<span class="ot">&lt;-</span>output<span class="sc">%&gt;%</span></span>
-<span id="cb29-23"><a href="#cb29-23"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(output<span class="sc">$</span>bf))</span>
-<span id="cb29-24"><a href="#cb29-24"></a>output</span>
-<span id="cb29-25"><a href="#cb29-25"></a><span class="co"># The best model appears to be: PV1SCIE ~ PV1READ + PV1SCIE + ESCS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Create a UK subset</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>PISAUK <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">select</span>(PV1MATH, PV1READ, PV1SCIE, HOMEPOS, ESCS, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">select</span>(<span class="sc">-</span>CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb31-7"><a href="#cb31-7"></a></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co"># Convert variables to numeric</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>PISAUK<span class="sc">$</span>HOMEPOS <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>HOMEPOS)</span>
+<span id="cb31-10"><a href="#cb31-10"></a>PISAUK<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>PV1SCIE)</span>
+<span id="cb31-11"><a href="#cb31-11"></a>PISAUK<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>PV1READ)</span>
+<span id="cb31-12"><a href="#cb31-12"></a>PISAUK<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>PV1MATH)</span>
+<span id="cb31-13"><a href="#cb31-13"></a>PISAUK<span class="sc">$</span>ESCS    <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(PISAUK<span class="sc">$</span>ESCS)</span>
+<span id="cb31-14"><a href="#cb31-14"></a></span>
+<span id="cb31-15"><a href="#cb31-15"></a><span class="co"># Use regressionBF to create a dataframe of the models</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a>models <span class="ot">&lt;-</span> <span class="fu">regressionBF</span>(PV1MATH <span class="sc">~</span> ., <span class="at">data =</span> PISAUK)</span>
+<span id="cb31-17"><a href="#cb31-17"></a></span>
+<span id="cb31-18"><a href="#cb31-18"></a><span class="co"># Select only the relevant part of the output</span></span>
+<span id="cb31-19"><a href="#cb31-19"></a>output <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(models<span class="sc">@</span>bayesFactor)</span>
+<span id="cb31-20"><a href="#cb31-20"></a></span>
+<span id="cb31-21"><a href="#cb31-21"></a><span class="co"># Arrange the output</span></span>
+<span id="cb31-22"><a href="#cb31-22"></a>output<span class="ot">&lt;-</span>output<span class="sc">%&gt;%</span></span>
+<span id="cb31-23"><a href="#cb31-23"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(output<span class="sc">$</span>bf))</span>
+<span id="cb31-24"><a href="#cb31-24"></a>output</span>
+<span id="cb31-25"><a href="#cb31-25"></a><span class="co"># The best model appears to be: PV1SCIE ~ PV1READ + PV1SCIE + ESCS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-
-
-
 </section>
+</section>
+<section id="further-reading" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">0.4</span> Further reading</h2>
+<p>You can find a nice introduction to Bayesian approaches in Michael Clark’s <a href="https://m-clark.github.io/bayesian-basics/"><em>Bayesian Basics</em></a>. For further reading, there are a number of <a href="https://bookdown.org/home/tags/bayesian/">Bookdown texts</a> on more advanced topics in using Bayesian packages in R.</p>
+
+
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
