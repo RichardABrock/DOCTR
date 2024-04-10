@@ -719,23 +719,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="3">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">line 2 <code>filters</code> out any results that are not from the UK by finding all the rows where <code>CNT</code> equals <code>==</code> <code>"United Kingdom"</code>. Note the <code>==</code> for checking equality. The result is then piped (<code>%&gt;%</code>) to the next line</span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="2" data-code-lines="4">line 2 <code>filters</code> out any results that are not from the UK by finding all the rows where <code>CNT</code> equals <code>==</code> <code>"United Kingdom"</code>. Note the <code>==</code> for checking equality. The result is then piped (<code>%&gt;%</code>) to the next line</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="3">line 3 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="3" data-code-lines="5">line 3 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="6" data-code-annotation="4">line 4 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="4" data-code-lines="6">line 4 uses <code>summarise</code> to calculate, for the UK, the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="7" data-code-annotation="5">line 5 uses the <code>n()</code> function to count the number of students in the UK sample</span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="5" data-code-lines="7">line 5 uses the <code>n()</code> function to count the number of students in the UK sample</span>
 </dd>
 </dl>
 </div>
@@ -799,23 +799,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="1" data-code-lines="2">line 1 passes the whole <code>PISA_2022</code> dataset and pipes it into the next line using <code>%&gt;%</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">line 2 uses <code>group_by</code> to use the values in <code>CNT</code> to group the data - i.e.&nbsp;the calculate the means for each country</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="2" data-code-lines="3">line 2 uses <code>group_by</code> to use the values in <code>CNT</code> to group the data - i.e.&nbsp;the calculate the means for each country</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">line 3 uses <code>summarise</code> to calculate the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="3" data-code-lines="4">line 3 uses <code>summarise</code> to calculate the mean of <code>PV1SCIE</code> (the science score) and puts the result in a column called <code>MeanSci</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="4">line 4 uses <code>summarise</code> to calculate the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="4" data-code-lines="5">line 4 uses <code>summarise</code> to calculate the mean of <code>PV1MATH</code> (the maths score) and puts the result in a column called <code>MeanMath</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="5">line 5 uses the <code>n()</code> function to count the number of students the sample</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="5" data-code-lines="6">line 5 uses the <code>n()</code> function to count the number of students the sample</span>
 </dd>
 </dl>
 </div>
@@ -892,27 +892,27 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="1">line 1 creates a new data frame, <code>GenderUK</code> into which the results manipulated <code>PISA_2022</code> will be placed - <code>PISA_2022</code> is piped to the next steps</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="3">line 1 creates a new data frame, <code>GenderUK</code> into which the results manipulated <code>PISA_2022</code> will be placed - <code>PISA_2022</code> is piped to the next steps</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="2">line 2 uses <code>select</code> to select the columns of interest <code>CNT</code> (country) and <code>ST004D01T</code> (gender)</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="2" data-code-lines="4">line 2 uses <code>select</code> to select the columns of interest <code>CNT</code> (country) and <code>ST004D01T</code> (gender)</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="3">line 3 uses <code>filter</code> to filter for only the entries for the UK</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="3" data-code-lines="5">line 3 uses <code>filter</code> to filter for only the entries for the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="4">line 4 - as we have filtered for the UK, we would get 0 entires for all the other levels (all the other countries). To stop those 0s confusing our table we use <code>droplevels()</code> to ignore the levels we don’t need</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="4" data-code-lines="6">line 4 - as we have filtered for the UK, we would get 0 entires for all the other levels (all the other countries). To stop those 0s confusing our table we use <code>droplevels()</code> to ignore the levels we don’t need</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="9" data-code-annotation="5">line 5 - to create summary of the counts, we use <code>table</code> to create a summary table. We turn the table into a data frame with <code>as.data.frame</code> to make it easier to manipulate</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="5" data-code-lines="9">line 5 - to create summary of the counts, we use <code>table</code> to create a summary table. We turn the table into a data frame with <code>as.data.frame</code> to make it easier to manipulate</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="10" data-code-annotation="6">line 6 - print the table</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="6" data-code-lines="10">line 6 - print the table</span>
 </dd>
 </dl>
 </div>
@@ -935,16 +935,16 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="1">line 1 - to calculate a percentage, you first need to find the total of the frequency column in <code>GenderUKSummary</code>. We use <code>GenderUKSummary$Freq</code> to indicate the column and <code>sum</code> to find the total<br>
+<span data-code-cell="annotated-cell-6" data-code-annotation="1" data-code-lines="3">line 1 - to calculate a percentage, you first need to find the total of the frequency column in <code>GenderUKSummary</code>. We use <code>GenderUKSummary$Freq</code> to indicate the column and <code>sum</code> to find the total<br>
 </span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="2">line 2 - pipe <code>GenderUKSummary</code> so we can manipulate it</span>
+<span data-code-cell="annotated-cell-6" data-code-annotation="2" data-code-lines="4">line 2 - pipe <code>GenderUKSummary</code> so we can manipulate it</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="3">line 3 - to add a new column (with the percentage in) we use <code>mutate</code>. We give the name of the new column <code>PerSch =</code> and set out the calculation we want to perform, dividing the frequency in each row, by the total and multiplying by 100: <code>100*(Freq / total)</code></span>
+<span data-code-cell="annotated-cell-6" data-code-annotation="3" data-code-lines="5">line 3 - to add a new column (with the percentage in) we use <code>mutate</code>. We give the name of the new column <code>PerSch =</code> and set out the calculation we want to perform, dividing the frequency in each row, by the total and multiplying by 100: <code>100*(Freq / total)</code></span>
 </dd>
 </dl>
 </div>
@@ -1197,7 +1197,7 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="5" data-code-annotation="4">line 4 - mutate to create a new column <code>wealthclass</code> - if HOMEPOS is more than mean(HOMEPOS), set the column to “High” otherwise set it to “Low”</span>
+<span data-code-cell="annotated-cell-12" data-code-annotation="4" data-code-lines="5">line 4 - mutate to create a new column <code>wealthclass</code> - if HOMEPOS is more than mean(HOMEPOS), set the column to “High” otherwise set it to “Low”</span>
 </dd>
 </dl>
 </div>
