@@ -444,7 +444,7 @@ Against denominator:
 Bayes factor type: BFindepSample, JZS</code></pre>
 </div>
 </div>
-<p>The value of interest here is the Bayes factor, 194.1877, followed by the confidence interval ±0%.The Bayes factor can be thought of as a measure of the relative likelihood of a difference (in this case, a different in scores between the groups). Here the factor can be interpreted to mean: It is 194 times more likely that there is a difference between the two classes than there is no difference.</p>
+<p>The value of interest here is the Bayes factor, 194.1877, followed by the confidence interval ±0%. The Bayes factor can be thought of as a measure of the relative likelihood of a difference (in this case, a different in scores between the groups). Here the factor can be interpreted to mean: It is 194 times more likely that there is a difference between the two classes than there is no difference.</p>
 <p>By comparison with a p-value, which acts only as a cut of for significance, the Bayes factor tells you the relative likelihood, a more useful piece of information.</p>
 <p>(Note that to calculate the Bayesian t-test, some assumptions have to be made. One is the assumption of a distribution of effect sizes, in this case a kind of distribution known as a Cauchy distribution is assumed, r=0.707 refers to a parameter of that distribution).</p>
 <p>Null, mu1-mu2 = 0 tells us that the null hypothesis is that the means (the mus) of the two groups are the same.</p>
@@ -565,23 +565,23 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="4" data-code-lines="2">line 5 run a frequentist linear model on the data using <code>lm</code></span>
+<span data-code-lines="2" data-code-annotation="4" data-code-cell="annotated-cell-7">line 5 run a frequentist linear model on the data using <code>lm</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="5" data-code-lines="3">line 6 print the output of the frequentist model</span>
+<span data-code-lines="3" data-code-annotation="5" data-code-cell="annotated-cell-7">line 6 print the output of the frequentist model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="6" data-code-lines="6">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
+<span data-code-lines="6" data-code-annotation="6" data-code-cell="annotated-cell-7">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="7" data-code-lines="7">line 8 print the output of the Bayesian model</span>
+<span data-code-lines="7" data-code-annotation="7" data-code-cell="annotated-cell-7">line 8 print the output of the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="8" data-code-lines="10">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
+<span data-code-lines="10" data-code-annotation="8" data-code-cell="annotated-cell-7">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
 </dd>
 </dl>
 </div>
@@ -607,24 +607,24 @@ lm(formula = Var1 ~ Var2, data = testdata)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--3.6293 -0.9746  0.1241  1.2592  2.8768 
+-3.0229 -1.3576  0.1944  1.1673  3.7401 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -3.86106    0.70784  -5.455 1.69e-06 ***
-Var2         0.97134    0.02146  45.261  &lt; 2e-16 ***
+(Intercept) -3.34432    0.86252  -3.877 0.000321 ***
+Var2         0.94597    0.02544  37.183  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.631 on 48 degrees of freedom
-Multiple R-squared:  0.9771,    Adjusted R-squared:  0.9766 
-F-statistic:  2049 on 1 and 48 DF,  p-value: &lt; 2.2e-16
+Residual standard error: 1.768 on 48 degrees of freedom
+Multiple R-squared:  0.9664,    Adjusted R-squared:  0.9657 
+F-statistic:  1383 on 1 and 48 DF,  p-value: &lt; 2.2e-16
 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 2.7e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.27 seconds.
+Chain 1: Gradient evaluation took 2.1e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -641,15 +641,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.014 seconds (Warm-up)
-Chain 1:                0.012 seconds (Sampling)
-Chain 1:                0.026 seconds (Total)
+Chain 1:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 1:                0.011 seconds (Sampling)
+Chain 1:                0.024 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 3e-06 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
+Chain 2: Gradient evaluation took 2e-06 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -667,8 +667,8 @@ Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
 Chain 2:  Elapsed Time: 0.014 seconds (Warm-up)
-Chain 2:                0.011 seconds (Sampling)
-Chain 2:                0.025 seconds (Total)
+Chain 2:                0.012 seconds (Sampling)
+Chain 2:                0.026 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
@@ -692,14 +692,14 @@ Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
 Chain 3:  Elapsed Time: 0.013 seconds (Warm-up)
-Chain 3:                0.012 seconds (Sampling)
-Chain 3:                0.025 seconds (Total)
+Chain 3:                0.01 seconds (Sampling)
+Chain 3:                0.023 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2e-06 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
+Chain 4: Gradient evaluation took 1e-06 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -716,9 +716,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.015 seconds (Warm-up)
-Chain 4:                0.011 seconds (Sampling)
-Chain 4:                0.026 seconds (Total)
+Chain 4:  Elapsed Time: 0.012 seconds (Warm-up)
+Chain 4:                0.01 seconds (Sampling)
+Chain 4:                0.022 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -729,18 +729,18 @@ Formula: Var1 ~ Var2
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    -3.86      0.75    -5.32    -2.42 1.00     4054     2658
-Var2          0.97      0.02     0.93     1.02 1.00     3794     2661
+Intercept    -3.34      0.89    -5.06    -1.58 1.00     3864     3055
+Var2          0.95      0.03     0.89     1.00 1.00     3758     2811
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma     1.67      0.18     1.36     2.07 1.00     3138     2741
+sigma     1.82      0.20     1.49     2.25 1.00     3603     2630
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
     Estimate   Est.Error      Q2.5     Q97.5
-R2 0.9765479 0.001366585 0.9726074 0.9776168</code></pre>
+R2 0.9656229 0.002297453 0.9594751 0.9675343</code></pre>
 </div>
 </div>
 <p>You can see that the frequentist and Bayesian approaches give similar results:</p>
@@ -816,59 +816,59 @@ R2 0.9765479 0.001366585 0.9726074 0.9776168</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="1" data-code-lines="6">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
+<span data-code-lines="6" data-code-annotation="1" data-code-cell="annotated-cell-8">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="2" data-code-lines="7">line 2 Select the maths and country items</span>
+<span data-code-lines="7" data-code-annotation="2" data-code-cell="annotated-cell-8">line 2 Select the maths and country items</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="3" data-code-lines="8">line 3 Filter for the UK</span>
+<span data-code-lines="8" data-code-annotation="3" data-code-cell="annotated-cell-8">line 3 Filter for the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="4" data-code-lines="9">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
+<span data-code-lines="9" data-code-annotation="4" data-code-cell="annotated-cell-8">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="5" data-code-lines="12">line 5 Print the summary table</span>
+<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-8">line 5 Print the summary table</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="6" data-code-lines="14">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
+<span data-code-lines="14" data-code-annotation="6" data-code-cell="annotated-cell-8">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="7" data-code-lines="15">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
+<span data-code-lines="15" data-code-annotation="7" data-code-cell="annotated-cell-8">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="8" data-code-lines="22">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
+<span data-code-lines="22" data-code-annotation="8" data-code-cell="annotated-cell-8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="9" data-code-lines="26">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
+<span data-code-lines="26" data-code-annotation="9" data-code-cell="annotated-cell-8">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="10" data-code-lines="30">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
+<span data-code-lines="30" data-code-annotation="10" data-code-cell="annotated-cell-8">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="11" data-code-lines="31">line 15 Print the summary</span>
+<span data-code-lines="31" data-code-annotation="11" data-code-cell="annotated-cell-8">line 15 Print the summary</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="12" data-code-lines="32">line 16 Print the R<sup>2</sup> equivalent</span>
+<span data-code-lines="32" data-code-annotation="12" data-code-cell="annotated-cell-8">line 16 Print the R<sup>2</sup> equivalent</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="13" data-code-lines="35">line 17 Run the frequentist linear model as a comparison</span>
+<span data-code-lines="35" data-code-annotation="13" data-code-cell="annotated-cell-8">line 17 Run the frequentist linear model as a comparison</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="14" data-code-lines="37">line 19 Print the frequentist linear model</span>
+<span data-code-lines="37" data-code-annotation="14" data-code-cell="annotated-cell-8">line 19 Print the frequentist linear model</span>
 </dd>
 </dl>
 </div>
@@ -898,15 +898,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.258 seconds (Warm-up)
-Chain 1:                0.138 seconds (Sampling)
-Chain 1:                0.396 seconds (Total)
+Chain 1:  Elapsed Time: 0.313 seconds (Warm-up)
+Chain 1:                0.139 seconds (Sampling)
+Chain 1:                0.452 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.4e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
+Chain 2: Gradient evaluation took 2.3e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -924,14 +924,14 @@ Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
 Chain 2:  Elapsed Time: 0.232 seconds (Warm-up)
-Chain 2:                0.134 seconds (Sampling)
-Chain 2:                0.366 seconds (Total)
+Chain 2:                0.122 seconds (Sampling)
+Chain 2:                0.354 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.3e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.
+Chain 3: Gradient evaluation took 2.2e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -948,9 +948,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.247 seconds (Warm-up)
-Chain 3:                0.127 seconds (Sampling)
-Chain 3:                0.374 seconds (Total)
+Chain 3:  Elapsed Time: 0.283 seconds (Warm-up)
+Chain 3:                0.123 seconds (Sampling)
+Chain 3:                0.406 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
@@ -973,9 +973,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.341 seconds (Warm-up)
-Chain 4:                0.152 seconds (Sampling)
-Chain 4:                0.493 seconds (Total)
+Chain 4:  Elapsed Time: 0.339 seconds (Warm-up)
+Chain 4:                0.117 seconds (Sampling)
+Chain 4:                0.456 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -986,18 +986,18 @@ Formula: PV1SCIE ~ PV1MATH
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    42.34      2.34    37.78    46.96 1.00     4770     3110
-PV1MATH       0.93      0.00     0.92     0.94 1.00     4857     3177
+Intercept    42.36      2.33    37.90    46.96 1.00     3826     2474
+PV1MATH       0.93      0.00     0.92     0.94 1.00     4238     2591
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    50.75      0.32    50.13    51.39 1.00     3863     2743
+sigma    50.75      0.31    50.14    51.36 1.00     4130     3040
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5     Q97.5
-R2 0.7532643 0.001891968 0.7494444 0.7567757
+   Estimate   Est.Error      Q2.5     Q97.5
+R2 0.753254 0.001890585 0.7494228 0.7568102
 
 Call:
 lm(formula = PV1SCIE ~ PV1MATH, data = UKPISA_2022)
@@ -1063,35 +1063,35 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="1" data-code-lines="4">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-9">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="2" data-code-lines="10">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
+<span data-code-lines="10" data-code-annotation="2" data-code-cell="annotated-cell-9">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="3" data-code-lines="13">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
+<span data-code-lines="13" data-code-annotation="3" data-code-cell="annotated-cell-9">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="4" data-code-lines="23">line 17 Set the prior distributions, as above, here for maths</span>
+<span data-code-lines="23" data-code-annotation="4" data-code-cell="annotated-cell-9">line 17 Set the prior distributions, as above, here for maths</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="5" data-code-lines="25">line 19 Set the prior distribution for reading</span>
+<span data-code-lines="25" data-code-annotation="5" data-code-cell="annotated-cell-9">line 19 Set the prior distribution for reading</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="6" data-code-lines="29">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
+<span data-code-lines="29" data-code-annotation="6" data-code-cell="annotated-cell-9">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="7" data-code-lines="33">line 23 Run the Bayesian model</span>
+<span data-code-lines="33" data-code-annotation="7" data-code-cell="annotated-cell-9">line 23 Run the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="8" data-code-lines="39">line 27 plot a graph of the distribution of the coefficients</span>
+<span data-code-lines="39" data-code-annotation="8" data-code-cell="annotated-cell-9">line 27 plot a graph of the distribution of the coefficients</span>
 </dd>
 </dl>
 </div>
@@ -1110,8 +1110,8 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 4.7e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.47 seconds.
+Chain 1: Gradient evaluation took 4.6e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.46 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -1128,15 +1128,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.654 seconds (Warm-up)
-Chain 1:                0.243 seconds (Sampling)
-Chain 1:                0.897 seconds (Total)
+Chain 1:  Elapsed Time: 0.496 seconds (Warm-up)
+Chain 1:                0.266 seconds (Sampling)
+Chain 1:                0.762 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.7e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.27 seconds.
+Chain 2: Gradient evaluation took 2.8e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -1153,9 +1153,9 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.75 seconds (Warm-up)
-Chain 2:                0.329 seconds (Sampling)
-Chain 2:                1.079 seconds (Total)
+Chain 2:  Elapsed Time: 0.706 seconds (Warm-up)
+Chain 2:                0.276 seconds (Sampling)
+Chain 2:                0.982 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
@@ -1178,15 +1178,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.844 seconds (Warm-up)
-Chain 3:                0.301 seconds (Sampling)
-Chain 3:                1.145 seconds (Total)
+Chain 3:  Elapsed Time: 0.572 seconds (Warm-up)
+Chain 3:                0.29 seconds (Sampling)
+Chain 3:                0.862 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2.9e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.29 seconds.
+Chain 4: Gradient evaluation took 2.8e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -1203,9 +1203,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.419 seconds (Warm-up)
-Chain 4:                0.268 seconds (Sampling)
-Chain 4:                0.687 seconds (Total)
+Chain 4:  Elapsed Time: 0.646 seconds (Warm-up)
+Chain 4:                0.302 seconds (Sampling)
+Chain 4:                0.948 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1216,19 +1216,19 @@ Formula: PV1SCIE ~ PV1MATH + PV1READ
 
 Population-Level Effects: 
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    25.68      2.19    21.25    29.92 1.00     5368     3131
-PV1MATH       0.71      0.01     0.70     0.73 1.00     2453     2557
-PV1READ       0.25      0.01     0.24     0.26 1.00     2395     2734
+Intercept    25.71      2.32    21.33    30.38 1.00     4967     3139
+PV1MATH       0.71      0.01     0.70     0.73 1.00     2238     2220
+PV1READ       0.25      0.01     0.24     0.26 1.00     2380     2230
 
 Family Specific Parameters: 
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    48.20      0.31    47.61    48.80 1.00     3368     2726
+sigma    48.19      0.30    47.63    48.76 1.01     3321     2445
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5     Q97.5
-R2 0.7774547 0.001596552 0.7743199 0.7806447</code></pre>
+    Estimate   Est.Error     Q2.5     Q97.5
+R2 0.7774386 0.001690778 0.774022 0.7806125</code></pre>
 </div>
 </div>
 </section>
@@ -1276,19 +1276,19 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="1" data-code-lines="4">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-10">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="2" data-code-lines="12">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
+<span data-code-lines="12" data-code-annotation="2" data-code-cell="annotated-cell-10">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="3" data-code-lines="16">Select only the Bayes factor, and covert to a data frame for sort</span>
+<span data-code-lines="16" data-code-annotation="3" data-code-cell="annotated-cell-10">Select only the Bayes factor, and covert to a data frame for sort</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="4" data-code-lines="20">Sort the output in descending order of Bayes Factor and print the output</span>
+<span data-code-lines="20" data-code-annotation="4" data-code-cell="annotated-cell-10">Sort the output in descending order of Bayes Factor and print the output</span>
 </dd>
 </dl>
 </div>
@@ -1304,17 +1304,17 @@ PV1MATH + ESCS                     7525.691 3.476922e-06
 PV1MATH                            7497.489 8.858089e-05
 PV1READ + HOMEPOS + ESCS           5254.970 6.513346e-06
 PV1READ + ESCS                     5242.466 3.000504e-06
-                                                       time       code
-PV1MATH + PV1READ + HOMEPOS        Wed Apr 10 09:43:51 2024 c83049741a
-PV1MATH + PV1READ + HOMEPOS + ESCS Wed Apr 10 09:43:51 2024 c86e05d954
-PV1MATH + PV1READ + ESCS           Wed Apr 10 09:43:51 2024 c826656fba
-PV1MATH + PV1READ                  Wed Apr 10 09:43:51 2024 c8405a3f97
-PV1MATH + HOMEPOS                  Wed Apr 10 09:43:51 2024 c86504f382
-PV1MATH + HOMEPOS + ESCS           Wed Apr 10 09:43:51 2024 c84d8a3007
-PV1MATH + ESCS                     Wed Apr 10 09:43:51 2024 c8280f0f9e
-PV1MATH                            Wed Apr 10 09:43:51 2024 c85f190e41
-PV1READ + HOMEPOS + ESCS           Wed Apr 10 09:43:51 2024 c82b574356
-PV1READ + ESCS                     Wed Apr 10 09:43:51 2024 c813106d52
+                                                       time         code
+PV1MATH + PV1READ + HOMEPOS        Wed Apr 24 11:22:03 2024  1c40bb02b80
+PV1MATH + PV1READ + HOMEPOS + ESCS Wed Apr 24 11:22:03 2024 1c4073cd7eef
+PV1MATH + PV1READ + ESCS           Wed Apr 24 11:22:03 2024 1c405af7e67e
+PV1MATH + PV1READ                  Wed Apr 24 11:22:03 2024 1c402c10cecd
+PV1MATH + HOMEPOS                  Wed Apr 24 11:22:03 2024  1c403790b55
+PV1MATH + HOMEPOS + ESCS           Wed Apr 24 11:22:03 2024 1c40493d88da
+PV1MATH + ESCS                     Wed Apr 24 11:22:03 2024 1c407fd6fb3a
+PV1MATH                            Wed Apr 24 11:22:03 2024 1c402ab9f480
+PV1READ + HOMEPOS + ESCS           Wed Apr 24 11:22:03 2024 1c4066e3c5c6
+PV1READ + ESCS                     Wed Apr 24 11:22:03 2024 1c40419a7b4b
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 </div>
 </div>
@@ -1329,23 +1329,23 @@ PV1READ + ESCS                     Wed Apr 10 09:43:51 2024 c813106d52
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="1" data-code-lines="1">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-11">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="2" data-code-lines="2">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
+<span data-code-lines="2" data-code-annotation="2" data-code-cell="annotated-cell-11">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="3" data-code-lines="3">line 3 Plot a column graph</span>
+<span data-code-lines="3" data-code-annotation="3" data-code-cell="annotated-cell-11">line 3 Plot a column graph</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="4" data-code-lines="4">line 4 Rotate the axis text</span>
+<span data-code-lines="4" data-code-annotation="4" data-code-cell="annotated-cell-11">line 4 Rotate the axis text</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-annotation="5" data-code-lines="5">line 5 Set the axis labels</span>
+<span data-code-lines="5" data-code-annotation="5" data-code-cell="annotated-cell-11">line 5 Set the axis labels</span>
 </dd>
 </dl>
 </div>
@@ -1360,9 +1360,9 @@ PV1READ + ESCS                     Wed Apr 10 09:43:51 2024 c813106d52
 <section id="task-1-bayesian-chi-square" class="level3" data-number="0.3.1">
 <h3 data-number="0.3.1" class="anchored" data-anchor-id="task-1-bayesian-chi-square"><span class="header-section-number">0.3.1</span> Task 1 Bayesian Chi Square</h3>
 <div class="question">
-<p>Use a Bayesian chi square test to determine: a) In the PISA 2018 data, determine if there are statistically significant differences for boys and girls for ST011Q03TA (In your home: A quiet place to study)</p>
+<p>Use a Bayesian chi square test to determine: a) In the PISA 2022 data for the UK, determine if there are statistically significant differences for boys and girls for ST250Q01JA (“Which of the following are in your [home]: A room of your own” [Yes/No])</p>
 <ol start="2" type="a">
-<li>For the UK, US, France and Germany, determine if they are statistically significant differences in ST250Q02JA In your home: A computer (laptop, desktop, or tablet) that you can use for school work</li>
+<li>Determine if they are statistically significant differences in ST250Q02JA In your home: A computer (laptop, desktop, or tablet) that you can use for school work between the UK and the US</li>
 </ol>
 </div>
 <p>::: callout hint</p>
@@ -1419,14 +1419,14 @@ CNT                Yes    No
 <div class="cell">
 <details>
 <summary>Answer A</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Create a dataframe for having a computer</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, ST250Q02JA) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Create a dataframe for having a room of their own the UK</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>Room <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">select</span>(CNT, ST004D01T, ST250Q01JA) <span class="sc">%&gt;%</span></span>
 <span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">droplevels</span>()</span>
 <span id="cb19-6"><a href="#cb19-6"></a></span>
 <span id="cb19-7"><a href="#cb19-7"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> ST004D01T <span class="sc">+</span> ST250Q02JA)</span>
+<span id="cb19-8"><a href="#cb19-8"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Room, <span class="sc">~</span> ST004D01T <span class="sc">+</span> ST250Q01JA)</span>
 <span id="cb19-9"><a href="#cb19-9"></a></span>
 <span id="cb19-10"><a href="#cb19-10"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
 <span id="cb19-11"><a href="#cb19-11"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1434,7 +1434,7 @@ CNT                Yes    No
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
-[1] Non-indep. (a=1) : 4642.279 ±0%
+[1] Non-indep. (a=1) : 115.63 ±0%
 
 Against denominator:
   Null, independence, a = 1 
@@ -1443,7 +1443,7 @@ Bayes factor type: BFcontingencyTable, joint multinomial</code></pre>
 </div>
 <details>
 <summary>Answer A</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Returns a base factor of 4642.279 -  likely there is a difference by gender in having a computer</span></span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Returns a base factor of 115 -   there is a 'decisive' difference by gender in having a computer</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
 <span id="cb21-4"><a href="#cb21-4"></a></span>
@@ -1454,38 +1454,37 @@ Bayes factor type: BFcontingencyTable, joint multinomial</code></pre>
     Pearson's Chi-squared test with Yates' continuity correction
 
 data:  conttab
-X-squared = 24.515, df = 1, p-value = 7.374e-07</code></pre>
+X-squared = 17.041, df = 1, p-value = 3.658e-05</code></pre>
 </div>
 <details>
 <summary>Answer A</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># p-value = 5.017e-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># p-value = 3.658e-05-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Answer B</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Create a data frame for having a computer in the UK, US, France and Germany</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># Drop levels of uneeded countries</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Create a data frame for having a computer in the UK and the US</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># Drop levels of unneeded countries</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a></span>
 <span id="cb24-4"><a href="#cb24-4"></a>Comp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
 <span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">select</span>(CNT, ST250Q02JA) <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT<span class="sc">==</span><span class="st">"United States"</span> <span class="sc">|</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>         CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-8"><a href="#cb24-8"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb24-9"><a href="#cb24-9"></a></span>
-<span id="cb24-10"><a href="#cb24-10"></a><span class="co"># Create a contingency table</span></span>
-<span id="cb24-11"><a href="#cb24-11"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
-<span id="cb24-12"><a href="#cb24-12"></a></span>
-<span id="cb24-13"><a href="#cb24-13"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
-<span id="cb24-14"><a href="#cb24-14"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span>
-<span id="cb24-15"><a href="#cb24-15"></a></span>
-<span id="cb24-16"><a href="#cb24-16"></a><span class="co"># Returns a base factor of 1.310056 -  likely there is a difference by country in having a computer</span></span>
-<span id="cb24-17"><a href="#cb24-17"></a></span>
-<span id="cb24-18"><a href="#cb24-18"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
-<span id="cb24-19"><a href="#cb24-19"></a></span>
-<span id="cb24-20"><a href="#cb24-20"></a><span class="fu">chisq.test</span>(conttab)</span>
-<span id="cb24-21"><a href="#cb24-21"></a></span>
-<span id="cb24-22"><a href="#cb24-22"></a><span class="co"># p-value = 5.017e-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb24-8"><a href="#cb24-8"></a></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>conttab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> Comp, <span class="sc">~</span> CNT <span class="sc">+</span> ST250Q02JA)</span>
+<span id="cb24-11"><a href="#cb24-11"></a></span>
+<span id="cb24-12"><a href="#cb24-12"></a><span class="co"># Perform the Bayesian chi-square test</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a><span class="fu">contingencyTableBF</span>(conttab, <span class="at">sampleType =</span> <span class="st">"jointMulti"</span>)</span>
+<span id="cb24-14"><a href="#cb24-14"></a></span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="co"># Returns a base factor of 0.01439028 -  likely there are no differences between the UK and US</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a></span>
+<span id="cb24-17"><a href="#cb24-17"></a><span class="co"># Compare to frequentist Chi squares test test</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a></span>
+<span id="cb24-19"><a href="#cb24-19"></a><span class="fu">chisq.test</span>(conttab)</span>
+<span id="cb24-20"><a href="#cb24-20"></a></span>
+<span id="cb24-21"><a href="#cb24-21"></a><span class="co"># p-value = 0.6575, more than 0.05 so assume the null hypothesis of no difference in computer ownership between the US and UK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
