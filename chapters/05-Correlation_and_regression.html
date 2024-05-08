@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>DOCTR - Correlation and regression</title>
 <style>
@@ -19,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -55,6 +55,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -93,7 +94,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -102,6 +109,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -111,32 +119,32 @@ div.csl-indent {
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a href="index.qmd" class="navbar-brand navbar-brand-logo">
     <img src="../images/KCL_logo.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">DOCTR</span>
     </a>
   </div>
-        <div class="quarto-navbar-tools ms-auto">
+        <div class="quarto-navbar-tools tools-end">
 </div>
           <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-Correlation_and_regression.html">Correlation and regression</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-Correlation_and_regression.html">Correlation and regression</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
@@ -291,7 +299,7 @@ div.csl-indent {
 </li>
     </ul>
 </div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
@@ -364,6 +372,7 @@ div.csl-indent {
   </div>
   
 
+
 </header><!-- Correlation 
 https://docs.google.com/presentation/d/1QlXhCOaFMRyg8IJ2JczKkpjx26eS9BRi/edit#slide=id.p1--><!-- Correlation 
 https://docs.google.com/presentation/d/1QlXhCOaFMRyg8IJ2JczKkpjx26eS9BRi/edit#slide=id.p1
@@ -385,7 +394,7 @@ https://docs.google.com/presentation/d/1QlXhCOaFMRyg8IJ2JczKkpjx26eS9BRi/edit#sl
 <span class="header-section-number">3</span> Correlation</h1>
 <p>Correlation gives the direction and strength of the relationship between two numeric variables. For example we might see a relationship between the reading level of a student and their maths results in the UK: the better a student is at reading, typically, the higher their maths grade. Correlation allows us to describe this relation statistically:</p>
 <div class="cell">
-<details><summary>code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>corr_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<details class="code-fold"><summary>code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>corr_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
 <span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">select</span>(PV1MATH, PV1READ, ST004D01T)</span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
@@ -398,7 +407,10 @@ https://docs.google.com/presentation/d/1QlXhCOaFMRyg8IJ2JczKkpjx26eS9BRi/edit#sl
 <span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">geom_text</span>(<span class="at">label=</span><span class="fu">paste</span>(<span class="st">"r = "</span>, corr_est), <span class="fu">aes</span>(<span class="at">x=</span><span class="dv">700</span>,<span class="at">y=</span><span class="sc">-</span><span class="fl">4.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The graph above shows that there is a correlation between Maths score and Reading score. This relationship is a <em>positive</em> one, i.e.&nbsp;as the reading level of an individual increases the maths grade is also likely to increase. The strength, <em>correlation coefficient</em> (<code>Pearson's r</code>) of the relationship between these two numeric fields is 0.7974. The correlation coefficient runs from -1 to +1.</p>
@@ -409,7 +421,10 @@ https://docs.google.com/presentation/d/1QlXhCOaFMRyg8IJ2JczKkpjx26eS9BRi/edit#sl
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To run the correlation test in R we use the <code>cor.test</code> function:</p>
@@ -475,7 +490,10 @@ Note
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(sub_data) <span class="sc">+</span> </span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>ICTEFFIC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The data doesn’t look very normal.</p>
@@ -512,7 +530,10 @@ sample estimates:
 <p>You also need to expect a linear relationship between the two variables. For example, if you were to plot the data and it looked like a curve, you might want to use a different test. You can use the <code>ggplot</code> function to plot the data and see if it looks linear. The graph below suggests that the data isn’t linearly related.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The data should be of paired observations. If you have missing data in one of the variables you should remove the missing data from the other variable.</p>
@@ -589,7 +610,7 @@ sample estimates:
 <code>PV1MATH</code> to <code>PV1SCIE</code>, is this a stronger relationship than that between Maths and Reading? Why might they be different?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">cor.test</span>(PISA_2022<span class="sc">$</span>PV1MATH, PISA_2022<span class="sc">$</span>PV1SCIE, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">cor.test</span>(PISA_2022<span class="sc">$</span>PV1MATH, PISA_2022<span class="sc">$</span>PV1SCIE, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="co">#&gt; cor 0.8888601</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a></span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="fu">cor.test</span>(PISA_2022<span class="sc">$</span>PV1MATH, PISA_2022<span class="sc">$</span>PV1READ, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
@@ -602,7 +623,7 @@ sample estimates:
 <li>How does the correlation of wealth <code>HOMEPOS</code> of females <code>ST004D01T</code> and their Reading <code>PV1READ</code> scores compare to males? Why might they be different?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Female"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>HOMEPOS, data<span class="sc">$</span>PV1READ, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt; 0.4972371 </span></span>
 <span id="cb11-4"><a href="#cb11-4"></a></span>
@@ -615,7 +636,7 @@ sample estimates:
 <li>How does life satisfaction <code>ST016Q01NA</code> correlate with the science score of students?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">cor.test</span>(PISA_2022<span class="sc">$</span>ST016Q01NA, PISA_2022<span class="sc">$</span>PV1SCIE, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">cor.test</span>(PISA_2022<span class="sc">$</span>ST016Q01NA, PISA_2022<span class="sc">$</span>PV1SCIE, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co">#&gt; -0.06439345</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -623,7 +644,7 @@ sample estimates:
 <li>How does parental involvement in education <code>PARINVOL</code> correlate with reading outcomes for students in Germany (<strong>HINT:</strong> you might want to check the normality of this data!):</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>mdl_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>mdl_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PARINVOL),</span>
 <span id="cb13-4"><a href="#cb13-4"></a>         CNT <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">%&gt;%</span></span>
@@ -656,7 +677,7 @@ sample estimates:
 <li>Using the <em>full</em> PISA data set, for the <code>United Kingdom</code> How does the sense of belonging to school <code>BELONG</code> correlate with the item that measures bullying <code>BULLIED</code>? How does the UK compare against other countries?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>BELONG, data<span class="sc">$</span>BULLIED, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co">#&gt; -0.3797393</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -738,7 +759,7 @@ Tip
 <p>The model used is a <strong>linear</strong> one, therefore, we describe the relationship using the equation of a straight line. In linear regression, with one dependent and one independent variable, we use the <em>Method of Least Squares</em> to find the line of best fit. The means finding a straight line that passes as close as possible to all the points. The distance between a point and this line is called a <em>residual</em>. The line of best fit is the line where the sum of the residuals squared is the smallest number possible.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/method_of_least_squares.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Method of Least Squares</figcaption></figure>
+<figcaption>Method of Least Squares</figcaption></figure>
 </div>
 <p>The line that is created can be described by the equation:</p>
 <p><code>Output = Intercept + Coefficient * Input</code> <!--F-statistic = a measure of the ratio of the variation explained by the model and the variation attributable to unsystematic factors (the error of the model).--></p>
@@ -782,7 +803,7 @@ F-statistic: 1.372e+06 on 1 and 613742 DF,  p-value: &lt; 2.2e-16</code></pre>
 <!--Effect size measurements include Cohen's d, Glass' g and Pearson's r--><p>Imagine we take two experiments a) and b)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/effectsize.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">(a) larger effect-size; (b) smaller effect-size from <span class="citation" data-cites="coe2002s">Coe (<a href="#ref-coe2002s" role="doc-biblioref">2002</a>)</span></figcaption></figure>
+<figcaption>(a) larger effect-size; (b) smaller effect-size from <span class="citation" data-cites="coe2002s">Coe (<a href="#ref-coe2002s" role="doc-biblioref">2002</a>)</span></figcaption></figure>
 </div>
 <p>Both have statistically significant results, but it’s clear that the impact of the intervention in graph a) is larger as there is less overlap between the curves, i.e.&nbsp;there is more difference between the the outcomes.</p>
 <blockquote class="blockquote">
@@ -824,7 +845,7 @@ F-statistic: 1.372e+06 on 1 and 613742 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>Run a regression model to look at how science grades predict Maths outcomes in UK students. How does this compare to students in France?</p></li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MATH <span class="sc">~</span> PV1SCIE, </span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MATH <span class="sc">~</span> PV1SCIE, </span>
 <span id="cb18-2"><a href="#cb18-2"></a>          <span class="at">data=</span>PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>))</span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="co">#&gt; Estimate = 0.80789</span></span>
@@ -845,7 +866,7 @@ F-statistic: 1.372e+06 on 1 and 613742 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Create a linear model to look at how wealth <code>HOMEPOS</code> influences Maths grades in the United Kingdom and Germany. If we use the Education Endowment Foundation’s interpretation of effect sizes <span class="citation" data-cites="higgins2016sutton">(<a href="#ref-higgins2016sutton" role="doc-biblioref">Higgins et al. 2016, 4</a>)</span> what is the impact of increasing the wealth of students in each country?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MATH <span class="sc">~</span> HOMEPOS, </span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MATH <span class="sc">~</span> HOMEPOS, </span>
 <span id="cb19-2"><a href="#cb19-2"></a>          <span class="at">data=</span>PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>))</span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb19-4"><a href="#cb19-4"></a><span class="co">#&gt; Estimate = 37.1658</span></span>
@@ -894,7 +915,7 @@ Multiple R-squared:  0.7062,    Adjusted R-squared:  0.7062
 F-statistic: 7.375e+05 on 2 and 613662 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Both independent variables are significant (<code>p&lt;0.001</code>), and the <em>R<sup>2</sup></em> of the model is high at <code>0.7062</code>, this model explains 71% of the variance in Maths grade. Looking at the Estimates, we see both independent variables presented, this means we can read them as if the other factor has been <em>controlled</em> for; e.g.&nbsp;what is the impact of reading score if the impact of gender has been taken into consideration. <code>PV1READ</code> is <code>0.786</code>, meaning for an increase of 1 in this score, the <code>PV1MATH</code> grade would increase by <code>0.786</code>. Gender is different, this is a <em>nominal</em> field, being either Male or Female, and <code>genderMale</code> is shown in the coefficients table. This means that the model has taken <code>gender == Female</code> as the base state, and modeled what happens if the gender were to change to Male. Interestingly, it suggests that when controlling for the reading grade, e.g.&nbsp;comparing females and males of the same reading score, males would do <code>25.28</code> points better in their <code>PV1MATH</code> grade than females(!). We’ll be exploring these gender differences a little further in section <a href="#sec-Stoet-Geary">Section&nbsp;8.2</a>.</p>
+<p>Both independent variables are significant (<code>p&lt;0.001</code>), and the <em>R<sup>2</sup></em> of the model is high at <code>0.7062</code>, this model explains 71% of the variance in Maths grade. Looking at the Estimates, we see both independent variables presented, this means we can read them as if the other factor has been <em>controlled</em> for; e.g.&nbsp;what is the impact of reading score if the impact of gender has been taken into consideration. <code>PV1READ</code> is <code>0.786</code>, meaning for an increase of 1 in this score, the <code>PV1MATH</code> grade would increase by <code>0.786</code>. Gender is different, this is a <em>nominal</em> field, being either Male or Female, and <code>genderMale</code> is shown in the coefficients table. This means that the model has taken <code>gender == Female</code> as the base state, and modeled what happens if the gender were to change to Male. Interestingly, it suggests that when controlling for the reading grade, e.g.&nbsp;comparing females and males of the same reading score, males would do <code>25.28</code> points better in their <code>PV1MATH</code> grade than females(!). We’ll be exploring these gender differences a little further in section <a href="#sec-Stoet-Geary" class="quarto-xref">Section&nbsp;8.2</a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -931,7 +952,7 @@ Tip
 <p>Like the other statistical models you have met so far, linear regression has a number of assumptions that need to be met for the model to be valid. These are:</p>
 <ul>
 <li>
-<strong>Independence</strong>: The residuals should be independent of each other, i.e.&nbsp;the residuals from one observation should not predict the residuals from another observation, there shouldn’t be patterns in the residuals. We can test the independence of the residuals using the <em>Durbin Watson</em> test from the <code>{{car}}</code> package. Where p-values of &lt; 0.05 indicate that the residuals are <em>not</em> independent.</li>
+<strong>Independence</strong>: The residuals should be independent of each other, i.e.&nbsp;the residuals from one observation should not predict the residuals from another observation, there shouldn’t be patterns in the residuals. We can test the independence of the residuals using the <em>Durbin Watson</em> test from the <a href="https://r-forge.r-project.org/projects/car/">car</a> package. Where p-values of &lt; 0.05 indicate that the residuals are <em>not</em> independent.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(car)</span>
@@ -947,7 +968,7 @@ Tip
 <p>In this test, we can see that the p-value is &gt; 0.05 meaning we can assume that the residuals <em>are</em> independent.</p>
 <ul>
 <li>
-<strong>No multicollinearity</strong>: The independent variables should not be correlated with each other, e.g.&nbsp;having PV1MATH and PV1SCIE in a model, which are highly correlated, might make it difficult to work out which of the scores is having the impact. You might be able to alleviate this issue by creating a composite variable: <code>composite_score = (PV1MATH + PV1SCIE) / 2</code> and using this in your model instead. <span class="citation" data-cites="field2012discovering">Field, Field, and Miles (<a href="#ref-field2012discovering" role="doc-biblioref">2012</a>)</span> suggest that if the correlation between two variables is “above 0.80 or 0.90” (p.276), then you might have a problem with multicollinearity, the actual correlation between these two fields is 0.89. More advanced checks can use the <code>vif()</code> function from the <code>{{car}}</code> package to check for multicollinearity. This function will calculate the <em>Variance Inflation Factor</em> (VIF) for each variable in the model. A VIF of 1 means that the variable is not correlated with any other variables, and a VIF of 5 or more means that the variable is highly correlated with other variables.(ibid. p293)</li>
+<strong>No multicollinearity</strong>: The independent variables should not be correlated with each other, e.g.&nbsp;having PV1MATH and PV1SCIE in a model, which are highly correlated, might make it difficult to work out which of the scores is having the impact. You might be able to alleviate this issue by creating a composite variable: <code>composite_score = (PV1MATH + PV1SCIE) / 2</code> and using this in your model instead. <span class="citation" data-cites="field2012discovering">Field, Field, and Miles (<a href="#ref-field2012discovering" role="doc-biblioref">2012</a>)</span> suggest that if the correlation between two variables is “above 0.80 or 0.90” (p.276), then you might have a problem with multicollinearity, the actual correlation between these two fields is 0.89. More advanced checks can use the <code>vif()</code> function from the <a href="https://r-forge.r-project.org/projects/car/">car</a> package to check for multicollinearity. This function will calculate the <em>Variance Inflation Factor</em> (VIF) for each variable in the model. A VIF of 1 means that the variable is not correlated with any other variables, and a VIF of 5 or more means that the variable is highly correlated with other variables.(ibid. p293)</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(car)</span>
@@ -971,13 +992,16 @@ Tip
 <span id="cb28-4"><a href="#cb28-4"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb28-5"><a href="#cb28-5"></a><span class="fu">plot</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>There is some deviation from the red line in the Q-Q Residuals plot, but the residuals are close to the line within the x-axis <code>[-2,2]</code> range and we can assume the data is normally distributed with some confidence.</p>
 <ul>
 <li>
-<strong>Homoscedasticity</strong>: The residuals (the difference between the observed and predicted values) should be equal across all values of the independent variables. This means that the variance of the residuals should be constant. You can use <code>ols_plot_resid_fit</code> from the <code>{{olsrr}}</code> package to check for the normality and homoscedasticity of the model. The data points should be spread randomly, with no funneling from one end to another:</li>
+<strong>Homoscedasticity</strong>: The residuals (the difference between the observed and predicted values) should be equal across all values of the independent variables. This means that the variance of the residuals should be constant. You can use <code>ols_plot_resid_fit</code> from the <a href="https://olsrr.rsquaredacademy.com/">olsrr</a> package to check for the normality and homoscedasticity of the model. The data points should be spread randomly, with no funneling from one end to another:</li>
 </ul>
 <!-- from: https://bookdown.org/jimr1603/Intermediate_R_-_R_for_Survey_Analysis/testing-regression-assumptions.html 
 
@@ -1011,10 +1035,13 @@ length(stud_resids)
 <span id="cb29-4"><a href="#cb29-4"></a></span>
 <span id="cb29-5"><a href="#cb29-5"></a><span class="fu">ols_plot_resid_fit</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
 </div>
 </div>
-<p>These plots looks good for a random distribution of residuals, but we can add to our analysis by using the <em>Breusch-Pagan</em> test - <code>ols_test_breusch_pagan()</code> in the <code>{{olsrr}}</code> package:</p>
+</div>
+<p>These plots looks good for a random distribution of residuals, but we can add to our analysis by using the <em>Breusch-Pagan</em> test - <code>ols_test_breusch_pagan()</code> in the <a href="https://olsrr.rsquaredacademy.com/">olsrr</a> package:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1038,11 +1065,13 @@ length(stud_resids)
 <p>The result here of p&lt;0.05 suggests that there is a degree of <em>heteroscedasticity</em> in the model, for example, we might find that students with high reading scores do relatively badly at maths, when compared to those with lower reading scores, this looks marginally true:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>However, the <em>Breusch-Pagan</em> test does appear to be at odds with the graphs above and it is the case that with large data sets (PISA is huge) many of these model significance tests can overstate the issue, i.e.&nbsp;they report significance when the actual actual effect on the model is very small. A good way of thinking about this is the story of <em>The Princess and the Pea</em>, however many mattresses were placed underneath the princess, she could still feel the pea at the bottom of the pile of mattresses. For everyone else the pea wasn’t important at all, when they saw how many mattresses there were <span class="citation" data-cites="dave2023cv">(<a href="#ref-dave2023cv" role="doc-biblioref">(https://stats.stackexchange.com/users/247274/dave), n.d.</a>)</span>. The mattresses are our data samples, and the princess is our <em>Breusch-Pagan</em> test complaining about something that actually isn’t that important given the large data set we are using. The graphs look fine and we can assume that homoscedasticity is not a problem in our model. Good graphs can often overrule the output of model tests if the data is large enough <span class="citation" data-cites="schmidt2018linear">(<a href="#ref-schmidt2018linear" role="doc-biblioref">Schmidt and Finan 2018</a>)</span>.</p>
-
 <!--
 
 ::: {.cell}
@@ -1120,7 +1149,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>To find out more about the assumptions when using linear models, please see <span class="citation" data-cites="field2012discovering">Field, Field, and Miles (<a href="#ref-field2012discovering" role="doc-biblioref">2012</a>)</span> and a great <a href="https://sscc.wisc.edu/sscc/pubs/RegDiag-R/index.html">book</a> by the University of Wisconsin</p>
-<p>You might also want to utilise the <code>{{easystats}}</code> package which will help you check the assumptions of your model using the <code>check_model()</code> command</p>
+<p>You might also want to utilise the <a href="https://easystats.github.io/easystats/">easystats</a> package which will help you check the assumptions of your model using the <code>check_model()</code> command</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb31-2"><a href="#cb31-2"></a></span>
@@ -1129,12 +1158,14 @@ Tip
 <span id="cb31-5"><a href="#cb31-5"></a></span>
 <span id="cb31-6"><a href="#cb31-6"></a><span class="fu">check_model</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
 </div>
 </div>
 </div>
 </div>
-
+</div>
 <!--
 R has a package to help you check the validity of your models: _{{gvlma}}_ Global Validation of Linear Models Assumptions. This package will check the assumptions of the model, such as the normality of the residuals, the linearity of the model, and the homoscedasticity of the residuals. To use this package, you need to install it first, then run the `gvlma()` function on your model:
 
@@ -1305,7 +1336,7 @@ F-statistic: 794.8 on 2 and 517070 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># The model is significant, p &lt; 0.001, but the overall model has a very </span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># The model is significant, p &lt; 0.001, but the overall model has a very </span></span>
 <span id="cb38-2"><a href="#cb38-2"></a><span class="co"># small/insignificant effect size, R2 = 0.003, meaning the model explains </span></span>
 <span id="cb38-3"><a href="#cb38-3"></a><span class="co"># very little of the variance in maths scores. The estimate for ST016Q01NA </span></span>
 <span id="cb38-4"><a href="#cb38-4"></a><span class="co"># statistically significant with an estimate of -1.8, meaning for every </span></span>
@@ -1318,7 +1349,7 @@ F-statistic: 794.8 on 2 and 517070 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Create a multivariate analysis to look at the impact of gender <code>ST004D01T</code> and parental involvement <code>PARINVOL</code> on reading scores. What is wrong with this model, how could you improve this model?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1READ <span class="sc">~</span> ST004D01T <span class="sc">+</span> PARINVOL, <span class="at">data =</span> PISA_2022)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1READ <span class="sc">~</span> ST004D01T <span class="sc">+</span> PARINVOL, <span class="at">data =</span> PISA_2022)</span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb39-3"><a href="#cb39-3"></a></span>
 <span id="cb39-4"><a href="#cb39-4"></a><span class="co"># the R2 is very low, you could try adding more variables to the model</span></span>
@@ -1360,7 +1391,7 @@ F-statistic: 78.06 on 3 and 6554 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">library</span>(car)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb42-2"><a href="#cb42-2"></a><span class="fu">library</span>(olsrr)</span>
 <span id="cb42-3"><a href="#cb42-3"></a></span>
 <span id="cb42-4"><a href="#cb42-4"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> other_grades <span class="sc">+</span> ST004D01T <span class="sc">+</span> ESCS, </span>
@@ -1438,14 +1469,14 @@ Number of Fisher Scoring iterations: 6</code></pre>
 </div>
 </div>
 <p>We can see that Male students are significantly more likely to be in the top 5% for maths scores when you control for the wealth of the student, increasing the log odds by 0.41 units. The wealth of the student is also significant in predicting whether a student is in the top 5% of maths scores, with one standard deviation change<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in wealth resulting a log odds increase of 0.95 units.</p>
-<p>You can also use the odds ratios, which some people find easier to interpret, by setting the <code>exponentiate</code> parameter to <code>TRUE</code> in the <code>tbl_regression</code> command from the <code>{{gtsummary}}</code> package:</p>
+<p>You can also use the odds ratios, which some people find easier to interpret, by setting the <code>exponentiate</code> parameter to <code>TRUE</code> in the <code>tbl_regression</code> command from the <a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a> package:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">library</span>(gtsummary)</span>
 <span id="cb45-2"><a href="#cb45-2"></a><span class="fu">glm</span>(top_5_per <span class="sc">~</span> gender <span class="sc">+</span> z_ESCS , </span>
 <span id="cb45-3"><a href="#cb45-3"></a>    <span class="at">data =</span> PISA_2022_top_5, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb45-4"><a href="#cb45-4"></a>  <span class="fu">tbl_regression</span>(<span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
+<div>
 <div id="yayvdcjkoa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#yayvdcjkoa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1886,48 +1917,55 @@ Number of Fisher Scoring iterations: 6</code></pre>
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead><tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>OR</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>">
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead><tr class="header gt_col_headings">
+<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="<strong>OR</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
 <strong>OR</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span>
 </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>95% CI</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>">
+<th id="<strong>95% CI</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">
 <strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span>
 </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong>"><strong>p-value</strong></th>
-    </tr></thead>
+<th id="<strong>p-value</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong></th>
+</tr></thead>
 <tbody class="gt_table_body">
-<tr>
-<td headers="label" class="gt_row gt_left">gender</td>
-<td headers="estimate" class="gt_row gt_center"><br></td>
-<td headers="ci" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center"><br></td>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">gender</td>
+<td class="gt_row gt_center" headers="estimate"><br></td>
+<td class="gt_row gt_center" headers="ci"><br></td>
+<td class="gt_row gt_center" headers="p.value"><br></td>
 </tr>
-<tr>
-<td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Female</td>
-<td headers="estimate" class="gt_row gt_center">—</td>
-<td headers="ci" class="gt_row gt_center">—</td>
-<td headers="p.value" class="gt_row gt_center"><br></td>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Female</td>
+<td class="gt_row gt_center" headers="estimate">—</td>
+<td class="gt_row gt_center" headers="ci">—</td>
+<td class="gt_row gt_center" headers="p.value"><br></td>
 </tr>
-<tr>
-<td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Male</td>
-<td headers="estimate" class="gt_row gt_center">1.51</td>
-<td headers="ci" class="gt_row gt_center">1.27, 1.79</td>
-<td headers="p.value" class="gt_row gt_center"></td>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Male</td>
+<td class="gt_row gt_center" headers="estimate">1.51</td>
+<td class="gt_row gt_center" headers="ci">1.27, 1.79</td>
+<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
 </tr>
-<tr>
-<td headers="label" class="gt_row gt_left">z_ESCS</td>
-<td headers="estimate" class="gt_row gt_center">2.59</td>
-<td headers="ci" class="gt_row gt_center">2.33, 2.88</td>
-<td headers="p.value" class="gt_row gt_center"></td>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">z_ESCS</td>
+<td class="gt_row gt_center" headers="estimate">2.59</td>
+<td class="gt_row gt_center" headers="ci">2.33, 2.88</td>
+<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
 </tr>
 </tbody>
-<tfoot class="gt_footnotes"><tr>
-<td class="gt_footnote" colspan="4">
+<tfoot class="gt_footnotes"><tr class="odd">
+<td colspan="4" class="gt_footnote">
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> OR = Odds Ratio, CI = Confidence Interval</td>
-    </tr></tfoot>
+</tr></tfoot>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -1943,7 +1981,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <li>
 <strong>No-Multicollinearity</strong> - The independent variables should not be correlated with each other</li>
 </ul>
-<p>We can test these using a number of methods, for example, we can use the <code>vif()</code> function from the <code>{{car}}</code> package to check for multicollinearity, the <code>hltest()</code> from <code>{{glmtoolbox}}</code> package to test for Linearity (note that large datasets might result in low p-values) and the <code>check_model</code> plots from the <code>{{easystats}}</code> package. For example</p>
+<p>We can test these using a number of methods, for example, we can use the <code>vif()</code> function from the <a href="https://r-forge.r-project.org/projects/car/">car</a> package to check for multicollinearity, the <code>hltest()</code> from <a href="https://mlgs.netlify.app/">glmtoolbox</a> package to test for Linearity (note that large datasets might result in low p-values) and the <code>check_model</code> plots from the <a href="https://easystats.github.io/easystats/">easystats</a> package. For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">library</span>(easystats)</span>
 <span id="cb46-2"><a href="#cb46-2"></a><span class="fu">library</span>(glmtoolbox)</span>
@@ -1974,7 +2012,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <li>What are <em>Spearman’s Rho</em> and <em>Pearson’s r</em>? When might you use one rather than the other?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co">#&gt; When the data you use has outliers or is not </span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co">#&gt; When the data you use has outliers or is not </span></span>
 <span id="cb47-2"><a href="#cb47-2"></a><span class="co">#&gt; normally distributed (non-parametric) you should use Spearman's Rho</span></span>
 <span id="cb47-3"><a href="#cb47-3"></a><span class="co">#&gt; you can test this by checking that shapiro.test p &gt;0.05</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1989,7 +2027,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <li>A country is trying to find out whether girls or boys are better behaved in schools. They have access to school databases that record the number of bad behaviour slips for each student.</li>
 </ul>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># The government is trying to understand which groups of people have been affected by a pandemic. They have data on healthcare professionals, education professionals and train drivers and the number of days taken off ill in the last 6 months.</span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># The government is trying to understand which groups of people have been affected by a pandemic. They have data on healthcare professionals, education professionals and train drivers and the number of days taken off ill in the last 6 months.</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a><span class="co">#&gt; Dependendent: days off ill</span></span>
 <span id="cb48-3"><a href="#cb48-3"></a><span class="co">#&gt; Independent: job role</span></span>
 <span id="cb48-4"><a href="#cb48-4"></a><span class="co">#&gt; Suggested model: ANOVA to check if there are differences between jobs</span></span>
@@ -2030,7 +2068,7 @@ sample estimates:
 </div>
 </div>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co">#&gt; The Index of economic, social and cultural status `ESCS` is strongly</span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co">#&gt; The Index of economic, social and cultural status `ESCS` is strongly</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a><span class="co">#&gt; correlated with home posessions `HOMEPOS`, with a correlation coefficient</span></span>
 <span id="cb50-3"><a href="#cb50-3"></a><span class="co">#&gt; of 0.7934311. This model is significant with a p-value of &lt; 0.001</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2040,7 +2078,7 @@ sample estimates:
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-
+<div>
 <div id="opcallxupg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#opcallxupg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2481,43 +2519,44 @@ sample estimates:
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead><tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="_">_</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimate">Estimate</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Std. Error">Std. Error</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="t value">t value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Pr(&amp;gt;|t|)">Pr(&gt;|t|)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="star">star</th>
-    </tr></thead>
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="header gt_col_headings">
+<th id="_" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">_</th>
+<th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
+<th id="Std. Error" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Std. Error</th>
+<th id="t value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">t value</th>
+<th id="Pr(&amp;gt;|t|)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
+<th id="star" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">star</th>
+</tr></thead>
 <tbody class="gt_table_body">
-<tr>
-<td headers="_" class="gt_row gt_left">       (Intercept)</td>
-<td headers="Estimate" class="gt_row gt_right">-0.726</td>
-<td headers="Std. Error" class="gt_row gt_right">0.089</td>
-<td headers="t value" class="gt_row gt_right">-8.191</td>
-<td headers="Pr(>|t|)" class="gt_row gt_left">     &lt;2e-16</td>
-<td headers="star" class="gt_row gt_right"> ***</td>
+<tr class="odd">
+<td class="gt_row gt_left" headers="_">(Intercept)</td>
+<td class="gt_row gt_right" headers="Estimate">-0.726</td>
+<td class="gt_row gt_right" headers="Std. Error">0.089</td>
+<td class="gt_row gt_right" headers="t value">-8.191</td>
+<td class="gt_row gt_left" headers="Pr(>|t|)">&lt;2e-16</td>
+<td class="gt_row gt_right" headers="star">***</td>
 </tr>
-<tr>
-<td headers="_" class="gt_row gt_left">       Pop_thou   </td>
-<td headers="Estimate" class="gt_row gt_right">0.103</td>
-<td headers="Std. Error" class="gt_row gt_right">0.001</td>
-<td headers="t value" class="gt_row gt_right">145.932</td>
-<td headers="Pr(>|t|)" class="gt_row gt_left">     &lt;2e-16</td>
-<td headers="star" class="gt_row gt_right"> ***</td>
+<tr class="even">
+<td class="gt_row gt_left" headers="_">Pop_thou</td>
+<td class="gt_row gt_right" headers="Estimate">0.103</td>
+<td class="gt_row gt_right" headers="Std. Error">0.001</td>
+<td class="gt_row gt_right" headers="t value">145.932</td>
+<td class="gt_row gt_left" headers="Pr(>|t|)">&lt;2e-16</td>
+<td class="gt_row gt_right" headers="star">***</td>
 </tr>
 </tbody>
-<tfoot class="gt_sourcenotes"><tr>
-<td class="gt_sourcenote" colspan="6">
+<tfoot class="gt_sourcenotes"><tr class="odd">
+<td colspan="6" class="gt_sourcenote">
 <em>Adj R<sup>2</sup></em> 0.721</td>
-    </tr></tfoot>
+</tr></tfoot>
 </table>
 </div>
 </div>
 </div>
+</div>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co">#&gt; The model is pretty good at explaining the variance, The Adj. R2</span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co">#&gt; The model is pretty good at explaining the variance, The Adj. R2</span></span>
 <span id="cb51-2"><a href="#cb51-2"></a><span class="co">#&gt; shows that population explains 72% of the variance in murders.</span></span>
 <span id="cb51-3"><a href="#cb51-3"></a><span class="co">#&gt; The model is significant as p &lt; 0.001. For every increase in </span></span>
 <span id="cb51-4"><a href="#cb51-4"></a><span class="co">#&gt; population of 1000 people, the model predicts another 0.1 deaths.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2527,7 +2566,7 @@ sample estimates:
 <li>Work out the correlation between a country’s <em>mean</em> female science grade and <em>mean</em> male science grade. Should you use <em>Spearman’s Rho</em> or <em>Pearson’s r</em> in your model? Why?</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>df <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>df <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
 <span id="cb52-2"><a href="#cb52-2"></a></span>
 <span id="cb52-3"><a href="#cb52-3"></a>maths_male   <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Male"</span>)</span>
 <span id="cb52-4"><a href="#cb52-4"></a>maths_female <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Female"</span>)</span>
@@ -2549,7 +2588,7 @@ sample estimates:
 <li>Create a linear model to explore the relationship between the Index of economic, social and cultural status (<code>ESCS</code>) and the grade in science (<code>PV1SCIE</code>)</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS, <span class="at">data =</span> PISA_2022)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS, <span class="at">data =</span> PISA_2022)</span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb53-3"><a href="#cb53-3"></a></span>
 <span id="cb53-4"><a href="#cb53-4"></a><span class="co">#&gt; For every increase in ESCS score by 1 </span></span>
@@ -2560,7 +2599,7 @@ sample estimates:
 </div>
 <p>Add the student maths score <code>PV1MATH</code> this model, how does this change the outcome?</p>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS <span class="sc">+</span> PV1MATH, <span class="at">data =</span> PISA_2022)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS <span class="sc">+</span> PV1MATH, <span class="at">data =</span> PISA_2022)</span>
 <span id="cb54-2"><a href="#cb54-2"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb54-3"><a href="#cb54-3"></a></span>
 <span id="cb54-4"><a href="#cb54-4"></a><span class="co">#&gt; For every increase in ESCS grade, </span></span>
@@ -2576,7 +2615,7 @@ sample estimates:
 </ol>
 <p>Using a linear model, how do “Shortage of educational staff” <code>STAFFSHORT</code> and “Shortage of educational material” <code>EDUSHORT</code> relate to “Student behaviour hindering learning” <code>STUBEHA</code></p>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT, <span class="at">data=</span>PISA_2022_school)</span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT, <span class="at">data=</span>PISA_2022_school)</span>
 <span id="cb55-2"><a href="#cb55-2"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb55-3"><a href="#cb55-3"></a></span>
 <span id="cb55-4"><a href="#cb55-4"></a><span class="co">#&gt; STAFFSHORT has a slightly larger estimate, 0.339116, than EDUSHORT, 0.190948</span></span>
@@ -2588,7 +2627,7 @@ sample estimates:
 </div>
 <p>Adjust the model to incorporate the percentage of boys in a school (see <code>SC002Q01TA</code> and <code>SCHSIZE</code>), what difference does this make?</p>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>tbl_beh_predict <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> </span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>tbl_beh_predict <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> </span>
 <span id="cb56-2"><a href="#cb56-2"></a>  <span class="fu">mutate</span>(<span class="at">boy_per =</span> <span class="dv">100</span> <span class="sc">*</span> SC002Q01TA <span class="sc">/</span> SCHSIZE)</span>
 <span id="cb56-3"><a href="#cb56-3"></a></span>
 <span id="cb56-4"><a href="#cb56-4"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, <span class="at">data=</span>tbl_beh_predict)</span>
@@ -2607,7 +2646,7 @@ sample estimates:
 </div>
 <p>How does the explanatory value of this model change if you only look at schools in the UK?</p>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, </span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, </span>
 <span id="cb57-2"><a href="#cb57-2"></a>          <span class="at">data=</span>tbl_beh_predict <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>))</span>
 <span id="cb57-3"><a href="#cb57-3"></a><span class="fu">summary</span>(mdl)</span>
 <span id="cb57-4"><a href="#cb57-4"></a></span>
@@ -2620,11 +2659,11 @@ sample estimates:
 </details>
 </div>
 <ol start="8" type="1">
-<li>Using <code>left_join</code> (see <a href="#sec-leftjoin">Section&nbsp;8.4</a>), link each student record in <code>PISA_2022</code> to their school details (file <a href="https://emckclac-my.sharepoint.com/:u:/g/personal/k1926273_kcl_ac_uk/EaEQPEKYzR9MmiqLBYXOhmYBNXYg15UoDKGip-78kS1DvA?e=q74fyK">here</a>). You will need need to <code>select</code> a subset of the school table to cover: <code>CNT, CNTSCHID, SC016Q02TA, SC156Q03HA, SC156Q04HA, SC154Q01HA,</code> <code>SC154Q02WA, SC154Q05WA, SC154Q08WA, SC154Q09HA, STRATIO, CLSIZE,</code> <code>EDUSHORT, STAFFSHORT, STUBEHA</code>
+<li>Using <code>left_join</code> (see <a href="#sec-leftjoin" class="quarto-xref">Section&nbsp;8.4</a>), link each student record in <code>PISA_2022</code> to their school details (file <a href="https://emckclac-my.sharepoint.com/:u:/g/personal/k1926273_kcl_ac_uk/EaEQPEKYzR9MmiqLBYXOhmYBNXYg15UoDKGip-78kS1DvA?e=q74fyK">here</a>). You will need need to <code>select</code> a subset of the school table to cover: <code>CNT, CNTSCHID, SC016Q02TA, SC156Q03HA, SC156Q04HA, SC154Q01HA,</code> <code>SC154Q02WA, SC154Q05WA, SC154Q08WA, SC154Q09HA, STRATIO, CLSIZE,</code> <code>EDUSHORT, STAFFSHORT, STUBEHA</code>
 </li>
 </ol>
 <div class="cell">
-<details><summary>left_join code</summary><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co">#&gt; SC016Q02TA   Percentage of total funding for school year from: Student fees or school charges paid by parents</span></span>
+<details class="code-fold"><summary>left_join code</summary><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co">#&gt; SC016Q02TA   Percentage of total funding for school year from: Student fees or school charges paid by parents</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a><span class="co">#&gt; SC035Q01NA   How student tests are used: [Standardised tests]: To guide students' learning</span></span>
 <span id="cb58-3"><a href="#cb58-3"></a><span class="co">#&gt; SC035Q10TA   How student tests are used: [Standardised tests]: To compare the school with other schools</span></span>
 <span id="cb58-4"><a href="#cb58-4"></a><span class="co">#&gt; SC035Q08TB   How student tests are used: Teacher-developed tests: To identify aspects of instruction or the curriculum that could be improved</span></span>
@@ -2648,7 +2687,7 @@ sample estimates:
 </div>
 <p>Using a linear model, find out how well the student teacher ratio <code>STRATIO</code> in a school predicts the <code>mean</code> maths achievement <code>PV1MATH</code> in that school. <strong>HINT</strong>: you need one row for each school, so use summarise with unique on <code>STRATIO</code> and mean on <code>PV1MATH</code>:</p>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>stu_tch_mat <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>stu_tch_mat <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
 <span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">group_by</span>(CNTSCHID) <span class="sc">%&gt;%</span></span>
 <span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">summarise</span>(<span class="at">stu_tch_rat =</span> <span class="fu">unique</span>(STRATIO),</span>
 <span id="cb59-4"><a href="#cb59-4"></a>            <span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
@@ -2665,7 +2704,7 @@ sample estimates:
 </div>
 <p>Adjust the linear model used above to incorporate <code>STUBEHA</code> “Student behaviour hindering learning” in addition to the student teacher ratio:</p>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>stu_tch_mat_bev <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>stu_tch_mat_bev <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
 <span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">group_by</span>(CNTSCHID) <span class="sc">%&gt;%</span></span>
 <span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">summarise</span>(<span class="at">stu_tch_rat =</span> <span class="fu">unique</span>(STRATIO),</span>
 <span id="cb60-4"><a href="#cb60-4"></a>            <span class="at">behaviour =</span> <span class="fu">unique</span>(STUBEHA),</span>
@@ -2689,7 +2728,7 @@ sample estimates:
 <li>Test the model for independence, multi-collinearity, normality and homoscedasticity.</li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># Independence</span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># Independence</span></span>
 <span id="cb61-2"><a href="#cb61-2"></a><span class="fu">durbinWatsonTest</span>(mdl_stu_tch_mat_bev)</span>
 <span id="cb61-3"><a href="#cb61-3"></a><span class="co">#&gt; lag Autocorrelation D-W Statistic p-value</span></span>
 <span id="cb61-4"><a href="#cb61-4"></a><span class="co">#&gt;   1      0.01650897      1.966672   0.094</span></span>
@@ -2721,7 +2760,7 @@ sample estimates:
 <li>Explore the school data set to look at other interesting models. The school data set has a lot more numeric/continuous fields than the student table! To find these fields use this code:</li>
 </ol>
 <div class="cell">
-<details><summary>find numeric fields</summary><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># to get the names of numeric fields along with their labels</span></span>
+<details class="code-fold"><summary>find numeric fields</summary><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># to get the names of numeric fields along with their labels</span></span>
 <span id="cb62-2"><a href="#cb62-2"></a>nms <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span>
 <span id="cb62-3"><a href="#cb62-3"></a>lbls <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(nms,<span class="sc">~</span>{</span>
 <span id="cb62-4"><a href="#cb62-4"></a>  <span class="co">#.x &lt;- "test"</span></span>
@@ -2736,10 +2775,10 @@ sample estimates:
 </div>
 <ol start="10" type="1">
 <li><p>In pairs discuss how you could use correlation and regression in your own research. Start building some models to explore the data sets.</p></li>
-<li><p>Recreate the Stoet &amp; Geary analysis (see <a href="#sec-standard-stoet-geary">Section&nbsp;8.5</a>) to see if there is a “gender gap in intraindividual <strong>mathematics</strong> scores” that is “larger in more gender-equal countries”. You might expect this to be the case as it exists for science. Is this a STEM wide finding? How does the science model look for 2022 data? Was it a one off finding?</p></li>
+<li><p>Recreate the Stoet &amp; Geary analysis (see <a href="#sec-standard-stoet-geary" class="quarto-xref">Section&nbsp;8.5</a>) to see if there is a “gender gap in intraindividual <strong>mathematics</strong> scores” that is “larger in more gender-equal countries”. You might expect this to be the case as it exists for science. Is this a STEM wide finding? How does the science model look for 2022 data? Was it a one off finding?</p></li>
 </ol>
 <div class="cell">
-<details><summary>answer</summary><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># standardise the results for each student in line with pg7</span></span>
+<details class="code-fold"><summary>answer</summary><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># standardise the results for each student in line with pg7</span></span>
 <span id="cb63-2"><a href="#cb63-2"></a><span class="co"># https://eprints.leedsbeckett.ac.uk/id/eprint/4753/6/symplectic-version.pdf</span></span>
 <span id="cb63-3"><a href="#cb63-3"></a></span>
 <span id="cb63-4"><a href="#cb63-4"></a><span class="fu">library</span>(tidyverse)</span>
@@ -2963,13 +3002,13 @@ Tip
 <p>There are multiple types of join in the tidyverse, you can find out more about them <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">here</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="../images/joins.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">The available joins in the tidyverse, CC 4.0, by rstudio.com</figcaption></figure>
+<figcaption>The available joins in the tidyverse, CC 4.0, by rstudio.com</figcaption></figure>
 </div>
 </div>
 </div>
 </section><section id="sec-standard-stoet-geary" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="sec-standard-stoet-geary">
 <span class="header-section-number">8.5</span> Standardising PISA results</h2>
-<p>Next, we will try to wrangle the data into shape to recreate figure 3 from <span class="citation" data-cites="stoet2018gender">Stoet and Geary (<a href="#ref-stoet2018gender" role="doc-biblioref">2018</a>)</span>. To do this we first need to standardise the grades for maths, science and reading so we can compare the results of students between countries without low performing or high performing countries skewing the results (see <a href="#sec-z-values">Section&nbsp;8.1</a> for details on how to standardise data). Following the steps outlined on page 7:</p>
+<p>Next, we will try to wrangle the data into shape to recreate figure 3 from <span class="citation" data-cites="stoet2018gender">Stoet and Geary (<a href="#ref-stoet2018gender" role="doc-biblioref">2018</a>)</span>. To do this we first need to standardise the grades for maths, science and reading so we can compare the results of students between countries without low performing or high performing countries skewing the results (see <a href="#sec-z-values" class="quarto-xref">Section&nbsp;8.1</a> for details on how to standardise data). Following the steps outlined on page 7:</p>
 <blockquote class="blockquote">
 <ol type="1">
 <li>We standardized the mathematics, science, and reading scores on a nation-by-nation basis. We call these new standardized scores <em>zMath</em>, <em>zRead</em>, and <em>zScience</em>.</li>
@@ -2980,7 +3019,7 @@ Tip
 </blockquote>
 <p>produces the following code:</p>
 <div class="cell">
-<details><summary>code</summary><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># standardise the results for each student in line with pg7</span></span>
+<details class="code-fold"><summary>code</summary><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># standardise the results for each student in line with pg7</span></span>
 <span id="cb77-2"><a href="#cb77-2"></a><span class="co"># https://eprints.leedsbeckett.ac.uk/id/eprint/4753/6/symplectic-version.pdf</span></span>
 <span id="cb77-3"><a href="#cb77-3"></a></span>
 <span id="cb77-4"><a href="#cb77-4"></a><span class="fu">library</span>(tidyverse)</span>
@@ -3027,7 +3066,7 @@ Tip
 </div>
 <p>Finally we will plot the results:</p>
 <div class="cell">
-<details><summary>graph code</summary><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">library</span>(ggrepel)</span>
+<details class="code-fold"><summary>graph code</summary><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">library</span>(ggrepel)</span>
 <span id="cb78-2"><a href="#cb78-2"></a></span>
 <span id="cb78-3"><a href="#cb78-3"></a><span class="fu">ggplot</span>(pisa_gggi_diff,</span>
 <span id="cb78-4"><a href="#cb78-4"></a>       <span class="fu">aes</span>(<span class="at">x=</span>difference, <span class="at">y=</span>gggi)) <span class="sc">+</span> </span>
@@ -3039,7 +3078,10 @@ Tip
 <span id="cb78-10"><a href="#cb78-10"></a>            <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb78-11"><a href="#cb78-11"></a>  <span class="fu">xlab</span>(<span class="fu">paste0</span>(<span class="st">"relative difference in PV1SCIE scores (male-female)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The graph is pretty good recreation of what the paper presented, with the general shape the same; differences in grades for each country might be explained by the original paper using 5 plausible values rather than just <code>PV1SCIE</code>, as we have used <span class="citation" data-cites="stoet2020gender">(<a href="#ref-stoet2020gender" role="doc-biblioref">Stoet and Geary 2020</a>)</span>. Does the statistical model stand up to scrutiny? To find out we will use <em>correlation</em>. Stoet and Geary used <em>Spearman’s rho</em>, signified by the <sub><em>s</em></sub> in <em>r<sub>s</sub></em>:</p>
@@ -3124,7 +3166,7 @@ F-statistic: 15.98 on 1 and 57 DF,  p-value: 0.0001863</code></pre>
 
 
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-coe2002s" class="csl-entry" role="listitem">
 Coe, Robert. 2002. <span>“It’s the Effect Size, Stupid.”</span> In <em>British Educational Research Association Annual Conference</em>, 12:14.
 </div>
@@ -3238,10 +3280,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3251,8 +3310,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3264,7 +3332,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3308,6 +3499,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3333,6 +3525,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {

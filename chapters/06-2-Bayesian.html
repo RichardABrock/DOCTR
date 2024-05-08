@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -98,7 +99,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -107,6 +114,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -116,6 +124,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../css/mastemr.css">
 </head>
 
@@ -123,9 +158,9 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="index.qmd" class="navbar-brand navbar-brand-logo">
     <img src="../images/KCL_logo.png" alt="" class="navbar-logo">
     </a>
@@ -133,19 +168,19 @@ div.csl-indent {
     <span class="navbar-title">DOCTR</span>
     </a>
   </div>
-        <div class="quarto-navbar-tools ms-auto">
+        <div class="quarto-navbar-tools tools-end">
 </div>
           <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-1-SEM.html">SEM and Bayesian</a></li><li class="breadcrumb-item"><a href="../chapters/06-2-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-1-SEM.html">SEM and Bayesian</a></li><li class="breadcrumb-item"><a href="../chapters/06-2-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -155,7 +190,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -312,7 +347,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -343,7 +378,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-1-SEM.html">SEM and Bayesian</a></li><li class="breadcrumb-item"><a href="../chapters/06-2-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Bayesian Statistics</h1>
 </div>
@@ -358,7 +393,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="the-frequentist-approach-to-statistics" class="level2" data-number="0.1">
 <h2 data-number="0.1" class="anchored" data-anchor-id="the-frequentist-approach-to-statistics"><span class="header-section-number">0.1</span> The Frequentist Approach to Statistics</h2>
@@ -565,28 +602,32 @@ Tip
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-7" data-code-annotation="4">line 5 run a frequentist linear model on the data using <code>lm</code></span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="4">line 5 run a frequentist linear model on the data using <code>lm</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-7" data-code-annotation="5">line 6 print the output of the frequentist model</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="5">line 6 print the output of the frequentist model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-7" data-code-annotation="6">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="6">line 7 use the <code>brm</code> function to run an equivalent Bayesian linear model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="7" data-code-cell="annotated-cell-7" data-code-annotation="7">line 8 print the output of the Bayesian model</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="7">line 8 print the output of the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-7" data-code-annotation="8">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="10" data-code-annotation="8">line 9 use the <code>bayes_R2</code> function to find the R2 equivalent for the Bayesian linear model.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
-<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure">
+<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="co"># Perform the frequentist linear model</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>testdata, Var1 <span class="sc">~</span> Var2)</span>
@@ -816,59 +857,59 @@ R2 0.9656229 0.002297453 0.9594751 0.9675343</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-8" data-code-annotation="1">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
+<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="1">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="7" data-code-cell="annotated-cell-8" data-code-annotation="2">line 2 Select the maths and country items</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="7" data-code-annotation="2">line 2 Select the maths and country items</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="8" data-code-cell="annotated-cell-8" data-code-annotation="3">line 3 Filter for the UK</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="3">line 3 Filter for the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="9" data-code-cell="annotated-cell-8" data-code-annotation="4">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="4">line 4 Summarise the mean and standard deviation of the maths scores in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="12" data-code-cell="annotated-cell-8" data-code-annotation="5">line 5 Print the summary table</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="12" data-code-annotation="5">line 5 Print the summary table</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="14" data-code-cell="annotated-cell-8" data-code-annotation="6">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
+<span data-code-cell="annotated-cell-8" data-code-lines="14" data-code-annotation="6">line 6 Use <code>pull</code> to assign the mean to a new variable <code>math_mean</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="15" data-code-cell="annotated-cell-8" data-code-annotation="7">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
+<span data-code-cell="annotated-cell-8" data-code-lines="15" data-code-annotation="7">line 7 Use <code>pull</code> to assign the standard deviation to a new variable <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="22" data-code-cell="annotated-cell-8" data-code-annotation="8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="22" data-code-annotation="8">line 10 Create the prior distribution. Here we use data from a previous PISA data set, the 2018 data. We first use glue to create the label for the distribution. The type of prior distribution is specified by some text, e.g.&nbsp;<code>"normal(0, 2)"</code> which sets the prior distribution to be a normal distribution of mean 0 and standard deviation 2. We use the <code>glue</code> function to join our calculated <code>math_mean</code> and <code>math_sd</code> with the word normal to create a string describing our prior The class is set to “b” the default, for fixed effects, and we specify the <code>coef</code> as the variable of interest <code>PV1MATH</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-lines="26" data-code-cell="annotated-cell-8" data-code-annotation="9">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="26" data-code-annotation="9">line 12 We create data frame on which to run the model, 2022 maths data in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-lines="30" data-code-cell="annotated-cell-8" data-code-annotation="10">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="30" data-code-annotation="10">line 14 We run the model on the 2022 data, specifying the 2018 data as the prior distribution</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-lines="31" data-code-cell="annotated-cell-8" data-code-annotation="11">line 15 Print the summary</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="31" data-code-annotation="11">line 15 Print the summary</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-lines="32" data-code-cell="annotated-cell-8" data-code-annotation="12">line 16 Print the R<sup>2</sup> equivalent</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="32" data-code-annotation="12">line 16 Print the R<sup>2</sup> equivalent</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-lines="35" data-code-cell="annotated-cell-8" data-code-annotation="13">line 17 Run the frequentist linear model as a comparison</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="35" data-code-annotation="13">line 17 Run the frequentist linear model as a comparison</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-lines="37" data-code-cell="annotated-cell-8" data-code-annotation="14">line 19 Print the frequentist linear model</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="37" data-code-annotation="14">line 19 Print the frequentist linear model</span>
 </dd>
 </dl>
 </div>
@@ -1063,40 +1104,44 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-9" data-code-annotation="1">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="1">line 1 Pipe the PISA_2022 data into a new data frame <code>math_summary</code> in the UK</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-9" data-code-annotation="2">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
+<span data-code-cell="annotated-cell-9" data-code-lines="10" data-code-annotation="2">line 6 Use <code>pull</code> to assign the mean and sd to a new variable <code>math_mean</code> <code>math_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="13" data-code-cell="annotated-cell-9" data-code-annotation="3">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
+<span data-code-cell="annotated-cell-9" data-code-lines="13" data-code-annotation="3">line 9 As for maths, create a summary of reading scores in the UK and calculate the <code>read_mean</code> and <code>read_sd</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="23" data-code-cell="annotated-cell-9" data-code-annotation="4">line 17 Set the prior distributions, as above, here for maths</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="23" data-code-annotation="4">line 17 Set the prior distributions, as above, here for maths</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="25" data-code-cell="annotated-cell-9" data-code-annotation="5">line 19 Set the prior distribution for reading</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="25" data-code-annotation="5">line 19 Set the prior distribution for reading</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="29" data-code-cell="annotated-cell-9" data-code-annotation="6">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="29" data-code-annotation="6">line 22 Create a data frame of 2022 scores in the UK to run the model on</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-lines="33" data-code-cell="annotated-cell-9" data-code-annotation="7">line 23 Run the Bayesian model</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="33" data-code-annotation="7">line 23 Run the Bayesian model</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-lines="39" data-code-cell="annotated-cell-9" data-code-annotation="8">line 27 plot a graph of the distribution of the coefficients</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="39" data-code-annotation="8">line 27 plot a graph of the distribution of the coefficients</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
-<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure">
+<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
@@ -1276,19 +1321,19 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-10" data-code-annotation="1">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="4" data-code-annotation="1">line 1 create a subset of UK data, select reading, science, maths, wealth (<code>HOMEPOS</code>), class (<code>ESCS</code>) and country variables, filter for the UK then drop the unneeded <code>CNT</code> variable, then drop <code>NA</code>s</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="12" data-code-cell="annotated-cell-10" data-code-annotation="2">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="12" data-code-annotation="2">The <code>regressionBF</code> function creates a data frame with all the possible linear models using the specified variables</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="16" data-code-cell="annotated-cell-10" data-code-annotation="3">Select only the Bayes factor, and covert to a data frame for sort</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="16" data-code-annotation="3">Select only the Bayes factor, and covert to a data frame for sort</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="20" data-code-cell="annotated-cell-10" data-code-annotation="4">Sort the output in descending order of Bayes Factor and print the output</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="20" data-code-annotation="4">Sort the output in descending order of Bayes Factor and print the output</span>
 </dd>
 </dl>
 </div>
@@ -1329,28 +1374,32 @@ PV1READ + ESCS                     Wed Apr 24 11:22:03 2024 1c40419a7b4b
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-11" data-code-annotation="1">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">line 1 Use <code>ggplot</code> passing the <code>output</code> data frame to create graph. Within <code>aes</code> set the axis to the rownnames (i.e.&nbsp;the rank order of the models by Bayes Factor) and set to <code>reorder</code> in descending order <code>-bf</code> of the Bayes Factor</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-11" data-code-annotation="2">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="2">line 2 Set the y-axis to the Bayes Factor, and set the fill to the rank index</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-11" data-code-annotation="3">line 3 Plot a column graph</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="3">line 3 Plot a column graph</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-11" data-code-annotation="4">line 4 Rotate the axis text</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="4">line 4 Rotate the axis text</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-11" data-code-annotation="5">line 5 Set the axis labels</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="5">line 5 Set the axis labels</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
-<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" style="width:95.0%"></p>
+<div>
+<figure class="figure">
+<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1417,7 +1466,7 @@ CNT                Yes    No
 </div>
 <p>:::</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer A</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Create a dataframe for having a room of their own the UK</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>Room <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
@@ -1441,7 +1490,7 @@ Against denominator:
 ---
 Bayes factor type: BFcontingencyTable, joint multinomial</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Answer A</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Returns a base factor of 115 -   there is a 'decisive' difference by gender in having a computer</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
@@ -1456,13 +1505,13 @@ Bayes factor type: BFcontingencyTable, joint multinomial</code></pre>
 data:  conttab
 X-squared = 17.041, df = 1, p-value = 3.658e-05</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Answer A</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># p-value = 3.658e-05-06, less than 0.05 so there are different distributions by country</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer B</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Create a data frame for having a computer in the UK and the US</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="co"># Drop levels of unneeded countries</span></span>
@@ -1494,7 +1543,7 @@ X-squared = 17.041, df = 1, p-value = 3.658e-05</code></pre>
 <p>Use a Bayesian t-test to determine: a) In the PISA 2022 data, are there statistically significant differences in reading scores (PV1READ) for boys and girls (look at <code>ST004D01T</code> for gender) in the UK? (You can check against a frequentist t-test if you like!)</p>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Create a data frame for having a Reading scores in the UK including gender</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>Read <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
@@ -1518,7 +1567,7 @@ X-squared = 17.041, df = 1, p-value = 3.658e-05</code></pre>
 <p>Use a Bayesian t-test to determine: In the PISA 2020 data, are statistically significant differences in mathematics scores (<code>PV1MATH</code>) between the UK and the US?</p>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Create a data frame for having a mathematics scores in the UK and US </span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>PISAMath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
@@ -1559,7 +1608,7 @@ Warning
 </div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Create a data frame for having a Reading scores in the UK including gender</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>UKMath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
@@ -1582,7 +1631,7 @@ Warning
 <p>If you aren’t feeling confident with your R data manipulation, you can use the hint below to start with a data frame of gender difference and various variables by country.</p>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Hint</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Creating the data frame for analysis</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Create a data frame for having a mathematics scores by  gender</span></span>
@@ -1613,7 +1662,7 @@ Warning
 </details>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Full Answer</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Create a data frame for having a mathematics scores by  gender</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>MathScore <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
@@ -1674,7 +1723,7 @@ Warning
 <p>Use a Bayesian linear model to determine: a) In the UK PISA 2022 data, build a model of mathematics scores (<code>PV1MATH</code>) in the US based on reading scores (<code>PV1READ</code>) and science scores (<code>PV1SCIE</code>). Using the 2018 dataset to provide prior distributions for reading and science scores. Plot the distribution of the model parameters</p>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Determine prior distribution parameters</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>scie_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
@@ -1719,7 +1768,7 @@ Warning
 <p>Use the <code>regressionBF</code> function of the <code>BayesFactor</code> package to compare different models for the performance of UK students in mathematics. What is the best model you can find?</p>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Answer</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Create a UK subset</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a>PISAUK <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
@@ -1758,7 +1807,7 @@ Warning
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-burnham2007" class="csl-entry" role="listitem">
 Burnham, Kenneth P., and David R. Anderson. 2007. <em>Model Selection and Multimodel Inference: A Practical Information-Theoretic Approach</em>. Springer Science &amp; Business Media.
 </div>
@@ -1851,10 +1900,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1864,8 +1930,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1877,7 +1952,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1921,6 +2119,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1946,6 +2145,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2006,6 +2231,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
