@@ -341,8 +341,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#proper-addresses" id="toc-proper-addresses" class="nav-link" data-scroll-target="#proper-addresses"><span class="header-section-number">11.1</span> Proper addresses</a></li>
   </ul>
 </li>
-  <li><a href="#sec-parquet" id="toc-sec-parquet" class="nav-link" data-scroll-target="#sec-parquet"><span class="header-section-number">12</span> .parquet files</a></li>
+  <li><a href="#sec-parquet" id="toc-sec-parquet" class="nav-link" data-scroll-target="#sec-parquet"><span class="header-section-number">12</span> .parquet and .feather files</a></li>
   <li><a href="#csv-files" id="toc-csv-files" class="nav-link" data-scroll-target="#csv-files"><span class="header-section-number">13</span> .csv files</a></li>
+  <li><a href="#spss-.sav" id="toc-spss-.sav" class="nav-link" data-scroll-target="#spss-.sav"><span class="header-section-number">14</span> SPSS / .sav</a></li>
+  <li><a href="#xml" id="toc-xml" class="nav-link" data-scroll-target="#xml"><span class="header-section-number">15</span> .xml</a></li>
+  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json"><span class="header-section-number">16</span> .json</a></li>
+  <li><a href="#writing-excel-files" id="toc-writing-excel-files" class="nav-link" data-scroll-target="#writing-excel-files"><span class="header-section-number">17</span> Writing excel files</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -1238,11 +1242,11 @@ Note
 </tr>
 <tr class="even">
 <td>Arrow [.parquet]</td>
-<td>Apache Arrow <code>.parquet</code> is a relatively new format that allows for the transfer of files between different systems. Files are small and incredibly fast to load, whilst looking exactly the same as when you save them. The PISA dataset used here, that takes ~20 seconds to load in <code>.rds</code> format, will load in less than 2 seconds in <code>.parquet</code> format. Because of the way that data is stored you won’t be able to open these files in programs such as Excel. You will need the <code>arrow</code> package to read and write <code>.parquet</code> files.</td>
+<td>Apache Arrow <code>.parquet</code> is a relatively new format that allows for the transfer of files between different systems. Files are small and incredibly fast to load, whilst looking exactly the same as when you save them. The PISA data set used here, that takes ~20 seconds to load in <code>.rds</code> format, will load in less than 2 seconds in <code>.parquet</code> format. Because of the way that data is stored you won’t be able to open these files in programs such as Excel. You will need the <a href="https://github.com/apache/arrow/">arrow</a> package to read and write <code>.parquet</code> files.</td>
 </tr>
 <tr class="odd">
 <td>SPSS [.sav]</td>
-<td>SPSS is a common analysis tool in the world of social science. The native format for SPSS data is <code>.sav</code>. These files are compressed and include information on column labels and column datatypes. You will need either the <code>haven</code> or <code>foreign</code> packages to read data into R. Once you have loaded the .sav you will probably want to convert the data into a format that is more suitable for R, normally this will involve converting columns into factors. We cover <em>factors</em> in more detail below.</td>
+<td>SPSS is a common analysis tool in the world of social science. The native format for SPSS data is <code>.sav</code>. These files are compressed and include information on column labels and column datatypes. You will need either the <code>haven</code> or <code>foreign</code> packages to read data into R. Once you have loaded the <code>.sav</code> you will probably want to convert the data into a format that is more suitable for R, normally this will involve converting columns into factors. We cover <em>factors</em> in more detail below.</td>
 </tr>
 <tr class="even">
 <td>Stata [.dta]</td>
@@ -1256,12 +1260,12 @@ Note
 </tr>
 <tr class="even">
 <td>Structured Query Language [.sql]</td>
-<td>a common format for data stored in large databases. Normally SQL code would be used to query these, you can use the tidyverse to help construct SQL this through the package <code>dbplyr</code> which will convert your tidyverse pipe code into SQL. R can be set up to communicate directly with databases using the <code>DBI</code> package.</td>
+<td>a common format for data stored in large databases. Normally SQL code would be used to query these, you can use the tidyverse to help construct SQL this through the package <a href="https://dbplyr.tidyverse.org/">dbplyr</a> which will convert your tidyverse pipe code into SQL. R can be set up to communicate directly with databases using the <code>DBI</code> package.</td>
 </tr>
 <tr class="odd">
 <td>JavaScript Object Notation [.json]</td>
 <td>
-<code>.json</code> is a popular format for sharing data on the web. You can use <code>jsonlite</code> and <code>rjson</code> to access this type of data</td>
+<code>.json</code> is a popular format for sharing data on the web. You can use <a href="https://arxiv.org/abs/1403.2805">jsonlite</a> and <a href="https://github.com/alexcb/rjson">rjson</a> to access this type of data</td>
 </tr>
 </tbody>
 </table>
@@ -1364,7 +1368,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To convert data on your google drive into a link that works in R, you can use the following website: <a href="https://sites.google.com/site/gdocs2direct/" class="uri">https://sites.google.com/site/gdocs2direct/</a>. Note that not all read/load commands in R will work with web addresses and some will require you have to copies of the datasets on your disk drive. Additionally, downloading large datasets from the web directly into R can be very slow, loading the dataset from your harddrive will nearly always be <em>much</em> faster.</p>
+<p>To convert data on your google drive into a link that works in R, you can use the following website: <a href="https://sites.google.com/site/gdocs2direct/" class="uri">https://sites.google.com/site/gdocs2direct/</a>. Note that not all read/load commands in R will work with web addresses and some will require you have to copies of the data sets on your disk drive. Additionally, downloading large data sets from the web directly into R can be very slow, loading the data set from your hard drive will nearly always be <em>much</em> faster.</p>
 </div>
 </div>
 <div class="cell">
@@ -1450,8 +1454,8 @@ Note
 <li>use the inbuilt R command to deal with filenames: <code>r"[C:\myfolder\]"</code>
 </li>
 </ul></section></section><section id="sec-parquet" class="level1" data-number="12"><h1 data-number="12">
-<span class="header-section-number">12</span> .parquet files</h1>
-<p>For the majority of this workbook you will be using a cutdown version of the <code>PISA_2022</code> student table. This dataset is huge and we have loaded it into R, selected fields we think are useful, converted column types to work with R and saved in the <code>.parquet</code> format. <code>.parquet</code> files are quick to load and small in size. To load a <code>.parquet</code> file you can use the <code>read_parquet(&lt;location&gt;)</code> command from the <code>arrow</code> package.</p>
+<span class="header-section-number">12</span> .parquet and .feather files</h1>
+<p>For the majority of this workbook you will be using a cut down version of the <code>PISA_2022</code> student table. This data set is huge and we have loaded it into R, selected fields we think are useful, converted column types to work with R and saved in the <code>.parquet</code> format. <code>.parquet</code> files are quick to load and small in size. To load a <code>.parquet</code> file you can use the <code>read_parquet(&lt;location&gt;)</code> command from the <a href="https://github.com/apache/arrow/">arrow</a> package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">library</span>(arrow)</span>
 <span id="cb87-2"><a href="#cb87-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1461,23 +1465,83 @@ Note
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb88-2"><a href="#cb88-2"></a><span class="fu">write_parquet</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>), <span class="st">"&lt;yourfolder&gt;/pisa_france_2022.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><code>.parquet</code> files use a column based storage system, which means that they are very quick to load as they can use multiple processors when loading data, you can also specify which columns you want to load when loading the data using the <code>col_select =</code> attribute, meaning you don’t have to waste time loading all columns then de-selecting those you don’t want:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb89-2"><a href="#cb89-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>,</span>
+<span id="cb89-3"><a href="#cb89-3"></a>                          <span class="at">col_select =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"PV1MATH"</span>, <span class="st">"PV1READ"</span>, <span class="st">"PV1SCIE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>.parquet</code> files are compressed meaning the files will also be small as well as fast. If speed is your real focus, you might want to use <code>.feather</code> files instead. They have the same functionality as <code>.parquet</code> files, but are even faster to load. You can use the <code>read_feather</code> and <code>write_feather</code> commands from the <a href="https://github.com/apache/arrow/">arrow</a> package to load and save <code>.feather</code> files.</p>
 </section><section id="csv-files" class="level1" data-number="13"><h1 data-number="13">
 <span class="header-section-number">13</span> .csv files</h1>
-<p>A very common way of distributing data is through <code>.csv</code> files. These files can be easily compressed and opened in common office spreadsheet tools such as Excel. To load a <code>.csv</code> we can use <code>read_csv("&lt;file_location&gt;")</code></p>
+<p>A very common way of distributing data is through <code>.csv</code> files. These files can be easily compressed and opened in common office spreadsheet tools such as Excel. To load a <code>.csv</code> we can use <code>read_csv("&lt;file_location&gt;")</code> from the <a href="https://tidyverse.tidyverse.org">tidyverse</a>. There is also the similarly named <code>read.csv("&lt;file_location&gt;")</code> but this is slower.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb89-2"><a href="#cb89-2"></a><span class="co"># loading from a website</span></span>
-<span id="cb89-3"><a href="#cb89-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://barrolee.github.io/BarroLeeDataSet/BLData/BL_v3_MF.csv"</span>)</span>
-<span id="cb89-4"><a href="#cb89-4"></a></span>
-<span id="cb89-5"><a href="#cb89-5"></a><span class="co"># loading from your hard drive</span></span>
-<span id="cb89-6"><a href="#cb89-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"&lt;your_folder&gt;/BL_v3_MF.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="co"># loading from a website</span></span>
+<span id="cb90-3"><a href="#cb90-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://barrolee.github.io/BarroLeeDataSet/BLData/BL_v3_MF.csv"</span>)</span>
+<span id="cb90-4"><a href="#cb90-4"></a></span>
+<span id="cb90-5"><a href="#cb90-5"></a><span class="co"># loading from your hard drive</span></span>
+<span id="cb90-6"><a href="#cb90-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"&lt;your_folder&gt;/BL_v3_MF.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to save your own work as a <code>.csv</code> for use later or for manipulation in another tool e.g.&nbsp;Excel. To do this we can use <code>write_csv(&lt;your_data&gt;, "&lt;your_folder&gt;&lt;name&gt;.csv")</code>. <strong>NOTE</strong>: don’t forget to add <code>.csv</code> to the end of your “<your_folder><name><strong>.csv</strong>”, otherwise you might struggle to open the file in another program.</name></your_folder></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb90-2"><a href="#cb90-2"></a><span class="co"># saving your results to a file called `summary_stats.csv`</span></span>
-<span id="cb90-3"><a href="#cb90-3"></a><span class="fu">write_csv</span>(my_results, <span class="st">"summary_stats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb91-2"><a href="#cb91-2"></a><span class="co"># saving your results to a file called `summary_stats.csv`</span></span>
+<span id="cb91-3"><a href="#cb91-3"></a><span class="fu">write_csv</span>(my_results, <span class="st">"C:/tmp/summary_stats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section><section id="spss-.sav" class="level1" data-number="14"><h1 data-number="14">
+<span class="header-section-number">14</span> SPSS / .sav</h1>
+<p>SPSS is a common tool in social science and psychology. The data format used by SPSS is <code>.sav</code>. These files can be loaded directly into R using the <a href="https://haven.tidyverse.org">haven</a> package’s <code>read_sav</code> command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb92-2"><a href="#cb92-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>.sav</code> files can look very different to your standard R data frame. They will contain information on the types of data stored in each column, as well as the <em>labels</em> for each column. You can see this information by using the <code>attributes</code> command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">attributes</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="xml" class="level1" data-number="15"><h1 data-number="15">
+<span class="header-section-number">15</span> .xml</h1>
+</section><section id="json" class="level1" data-number="16"><h1 data-number="16">
+<span class="header-section-number">16</span> .json</h1>
+</section><section id="writing-excel-files" class="level1" data-number="17"><h1 data-number="17">
+<span class="header-section-number">17</span> Writing excel files</h1>
+<p>You might prefer to save your results in an Excel file, this can be done using the <code>write.xlsx</code> command from the <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> package. This command will save your data frame as an Excel file in the location you specify:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb94-2"><a href="#cb94-2"></a>data <span class="ot">&lt;-</span> <span class="fu">write.xlsx</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Alternatively, you might want to create a new excel file with multiple sheets. <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> allows you to do this by creating a workbook, adding named sheets to it and then saving it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb95-2"><a href="#cb95-2"></a></span>
+<span id="cb95-3"><a href="#cb95-3"></a><span class="co"># get data</span></span>
+<span id="cb95-4"><a href="#cb95-4"></a>df_UK     <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb95-5"><a href="#cb95-5"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"UK"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-6"><a href="#cb95-6"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
+<span id="cb95-7"><a href="#cb95-7"></a></span>
+<span id="cb95-8"><a href="#cb95-8"></a>df_France <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb95-9"><a href="#cb95-9"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-10"><a href="#cb95-10"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
+<span id="cb95-11"><a href="#cb95-11"></a></span>
+<span id="cb95-12"><a href="#cb95-12"></a><span class="co"># create an empty workbook</span></span>
+<span id="cb95-13"><a href="#cb95-13"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>()</span>
+<span id="cb95-14"><a href="#cb95-14"></a></span>
+<span id="cb95-15"><a href="#cb95-15"></a><span class="co"># add two empty worksheets</span></span>
+<span id="cb95-16"><a href="#cb95-16"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"UK data"</span>)</span>
+<span id="cb95-17"><a href="#cb95-17"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"France data"</span>)</span>
+<span id="cb95-18"><a href="#cb95-18"></a></span>
+<span id="cb95-19"><a href="#cb95-19"></a></span>
+<span id="cb95-20"><a href="#cb95-20"></a><span class="co"># add data to sheet: UK data</span></span>
+<span id="cb95-21"><a href="#cb95-21"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
+<span id="cb95-22"><a href="#cb95-22"></a></span>
+<span id="cb95-23"><a href="#cb95-23"></a><span class="co"># add data to sheet: France data</span></span>
+<span id="cb95-24"><a href="#cb95-24"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
+<span id="cb95-25"><a href="#cb95-25"></a></span>
+<span id="cb95-26"><a href="#cb95-26"></a><span class="co"># save the workbook to your computer</span></span>
+<span id="cb95-27"><a href="#cb95-27"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> does a lot more, allowing you to format cells.</p>
 
 
 </section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>

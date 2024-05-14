@@ -2091,7 +2091,7 @@ Important
 </section>
 <section id="case_when" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="case_when"><span class="header-section-number">9.3</span> case_when</h2>
-<p>The above nested <code>ifelse</code> statements might feel a little cumbersome and hard to follow. A neater way to perform multiple <code>ifelse</code> statements all at the same time is to use a <code>case_when</code> command. This command has the following structure, where each statement is checked in order, returning the value if true and not checking the other statements if true, e.g.&nbsp;if statement 1 is true, then it doesn’t check statements 2, 3, etc. If none of the statements are true, then it uses the <code>.default</code> value. Not that the tilde <code>~</code> command is used to assign values, rather than the arrow or the equals, but not for the <code>.default</code> command which uses <code>=</code>:</p>
+<p>The above nested <code>ifelse</code> statements might feel a little cumbersome and hard to follow. A neater way to perform multiple <code>ifelse</code> statements all at the same time is to use a <code>case_when</code> command. This command has the following structure, where each statement is checked in order, returning the value if true and not checking the other statements if true, e.g.&nbsp;if statement 1 is true, then it doesn’t check statements 2, 3, etc. If none of the statements are true, then it uses the <code>.default</code> value. Not that the tilde <code>~</code> command is used to assign values, rather than the arrow or the equals, but not for the <code>.default</code> command which uses <code>=</code>. The <code>.default</code> line is optional:</p>
 <blockquote class="blockquote">
 <p>case_when( &lt;statement(s)1&gt; ~ <value_if_true>, &lt;statement(s)2&gt; ~ <value_if_true>, &lt;statement(s)3&gt; ~ <value_if_true>, …, .default = <value_if_none_of_above_true>)</value_if_none_of_above_true></value_if_true></value_if_true></value_if_true></p>
 </blockquote>
@@ -2588,13 +2588,34 @@ attr(,"label")
 </details>
 </div>
 <ol start="6" type="1">
-<li>Body Mass Index is recorded in the 2022 PISA data set for some students. The US</li>
+<li>Body Mass Index <code>STUBMI</code> is recorded in the 2022 PISA data set for some students (HINT: you need to filter out the rest). The US Centers for Disease Control and Prevention (CDC) define <strong>adult</strong> BMI as follows <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, so this isn’t an ideal measure for this data set, but it will give you an idea of the spread of BMI in the data:</li>
 </ol>
-<p>https://www.cdc.gov/obesity/basics/adult-defining.html</p>
-<pre><code>If your BMI is less than 18.5, it falls within the underweight range.
-If your BMI is 18.5 to &lt;25, it falls within the healthy weight range.
-If your BMI is 25.0 to &lt;30, it falls within the overweight range.
-If your BMI is 30.0 or higher, it falls within the obesity range.</code></pre>
+<ul>
+<li>Underweight: BMI is less than 18.5</li>
+<li>Healthy weight: BMI is 18.5 to &lt;25</li>
+<li>Overweight: BMI is 25 to &lt;30</li>
+<li>Obesity: BMI is 30 or more</li>
+</ul>
+<p>Work out the percentage of students of a “Healthy weight” by country</p>
+<div class="cell">
+<details class="code-fold">
+<summary>answer</summary>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb149-2"><a href="#cb149-2"></a>  <span class="fu">select</span>(CNT, STUBMI) <span class="sc">%&gt;%</span> </span>
+<span id="cb149-3"><a href="#cb149-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(STUBMI)) <span class="sc">%&gt;%</span></span>
+<span id="cb149-4"><a href="#cb149-4"></a>  <span class="fu">mutate</span>(<span class="at">bmi_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb149-5"><a href="#cb149-5"></a>    STUBMI <span class="sc">&lt;</span> <span class="fl">18.5</span>                <span class="sc">~</span> <span class="st">"Underweight"</span>,</span>
+<span id="cb149-6"><a href="#cb149-6"></a>    STUBMI <span class="sc">&gt;=</span> <span class="fl">18.5</span> <span class="sc">&amp;</span> STUBMI <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Healthy weight"</span>,</span>
+<span id="cb149-7"><a href="#cb149-7"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> STUBMI <span class="sc">&lt;</span> <span class="dv">30</span>   <span class="sc">~</span> <span class="st">"Overweight"</span>,</span>
+<span id="cb149-8"><a href="#cb149-8"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">30</span>                 <span class="sc">~</span> <span class="st">"Obese"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb149-9"><a href="#cb149-9"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb149-10"><a href="#cb149-10"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb149-11"><a href="#cb149-11"></a>  <span class="fu">group_by</span>(CNT, bmi_group) <span class="sc">%&gt;%</span></span>
+<span id="cb149-12"><a href="#cb149-12"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb149-13"><a href="#cb149-13"></a>            <span class="at">per =</span> <span class="dv">100</span><span class="sc">*</span>(n<span class="sc">/</span><span class="fu">unique</span>(total))) <span class="sc">%&gt;%</span></span>
+<span id="cb149-14"><a href="#cb149-14"></a>  <span class="fu">filter</span>(bmi_group <span class="sc">==</span> <span class="st">"Healthy weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 </section>
 <section id="teacher-data-set" class="level2" data-number="11.2">
@@ -2684,7 +2705,8 @@ If your BMI is 30.0 or higher, it falls within the obesity range.</code></pre>
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Even in this cut down format the PISA data might take a few minutes to load. You can find the full dataset <a href="https://drive.google.com/open?id=17AYuiKXxWFY6XkJZRCFXRYRRNNmata-f&amp;usp=drive_fs">here</a>, but be warned, it might crash you machine when trying to load it! Plug your laptop into a power supply, and having 16GB of RAM is highly recommended! You might also need to wrangle some of the fields to make them work for your purposes, you might enjoy the challenge!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>https://www.cdc.gov/obesity/basics/adult-defining.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://www.cdc.gov/obesity/basics/adult-defining.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
