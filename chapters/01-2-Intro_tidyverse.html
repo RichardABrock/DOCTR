@@ -2613,7 +2613,8 @@ attr(,"label")
 <span id="cb149-11"><a href="#cb149-11"></a>  <span class="fu">group_by</span>(CNT, bmi_group) <span class="sc">%&gt;%</span></span>
 <span id="cb149-12"><a href="#cb149-12"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
 <span id="cb149-13"><a href="#cb149-13"></a>            <span class="at">per =</span> <span class="dv">100</span><span class="sc">*</span>(n<span class="sc">/</span><span class="fu">unique</span>(total))) <span class="sc">%&gt;%</span></span>
-<span id="cb149-14"><a href="#cb149-14"></a>  <span class="fu">filter</span>(bmi_group <span class="sc">==</span> <span class="st">"Healthy weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb149-14"><a href="#cb149-14"></a>  <span class="fu">filter</span>(bmi_group <span class="sc">==</span> <span class="st">"Healthy weight"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb149-15"><a href="#cb149-15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -2693,7 +2694,7 @@ attr(,"label")
 </div>
 <ol start="5" type="1">
 <li><p>Save the results of one of the above questions using <code>write_csv()</code>.</p></li>
-<li><p>[EXTENSION] explore the dataset and find out some more interesting facts to share with your group</p></li>
+<li><p>[EXTENSION] explore the data set and find out some more interesting facts to share with your group</p></li>
 </ol>
 </div>
 
@@ -2705,7 +2706,7 @@ attr(,"label")
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>https://www.cdc.gov/obesity/basics/adult-defining.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Even in this cut down format the PISA data might take a few minutes to load. You can find the full dataset <a href="https://drive.google.com/open?id=17AYuiKXxWFY6XkJZRCFXRYRRNNmata-f&amp;usp=drive_fs">here</a>, but be warned, it might crash you machine when trying to load it! Plug your laptop into a power supply, and having 16GB of RAM is highly recommended! You might also need to wrangle some of the fields to make them work for your purposes, you might enjoy the challenge!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>https://www.cdc.gov/obesity/basics/adult-defining.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
