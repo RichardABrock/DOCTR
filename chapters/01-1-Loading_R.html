@@ -1509,7 +1509,9 @@ Note
 <p>You might prefer to save your results in an Excel file, this can be done using the <code>write.xlsx</code> command from the <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> package. This command will save your data frame as an Excel file in the location you specify:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb94-2"><a href="#cb94-2"></a>data <span class="ot">&lt;-</span> <span class="fu">write.xlsx</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb94-2"><a href="#cb94-2"></a>data <span class="ot">&lt;-</span> <span class="fu">write.xlsx</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span>
+<span id="cb94-3"><a href="#cb94-3"></a></span>
+<span id="cb94-4"><a href="#cb94-4"></a><span class="co"># https://assets.publishing.service.gov.uk/media/65c4903a3f634b001242c696/Confirmed_raac_with_removal_routes.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Alternatively, you might want to create a new excel file with multiple sheets. <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> allows you to do this by creating a workbook, adding named sheets to it and then saving it:</p>
 <div class="cell">
@@ -1531,15 +1533,14 @@ Note
 <span id="cb95-16"><a href="#cb95-16"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"UK data"</span>)</span>
 <span id="cb95-17"><a href="#cb95-17"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"France data"</span>)</span>
 <span id="cb95-18"><a href="#cb95-18"></a></span>
-<span id="cb95-19"><a href="#cb95-19"></a></span>
-<span id="cb95-20"><a href="#cb95-20"></a><span class="co"># add data to sheet: UK data</span></span>
-<span id="cb95-21"><a href="#cb95-21"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
-<span id="cb95-22"><a href="#cb95-22"></a></span>
-<span id="cb95-23"><a href="#cb95-23"></a><span class="co"># add data to sheet: France data</span></span>
-<span id="cb95-24"><a href="#cb95-24"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
-<span id="cb95-25"><a href="#cb95-25"></a></span>
-<span id="cb95-26"><a href="#cb95-26"></a><span class="co"># save the workbook to your computer</span></span>
-<span id="cb95-27"><a href="#cb95-27"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb95-19"><a href="#cb95-19"></a><span class="co"># add data to sheet: UK data</span></span>
+<span id="cb95-20"><a href="#cb95-20"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
+<span id="cb95-21"><a href="#cb95-21"></a></span>
+<span id="cb95-22"><a href="#cb95-22"></a><span class="co"># add data to sheet: France data</span></span>
+<span id="cb95-23"><a href="#cb95-23"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
+<span id="cb95-24"><a href="#cb95-24"></a></span>
+<span id="cb95-25"><a href="#cb95-25"></a><span class="co"># save the workbook to your computer</span></span>
+<span id="cb95-26"><a href="#cb95-26"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> does a lot more, allowing you to format cells.</p>
 
