@@ -402,8 +402,8 @@ window.Quarto = {
 <p>The statistical methods you have encountered to this point, the t-tests, chi-squared tests and linear models, are examples of an approach to statistics labelled frequentist statistics. Typically these methods report p-values which indicate the probability, assuming that the null hypothesis is true, of obtaining similar or more extreme results. Frequentist methods calculate the probability of the occurrence of events based on the outcome of many trials.</p>
 <p>However, frequentist statistics, because of the way the outcomes of tests are presented, can be hard to interpret. Consider the case of two sets of exam results, for class A and B, which are taught by different methods. We wish to determine if there is a statistically significant difference in means, to see if one approach to teaching is better than the other, so we perform a frequentist t-test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ClassA<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">53</span>,<span class="dv">72</span>,<span class="dv">31</span>,<span class="dv">25</span>,<span class="dv">34</span>,<span class="dv">87</span>,<span class="dv">45</span>,<span class="dv">26</span>,<span class="dv">42</span>,<span class="dv">54</span>,<span class="dv">58</span>,<span class="dv">80</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>ClassB<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">82</span>,<span class="dv">94</span>,<span class="dv">88</span>,<span class="dv">76</span>,<span class="dv">82</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">90</span>,<span class="dv">75</span>,<span class="dv">77</span>,<span class="dv">96</span>,<span class="dv">61</span>,<span class="dv">74</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ClassA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">53</span>,<span class="dv">72</span>,<span class="dv">31</span>,<span class="dv">25</span>,<span class="dv">34</span>,<span class="dv">87</span>,<span class="dv">45</span>,<span class="dv">26</span>,<span class="dv">42</span>,<span class="dv">54</span>,<span class="dv">58</span>,<span class="dv">80</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>ClassB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">82</span>,<span class="dv">94</span>,<span class="dv">88</span>,<span class="dv">76</span>,<span class="dv">82</span>,<span class="dv">60</span>,<span class="dv">88</span>,<span class="dv">90</span>,<span class="dv">75</span>,<span class="dv">77</span>,<span class="dv">96</span>,<span class="dv">61</span>,<span class="dv">74</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">t.test</span>(ClassA, ClassB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -648,24 +648,37 @@ lm(formula = Var1 ~ Var2, data = testdata)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--3.0229 -1.3576  0.1944  1.1673  3.7401 
+-4.1951 -0.9198 -0.0061  0.8543  4.1451 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -3.34432    0.86252  -3.877 0.000321 ***
-Var2         0.94597    0.02544  37.183  &lt; 2e-16 ***
+(Intercept) -4.41940    0.77122   -5.73 6.45e-07 ***
+Var2         0.97911    0.02374   41.24  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.768 on 48 degrees of freedom
-Multiple R-squared:  0.9664,    Adjusted R-squared:  0.9657 
-F-statistic:  1383 on 1 and 48 DF,  p-value: &lt; 2.2e-16
+Residual standard error: 1.668 on 48 degrees of freedom
+Multiple R-squared:  0.9726,    Adjusted R-squared:  0.972 
+F-statistic:  1701 on 1 and 48 DF,  p-value: &lt; 2.2e-16
 
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
+using SDK: ‘MacOSX14.2.sdk’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+In file included from &lt;built-in&gt;:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
+/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+#include &lt;cmath&gt;
+         ^~~~~~~
+1 error generated.
+make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 2.1e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.
+Chain 1: Gradient evaluation took 3e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -682,15 +695,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.013 seconds (Warm-up)
-Chain 1:                0.011 seconds (Sampling)
+Chain 1:  Elapsed Time: 0.012 seconds (Warm-up)
+Chain 1:                0.012 seconds (Sampling)
 Chain 1:                0.024 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2e-06 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
+Chain 2: Gradient evaluation took 1e-06 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -707,15 +720,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.014 seconds (Warm-up)
-Chain 2:                0.012 seconds (Sampling)
-Chain 2:                0.026 seconds (Total)
+Chain 2:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 2:                0.011 seconds (Sampling)
+Chain 2:                0.024 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2e-06 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
+Chain 3: Gradient evaluation took 3e-06 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -739,8 +752,8 @@ Chain 3:
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1e-06 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
+Chain 4: Gradient evaluation took 3e-06 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -757,9 +770,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.012 seconds (Warm-up)
-Chain 4:                0.01 seconds (Sampling)
-Chain 4:                0.022 seconds (Total)
+Chain 4:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 4:                0.012 seconds (Sampling)
+Chain 4:                0.025 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -768,20 +781,20 @@ Formula: Var1 ~ Var2
   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
          total post-warmup draws = 4000
 
-Population-Level Effects: 
+Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    -3.34      0.89    -5.06    -1.58 1.00     3864     3055
-Var2          0.95      0.03     0.89     1.00 1.00     3758     2811
+Intercept    -4.42      0.79    -5.96    -2.90 1.00     3260     2837
+Var2          0.98      0.02     0.93     1.03 1.00     3238     2881
 
-Family Specific Parameters: 
+Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma     1.82      0.20     1.49     2.25 1.00     3603     2630
+sigma     1.71      0.18     1.40     2.11 1.00     3342     2733
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
     Estimate   Est.Error      Q2.5     Q97.5
-R2 0.9656229 0.002297453 0.9594751 0.9675343</code></pre>
+R2 0.9719231 0.001673701 0.9674131 0.9732894</code></pre>
 </div>
 </div>
 <p>You can see that the frequentist and Bayesian approaches give similar results:</p>
@@ -814,14 +827,14 @@ R2 0.9656229 0.002297453 0.9594751 0.9675343</code></pre>
 </section>
 <section id="using-prior-data-in-a-bayesian-linear-model" class="level3" data-number="0.2.4">
 <h3 data-number="0.2.4" class="anchored" data-anchor-id="using-prior-data-in-a-bayesian-linear-model"><span class="header-section-number">0.2.4</span> Using prior data in a Bayesian linear model</h3>
-<p>A central principle of Bayesian statistics is that a model is based on knowledge of prior outcomes. The Bayesian Regression Model function <code>brm</code> in the <code>brms</code> package extends the <code>lm</code> function by allowing us to provide a prior model of the independent variable. We do this by passing the mean and standard deviation of our independent variable to the <code>set_prior</code> function (we also specify the shape of the distribution, in our case, normal, and specify the name of our independent variable (<code>PV1MATH</code>)).</p>
+<p>A central principle of Bayesian statistics is that a model is based on knowledge of prior outcomes. The Bayesian Regression Model function <code>brm</code> in the <code>brms</code> package extends the <code>lm</code> function by allowing us to provide a prior model of the independent variable. We do this by passing the mean and standard deviation of our independent variable to the <code>set_prior</code> function (we also specify the shape of the distribution, in our case, normal, and specify the name of our independent variable (<code>PV1MATH</code>)). To use as prior data, you can download the PISA 2018 data <a href="../Users/k1765032/Library/CloudStorage/OneDrive-King'sCollegeLondon/QERKCL_PISA/data/pisa/2018/PISA_student_2018.parquet">here</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="co"># To predict 2022 PISA data, I am going to use prior information from the 2018 results</span></span>
 <span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a><span class="co">#PISA2015studentbayes &lt;- read_parquet("/Users/k1765032/Library/CloudStorage/GoogleDrive-richardandrewbrock@gmail.com/.shortcut-targets-by-id/1c3CkaEBOICzepArDfjQUP34W2BYhFjM4/PISR/Data/PISA/2015/PISA2015studentbayes.parquet")</span></span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a><span class="co"># PISA_2018 &lt;- read_parquet(glue("{datafolder}/PISA_2015_student_subset.parquet"))</span></span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a></span>
 <span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a></span>
 <span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a><span class="co"># Find the prior distribution of UK mathematics scores we expect from previous years </span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>math_summary <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>math_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7"></a>  <span class="fu">select</span>(PV1MATH, CNT) <span class="sc">%&gt;%</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
@@ -917,12 +930,25 @@ R2 0.9656229 0.002297453 0.9594751 0.9675343</code></pre>
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  483.  95.1
+1  497.  89.9
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
+using SDK: ‘MacOSX14.2.sdk’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+In file included from &lt;built-in&gt;:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
+/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+#include &lt;cmath&gt;
+         ^~~~~~~
+1 error generated.
+make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 4e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.4 seconds.
+Chain 1: Gradient evaluation took 3.6e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.36 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -939,15 +965,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.313 seconds (Warm-up)
-Chain 1:                0.139 seconds (Sampling)
-Chain 1:                0.452 seconds (Total)
+Chain 1:  Elapsed Time: 0.299 seconds (Warm-up)
+Chain 1:                0.119 seconds (Sampling)
+Chain 1:                0.418 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.3e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.
+Chain 2: Gradient evaluation took 2.6e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.26 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -964,15 +990,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.232 seconds (Warm-up)
-Chain 2:                0.122 seconds (Sampling)
-Chain 2:                0.354 seconds (Total)
+Chain 2:  Elapsed Time: 0.235 seconds (Warm-up)
+Chain 2:                0.128 seconds (Sampling)
+Chain 2:                0.363 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.2e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+Chain 3: Gradient evaluation took 2.4e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -989,9 +1015,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.283 seconds (Warm-up)
-Chain 3:                0.123 seconds (Sampling)
-Chain 3:                0.406 seconds (Total)
+Chain 3:  Elapsed Time: 0.324 seconds (Warm-up)
+Chain 3:                0.127 seconds (Sampling)
+Chain 3:                0.451 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
@@ -1014,9 +1040,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.339 seconds (Warm-up)
-Chain 4:                0.117 seconds (Sampling)
-Chain 4:                0.456 seconds (Total)
+Chain 4:  Elapsed Time: 0.358 seconds (Warm-up)
+Chain 4:                0.128 seconds (Sampling)
+Chain 4:                0.486 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1025,20 +1051,20 @@ Formula: PV1SCIE ~ PV1MATH
   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
          total post-warmup draws = 4000
 
-Population-Level Effects: 
+Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    42.36      2.33    37.90    46.96 1.00     3826     2474
-PV1MATH       0.93      0.00     0.92     0.94 1.00     4238     2591
+Intercept    42.27      2.31    37.64    46.71 1.00     4696     2903
+PV1MATH       0.93      0.00     0.92     0.94 1.00     4811     2962
 
-Family Specific Parameters: 
+Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    50.75      0.31    50.14    51.36 1.00     4130     3040
+sigma    50.75      0.31    50.15    51.37 1.00     3972     3221
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-   Estimate   Est.Error      Q2.5     Q97.5
-R2 0.753254 0.001890585 0.7494228 0.7568102
+    Estimate   Est.Error      Q2.5 Q97.5
+R2 0.7533127 0.001873179 0.7496249 0.757
 
 Call:
 lm(formula = PV1SCIE ~ PV1MATH, data = UKPISA_2022)
@@ -1152,11 +1178,24 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
 1  500.  97.8
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
+using SDK: ‘MacOSX14.2.sdk’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+In file included from &lt;built-in&gt;:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
+In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
+/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+#include &lt;cmath&gt;
+         ^~~~~~~
+1 error generated.
+make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 4.6e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.46 seconds.
+Chain 1: Gradient evaluation took 4.4e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.44 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -1173,15 +1212,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.496 seconds (Warm-up)
-Chain 1:                0.266 seconds (Sampling)
-Chain 1:                0.762 seconds (Total)
+Chain 1:  Elapsed Time: 0.595 seconds (Warm-up)
+Chain 1:                0.297 seconds (Sampling)
+Chain 1:                0.892 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.8e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
+Chain 2: Gradient evaluation took 3e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -1198,15 +1237,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.706 seconds (Warm-up)
-Chain 2:                0.276 seconds (Sampling)
-Chain 2:                0.982 seconds (Total)
+Chain 2:  Elapsed Time: 0.601 seconds (Warm-up)
+Chain 2:                0.319 seconds (Sampling)
+Chain 2:                0.92 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.8e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
+Chain 3: Gradient evaluation took 3.3e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.33 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -1223,9 +1262,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.572 seconds (Warm-up)
+Chain 3:  Elapsed Time: 0.443 seconds (Warm-up)
 Chain 3:                0.29 seconds (Sampling)
-Chain 3:                0.862 seconds (Total)
+Chain 3:                0.733 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
@@ -1248,9 +1287,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.646 seconds (Warm-up)
-Chain 4:                0.302 seconds (Sampling)
-Chain 4:                0.948 seconds (Total)
+Chain 4:  Elapsed Time: 0.46 seconds (Warm-up)
+Chain 4:                0.278 seconds (Sampling)
+Chain 4:                0.738 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1259,21 +1298,21 @@ Formula: PV1SCIE ~ PV1MATH + PV1READ
   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
          total post-warmup draws = 4000
 
-Population-Level Effects: 
+Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    25.71      2.32    21.33    30.38 1.00     4967     3139
-PV1MATH       0.71      0.01     0.70     0.73 1.00     2238     2220
-PV1READ       0.25      0.01     0.24     0.26 1.00     2380     2230
+Intercept    25.71      2.23    21.24    29.99 1.00     5425     3463
+PV1MATH       0.71      0.01     0.70     0.73 1.00     2226     2434
+PV1READ       0.25      0.01     0.24     0.26 1.00     2159     2595
 
-Family Specific Parameters: 
+Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    48.19      0.30    47.63    48.76 1.01     3321     2445
+sigma    48.19      0.30    47.59    48.79 1.00     3569     2720
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error     Q2.5     Q97.5
-R2 0.7774386 0.001690778 0.774022 0.7806125</code></pre>
+   Estimate   Est.Error      Q2.5     Q97.5
+R2 0.777426 0.001630379 0.7742028 0.7805788</code></pre>
 </div>
 </div>
 </section>
@@ -1350,16 +1389,16 @@ PV1MATH                            7497.489 8.858089e-05
 PV1READ + HOMEPOS + ESCS           5254.970 6.513346e-06
 PV1READ + ESCS                     5242.466 3.000504e-06
                                                        time         code
-PV1MATH + PV1READ + HOMEPOS        Wed Apr 24 11:22:03 2024  1c40bb02b80
-PV1MATH + PV1READ + HOMEPOS + ESCS Wed Apr 24 11:22:03 2024 1c4073cd7eef
-PV1MATH + PV1READ + ESCS           Wed Apr 24 11:22:03 2024 1c405af7e67e
-PV1MATH + PV1READ                  Wed Apr 24 11:22:03 2024 1c402c10cecd
-PV1MATH + HOMEPOS                  Wed Apr 24 11:22:03 2024  1c403790b55
-PV1MATH + HOMEPOS + ESCS           Wed Apr 24 11:22:03 2024 1c40493d88da
-PV1MATH + ESCS                     Wed Apr 24 11:22:03 2024 1c407fd6fb3a
-PV1MATH                            Wed Apr 24 11:22:03 2024 1c402ab9f480
-PV1READ + HOMEPOS + ESCS           Wed Apr 24 11:22:03 2024 1c4066e3c5c6
-PV1READ + ESCS                     Wed Apr 24 11:22:03 2024 1c40419a7b4b
+PV1MATH + PV1READ + HOMEPOS        Tue Jun 11 08:03:34 2024 d0442ee5b7bc
+PV1MATH + PV1READ + HOMEPOS + ESCS Tue Jun 11 08:03:35 2024  d044bbb6164
+PV1MATH + PV1READ + ESCS           Tue Jun 11 08:03:34 2024 d0446b81afb1
+PV1MATH + PV1READ                  Tue Jun 11 08:03:34 2024 d04423c43723
+PV1MATH + HOMEPOS                  Tue Jun 11 08:03:34 2024 d04426ffed2d
+PV1MATH + HOMEPOS + ESCS           Tue Jun 11 08:03:34 2024  d044f35c49b
+PV1MATH + ESCS                     Tue Jun 11 08:03:34 2024 d0446c2c395b
+PV1MATH                            Tue Jun 11 08:03:34 2024 d0445a812914
+PV1READ + HOMEPOS + ESCS           Tue Jun 11 08:03:35 2024 d04412fea3ea
+PV1READ + ESCS                     Tue Jun 11 08:03:34 2024  d044aed2f96
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 </div>
 </div>
@@ -1720,45 +1759,47 @@ Warning
 <section id="task-4-bayesian-linear-models" class="level3" data-number="0.3.4">
 <h3 data-number="0.3.4" class="anchored" data-anchor-id="task-4-bayesian-linear-models"><span class="header-section-number">0.3.4</span> Task 4 Bayesian linear models</h3>
 <div class="question">
-<p>Use a Bayesian linear model to determine: a) In the UK PISA 2022 data, build a model of mathematics scores (<code>PV1MATH</code>) in the US based on reading scores (<code>PV1READ</code>) and science scores (<code>PV1SCIE</code>). Using the 2018 dataset to provide prior distributions for reading and science scores. Plot the distribution of the model parameters</p>
+<p>Use a Bayesian linear model to determine: a) In the UK PISA 2022 data, build a model of mathematics scores (<code>PV1MATH</code>) in the US based on reading scores (<code>PV1READ</code>) and science scores (<code>PV1SCIE</code>). Using the 2018 dataset to provide prior distributions for reading and science scores. Plot the distribution of the model parameters.</p>
+<p>To use as prior data, you can download the PISA 2018 data <a href="../Users/k1765032/Library/CloudStorage/OneDrive-King'sCollegeLondon/QERKCL_PISA/data/pisa/2018/PISA_student_2018.parquet">here</a>.</p>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Determine prior distribution parameters</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>scie_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">select</span>(PV1SCIE, CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb30-6"><a href="#cb30-6"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb30-7"><a href="#cb30-7"></a></span>
-<span id="cb30-8"><a href="#cb30-8"></a>scie_mean <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<span id="cb30-9"><a href="#cb30-9"></a>scie_sd   <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="cb30-10"><a href="#cb30-10"></a></span>
-<span id="cb30-11"><a href="#cb30-11"></a>read_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
-<span id="cb30-12"><a href="#cb30-12"></a>  <span class="fu">select</span>(PV1READ,CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb30-13"><a href="#cb30-13"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-14"><a href="#cb30-14"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb30-15"><a href="#cb30-15"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb30-16"><a href="#cb30-16"></a></span>
-<span id="cb30-17"><a href="#cb30-17"></a>read_mean <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
-<span id="cb30-18"><a href="#cb30-18"></a>read_sd   <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
-<span id="cb30-19"><a href="#cb30-19"></a></span>
-<span id="cb30-20"><a href="#cb30-20"></a><span class="co"># Specify the prior distribution using set priors from the `BMS` package</span></span>
-<span id="cb30-21"><a href="#cb30-21"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({scie_mean},{scie_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1SCIE"</span>),</span>
-<span id="cb30-22"><a href="#cb30-22"></a>               <span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({read_mean},{read_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1READ"</span>))</span>
-<span id="cb30-23"><a href="#cb30-23"></a></span>
-<span id="cb30-24"><a href="#cb30-24"></a><span class="co"># Create the data frame of UK scores in 2018 to model</span></span>
-<span id="cb30-25"><a href="#cb30-25"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb30-26"><a href="#cb30-26"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)</span>
-<span id="cb30-27"><a href="#cb30-27"></a></span>
-<span id="cb30-28"><a href="#cb30-28"></a><span class="co"># Use the Bayesian regression model function 'brm' to fir the model, specifying the prior</span></span>
-<span id="cb30-29"><a href="#cb30-29"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>UKPISA_2022, <span class="at">formula =</span> PV1MATH <span class="sc">~</span> PV1SCIE <span class="sc">+</span> PV1READ, <span class="at">prior=</span>prior2018)</span>
-<span id="cb30-30"><a href="#cb30-30"></a><span class="fu">summary</span>(modbay)</span>
-<span id="cb30-31"><a href="#cb30-31"></a><span class="fu">bayes_R2</span>(modbay)</span>
-<span id="cb30-32"><a href="#cb30-32"></a></span>
-<span id="cb30-33"><a href="#cb30-33"></a><span class="co"># Plot the distribution of the coefficients</span></span>
-<span id="cb30-34"><a href="#cb30-34"></a><span class="fu">plot</span>(modbay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a>scie_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">select</span>(PV1SCIE, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb30-7"><a href="#cb30-7"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb30-8"><a href="#cb30-8"></a></span>
+<span id="cb30-9"><a href="#cb30-9"></a>scie_mean <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<span id="cb30-10"><a href="#cb30-10"></a>scie_sd   <span class="ot">&lt;-</span> scie_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="cb30-11"><a href="#cb30-11"></a></span>
+<span id="cb30-12"><a href="#cb30-12"></a>read_summary <span class="ot">&lt;-</span> PISA_2018 <span class="sc">%&gt;%</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a>  <span class="fu">select</span>(PV1READ,CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-15"><a href="#cb30-15"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb30-16"><a href="#cb30-16"></a>            <span class="at">sd=</span><span class="fu">sd</span>(PV1READ, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb30-17"><a href="#cb30-17"></a></span>
+<span id="cb30-18"><a href="#cb30-18"></a>read_mean <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mean)</span>
+<span id="cb30-19"><a href="#cb30-19"></a>read_sd   <span class="ot">&lt;-</span> read_summary <span class="sc">%&gt;%</span> <span class="fu">pull</span>(sd)</span>
+<span id="cb30-20"><a href="#cb30-20"></a></span>
+<span id="cb30-21"><a href="#cb30-21"></a><span class="co"># Specify the prior distribution using set priors from the `BMS` package</span></span>
+<span id="cb30-22"><a href="#cb30-22"></a>prior2018 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({scie_mean},{scie_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1SCIE"</span>),</span>
+<span id="cb30-23"><a href="#cb30-23"></a>               <span class="fu">set_prior</span>(<span class="fu">glue</span>(<span class="st">"normal({read_mean},{read_sd})"</span>), <span class="at">class =</span> <span class="st">"b"</span>, <span class="at">coef =</span> <span class="st">"PV1READ"</span>))</span>
+<span id="cb30-24"><a href="#cb30-24"></a></span>
+<span id="cb30-25"><a href="#cb30-25"></a><span class="co"># Create the data frame of UK scores in 2018 to model</span></span>
+<span id="cb30-26"><a href="#cb30-26"></a>UKPISA_2022 <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb30-27"><a href="#cb30-27"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)</span>
+<span id="cb30-28"><a href="#cb30-28"></a></span>
+<span id="cb30-29"><a href="#cb30-29"></a><span class="co"># Use the Bayesian regression model function 'brm' to fir the model, specifying the prior</span></span>
+<span id="cb30-30"><a href="#cb30-30"></a>modbay <span class="ot">&lt;-</span> <span class="fu">brm</span>(<span class="at">data=</span>UKPISA_2022, <span class="at">formula =</span> PV1MATH <span class="sc">~</span> PV1SCIE <span class="sc">+</span> PV1READ, <span class="at">prior=</span>prior2018)</span>
+<span id="cb30-31"><a href="#cb30-31"></a><span class="fu">summary</span>(modbay)</span>
+<span id="cb30-32"><a href="#cb30-32"></a><span class="fu">bayes_R2</span>(modbay)</span>
+<span id="cb30-33"><a href="#cb30-33"></a></span>
+<span id="cb30-34"><a href="#cb30-34"></a><span class="co"># Plot the distribution of the coefficients</span></span>
+<span id="cb30-35"><a href="#cb30-35"></a><span class="fu">plot</span>(modbay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
