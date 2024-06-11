@@ -648,18 +648,18 @@ lm(formula = Var1 ~ Var2, data = testdata)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--4.1951 -0.9198 -0.0061  0.8543  4.1451 
+-5.2594 -1.1553  0.0547  1.1930  3.7113 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -4.41940    0.77122   -5.73 6.45e-07 ***
-Var2         0.97911    0.02374   41.24  &lt; 2e-16 ***
+(Intercept) -3.56483    0.81348  -4.382 6.37e-05 ***
+Var2         0.94701    0.02836  33.388  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.668 on 48 degrees of freedom
-Multiple R-squared:  0.9726,    Adjusted R-squared:  0.972 
-F-statistic:  1701 on 1 and 48 DF,  p-value: &lt; 2.2e-16
+Residual standard error: 2.108 on 48 degrees of freedom
+Multiple R-squared:  0.9587,    Adjusted R-squared:  0.9579 
+F-statistic:  1115 on 1 and 48 DF,  p-value: &lt; 2.2e-16
 
 Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
 using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
@@ -677,8 +677,8 @@ make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 3e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
+Chain 1: Gradient evaluation took 2.8e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -695,15 +695,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.012 seconds (Warm-up)
-Chain 1:                0.012 seconds (Sampling)
-Chain 1:                0.024 seconds (Total)
+Chain 1:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 1:                0.01 seconds (Sampling)
+Chain 1:                0.023 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 1e-06 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
+Chain 2: Gradient evaluation took 3e-06 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -721,14 +721,14 @@ Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
 Chain 2:  Elapsed Time: 0.013 seconds (Warm-up)
-Chain 2:                0.011 seconds (Sampling)
-Chain 2:                0.024 seconds (Total)
+Chain 2:                0.012 seconds (Sampling)
+Chain 2:                0.025 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 3e-06 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
+Chain 3: Gradient evaluation took 2e-06 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -746,8 +746,8 @@ Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
 Chain 3:  Elapsed Time: 0.013 seconds (Warm-up)
-Chain 3:                0.01 seconds (Sampling)
-Chain 3:                0.023 seconds (Total)
+Chain 3:                0.011 seconds (Sampling)
+Chain 3:                0.024 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
@@ -770,9 +770,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.013 seconds (Warm-up)
-Chain 4:                0.012 seconds (Sampling)
-Chain 4:                0.025 seconds (Total)
+Chain 4:  Elapsed Time: 0.012 seconds (Warm-up)
+Chain 4:                0.009 seconds (Sampling)
+Chain 4:                0.021 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -783,18 +783,18 @@ Formula: Var1 ~ Var2
 
 Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    -4.42      0.79    -5.96    -2.90 1.00     3260     2837
-Var2          0.98      0.02     0.93     1.03 1.00     3238     2881
+Intercept    -3.55      0.84    -5.27    -1.95 1.00     4073     2871
+Var2          0.95      0.03     0.89     1.00 1.00     4141     3008
 
 Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma     1.71      0.18     1.40     2.11 1.00     3342     2733
+sigma     2.17      0.22     1.78     2.66 1.00     4015     3207
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5     Q97.5
-R2 0.9719231 0.001673701 0.9674131 0.9732894</code></pre>
+   Estimate   Est.Error      Q2.5     Q97.5
+R2  0.95769 0.003039376 0.9497866 0.9603524</code></pre>
 </div>
 </div>
 <p>You can see that the frequentist and Bayesian approaches give similar results:</p>
@@ -947,8 +947,8 @@ make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 3.6e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.36 seconds.
+Chain 1: Gradient evaluation took 4e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.4 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -965,9 +965,9 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.299 seconds (Warm-up)
-Chain 1:                0.119 seconds (Sampling)
-Chain 1:                0.418 seconds (Total)
+Chain 1:  Elapsed Time: 0.264 seconds (Warm-up)
+Chain 1:                0.131 seconds (Sampling)
+Chain 1:                0.395 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
@@ -990,9 +990,9 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.235 seconds (Warm-up)
-Chain 2:                0.128 seconds (Sampling)
-Chain 2:                0.363 seconds (Total)
+Chain 2:  Elapsed Time: 0.246 seconds (Warm-up)
+Chain 2:                0.145 seconds (Sampling)
+Chain 2:                0.391 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
@@ -1015,15 +1015,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.324 seconds (Warm-up)
-Chain 3:                0.127 seconds (Sampling)
-Chain 3:                0.451 seconds (Total)
+Chain 3:  Elapsed Time: 0.245 seconds (Warm-up)
+Chain 3:                0.119 seconds (Sampling)
+Chain 3:                0.364 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2.2e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+Chain 4: Gradient evaluation took 2.4e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -1040,9 +1040,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.358 seconds (Warm-up)
-Chain 4:                0.128 seconds (Sampling)
-Chain 4:                0.486 seconds (Total)
+Chain 4:  Elapsed Time: 0.223 seconds (Warm-up)
+Chain 4:                0.136 seconds (Sampling)
+Chain 4:                0.359 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1053,18 +1053,18 @@ Formula: PV1SCIE ~ PV1MATH
 
 Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    42.27      2.31    37.64    46.71 1.00     4696     2903
-PV1MATH       0.93      0.00     0.92     0.94 1.00     4811     2962
+Intercept    42.31      2.30    37.80    46.85 1.00     4425     2963
+PV1MATH       0.93      0.00     0.92     0.94 1.00     4444     2968
 
 Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    50.75      0.31    50.15    51.37 1.00     3972     3221
+sigma    50.75      0.32    50.12    51.36 1.00     4437     2866
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5 Q97.5
-R2 0.7533127 0.001873179 0.7496249 0.757
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.7532781 0.001870613 0.7495242 0.7569163
 
 Call:
 lm(formula = PV1SCIE ~ PV1MATH, data = UKPISA_2022)
@@ -1194,8 +1194,8 @@ make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 4.4e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.44 seconds.
+Chain 1: Gradient evaluation took 5.5e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.55 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -1212,15 +1212,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.595 seconds (Warm-up)
-Chain 1:                0.297 seconds (Sampling)
-Chain 1:                0.892 seconds (Total)
+Chain 1:  Elapsed Time: 0.493 seconds (Warm-up)
+Chain 1:                0.266 seconds (Sampling)
+Chain 1:                0.759 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 3e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
+Chain 2: Gradient evaluation took 3.1e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.31 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -1237,15 +1237,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.601 seconds (Warm-up)
-Chain 2:                0.319 seconds (Sampling)
-Chain 2:                0.92 seconds (Total)
+Chain 2:  Elapsed Time: 0.545 seconds (Warm-up)
+Chain 2:                0.308 seconds (Sampling)
+Chain 2:                0.853 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 3.3e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.33 seconds.
+Chain 3: Gradient evaluation took 3.5e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.35 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -1262,15 +1262,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.443 seconds (Warm-up)
-Chain 3:                0.29 seconds (Sampling)
-Chain 3:                0.733 seconds (Total)
+Chain 3:  Elapsed Time: 0.623 seconds (Warm-up)
+Chain 3:                0.25 seconds (Sampling)
+Chain 3:                0.873 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2.8e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
+Chain 4: Gradient evaluation took 2.9e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.29 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -1287,9 +1287,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.46 seconds (Warm-up)
-Chain 4:                0.278 seconds (Sampling)
-Chain 4:                0.738 seconds (Total)
+Chain 4:  Elapsed Time: 0.774 seconds (Warm-up)
+Chain 4:                0.323 seconds (Sampling)
+Chain 4:                1.097 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1300,19 +1300,19 @@ Formula: PV1SCIE ~ PV1MATH + PV1READ
 
 Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    25.71      2.23    21.24    29.99 1.00     5425     3463
-PV1MATH       0.71      0.01     0.70     0.73 1.00     2226     2434
-PV1READ       0.25      0.01     0.24     0.26 1.00     2159     2595
+Intercept    25.75      2.22    21.54    30.07 1.00     4783     3216
+PV1MATH       0.71      0.01     0.70     0.73 1.00     2160     2458
+PV1READ       0.25      0.01     0.24     0.26 1.00     2105     2336
 
 Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    48.19      0.30    47.59    48.79 1.00     3569     2720
+sigma    48.20      0.31    47.60    48.80 1.00     3739     2923
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-   Estimate   Est.Error      Q2.5     Q97.5
-R2 0.777426 0.001630379 0.7742028 0.7805788</code></pre>
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.7774004 0.001621166 0.7741681 0.7804712</code></pre>
 </div>
 </div>
 </section>
@@ -1389,16 +1389,16 @@ PV1MATH                            7497.489 8.858089e-05
 PV1READ + HOMEPOS + ESCS           5254.970 6.513346e-06
 PV1READ + ESCS                     5242.466 3.000504e-06
                                                        time         code
-PV1MATH + PV1READ + HOMEPOS        Tue Jun 11 08:03:34 2024 d0442ee5b7bc
-PV1MATH + PV1READ + HOMEPOS + ESCS Tue Jun 11 08:03:35 2024  d044bbb6164
-PV1MATH + PV1READ + ESCS           Tue Jun 11 08:03:34 2024 d0446b81afb1
-PV1MATH + PV1READ                  Tue Jun 11 08:03:34 2024 d04423c43723
-PV1MATH + HOMEPOS                  Tue Jun 11 08:03:34 2024 d04426ffed2d
-PV1MATH + HOMEPOS + ESCS           Tue Jun 11 08:03:34 2024  d044f35c49b
-PV1MATH + ESCS                     Tue Jun 11 08:03:34 2024 d0446c2c395b
-PV1MATH                            Tue Jun 11 08:03:34 2024 d0445a812914
-PV1READ + HOMEPOS + ESCS           Tue Jun 11 08:03:35 2024 d04412fea3ea
-PV1READ + ESCS                     Tue Jun 11 08:03:34 2024  d044aed2f96
+PV1MATH + PV1READ + HOMEPOS        Tue Jun 11 10:17:11 2024 f690731b430a
+PV1MATH + PV1READ + HOMEPOS + ESCS Tue Jun 11 10:17:11 2024  f69087aa182
+PV1MATH + PV1READ + ESCS           Tue Jun 11 10:17:11 2024  f6902ce8090
+PV1MATH + PV1READ                  Tue Jun 11 10:17:11 2024 f690684911b0
+PV1MATH + HOMEPOS                  Tue Jun 11 10:17:11 2024 f69015286f4d
+PV1MATH + HOMEPOS + ESCS           Tue Jun 11 10:17:11 2024 f690435a6f60
+PV1MATH + ESCS                     Tue Jun 11 10:17:11 2024 f69011a33315
+PV1MATH                            Tue Jun 11 10:17:10 2024 f6906956b725
+PV1READ + HOMEPOS + ESCS           Tue Jun 11 10:17:11 2024 f69066462a2b
+PV1READ + ESCS                     Tue Jun 11 10:17:11 2024 f6901a15c420
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 </div>
 </div>
@@ -1453,7 +1453,16 @@ PV1READ + ESCS                     Tue Jun 11 08:03:34 2024  d044aed2f96
 <li>Determine if they are statistically significant differences in ST250Q02JA In your home: A computer (laptop, desktop, or tablet) that you can use for school work between the UK and the US</li>
 </ol>
 </div>
-<p>::: callout hint</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>When analysing by country, after filtering for the countries of interest, it can be helpful to <code>drop_levels(&lt;dataframe&gt;)</code>. After filtering the other countries in the data frame will remain as levels, and will create a contingency table with many zero entries if not dropped. For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Create a data frame for having a computer in the UK and the US</span></span>
@@ -1503,7 +1512,8 @@ CNT                Yes    No
   United States   4077   260</code></pre>
 </div>
 </div>
-<p>:::</p>
+</div>
+</div>
 <div class="cell">
 <details class="code-fold">
 <summary>Answer A</summary>
