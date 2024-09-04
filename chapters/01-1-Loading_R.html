@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>DOCTR - Introduction to R</title>
 <style>
@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">SEM and Bayesian</span></a>
+ <span class="menu-text">SEM</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -214,12 +214,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-1-SEM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SEM</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/06-2-Bayesian.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bayesian Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -273,6 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../chapters/A7-QandA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Questions and Answers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A8-Bayesian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -1218,7 +1218,7 @@ Note
 </section></section><section id="sec-loading" class="level1" data-number="7"><h1 data-number="7">
 <span class="header-section-number">7</span> Loading data</h1>
 <p>We can’t do much with R without loading data from elsewhere. Data will come in many formats and R should be able to deal with all of them. Some of the datasets you access will be a few rows and columns; others, like the ones we are going to use on this course, might run into hundreds of thousands or even millions of rows and hundreds or thousands of columns. Depending on the format you are using, you might need to use specific packages. A few of the data file types you might meet are described below:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 69%">
@@ -1302,7 +1302,7 @@ Tip
 <div class="callout-body-container callout-body">
 <p>Core to the <em>tidyverse</em> is the idea of <em>tidy data</em>, a rule of thumb for creating data sets that can be easily manipulated, modeled and presented. <em>Tidy data</em> are data sets where each variable is a column and each observation a row.</p>
 <p>This data isn’t tidy data as each row has contains multiple exam results (observations):</p>
-<table class="table">
+<table class="caption-top table">
 <thead><tr class="header">
 <th>ID</th>
 <th>Exam 1</th>
@@ -1328,7 +1328,7 @@ Tip
 </tbody>
 </table>
 <p>This dataframe is tidy data as each student has one entry for each exam:</p>
-<table class="table">
+<table class="caption-top table">
 <thead><tr class="header">
 <th>ID</th>
 <th>Exam</th>

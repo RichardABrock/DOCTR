@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>DOCTR - PISA</title>
 <style>
@@ -224,7 +224,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">SEM and Bayesian</span></a>
+ <span class="menu-text">SEM</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -234,12 +234,6 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-1-SEM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SEM</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/06-2-Bayesian.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bayesian Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -293,6 +287,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../chapters/A7-QandA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Questions and Answers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A8-Bayesian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -357,7 +357,7 @@ div.csl-indent {
 </header><section id="what-is-pisa" class="level1" data-number="1"><h1 data-number="1">
 <span class="header-section-number">1</span> What is PISA</h1>
 <p>The <em>Programme for International Student Assessment</em> (PISA) is an OECD initiative that looks at the reading, mathematics and science abilities of students aged 15 years old. Data is collected from ~38 OECD countries and other partner countries every three years.</p>
-<table class="table">
+<table class="caption-top table">
 <thead><tr class="header">
 <th>Dataset</th>
 <th>Description</th>
@@ -437,7 +437,7 @@ div.csl-indent {
 <li>R uses levels (factors) instead of labelled data</li>
 <li>All SPSS fields are <em>labelled</em>, and auto conversion into the native R dataframe format would make numeric fields, factors(!?). To avoid this confusion we have stripped out the no-response data for numeric fields and replaced it with <code>NA</code> values. This means that you won’t be able to tell the reason that a field is missing, but most of the original data doesn’t appear to use the majority of these levels, i.e.&nbsp;there are few reasons given for missing data. The following labels have all been set to <code>NA</code>:</li>
 </ul>
-<table class="table">
+<table class="caption-top table">
 <caption>Labels set to <code>NA</code> in <code>.parquet</code> files</caption>
 <thead><tr class="header">
 <th>value</th>
@@ -597,7 +597,7 @@ div.csl-indent {
 </section><section id="what-are-the-pisa-domains" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="what-are-the-pisa-domains">
 <span class="header-section-number">4.10</span> What are the PISA domains?</h2>
 <p>Every PISA test has included test items measuring literacy, numeracy and science. In each cycle, one of three areas is the focus of study (the major domain). In addition, extra domains have been added to cycles (for example, creative thinking and collaborative problem solving). The additional domains are shown in the table below.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 21%">

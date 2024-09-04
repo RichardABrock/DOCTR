@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -178,7 +178,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-1-SEM.html">SEM and Bayesian</a></li><li class="breadcrumb-item"><a href="../chapters/06-2-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/A1-PISA_analysis.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/A8-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -271,7 +271,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">SEM and Bayesian</span></a>
+ <span class="menu-text">SEM</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -281,12 +281,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-1-SEM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SEM</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/06-2-Bayesian.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Bayesian Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -342,6 +336,12 @@ window.Quarto = {
  <span class="menu-text">Questions and Answers</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A8-Bayesian.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bayesian Statistics</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -378,7 +378,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-1-SEM.html">SEM and Bayesian</a></li><li class="breadcrumb-item"><a href="../chapters/06-2-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/A1-PISA_analysis.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/A8-Bayesian.html">Bayesian Statistics</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Bayesian Statistics</h1>
 </div>
@@ -532,7 +532,7 @@ X-squared = 0.29167, df = 1, p-value = 0.5892</code></pre>
 </div>
 </div>
 <p>The outcome of the chi-square test, gives a Bayes factor of 1.351891. This value raises the question of how to interpret different values of Bayes factors. <span class="citation" data-cites="kass1995">Kass and Raftery (<a href="#ref-kass1995" role="doc-biblioref">1995</a>)</span> have suggested these labels for interpreting Bayes factors:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Bayes Factor</th>
@@ -625,7 +625,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="A8-Bayesian_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -648,37 +648,24 @@ lm(formula = Var1 ~ Var2, data = testdata)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--4.7272 -1.4123  0.2728  1.6623  4.8156 
+-4.4718 -1.7671 -0.0241  1.1157  3.4945 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -3.20756    1.14264  -2.807   0.0072 ** 
-Var2         0.93552    0.03794  24.658   &lt;2e-16 ***
+(Intercept) -2.73766    0.81799  -3.347   0.0016 ** 
+Var2         0.93158    0.02561  36.371   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 2.24 on 48 degrees of freedom
-Multiple R-squared:  0.9268,    Adjusted R-squared:  0.9253 
-F-statistic:   608 on 1 and 48 DF,  p-value: &lt; 2.2e-16
+Residual standard error: 1.998 on 48 degrees of freedom
+Multiple R-squared:  0.965, Adjusted R-squared:  0.9643 
+F-statistic:  1323 on 1 and 48 DF,  p-value: &lt; 2.2e-16
 
-Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
-using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
-using SDK: ‘MacOSX14.2.sdk’
-clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
-In file included from &lt;built-in&gt;:1:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
-/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
-#include &lt;cmath&gt;
-         ^~~~~~~
-1 error generated.
-make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 1.6e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.16 seconds.
+Chain 1: Gradient evaluation took 2e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.2 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -695,15 +682,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.012 seconds (Warm-up)
-Chain 1:                0.011 seconds (Sampling)
-Chain 1:                0.023 seconds (Total)
+Chain 1:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 1:                0.012 seconds (Sampling)
+Chain 1:                0.025 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 1e-06 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
+Chain 2: Gradient evaluation took 2e-06 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -720,15 +707,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.013 seconds (Warm-up)
-Chain 2:                0.011 seconds (Sampling)
-Chain 2:                0.024 seconds (Total)
+Chain 2:  Elapsed Time: 0.014 seconds (Warm-up)
+Chain 2:                0.012 seconds (Sampling)
+Chain 2:                0.026 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 1e-06 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
+Chain 3: Gradient evaluation took 2e-06 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.02 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -745,15 +732,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.012 seconds (Warm-up)
-Chain 3:                0.012 seconds (Sampling)
+Chain 3:  Elapsed Time: 0.013 seconds (Warm-up)
+Chain 3:                0.011 seconds (Sampling)
 Chain 3:                0.024 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 1e-06 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.01 seconds.
+Chain 4: Gradient evaluation took 3e-06 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.03 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -770,9 +757,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.012 seconds (Warm-up)
-Chain 4:                0.011 seconds (Sampling)
-Chain 4:                0.023 seconds (Total)
+Chain 4:  Elapsed Time: 0.014 seconds (Warm-up)
+Chain 4:                0.012 seconds (Sampling)
+Chain 4:                0.026 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -783,22 +770,22 @@ Formula: Var1 ~ Var2
 
 Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    -3.21      1.18    -5.60    -0.86 1.00     3396     2791
-Var2          0.94      0.04     0.86     1.02 1.00     3383     2569
+Intercept    -2.75      0.84    -4.43    -1.08 1.00     3941     2728
+Var2          0.93      0.03     0.88     0.98 1.00     3895     2781
 
 Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma     2.30      0.24     1.90     2.82 1.00     3390     2807
+sigma     2.05      0.22     1.68     2.52 1.00     3506     3138
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5    Q97.5
-R2 0.9251009 0.006276092 0.9082406 0.931766</code></pre>
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.9642063 0.002269155 0.9577691 0.9661661</code></pre>
 </div>
 </div>
 <p>You can see that the frequentist and Bayesian approaches give similar results:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -931,24 +918,11 @@ R2 0.9251009 0.006276092 0.9082406 0.931766</code></pre>
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
 1  497.  89.9
-Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
-using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
-using SDK: ‘MacOSX14.2.sdk’
-clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
-In file included from &lt;built-in&gt;:1:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
-/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
-#include &lt;cmath&gt;
-         ^~~~~~~
-1 error generated.
-make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 3.6e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.36 seconds.
+Chain 1: Gradient evaluation took 3.9e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.39 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -965,15 +939,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.402 seconds (Warm-up)
-Chain 1:                0.132 seconds (Sampling)
-Chain 1:                0.534 seconds (Total)
+Chain 1:  Elapsed Time: 0.254 seconds (Warm-up)
+Chain 1:                0.112 seconds (Sampling)
+Chain 1:                0.366 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.1e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.
+Chain 2: Gradient evaluation took 2.2e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -990,15 +964,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.212 seconds (Warm-up)
-Chain 2:                0.108 seconds (Sampling)
-Chain 2:                0.32 seconds (Total)
+Chain 2:  Elapsed Time: 0.328 seconds (Warm-up)
+Chain 2:                0.107 seconds (Sampling)
+Chain 2:                0.435 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.1e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.
+Chain 3: Gradient evaluation took 2.2e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -1015,9 +989,9 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.209 seconds (Warm-up)
-Chain 3:                0.121 seconds (Sampling)
-Chain 3:                0.33 seconds (Total)
+Chain 3:  Elapsed Time: 0.241 seconds (Warm-up)
+Chain 3:                0.116 seconds (Sampling)
+Chain 3:                0.357 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
@@ -1040,9 +1014,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.324 seconds (Warm-up)
-Chain 4:                0.134 seconds (Sampling)
-Chain 4:                0.458 seconds (Total)
+Chain 4:  Elapsed Time: 0.299 seconds (Warm-up)
+Chain 4:                0.102 seconds (Sampling)
+Chain 4:                0.401 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1053,18 +1027,18 @@ Formula: PV1SCIE ~ PV1MATH
 
 Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    42.38      2.32    37.94    46.92 1.00     5483     3027
-PV1MATH       0.93      0.00     0.92     0.94 1.00     5596     2835
+Intercept    42.28      2.28    37.84    46.74 1.00     5058     3083
+PV1MATH       0.93      0.00     0.92     0.94 1.00     4997     3111
 
 Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    50.74      0.32    50.12    51.37 1.00     5116     2812
+sigma    50.75      0.32    50.10    51.39 1.00     4488     3074
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate  Est.Error      Q2.5     Q97.5
-R2 0.7532285 0.00188857 0.7494856 0.7567749
+    Estimate   Est.Error      Q2.5     Q97.5
+R2 0.7533032 0.001843628 0.7495924 0.7568605
 
 Call:
 lm(formula = PV1SCIE ~ PV1MATH, data = UKPISA_2022)
@@ -1165,7 +1139,7 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="A8-Bayesian_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1178,24 +1152,11 @@ F-statistic: 3.96e+04 on 1 and 12970 DF,  p-value: &lt; 2.2e-16</code></pre>
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
 1  500.  97.8
-Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
-using C compiler: ‘Apple clang version 15.0.0 (clang-1500.1.0.2.5)’
-using SDK: ‘MacOSX14.2.sdk’
-clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Users/k1765032/Library/R/arm64/4.3/library/Rcpp/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/unsupported"  -I"/Users/k1765032/Library/R/arm64/4.3/library/BH/include" -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/src/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/RcppParallel/include/"  -I"/Users/k1765032/Library/R/arm64/4.3/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
-In file included from &lt;built-in&gt;:1:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Dense:1:
-In file included from /Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/Core:19:
-/Users/k1765032/Library/R/arm64/4.3/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
-#include &lt;cmath&gt;
-         ^~~~~~~
-1 error generated.
-make: *** [foo.o] Error 1
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 5e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.5 seconds.
+Chain 1: Gradient evaluation took 4.7e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.47 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -1212,15 +1173,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.705 seconds (Warm-up)
-Chain 1:                0.286 seconds (Sampling)
-Chain 1:                0.991 seconds (Total)
+Chain 1:  Elapsed Time: 0.858 seconds (Warm-up)
+Chain 1:                0.227 seconds (Sampling)
+Chain 1:                1.085 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 2.8e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.28 seconds.
+Chain 2: Gradient evaluation took 3e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -1237,15 +1198,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.383 seconds (Warm-up)
-Chain 2:                0.335 seconds (Sampling)
-Chain 2:                0.718 seconds (Total)
+Chain 2:  Elapsed Time: 0.766 seconds (Warm-up)
+Chain 2:                0.274 seconds (Sampling)
+Chain 2:                1.04 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 2.9e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.29 seconds.
+Chain 3: Gradient evaluation took 3e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -1262,15 +1223,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.545 seconds (Warm-up)
-Chain 3:                0.313 seconds (Sampling)
-Chain 3:                0.858 seconds (Total)
+Chain 3:  Elapsed Time: 0.887 seconds (Warm-up)
+Chain 3:                0.274 seconds (Sampling)
+Chain 3:                1.161 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 2.9e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.29 seconds.
+Chain 4: Gradient evaluation took 3e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.3 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -1287,9 +1248,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 0.718 seconds (Warm-up)
-Chain 4:                0.259 seconds (Sampling)
-Chain 4:                0.977 seconds (Total)
+Chain 4:  Elapsed Time: 0.548 seconds (Warm-up)
+Chain 4:                0.23 seconds (Sampling)
+Chain 4:                0.778 seconds (Total)
 Chain 4: 
  Family: gaussian 
   Links: mu = identity; sigma = identity 
@@ -1300,19 +1261,19 @@ Formula: PV1SCIE ~ PV1MATH + PV1READ
 
 Regression Coefficients:
           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-Intercept    25.65      2.25    21.16    30.04 1.00     5217     3308
-PV1MATH       0.71      0.01     0.70     0.73 1.00     2459     2527
-PV1READ       0.25      0.01     0.24     0.26 1.00     2428     2585
+Intercept    25.65      2.25    21.16    29.98 1.00     4675     2958
+PV1MATH       0.71      0.01     0.70     0.73 1.00     2657     2529
+PV1READ       0.25      0.01     0.24     0.26 1.00     2756     2673
 
 Further Distributional Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sigma    48.19      0.30    47.61    48.80 1.00     3844     2934
+sigma    48.19      0.30    47.60    48.78 1.00     3869     2731
 
 Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).
-    Estimate   Est.Error      Q2.5     Q97.5
-R2 0.7774907 0.001636235 0.7742151 0.7806743</code></pre>
+   Estimate   Est.Error      Q2.5   Q97.5
+R2 0.777482 0.001634373 0.7742551 0.78068</code></pre>
 </div>
 </div>
 </section>
@@ -1389,16 +1350,16 @@ PV1MATH                            7497.489 8.858089e-05
 PV1READ + HOMEPOS + ESCS           5254.970 6.513346e-06
 PV1READ + ESCS                     5242.466 3.000504e-06
                                                        time          code
-PV1MATH + PV1READ + HOMEPOS        Tue Jun 11 11:19:51 2024 112e12e716e55
-PV1MATH + PV1READ + HOMEPOS + ESCS Tue Jun 11 11:19:51 2024 112e1492e2cc0
-PV1MATH + PV1READ + ESCS           Tue Jun 11 11:19:51 2024 112e11902a645
-PV1MATH + PV1READ                  Tue Jun 11 11:19:51 2024 112e112da738b
-PV1MATH + HOMEPOS                  Tue Jun 11 11:19:51 2024 112e143d7b458
-PV1MATH + HOMEPOS + ESCS           Tue Jun 11 11:19:51 2024 112e17cf208d6
-PV1MATH + ESCS                     Tue Jun 11 11:19:51 2024  112e16812034
-PV1MATH                            Tue Jun 11 11:19:51 2024 112e153948de3
-PV1READ + HOMEPOS + ESCS           Tue Jun 11 11:19:51 2024 112e1762259af
-PV1READ + ESCS                     Tue Jun 11 11:19:51 2024  112e1d2e1fdb
+PV1MATH + PV1READ + HOMEPOS        Wed Sep  4 13:08:03 2024 1129d7c103678
+PV1MATH + PV1READ + HOMEPOS + ESCS Wed Sep  4 13:08:03 2024  1129d8f56316
+PV1MATH + PV1READ + ESCS           Wed Sep  4 13:08:03 2024  1129dc683fea
+PV1MATH + PV1READ                  Wed Sep  4 13:08:02 2024 1129d16263c54
+PV1MATH + HOMEPOS                  Wed Sep  4 13:08:02 2024 1129d2842ba28
+PV1MATH + HOMEPOS + ESCS           Wed Sep  4 13:08:03 2024 1129d103c2203
+PV1MATH + ESCS                     Wed Sep  4 13:08:03 2024 1129d34cbacbe
+PV1MATH                            Wed Sep  4 13:08:02 2024 1129d145c4042
+PV1READ + HOMEPOS + ESCS           Wed Sep  4 13:08:03 2024 1129d5bdcfb48
+PV1READ + ESCS                     Wed Sep  4 13:08:03 2024 1129d26a67d4a
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 </div>
 </div>
@@ -1436,7 +1397,7 @@ PV1READ + ESCS                     Tue Jun 11 11:19:51 2024  112e1d2e1fdb
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-2-Bayesian_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="A8-Bayesian_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
