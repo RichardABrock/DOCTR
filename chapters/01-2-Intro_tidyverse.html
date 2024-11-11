@@ -367,8 +367,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="exploring-data" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Exploring data</h1>
-<p>Now that we have loaded the <code>PISA_2022</code> dataset we can start to explore it.</p>
-<p>You can check that the tables have loaded correctly by typing the object name and ‘<em>running</em>’ the line (<code>control</code>|<code>command ⌘</code> and <code>Enter</code>)</p>
+<p>Now that we have loaded the <code>PISA_2022</code> data set we can start to explore it.</p>
+<p>You can check that the tables have loaded correctly by typing the object name and <em>running</em> the line (<code>control</code>|<code>command ⌘</code> and <code>Enter</code>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>PISA_2022</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -660,7 +660,7 @@ Tip
 <details class="code-fold">
 <summary>answer</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># the 26th column is ST005Q01JA</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="co"># the label is: "In the last two full weeks of school, how often: I [skipped] some classes"</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="co">#"What is the [highest level of schooling] completed by your mother?"</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a></span>
 <span id="cb36-4"><a href="#cb36-4"></a><span class="co"># you could use View() instead of the environment window, note the capital V</span></span>
 <span id="cb36-5"><a href="#cb36-5"></a><span class="fu">View</span>(PISA_2022)</span>
@@ -1558,27 +1558,54 @@ Important
 </details>
 </div>
 <ol start="2" type="1">
-<li>Write a <code>group_by</code> and <code>summarise</code> statement to work out the <code>mean</code> and <code>median</code> cultural capital value <code>ESCS</code> for each student by country <code>CNT</code></li>
+<li>use <code>group_by</code> and <code>summarise</code> to count (<code>n()</code>) the number of students who are male or female</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href="#cb95-2"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb95-3"><a href="#cb95-3"></a>  <span class="fu">summarise</span>(<span class="at">escs_mean =</span> <span class="fu">mean</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb95-4"><a href="#cb95-4"></a>            <span class="at">escs_median =</span> <span class="fu">median</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb95-2"><a href="#cb95-2"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb95-3"><a href="#cb95-3"></a>  <span class="fu">summarise</span>(<span class="at">num_stus =</span> <span class="fu">n</span>())</span>
+<span id="cb95-4"><a href="#cb95-4"></a>  </span>
+<span id="cb95-5"><a href="#cb95-5"></a><span class="co"># Also, if you only want a count, you can use:</span></span>
+<span id="cb95-6"><a href="#cb95-6"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb95-7"><a href="#cb95-7"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb95-8"><a href="#cb95-8"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="3" type="1">
-<li>Using <code>summarise</code> work out, <code>Yes</code> or <code>No</code>, by country <code>CNT</code> and gender <code>ST004D01T</code>, whether students “Agree/disagree: There are enough [digital resources] for every student at my school” <code>IC172Q01JA</code>. Filter out any <code>NA</code> values on <code>IC172Q01JA</code>:</li>
+<li><code>summarise</code> the number of students who are male or female by country</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb96-2"><a href="#cb96-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(IC172Q01JA)) <span class="sc">%&gt;%</span></span>
-<span id="cb96-3"><a href="#cb96-3"></a>  <span class="fu">group_by</span>(CNT, ST004D01T, IC172Q01JA) <span class="sc">%&gt;%</span> </span>
-<span id="cb96-4"><a href="#cb96-4"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb96-2"><a href="#cb96-2"></a>  <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb96-3"><a href="#cb96-3"></a>  <span class="fu">summarise</span>(<span class="at">num_stus =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="4" type="1">
+<li>Write a <code>group_by</code> and <code>summarise</code> statement to work out the <code>mean</code> and <code>median</code> cultural capital value <code>ESCS</code> for each student by country <code>CNT</code></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>answer</summary>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="#cb97-2"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb97-3"><a href="#cb97-3"></a>  <span class="fu">summarise</span>(<span class="at">escs_mean =</span> <span class="fu">mean</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb97-4"><a href="#cb97-4"></a>            <span class="at">escs_median =</span> <span class="fu">median</span>(ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="5" type="1">
+<li>Using <code>summarise</code> work out, <code>Yes</code> or <code>No</code>, by country <code>CNT</code> and gender <code>ST004D01T</code>, whether students have in their home <em>A room of your own</em> <code>ST250Q01JA</code>. Filter out any <code>NA</code> values on <code>ST250Q01JA</code>:</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>answer</summary>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="#cb98-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST250Q01JA)) <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="#cb98-3"></a>  <span class="fu">group_by</span>(CNT, ST004D01T, ST250Q01JA) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-4"><a href="#cb98-4"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -1632,22 +1659,22 @@ Important
 <p>We can use <code>mutate</code> to create subsets of data in fields. For example, if we wanted to see how many students in each country were high performing readers, specified by getting a reading grade of greater than <code>550</code>, we could do the following:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-35"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-35-1"><a href="#annotated-cell-35-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-35-2" class="code-annotation-target"><a href="#annotated-cell-35-2"></a>  <span class="fu">mutate</span>(<span class="at">PV1READ_high =</span> PV1READ <span class="sc">&gt;</span> <span class="dv">550</span>) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-35-3" class="code-annotation-target"><a href="#annotated-cell-35-3"></a>  <span class="fu">group_by</span>(CNT, PV1READ_high) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-35-4" class="code-annotation-target"><a href="#annotated-cell-35-4"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-35-2" class="code-annotation-target"><a href="#annotated-cell-35-2"></a>  <span class="fu">mutate</span>(<span class="at">PV1READ_high =</span> PV1READ <span class="sc">&gt;</span> <span class="dv">550</span>) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-35-3" class="code-annotation-target"><a href="#annotated-cell-35-3"></a>  <span class="fu">group_by</span>(CNT, PV1READ_high) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-35-4" class="code-annotation-target"><a href="#annotated-cell-35-4"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-35" data-code-lines="2" data-code-annotation="1">this line creates a new column called <code>PV1READ_high</code> for every students, storing a boolean value, <code>TRUE</code> or <code>FALSE</code> depending on whether their reading grates <code>PV1READ</code> &gt; 550.</span>
+</dd>
 <dt data-target-cell="annotated-cell-35" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="2" data-code-annotation="2">this line creates a new column called <code>PV1READ_high</code> for every students, storing a boolean value, <code>TRUE</code> or <code>FALSE</code> depending on whether their reading grates <code>PV1READ</code> &gt; 550.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="3" data-code-annotation="2">a grouping is made on the country and the new field <code>PV1READ_high</code>, e.g.&nbsp;Albania + TRUE, Albania + FALSE, etc.</span>
 </dd>
 <dt data-target-cell="annotated-cell-35" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="3" data-code-annotation="3">a grouping is made on the country and the new field <code>PV1READ_high</code>, e.g.&nbsp;Albania + TRUE, Albania + FALSE, etc.</span>
-</dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="4" data-code-annotation="4">using summarise we can find the number of student rows in each grouping using <code>n()</code>, and drop all the other fields</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="4" data-code-annotation="3">using <code>summarise</code> we can find the number of student rows in each grouping using <code>n()</code>, and drop all the other fields</span>
 </dd>
 </dl>
 </div>
@@ -1733,9 +1760,9 @@ Important
 <h1 data-number="7"><span class="header-section-number">7</span> arrange</h1>
 <p>The results returned by pipes can be huge, so it’s a good idea to store them in objects and explore them in the Environment window where you can sort and search within the output. There might also be times when you want to order/<code>arrange</code> the outputs in a particular way. We can do this quite easily in the tidyverse by using the <code>arrange(&lt;column_name&gt;, &lt;column_name&gt;)</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb100-2"><a href="#cb100-2"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb100-3"><a href="#cb100-3"></a>  <span class="fu">arrange</span>(PV1MATH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="#cb102-2"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="#cb102-3"></a>  <span class="fu">arrange</span>(PV1MATH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 613,744 × 3
    CNT       ST004D01T PV1MATH
@@ -1755,9 +1782,9 @@ Important
 </div>
 <p>If we’re interested in the highest achieving students we can add the <code>desc()</code> function to <code>arrange</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a href="#cb102-2"></a>  <span class="fu">select</span>(CNT, LANGN, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb102-3"><a href="#cb102-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(PV1MATH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="#cb104-2"></a>  <span class="fu">select</span>(CNT, LANGN, ST004D01T, PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb104-3"><a href="#cb104-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(PV1MATH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 613,744 × 4
    CNT               LANGN     ST004D01T PV1MATH
@@ -1922,11 +1949,11 @@ Important
 </div>
 <p>We now take this new data set <code>maths_data</code> and look at whether the difference between relative performance in maths and reading is the same for girls and boys:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a>maths_data <span class="sc">%&gt;%</span> </span>
-<span id="cb106-2"><a href="#cb106-2"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb106-3"><a href="#cb106-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gender), <span class="sc">!</span><span class="fu">is.na</span>(maths_better)) <span class="sc">%&gt;%</span></span>
-<span id="cb106-4"><a href="#cb106-4"></a>  <span class="fu">group_by</span>(gender, maths_better) <span class="sc">%&gt;%</span></span>
-<span id="cb106-5"><a href="#cb106-5"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>maths_data <span class="sc">%&gt;%</span> </span>
+<span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="#cb108-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gender), <span class="sc">!</span><span class="fu">is.na</span>(maths_better)) <span class="sc">%&gt;%</span></span>
+<span id="cb108-4"><a href="#cb108-4"></a>  <span class="fu">group_by</span>(gender, maths_better) <span class="sc">%&gt;%</span></span>
+<span id="cb108-5"><a href="#cb108-5"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
 # Groups:   gender [2]
@@ -1943,67 +1970,67 @@ Important
 <div class="cell">
 <details class="code-fold">
 <summary>adding percentage column</summary>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">mutate</span>(<span class="at">maths_better =</span> </span>
-<span id="cb108-3"><a href="#cb108-3"></a>           <span class="fu">ifelse</span>(PV1MATH <span class="sc">&gt;</span> PV1READ,</span>
-<span id="cb108-4"><a href="#cb108-4"></a>                  <span class="cn">TRUE</span>, </span>
-<span id="cb108-5"><a href="#cb108-5"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb108-6"><a href="#cb108-6"></a>  <span class="fu">select</span>(CNT, ST004D01T, maths_better, PV1MATH, PV1READ) <span class="sc">%&gt;%</span> </span>
-<span id="cb108-7"><a href="#cb108-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST004D01T), <span class="sc">!</span><span class="fu">is.na</span>(maths_better)) <span class="sc">%&gt;%</span></span>
-<span id="cb108-8"><a href="#cb108-8"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb108-9"><a href="#cb108-9"></a>  <span class="fu">mutate</span>(<span class="at">students_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb108-10"><a href="#cb108-10"></a>  <span class="fu">group_by</span>(ST004D01T, maths_better) <span class="sc">%&gt;%</span></span>
-<span id="cb108-11"><a href="#cb108-11"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb108-12"><a href="#cb108-12"></a>            <span class="at">per =</span> n<span class="sc">/</span><span class="fu">unique</span>(students_n))</span>
-<span id="cb108-13"><a href="#cb108-13"></a></span>
-<span id="cb108-14"><a href="#cb108-14"></a><span class="co"># or</span></span>
-<span id="cb108-15"><a href="#cb108-15"></a></span>
-<span id="cb108-16"><a href="#cb108-16"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb108-17"><a href="#cb108-17"></a>  <span class="fu">mutate</span>(<span class="at">maths_better =</span> </span>
-<span id="cb108-18"><a href="#cb108-18"></a>           <span class="fu">ifelse</span>(PV1MATH <span class="sc">&gt;</span> PV1READ,</span>
-<span id="cb108-19"><a href="#cb108-19"></a>                  <span class="cn">TRUE</span>, </span>
-<span id="cb108-20"><a href="#cb108-20"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb108-21"><a href="#cb108-21"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb108-22"><a href="#cb108-22"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gender), <span class="sc">!</span><span class="fu">is.na</span>(maths_better)) <span class="sc">%&gt;%</span></span>
-<span id="cb108-23"><a href="#cb108-23"></a>  <span class="fu">group_by</span>(gender, maths_better) <span class="sc">%&gt;%</span></span>
-<span id="cb108-24"><a href="#cb108-24"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb108-25"><a href="#cb108-25"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb108-26"><a href="#cb108-26"></a>  <span class="fu">mutate</span>(<span class="at">total_n =</span> <span class="fu">sum</span>(n),</span>
-<span id="cb108-27"><a href="#cb108-27"></a>         <span class="at">gender_per =</span> <span class="dv">100</span><span class="sc">*</span> n<span class="sc">/</span>total_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">mutate</span>(<span class="at">maths_better =</span> </span>
+<span id="cb110-3"><a href="#cb110-3"></a>           <span class="fu">ifelse</span>(PV1MATH <span class="sc">&gt;</span> PV1READ,</span>
+<span id="cb110-4"><a href="#cb110-4"></a>                  <span class="cn">TRUE</span>, </span>
+<span id="cb110-5"><a href="#cb110-5"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-6"><a href="#cb110-6"></a>  <span class="fu">select</span>(CNT, ST004D01T, maths_better, PV1MATH, PV1READ) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-7"><a href="#cb110-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST004D01T), <span class="sc">!</span><span class="fu">is.na</span>(maths_better)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-8"><a href="#cb110-8"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb110-9"><a href="#cb110-9"></a>  <span class="fu">mutate</span>(<span class="at">students_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb110-10"><a href="#cb110-10"></a>  <span class="fu">group_by</span>(ST004D01T, maths_better) <span class="sc">%&gt;%</span></span>
+<span id="cb110-11"><a href="#cb110-11"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb110-12"><a href="#cb110-12"></a>            <span class="at">per =</span> n<span class="sc">/</span><span class="fu">unique</span>(students_n))</span>
+<span id="cb110-13"><a href="#cb110-13"></a></span>
+<span id="cb110-14"><a href="#cb110-14"></a><span class="co"># or</span></span>
+<span id="cb110-15"><a href="#cb110-15"></a></span>
+<span id="cb110-16"><a href="#cb110-16"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb110-17"><a href="#cb110-17"></a>  <span class="fu">mutate</span>(<span class="at">maths_better =</span> </span>
+<span id="cb110-18"><a href="#cb110-18"></a>           <span class="fu">ifelse</span>(PV1MATH <span class="sc">&gt;</span> PV1READ,</span>
+<span id="cb110-19"><a href="#cb110-19"></a>                  <span class="cn">TRUE</span>, </span>
+<span id="cb110-20"><a href="#cb110-20"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-21"><a href="#cb110-21"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb110-22"><a href="#cb110-22"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gender), <span class="sc">!</span><span class="fu">is.na</span>(maths_better)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-23"><a href="#cb110-23"></a>  <span class="fu">group_by</span>(gender, maths_better) <span class="sc">%&gt;%</span></span>
+<span id="cb110-24"><a href="#cb110-24"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb110-25"><a href="#cb110-25"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb110-26"><a href="#cb110-26"></a>  <span class="fu">mutate</span>(<span class="at">total_n =</span> <span class="fu">sum</span>(n),</span>
+<span id="cb110-27"><a href="#cb110-27"></a>         <span class="at">gender_per =</span> <span class="dv">100</span><span class="sc">*</span> n<span class="sc">/</span>total_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>comparing science and reading</summary>
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb109-2"><a href="#cb109-2"></a>  <span class="fu">mutate</span>(<span class="at">sci_better =</span> </span>
-<span id="cb109-3"><a href="#cb109-3"></a>           <span class="fu">ifelse</span>(PV1SCIE <span class="sc">&gt;</span> PV1READ,</span>
-<span id="cb109-4"><a href="#cb109-4"></a>                  <span class="cn">TRUE</span>, </span>
-<span id="cb109-5"><a href="#cb109-5"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb109-6"><a href="#cb109-6"></a>  <span class="fu">select</span>(CNT, ST004D01T, sci_better, PV1SCIE, PV1READ) <span class="sc">%&gt;%</span> </span>
-<span id="cb109-7"><a href="#cb109-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST004D01T), <span class="sc">!</span><span class="fu">is.na</span>(sci_better)) <span class="sc">%&gt;%</span></span>
-<span id="cb109-8"><a href="#cb109-8"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb109-9"><a href="#cb109-9"></a>  <span class="fu">mutate</span>(<span class="at">students_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb109-10"><a href="#cb109-10"></a>  <span class="fu">group_by</span>(ST004D01T, sci_better) <span class="sc">%&gt;%</span></span>
-<span id="cb109-11"><a href="#cb109-11"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb109-12"><a href="#cb109-12"></a>            <span class="at">per =</span> n<span class="sc">/</span><span class="fu">unique</span>(students_n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb111-2"><a href="#cb111-2"></a>  <span class="fu">mutate</span>(<span class="at">sci_better =</span> </span>
+<span id="cb111-3"><a href="#cb111-3"></a>           <span class="fu">ifelse</span>(PV1SCIE <span class="sc">&gt;</span> PV1READ,</span>
+<span id="cb111-4"><a href="#cb111-4"></a>                  <span class="cn">TRUE</span>, </span>
+<span id="cb111-5"><a href="#cb111-5"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb111-6"><a href="#cb111-6"></a>  <span class="fu">select</span>(CNT, ST004D01T, sci_better, PV1SCIE, PV1READ) <span class="sc">%&gt;%</span> </span>
+<span id="cb111-7"><a href="#cb111-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST004D01T), <span class="sc">!</span><span class="fu">is.na</span>(sci_better)) <span class="sc">%&gt;%</span></span>
+<span id="cb111-8"><a href="#cb111-8"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb111-9"><a href="#cb111-9"></a>  <span class="fu">mutate</span>(<span class="at">students_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb111-10"><a href="#cb111-10"></a>  <span class="fu">group_by</span>(ST004D01T, sci_better) <span class="sc">%&gt;%</span></span>
+<span id="cb111-11"><a href="#cb111-11"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb111-12"><a href="#cb111-12"></a>            <span class="at">per =</span> n<span class="sc">/</span><span class="fu">unique</span>(students_n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>comparing science and maths</summary>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">mutate</span>(<span class="at">sci_better =</span> </span>
-<span id="cb110-3"><a href="#cb110-3"></a>           <span class="fu">ifelse</span>(PV1SCIE <span class="sc">&gt;</span> PV1MATH,</span>
-<span id="cb110-4"><a href="#cb110-4"></a>                  <span class="cn">TRUE</span>, </span>
-<span id="cb110-5"><a href="#cb110-5"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb110-6"><a href="#cb110-6"></a>  <span class="fu">select</span>(CNT, ST004D01T, sci_better, PV1SCIE, PV1MATH) <span class="sc">%&gt;%</span> </span>
-<span id="cb110-7"><a href="#cb110-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST004D01T), <span class="sc">!</span><span class="fu">is.na</span>(sci_better)) <span class="sc">%&gt;%</span></span>
-<span id="cb110-8"><a href="#cb110-8"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb110-9"><a href="#cb110-9"></a>  <span class="fu">mutate</span>(<span class="at">students_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb110-10"><a href="#cb110-10"></a>  <span class="fu">group_by</span>(ST004D01T, sci_better) <span class="sc">%&gt;%</span></span>
-<span id="cb110-11"><a href="#cb110-11"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb110-12"><a href="#cb110-12"></a>            <span class="at">per =</span> n<span class="sc">/</span><span class="fu">unique</span>(students_n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="#cb112-2"></a>  <span class="fu">mutate</span>(<span class="at">sci_better =</span> </span>
+<span id="cb112-3"><a href="#cb112-3"></a>           <span class="fu">ifelse</span>(PV1SCIE <span class="sc">&gt;</span> PV1MATH,</span>
+<span id="cb112-4"><a href="#cb112-4"></a>                  <span class="cn">TRUE</span>, </span>
+<span id="cb112-5"><a href="#cb112-5"></a>                  <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-6"><a href="#cb112-6"></a>  <span class="fu">select</span>(CNT, ST004D01T, sci_better, PV1SCIE, PV1MATH) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-7"><a href="#cb112-7"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ST004D01T), <span class="sc">!</span><span class="fu">is.na</span>(sci_better)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-8"><a href="#cb112-8"></a>  <span class="fu">group_by</span>(ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb112-9"><a href="#cb112-9"></a>  <span class="fu">mutate</span>(<span class="at">students_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb112-10"><a href="#cb112-10"></a>  <span class="fu">group_by</span>(ST004D01T, sci_better) <span class="sc">%&gt;%</span></span>
+<span id="cb112-11"><a href="#cb112-11"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb112-12"><a href="#cb112-12"></a>            <span class="at">per =</span> n<span class="sc">/</span><span class="fu">unique</span>(students_n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -2096,15 +2123,15 @@ Important
 <p>case_when( &lt;statement(s)1&gt; ~ <value_if_true>, &lt;statement(s)2&gt; ~ <value_if_true>, &lt;statement(s)3&gt; ~ <value_if_true>, …, .default = <value_if_none_of_above_true>)</value_if_none_of_above_true></value_if_true></value_if_true></value_if_true></p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a>stu_seaonal <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb111-2"><a href="#cb111-2"></a>  <span class="fu">mutate</span>(<span class="at">birth_season =</span> <span class="fu">case_when</span>(</span>
-<span id="cb111-3"><a href="#cb111-3"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"November"</span>) <span class="sc">~</span> <span class="st">"Autumn"</span>,</span>
-<span id="cb111-4"><a href="#cb111-4"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"December"</span>, <span class="st">"January"</span>, <span class="st">"February"</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
-<span id="cb111-5"><a href="#cb111-5"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"March"</span>, <span class="st">"April"</span>, <span class="st">"May"</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
-<span id="cb111-6"><a href="#cb111-6"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"June"</span>, <span class="st">"July"</span>, <span class="st">"August"</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
-<span id="cb111-7"><a href="#cb111-7"></a>    <span class="at">.default =</span> <span class="st">"Other"</span></span>
-<span id="cb111-8"><a href="#cb111-8"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb111-9"><a href="#cb111-9"></a>  <span class="fu">select</span>(CNT, ST004D01T, ST003D02T, birth_season, <span class="fu">starts_with</span>(<span class="st">"PV1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a>stu_seaonal <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb113-2"><a href="#cb113-2"></a>  <span class="fu">mutate</span>(<span class="at">birth_season =</span> <span class="fu">case_when</span>(</span>
+<span id="cb113-3"><a href="#cb113-3"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"November"</span>) <span class="sc">~</span> <span class="st">"Autumn"</span>,</span>
+<span id="cb113-4"><a href="#cb113-4"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"December"</span>, <span class="st">"January"</span>, <span class="st">"February"</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
+<span id="cb113-5"><a href="#cb113-5"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"March"</span>, <span class="st">"April"</span>, <span class="st">"May"</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
+<span id="cb113-6"><a href="#cb113-6"></a>    ST003D02T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"June"</span>, <span class="st">"July"</span>, <span class="st">"August"</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
+<span id="cb113-7"><a href="#cb113-7"></a>    <span class="at">.default =</span> <span class="st">"Other"</span></span>
+<span id="cb113-8"><a href="#cb113-8"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb113-9"><a href="#cb113-9"></a>  <span class="fu">select</span>(CNT, ST004D01T, ST003D02T, birth_season, <span class="fu">starts_with</span>(<span class="st">"PV1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2118,6 +2145,12 @@ Note
 <div class="callout-body-container callout-body">
 <p>In R, you can use traditional <code>if else</code> statements similar to those found in other programming languages. This construct evaluates a single logical condition and executes code based on whether the condition is <code>TRUE</code> or <code>FALSE</code>. For example:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>age <span class="ot">&lt;-</span> <span class="dv">17</span></span>
+<span id="cb114-2"><a href="#cb114-2"></a><span class="cf">if</span>(age <span class="sc">&gt;=</span> <span class="dv">18</span>){</span>
+<span id="cb114-3"><a href="#cb114-3"></a>  <span class="fu">print</span>(<span class="st">"You can vote"</span>)</span>
+<span id="cb114-4"><a href="#cb114-4"></a>}<span class="cf">else</span>{</span>
+<span id="cb114-5"><a href="#cb114-5"></a>  <span class="fu">print</span>(<span class="st">"you can't vote"</span>)</span>
+<span id="cb114-6"><a href="#cb114-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "you can't vote"</code></pre>
 </div>
@@ -2125,6 +2158,9 @@ Note
 <p>In this example, the condition <code>age &gt;= 18</code> is checked. Since age is 17, the <code>else</code> block is executed, printing “You can’t vote”.</p>
 <p>The <code>ifelse</code> function, on the other hand, is <em>vectorised</em>. This means it operates on entire vectors at once, allowing you to apply a condition to each element of a vector and return a result for each element. In this example, <code>ifelse</code> checks the condition <code>ages &gt;= 18</code> for each element in the <code>ages</code> vector. For elements where the condition is <code>TRUE</code>, it returns “You can vote”; for elements where the condition is <code>FALSE</code>, it returns “You can’t vote”. The result is a vector:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">20</span>)</span>
+<span id="cb116-2"><a href="#cb116-2"></a>voting_eligibility <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(ages <span class="sc">&gt;=</span> <span class="dv">18</span>, <span class="st">"You can vote"</span>, <span class="st">"You can't vote"</span>)</span>
+<span id="cb116-3"><a href="#cb116-3"></a><span class="fu">print</span>(voting_eligibility)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "You can't vote" "You can vote"   "You can vote"   "You can't vote"
 [5] "You can vote"  </code></pre>
@@ -2138,12 +2174,12 @@ Note
 <h2 data-number="9.4" class="anchored" data-anchor-id="ifelse-and-factors"><span class="header-section-number">9.4</span> ifelse and factors</h2>
 <p><code>ifelse</code> statements can get a little complicated when using factors (see: <a href="#sec-factors" class="quarto-xref">Chapter&nbsp;10</a>). Take this example. Let’s flag students who have a different home language <code>LANGN</code> to the language that is being used in the PISA assessment tool <code>LANGTEST_QQQ</code>. We make an assumption here that the assessment tool will be the language used at school, so these students will be learning in a different language to their mother tongue. <strong>if</strong> <code>LANGN</code> equals <code>LANGTEST_QQQ</code>, the <code>lang_diff</code> is <code>FALSE</code>, <strong>else</strong> <code>lang_diff</code> is <code>TRUE</code>, this raises an error:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>lang_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb114-2"><a href="#cb114-2"></a>  <span class="fu">mutate</span>(<span class="at">lang_diff =</span> </span>
-<span id="cb114-3"><a href="#cb114-3"></a>           <span class="fu">ifelse</span>(LANGN <span class="sc">==</span> LANGTEST_QQQ,</span>
-<span id="cb114-4"><a href="#cb114-4"></a>                  <span class="cn">FALSE</span>, </span>
-<span id="cb114-5"><a href="#cb114-5"></a>                  <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb114-6"><a href="#cb114-6"></a>  <span class="fu">select</span>(CNT, lang_diff, LANGTEST_QQQ, LANGN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a>lang_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href="#cb118-2"></a>  <span class="fu">mutate</span>(<span class="at">lang_diff =</span> </span>
+<span id="cb118-3"><a href="#cb118-3"></a>           <span class="fu">ifelse</span>(LANGN <span class="sc">==</span> LANGTEST_QQQ,</span>
+<span id="cb118-4"><a href="#cb118-4"></a>                  <span class="cn">FALSE</span>, </span>
+<span id="cb118-5"><a href="#cb118-5"></a>                  <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb118-6"><a href="#cb118-6"></a>  <span class="fu">select</span>(CNT, lang_diff, LANGTEST_QQQ, LANGN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mutate()`:
 ℹ In argument: `lang_diff = ifelse(LANGN == LANGTEST_QQQ, FALSE, TRUE)`.
@@ -2153,14 +2189,14 @@ Caused by error in `Ops.factor()`:
 </div>
 <p>The levels in each field are different, i.e.&nbsp;the range of home languages is larger than the range of test languages. To fix this, all we need to do is change the datatype of the factors <code>LANGN</code> and <code>LANGTEST_QQQ</code> to characters using <code>as.character(&lt;field&gt;)</code>. This will then allow the comparison of the text stored in each row:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a>lang_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb116-2"><a href="#cb116-2"></a>  <span class="fu">mutate</span>(<span class="at">lang_diff =</span> </span>
-<span id="cb116-3"><a href="#cb116-3"></a>           <span class="fu">ifelse</span>(<span class="fu">as.character</span>(LANGN) <span class="sc">==</span> <span class="fu">as.character</span>(LANGTEST_QQQ),</span>
-<span id="cb116-4"><a href="#cb116-4"></a>                  <span class="cn">FALSE</span>, </span>
-<span id="cb116-5"><a href="#cb116-5"></a>                  <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb116-6"><a href="#cb116-6"></a>  <span class="fu">select</span>(CNT, lang_diff, LANGTEST_QQQ, LANGN)</span>
-<span id="cb116-7"><a href="#cb116-7"></a></span>
-<span id="cb116-8"><a href="#cb116-8"></a><span class="fu">print</span>(lang_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>lang_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb120-2"><a href="#cb120-2"></a>  <span class="fu">mutate</span>(<span class="at">lang_diff =</span> </span>
+<span id="cb120-3"><a href="#cb120-3"></a>           <span class="fu">ifelse</span>(<span class="fu">as.character</span>(LANGN) <span class="sc">==</span> <span class="fu">as.character</span>(LANGTEST_QQQ),</span>
+<span id="cb120-4"><a href="#cb120-4"></a>                  <span class="cn">FALSE</span>, </span>
+<span id="cb120-5"><a href="#cb120-5"></a>                  <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb120-6"><a href="#cb120-6"></a>  <span class="fu">select</span>(CNT, lang_diff, LANGTEST_QQQ, LANGN)</span>
+<span id="cb120-7"><a href="#cb120-7"></a></span>
+<span id="cb120-8"><a href="#cb120-8"></a><span class="fu">print</span>(lang_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 613,744 × 4
    CNT     lang_diff LANGTEST_QQQ LANGN   
@@ -2180,16 +2216,16 @@ Caused by error in `Ops.factor()`:
 </div>
 <p>We can now look at this dataset to get an idea of which countries have the largest percentage of students learning in a language other than their mother tongue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a>lang_data_diff <span class="ot">&lt;-</span> lang_data <span class="sc">%&gt;%</span> </span>
-<span id="cb118-2"><a href="#cb118-2"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb118-3"><a href="#cb118-3"></a>  <span class="fu">mutate</span>(<span class="at">student_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb118-4"><a href="#cb118-4"></a>  <span class="fu">group_by</span>(CNT, lang_diff) <span class="sc">%&gt;%</span></span>
-<span id="cb118-5"><a href="#cb118-5"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb118-6"><a href="#cb118-6"></a>            <span class="at">percentage =</span> <span class="dv">100</span><span class="sc">*</span>(n <span class="sc">/</span> <span class="fu">max</span>(student_n))) <span class="sc">%&gt;%</span></span>
-<span id="cb118-7"><a href="#cb118-7"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lang_diff),</span>
-<span id="cb118-8"><a href="#cb118-8"></a>         lang_diff <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb118-9"><a href="#cb118-9"></a></span>
-<span id="cb118-10"><a href="#cb118-10"></a><span class="fu">print</span>(lang_data_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a>lang_data_diff <span class="ot">&lt;-</span> lang_data <span class="sc">%&gt;%</span> </span>
+<span id="cb122-2"><a href="#cb122-2"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb122-3"><a href="#cb122-3"></a>  <span class="fu">mutate</span>(<span class="at">student_n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb122-4"><a href="#cb122-4"></a>  <span class="fu">group_by</span>(CNT, lang_diff) <span class="sc">%&gt;%</span></span>
+<span id="cb122-5"><a href="#cb122-5"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb122-6"><a href="#cb122-6"></a>            <span class="at">percentage =</span> <span class="dv">100</span><span class="sc">*</span>(n <span class="sc">/</span> <span class="fu">max</span>(student_n))) <span class="sc">%&gt;%</span></span>
+<span id="cb122-7"><a href="#cb122-7"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lang_diff),</span>
+<span id="cb122-8"><a href="#cb122-8"></a>         lang_diff <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb122-9"><a href="#cb122-9"></a></span>
+<span id="cb122-10"><a href="#cb122-10"></a><span class="fu">print</span>(lang_data_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 80 × 4
 # Groups:   CNT [80]
@@ -2210,7 +2246,7 @@ Caused by error in `Ops.factor()`:
 </div>
 <p>This looks like a promising dataset, but there are some strange results:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>lang_data_diff <span class="sc">%&gt;%</span> <span class="fu">filter</span>(percentage <span class="sc">&gt;</span> <span class="dv">92</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>lang_data_diff <span class="sc">%&gt;%</span> <span class="fu">filter</span>(percentage <span class="sc">&gt;</span> <span class="dv">92</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 4
 # Groups:   CNT [8]
@@ -2228,7 +2264,7 @@ Caused by error in `Ops.factor()`:
 </div>
 <p>Exploring data for Ukraine, we can see that a different spelling has been used in each field, <em>Ukra</em><u>i</u>nian and <em>Ukranain</em>, an incorrect spelling.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a>lang_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Ukrainian regions (18 of 27)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>lang_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Ukrainian regions (18 of 27)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,876 × 4
    CNT                          lang_diff LANGTEST_QQQ LANGN    
@@ -2248,16 +2284,16 @@ Caused by error in `Ops.factor()`:
 </div>
 <p><code>ifelse</code> can help here too. If we pick the spelling we want to stick to, we can <em>recode</em> fields to match:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>lang_data <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">mutate</span>(<span class="at">LANGTEST_QQQ =</span> </span>
-<span id="cb124-3"><a href="#cb124-3"></a>           <span class="fu">ifelse</span>(<span class="fu">as.character</span>(LANGTEST_QQQ) <span class="sc">==</span> <span class="st">"Ukranian"</span>,</span>
-<span id="cb124-4"><a href="#cb124-4"></a>                 <span class="st">"Ukrainian"</span>,</span>
-<span id="cb124-5"><a href="#cb124-5"></a>                 <span class="fu">as.character</span>(LANGTEST_QQQ))) <span class="sc">%&gt;%</span></span>
-<span id="cb124-6"><a href="#cb124-6"></a>  <span class="fu">mutate</span>(<span class="at">lang_diff =</span> </span>
-<span id="cb124-7"><a href="#cb124-7"></a>           <span class="fu">ifelse</span>(<span class="fu">as.character</span>(LANGN) <span class="sc">==</span> <span class="fu">as.character</span>(LANGTEST_QQQ),</span>
-<span id="cb124-8"><a href="#cb124-8"></a>                  <span class="cn">FALSE</span>, </span>
-<span id="cb124-9"><a href="#cb124-9"></a>                  <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb124-10"><a href="#cb124-10"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Ukrainian regions (18 of 27)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>lang_data <span class="sc">%&gt;%</span> </span>
+<span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">mutate</span>(<span class="at">LANGTEST_QQQ =</span> </span>
+<span id="cb128-3"><a href="#cb128-3"></a>           <span class="fu">ifelse</span>(<span class="fu">as.character</span>(LANGTEST_QQQ) <span class="sc">==</span> <span class="st">"Ukranian"</span>,</span>
+<span id="cb128-4"><a href="#cb128-4"></a>                 <span class="st">"Ukrainian"</span>,</span>
+<span id="cb128-5"><a href="#cb128-5"></a>                 <span class="fu">as.character</span>(LANGTEST_QQQ))) <span class="sc">%&gt;%</span></span>
+<span id="cb128-6"><a href="#cb128-6"></a>  <span class="fu">mutate</span>(<span class="at">lang_diff =</span> </span>
+<span id="cb128-7"><a href="#cb128-7"></a>           <span class="fu">ifelse</span>(<span class="fu">as.character</span>(LANGN) <span class="sc">==</span> <span class="fu">as.character</span>(LANGTEST_QQQ),</span>
+<span id="cb128-8"><a href="#cb128-8"></a>                  <span class="cn">FALSE</span>, </span>
+<span id="cb128-9"><a href="#cb128-9"></a>                  <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb128-10"><a href="#cb128-10"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Ukrainian regions (18 of 27)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,876 × 4
    CNT                          lang_diff LANGTEST_QQQ LANGN    
@@ -2284,94 +2320,133 @@ Caused by error in `Ops.factor()`:
 <li>Spot the <strong>four</strong> errors with the following <code>ifelse</code> statement</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb126-2"><a href="#cb126-2"></a>  <span class="fu">rename</span>(gender <span class="sc">==</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb126-3"><a href="#cb126-3"></a>  <span class="fu">mutate</span>(<span class="at">top_reading =</span> <span class="cf">if</span> <span class="cf">else</span>(PV1READ <span class="sc">&gt;</span> <span class="dv">550</span>,</span>
-<span id="cb126-4"><a href="#cb126-4"></a>                               <span class="cn">TRUE</span></span>
-<span id="cb126-5"><a href="#cb126-5"></a>                               <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb130-2"><a href="#cb130-2"></a>  <span class="fu">rename</span>(gender <span class="sc">==</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb130-3"><a href="#cb130-3"></a>  <span class="fu">mutate</span>(<span class="at">top_reading =</span> <span class="cf">if</span> <span class="cf">else</span>(PV1READ <span class="sc">&gt;</span> <span class="dv">550</span>,</span>
+<span id="cb130-4"><a href="#cb130-4"></a>                               <span class="cn">TRUE</span></span>
+<span id="cb130-5"><a href="#cb130-5"></a>                               <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span> <span class="co">#1 double equals not needed for assignment</span></span>
-<span id="cb127-3"><a href="#cb127-3"></a>  <span class="fu">mutate</span>(<span class="at">top_reading =</span> <span class="fu">ifelse</span>(PV1READ <span class="sc">&gt;</span> <span class="dv">550</span>, <span class="co">#2 ifelse doesn't need a space</span></span>
-<span id="cb127-4"><a href="#cb127-4"></a>                               <span class="cn">TRUE</span>, <span class="co">#3 missing comma</span></span>
-<span id="cb127-5"><a href="#cb127-5"></a>                               <span class="cn">FALSE</span>)) <span class="co">#4 missing bracket</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb131-2"><a href="#cb131-2"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span> <span class="co">#1 double equals not needed for assignment</span></span>
+<span id="cb131-3"><a href="#cb131-3"></a>  <span class="fu">mutate</span>(<span class="at">top_reading =</span> <span class="fu">ifelse</span>(PV1READ <span class="sc">&gt;</span> <span class="dv">550</span>, <span class="co">#2 ifelse doesn't need a space</span></span>
+<span id="cb131-4"><a href="#cb131-4"></a>                               <span class="cn">TRUE</span>, <span class="co">#3 missing comma</span></span>
+<span id="cb131-5"><a href="#cb131-5"></a>                               <span class="cn">FALSE</span>)) <span class="co">#4 missing bracket</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="2" type="1">
+<li>Write an <code>ifelse</code> statement to create a new column <code>read_low</code> that stores whether a student got a PV1READ score of <code>&lt;= 400</code>. Select the country, gender, PV1READ and read_low columns</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>answer</summary>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb132-2"><a href="#cb132-2"></a>  <span class="fu">mutate</span>(<span class="at">read_low =</span> <span class="fu">ifelse</span>(PV1READ <span class="sc">&lt;=</span> <span class="dv">400</span>,</span>
+<span id="cb132-3"><a href="#cb132-3"></a>                               <span class="cn">TRUE</span>, </span>
+<span id="cb132-4"><a href="#cb132-4"></a>                               <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb132-5"><a href="#cb132-5"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1READ, read_low)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="3" type="1">
+<li>Write an <code>ifelse</code> statement to create a new column <code>sub_strength</code> that stores “reading” when their reading grade is higher than their maths grade, and “mathematics” when their maths grade is greater than their reading grade. Select just the country, gender, PV1READ, PV1MATH and sub_strength columns</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>answer</summary>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a><span class="co"># You could try</span></span>
+<span id="cb133-2"><a href="#cb133-2"></a></span>
+<span id="cb133-3"><a href="#cb133-3"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb133-4"><a href="#cb133-4"></a>  <span class="fu">mutate</span>(<span class="at">sub_strength =</span> <span class="fu">ifelse</span>(PV1READ <span class="sc">&gt;</span> PV1MATH,</span>
+<span id="cb133-5"><a href="#cb133-5"></a>                               <span class="st">"reading"</span>, </span>
+<span id="cb133-6"><a href="#cb133-6"></a>                               <span class="st">"mathematics"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb133-7"><a href="#cb133-7"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1READ, PV1MATH, sub_strength)</span>
+<span id="cb133-8"><a href="#cb133-8"></a></span>
+<span id="cb133-9"><a href="#cb133-9"></a><span class="co"># But what if they have the same grade? You could try a nested if instead:</span></span>
+<span id="cb133-10"><a href="#cb133-10"></a></span>
+<span id="cb133-11"><a href="#cb133-11"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb133-12"><a href="#cb133-12"></a>  <span class="fu">mutate</span>(<span class="at">sub_strength =</span> <span class="fu">ifelse</span>(PV1READ <span class="sc">&gt;</span> PV1MATH,</span>
+<span id="cb133-13"><a href="#cb133-13"></a>                               <span class="st">"reading"</span>, </span>
+<span id="cb133-14"><a href="#cb133-14"></a>                               <span class="fu">ifelse</span>(PV1READ <span class="sc">&lt;</span> PV1MATH,</span>
+<span id="cb133-15"><a href="#cb133-15"></a>                                      <span class="st">"mathematics"</span>,</span>
+<span id="cb133-16"><a href="#cb133-16"></a>                                      <span class="st">"equal"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb133-17"><a href="#cb133-17"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1READ, PV1MATH, sub_strength) <span class="sc">%&gt;%</span></span>
+<span id="cb133-18"><a href="#cb133-18"></a>  <span class="fu">filter</span>(sub_strength <span class="sc">==</span> <span class="st">"equal"</span>) <span class="co"># and find out which students get equal!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="4" type="1">
 <li>Write an <code>ifelse</code> to make a new column called “continent” to record whether a country is in “South America” (i.e.&nbsp;“Argentina”, “Brazil”, “Chile”, “Colombia”, “Peru”, “Paraguay”, “Uruguay”; not including “Panama”), or “Other”:</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>counts <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">ifelse</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Peru"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span>),</span>
-<span id="cb128-3"><a href="#cb128-3"></a>                             <span class="st">"South America"</span>,</span>
-<span id="cb128-4"><a href="#cb128-4"></a>                             <span class="st">"Other"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1"></a>counts <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb134-2"><a href="#cb134-2"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">ifelse</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Peru"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span>),</span>
+<span id="cb134-3"><a href="#cb134-3"></a>                             <span class="st">"South America"</span>,</span>
+<span id="cb134-4"><a href="#cb134-4"></a>                             <span class="st">"Other"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<ol start="3" type="1">
+<ol start="5" type="1">
 <li>Write an <code>ifelse</code> statement to make a new column called <code>high_escs</code> which will calculate whether students are more than one standard deviation above the mean of the ESCS score <code>ESCS</code>. HINT: calculate the <code>sd</code> and <code>mean</code> of <code>ESCS</code> first, then use that for your <code>ifelse</code> statement:</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>answer sd and mean</summary>
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a>sd_escs <span class="ot">&lt;-</span> <span class="fu">sd</span>(PISA_2022<span class="sc">$</span>ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb129-2"><a href="#cb129-2"></a>mean_escs <span class="ot">&lt;-</span> <span class="fu">mean</span>(PISA_2022<span class="sc">$</span>ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a>sd_escs <span class="ot">&lt;-</span> <span class="fu">sd</span>(PISA_2022<span class="sc">$</span>ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb135-2"><a href="#cb135-2"></a>mean_escs <span class="ot">&lt;-</span> <span class="fu">mean</span>(PISA_2022<span class="sc">$</span>ESCS, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>answer high_escs</summary>
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a>PISA_2022_highescs <span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb130-2"><a href="#cb130-2"></a>  <span class="fu">mutate</span>(<span class="at">high_escs =</span> <span class="fu">ifelse</span>(ESCS <span class="sc">&gt;</span> (mean_escs <span class="sc">+</span> sd_escs),</span>
-<span id="cb130-3"><a href="#cb130-3"></a>                            <span class="cn">TRUE</span>,</span>
-<span id="cb130-4"><a href="#cb130-4"></a>                            <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb130-5"><a href="#cb130-5"></a>  <span class="fu">select</span>(CNT, ST004D01T, ESCS, high_escs)</span>
-<span id="cb130-6"><a href="#cb130-6"></a></span>
-<span id="cb130-7"><a href="#cb130-7"></a><span class="co"># you might also want to find the 'richest' countries</span></span>
-<span id="cb130-8"><a href="#cb130-8"></a>PISA_2022_highescs <span class="sc">%&gt;%</span></span>
-<span id="cb130-9"><a href="#cb130-9"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb130-10"><a href="#cb130-10"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb130-11"><a href="#cb130-11"></a>  <span class="fu">group_by</span>(CNT, high_escs) <span class="sc">%&gt;%</span></span>
-<span id="cb130-12"><a href="#cb130-12"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb130-13"><a href="#cb130-13"></a>            <span class="at">per =</span> <span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">unique</span>(total)) <span class="sc">%&gt;%</span></span>
-<span id="cb130-14"><a href="#cb130-14"></a>  <span class="fu">filter</span>(high_escs <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb130-15"><a href="#cb130-15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1"></a>PISA_2022_highescs <span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb136-2"><a href="#cb136-2"></a>  <span class="fu">mutate</span>(<span class="at">high_escs =</span> <span class="fu">ifelse</span>(ESCS <span class="sc">&gt;</span> (mean_escs <span class="sc">+</span> sd_escs),</span>
+<span id="cb136-3"><a href="#cb136-3"></a>                            <span class="cn">TRUE</span>,</span>
+<span id="cb136-4"><a href="#cb136-4"></a>                            <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb136-5"><a href="#cb136-5"></a>  <span class="fu">select</span>(CNT, ST004D01T, ESCS, high_escs)</span>
+<span id="cb136-6"><a href="#cb136-6"></a></span>
+<span id="cb136-7"><a href="#cb136-7"></a><span class="co"># you might also want to find the 'richest' countries</span></span>
+<span id="cb136-8"><a href="#cb136-8"></a>PISA_2022_highescs <span class="sc">%&gt;%</span></span>
+<span id="cb136-9"><a href="#cb136-9"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb136-10"><a href="#cb136-10"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb136-11"><a href="#cb136-11"></a>  <span class="fu">group_by</span>(CNT, high_escs) <span class="sc">%&gt;%</span></span>
+<span id="cb136-12"><a href="#cb136-12"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb136-13"><a href="#cb136-13"></a>            <span class="at">per =</span> <span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">unique</span>(total)) <span class="sc">%&gt;%</span></span>
+<span id="cb136-14"><a href="#cb136-14"></a>  <span class="fu">filter</span>(high_escs <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb136-15"><a href="#cb136-15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<ol start="4" type="1">
+<ol start="6" type="1">
 <li>Adjust the code from Q2 above to write a <em>nested</em> <code>ifelse</code> and the equivalent <code>case_when</code> statement to code whether a country is in continents of “North America” or the “Middle East” (i.e.&nbsp;“Israel”, “Palestinian Authority”, “Qatar”, “Saudi Arabia”, “United Arab Emirates”):</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a>contis <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb131-2"><a href="#cb131-2"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> </span>
-<span id="cb131-3"><a href="#cb131-3"></a>            <span class="fu">ifelse</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Peru"</span>, </span>
-<span id="cb131-4"><a href="#cb131-4"></a>                              <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span>),</span>
-<span id="cb131-5"><a href="#cb131-5"></a>                   <span class="st">"South America"</span>,</span>
-<span id="cb131-6"><a href="#cb131-6"></a>                   <span class="fu">ifelse</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United Arab Emirates"</span>, <span class="st">"Israel"</span>, </span>
-<span id="cb131-7"><a href="#cb131-7"></a>                                     <span class="st">"Saudi Arabia"</span>, <span class="st">"Qatar"</span>, <span class="st">"Palestinian Authority"</span>),</span>
-<span id="cb131-8"><a href="#cb131-8"></a>                          <span class="st">"Middle East"</span>, </span>
-<span id="cb131-9"><a href="#cb131-9"></a>                          <span class="st">"Other"</span>)))</span>
-<span id="cb131-10"><a href="#cb131-10"></a></span>
-<span id="cb131-11"><a href="#cb131-11"></a><span class="co"># You can get distinct values for the recoded data using:</span></span>
-<span id="cb131-12"><a href="#cb131-12"></a>contis <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(CNT, continent)</span>
-<span id="cb131-13"><a href="#cb131-13"></a></span>
-<span id="cb131-14"><a href="#cb131-14"></a><span class="co"># case_when alternative</span></span>
-<span id="cb131-15"><a href="#cb131-15"></a>counts <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb131-16"><a href="#cb131-16"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">case_when</span>(</span>
-<span id="cb131-17"><a href="#cb131-17"></a>    CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Peru"</span>, </span>
-<span id="cb131-18"><a href="#cb131-18"></a>               <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span>) <span class="sc">~</span> <span class="st">"South America"</span>,</span>
-<span id="cb131-19"><a href="#cb131-19"></a>    CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United Arab Emirates"</span>, <span class="st">"Israel"</span>, </span>
-<span id="cb131-20"><a href="#cb131-20"></a>               <span class="st">"Saudi Arabia"</span>, <span class="st">"Qatar"</span>, <span class="st">"Palestinian Authority"</span>) <span class="sc">~</span></span>
-<span id="cb131-21"><a href="#cb131-21"></a>                                <span class="st">"Middle East"</span>,</span>
-<span id="cb131-22"><a href="#cb131-22"></a>    <span class="at">.default =</span> <span class="st">"Other"</span>))</span>
-<span id="cb131-23"><a href="#cb131-23"></a></span>
-<span id="cb131-24"><a href="#cb131-24"></a>contis <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(CNT, continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a>contis <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb137-2"><a href="#cb137-2"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> </span>
+<span id="cb137-3"><a href="#cb137-3"></a>            <span class="fu">ifelse</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Peru"</span>, </span>
+<span id="cb137-4"><a href="#cb137-4"></a>                              <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span>),</span>
+<span id="cb137-5"><a href="#cb137-5"></a>                   <span class="st">"South America"</span>,</span>
+<span id="cb137-6"><a href="#cb137-6"></a>                   <span class="fu">ifelse</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United Arab Emirates"</span>, <span class="st">"Israel"</span>, </span>
+<span id="cb137-7"><a href="#cb137-7"></a>                                     <span class="st">"Saudi Arabia"</span>, <span class="st">"Qatar"</span>, <span class="st">"Palestinian Authority"</span>),</span>
+<span id="cb137-8"><a href="#cb137-8"></a>                          <span class="st">"Middle East"</span>, </span>
+<span id="cb137-9"><a href="#cb137-9"></a>                          <span class="st">"Other"</span>)))</span>
+<span id="cb137-10"><a href="#cb137-10"></a></span>
+<span id="cb137-11"><a href="#cb137-11"></a><span class="co"># You can get distinct values for the recoded data using:</span></span>
+<span id="cb137-12"><a href="#cb137-12"></a>contis <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(CNT, continent)</span>
+<span id="cb137-13"><a href="#cb137-13"></a></span>
+<span id="cb137-14"><a href="#cb137-14"></a><span class="co"># case_when alternative</span></span>
+<span id="cb137-15"><a href="#cb137-15"></a>counts <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb137-16"><a href="#cb137-16"></a>  <span class="fu">mutate</span>(<span class="at">continent =</span> <span class="fu">case_when</span>(</span>
+<span id="cb137-17"><a href="#cb137-17"></a>    CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Peru"</span>, </span>
+<span id="cb137-18"><a href="#cb137-18"></a>               <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span>) <span class="sc">~</span> <span class="st">"South America"</span>,</span>
+<span id="cb137-19"><a href="#cb137-19"></a>    CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United Arab Emirates"</span>, <span class="st">"Israel"</span>, </span>
+<span id="cb137-20"><a href="#cb137-20"></a>               <span class="st">"Saudi Arabia"</span>, <span class="st">"Qatar"</span>, </span>
+<span id="cb137-21"><a href="#cb137-21"></a>               <span class="st">"Palestinian Authority"</span>) <span class="sc">~</span> <span class="st">"Middle East"</span>,</span>
+<span id="cb137-22"><a href="#cb137-22"></a>    <span class="at">.default =</span> <span class="st">"Other"</span>))</span>
+<span id="cb137-23"><a href="#cb137-23"></a></span>
+<span id="cb137-24"><a href="#cb137-24"></a>contis <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(CNT, continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -2395,7 +2470,7 @@ Caused by error in `Ops.factor()`:
 </ul>
 <p>But here we are going to look at how R handles <code>factors</code>. Factors have two parts, <code>levels</code> and <code>codes</code>. levels are what you see when you view a table column, codes are an underlying order to the data. Factors allow you to store data that has a known set of values that you might want to display in an order other than alphabetical. For example, if we look at the month field <code>ST003D02T</code> using the <code>levels(&lt;field&gt;)</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a><span class="fu">levels</span>(PISA_2022<span class="sc">$</span>ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1"></a><span class="fu">levels</span>(PISA_2022<span class="sc">$</span>ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "January"        "February"       "March"          "April"         
  [5] "May"            "June"           "July"           "August"        
@@ -2405,7 +2480,7 @@ Caused by error in `Ops.factor()`:
 </div>
 <p>We can see that the months of the year are there along with other possible <code>levels</code>. With this particular column there are levels for missing or wrong responses (“Valid Skip”, “Not Applicable” “Invalid”, “No Response”), though PISA rarely uses them. You are more likely to find that missing/wrong data items are coded as <code>NA</code>, as you can see below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1"></a>PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">count</span>(ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a>PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">count</span>(ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13 × 2
    ST003D02T     n
@@ -2427,7 +2502,7 @@ Caused by error in `Ops.factor()`:
 </div>
 <p><code>Codes</code> are the underlying numbers/order for each level, in this case <code>1 = January</code>, <code>2 = February</code>, etc. R stores factors as codes, then uses the <code>levels</code> to display the data. You can see the <em>codes</em> by using the <code>as.numeric</code> command on a factor:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1"></a><span class="fu">as.numeric</span>(PISA_2022<span class="sc">$</span>ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a><span class="fu">as.numeric</span>(PISA_2022<span class="sc">$</span>ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  5  2  8  7  1  5  5 12  8  9 10  4  5  8  7  2  3  6  3  8 10  1 10  2  5
 [26]  6  8  1  3  2  5  7 12  4  1 10 10  3  3  9
@@ -2436,11 +2511,11 @@ Caused by error in `Ops.factor()`:
 </div>
 <p>How can this be useful? Firstly it’s more efficient for R to store data this way, numbers (codes) are smaller and easier to sort/search than text (levels). But it also helps when we come to presenting data. A good example is how plots are made, they will use the <code>codes</code> to give an order to the display of columns, in the plot below, <code>February</code> (<code>2</code>) comes before <code>August</code> (<code>8</code>), even though there were more students born in <code>August</code> and <em>A</em> is before <em>F</em> in the alphabet:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1"></a>grph_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb138-2"><a href="#cb138-2"></a>         <span class="fu">group_by</span>(ST003D02T) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-3"><a href="#cb138-3"></a>         <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span>
-<span id="cb138-4"><a href="#cb138-4"></a></span>
-<span id="cb138-5"><a href="#cb138-5"></a>grph_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1"></a>grph_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb144-2"><a href="#cb144-2"></a>         <span class="fu">group_by</span>(ST003D02T) <span class="sc">%&gt;%</span> </span>
+<span id="cb144-3"><a href="#cb144-3"></a>         <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span>
+<span id="cb144-4"><a href="#cb144-4"></a></span>
+<span id="cb144-5"><a href="#cb144-5"></a>grph_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(ST003D02T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] September October   August    July      May       June      January  
  [8] March     November  December  April     February  &lt;NA&gt;     
@@ -2448,50 +2523,50 @@ attr(,"label")
 [1] Student (Standardized) Birth - Month
 16 Levels: January February March April May June July August ... No Response</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>grph_data, <span class="fu">aes</span>(<span class="at">x=</span>ST003D02T, <span class="at">y=</span>n)) <span class="sc">+</span> </span>
-<span id="cb140-2"><a href="#cb140-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb140-3"><a href="#cb140-3"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>grph_data, <span class="fu">aes</span>(<span class="at">x=</span>ST003D02T, <span class="at">y=</span>n)) <span class="sc">+</span> </span>
+<span id="cb146-2"><a href="#cb146-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb146-3"><a href="#cb146-3"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01-2-Intro_tidyverse_files/figure-html/unnamed-chunk-96-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="01-2-Intro_tidyverse_files/figure-html/unnamed-chunk-100-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>To re-order the columns to match the number of students in each month, we can either try to do this manually, which is rather cumbersome:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1"></a>my_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"August"</span>, <span class="st">"July"</span>, <span class="st">"May"</span>, <span class="st">"June"</span>, </span>
-<span id="cb141-2"><a href="#cb141-2"></a>               <span class="st">"January"</span>, <span class="st">"March"</span>, <span class="st">"November"</span>, <span class="st">"December"</span>, <span class="st">"April"</span>, <span class="st">"February"</span>,</span>
-<span id="cb141-3"><a href="#cb141-3"></a>               <span class="st">"Valid Skip"</span>, <span class="st">"Not Applicable"</span>, <span class="st">"Invalid"</span>, <span class="st">"No Response"</span>)</span>
-<span id="cb141-4"><a href="#cb141-4"></a></span>
-<span id="cb141-5"><a href="#cb141-5"></a>grph_data<span class="sc">$</span>ST003D02T <span class="ot">&lt;-</span> <span class="fu">factor</span>(grph_data<span class="sc">$</span>ST003D02T, <span class="at">levels=</span>my_levels)</span>
-<span id="cb141-6"><a href="#cb141-6"></a></span>
-<span id="cb141-7"><a href="#cb141-7"></a><span class="fu">ggplot</span>(<span class="at">data=</span>grph_data, <span class="fu">aes</span>(<span class="at">x=</span>ST003D02T, <span class="at">y=</span>n)) <span class="sc">+</span> </span>
-<span id="cb141-8"><a href="#cb141-8"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)<span class="sc">+</span></span>
-<span id="cb141-9"><a href="#cb141-9"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1"></a>my_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"August"</span>, <span class="st">"July"</span>, <span class="st">"May"</span>, <span class="st">"June"</span>, </span>
+<span id="cb147-2"><a href="#cb147-2"></a>               <span class="st">"January"</span>, <span class="st">"March"</span>, <span class="st">"November"</span>, <span class="st">"December"</span>, <span class="st">"April"</span>, <span class="st">"February"</span>,</span>
+<span id="cb147-3"><a href="#cb147-3"></a>               <span class="st">"Valid Skip"</span>, <span class="st">"Not Applicable"</span>, <span class="st">"Invalid"</span>, <span class="st">"No Response"</span>)</span>
+<span id="cb147-4"><a href="#cb147-4"></a></span>
+<span id="cb147-5"><a href="#cb147-5"></a>grph_data<span class="sc">$</span>ST003D02T <span class="ot">&lt;-</span> <span class="fu">factor</span>(grph_data<span class="sc">$</span>ST003D02T, <span class="at">levels=</span>my_levels)</span>
+<span id="cb147-6"><a href="#cb147-6"></a></span>
+<span id="cb147-7"><a href="#cb147-7"></a><span class="fu">ggplot</span>(<span class="at">data=</span>grph_data, <span class="fu">aes</span>(<span class="at">x=</span>ST003D02T, <span class="at">y=</span>n)) <span class="sc">+</span> </span>
+<span id="cb147-8"><a href="#cb147-8"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb147-9"><a href="#cb147-9"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01-2-Intro_tidyverse_files/figure-html/unnamed-chunk-97-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="01-2-Intro_tidyverse_files/figure-html/unnamed-chunk-101-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Or we can get R to do this for us:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a><span class="co"># get the levels in order and pull/create a vector of them</span></span>
-<span id="cb142-2"><a href="#cb142-2"></a>my_levels <span class="ot">&lt;-</span> grph_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(ST003D02T)</span>
-<span id="cb142-3"><a href="#cb142-3"></a></span>
-<span id="cb142-4"><a href="#cb142-4"></a><span class="co"># reassign the re-ordered levels to the dataframe column</span></span>
-<span id="cb142-5"><a href="#cb142-5"></a>grph_data<span class="sc">$</span>ST003D02T <span class="ot">&lt;-</span> <span class="fu">factor</span>(grph_data<span class="sc">$</span>ST003D02T, <span class="at">levels=</span>my_levels)</span>
-<span id="cb142-6"><a href="#cb142-6"></a></span>
-<span id="cb142-7"><a href="#cb142-7"></a><span class="fu">ggplot</span>(<span class="at">data=</span>grph_data, <span class="fu">aes</span>(<span class="at">x=</span>ST003D02T, <span class="at">y=</span>n)) <span class="sc">+</span> </span>
-<span id="cb142-8"><a href="#cb142-8"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a><span class="co"># get the levels in order and pull/create a vector of them</span></span>
+<span id="cb148-2"><a href="#cb148-2"></a>my_levels <span class="ot">&lt;-</span> grph_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(ST003D02T)</span>
+<span id="cb148-3"><a href="#cb148-3"></a></span>
+<span id="cb148-4"><a href="#cb148-4"></a><span class="co"># reassign the re-ordered levels to the dataframe column</span></span>
+<span id="cb148-5"><a href="#cb148-5"></a>grph_data<span class="sc">$</span>ST003D02T <span class="ot">&lt;-</span> <span class="fu">factor</span>(grph_data<span class="sc">$</span>ST003D02T, <span class="at">levels=</span>my_levels)</span>
+<span id="cb148-6"><a href="#cb148-6"></a></span>
+<span id="cb148-7"><a href="#cb148-7"></a><span class="fu">ggplot</span>(<span class="at">data=</span>grph_data, <span class="fu">aes</span>(<span class="at">x=</span>ST003D02T, <span class="at">y=</span>n)) <span class="sc">+</span> </span>
+<span id="cb148-8"><a href="#cb148-8"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01-2-Intro_tidyverse_files/figure-html/unnamed-chunk-98-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="01-2-Intro_tidyverse_files/figure-html/unnamed-chunk-102-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2509,7 +2584,7 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1"></a>PISA_2022<span class="sc">$</span>OCOD3 <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a>PISA_2022<span class="sc">$</span>OCOD3 <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="2" type="1">
@@ -2518,10 +2593,10 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb144-2"><a href="#cb144-2"></a>  <span class="fu">group_by</span>(ST004D01T, OCOD3) <span class="sc">%&gt;%</span></span>
-<span id="cb144-3"><a href="#cb144-3"></a>  <span class="fu">summarise</span>(<span class="at">n =</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb144-4"><a href="#cb144-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb150-2"><a href="#cb150-2"></a>  <span class="fu">group_by</span>(ST004D01T, OCOD3) <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href="#cb150-3"></a>  <span class="fu">summarise</span>(<span class="at">n =</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb150-4"><a href="#cb150-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="3" type="1">
@@ -2530,11 +2605,11 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb145-2"><a href="#cb145-2"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb145-3"><a href="#cb145-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_PV1MATH =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb145-4"><a href="#cb145-4"></a>            <span class="at">median_PV1MATH =</span> <span class="fu">median</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb145-5"><a href="#cb145-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(median_PV1MATH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb151-2"><a href="#cb151-2"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb151-3"><a href="#cb151-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_PV1MATH =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb151-4"><a href="#cb151-4"></a>            <span class="at">median_PV1MATH =</span> <span class="fu">median</span>(PV1MATH, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb151-5"><a href="#cb151-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(median_PV1MATH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="4" type="1">
@@ -2543,59 +2618,59 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb146-2"><a href="#cb146-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Ireland"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb146-3"><a href="#cb146-3"></a>  <span class="fu">group_by</span>(CNT, LANGN) <span class="sc">%&gt;%</span></span>
-<span id="cb146-4"><a href="#cb146-4"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb146-5"><a href="#cb146-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb152-2"><a href="#cb152-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Ireland"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb152-3"><a href="#cb152-3"></a>  <span class="fu">group_by</span>(CNT, LANGN) <span class="sc">%&gt;%</span></span>
+<span id="cb152-4"><a href="#cb152-4"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb152-5"><a href="#cb152-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="5" type="1">
 <li>Spot the <strong>five</strong> errors with the following code. Can you make it work? What does it do?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1"></a><span class="co"># Work out when science scores are better than maths</span></span>
-<span id="cb147-2"><a href="#cb147-2"></a>PISA_2022_scimath <span class="sc">&lt;</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb147-3"><a href="#cb147-3"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb147-4"><a href="#cb147-4"></a>  <span class="fu">mutate</span>(sci <span class="at">better =</span> PV1SCIE <span class="sc">-</span> PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb147-5"><a href="#cb147-5"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(scibetter) <span class="sc">%&gt;%</span></span>
-<span id="cb147-6"><a href="#cb147-6"></a>  <span class="fu">group_by</span>(CNT gender) <span class="sc">%&gt;%</span></span>
-<span id="cb147-7"><a href="#cb147-7"></a>  <span class="fu">summarise</span>(<span class="at">students =</span> n,</span>
-<span id="cb147-8"><a href="#cb147-8"></a>            <span class="at">sci_win =</span> <span class="fu">sum</span>(scibetter <span class="sc">&gt;=</span> <span class="dv">0</span>),</span>
-<span id="cb147-9"><a href="#cb147-9"></a>            <span class="at">per_scibetter =</span> <span class="dv">100</span><span class="sc">*</span>(sci_win<span class="sc">/</span>students))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1"></a><span class="co"># Work out when science scores are better than maths</span></span>
+<span id="cb153-2"><a href="#cb153-2"></a>PISA_2022_scimath <span class="sc">&lt;</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb153-3"><a href="#cb153-3"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb153-4"><a href="#cb153-4"></a>  <span class="fu">mutate</span>(sci <span class="at">better =</span> PV1SCIE <span class="sc">-</span> PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb153-5"><a href="#cb153-5"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(scibetter) <span class="sc">%&gt;%</span></span>
+<span id="cb153-6"><a href="#cb153-6"></a>  <span class="fu">group_by</span>(CNT gender) <span class="sc">%&gt;%</span></span>
+<span id="cb153-7"><a href="#cb153-7"></a>  <span class="fu">summarise</span>(<span class="at">students =</span> n,</span>
+<span id="cb153-8"><a href="#cb153-8"></a>            <span class="at">sci_win =</span> <span class="fu">sum</span>(scibetter <span class="sc">&gt;=</span> <span class="dv">0</span>),</span>
+<span id="cb153-9"><a href="#cb153-9"></a>            <span class="at">per_scibetter =</span> <span class="dv">100</span><span class="sc">*</span>(sci_win<span class="sc">/</span>students))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a><span class="co"># Work out when more time spent in language lessons than maths lessons</span></span>
-<span id="cb148-2"><a href="#cb148-2"></a>PISA_2022_scimath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span>  <span class="co">#1 make sure you have the assignment arrow &lt;-</span></span>
-<span id="cb148-3"><a href="#cb148-3"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb148-4"><a href="#cb148-4"></a>  <span class="fu">mutate</span>(<span class="at">sci_better =</span> PV1MATH <span class="sc">-</span> PV1SCIE) <span class="sc">%&gt;%</span> <span class="co">#2 _ not space in name of field</span></span>
-<span id="cb148-5"><a href="#cb148-5"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sci_better)) <span class="sc">%&gt;%</span>  <span class="co">#3 this needs to be !is.na, otherwise it'll return nothing</span></span>
-<span id="cb148-6"><a href="#cb148-6"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span> <span class="co">#4 missing comma</span></span>
-<span id="cb148-7"><a href="#cb148-7"></a>  <span class="fu">summarise</span>(<span class="at">students =</span> <span class="fu">n</span>(),   <span class="co">#5 missing brackets on the n() command</span></span>
-<span id="cb148-8"><a href="#cb148-8"></a>            <span class="at">sci_win =</span> <span class="fu">sum</span>(sci_better <span class="sc">&gt;=</span> <span class="dv">0</span>),</span>
-<span id="cb148-9"><a href="#cb148-9"></a>            <span class="at">per_sci_win =</span> <span class="dv">100</span><span class="sc">*</span>(sci_win<span class="sc">/</span>students))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1"></a><span class="co"># Work out when more time spent in language lessons than maths lessons</span></span>
+<span id="cb154-2"><a href="#cb154-2"></a>PISA_2022_scimath <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span>  <span class="co">#1 make sure you have the assignment arrow &lt;-</span></span>
+<span id="cb154-3"><a href="#cb154-3"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb154-4"><a href="#cb154-4"></a>  <span class="fu">mutate</span>(<span class="at">sci_better =</span> PV1MATH <span class="sc">-</span> PV1SCIE) <span class="sc">%&gt;%</span> <span class="co">#2 _ not space in name of field</span></span>
+<span id="cb154-5"><a href="#cb154-5"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sci_better)) <span class="sc">%&gt;%</span>  <span class="co">#3 this needs to be !is.na, otherwise it'll return nothing</span></span>
+<span id="cb154-6"><a href="#cb154-6"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span> <span class="co">#4 missing comma</span></span>
+<span id="cb154-7"><a href="#cb154-7"></a>  <span class="fu">summarise</span>(<span class="at">students =</span> <span class="fu">n</span>(),   <span class="co">#5 missing brackets on the n() command</span></span>
+<span id="cb154-8"><a href="#cb154-8"></a>            <span class="at">sci_win =</span> <span class="fu">sum</span>(sci_better <span class="sc">&gt;=</span> <span class="dv">0</span>),</span>
+<span id="cb154-9"><a href="#cb154-9"></a>            <span class="at">per_sci_win =</span> <span class="dv">100</span><span class="sc">*</span>(sci_win<span class="sc">/</span>students))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="6" type="1">
-<li>By country and gender work out the mean, median and standard deviations of <code>STUBMI</code>, order by the descending <code>mean</code>.</li>
+<li>By country and gender work out the <code>mean</code>, <code>median</code> and <code>standard deviations</code> of <code>STUBMI</code>, order by the descending <code>mean</code>.</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a>pisa_bmi <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb149-2"><a href="#cb149-2"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb149-3"><a href="#cb149-3"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
-<span id="cb149-4"><a href="#cb149-4"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb149-5"><a href="#cb149-5"></a>            <span class="at">bmi_mean =</span> <span class="fu">mean</span>(STUBMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb149-6"><a href="#cb149-6"></a>            <span class="at">bmi_median =</span> <span class="fu">median</span>(STUBMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb149-7"><a href="#cb149-7"></a>            <span class="at">bmi_sd =</span> <span class="fu">sd</span>(STUBMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb149-8"><a href="#cb149-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bmi_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1"></a>pisa_bmi <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb155-2"><a href="#cb155-2"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb155-3"><a href="#cb155-3"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
+<span id="cb155-4"><a href="#cb155-4"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb155-5"><a href="#cb155-5"></a>            <span class="at">bmi_mean =</span> <span class="fu">mean</span>(STUBMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb155-6"><a href="#cb155-6"></a>            <span class="at">bmi_median =</span> <span class="fu">median</span>(STUBMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb155-7"><a href="#cb155-7"></a>            <span class="at">bmi_sd =</span> <span class="fu">sd</span>(STUBMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb155-8"><a href="#cb155-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bmi_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<ol start="6" type="1">
-<li>Body Mass Index <code>STUBMI</code> is recorded in the 2022 PISA data set for some students (HINT: you need to filter out the rest). The US Centers for Disease Control and Prevention (CDC) define <strong>adult</strong> BMI as follows <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, so this isn’t an ideal measure for this data set, but it will give you an idea of the spread of BMI in the data:</li>
+<ol start="7" type="1">
+<li>Body Mass Index <code>STUBMI</code> is recorded in the 2022 PISA data set for some students (HINT: you need to filter out the rest). The US Center for Disease Control and Prevention (CDC) define <strong>adult</strong> BMI as follows <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, so this isn’t an ideal measure for this data set, but it will give you an idea of the spread of BMI in the data:</li>
 </ol>
 <ul>
 <li>Underweight: BMI is less than 18.5</li>
@@ -2607,21 +2682,40 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb150-2"><a href="#cb150-2"></a>  <span class="fu">select</span>(CNT, STUBMI) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-3"><a href="#cb150-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(STUBMI)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href="#cb150-4"></a>  <span class="fu">mutate</span>(<span class="at">bmi_group =</span> <span class="fu">case_when</span>(</span>
-<span id="cb150-5"><a href="#cb150-5"></a>    STUBMI <span class="sc">&lt;</span> <span class="fl">18.5</span>                <span class="sc">~</span> <span class="st">"Underweight"</span>,</span>
-<span id="cb150-6"><a href="#cb150-6"></a>    STUBMI <span class="sc">&gt;=</span> <span class="fl">18.5</span> <span class="sc">&amp;</span> STUBMI <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Healthy weight"</span>,</span>
-<span id="cb150-7"><a href="#cb150-7"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> STUBMI <span class="sc">&lt;</span> <span class="dv">30</span>   <span class="sc">~</span> <span class="st">"Overweight"</span>,</span>
-<span id="cb150-8"><a href="#cb150-8"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">30</span>                 <span class="sc">~</span> <span class="st">"Obese"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-9"><a href="#cb150-9"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb150-10"><a href="#cb150-10"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb150-11"><a href="#cb150-11"></a>  <span class="fu">group_by</span>(CNT, bmi_group) <span class="sc">%&gt;%</span></span>
-<span id="cb150-12"><a href="#cb150-12"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb150-13"><a href="#cb150-13"></a>            <span class="at">per =</span> <span class="dv">100</span><span class="sc">*</span>(n<span class="sc">/</span><span class="fu">unique</span>(total))) <span class="sc">%&gt;%</span></span>
-<span id="cb150-14"><a href="#cb150-14"></a>  <span class="fu">filter</span>(bmi_group <span class="sc">==</span> <span class="st">"Healthy weight"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-15"><a href="#cb150-15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb156-2"><a href="#cb156-2"></a>  <span class="fu">select</span>(CNT, STUBMI) <span class="sc">%&gt;%</span> </span>
+<span id="cb156-3"><a href="#cb156-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(STUBMI)) <span class="sc">%&gt;%</span></span>
+<span id="cb156-4"><a href="#cb156-4"></a>  <span class="fu">mutate</span>(<span class="at">bmi_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb156-5"><a href="#cb156-5"></a>    STUBMI <span class="sc">&lt;</span> <span class="fl">18.5</span>                <span class="sc">~</span> <span class="st">"Underweight"</span>,</span>
+<span id="cb156-6"><a href="#cb156-6"></a>    STUBMI <span class="sc">&gt;=</span> <span class="fl">18.5</span> <span class="sc">&amp;</span> STUBMI <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Healthy weight"</span>,</span>
+<span id="cb156-7"><a href="#cb156-7"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> STUBMI <span class="sc">&lt;</span> <span class="dv">30</span>   <span class="sc">~</span> <span class="st">"Overweight"</span>,</span>
+<span id="cb156-8"><a href="#cb156-8"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">30</span>                 <span class="sc">~</span> <span class="st">"Obese"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb156-9"><a href="#cb156-9"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb156-10"><a href="#cb156-10"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb156-11"><a href="#cb156-11"></a>  <span class="fu">group_by</span>(CNT, bmi_group) <span class="sc">%&gt;%</span></span>
+<span id="cb156-12"><a href="#cb156-12"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb156-13"><a href="#cb156-13"></a>            <span class="at">per =</span> <span class="dv">100</span><span class="sc">*</span>(n<span class="sc">/</span><span class="fu">unique</span>(total))) <span class="sc">%&gt;%</span></span>
+<span id="cb156-14"><a href="#cb156-14"></a>  <span class="fu">filter</span>(bmi_group <span class="sc">==</span> <span class="st">"Healthy weight"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb156-15"><a href="#cb156-15"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per))</span>
+<span id="cb156-16"><a href="#cb156-16"></a></span>
+<span id="cb156-17"><a href="#cb156-17"></a><span class="co"># you can write the same code without the need for the </span></span>
+<span id="cb156-18"><a href="#cb156-18"></a><span class="co"># double check at each case_when stage</span></span>
+<span id="cb156-19"><a href="#cb156-19"></a></span>
+<span id="cb156-20"><a href="#cb156-20"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb156-21"><a href="#cb156-21"></a>  <span class="fu">select</span>(CNT, STUBMI) <span class="sc">%&gt;%</span> </span>
+<span id="cb156-22"><a href="#cb156-22"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(STUBMI)) <span class="sc">%&gt;%</span></span>
+<span id="cb156-23"><a href="#cb156-23"></a>  <span class="fu">mutate</span>(<span class="at">bmi_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb156-24"><a href="#cb156-24"></a>    STUBMI <span class="sc">&lt;</span> <span class="fl">18.5</span>                <span class="sc">~</span> <span class="st">"Underweight"</span>,</span>
+<span id="cb156-25"><a href="#cb156-25"></a>    STUBMI STUBMI <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Healthy weight"</span>,</span>
+<span id="cb156-26"><a href="#cb156-26"></a>    STUBMI STUBMI <span class="sc">&lt;</span> <span class="dv">30</span>   <span class="sc">~</span> <span class="st">"Overweight"</span>,</span>
+<span id="cb156-27"><a href="#cb156-27"></a>    STUBMI <span class="sc">&gt;=</span> <span class="dv">30</span>                 <span class="sc">~</span> <span class="st">"Obese"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb156-28"><a href="#cb156-28"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb156-29"><a href="#cb156-29"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb156-30"><a href="#cb156-30"></a>  <span class="fu">group_by</span>(CNT, bmi_group) <span class="sc">%&gt;%</span></span>
+<span id="cb156-31"><a href="#cb156-31"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb156-32"><a href="#cb156-32"></a>            <span class="at">per =</span> <span class="dv">100</span><span class="sc">*</span>(n<span class="sc">/</span><span class="fu">unique</span>(total))) <span class="sc">%&gt;%</span></span>
+<span id="cb156-33"><a href="#cb156-33"></a>  <span class="fu">filter</span>(bmi_group <span class="sc">==</span> <span class="st">"Healthy weight"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb156-34"><a href="#cb156-34"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -2632,9 +2726,9 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>example loading code</summary>
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1"></a><span class="co"># download the file then</span></span>
-<span id="cb151-2"><a href="#cb151-2"></a><span class="co"># Work out when more time spent in language lessons than maths lessons</span></span>
-<span id="cb151-3"><a href="#cb151-3"></a>PISA_2022_teacher <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"C:/Users/Peter/Downloads/PISA_2012_teacher.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1"></a><span class="co"># download the file then</span></span>
+<span id="cb157-2"><a href="#cb157-2"></a><span class="co"># Work out when more time spent in language lessons than maths lessons</span></span>
+<span id="cb157-3"><a href="#cb157-3"></a>PISA_2022_teacher <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"C:/Users/Peter/Downloads/PISA_2012_teacher.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="question">
@@ -2644,10 +2738,10 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1"></a>PISA_2022_teacher <span class="sc">%&gt;%</span> </span>
-<span id="cb152-2"><a href="#cb152-2"></a>  <span class="fu">group_by</span>(CNTRYID) <span class="sc">%&gt;%</span></span>
-<span id="cb152-3"><a href="#cb152-3"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb152-4"><a href="#cb152-4"></a>  <span class="fu">filter</span>(CNTRYID <span class="sc">==</span> <span class="st">"Portugal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1"></a>PISA_2022_teacher <span class="sc">%&gt;%</span> </span>
+<span id="cb158-2"><a href="#cb158-2"></a>  <span class="fu">group_by</span>(CNTRYID) <span class="sc">%&gt;%</span></span>
+<span id="cb158-3"><a href="#cb158-3"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb158-4"><a href="#cb158-4"></a>  <span class="fu">filter</span>(CNTRYID <span class="sc">==</span> <span class="st">"Portugal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="2" type="1">
@@ -2656,11 +2750,11 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1"></a>PISA_2022_teacher <span class="sc">%&gt;%</span></span>
-<span id="cb153-2"><a href="#cb153-2"></a>  <span class="fu">group_by</span>(CNTRYID, TC001Q01NA) <span class="sc">%&gt;%</span></span>
-<span id="cb153-3"><a href="#cb153-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_years =</span> <span class="fu">mean</span>(TC007Q02NA, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb153-4"><a href="#cb153-4"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb153-5"><a href="#cb153-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_years))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1"></a>PISA_2022_teacher <span class="sc">%&gt;%</span></span>
+<span id="cb159-2"><a href="#cb159-2"></a>  <span class="fu">group_by</span>(CNTRYID, TC001Q01NA) <span class="sc">%&gt;%</span></span>
+<span id="cb159-3"><a href="#cb159-3"></a>  <span class="fu">summarise</span>(<span class="at">avg_years =</span> <span class="fu">mean</span>(TC007Q02NA, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb159-4"><a href="#cb159-4"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb159-5"><a href="#cb159-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_years))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="3" type="1">
@@ -2669,25 +2763,25 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1"></a>crit_thinking <span class="ot">&lt;-</span> PISA_2022_teacher <span class="sc">%&gt;%</span> </span>
-<span id="cb154-2"><a href="#cb154-2"></a>  <span class="fu">rename</span>(<span class="at">crit_think =</span> TC199Q07HA) <span class="sc">%&gt;%</span></span>
-<span id="cb154-3"><a href="#cb154-3"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb154-4"><a href="#cb154-4"></a>  <span class="fu">mutate</span>(<span class="at">teachers=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb154-5"><a href="#cb154-5"></a>  <span class="fu">group_by</span>(CNT, crit_think) <span class="sc">%&gt;%</span></span>
-<span id="cb154-6"><a href="#cb154-6"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb154-7"><a href="#cb154-7"></a>            <span class="at">per =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">unique</span>(teachers)) <span class="sc">%&gt;%</span></span>
-<span id="cb154-8"><a href="#cb154-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per)) <span class="sc">%&gt;%</span></span>
-<span id="cb154-9"><a href="#cb154-9"></a>  <span class="fu">filter</span>(crit_think <span class="sc">==</span> <span class="st">"A lot"</span>)</span>
-<span id="cb154-10"><a href="#cb154-10"></a></span>
-<span id="cb154-11"><a href="#cb154-11"></a><span class="co"># interestingly the highest performing countries also </span></span>
-<span id="cb154-12"><a href="#cb154-12"></a><span class="co"># have some of the lowest scores in helping children </span></span>
-<span id="cb154-13"><a href="#cb154-13"></a><span class="co"># think critically. To plot this:</span></span>
-<span id="cb154-14"><a href="#cb154-14"></a></span>
-<span id="cb154-15"><a href="#cb154-15"></a><span class="fu">left_join</span>(crit_thinking,</span>
-<span id="cb154-16"><a href="#cb154-16"></a>          PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))) <span class="sc">%&gt;%</span></span>
-<span id="cb154-17"><a href="#cb154-17"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>per, <span class="at">y=</span>maths)) <span class="sc">+</span> </span>
-<span id="cb154-18"><a href="#cb154-18"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb154-19"><a href="#cb154-19"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1"></a>crit_thinking <span class="ot">&lt;-</span> PISA_2022_teacher <span class="sc">%&gt;%</span> </span>
+<span id="cb160-2"><a href="#cb160-2"></a>  <span class="fu">rename</span>(<span class="at">crit_think =</span> TC199Q07HA) <span class="sc">%&gt;%</span></span>
+<span id="cb160-3"><a href="#cb160-3"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb160-4"><a href="#cb160-4"></a>  <span class="fu">mutate</span>(<span class="at">teachers=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb160-5"><a href="#cb160-5"></a>  <span class="fu">group_by</span>(CNT, crit_think) <span class="sc">%&gt;%</span></span>
+<span id="cb160-6"><a href="#cb160-6"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb160-7"><a href="#cb160-7"></a>            <span class="at">per =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">unique</span>(teachers)) <span class="sc">%&gt;%</span></span>
+<span id="cb160-8"><a href="#cb160-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(per)) <span class="sc">%&gt;%</span></span>
+<span id="cb160-9"><a href="#cb160-9"></a>  <span class="fu">filter</span>(crit_think <span class="sc">==</span> <span class="st">"A lot"</span>)</span>
+<span id="cb160-10"><a href="#cb160-10"></a></span>
+<span id="cb160-11"><a href="#cb160-11"></a><span class="co"># interestingly the highest performing countries also </span></span>
+<span id="cb160-12"><a href="#cb160-12"></a><span class="co"># have some of the lowest scores in helping children </span></span>
+<span id="cb160-13"><a href="#cb160-13"></a><span class="co"># think critically. To plot this:</span></span>
+<span id="cb160-14"><a href="#cb160-14"></a></span>
+<span id="cb160-15"><a href="#cb160-15"></a><span class="fu">left_join</span>(crit_thinking,</span>
+<span id="cb160-16"><a href="#cb160-16"></a>          PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))) <span class="sc">%&gt;%</span></span>
+<span id="cb160-17"><a href="#cb160-17"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>per, <span class="at">y=</span>maths)) <span class="sc">+</span> </span>
+<span id="cb160-18"><a href="#cb160-18"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb160-19"><a href="#cb160-19"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="4" type="1">
@@ -2696,7 +2790,7 @@ attr(,"label")
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1"></a>PISA_2022_teacher <span class="sc">%&gt;%</span> <span class="fu">select</span>(CNT, TC001Q01NA, <span class="fu">starts_with</span>(<span class="st">"TC169"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1"></a>PISA_2022_teacher <span class="sc">%&gt;%</span> <span class="fu">select</span>(CNT, TC001Q01NA, <span class="fu">starts_with</span>(<span class="st">"TC169"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="5" type="1">
