@@ -1149,16 +1149,16 @@ Tip
 </details>
 </div>
 <div class="question">
-<p><code>ST251Q06JA</code> asks students if they have a musical instrument in their home. What percentage of students in the UK have no instruments in their home? What is the percentage in China?</p>
+<p><code>ST251Q06JA</code> asks students if they have a musical instrument in their home. What percentage of students in the UK have no instruments in their home? What is the percentage in Korea?</p>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Finding the percentage of students with no musical instruments in the UK and China</span></span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Finding the percentage of students with no musical instruments in the UK and Korea</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Select the relevant variables, filter for the countries and group - dropping levels to cut unnecessary countries</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a>MusicData<span class="ot">&lt;-</span>PISA_2022<span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>MusicData <span class="ot">&lt;-</span> PISA_2022<span class="sc">%&gt;%</span></span>
 <span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">select</span>(CNT, ST251Q06JA)<span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span><span class="sc">|</span>CNT <span class="sc">==</span> <span class="st">"B-S-J-Z (China)"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span><span class="sc">|</span>CNT <span class="sc">==</span> <span class="st">"Korea"</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">group_by</span>(ST251Q06JA, CNT)<span class="sc">%&gt;%</span></span>
 <span id="cb28-7"><a href="#cb28-7"></a>  <span class="fu">droplevels</span>()</span>
 <span id="cb28-8"><a href="#cb28-8"></a></span>
@@ -1172,7 +1172,8 @@ Tip
 <span id="cb28-16"><a href="#cb28-16"></a><span class="co"># Mutate to add a column with the percentage calculation</span></span>
 <span id="cb28-17"><a href="#cb28-17"></a>MusicData<span class="ot">&lt;-</span>MusicData<span class="sc">%&gt;%</span></span>
 <span id="cb28-18"><a href="#cb28-18"></a>  <span class="fu">mutate</span>(<span class="at">PercComp =</span> <span class="fu">round</span>((Freq<span class="sc">*</span><span class="dv">100</span> <span class="sc">/</span> Total), <span class="dv">1</span>))</span>
-<span id="cb28-19"><a href="#cb28-19"></a>MusicData</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-19"><a href="#cb28-19"></a></span>
+<span id="cb28-20"><a href="#cb28-20"></a>MusicData</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
