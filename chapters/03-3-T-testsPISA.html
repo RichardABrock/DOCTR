@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DOCTR - T-tests</title>
+<title>T-tests – DOCTR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -146,13 +146,13 @@ div.csl-indent {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-1-Descriptive.html">Introduction to Stats</a></li><li class="breadcrumb-item"><a href="../chapters/03-3-T-testsPISA.html">T-tests</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -177,9 +177,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -200,9 +200,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to Stats</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -241,9 +241,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">SEM</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -258,9 +258,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -383,7 +383,7 @@ div.csl-indent {
 <h1 data-number="1"><span class="header-section-number">1</span> Pre-reading and pre-session tasks</h1>
 <section id="optional-pre-reading" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="optional-pre-reading"><span class="header-section-number">1.1</span> Optional Pre-reading</h2>
-<p>Before the session, please read chapter 7, introduction to t-tests, in <span class="citation" data-cites="geher2014straightforward">Geher and Hall (<a href="#ref-geher2014straightforward" role="doc-biblioref">2014</a>)</span> <a href="https://ebookcentral.proquest.com/lib/kcl/reader.action?docID=1692209&amp;ppg=136">available here</a>.</p>
+<p>Before the session, you might find it useful to read chapter 7, introduction to t-tests, in <span class="citation" data-cites="geher2014straightforward">Geher and Hall (<a href="#ref-geher2014straightforward" role="doc-biblioref">2014</a>)</span> <a href="https://ebookcentral.proquest.com/lib/kcl/reader.action?docID=1692209&amp;ppg=136">available here</a>.</p>
 </section>
 </section>
 <section id="t-tests" class="level1" data-number="2">
@@ -391,7 +391,7 @@ div.csl-indent {
 <p>T-tests are statistical tests used to determine if the mean of a sample is different to a presumed population mean, or if the means of two different samples are different to one another.</p>
 <p>Here are some examples in educational research of when t-tests might be applied:</p>
 <ol type="1">
-<li>A school wants to measure whether there is a statistical difference between Year 11’s Progress 8 scores and the national average( which is approximately 0 on average in England). A t-test is used to determine if there is a statistical difference between the mean of the Year 11’s progress 8 scores in the school and the national average.</li>
+<li>A school wants to measure whether there is a statistical difference between Year 11’s Progress 8 scores and the national average (which is approximately 0 on average in England). A t-test is used to determine if there is a statistical difference between the mean of the Year 11’s progress 8 scores in the school and the national average.</li>
 <li>A researcher implements an intervention with a random sample of pupils from a school. A second random sample is also taken, which is called the control group. After a period of time of teaching, one with the intervention and without, the pupils are tested. A t-test is performed to see if there is a statistical difference between the mean of the control group and the mean of the intervention group.</li>
 <li>A teacher wants to see how well a class is able to recall knowledge learned 6 months after they are given a test. The pupils are given similar test questions before and after the period. A t-test is used to see if there is a statistical difference between test scores in the first test and in the test 6 months later.</li>
 </ol>
@@ -416,10 +416,10 @@ Note
 <div class="callout-body-container callout-body">
 <p>Due to the robustness of the t-test some of the conditions can be adjusted. For example,</p>
 <ul>
-<li><p>Discrete interval data can be used (so long as there is sufficient granularity);</p></li>
-<li><p>The sample data may be approximately normally distributed;</p></li>
-<li><p>Variances can be unequal (this is covered by Welch’s t-test);</p></li>
-<li><p>Sample sizes can be large (this does not affect the validity of the test, but with a known population variance a z-test may be more appropriate).</p></li>
+<li>Discrete interval data can be used (so long as there is sufficient granularity);</li>
+<li>The sample data may be approximately normally distributed;</li>
+<li>Variances can be unequal (this is covered by Welch’s t-test);</li>
+<li>Sample sizes can be large (this does not affect the validity of the test, but with a known population variance a z-test may be more appropriate).</li>
 </ul>
 </div>
 </div>
@@ -556,19 +556,19 @@ Note
 <p>One sample t-tests are used to compare the mean of a sample of a data set with a value. This value is usually a known population mean or a theoretical population mean depending on the context of the test.</p>
 <p>For a <strong>two-tailed test</strong>, the hypotheses are as follows</p>
 <ul>
-<li><p>Null hypothesis: sample mean = population mean;</p></li>
-<li><p>Alternative hypothesis: sample mean ≠ population mean.</p></li>
+<li>Null hypothesis: sample mean = population mean;</li>
+<li>Alternative hypothesis: sample mean ≠ population mean.</li>
 </ul>
 <p>For a <strong>one-tailed test</strong>, the hypotheses are as follows (depending on the direction of the test)</p>
 <p>Either,</p>
 <ul>
-<li><p>Null hypothesis: sample mean = population mean;</p></li>
-<li><p>Alternative hypothesis: sample mean &gt; population mean.</p></li>
+<li>Null hypothesis: sample mean = population mean;</li>
+<li>Alternative hypothesis: sample mean &gt; population mean.</li>
 </ul>
 <p>Or,</p>
 <ul>
-<li><p>Null hypothesis: sample mean = population mean;</p></li>
-<li><p>Alternative hypothesis: sample mean &lt; population mean.</p></li>
+<li>Null hypothesis: sample mean = population mean;</li>
+<li>Alternative hypothesis: sample mean &lt; population mean.</li>
 </ul>
 <p><strong>Example: Are Females’ Reading Scores in the UK the Same or Different on Average to the UK Average?</strong></p>
 <p>Let’s look at an example of where we might want to consider a sample, in this case females’ reading scores in the UK, with a presumed population mean, the average reading score in the UK. This is a presumed mean, since we don’t know the true population mean here, but we do know the average reading score from the PISA data, which is 494 (taken from PISA <a href="https://www.oecd.org/publication/pisa-2022-results/country-notes/united-kingdom-9c15db47/">2022</a>).</p>
@@ -593,23 +593,23 @@ Note
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">line 2 - select the variables of interest</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2"><code>select</code> the variables of interest</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">line 3 - filter for the UK and for girls</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3"><code>filter</code> for the UK and for girls</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="4">line 4 - pass the data to <code>ggplot</code></span>
+<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="4">pass the data to <code>ggplot</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="5">line 5 - put reading scores (<code>PV1READ</code>) on the x-axis</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="5">put reading scores (<code>PV1READ</code>) on the x-axis</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="9" data-code-annotation="6">line 6 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="9" data-code-annotation="6">use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
 </dd>
 </dl>
 </div>
@@ -624,8 +624,8 @@ Note
 <p>We can see from the histogram that the sample is approximately normally distributed (as it follows a bell shaped curve).</p>
 <p>Next, we state the null and alternative hypotheses. Since we are determining whether the average reading score is the same or different, we are using a two-tailed test. This gives us the following hypotheses:</p>
 <ul>
-<li><p>Null hypothesis: mean reading score for females in UK = mean reading score in UK</p></li>
-<li><p>Alternative hypothesis: mean reading score for females in UK ≠ mean reading score in UK</p></li>
+<li>Null hypothesis: mean reading score for females in UK = mean reading score in UK</li>
+<li>Alternative hypothesis: mean reading score for females in UK ≠ mean reading score in UK</li>
 </ul>
 <p>Having set up the hypotheses, we now need to calculate the probability of the null hypothesis being true. To do this, we use R’s <code>t.test</code> function and compare the scores for females in reading in the UK with the OECD average score for reading, which is defined as 476 (<a href="https://www.oecd-ilibrary.org/sites/9149c2f5-en/index.html?itemId=/content/component/9149c2f5-en#:~:text=linklink%20copied!-,Average%20performance%20in%20mathematics%2C%20reading%20and%20science,in%20science%20is%20485%20points.">OECD website</a>).</p>
 <div class="cell">
@@ -653,19 +653,19 @@ mean of x
 <p>Unpaired two sample t-tests are used to compare the means of two, unconnected samples. They are unconnected in the sense that the samples taken are independent and are measurements of two unrelated groups.</p>
 <p>For a <strong>two-tailed test</strong>, the hypotheses are as follows</p>
 <ul>
-<li><p>Null hypothesis: sample mean of first group = sample mean of second group;</p></li>
-<li><p>Alternative hypothesis: sample mean of first group ≠ sample mean of second group.</p></li>
+<li>Null hypothesis: sample mean of first group = sample mean of second group;</li>
+<li>Alternative hypothesis: sample mean of first group ≠ sample mean of second group.</li>
 </ul>
 <p>For a <strong>one-tailed test</strong>, the hypotheses are as follows (depending on the direction of the test)</p>
 <p>Either,</p>
 <ul>
-<li><p>Null hypothesis: sample mean of first group = sample mean of second group;</p></li>
-<li><p>Alternative hypothesis: sample mean of first group &gt; sample mean of second group.</p></li>
+<li>Null hypothesis: sample mean of first group = sample mean of second group;</li>
+<li>Alternative hypothesis: sample mean of first group &gt; sample mean of second group.</li>
 </ul>
 <p>Or,</p>
 <ul>
-<li><p>Null hypothesis: sample mean of first group = sample mean of second group;</p></li>
-<li><p>Alternative hypothesis: sample mean of first group &lt; sample mean of second group.</p></li>
+<li>Null hypothesis: sample mean of first group = sample mean of second group;</li>
+<li>Alternative hypothesis: sample mean of first group &lt; sample mean of second group.</li>
 </ul>
 <p><strong>Example: Are Males’ and Females’ Maths Scores in the USA the Same or Different to One Another?</strong></p>
 <p>Let’s say we want to discern if the average maths score differ for males and females in the USA. We want to test to see if there is a statistical difference between the means.</p>
@@ -691,31 +691,31 @@ mean of x
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2">line 2 - select the variables of interest, country, maths scores, and gender</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2"><code>select</code> the variables of interest, country, maths scores, and gender</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3">line 3 - filter for the US</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3"><code>filter</code> for the US</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="4">line 4 - create a new data frame <code>USMATHGIRLS</code> of the data for girls</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="4">create a new data frame <code>USMATHGIRLS</code> of the data for girls</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="10" data-code-annotation="5">line 6 - create a new data frame <code>USMATHBOYSS</code> of the data for boys</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="10" data-code-annotation="5">create a new data frame <code>USMATHBOYSS</code> of the data for boys</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="13" data-code-annotation="6">line 7 - pass the data to <code>ggplot</code></span>
+<span data-code-cell="annotated-cell-6" data-code-lines="13" data-code-annotation="6">pass the data to <code>ggplot</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="14" data-code-annotation="7">line 8 - put maths scores (<code>PV1MATH</code>) on the x-axis</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="14" data-code-annotation="7">put maths scores (<code>PV1MATH</code>) on the x-axis</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="15" data-code-annotation="8">line 9 - use <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="15" data-code-annotation="8">luse <code>geom_histogram</code> to create a histogram. We can define that the reading data is divided into bins of width 5 points (<code>binwidth = 5</code>) and set the colour of the bars (<code>fill = "darkseagreen4"</code>)</span>
 </dd>
 </dl>
 </div>
@@ -741,8 +741,8 @@ mean of x
 <p>Again, we can see both samples of males and females are approximately normally distributed.</p>
 <p>Next, we state the null and alternative hypotheses. Since we are determining whether the average maths scores are the same or different, we are using a two-tailed test. This gives us the following hypotheses:</p>
 <ul>
-<li><p>Null hypothesis: mean maths score for males in US = mean maths score for females in UK</p></li>
-<li><p>Alternative hypothesis: mean maths score for males in US ≠ mean maths score for females in UK.</p></li>
+<li>Null hypothesis: mean maths score for males in US = mean maths score for females in UK</li>
+<li>Alternative hypothesis: mean maths score for males in US ≠ mean maths score for females in UK.</li>
 </ul>
 <p>Next, we calculate the probability of the null hypothesis being true. As before, we use R’s <code>t.test</code> function and compare the mean scores of males and females in the US.</p>
 <div class="cell">
@@ -771,19 +771,19 @@ mean in group Female   mean in group Male
 <p>Paired two sample t-tests compare the mean of a sample to the mean of a related sample. Usually, this is where there is a repeated measure taken of the same individuals or objects, such as a pre and post test. It can also be used for comparing a pair of measurements taken of the same individuals or objects.</p>
 <p>For a <strong>two-tailed test</strong>, the hypotheses are as follows</p>
 <ul>
-<li><p>Null hypothesis: sample mean of first group = sample mean of second group;</p></li>
-<li><p>Alternative hypothesis: sample mean of first group ≠ sample mean of second group.</p></li>
+<li>Null hypothesis: sample mean of first group = sample mean of second group;</li>
+<li>Alternative hypothesis: sample mean of first group ≠ sample mean of second group.</li>
 </ul>
 <p>For a <strong>one-tailed test</strong>, the hypotheses are as follows (depending on the direction of the test)</p>
 <p>Either,</p>
 <ul>
-<li><p>Null hypothesis: sample mean of first group = sample mean of second group;</p></li>
-<li><p>Alternative hypothesis: sample mean of first group &gt; sample mean of second group.</p></li>
+<li>Null hypothesis: sample mean of first group = sample mean of second group;</li>
+<li>Alternative hypothesis: sample mean of first group &gt; sample mean of second group.</li>
 </ul>
 <p>Or,</p>
 <ul>
-<li><p>Null hypothesis: sample mean of first group = sample mean of second group;</p></li>
-<li><p>Alternative hypothesis: sample mean of first group &lt; sample mean of second group.</p></li>
+<li>Null hypothesis: sample mean of first group = sample mean of second group;</li>
+<li>Alternative hypothesis: sample mean of first group &lt; sample mean of second group.</li>
 </ul>
 <p><strong>Example: Are there differences between science and maths scores on average in the UK?</strong></p>
 <p>Let’s say we want to compare the science and maths scores of students in the UK to see if there is a difference in their average score or not.</p>
@@ -824,8 +824,8 @@ mean in group Female   mean in group Male
 <p>Again, we can see the two samples are approximately distributed so can use the t-test.</p>
 <p>Next, we state the null and alternative hypotheses. Since we are determining whether the average maths score is the same or different to the average science score, we are using a two-tailed test. This gives us the following hypotheses:</p>
 <ul>
-<li><p>Null hypothesis: mean maths score in UK = mean science score in UK</p></li>
-<li><p>Alternative hypothesis: mean maths score in UK ≠ mean science score in UK</p></li>
+<li>Null hypothesis: mean maths score in UK = mean science score in UK</li>
+<li>Alternative hypothesis: mean maths score in UK ≠ mean science score in UK</li>
 </ul>
 <p>Having set up the hypotheses, we now need to calculate the probability of the null hypothesis being true. Again, we use R’s <code>t.test</code> function and compare the average maths scores with the average science scores.</p>
 <div class="cell">
@@ -848,7 +848,16 @@ mean difference
 </div>
 <p>We return a p-value of &lt; 2.2e-16, which is less than 0.025 (for a two-tailed test), meaning we reject the null hypothesis that there is no difference between the average score in maths and science.</p>
 <p>Therefore, we accept the alternative hypothesis that there is a difference in scores in maths and science in the UK. This difference is approximately 1.5 points.</p>
-<p>::: call-out tip</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In R, there are often multiple ways of doing the same tests. Note with <code>t.test</code> there are two forms you can use, depending on the format of the data you want to test.</p>
 <p>First, in the example above, we had two data frames, for math scores, and science scores, so we can pass two data frames to <code>t.test</code>.</p>
 <div class="cell">
@@ -892,7 +901,8 @@ mean in group Female   mean in group Male
             488.6962             495.7375 </code></pre>
 </div>
 </div>
-<p>:::</p>
+</div>
+</div>
 </section>
 </section>
 <section id="anova-multiple-t-tests" class="level1" data-number="3">
@@ -904,30 +914,30 @@ mean in group Female   mean in group Male
 <p>For example, we used t-tests to look at differences in scores between a pair of countries (e.g the UK and the US). We can now compare across all the countires.</p>
 <p>We pass the function the data we wish to focus on (<code>PV1MATH</code>) and then indicate we wish to look for variation in the <code>PV1MATH</code>, by <code>CNT</code>. We then summarise the result to get a table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>ALLPISAMATH<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  <span class="fu">select</span>(CNT, PV1MATH)</span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> ALLPISAMATH, PV1MATH <span class="sc">~</span> CNT)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6"></a>sumresaov</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a>ALLPISAMATH<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>  <span class="fu">select</span>(CNT, PV1MATH)</span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-4" class="code-annotation-target"><a href="#annotated-cell-12-4"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> ALLPISAMATH, PV1MATH <span class="sc">~</span> CNT)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-12-5" class="code-annotation-target"><a href="#annotated-cell-12-5"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-12-6" class="code-annotation-target"><a href="#annotated-cell-12-6"></a>sumresaov</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1">line 2 - select the variables of interest, country, and maths scores</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="2" data-code-annotation="1"><code>select</code> the variables of interest, country, and maths scores</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="2">line 3 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
+<span data-code-cell="annotated-cell-12" data-code-lines="4" data-code-annotation="2">use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="5" data-code-annotation="3">line 4 - we produce a summary of the output <code>summary(resaov)</code><br>
+<span data-code-cell="annotated-cell-12" data-code-lines="5" data-code-annotation="3">we produce a summary of the output <code>summary(resaov)</code><br>
 </span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="6" data-code-annotation="4">line 5 - print the result</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="6" data-code-annotation="4">print the result</span>
 </dd>
 </dl>
 </div>
@@ -1010,48 +1020,48 @@ Note
 <p>We can use an additional anova test, <strong>Tukey’s Honest Significant Difference</strong> test (or Tukey’s HSD for short), to find out which pairs of subgroups have statistically significant differences in means.</p>
 <p>Consider the question: Are there statistically significant differences in the variance of science scores of the UK, US, France and Germany? To determine if such differences exist, we create a new subset for those countries’ science scores, and then run an anova test by country, reporting the eta squared value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a>PISAMULTI <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">|</span></span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a>           CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"France"</span>)</span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1SCIE <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
-<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8"></a>sumresaov</span>
-<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-16-10" class="code-annotation-target"><a href="#annotated-cell-16-10"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-16-11" class="code-annotation-target"><a href="#annotated-cell-16-11"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-16-12" class="code-annotation-target"><a href="#annotated-cell-16-12"></a>eta</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>PISAMULTI <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">|</span></span>
+<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a>           CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"France"</span>)</span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1SCIE <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
+<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8"></a>sumresaov</span>
+<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-14-10" class="code-annotation-target"><a href="#annotated-cell-14-10"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-14-11" class="code-annotation-target"><a href="#annotated-cell-14-11"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-14-12" class="code-annotation-target"><a href="#annotated-cell-14-12"></a>eta</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="2" data-code-annotation="1">line 2 - select the variables of interest, country, and maths scores</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1"><code>select</code> the variables of interest, country, and maths scores</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="3" data-code-annotation="2">line 3 - filter for countries of interest. Note a shorter way to do the filter is <code>filter(CNT %in% c("United Kingdom", "United States", "Germany", "France"))</code></span>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2"><code>filter</code> for countries of interest. Note a shorter way to do the filter is <code>filter(CNT %in% c("United Kingdom", "United States", "Germany", "France"))</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="6" data-code-annotation="3">line 5 - use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
+<span data-code-cell="annotated-cell-14" data-code-lines="6" data-code-annotation="3">use <code>aov</code> to perform the anova calculation. We set the data we are passing (<code>data = ALLPISAMATH</code>) and set that we want to determine the variance in maths scores by country (<code>PV1MATH ~ CNT</code>) - we put the output into a new variable <code>resaov</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="7" data-code-annotation="4">line 6 - produce a summary of <code>resaov</code></span>
+<span data-code-cell="annotated-cell-14" data-code-lines="7" data-code-annotation="4">produce a summary of <code>resaov</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="10" data-code-annotation="5">line 8 - use <code>etaSquared(resaov)</code> to find the eta squared value. We convert this to a data frame so we can perform the next steps</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="10" data-code-annotation="5">use <code>etaSquared(resaov)</code> to find the eta squared value. We convert this to a data frame so we can perform the next steps</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="11" data-code-annotation="6">line 9 - to convert the eta squared value into a percentage of variance explained, we multiply by 100<br>
+<span data-code-cell="annotated-cell-14" data-code-lines="11" data-code-annotation="6">to convert the eta squared value into a percentage of variance explained, we multiply by 100<br>
 </span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="12" data-code-annotation="7">line 10 - print the result</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="12" data-code-annotation="7">print the result</span>
 </dd>
 </dl>
 </div>
@@ -1355,14 +1365,14 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>PISAMULTI<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>PISAMULTI <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">select</span>(CNT, PV1MATH)<span class="sc">%&gt;%</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Thailand"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">|</span></span>
 <span id="cb28-4"><a href="#cb28-4"></a>         CNT <span class="sc">==</span> <span class="st">"France"</span>)</span>
 <span id="cb28-5"><a href="#cb28-5"></a></span>
 <span id="cb28-6"><a href="#cb28-6"></a></span>
-<span id="cb28-7"><a href="#cb28-7"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1MATH <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
-<span id="cb28-8"><a href="#cb28-8"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
+<span id="cb28-7"><a href="#cb28-7"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(PV1MATH <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
+<span id="cb28-8"><a href="#cb28-8"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
 <span id="cb28-9"><a href="#cb28-9"></a>sumresaov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -1374,8 +1384,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <details class="code-fold">
 <summary>answer</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
-<span id="cb30-2"><a href="#cb30-2"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>eta <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
+<span id="cb30-2"><a href="#cb30-2"></a>eta <span class="ot">&lt;-</span> eta<span class="sc">*</span><span class="dv">100</span></span>
 <span id="cb30-3"><a href="#cb30-3"></a>eta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -1419,8 +1429,8 @@ United States-Thailand        47.033119  42.56457  51.501668 0.0000000</code></p
 <span id="cb35-5"><a href="#cb35-5"></a></span>
 <span id="cb35-6"><a href="#cb35-6"></a><span class="co"># Perform an anova test for reading scores, school type</span></span>
 <span id="cb35-7"><a href="#cb35-7"></a></span>
-<span id="cb35-8"><a href="#cb35-8"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1READ <span class="sc">~</span> LANGN, <span class="at">data =</span> UKLangRead)</span>
-<span id="cb35-9"><a href="#cb35-9"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
+<span id="cb35-8"><a href="#cb35-8"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(PV1READ <span class="sc">~</span> LANGN, <span class="at">data =</span> UKLangRead)</span>
+<span id="cb35-9"><a href="#cb35-9"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
 <span id="cb35-10"><a href="#cb35-10"></a>sumresaov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -1434,8 +1444,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <summary>answer</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Calculate eta squared</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a></span>
-<span id="cb37-3"><a href="#cb37-3"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
-<span id="cb37-4"><a href="#cb37-4"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>eta <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
+<span id="cb37-4"><a href="#cb37-4"></a>eta <span class="ot">&lt;-</span> eta<span class="sc">*</span><span class="dv">100</span></span>
 <span id="cb37-5"><a href="#cb37-5"></a>eta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -1509,7 +1519,7 @@ Welsh-English                                                0.0000000
 </div>
 <div class="question">
 <p>For the UK, use <code>ifelse</code> on the <code>HOMEPOS</code> variable to create categories for four quartiles (divide the data into top; upper-mid; lower-mid; and bottom). Use anova to determine between which groups there are statistically significant differences in science scores</p>
-<p>::: call-out tip Hint: You can use <code>quantiles &lt;- quantile(UKSci$PV1SCIE, prob=c(.25,.5,.75), na.rm=TRUE)</code> to give the values of PV1SCIE that account for 25%, 50% and 75% of the responses.</p>
+<p>::: callout-tip Hint: You can use <code>quantiles &lt;- quantile(UKSci$PV1SCIE, prob=c(.25,.5,.75), na.rm=TRUE)</code> to give the values of PV1SCIE that account for 25%, 50% and 75% of the responses.</p>
 </div>
 <div class="cell">
 <details class="code-fold">
@@ -1876,18 +1886,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1919,7 +1918,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1927,7 +1948,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
