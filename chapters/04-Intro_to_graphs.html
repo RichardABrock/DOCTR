@@ -1295,7 +1295,8 @@ Tip
 <h2 data-number="5.1" class="anchored" data-anchor-id="task-1---bar-graphs"><span class="header-section-number">5.1</span> Task 1 - Bar graphs</h2>
 <div class="question">
 <ul>
-<li><code>ST038Q08NA</code> asks students in the past 12 months, how often do other students spread nasty rumours about them. Plot a graph of how often students spread rumours in the UK and France.</li>
+<li><p><code>ST038Q08NA</code> asks students in the past 12 months, how often do other students spread nasty rumours about them. Plot a graph of how often students spread rumours in the UK and France.</p></li>
+<li><p>Extensions: You can use <code>xlab("&lt;x axis label&gt;")</code> and <code>ylab("&lt;x axis label&gt;")</code> to label the axes. A title can be added using: <code>ggtitle("&lt;title")</code>. ’You can rotate the text on the x axis through 90 degrees using: <code>theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))</code></p></li>
 </ul>
 </div>
 <div class="cell">
@@ -1311,10 +1312,10 @@ Tip
 <span id="cb31-8"><a href="#cb31-8"></a><span class="co"># Remember to use position dodge to plot the bars side by side</span></span>
 <span id="cb31-9"><a href="#cb31-9"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Rumplot,</span>
 <span id="cb31-10"><a href="#cb31-10"></a>       <span class="fu">aes</span>(<span class="at">x =</span> ST038Q08NA, <span class="at">fill =</span> CNT)) <span class="sc">+</span></span>
-<span id="cb31-11"><a href="#cb31-11"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>)<span class="sc">+</span></span>
-<span id="cb31-12"><a href="#cb31-12"></a>  <span class="fu">xlab</span>(<span class="st">"Do students spread rumours about you?"</span>)<span class="sc">+</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) <span class="sc">+</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a>  <span class="fu">xlab</span>(<span class="st">"Do students spread rumours about you?"</span>) <span class="sc">+</span></span>
 <span id="cb31-13"><a href="#cb31-13"></a>  <span class="fu">ylab</span>(<span class="st">"Count"</span>)<span class="sc">+</span></span>
-<span id="cb31-14"><a href="#cb31-14"></a>  <span class="fu">ggtitle</span>(<span class="st">"Spreading rumours: France vs. the UK"</span>)<span class="sc">+</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a>  <span class="fu">ggtitle</span>(<span class="st">"Spreading rumours: France vs. the UK"</span>) <span class="sc">+</span></span>
 <span id="cb31-15"><a href="#cb31-15"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span>
 <span id="cb31-16"><a href="#cb31-16"></a>  <span class="co"># Rotate axis text</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1322,6 +1323,7 @@ Tip
 <div class="question">
 <ul>
 <li><code>PA195Q01JA</code> asks students how many books are in their home. Plot a bar graph for students in Germany. Then plot a graph splitting the data by gender (<code>ST004D01T</code>).</li>
+<li>Hint: to split by bars by a variable use the <code>aes(fill= &lt;variable&gt;)</code>.</li>
 </ul>
 </div>
 <div class="cell">
@@ -1355,8 +1357,8 @@ Tip
 </div>
 <div class="question">
 <ul>
-<li>Plot a bar graph of the mean mathematics scores of all the countries in the PISA data frame</li>
-<li>Hint one: you will need to create a summary dataframe using <code>group_by</code> and <code>summarise</code> and then <code>geom_bar(stat="identity")</code>. You use <code>stat=identity</code> when you want <code>geom_bar</code> to plot the values in the <code>data.frame</code> (because you have already summarised) rather than counting the values.</li>
+<li>Plot a bar graph of the mean science scores of all the countries in the PISA data frame</li>
+<li>Hint one: you will need to create a summary dataframe using <code>group_by</code> and <code>summarise</code> and then <code>geom_bar(stat="identity")</code>. Remember to use <code>stat=identity</code> when you want <code>geom_bar</code> to plot the values in the <code>data.frame</code> (because you have already summarised) rather than counting the values.</li>
 <li>Hint two: you can reorder the x-axis with the <code>reorder</code> function. Rather than a simple <code>x=CNT</code> you can put <code>x=reorder(CNT, -SciMean)</code> which will reorder the x axis in descending order (because of the <code>-</code> sign) of <code>SciMean</code>.</li>
 </ul>
 </div>
@@ -1383,7 +1385,7 @@ Tip
 <h2 data-number="5.2" class="anchored" data-anchor-id="task-2---scatter-graphs"><span class="header-section-number">5.2</span> Task 2 - Scatter graphs</h2>
 <div class="question">
 <ul>
-<li>For students in the UK and Brazil, plot science scores (<code>PV1SCIE</code>) by the index of economic, social and cultural status (<code>ESCS</code>). (You may have come across this variable in your studies as socioeconomic status, similar to the idea of ‘social class’.) Then try varying the colour of points by country, and add a line for each.</li>
+<li>For students in the UK and Brazil, plot science scores (<code>PV1SCIE</code>) by the index of economic, social and cultural status (<code>ESCS</code>). (You may have come across this variable in your studies as socio-economic status, similar to the idea of ‘social class’.) Then try varying the colour of points by country, and add a line for each.</li>
 </ul>
 </div>
 <div class="cell">
@@ -1460,7 +1462,6 @@ Tip
 <span id="cb36-21"><a href="#cb36-21"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="co"># Hide the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>:::</p>
 </section>
 <section id="task-3---plot-distributions-of-wealth-scores" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="task-3---plot-distributions-of-wealth-scores"><span class="header-section-number">5.3</span> Task 3 - Plot distributions of wealth scores</h2>
