@@ -2052,7 +2052,7 @@ Tip
 </section>
 <section id="task-2---histograms" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="task-2---histograms"><span class="header-section-number">6.2</span> Task 2 - Histograms</h2>
-<p>An alternative to binning the data yourself is to use the <code>geom_histogram</code> <code>geom</code> in <code>ggplot</code>. That allows you to plot a histogram and control the size of the bins. For example, to create a histogram of wealth scores in the UK, you set the <code>x</code> value in <code>aes</code>to wealth (<code>HOMEPOS</code>) and specify the <code>binwidth</code> within <code>geom_histogram</code>. You can also set a <code>fill</code> colour within the <code>geom_histogram</code>.</p>
+<p>An alternative to binning the data yourself is to use the <code>geom_histogram</code> <code>geom</code> in <code>ggplot</code>. That allows you to plot a histogram and control the size of the bins, without having to bin the data yourself. For example, to create a histogram of wealth scores in the UK, you set the <code>x</code> value in <code>aes</code>to wealth (<code>HOMEPOS</code>) and specify the <code>binwidth</code> within <code>geom_histogram</code>. You can also set a <code>fill</code> colour within the <code>geom_histogram</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Creates data frame of wealth scores in the UK</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a>UK_wealth <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
