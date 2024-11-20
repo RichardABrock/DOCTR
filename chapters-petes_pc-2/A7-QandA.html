@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>DOCTR - Questions and Answers</title>
+<title>Questions and Answers – DOCTR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,7 +74,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,6 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -92,32 +99,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a href="index.qmd" class="navbar-brand navbar-brand-logo">
     <img src="../images/KCL_logo.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">DOCTR</span>
     </a>
   </div>
-        <div class="quarto-navbar-tools ms-auto">
+        <div class="quarto-navbar-tools tools-end">
 </div>
           <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/A1-PISA_analysis.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/A7-QandA.html">Questions and Answers</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/A1-PISA_analysis.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/A7-QandA.html">Questions and Answers</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
@@ -132,9 +139,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -155,9 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction to Stats</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -196,9 +203,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">SEM and Bayesian</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">SEM</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -209,19 +216,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">SEM</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/06-2-Bayesian.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bayesian Statistics</span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -268,11 +269,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Questions and Answers</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A8-Bayesian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian Statistics</span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
 </div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
@@ -287,12 +294,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#i-am-getting-the-error-error-mapping-should-be-created-with-aes-or-aes_.-when-using-ggplot" id="toc-i-am-getting-the-error-error-mapping-should-be-created-with-aes-or-aes_.-when-using-ggplot" class="nav-link" data-scroll-target="#i-am-getting-the-error-error-mapping-should-be-created-with-aes-or-aes_.-when-using-ggplot"><span class="header-section-number">1.4</span> I am getting the error: ‘“Error: Mapping should be created with <code>aes()</code> or <code>aes_()</code>.”’ when using ggplot</a></li>
   <li><a href="#my-axis-labels-are-too-long" id="toc-my-axis-labels-are-too-long" class="nav-link" data-scroll-target="#my-axis-labels-are-too-long"><span class="header-section-number">1.5</span> My axis labels are too long</a></li>
   <li><a href="#how-can-i-find-out-the-full-item-labels-in-the-pisa-data-frame" id="toc-how-can-i-find-out-the-full-item-labels-in-the-pisa-data-frame" class="nav-link" data-scroll-target="#how-can-i-find-out-the-full-item-labels-in-the-pisa-data-frame"><span class="header-section-number">1.6</span> How can I find out the full item labels in the PISA data frame?</a></li>
+  <li><a href="#how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper" id="toc-how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper" class="nav-link" data-scroll-target="#how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper"><span class="header-section-number">1.7</span> How do I turn a data frame into a form I can put into an assingment or paper?</a></li>
+  <li><a href="#how-do-i-report-the-results-of-tests-in-apa-format" id="toc-how-do-i-report-the-results-of-tests-in-apa-format" class="nav-link" data-scroll-target="#how-do-i-report-the-results-of-tests-in-apa-format"><span class="header-section-number">1.8</span> How do I report the results of tests in APA format?</a></li>
+  <li><a href="#how-do-i-add-the-results-from-statistical-tests-to-ggplot" id="toc-how-do-i-add-the-results-from-statistical-tests-to-ggplot" class="nav-link" data-scroll-target="#how-do-i-add-the-results-from-statistical-tests-to-ggplot"><span class="header-section-number">1.9</span> How do I add the results from statistical tests to ggplot?</a></li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/A1-PISA_analysis.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/A7-QandA.html">Questions and Answers</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Questions and Answers</h1>
 </div>
 
@@ -305,6 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
   </div>
   
+
 
 </header><section id="sec-QANDA" class="level1" data-number="1"><h1 data-number="1">
 <span class="header-section-number">1</span> Questions about R</h1>
@@ -426,7 +437,3318 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">1.6</span> How can I find out the full item labels in the PISA data frame?</h2>
 <p>The code below will give you a list of all the item labels</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">lapply</span>(PISA_2022, attr, <span class="st">"label"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># You may want to set the maximun print output to see all the labels</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">1300</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">lapply</span>(PISA_2022, attr, <span class="st">"label"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper" class="level2" data-number="1.7"><h2 data-number="1.7" class="anchored" data-anchor-id="how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper">
+<span class="header-section-number">1.7</span> How do I turn a data frame into a form I can put into an assingment or paper?</h2>
+<p>You can use the <code>gt</code> package to convert data frames to aesthetically pleasing outputs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># load the gt package - you will need to run install.packages("gt") the first time</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># install.packages("gt")</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">library</span>(gt)</span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Make the data frame you want you want to output</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>science_mean_scores <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">summarise</span>(<span class="at">mean_science_score =</span> <span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-9"><a href="#cb14-9"></a>            <span class="at">sd_science =</span> <span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm =</span><span class="cn">TRUE</span>))</span>
+<span id="cb14-10"><a href="#cb14-10"></a></span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="co"># Use gt to produce an output - you can copy and paste the table from the</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="co"># viewer window to your report</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a></span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="fu">gt</span>(science_mean_scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="pzvzgdxebw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pzvzgdxebw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pzvzgdxebw thead, #pzvzgdxebw tbody, #pzvzgdxebw tfoot, #pzvzgdxebw tr, #pzvzgdxebw td, #pzvzgdxebw th {
+  border-style: none;
+}
+
+#pzvzgdxebw p {
+  margin: 0;
+  padding: 0;
+}
+
+#pzvzgdxebw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pzvzgdxebw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pzvzgdxebw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pzvzgdxebw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pzvzgdxebw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pzvzgdxebw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pzvzgdxebw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pzvzgdxebw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pzvzgdxebw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pzvzgdxebw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pzvzgdxebw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pzvzgdxebw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pzvzgdxebw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pzvzgdxebw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pzvzgdxebw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzvzgdxebw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pzvzgdxebw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pzvzgdxebw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pzvzgdxebw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzvzgdxebw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pzvzgdxebw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzvzgdxebw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pzvzgdxebw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzvzgdxebw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pzvzgdxebw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzvzgdxebw .gt_left {
+  text-align: left;
+}
+
+#pzvzgdxebw .gt_center {
+  text-align: center;
+}
+
+#pzvzgdxebw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pzvzgdxebw .gt_font_normal {
+  font-weight: normal;
+}
+
+#pzvzgdxebw .gt_font_bold {
+  font-weight: bold;
+}
+
+#pzvzgdxebw .gt_font_italic {
+  font-style: italic;
+}
+
+#pzvzgdxebw .gt_super {
+  font-size: 65%;
+}
+
+#pzvzgdxebw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pzvzgdxebw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pzvzgdxebw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pzvzgdxebw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pzvzgdxebw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pzvzgdxebw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pzvzgdxebw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pzvzgdxebw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pzvzgdxebw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="header gt_col_headings">
+<th id="Country code 3-character" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Country code 3-character</th>
+<th id="mean_science_score" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_science_score</th>
+<th id="sd_science" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd_science</th>
+</tr></thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Albania</td>
+<td class="gt_row gt_right" headers="mean_science_score">375.8650</td>
+<td class="gt_row gt_right" headers="sd_science">81.17499</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">United Arab Emirates</td>
+<td class="gt_row gt_right" headers="mean_science_score">435.9609</td>
+<td class="gt_row gt_right" headers="sd_science">108.04562</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Argentina</td>
+<td class="gt_row gt_right" headers="mean_science_score">415.0584</td>
+<td class="gt_row gt_right" headers="sd_science">86.30466</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Australia</td>
+<td class="gt_row gt_right" headers="mean_science_score">507.7795</td>
+<td class="gt_row gt_right" headers="sd_science">106.78340</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Austria</td>
+<td class="gt_row gt_right" headers="mean_science_score">494.0894</td>
+<td class="gt_row gt_right" headers="sd_science">99.10689</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Belgium</td>
+<td class="gt_row gt_right" headers="mean_science_score">495.0015</td>
+<td class="gt_row gt_right" headers="sd_science">99.89222</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Bulgaria</td>
+<td class="gt_row gt_right" headers="mean_science_score">421.9872</td>
+<td class="gt_row gt_right" headers="sd_science">94.68480</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Brazil</td>
+<td class="gt_row gt_right" headers="mean_science_score">406.3370</td>
+<td class="gt_row gt_right" headers="sd_science">93.33488</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Brunei Darussalam</td>
+<td class="gt_row gt_right" headers="mean_science_score">444.8849</td>
+<td class="gt_row gt_right" headers="sd_science">93.49958</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Canada</td>
+<td class="gt_row gt_right" headers="mean_science_score">499.4697</td>
+<td class="gt_row gt_right" headers="sd_science">98.78625</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Switzerland</td>
+<td class="gt_row gt_right" headers="mean_science_score">501.4123</td>
+<td class="gt_row gt_right" headers="sd_science">97.88277</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Chile</td>
+<td class="gt_row gt_right" headers="mean_science_score">463.1057</td>
+<td class="gt_row gt_right" headers="sd_science">94.91051</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Colombia</td>
+<td class="gt_row gt_right" headers="mean_science_score">420.9458</td>
+<td class="gt_row gt_right" headers="sd_science">88.24887</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Costa Rica</td>
+<td class="gt_row gt_right" headers="mean_science_score">411.2082</td>
+<td class="gt_row gt_right" headers="sd_science">80.40614</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Czech Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">510.7872</td>
+<td class="gt_row gt_right" headers="sd_science">102.76484</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Germany</td>
+<td class="gt_row gt_right" headers="mean_science_score">495.2547</td>
+<td class="gt_row gt_right" headers="sd_science">105.42084</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Denmark</td>
+<td class="gt_row gt_right" headers="mean_science_score">480.3369</td>
+<td class="gt_row gt_right" headers="sd_science">96.87209</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Dominican Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">361.6200</td>
+<td class="gt_row gt_right" headers="sd_science">68.71457</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Spain</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.9236</td>
+<td class="gt_row gt_right" headers="sd_science">90.06178</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Estonia</td>
+<td class="gt_row gt_right" headers="mean_science_score">527.3109</td>
+<td class="gt_row gt_right" headers="sd_science">87.67284</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Finland</td>
+<td class="gt_row gt_right" headers="mean_science_score">497.9649</td>
+<td class="gt_row gt_right" headers="sd_science">111.47589</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">France</td>
+<td class="gt_row gt_right" headers="mean_science_score">481.3834</td>
+<td class="gt_row gt_right" headers="sd_science">105.72320</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">United Kingdom</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.2651</td>
+<td class="gt_row gt_right" headers="sd_science">102.15378</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Georgia</td>
+<td class="gt_row gt_right" headers="mean_science_score">385.6145</td>
+<td class="gt_row gt_right" headers="sd_science">81.63218</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Greece</td>
+<td class="gt_row gt_right" headers="mean_science_score">445.4408</td>
+<td class="gt_row gt_right" headers="sd_science">88.95744</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Guatemala</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.5886</td>
+<td class="gt_row gt_right" headers="sd_science">65.37109</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Hong Kong (China)</td>
+<td class="gt_row gt_right" headers="mean_science_score">524.5497</td>
+<td class="gt_row gt_right" headers="sd_science">91.06857</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Croatia</td>
+<td class="gt_row gt_right" headers="mean_science_score">483.1283</td>
+<td class="gt_row gt_right" headers="sd_science">91.97320</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Hungary</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.1069</td>
+<td class="gt_row gt_right" headers="sd_science">94.69703</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Indonesia</td>
+<td class="gt_row gt_right" headers="mean_science_score">394.9906</td>
+<td class="gt_row gt_right" headers="sd_science">69.89182</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Ireland</td>
+<td class="gt_row gt_right" headers="mean_science_score">504.3750</td>
+<td class="gt_row gt_right" headers="sd_science">91.95203</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Iceland</td>
+<td class="gt_row gt_right" headers="mean_science_score">448.0546</td>
+<td class="gt_row gt_right" headers="sd_science">94.76950</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Israel</td>
+<td class="gt_row gt_right" headers="mean_science_score">464.0777</td>
+<td class="gt_row gt_right" headers="sd_science">108.57084</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Italy</td>
+<td class="gt_row gt_right" headers="mean_science_score">481.3281</td>
+<td class="gt_row gt_right" headers="sd_science">91.97045</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Jamaica</td>
+<td class="gt_row gt_right" headers="mean_science_score">395.7114</td>
+<td class="gt_row gt_right" headers="sd_science">91.97299</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Jordan</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.6990</td>
+<td class="gt_row gt_right" headers="sd_science">73.68470</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Japan</td>
+<td class="gt_row gt_right" headers="mean_science_score">545.5399</td>
+<td class="gt_row gt_right" headers="sd_science">92.72193</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Kazakhstan</td>
+<td class="gt_row gt_right" headers="mean_science_score">440.9755</td>
+<td class="gt_row gt_right" headers="sd_science">84.44319</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Cambodia</td>
+<td class="gt_row gt_right" headers="mean_science_score">340.4659</td>
+<td class="gt_row gt_right" headers="sd_science">50.34331</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Korea</td>
+<td class="gt_row gt_right" headers="mean_science_score">530.6552</td>
+<td class="gt_row gt_right" headers="sd_science">103.99342</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Kosovo</td>
+<td class="gt_row gt_right" headers="mean_science_score">353.5723</td>
+<td class="gt_row gt_right" headers="sd_science">64.84509</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Lithuania</td>
+<td class="gt_row gt_right" headers="mean_science_score">480.0535</td>
+<td class="gt_row gt_right" headers="sd_science">92.51359</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Latvia</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.5822</td>
+<td class="gt_row gt_right" headers="sd_science">84.61410</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Macao (China)</td>
+<td class="gt_row gt_right" headers="mean_science_score">543.1331</td>
+<td class="gt_row gt_right" headers="sd_science">86.61414</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Morocco</td>
+<td class="gt_row gt_right" headers="mean_science_score">363.4098</td>
+<td class="gt_row gt_right" headers="sd_science">66.20574</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Republic of Moldova</td>
+<td class="gt_row gt_right" headers="mean_science_score">416.8691</td>
+<td class="gt_row gt_right" headers="sd_science">82.50639</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Mexico</td>
+<td class="gt_row gt_right" headers="mean_science_score">410.7969</td>
+<td class="gt_row gt_right" headers="sd_science">74.97042</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">North Macedonia</td>
+<td class="gt_row gt_right" headers="mean_science_score">382.3574</td>
+<td class="gt_row gt_right" headers="sd_science">82.77203</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Malta</td>
+<td class="gt_row gt_right" headers="mean_science_score">469.8360</td>
+<td class="gt_row gt_right" headers="sd_science">101.83745</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Montenegro</td>
+<td class="gt_row gt_right" headers="mean_science_score">404.9706</td>
+<td class="gt_row gt_right" headers="sd_science">83.35015</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Mongolia</td>
+<td class="gt_row gt_right" headers="mean_science_score">411.4142</td>
+<td class="gt_row gt_right" headers="sd_science">77.72520</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Malaysia</td>
+<td class="gt_row gt_right" headers="mean_science_score">417.1980</td>
+<td class="gt_row gt_right" headers="sd_science">77.85995</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Netherlands</td>
+<td class="gt_row gt_right" headers="mean_science_score">486.8380</td>
+<td class="gt_row gt_right" headers="sd_science">111.77833</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Norway</td>
+<td class="gt_row gt_right" headers="mean_science_score">478.9396</td>
+<td class="gt_row gt_right" headers="sd_science">106.09425</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">New Zealand</td>
+<td class="gt_row gt_right" headers="mean_science_score">504.8458</td>
+<td class="gt_row gt_right" headers="sd_science">107.85424</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Panama</td>
+<td class="gt_row gt_right" headers="mean_science_score">385.0859</td>
+<td class="gt_row gt_right" headers="sd_science">84.92427</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Peru</td>
+<td class="gt_row gt_right" headers="mean_science_score">410.8352</td>
+<td class="gt_row gt_right" headers="sd_science">85.35240</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Philippines</td>
+<td class="gt_row gt_right" headers="mean_science_score">353.7724</td>
+<td class="gt_row gt_right" headers="sd_science">76.99187</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Poland</td>
+<td class="gt_row gt_right" headers="mean_science_score">505.1500</td>
+<td class="gt_row gt_right" headers="sd_science">94.16577</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Portugal</td>
+<td class="gt_row gt_right" headers="mean_science_score">488.2668</td>
+<td class="gt_row gt_right" headers="sd_science">89.70144</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Paraguay</td>
+<td class="gt_row gt_right" headers="mean_science_score">371.6893</td>
+<td class="gt_row gt_right" headers="sd_science">74.52611</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Palestinian Authority</td>
+<td class="gt_row gt_right" headers="mean_science_score">367.0259</td>
+<td class="gt_row gt_right" headers="sd_science">70.91610</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Qatar</td>
+<td class="gt_row gt_right" headers="mean_science_score">428.8246</td>
+<td class="gt_row gt_right" headers="sd_science">96.25937</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Baku (Azerbaijan)</td>
+<td class="gt_row gt_right" headers="mean_science_score">381.5571</td>
+<td class="gt_row gt_right" headers="sd_science">78.67151</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Ukrainian regions (18 of 27)</td>
+<td class="gt_row gt_right" headers="mean_science_score">454.4918</td>
+<td class="gt_row gt_right" headers="sd_science">88.72635</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Romania</td>
+<td class="gt_row gt_right" headers="mean_science_score">436.4904</td>
+<td class="gt_row gt_right" headers="sd_science">96.24036</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Saudi Arabia</td>
+<td class="gt_row gt_right" headers="mean_science_score">390.1679</td>
+<td class="gt_row gt_right" headers="sd_science">72.21294</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Singapore</td>
+<td class="gt_row gt_right" headers="mean_science_score">560.8252</td>
+<td class="gt_row gt_right" headers="sd_science">99.60358</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">El Salvador</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.9843</td>
+<td class="gt_row gt_right" headers="sd_science">73.44363</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Serbia</td>
+<td class="gt_row gt_right" headers="mean_science_score">446.7715</td>
+<td class="gt_row gt_right" headers="sd_science">88.26844</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Slovak Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">467.2694</td>
+<td class="gt_row gt_right" headers="sd_science">102.95534</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Slovenia</td>
+<td class="gt_row gt_right" headers="mean_science_score">487.1098</td>
+<td class="gt_row gt_right" headers="sd_science">93.85904</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Sweden</td>
+<td class="gt_row gt_right" headers="mean_science_score">494.1717</td>
+<td class="gt_row gt_right" headers="sd_science">107.51162</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Chinese Taipei</td>
+<td class="gt_row gt_right" headers="mean_science_score">526.8225</td>
+<td class="gt_row gt_right" headers="sd_science">102.25648</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Thailand</td>
+<td class="gt_row gt_right" headers="mean_science_score">429.1863</td>
+<td class="gt_row gt_right" headers="sd_science">93.12958</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Türkiye</td>
+<td class="gt_row gt_right" headers="mean_science_score">476.0276</td>
+<td class="gt_row gt_right" headers="sd_science">89.06750</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Uruguay</td>
+<td class="gt_row gt_right" headers="mean_science_score">433.2891</td>
+<td class="gt_row gt_right" headers="sd_science">92.41654</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">United States</td>
+<td class="gt_row gt_right" headers="mean_science_score">498.2506</td>
+<td class="gt_row gt_right" headers="sd_science">108.85390</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Uzbekistan</td>
+<td class="gt_row gt_right" headers="mean_science_score">355.3407</td>
+<td class="gt_row gt_right" headers="sd_science">63.34434</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Viet Nam</td>
+<td class="gt_row gt_right" headers="mean_science_score">473.3375</td>
+<td class="gt_row gt_right" headers="sd_science">78.42436</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># You can see more options on formating the table here: https://gt.rstudio.com</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># For example to add a heading</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">gt</span>(science_mean_scores) <span class="sc">%&gt;%</span> <span class="fu">tab_header</span>(</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    <span class="at">title =</span> <span class="st">"Mean science scores"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6"></a>    <span class="at">subtitle =</span> <span class="st">"PISA 2022 data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tnkyivzeiw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tnkyivzeiw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tnkyivzeiw thead, #tnkyivzeiw tbody, #tnkyivzeiw tfoot, #tnkyivzeiw tr, #tnkyivzeiw td, #tnkyivzeiw th {
+  border-style: none;
+}
+
+#tnkyivzeiw p {
+  margin: 0;
+  padding: 0;
+}
+
+#tnkyivzeiw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tnkyivzeiw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tnkyivzeiw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tnkyivzeiw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tnkyivzeiw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tnkyivzeiw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tnkyivzeiw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tnkyivzeiw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tnkyivzeiw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tnkyivzeiw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tnkyivzeiw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tnkyivzeiw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tnkyivzeiw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tnkyivzeiw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tnkyivzeiw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tnkyivzeiw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tnkyivzeiw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tnkyivzeiw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tnkyivzeiw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tnkyivzeiw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tnkyivzeiw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tnkyivzeiw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tnkyivzeiw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tnkyivzeiw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tnkyivzeiw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tnkyivzeiw .gt_left {
+  text-align: left;
+}
+
+#tnkyivzeiw .gt_center {
+  text-align: center;
+}
+
+#tnkyivzeiw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tnkyivzeiw .gt_font_normal {
+  font-weight: normal;
+}
+
+#tnkyivzeiw .gt_font_bold {
+  font-weight: bold;
+}
+
+#tnkyivzeiw .gt_font_italic {
+  font-style: italic;
+}
+
+#tnkyivzeiw .gt_super {
+  font-size: 65%;
+}
+
+#tnkyivzeiw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tnkyivzeiw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tnkyivzeiw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tnkyivzeiw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tnkyivzeiw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tnkyivzeiw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tnkyivzeiw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tnkyivzeiw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tnkyivzeiw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="3" class="gt_heading gt_title gt_font_normal">Mean science scores</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">PISA 2022 data</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="Country code 3-character" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Country code 3-character</th>
+<th id="mean_science_score" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_science_score</th>
+<th id="sd_science" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd_science</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Albania</td>
+<td class="gt_row gt_right" headers="mean_science_score">375.8650</td>
+<td class="gt_row gt_right" headers="sd_science">81.17499</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">United Arab Emirates</td>
+<td class="gt_row gt_right" headers="mean_science_score">435.9609</td>
+<td class="gt_row gt_right" headers="sd_science">108.04562</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Argentina</td>
+<td class="gt_row gt_right" headers="mean_science_score">415.0584</td>
+<td class="gt_row gt_right" headers="sd_science">86.30466</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Australia</td>
+<td class="gt_row gt_right" headers="mean_science_score">507.7795</td>
+<td class="gt_row gt_right" headers="sd_science">106.78340</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Austria</td>
+<td class="gt_row gt_right" headers="mean_science_score">494.0894</td>
+<td class="gt_row gt_right" headers="sd_science">99.10689</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Belgium</td>
+<td class="gt_row gt_right" headers="mean_science_score">495.0015</td>
+<td class="gt_row gt_right" headers="sd_science">99.89222</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Bulgaria</td>
+<td class="gt_row gt_right" headers="mean_science_score">421.9872</td>
+<td class="gt_row gt_right" headers="sd_science">94.68480</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Brazil</td>
+<td class="gt_row gt_right" headers="mean_science_score">406.3370</td>
+<td class="gt_row gt_right" headers="sd_science">93.33488</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Brunei Darussalam</td>
+<td class="gt_row gt_right" headers="mean_science_score">444.8849</td>
+<td class="gt_row gt_right" headers="sd_science">93.49958</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Canada</td>
+<td class="gt_row gt_right" headers="mean_science_score">499.4697</td>
+<td class="gt_row gt_right" headers="sd_science">98.78625</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Switzerland</td>
+<td class="gt_row gt_right" headers="mean_science_score">501.4123</td>
+<td class="gt_row gt_right" headers="sd_science">97.88277</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Chile</td>
+<td class="gt_row gt_right" headers="mean_science_score">463.1057</td>
+<td class="gt_row gt_right" headers="sd_science">94.91051</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Colombia</td>
+<td class="gt_row gt_right" headers="mean_science_score">420.9458</td>
+<td class="gt_row gt_right" headers="sd_science">88.24887</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Costa Rica</td>
+<td class="gt_row gt_right" headers="mean_science_score">411.2082</td>
+<td class="gt_row gt_right" headers="sd_science">80.40614</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Czech Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">510.7872</td>
+<td class="gt_row gt_right" headers="sd_science">102.76484</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Germany</td>
+<td class="gt_row gt_right" headers="mean_science_score">495.2547</td>
+<td class="gt_row gt_right" headers="sd_science">105.42084</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Denmark</td>
+<td class="gt_row gt_right" headers="mean_science_score">480.3369</td>
+<td class="gt_row gt_right" headers="sd_science">96.87209</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Dominican Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">361.6200</td>
+<td class="gt_row gt_right" headers="sd_science">68.71457</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Spain</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.9236</td>
+<td class="gt_row gt_right" headers="sd_science">90.06178</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Estonia</td>
+<td class="gt_row gt_right" headers="mean_science_score">527.3109</td>
+<td class="gt_row gt_right" headers="sd_science">87.67284</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Finland</td>
+<td class="gt_row gt_right" headers="mean_science_score">497.9649</td>
+<td class="gt_row gt_right" headers="sd_science">111.47589</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">France</td>
+<td class="gt_row gt_right" headers="mean_science_score">481.3834</td>
+<td class="gt_row gt_right" headers="sd_science">105.72320</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">United Kingdom</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.2651</td>
+<td class="gt_row gt_right" headers="sd_science">102.15378</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Georgia</td>
+<td class="gt_row gt_right" headers="mean_science_score">385.6145</td>
+<td class="gt_row gt_right" headers="sd_science">81.63218</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Greece</td>
+<td class="gt_row gt_right" headers="mean_science_score">445.4408</td>
+<td class="gt_row gt_right" headers="sd_science">88.95744</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Guatemala</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.5886</td>
+<td class="gt_row gt_right" headers="sd_science">65.37109</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Hong Kong (China)</td>
+<td class="gt_row gt_right" headers="mean_science_score">524.5497</td>
+<td class="gt_row gt_right" headers="sd_science">91.06857</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Croatia</td>
+<td class="gt_row gt_right" headers="mean_science_score">483.1283</td>
+<td class="gt_row gt_right" headers="sd_science">91.97320</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Hungary</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.1069</td>
+<td class="gt_row gt_right" headers="sd_science">94.69703</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Indonesia</td>
+<td class="gt_row gt_right" headers="mean_science_score">394.9906</td>
+<td class="gt_row gt_right" headers="sd_science">69.89182</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Ireland</td>
+<td class="gt_row gt_right" headers="mean_science_score">504.3750</td>
+<td class="gt_row gt_right" headers="sd_science">91.95203</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Iceland</td>
+<td class="gt_row gt_right" headers="mean_science_score">448.0546</td>
+<td class="gt_row gt_right" headers="sd_science">94.76950</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Israel</td>
+<td class="gt_row gt_right" headers="mean_science_score">464.0777</td>
+<td class="gt_row gt_right" headers="sd_science">108.57084</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Italy</td>
+<td class="gt_row gt_right" headers="mean_science_score">481.3281</td>
+<td class="gt_row gt_right" headers="sd_science">91.97045</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Jamaica</td>
+<td class="gt_row gt_right" headers="mean_science_score">395.7114</td>
+<td class="gt_row gt_right" headers="sd_science">91.97299</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Jordan</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.6990</td>
+<td class="gt_row gt_right" headers="sd_science">73.68470</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Japan</td>
+<td class="gt_row gt_right" headers="mean_science_score">545.5399</td>
+<td class="gt_row gt_right" headers="sd_science">92.72193</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Kazakhstan</td>
+<td class="gt_row gt_right" headers="mean_science_score">440.9755</td>
+<td class="gt_row gt_right" headers="sd_science">84.44319</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Cambodia</td>
+<td class="gt_row gt_right" headers="mean_science_score">340.4659</td>
+<td class="gt_row gt_right" headers="sd_science">50.34331</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Korea</td>
+<td class="gt_row gt_right" headers="mean_science_score">530.6552</td>
+<td class="gt_row gt_right" headers="sd_science">103.99342</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Kosovo</td>
+<td class="gt_row gt_right" headers="mean_science_score">353.5723</td>
+<td class="gt_row gt_right" headers="sd_science">64.84509</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Lithuania</td>
+<td class="gt_row gt_right" headers="mean_science_score">480.0535</td>
+<td class="gt_row gt_right" headers="sd_science">92.51359</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Latvia</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.5822</td>
+<td class="gt_row gt_right" headers="sd_science">84.61410</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Macao (China)</td>
+<td class="gt_row gt_right" headers="mean_science_score">543.1331</td>
+<td class="gt_row gt_right" headers="sd_science">86.61414</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Morocco</td>
+<td class="gt_row gt_right" headers="mean_science_score">363.4098</td>
+<td class="gt_row gt_right" headers="sd_science">66.20574</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Republic of Moldova</td>
+<td class="gt_row gt_right" headers="mean_science_score">416.8691</td>
+<td class="gt_row gt_right" headers="sd_science">82.50639</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Mexico</td>
+<td class="gt_row gt_right" headers="mean_science_score">410.7969</td>
+<td class="gt_row gt_right" headers="sd_science">74.97042</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">North Macedonia</td>
+<td class="gt_row gt_right" headers="mean_science_score">382.3574</td>
+<td class="gt_row gt_right" headers="sd_science">82.77203</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Malta</td>
+<td class="gt_row gt_right" headers="mean_science_score">469.8360</td>
+<td class="gt_row gt_right" headers="sd_science">101.83745</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Montenegro</td>
+<td class="gt_row gt_right" headers="mean_science_score">404.9706</td>
+<td class="gt_row gt_right" headers="sd_science">83.35015</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Mongolia</td>
+<td class="gt_row gt_right" headers="mean_science_score">411.4142</td>
+<td class="gt_row gt_right" headers="sd_science">77.72520</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Malaysia</td>
+<td class="gt_row gt_right" headers="mean_science_score">417.1980</td>
+<td class="gt_row gt_right" headers="sd_science">77.85995</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Netherlands</td>
+<td class="gt_row gt_right" headers="mean_science_score">486.8380</td>
+<td class="gt_row gt_right" headers="sd_science">111.77833</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Norway</td>
+<td class="gt_row gt_right" headers="mean_science_score">478.9396</td>
+<td class="gt_row gt_right" headers="sd_science">106.09425</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">New Zealand</td>
+<td class="gt_row gt_right" headers="mean_science_score">504.8458</td>
+<td class="gt_row gt_right" headers="sd_science">107.85424</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Panama</td>
+<td class="gt_row gt_right" headers="mean_science_score">385.0859</td>
+<td class="gt_row gt_right" headers="sd_science">84.92427</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Peru</td>
+<td class="gt_row gt_right" headers="mean_science_score">410.8352</td>
+<td class="gt_row gt_right" headers="sd_science">85.35240</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Philippines</td>
+<td class="gt_row gt_right" headers="mean_science_score">353.7724</td>
+<td class="gt_row gt_right" headers="sd_science">76.99187</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Poland</td>
+<td class="gt_row gt_right" headers="mean_science_score">505.1500</td>
+<td class="gt_row gt_right" headers="sd_science">94.16577</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Portugal</td>
+<td class="gt_row gt_right" headers="mean_science_score">488.2668</td>
+<td class="gt_row gt_right" headers="sd_science">89.70144</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Paraguay</td>
+<td class="gt_row gt_right" headers="mean_science_score">371.6893</td>
+<td class="gt_row gt_right" headers="sd_science">74.52611</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Palestinian Authority</td>
+<td class="gt_row gt_right" headers="mean_science_score">367.0259</td>
+<td class="gt_row gt_right" headers="sd_science">70.91610</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Qatar</td>
+<td class="gt_row gt_right" headers="mean_science_score">428.8246</td>
+<td class="gt_row gt_right" headers="sd_science">96.25937</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Baku (Azerbaijan)</td>
+<td class="gt_row gt_right" headers="mean_science_score">381.5571</td>
+<td class="gt_row gt_right" headers="sd_science">78.67151</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Ukrainian regions (18 of 27)</td>
+<td class="gt_row gt_right" headers="mean_science_score">454.4918</td>
+<td class="gt_row gt_right" headers="sd_science">88.72635</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Romania</td>
+<td class="gt_row gt_right" headers="mean_science_score">436.4904</td>
+<td class="gt_row gt_right" headers="sd_science">96.24036</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Saudi Arabia</td>
+<td class="gt_row gt_right" headers="mean_science_score">390.1679</td>
+<td class="gt_row gt_right" headers="sd_science">72.21294</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Singapore</td>
+<td class="gt_row gt_right" headers="mean_science_score">560.8252</td>
+<td class="gt_row gt_right" headers="sd_science">99.60358</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">El Salvador</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.9843</td>
+<td class="gt_row gt_right" headers="sd_science">73.44363</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Serbia</td>
+<td class="gt_row gt_right" headers="mean_science_score">446.7715</td>
+<td class="gt_row gt_right" headers="sd_science">88.26844</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Slovak Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">467.2694</td>
+<td class="gt_row gt_right" headers="sd_science">102.95534</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Slovenia</td>
+<td class="gt_row gt_right" headers="mean_science_score">487.1098</td>
+<td class="gt_row gt_right" headers="sd_science">93.85904</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Sweden</td>
+<td class="gt_row gt_right" headers="mean_science_score">494.1717</td>
+<td class="gt_row gt_right" headers="sd_science">107.51162</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Chinese Taipei</td>
+<td class="gt_row gt_right" headers="mean_science_score">526.8225</td>
+<td class="gt_row gt_right" headers="sd_science">102.25648</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Thailand</td>
+<td class="gt_row gt_right" headers="mean_science_score">429.1863</td>
+<td class="gt_row gt_right" headers="sd_science">93.12958</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Türkiye</td>
+<td class="gt_row gt_right" headers="mean_science_score">476.0276</td>
+<td class="gt_row gt_right" headers="sd_science">89.06750</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Uruguay</td>
+<td class="gt_row gt_right" headers="mean_science_score">433.2891</td>
+<td class="gt_row gt_right" headers="sd_science">92.41654</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">United States</td>
+<td class="gt_row gt_right" headers="mean_science_score">498.2506</td>
+<td class="gt_row gt_right" headers="sd_science">108.85390</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Uzbekistan</td>
+<td class="gt_row gt_right" headers="mean_science_score">355.3407</td>
+<td class="gt_row gt_right" headers="sd_science">63.34434</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Viet Nam</td>
+<td class="gt_row gt_right" headers="mean_science_score">473.3375</td>
+<td class="gt_row gt_right" headers="sd_science">78.42436</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Or to change the number of decimal places and a column name</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">gt</span>(science_mean_scores) <span class="sc">%&gt;%</span> <span class="fu">tab_header</span>(</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="at">title =</span> <span class="st">"Mean science scores"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="at">subtitle =</span> <span class="st">"PISA 2022 data"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(mean_science_score , sd_science), <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">cols_label</span>(<span class="st">"CNT"</span> <span class="ot">=</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="wcvllykpyo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wcvllykpyo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wcvllykpyo thead, #wcvllykpyo tbody, #wcvllykpyo tfoot, #wcvllykpyo tr, #wcvllykpyo td, #wcvllykpyo th {
+  border-style: none;
+}
+
+#wcvllykpyo p {
+  margin: 0;
+  padding: 0;
+}
+
+#wcvllykpyo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wcvllykpyo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wcvllykpyo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wcvllykpyo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wcvllykpyo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wcvllykpyo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wcvllykpyo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wcvllykpyo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wcvllykpyo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wcvllykpyo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wcvllykpyo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wcvllykpyo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wcvllykpyo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wcvllykpyo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wcvllykpyo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wcvllykpyo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wcvllykpyo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wcvllykpyo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wcvllykpyo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wcvllykpyo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wcvllykpyo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wcvllykpyo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wcvllykpyo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wcvllykpyo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wcvllykpyo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wcvllykpyo .gt_left {
+  text-align: left;
+}
+
+#wcvllykpyo .gt_center {
+  text-align: center;
+}
+
+#wcvllykpyo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wcvllykpyo .gt_font_normal {
+  font-weight: normal;
+}
+
+#wcvllykpyo .gt_font_bold {
+  font-weight: bold;
+}
+
+#wcvllykpyo .gt_font_italic {
+  font-style: italic;
+}
+
+#wcvllykpyo .gt_super {
+  font-size: 65%;
+}
+
+#wcvllykpyo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wcvllykpyo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wcvllykpyo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wcvllykpyo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wcvllykpyo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wcvllykpyo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wcvllykpyo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wcvllykpyo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wcvllykpyo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header gt_heading">
+<th colspan="3" class="gt_heading gt_title gt_font_normal">Mean science scores</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">PISA 2022 data</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="<div data-qmd-base64=&quot;KipDb3VudHJ5Kio=&quot;><div class='gt_from_md'><p><strong>Country</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Country</strong></p></th>
+<th id="mean_science_score" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_science_score</th>
+<th id="sd_science" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd_science</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Albania</td>
+<td class="gt_row gt_right" headers="mean_science_score">375.9</td>
+<td class="gt_row gt_right" headers="sd_science">81.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">United Arab Emirates</td>
+<td class="gt_row gt_right" headers="mean_science_score">436.0</td>
+<td class="gt_row gt_right" headers="sd_science">108.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Argentina</td>
+<td class="gt_row gt_right" headers="mean_science_score">415.1</td>
+<td class="gt_row gt_right" headers="sd_science">86.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Australia</td>
+<td class="gt_row gt_right" headers="mean_science_score">507.8</td>
+<td class="gt_row gt_right" headers="sd_science">106.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Austria</td>
+<td class="gt_row gt_right" headers="mean_science_score">494.1</td>
+<td class="gt_row gt_right" headers="sd_science">99.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Belgium</td>
+<td class="gt_row gt_right" headers="mean_science_score">495.0</td>
+<td class="gt_row gt_right" headers="sd_science">99.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Bulgaria</td>
+<td class="gt_row gt_right" headers="mean_science_score">422.0</td>
+<td class="gt_row gt_right" headers="sd_science">94.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Brazil</td>
+<td class="gt_row gt_right" headers="mean_science_score">406.3</td>
+<td class="gt_row gt_right" headers="sd_science">93.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Brunei Darussalam</td>
+<td class="gt_row gt_right" headers="mean_science_score">444.9</td>
+<td class="gt_row gt_right" headers="sd_science">93.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Canada</td>
+<td class="gt_row gt_right" headers="mean_science_score">499.5</td>
+<td class="gt_row gt_right" headers="sd_science">98.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Switzerland</td>
+<td class="gt_row gt_right" headers="mean_science_score">501.4</td>
+<td class="gt_row gt_right" headers="sd_science">97.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Chile</td>
+<td class="gt_row gt_right" headers="mean_science_score">463.1</td>
+<td class="gt_row gt_right" headers="sd_science">94.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Colombia</td>
+<td class="gt_row gt_right" headers="mean_science_score">420.9</td>
+<td class="gt_row gt_right" headers="sd_science">88.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Costa Rica</td>
+<td class="gt_row gt_right" headers="mean_science_score">411.2</td>
+<td class="gt_row gt_right" headers="sd_science">80.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Czech Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">510.8</td>
+<td class="gt_row gt_right" headers="sd_science">102.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Germany</td>
+<td class="gt_row gt_right" headers="mean_science_score">495.3</td>
+<td class="gt_row gt_right" headers="sd_science">105.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Denmark</td>
+<td class="gt_row gt_right" headers="mean_science_score">480.3</td>
+<td class="gt_row gt_right" headers="sd_science">96.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Dominican Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">361.6</td>
+<td class="gt_row gt_right" headers="sd_science">68.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Spain</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.9</td>
+<td class="gt_row gt_right" headers="sd_science">90.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Estonia</td>
+<td class="gt_row gt_right" headers="mean_science_score">527.3</td>
+<td class="gt_row gt_right" headers="sd_science">87.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Finland</td>
+<td class="gt_row gt_right" headers="mean_science_score">498.0</td>
+<td class="gt_row gt_right" headers="sd_science">111.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">France</td>
+<td class="gt_row gt_right" headers="mean_science_score">481.4</td>
+<td class="gt_row gt_right" headers="sd_science">105.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">United Kingdom</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.3</td>
+<td class="gt_row gt_right" headers="sd_science">102.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Georgia</td>
+<td class="gt_row gt_right" headers="mean_science_score">385.6</td>
+<td class="gt_row gt_right" headers="sd_science">81.6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Greece</td>
+<td class="gt_row gt_right" headers="mean_science_score">445.4</td>
+<td class="gt_row gt_right" headers="sd_science">89.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Guatemala</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.6</td>
+<td class="gt_row gt_right" headers="sd_science">65.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Hong Kong (China)</td>
+<td class="gt_row gt_right" headers="mean_science_score">524.5</td>
+<td class="gt_row gt_right" headers="sd_science">91.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Croatia</td>
+<td class="gt_row gt_right" headers="mean_science_score">483.1</td>
+<td class="gt_row gt_right" headers="sd_science">92.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Hungary</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.1</td>
+<td class="gt_row gt_right" headers="sd_science">94.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Indonesia</td>
+<td class="gt_row gt_right" headers="mean_science_score">395.0</td>
+<td class="gt_row gt_right" headers="sd_science">69.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Ireland</td>
+<td class="gt_row gt_right" headers="mean_science_score">504.4</td>
+<td class="gt_row gt_right" headers="sd_science">92.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Iceland</td>
+<td class="gt_row gt_right" headers="mean_science_score">448.1</td>
+<td class="gt_row gt_right" headers="sd_science">94.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Israel</td>
+<td class="gt_row gt_right" headers="mean_science_score">464.1</td>
+<td class="gt_row gt_right" headers="sd_science">108.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Italy</td>
+<td class="gt_row gt_right" headers="mean_science_score">481.3</td>
+<td class="gt_row gt_right" headers="sd_science">92.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Jamaica</td>
+<td class="gt_row gt_right" headers="mean_science_score">395.7</td>
+<td class="gt_row gt_right" headers="sd_science">92.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Jordan</td>
+<td class="gt_row gt_right" headers="mean_science_score">374.7</td>
+<td class="gt_row gt_right" headers="sd_science">73.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Japan</td>
+<td class="gt_row gt_right" headers="mean_science_score">545.5</td>
+<td class="gt_row gt_right" headers="sd_science">92.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Kazakhstan</td>
+<td class="gt_row gt_right" headers="mean_science_score">441.0</td>
+<td class="gt_row gt_right" headers="sd_science">84.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Cambodia</td>
+<td class="gt_row gt_right" headers="mean_science_score">340.5</td>
+<td class="gt_row gt_right" headers="sd_science">50.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Korea</td>
+<td class="gt_row gt_right" headers="mean_science_score">530.7</td>
+<td class="gt_row gt_right" headers="sd_science">104.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Kosovo</td>
+<td class="gt_row gt_right" headers="mean_science_score">353.6</td>
+<td class="gt_row gt_right" headers="sd_science">64.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Lithuania</td>
+<td class="gt_row gt_right" headers="mean_science_score">480.1</td>
+<td class="gt_row gt_right" headers="sd_science">92.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Latvia</td>
+<td class="gt_row gt_right" headers="mean_science_score">492.6</td>
+<td class="gt_row gt_right" headers="sd_science">84.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Macao (China)</td>
+<td class="gt_row gt_right" headers="mean_science_score">543.1</td>
+<td class="gt_row gt_right" headers="sd_science">86.6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Morocco</td>
+<td class="gt_row gt_right" headers="mean_science_score">363.4</td>
+<td class="gt_row gt_right" headers="sd_science">66.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Republic of Moldova</td>
+<td class="gt_row gt_right" headers="mean_science_score">416.9</td>
+<td class="gt_row gt_right" headers="sd_science">82.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Mexico</td>
+<td class="gt_row gt_right" headers="mean_science_score">410.8</td>
+<td class="gt_row gt_right" headers="sd_science">75.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">North Macedonia</td>
+<td class="gt_row gt_right" headers="mean_science_score">382.4</td>
+<td class="gt_row gt_right" headers="sd_science">82.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Malta</td>
+<td class="gt_row gt_right" headers="mean_science_score">469.8</td>
+<td class="gt_row gt_right" headers="sd_science">101.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Montenegro</td>
+<td class="gt_row gt_right" headers="mean_science_score">405.0</td>
+<td class="gt_row gt_right" headers="sd_science">83.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Mongolia</td>
+<td class="gt_row gt_right" headers="mean_science_score">411.4</td>
+<td class="gt_row gt_right" headers="sd_science">77.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Malaysia</td>
+<td class="gt_row gt_right" headers="mean_science_score">417.2</td>
+<td class="gt_row gt_right" headers="sd_science">77.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Netherlands</td>
+<td class="gt_row gt_right" headers="mean_science_score">486.8</td>
+<td class="gt_row gt_right" headers="sd_science">111.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Norway</td>
+<td class="gt_row gt_right" headers="mean_science_score">478.9</td>
+<td class="gt_row gt_right" headers="sd_science">106.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">New Zealand</td>
+<td class="gt_row gt_right" headers="mean_science_score">504.8</td>
+<td class="gt_row gt_right" headers="sd_science">107.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Panama</td>
+<td class="gt_row gt_right" headers="mean_science_score">385.1</td>
+<td class="gt_row gt_right" headers="sd_science">84.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Peru</td>
+<td class="gt_row gt_right" headers="mean_science_score">410.8</td>
+<td class="gt_row gt_right" headers="sd_science">85.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Philippines</td>
+<td class="gt_row gt_right" headers="mean_science_score">353.8</td>
+<td class="gt_row gt_right" headers="sd_science">77.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Poland</td>
+<td class="gt_row gt_right" headers="mean_science_score">505.1</td>
+<td class="gt_row gt_right" headers="sd_science">94.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Portugal</td>
+<td class="gt_row gt_right" headers="mean_science_score">488.3</td>
+<td class="gt_row gt_right" headers="sd_science">89.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Paraguay</td>
+<td class="gt_row gt_right" headers="mean_science_score">371.7</td>
+<td class="gt_row gt_right" headers="sd_science">74.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Palestinian Authority</td>
+<td class="gt_row gt_right" headers="mean_science_score">367.0</td>
+<td class="gt_row gt_right" headers="sd_science">70.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Qatar</td>
+<td class="gt_row gt_right" headers="mean_science_score">428.8</td>
+<td class="gt_row gt_right" headers="sd_science">96.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Baku (Azerbaijan)</td>
+<td class="gt_row gt_right" headers="mean_science_score">381.6</td>
+<td class="gt_row gt_right" headers="sd_science">78.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Ukrainian regions (18 of 27)</td>
+<td class="gt_row gt_right" headers="mean_science_score">454.5</td>
+<td class="gt_row gt_right" headers="sd_science">88.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Romania</td>
+<td class="gt_row gt_right" headers="mean_science_score">436.5</td>
+<td class="gt_row gt_right" headers="sd_science">96.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Saudi Arabia</td>
+<td class="gt_row gt_right" headers="mean_science_score">390.2</td>
+<td class="gt_row gt_right" headers="sd_science">72.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Singapore</td>
+<td class="gt_row gt_right" headers="mean_science_score">560.8</td>
+<td class="gt_row gt_right" headers="sd_science">99.6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">El Salvador</td>
+<td class="gt_row gt_right" headers="mean_science_score">375.0</td>
+<td class="gt_row gt_right" headers="sd_science">73.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Serbia</td>
+<td class="gt_row gt_right" headers="mean_science_score">446.8</td>
+<td class="gt_row gt_right" headers="sd_science">88.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Slovak Republic</td>
+<td class="gt_row gt_right" headers="mean_science_score">467.3</td>
+<td class="gt_row gt_right" headers="sd_science">103.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Slovenia</td>
+<td class="gt_row gt_right" headers="mean_science_score">487.1</td>
+<td class="gt_row gt_right" headers="sd_science">93.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Sweden</td>
+<td class="gt_row gt_right" headers="mean_science_score">494.2</td>
+<td class="gt_row gt_right" headers="sd_science">107.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Chinese Taipei</td>
+<td class="gt_row gt_right" headers="mean_science_score">526.8</td>
+<td class="gt_row gt_right" headers="sd_science">102.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Thailand</td>
+<td class="gt_row gt_right" headers="mean_science_score">429.2</td>
+<td class="gt_row gt_right" headers="sd_science">93.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Türkiye</td>
+<td class="gt_row gt_right" headers="mean_science_score">476.0</td>
+<td class="gt_row gt_right" headers="sd_science">89.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Uruguay</td>
+<td class="gt_row gt_right" headers="mean_science_score">433.3</td>
+<td class="gt_row gt_right" headers="sd_science">92.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">United States</td>
+<td class="gt_row gt_right" headers="mean_science_score">498.3</td>
+<td class="gt_row gt_right" headers="sd_science">108.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="CNT">Uzbekistan</td>
+<td class="gt_row gt_right" headers="mean_science_score">355.3</td>
+<td class="gt_row gt_right" headers="sd_science">63.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="CNT">Viet Nam</td>
+<td class="gt_row gt_right" headers="mean_science_score">473.3</td>
+<td class="gt_row gt_right" headers="sd_science">78.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="do">## If you have an output from a linear model, there is an additional step to do before using gt</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co"># You need to use the broom package, which has the `tidy` function which gets the output of `lm`</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># Into a suitable format for turing into a table</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># install.packages("broom")</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="fu">library</span>(broom)</span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a></span>
+<span id="cb17-10"><a href="#cb17-10"></a>UK_PISA <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">select</span>(PV1SCIE, PV1MATH, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13"></a></span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="co"># Run the model</span></span>
+<span id="cb17-15"><a href="#cb17-15"></a></span>
+<span id="cb17-16"><a href="#cb17-16"></a>uk_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> UK_PISA, PV1SCIE <span class="sc">~</span> PV1MATH)</span>
+<span id="cb17-17"><a href="#cb17-17"></a></span>
+<span id="cb17-18"><a href="#cb17-18"></a><span class="co"># tidy the model</span></span>
+<span id="cb17-19"><a href="#cb17-19"></a></span>
+<span id="cb17-20"><a href="#cb17-20"></a>uk_mod_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(uk_mod)</span>
+<span id="cb17-21"><a href="#cb17-21"></a></span>
+<span id="cb17-22"><a href="#cb17-22"></a><span class="co"># pass to gt to produce nice output</span></span>
+<span id="cb17-23"><a href="#cb17-23"></a></span>
+<span id="cb17-24"><a href="#cb17-24"></a><span class="fu">gt</span>(uk_mod_tidy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="piggdkemep" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#piggdkemep table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#piggdkemep thead, #piggdkemep tbody, #piggdkemep tfoot, #piggdkemep tr, #piggdkemep td, #piggdkemep th {
+  border-style: none;
+}
+
+#piggdkemep p {
+  margin: 0;
+  padding: 0;
+}
+
+#piggdkemep .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#piggdkemep .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#piggdkemep .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#piggdkemep .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#piggdkemep .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#piggdkemep .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#piggdkemep .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#piggdkemep .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#piggdkemep .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#piggdkemep .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#piggdkemep .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#piggdkemep .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#piggdkemep .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#piggdkemep .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#piggdkemep .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#piggdkemep .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#piggdkemep .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#piggdkemep .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#piggdkemep .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#piggdkemep .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#piggdkemep .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#piggdkemep .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#piggdkemep .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#piggdkemep .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#piggdkemep .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#piggdkemep .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#piggdkemep .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#piggdkemep .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#piggdkemep .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#piggdkemep .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#piggdkemep .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#piggdkemep .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#piggdkemep .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#piggdkemep .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#piggdkemep .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#piggdkemep .gt_left {
+  text-align: left;
+}
+
+#piggdkemep .gt_center {
+  text-align: center;
+}
+
+#piggdkemep .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#piggdkemep .gt_font_normal {
+  font-weight: normal;
+}
+
+#piggdkemep .gt_font_bold {
+  font-weight: bold;
+}
+
+#piggdkemep .gt_font_italic {
+  font-style: italic;
+}
+
+#piggdkemep .gt_super {
+  font-size: 65%;
+}
+
+#piggdkemep .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#piggdkemep .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#piggdkemep .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#piggdkemep .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#piggdkemep .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#piggdkemep .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#piggdkemep .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#piggdkemep .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#piggdkemep div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="header gt_col_headings">
+<th id="term" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">term</th>
+<th id="estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">estimate</th>
+<th id="std.error" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">std.error</th>
+<th id="statistic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p.value</th>
+</tr></thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">(Intercept)</td>
+<td class="gt_row gt_right" headers="estimate">42.3335278</td>
+<td class="gt_row gt_right" headers="std.error">2.304412214</td>
+<td class="gt_row gt_right" headers="statistic">18.37064</td>
+<td class="gt_row gt_right" headers="p.value">1.978594e-74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">PV1MATH</td>
+<td class="gt_row gt_right" headers="estimate">0.9324181</td>
+<td class="gt_row gt_right" headers="std.error">0.004685464</td>
+<td class="gt_row gt_right" headers="statistic">199.00232</td>
+<td class="gt_row gt_right" headers="p.value">0.000000e+00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><section id="how-do-i-report-the-results-of-tests-in-apa-format" class="level2" data-number="1.8"><h2 data-number="1.8" class="anchored" data-anchor-id="how-do-i-report-the-results-of-tests-in-apa-format">
+<span class="header-section-number">1.8</span> How do I report the results of tests in APA format?</h2>
+<p>When you have run some tests, the outputs (for example the degrees of freedom, test statistic and p-value) should be formatted in your paper in line with the citation convention of the journal or assessment (for example, KCL assignments follow the American Psychological Association (APA) citation style). You can find a general guide to presenting your results in APA style here: APA <a href="https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf">numbers and statistics style guide</a>.</p>
+<p>For example, to report a chi-square result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>UK_gender_differences <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">select</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a>cont_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> UK_gender_differences, <span class="sc">~</span> ST004D01T)</span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co"># Run a chi sqaure goodness of fit test</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="fu">chisq.test</span>(cont_tab, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  cont_tab
+X-squared = 2.4425, df = 1, p-value = 0.1181</code></pre>
+</div>
+</div>
+<p>A chi-square test of goodness-of-fit was conducted to compare the observed frequencies in the contingency table to the expected frequencies (equal numbers of boys and girls). The result was not statistically significant, χ²(1, N = 12973) = 2.44, p = .12, indicating no significant difference between the observed and expected frequencies.</p>
+<p>To report a t-test of the mathematics scores of girls and boys in the UK:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>UK_PISA <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">select</span>(PV1MATH, CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># Run a t-test</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="fu">t.test</span>(<span class="at">data =</span> UK_PISA, PV1MATH <span class="sc">~</span> ST004D01T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  PV1MATH by ST004D01T
+t = -8.2246, df = 12942, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
+95 percent confidence interval:
+ -16.9470 -10.4238
+sample estimates:
+mean in group Female   mean in group Male 
+            475.6061             489.2915 </code></pre>
+</div>
+</div>
+<p>The output of that test would be reported as follows:</p>
+<p>The results of a Welch’s t-test indicated a statistically significant difference in mean mathematics scores between UK females (M = 475.61) and UK males (M = 489.29), t(12,942) = -8.22, p &lt; .001, 95% CI [-16.95, -10.42].</p>
+<p>Alternatively, consider the output of an anova to look at the difference in wealth scores between Finland, Norway and Sweden:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>wealth_scores <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">select</span>(HOMEPOS, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Finland"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Norway"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Sweden"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6"></a></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="co"># Run an anova and summarise</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a>aov_out <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> wealth_scores, HOMEPOS <span class="sc">~</span> CNT)</span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="fu">summary</span>(aov_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Df Sum Sq Mean Sq F value Pr(&gt;F)    
+CNT             2    575  287.61   356.7 &lt;2e-16 ***
+Residuals   22335  18008    0.81                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+584 observations deleted due to missingness</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">TukeyHSD</span>(aov_out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = HOMEPOS ~ CNT, data = wealth_scores)
+
+$CNT
+                     diff        lwr        upr p adj
+Norway-Finland  0.3846629  0.3508747  0.4184511     0
+Sweden-Finland  0.1645141  0.1301168  0.1989114     0
+Sweden-Norway  -0.2201488 -0.2581530 -0.1821445     0</code></pre>
+</div>
+</div>
+<p>A one-way ANOVA was conducted to compare levels of home possessions (HOMEPOS) across three countries (CNT: Finland, Norway, and Sweden). The analysis revealed a statistically significant effect of country on home possessions, F(2, 22,335) = 356.7, p &lt; .001, η² = .031.</p>
+<p>Post hoc Tukey’s HSD tests indicated the following pairwise differences:</p>
+<p>Norway had significantly higher HOMEPOS scores than Finland (M difference = 0.38, 95% CI [0.35, 0.42], p &lt; .001). Sweden had significantly higher HOMEPOS scores than Finland (M difference = 0.16, 95% CI [0.13, 0.20], p &lt; .001). Sweden had significantly lower HOMEPOS scores than Norway (M difference = -0.22, 95% CI [-0.26, -0.18], p &lt; .001). A total of 584 observations were excluded due to missing data.</p>
+</section><section id="how-do-i-add-the-results-from-statistical-tests-to-ggplot" class="level2" data-number="1.9"><h2 data-number="1.9" class="anchored" data-anchor-id="how-do-i-add-the-results-from-statistical-tests-to-ggplot">
+<span class="header-section-number">1.9</span> How do I add the results from statistical tests to ggplot?</h2>
+<p>There are a number of helpful packages that can add data to charts. First <code>ggpubr</code> lets you add data about the regression line to your plot using the <code>stat_regline_equation()</code> function. You will need to tweak the coordinates (<code>label.x</code> and <code>label.y</code>) to appear appropiately on your chart.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Load the ggpbur library (you will need to run install.packages("ggpubr") the first time you use it)</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a>UK_wealth_reading <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS) <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="co"># Plot a scatter plot with the regression equation</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a></span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="fu">ggplot</span>(UK_wealth_reading, <span class="fu">aes</span>(<span class="at">x =</span> HOMEPOS, <span class="at">y =</span> PV1READ)) <span class="sc">+</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"lightgreen"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a>  <span class="fu">stat_regline_equation</span>(<span class="at">label.x =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">label.y =</span> <span class="dv">600</span>)  <span class="co"># Add regression equation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="A7-QandA_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can also use <code>stat_regline_equation</code> to add additional information like the p-value of the model and the R<sup>2</sup> value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Load the ggpbur library (you will need to run install.packages("ggpubr") the first time you use it)</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb27-3"><a href="#cb27-3"></a></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a></span>
+<span id="cb27-6"><a href="#cb27-6"></a>UK_wealth_reading <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS) <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
+<span id="cb27-9"><a href="#cb27-9"></a></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="co"># Plot a scatter plot with the regression equation</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="fu">ggplot</span>(UK_wealth_reading, <span class="fu">aes</span>(<span class="at">x =</span> HOMEPOS, <span class="at">y =</span> PV1READ)) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"lightgreen"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span> <span class="co"># Ensure formula is specified here too</span></span>
+<span id="cb27-15"><a href="#cb27-15"></a>  <span class="fu">stat_regline_equation</span>(</span>
+<span id="cb27-16"><a href="#cb27-16"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(..eq.label.., ..adj.rr.label.., <span class="at">sep =</span> <span class="st">"~~~~"</span>)), <span class="co"># Indicate you want the equation and R2 value and the seperator text</span></span>
+<span id="cb27-17"><a href="#cb27-17"></a>    <span class="at">label.x =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">label.y =</span> <span class="dv">600</span>,</span>
+<span id="cb27-18"><a href="#cb27-18"></a>    <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="A7-QandA_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Another powerful package for adding data to graphs is <code>ggstatsplot</code>. For example, it can anotate a plot with anova data. For example, if you want compare the science scores of the UK, Japan and the US:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Load the ggstatplot library (you will need to run install.packages("ggstatsplot") the first time you use it)</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a>country_sci_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Japan"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="co"># Use ggstatplot to create an annotated plot with an anova result</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a></span>
+<span id="cb28-12"><a href="#cb28-12"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="at">data  =</span> country_sci_data,</span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="at">x     =</span> CNT,</span>
+<span id="cb28-15"><a href="#cb28-15"></a>  <span class="at">y     =</span> PV1SCIE,</span>
+<span id="cb28-16"><a href="#cb28-16"></a>  <span class="at">title =</span> <span class="st">"Science scores in the UK, US and Japan"</span>,</span>
+<span id="cb28-17"><a href="#cb28-17"></a>  <span class="at">type  =</span> <span class="st">"parametric"</span> <span class="co"># Forces the test to be ANOVA</span></span>
+<span id="cb28-18"><a href="#cb28-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="A7-QandA_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
@@ -465,18 +3787,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -508,11 +3819,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -522,8 +3872,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -535,7 +3894,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -579,6 +4061,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -604,6 +4087,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
