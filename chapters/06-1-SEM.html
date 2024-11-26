@@ -1022,7 +1022,7 @@ Tip
 <h2 data-number="1.3" class="anchored" data-anchor-id="estimating-model-fit"><span class="header-section-number">1.3</span> Estimating model fit</h2>
 <p>After running a SEM, it is important to determine how well the model fits the data. There are a number of different measures of model fit, no one measure provides a defintinve measure of the fit - it is best practice to consider a number of different indicators and come to a holistic judgement. Measures include:</p>
 <blockquote class="blockquote">
-<p><strong>The Chi-Square Test of Model Fit </strong> Asumme the null hypothesis that the model fits the data well. A non-significant p-value indicates good fit. However, this test is sensitive to sample size, and with large samples, even minor deviations may be significant.</p>
+<p><strong>The Chi-Square Test of Model Fit </strong> Assume the null hypothesis that the model fits the data well. A non-significant p-value indicates good fit. However, this test is sensitive to sample size, and with large samples, even minor deviations may be significant.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Comparative Fit Index (CFI) and Tucker-Lewis Index (TLI)</strong> Values closer to 1 indicate better fit. Common thresholds for the two indicies are Acceptable fit: &gt; 0.90 Good fit: &gt; 0.95</p>
@@ -1196,7 +1196,7 @@ Variances:
 <blockquote class="blockquote">
 <p>P-value (Chi-square) 0.000</p>
 </blockquote>
-<p>The p-value is less than 0.05 suggesting a good fit</p>
+<p>The p-value is less than 0.05 suggesting a poor fit</p>
 <blockquote class="blockquote">
 <p>Comparative Fit Index (CFI) 0.958 Tucker-Lewis Index (TLI) 0.934</p>
 </blockquote>
@@ -1205,7 +1205,8 @@ Variances:
 <p>Root Mean Square Error of Approximation: RMSEA 0.102 90 Percent confidence interval - lower 0.098 90 Percent confidence interval - upper 0.106</p>
 </blockquote>
 <p>The RMS error term is 0.102 with the 90% confidence interval between 0.098 and 0.106. An RMSEA of 0.102 suggests poor fit, as it exceeds common thresholds for acceptable fit: Good fit: &lt; 0.06; Acceptable fit: 0.06–0.08 and Poor fit: &gt; 0.08.</p>
-<p>As is commonly the case, the model indicators make different suggestions of the goodness of the model’s fit. A next step can be to look at the model modification indices which suggest how the model might be improved.</p>
+<p>As is commonly the case, the model indicators make different suggestions of the goodness of the model’s fit. Overall this seems like not the best fitting model.</p>
+<p>A next step can be to look at the model modification indices which suggest how the model might be improved.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2009,7 +2010,7 @@ Variances:
  [ reached getOption("max.print") -- omitted 2 rows ]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Evaluating my models fit</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="co"># Chi square is 0.000 which is &lt;0.05 suggesting good fit</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="co"># Chi square is 0.000 which is &lt;0.05 suggesting a poor fit</span></span>
 <span id="cb39-3"><a href="#cb39-3"></a><span class="co"># CFI is &gt;0.95 suggesting good fit</span></span>
 <span id="cb39-4"><a href="#cb39-4"></a><span class="co"># TLI is &lt;0.95 but &gt;0.90 suggesting adequate fit</span></span>
 <span id="cb39-5"><a href="#cb39-5"></a><span class="co"># RMSEA is 0.099 suggesting a poor fit - RMSEA ≥ 0.08</span></span>
@@ -2138,10 +2139,10 @@ Variances:
  [ reached getOption("max.print") -- omitted 2 rows ]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Evaluating my models fit</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="co"># Chi square is 0.000 which is &lt;0.05 suggesting good fit</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="co"># Chi square is 0.000 suggesting still a poor fit (but the chi-square statistics has come down from:  1738.699 to 494.401)</span></span>
 <span id="cb44-3"><a href="#cb44-3"></a><span class="co"># CFI is &gt;0.988 suggesting good fit -this has gone up!</span></span>
 <span id="cb44-4"><a href="#cb44-4"></a><span class="co"># TLI is  0.979 which is an improvement</span></span>
-<span id="cb44-5"><a href="#cb44-5"></a><span class="co"># RMSEA is noq 0.056, down from 0.099 so still a poor fit but getting closer!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-5"><a href="#cb44-5"></a><span class="co"># RMSEA is now 0.056, down from 0.099 so still a poor fit but getting closer!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
