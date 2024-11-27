@@ -731,11 +731,7 @@ Variances:
 </div>
 </div>
 </div>
-<p>The mode raises the question of how strong does correlation between independent variables and a proposed latent variable need to be. Cho and colleagues <span class="citation" data-cites="cho2020">Cho et al. (<a href="#ref-cho2020" role="doc-biblioref">2020</a>)</span> suggest that:</p>
-<blockquote class="blockquote">
-<p>“When N = 100, researchers may choose a GFI [Meaning Goodness-of-Fit Index] cutoff value of .89 …When N &gt; 100, researchers may choose a GFI cutoff value of .93” <span class="citation" data-cites="cho2020">(<a href="#ref-cho2020" role="doc-biblioref">Cho et al. 2020, 197</a>)</span></p>
-</blockquote>
-<p>We can develop a more complex latent variable model. Let us assume that UK students reading scores depend on two latent variables, home environment (<code>lvh</code>, e.g.&nbsp;number of books, parental level of education etc.) and cognitive ability (<code>lvc</code>, e.g.&nbsp;as reported by science and mathematics scores). Here are some relevant variables:</p>
+<p>We can develop a more complex latent variable model. Let us assume that UK students’ reading scores depend on two latent variables, home environment (<code>lvh</code>, e.g.&nbsp;number of books, parental level of education etc.) and cognitive ability (<code>lvc</code>, e.g.&nbsp;as reported by science and mathematics scores). Here are some relevant variables:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -778,15 +774,15 @@ Variances:
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
 <span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a></span>
 <span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a><span class="co"># Make variable numeric for lavan</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8"></a>UKdata<span class="sc">$</span>ST007Q01JA<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(UKdata<span class="sc">$</span>ST007Q01JA)</span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a>UKdata<span class="sc">$</span>ST256Q02JA<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(UKdata<span class="sc">$</span>ST256Q02JA)</span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a>UKdata<span class="sc">$</span>ST255Q01JA<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(UKdata<span class="sc">$</span>ST255Q01JA)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8"></a>UKdata<span class="sc">$</span>ST007Q01JA <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(UKdata<span class="sc">$</span>ST007Q01JA)</span>
+<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a>UKdata<span class="sc">$</span>ST256Q02JA <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(UKdata<span class="sc">$</span>ST256Q02JA)</span>
+<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a>UKdata<span class="sc">$</span>ST255Q01JA <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(UKdata<span class="sc">$</span>ST255Q01JA)</span>
 <span id="annotated-cell-7-11"><a href="#annotated-cell-7-11"></a></span>
 <span id="annotated-cell-7-12"><a href="#annotated-cell-7-12"></a></span>
 <span id="annotated-cell-7-13"><a href="#annotated-cell-7-13"></a><span class="co"># Scale the test scores</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-14" class="code-annotation-target"><a href="#annotated-cell-7-14"></a>UKdata<span class="sc">$</span>PV1READ<span class="ot">&lt;-</span><span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
-<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15"></a>UKdata<span class="sc">$</span>PV1MATH<span class="ot">&lt;-</span><span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
-<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16"></a>UKdata<span class="sc">$</span>PV1SCIE<span class="ot">&lt;-</span><span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-14" class="code-annotation-target"><a href="#annotated-cell-7-14"></a>UKdata<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
+<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15"></a>UKdata<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
+<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16"></a>UKdata<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
 <span id="annotated-cell-7-17"><a href="#annotated-cell-7-17"></a></span>
 <span id="annotated-cell-7-18"><a href="#annotated-cell-7-18"></a><span class="co"># Propose a model with two latent variables - one related to home (lvh), the other cognitive ability (lvc)</span></span>
 <span id="annotated-cell-7-19"><a href="#annotated-cell-7-19"></a></span>
@@ -2694,9 +2690,6 @@ Variances:
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-chin1998partial" class="csl-entry" role="listitem">
 Chin, Wynne W. 1998. <span>“The Partial Least Squares Approach to Structural Equation Modeling.”</span> <em>Modern Methods for Business Research/Lawrence Erlbaum Associates</em>.
-</div>
-<div id="ref-cho2020" class="csl-entry" role="listitem">
-Cho, Gyeongcheol, Heungsun Hwang, Marko Sarstedt, and Christian M. Ringle. 2020. <span>“Cutoff Criteria for Overall Model Fit Indexes in Generalized Structured Component Analysis.”</span> <em>Journal of Marketing Analytics</em> 8 (4): 189–202. <a href="https://doi.org/10.1057/s41270-020-00089-1">https://doi.org/10.1057/s41270-020-00089-1</a>.
 </div>
 <div id="ref-fornell1981evaluating" class="csl-entry" role="listitem">
 Fornell, Claes, and David F Larcker. 1981. <span>“Evaluating Structural Equation Models with Unobservable Variables and Measurement Error.”</span> <em>Journal of Marketing Research</em> 18 (1): 39–50.
