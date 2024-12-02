@@ -120,6 +120,11 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/viz-1.8.2/viz.js"></script>
+<link href="../site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="../site_libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 <link rel="stylesheet" href="../css/mastemr.css">
@@ -329,7 +334,8 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#assummptions-of-sem" id="toc-assummptions-of-sem" class="nav-link" data-scroll-target="#assummptions-of-sem"><span class="header-section-number">1.1</span> Assummptions of SEM</a>
   <ul class="collapse">
-  <li><a href="#a-simple-structural-model" id="toc-a-simple-structural-model" class="nav-link" data-scroll-target="#a-simple-structural-model"><span class="header-section-number">1.1.1</span> A simple structural model</a></li>
+  <li><a href="#the-steps-to-fitting-an-sem-model" id="toc-the-steps-to-fitting-an-sem-model" class="nav-link" data-scroll-target="#the-steps-to-fitting-an-sem-model"><span class="header-section-number">1.1.1</span> The steps to fitting an SEM model</a></li>
+  <li><a href="#a-simple-structural-model" id="toc-a-simple-structural-model" class="nav-link" data-scroll-target="#a-simple-structural-model"><span class="header-section-number">1.1.2</span> A simple structural model</a></li>
   </ul></li>
   <li><a href="#model-syntax" id="toc-model-syntax" class="nav-link" data-scroll-target="#model-syntax"><span class="header-section-number">1.2</span> Model Syntax</a>
   <ul class="collapse">
@@ -396,8 +402,19 @@ div.csl-indent {
 <li>No multicollinearity - the independent variables are not highly correlated <span class="citation" data-cites="hoyle2012handbook">(<a href="#ref-hoyle2012handbook" role="doc-biblioref">Hoyle 2012</a>)</span></li>
 <li>Sample size - a large enough sample size to ensure the model is stable - assuming a common power level of 80% and significance levels of 0.05, and minimum path coefficient of 0.2, a sample size of 155 is required <span class="citation" data-cites="hair2021partial">(<a href="#ref-hair2021partial" role="doc-biblioref">Hair Jr et al. 2021</a>)</span></li>
 </ol>
-<section id="a-simple-structural-model" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="a-simple-structural-model"><span class="header-section-number">1.1.1</span> A simple structural model</h3>
+<section id="the-steps-to-fitting-an-sem-model" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="the-steps-to-fitting-an-sem-model"><span class="header-section-number">1.1.1</span> The steps to fitting an SEM model</h3>
+<p>The typical steps taken when fitting an SEM model are shown below (see Figure 5.1 in <span class="citation" data-cites="kline2023principles">(<a href="#ref-kline2023principles" role="doc-biblioref"><strong>kline2023principles?</strong></a>)</span>):</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4be5013890d6b19b39c9" style="width:95%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-4be5013890d6b19b39c9">{"x":{"diagram":"\n  digraph Random {\n    graph [layout = dot,\n          overlap = T,\n          bgcolor = \"white\",\n          splines = line]  # controls layout type setup\n    \n    node [shape = box, style = \"filled\", \n          fillcolor = \"skyblue\", fontSize = 30, \n          fontcolor = \"darkgrey\", fontname = \"Arial\"]\n    \n    a [label = \"1. Model specification\"]\n    b [label = \"2. Model Identified?\", shape = \"rhombus\"]\n    c [label = \"3. Select\n measures,\n collect data\"]\n    d [label = \"4a Model fit adequate?\", shape = \"diamond\"]\n    e [label = \"5. Model respecification\"]\n    f [label = \"4b. Interpret estimates\"]\n    g [label = \"4c. Consider equivalent models\"]\n    h [label = \"6. Report results\"]\n    \n    a -> b [curved = TRUE, constraint = FALSE]\n    b -> a [label = \"no\", curved = TRUE, constraint = FALSE]\n    b -> c [label = \"yes\"]\n    b -> d\n    c -> d\n    d -> e [label = \"no\"]\n    d -> f [label = \"yes\"]\n    e -> c\n    f -> g\n    g -> h\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Researchers typically begin by specifying a model, that is setting out the setting out the relationships theory suggest exists between variables. Specification is an important steps as the following stages assume the model is correct. model identification is the process of determining if a model can be estimated from available data. If the model is not identified, the researcher must go back to the model specification stage and make changes. If the model is identified, the researcher can move on to collecting data. Once data are collected, the model is estimated and the fit of the model is assessed (multiple approaches to assessing model fit are discussed below). If the model does not fit the data well, the researcher may need to respecify the model. If the model fits the data well, the researcher can interpret the estimates and consider equivalent models. For any model, there may be many (perhaps infintely many) other models that fit the data equally well.Finally, the researcher reports the results.</p>
+</section>
+<section id="a-simple-structural-model" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="a-simple-structural-model"><span class="header-section-number">1.1.2</span> A simple structural model</h3>
 <p>Researchers use SEM to determine the correlations between a number of variable in a data set. It allows the relationship between multiple variables to be taken into account.</p>
 <p>For example, in the PISA data set, in the context of data related to UK students achievement in mathematics, a researcher might be interested in building a model of mathematics (<code>PV1MATH</code>) score by a number of variables in the data set, for example, reading score (<code>PV1READ</code>), science score (<code>PV1SCIE</code>), family cultural capital (the index of economic, social and cultural status: <code>ESCS</code>), wealth (<code>WEALTH</code>) and gender (<code>ST004D01T</code>). SEM can be used to represent the relationship between these variables and students’ mathematics achievement.</p>
 <p>To create the SEM we will use the <code>lavaan</code> package - <code>lavaan</code> is a contraction of Latent Variable Analysis and allows us to fit a number of different SEMs to data. We will also use the <code>semPlot</code> package to visualise the results. The relationships between variables in SEMs are often represented as path diagrams - representations in which variables are represented as squares or circles and arrows labelled with correlation coefficients join the variables to represent the relationships.<code>semPlot</code> allows us to draw path diagrams.</p>
@@ -505,7 +522,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -540,7 +557,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -618,7 +635,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -720,7 +737,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -795,7 +812,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -898,7 +915,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1040,7 +1057,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1069,7 +1086,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1083,7 +1100,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1097,7 +1114,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1112,7 +1129,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1128,7 +1145,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1144,7 +1161,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1162,7 +1179,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1251,7 +1268,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1484,7 +1501,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1672,7 +1689,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1742,7 +1759,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1856,7 +1873,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1988,7 +2005,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2062,7 +2079,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2268,7 +2285,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2433,7 +2450,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2738,7 +2755,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2923,7 +2940,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-31-2.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-32-2.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
