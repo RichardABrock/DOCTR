@@ -407,8 +407,8 @@ div.csl-indent {
 <p>The typical steps taken when fitting an SEM model are shown below (see Figure 5.1 in <span class="citation" data-cites="kline2023principles">(<a href="#ref-kline2023principles" role="doc-biblioref">Kline 2023</a>)</span>):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-ba686b4bdc0333884469" style="width:95%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-ba686b4bdc0333884469">{"x":{"diagram":"\n  digraph Random {\n    graph [layout = dot,\n          overlap = T,\n          bgcolor = \"white\",\n          splines = line]  # controls layout type setup\n    \n    node [shape = box, style = \"filled\", \n          fillcolor = \"skyblue\", fontSize = 30, \n          fontcolor = \"darkgrey\", fontname = \"Arial\"]\n    \n    a [label = \"1. Model specification\"]\n    b [label = \"2. Model Identified?\", shape = \"rhombus\"]\n    c [label = \"3. Select\n measures,\n collect data\"]\n    d [label = \"4a Model fit adequate?\", shape = \"diamond\"]\n    e [label = \"5. Model respecification\"]\n    f [label = \"4b. Interpret estimates\"]\n    g [label = \"4c. Consider equivalent models\"]\n    h [label = \"6. Report results\"]\n    \n    a -> b [curved = TRUE, constraint = FALSE]\n    b -> a [label = \"no\", curved = TRUE, constraint = FALSE]\n    b -> c [label = \"yes\"]\n    b -> d\n    c -> d\n    d -> e [label = \"no\"]\n    d -> f [label = \"yes\"]\n    e -> c\n    f -> g\n    g -> h\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-5fe873a0e0d0c1d5a8d1" style="width:95%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-5fe873a0e0d0c1d5a8d1">{"x":{"diagram":"\n  digraph Random {\n    graph [layout = dot,\n          overlap = T,\n          bgcolor = \"white\",\n          splines = line]  # controls layout type setup\n    \n    node [shape = box, style = \"filled\", \n          fillcolor = \"skyblue\", fontSize = 30, \n          fontcolor = \"darkgrey\", fontname = \"Arial\"]\n    \n    a [label = \"1. Model specification\"]\n    b [label = \"2. Model Identified?\", shape = \"rhombus\"]\n    c [label = \"3. Select\n measures,\n collect data\"]\n    d [label = \"4a Model fit adequate?\", shape = \"diamond\"]\n    e [label = \"5. Model respecification\"]\n    f [label = \"4b. Interpret estimates\"]\n    g [label = \"4c. Consider equivalent models\"]\n    h [label = \"6. Report results\"]\n    \n    a -> b [curved = TRUE, constraint = FALSE]\n    b -> a [label = \"no\", curved = TRUE, constraint = FALSE]\n    b -> c [label = \"yes\"]\n    b -> d\n    c -> d\n    d -> e [label = \"no\"]\n    d -> f [label = \"yes\"]\n    e -> c\n    f -> g\n    g -> h\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Researchers typically begin by specifying a model, that is setting out the setting out the relationships theory suggest exists between variables. Specification is an important steps as the following stages assume the model is correct. model identification is the process of determining if a model can be estimated from available data. If the model is not identified, the researcher must go back to the model specification stage and make changes. If the model is identified, the researcher can move on to collecting data. Once data are collected, the model is estimated and the fit of the model is assessed (multiple approaches to assessing model fit are discussed below). If the model does not fit the data well, the researcher may need to respecify the model. If the model fits the data well, the researcher can interpret the estimates and consider equivalent models. For any model, there may be many (perhaps infintely many) other models that fit the data equally well.Finally, the researcher reports the results.</p>
@@ -528,7 +528,72 @@ Variances:
 </div>
 </div>
 <p>In path diagrams, directly measured variables, manifest variables, are shown as squares. Latent variables are represented as circles. Single headed arrows represent the regression effects between variables. The curved arrows starting and ending on a square or circle indicate the variances of those variables. When curved arrows start and end on different variables, they represent covariance.</p>
-<p>One issue to note here is the difference in the variance for the science and mathematics scores. <code>PV1SCIE</code>, <code>PV1READ</code> and <code>PV1MATH</code> are test scores and so have a large variance (the maximum and minimum science scores, for example, are 0.0 and 895.4). The variance of the two test variables is much greater that for <code>HOMEPOS</code> (Min=-10.0741 mean=-0.4447, Max=15.240) and <code>ESCS</code> (Min=-6.841 mean=-0.310, Max=7.380).</p>
+<p>One issue to note here is the difference in the variance for the science and mathematics scores. <code>PV1SCIE</code>, <code>PV1READ</code> and <code>PV1MATH</code> are test scores and so have a large variance (the maximum and minimum science scores, for example, are 0 and 943). The variance of the two test variables is much greater that for <code>HOMEPOS</code> (Min=-10.0741 mean=-0.4447, Max=15.240) and <code>ESCS</code> (Min=-6.841 mean=-0.310, Max=7.380).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Continuous variables in data sets may have different ranges - that this the difference between the maximum and minimum variable can have larger magnitudes for some variables than others. This can be a problem because it can be hard to compare the effects of those variables. For example, in the PISA data, consider the difference between <code>PV1MATH</code> (mathematics scores) and <code>HOMEPOS</code> (a wealth proxy). The maximum and minimum mathematics scores are 155 and 893, while the maximum and minimum wealth scores are 8.2 and -6.8. The difference in the range of the variables can make it hard to compare the effects of the variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>UK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">select</span>(CNT, PV1MATH, HOMEPOS) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(PV1MATH, HOMEPOS), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">ggplot</span>(UK_data, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill =</span> variable)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Density plot of mathematics scores and wealth"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>       <span class="at">x =</span> <span class="st">"Value"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PV1MATH"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"HOMEPOS"</span> <span class="ot">=</span> <span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To compare the effects of the variables, we can normalise (also referred to as standardising, scaling or creating z scores) the variables. Normalising the variables sets the mean of the variable to 0 and the variance to 1. This makes the variables more comparable. The <code>scale</code> function in R can be used to normalise variables. The <code>scale</code> function is used with <code>mutate</code> to create a new column <code>PV1MATH_scaled</code> in the <code>UKdata</code> data frame, with the math scores normalised.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-58"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-58-1"><a href="#annotated-cell-58-1"></a>UK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-58-2"><a href="#annotated-cell-58-2"></a>  <span class="fu">select</span>(CNT, PV1MATH, HOMEPOS) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-58-3"><a href="#annotated-cell-58-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-58" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-58-4" class="code-annotation-target"><a href="#annotated-cell-58-4"></a>  <span class="fu">mutate</span>(<span class="at">PV1MATH_scaled =</span> <span class="fu">scale</span>(PV1MATH)) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-58-5"><a href="#annotated-cell-58-5"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(PV1MATH_scaled, HOMEPOS), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
+<span id="annotated-cell-58-6"><a href="#annotated-cell-58-6"></a></span>
+<span id="annotated-cell-58-7"><a href="#annotated-cell-58-7"></a><span class="fu">ggplot</span>(UK_data, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill =</span> variable)) <span class="sc">+</span></span>
+<span id="annotated-cell-58-8"><a href="#annotated-cell-58-8"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="annotated-cell-58-9"><a href="#annotated-cell-58-9"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-58-10"><a href="#annotated-cell-58-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Density plot of mathematics scores and wealth"</span>,</span>
+<span id="annotated-cell-58-11"><a href="#annotated-cell-58-11"></a>       <span class="at">x =</span> <span class="st">"Value"</span>,</span>
+<span id="annotated-cell-58-12"><a href="#annotated-cell-58-12"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-58-13"><a href="#annotated-cell-58-13"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PV1MATH_scaled"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"HOMEPOS"</span> <span class="ot">=</span> <span class="st">"red"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-58" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-58" data-code-lines="4" data-code-annotation="1">line 1 normalise the maths scores about a mean of 0 with a variance of 1</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>To resolve this difference, we can use the scale function to create a similar scale for <code>PV1SCIE</code>, <code>PV1MATH</code> and <code>PV1READ</code>. The <code>scale</code> function sets the mean of the variable to 0 and the variance to 1.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a>UKdata<span class="sc">$</span>PV1READ<span class="ot">&lt;-</span><span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
@@ -557,7 +622,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -635,7 +700,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -711,7 +776,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -820,7 +885,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -923,7 +988,7 @@ Variances:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1017,11 +1082,11 @@ Tip
 <div class="callout-body-container callout-body">
 <p>If adding an ordinal variable, with the addition of triangles to the plot, makes your path diagram too crowded, you can turn off estimates for thresholds and residual variances as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">thresholds =</span> <span class="cn">FALSE</span>)                              </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">thresholds =</span> <span class="cn">FALSE</span>)                              </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1031,29 +1096,29 @@ Tip
 <p>If you want to link an ordinal variable directly to an outcome variable, for example, if you want to link books directly to reading, doing it through a latent variable allows lavaan to estimate the thresholds for the ordinal variable.</p>
 <p>To fit a categorical variable like gender, you can use the <code>as.factor</code> function to convert the variable to a factor and then use the <code>fit &lt;- sem(model, UKdata, estimator = "MLR")</code> function to estimate the model. MLR is the default estimator for categorical variables. MLR stands for Maximum Likelihood Robust. It is an estimator used in structural equation modeling (SEM), particularly when dealing with non-normal data or small sample sizes. See the example below using gender:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Create a data frame with the required base variables</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>UKdata<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">select</span>(CNT, PV1SCIE, PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">na.omit</span>() <span class="co"># Remove the NAs to create a two level varibale.</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co"># set ST004D01T to a factor</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co"># Scale the numeric variables</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a>UKdata <span class="ot">&lt;-</span> UKdata <span class="sc">%&gt;%</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>  <span class="fu">mutate</span>(<span class="at">PV1SCIE =</span> <span class="fu">scale</span>(PV1SCIE),</span>
-<span id="cb8-16"><a href="#cb8-16"></a>         <span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH))</span>
-<span id="cb8-17"><a href="#cb8-17"></a>         </span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co"># Create the model</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a></span>
-<span id="cb8-20"><a href="#cb8-20"></a>model <span class="ot">&lt;-</span> <span class="st">"PV1SCIE ~ PV1MATH + ST004D01T"</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a></span>
-<span id="cb8-22"><a href="#cb8-22"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Create a data frame with the required base variables</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>UKdata<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">select</span>(CNT, PV1SCIE, PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">na.omit</span>() <span class="co"># Remove the NAs to create a two level varibale.</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># set ST004D01T to a factor</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co"># Scale the numeric variables</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a>UKdata <span class="ot">&lt;-</span> UKdata <span class="sc">%&gt;%</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>  <span class="fu">mutate</span>(<span class="at">PV1SCIE =</span> <span class="fu">scale</span>(PV1SCIE),</span>
+<span id="cb9-16"><a href="#cb9-16"></a>         <span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH))</span>
+<span id="cb9-17"><a href="#cb9-17"></a>         </span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co"># Create the model</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a>model <span class="ot">&lt;-</span> <span class="st">"PV1SCIE ~ PV1MATH + ST004D01T"</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a></span>
+<span id="cb9-22"><a href="#cb9-22"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 1 iteration
 
@@ -1084,11 +1149,11 @@ Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
    .PV1SCIE           0.246    0.003   73.035    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1113,34 +1178,7 @@ Tip
 <li>To rotate the plot (<code>rotation = 2</code>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>To include more letters of variable names in the nodes (<code>nCharNodes = 7</code>) specifies the number of characters displayed (default is 3):</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, <span class="at">nCharNodes =</span> <span class="dv">7</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>To change the colour of the lines (<code>edge.color="blue"</code>) and the size of the nodes (<code>sizeMan=8</code>):</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb13-2"><a href="#cb13-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, <span class="at">sizeMan =</span> <span class="dv">8</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1150,11 +1188,10 @@ Tip
 </div>
 </div>
 <ul>
-<li>To link the thickness of lines to their value (<code>"std"</code>):</li>
+<li>To include more letters of variable names in the nodes (<code>nCharNodes = 7</code>) specifies the number of characters displayed (default is 3):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb14-2"><a href="#cb14-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, <span class="st">"std"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, <span class="at">nCharNodes =</span> <span class="dv">7</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1164,12 +1201,11 @@ Tip
 </div>
 </div>
 <ul>
-<li>To make the labels larger (<code>edge.label.cex = 0.8</code>):</li>
+<li>To change the colour of the lines (<code>edge.color="blue"</code>) and the size of the nodes (<code>sizeMan=8</code>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb15-2"><a href="#cb15-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb15-3"><a href="#cb15-3"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>, <span class="st">"std"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb14-2"><a href="#cb14-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, <span class="at">sizeMan =</span> <span class="dv">8</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1179,13 +1215,11 @@ Tip
 </div>
 </div>
 <ul>
-<li>To change the text size in the nodes (<code>label.cex = 0.8</code>):</li>
+<li>To link the thickness of lines to their value (<code>"std"</code>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb16-2"><a href="#cb16-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb16-3"><a href="#cb16-3"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>, <span class="st">"std"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb16-4"><a href="#cb16-4"></a>         <span class="at">label.cex =</span> <span class="fl">0.8</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb15-2"><a href="#cb15-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, <span class="st">"std"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1195,13 +1229,12 @@ Tip
 </div>
 </div>
 <ul>
-<li>To add a title (<code>title("PISA path diagram")</code>):</li>
+<li>To make the labels larger (<code>edge.label.cex = 0.8</code>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb17-2"><a href="#cb17-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, <span class="at">sizeMan =</span> <span class="dv">5</span>, <span class="st">"std"</span>, </span>
-<span id="cb17-3"><a href="#cb17-3"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>) </span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb16-2"><a href="#cb16-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb16-3"><a href="#cb16-3"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>, <span class="st">"std"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1211,19 +1244,51 @@ Tip
 </div>
 </div>
 <ul>
-<li>To give longer node names (<code>nodeNames=nodenames</code>), and you can increase the abbreviation of labels to a set number of characters in the nodes using <code>nCharNodes = 3</code>. <code>node.label.cex</code> sets the size of the node label text:</li>
+<li>To change the text size in the nodes (<code>label.cex = 0.8</code>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>nodenames<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Economic, social and cultural status"</span>,</span>
-<span id="cb18-2"><a href="#cb18-2"></a>             <span class="st">"Wealth"</span>, <span class="st">"Math score"</span>, <span class="st">"Reading score"</span>, <span class="st">"Science Score"</span>)</span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation=</span><span class="dv">2</span>, <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb18-4"><a href="#cb18-4"></a>         <span class="at">sizeMan =</span><span class="dv">5</span>, <span class="st">"std"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>, <span class="at">nodeNames =</span> nodenames,</span>
-<span id="cb18-5"><a href="#cb18-5"></a>         <span class="at">nCharNodes =</span> <span class="dv">5</span>)</span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb17-2"><a href="#cb17-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb17-3"><a href="#cb17-3"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>, <span class="st">"std"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>         <span class="at">label.cex =</span> <span class="fl">0.8</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="06-1-SEM_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>To add a title (<code>title("PISA path diagram")</code>):</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb18-2"><a href="#cb18-2"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, <span class="at">sizeMan =</span> <span class="dv">5</span>, <span class="st">"std"</span>, </span>
+<span id="cb18-3"><a href="#cb18-3"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>) </span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>To give longer node names (<code>nodeNames=nodenames</code>), and you can increase the abbreviation of labels to a set number of characters in the nodes using <code>nCharNodes = 3</code>. <code>node.label.cex</code> sets the size of the node label text:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>nodenames<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Economic, social and cultural status"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2"></a>             <span class="st">"Wealth"</span>, <span class="st">"Math score"</span>, <span class="st">"Reading score"</span>, <span class="st">"Science Score"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">rotation=</span><span class="dv">2</span>, <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb19-4"><a href="#cb19-4"></a>         <span class="at">sizeMan =</span><span class="dv">5</span>, <span class="st">"std"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>, <span class="at">nodeNames =</span> nodenames,</span>
+<span id="cb19-5"><a href="#cb19-5"></a>         <span class="at">nCharNodes =</span> <span class="dv">5</span>)</span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1312,7 +1377,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1420,7 +1485,7 @@ Variances:
 <h2 data-number="1.6" class="anchored" data-anchor-id="improving-model-fit"><span class="header-section-number">1.6</span> Improving model fit</h2>
 <p>After examining the fit of a model, the next step can be to look at the model modification indices which suggest how the model might be improved.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       lhs op     rhs     mi    epc sepc.lv sepc.all sepc.nox
 21    ESCS ~~ PV1READ 18.099 -0.014  -0.014   -0.059   -0.059
@@ -1443,16 +1508,16 @@ Variances:
 <p>The <code>epc</code> is the Expected Parameter Change - the expected value of the new term (covariance, or factor loading). For example, looking at the <code>epc</code> term for <code>ESCS   ~~  PV1READ</code> - if this term were added to the model, that relationship would be expected to have a covariance of -0.014.</p>
 <p>We can then add the suggested terms and compare model fit, adding the top two suggestions: <code>ESCS    ~~  PV1READ</code> (a covariance between social class and reading score) and <code>ESCS    ~~  PV1MATH</code> (a covariance between class and mathematics scores) . It is important to check those additions cohere with theory. A link between class and reading and mathematics score seems plausible from knowledge of the link between class and achievement in the literature.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Propose a modified model </span></span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a>model2<span class="ot">&lt;-</span><span class="st">"lvh =~ ESCS + HOMEPOS  </span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="st">        lvc =~ PV1MATH + PV1READ</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="st">        PV1SCIE ~ lvh + lvc</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="st">        ESCS    ~~  PV1READ</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="st">        HOMEPOS ~~  PV1MATH"</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="co"># Fit the model</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model2, <span class="at">data =</span> UKdata)                                        </span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="fu">summary</span>(fit, , <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)                                   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Propose a modified model </span></span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>model2<span class="ot">&lt;-</span><span class="st">"lvh =~ ESCS + HOMEPOS  </span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="st">        lvc =~ PV1MATH + PV1READ</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="st">        PV1SCIE ~ lvh + lvc</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="st">        ESCS    ~~  PV1READ</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="st">        HOMEPOS ~~  PV1MATH"</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="co"># Fit the model</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model2, <span class="at">data =</span> UKdata)                                        </span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="fu">summary</span>(fit, , <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)                                   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 34 iterations
 
@@ -1541,11 +1606,11 @@ Variances:
     lvh               0.598    0.015   40.357    0.000
     lvc               0.889    0.014   63.864    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)                                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)                                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1604,20 +1669,20 @@ Variances:
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="reporting-the-model"><span class="header-section-number">1.6.1</span> Reporting the model</h3>
 <p>Once you have finalised your model, you will want to report various aspects of your SEM. Typically you will be interested in the factor loadings (the standardised coefficients representing the paths between variables). The loadings are displayed on your path diagram but you can produce an output of the loadings separately. For example for <code>model2</code> above which attempts to model science scores with a latent home and cognitive item, you can extract the factor loadings using the <code>standardizedsolution</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Report the model</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a></span>
-<span id="cb25-3"><a href="#cb25-3"></a>model2<span class="ot">&lt;-</span><span class="st">"lvh =~ ESCS + HOMEPOS  </span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="st">        lvc =~ PV1MATH + PV1READ</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="st">        PV1SCIE ~ lvh + lvc</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="st">        ESCS    ~~  PV1READ</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="st">        HOMEPOS ~~  PV1MATH"</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a></span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="co"># Fit the model</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model2, <span class="at">data =</span> UKdata)                                        </span>
-<span id="cb25-11"><a href="#cb25-11"></a></span>
-<span id="cb25-12"><a href="#cb25-12"></a><span class="co"># Extract loadings</span></span>
-<span id="cb25-13"><a href="#cb25-13"></a></span>
-<span id="cb25-14"><a href="#cb25-14"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Report the model</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>model2<span class="ot">&lt;-</span><span class="st">"lvh =~ ESCS + HOMEPOS  </span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="st">        lvc =~ PV1MATH + PV1READ</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="st">        PV1SCIE ~ lvh + lvc</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="st">        ESCS    ~~  PV1READ</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="st">        HOMEPOS ~~  PV1MATH"</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="co"># Fit the model</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model2, <span class="at">data =</span> UKdata)                                        </span>
+<span id="cb26-11"><a href="#cb26-11"></a></span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="co"># Extract loadings</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  lhs op     rhs est.std    se       z pvalue ci.lower ci.upper
 1 lvh =~    ESCS   0.870 0.008 107.852      0    0.854    0.885
@@ -1644,12 +1709,12 @@ Tip
 <p>Another useful measure are the R<sup>2</sup> values for each item in the model. Each item is treated as a dependent variable and an R<sup>2</sup> value (the proportion of variance it explains) can be calculated using the <code>parameterEstimates</code> function. We then filter for the operator related to R<sup>2</sup> and select the relevant columns to make the data easier to read. An <code>arrange</code> in descending order can also be useful.</p>
 <p>The estimates here should be thought of as the percentage of variance of that item that is explained by the latent variable it is associated with.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Extract R^2 values for the model</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Extract R^2 values for the model</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Item    R2
 1 PV1MATH 0.877
@@ -1676,27 +1741,27 @@ Tip
 <p>Try to create an SEM for science score in the UK. Let us assume that the variables theory suggest you include in your model are ability at mathematics and reading (<code>PV1MATH</code> and <code>PV1READ</code>) and wealth (<code>HOMEPOS</code>). Build a simple model in which those three variables have a direct relationship to science score, but don’t influence each other. Describe what your model suggests about the relationship between the variables.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Create a data frame for UK science scores, with the variables we need</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># For the model: Math, science, reading and wealth (HOMEPOS)</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a></span>
-<span id="cb29-4"><a href="#cb29-4"></a></span>
-<span id="cb29-5"><a href="#cb29-5"></a>UK_Sci_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1READ, PV1SCIE, PV1MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="cb29-8"><a href="#cb29-8"></a></span>
-<span id="cb29-9"><a href="#cb29-9"></a><span class="co"># Scale the the test scores so they are similar to the already scaled</span></span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="co"># HOMEPOS score (i.e. have a mean of 0 and a sd of 1)</span></span>
-<span id="cb29-11"><a href="#cb29-11"></a></span>
-<span id="cb29-12"><a href="#cb29-12"></a>UK_Sci_data <span class="ot">&lt;-</span> UK_Sci_data <span class="sc">%&gt;%</span></span>
-<span id="cb29-13"><a href="#cb29-13"></a>  <span class="fu">mutate</span>(<span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH),</span>
-<span id="cb29-14"><a href="#cb29-14"></a>         <span class="at">PV1SCIE =</span> <span class="fu">scale</span>(PV1SCIE),</span>
-<span id="cb29-15"><a href="#cb29-15"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ))</span>
-<span id="cb29-16"><a href="#cb29-16"></a></span>
-<span id="cb29-17"><a href="#cb29-17"></a></span>
-<span id="cb29-18"><a href="#cb29-18"></a>model<span class="ot">&lt;-</span><span class="st">"PV1SCIE ~ HOMEPOS + PV1MATH + PV1READ"</span></span>
-<span id="cb29-19"><a href="#cb29-19"></a></span>
-<span id="cb29-20"><a href="#cb29-20"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UK_Sci_data)</span>
-<span id="cb29-21"><a href="#cb29-21"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Create a data frame for UK science scores, with the variables we need</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># For the model: Math, science, reading and wealth (HOMEPOS)</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a></span>
+<span id="cb30-5"><a href="#cb30-5"></a>UK_Sci_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1READ, PV1SCIE, PV1MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8"></a></span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="co"># Scale the the test scores so they are similar to the already scaled</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co"># HOMEPOS score (i.e. have a mean of 0 and a sd of 1)</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a></span>
+<span id="cb30-12"><a href="#cb30-12"></a>UK_Sci_data <span class="ot">&lt;-</span> UK_Sci_data <span class="sc">%&gt;%</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a>  <span class="fu">mutate</span>(<span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH),</span>
+<span id="cb30-14"><a href="#cb30-14"></a>         <span class="at">PV1SCIE =</span> <span class="fu">scale</span>(PV1SCIE),</span>
+<span id="cb30-15"><a href="#cb30-15"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ))</span>
+<span id="cb30-16"><a href="#cb30-16"></a></span>
+<span id="cb30-17"><a href="#cb30-17"></a></span>
+<span id="cb30-18"><a href="#cb30-18"></a>model<span class="ot">&lt;-</span><span class="st">"PV1SCIE ~ HOMEPOS + PV1MATH + PV1READ"</span></span>
+<span id="cb30-19"><a href="#cb30-19"></a></span>
+<span id="cb30-20"><a href="#cb30-20"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UK_Sci_data)</span>
+<span id="cb30-21"><a href="#cb30-21"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 1 iteration
 
@@ -1729,44 +1794,44 @@ Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
    .PV1SCIE           0.239    0.003   75.786    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Science is most influenced by mathematics scores in this model (factor loading = 0.66), following</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># by a smaller impact of reading (0.25). When the two academic scores are taken into account</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="co"># wealth (HOMEPOS) doesn't exert a large influence on science scores. The relatively high covariance</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># between reading and mathematics scores (0.81) suggests this is not a great model. The residual term </span></span>
-<span id="cb32-5"><a href="#cb32-5"></a><span class="co"># variance of 23.9% suggests that a significant portion of the variance in science scores is unexplained by the model.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Science is most influenced by mathematics scores in this model (factor loading = 0.66), following</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co"># by a smaller impact of reading (0.25). When the two academic scores are taken into account</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="co"># wealth (HOMEPOS) doesn't exert a large influence on science scores. The relatively high covariance</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># between reading and mathematics scores (0.81) suggests this is not a great model. The residual term </span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="co"># variance of 23.9% suggests that a significant portion of the variance in science scores is unexplained by the model.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="question">
 <p>Try to create an SEM for mathematics score in the UK. Let us assume that the variables theory suggest you include in your model are ability at reading (<code>PV1READ</code>) and wealth (<code>HOMEPOS</code>) and sense of belonging (<code>BELONG</code>). Build a simple model in which those three variables have a direct relationship to mathematics score, but don’t influence each other. Describe what your model suggests about the relationship between the variables.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Create a data frame for UK math scores, with the variables we need</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="co"># For the model: Math, reading, wealth (HOMEPOS) and class (BELONG)</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a></span>
-<span id="cb33-4"><a href="#cb33-4"></a></span>
-<span id="cb33-5"><a href="#cb33-5"></a>UK_math_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb33-6"><a href="#cb33-6"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1READ, PV1MATH, BELONG) <span class="sc">%&gt;%</span></span>
-<span id="cb33-7"><a href="#cb33-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="cb33-8"><a href="#cb33-8"></a></span>
-<span id="cb33-9"><a href="#cb33-9"></a><span class="co"># Scale the the test scores so they are similar to the already scaled</span></span>
-<span id="cb33-10"><a href="#cb33-10"></a><span class="co"># HOMEPOS score (i.e. have a mean of 0 and a sd of 1)</span></span>
-<span id="cb33-11"><a href="#cb33-11"></a></span>
-<span id="cb33-12"><a href="#cb33-12"></a>UK_math_data <span class="ot">&lt;-</span> UK_math_data <span class="sc">%&gt;%</span></span>
-<span id="cb33-13"><a href="#cb33-13"></a>  <span class="fu">mutate</span>(<span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH),</span>
-<span id="cb33-14"><a href="#cb33-14"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ))</span>
-<span id="cb33-15"><a href="#cb33-15"></a></span>
-<span id="cb33-16"><a href="#cb33-16"></a></span>
-<span id="cb33-17"><a href="#cb33-17"></a>model<span class="ot">&lt;-</span><span class="st">"PV1MATH ~ HOMEPOS + PV1READ + BELONG"</span></span>
-<span id="cb33-18"><a href="#cb33-18"></a></span>
-<span id="cb33-19"><a href="#cb33-19"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UK_math_data)</span>
-<span id="cb33-20"><a href="#cb33-20"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Create a data frame for UK math scores, with the variables we need</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># For the model: Math, reading, wealth (HOMEPOS) and class (BELONG)</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a></span>
+<span id="cb34-5"><a href="#cb34-5"></a>UK_math_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1READ, PV1MATH, BELONG) <span class="sc">%&gt;%</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8"></a></span>
+<span id="cb34-9"><a href="#cb34-9"></a><span class="co"># Scale the the test scores so they are similar to the already scaled</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="co"># HOMEPOS score (i.e. have a mean of 0 and a sd of 1)</span></span>
+<span id="cb34-11"><a href="#cb34-11"></a></span>
+<span id="cb34-12"><a href="#cb34-12"></a>UK_math_data <span class="ot">&lt;-</span> UK_math_data <span class="sc">%&gt;%</span></span>
+<span id="cb34-13"><a href="#cb34-13"></a>  <span class="fu">mutate</span>(<span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH),</span>
+<span id="cb34-14"><a href="#cb34-14"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ))</span>
+<span id="cb34-15"><a href="#cb34-15"></a></span>
+<span id="cb34-16"><a href="#cb34-16"></a></span>
+<span id="cb34-17"><a href="#cb34-17"></a>model<span class="ot">&lt;-</span><span class="st">"PV1MATH ~ HOMEPOS + PV1READ + BELONG"</span></span>
+<span id="cb34-18"><a href="#cb34-18"></a></span>
+<span id="cb34-19"><a href="#cb34-19"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UK_math_data)</span>
+<span id="cb34-20"><a href="#cb34-20"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 1 iteration
 
@@ -1799,15 +1864,15 @@ Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
    .PV1MATH           0.372    0.005   74.780    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># This regression shows a positive and statistically significant relationship between HOMEPOS (wealth) and PV1MATH (Math scores). The relationship is statistically signifcant (p&lt;0.05). or each unit increase in HOMEPOS, PV1MATH increases by 0.126 units. This shows a very strong (0.753) and significant relationship between PV1READ (Reading scores) and PV1MATH (Math scores).  The weakest relationship is between BELONG and PV1MATH (0.055). The residual variance in PV1MATH (math scores), which is the part of the math score variance not explained by the predictors HOMEPOS, PV1READ, and BELONG. The estimate of 0.372 suggests that a significant amount of variance in PV1MATH remains unexplained, even after accounting for the predictors.  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># This regression shows a positive and statistically significant relationship between HOMEPOS (wealth) and PV1MATH (Math scores). The relationship is statistically signifcant (p&lt;0.05). or each unit increase in HOMEPOS, PV1MATH increases by 0.126 units. This shows a very strong (0.753) and significant relationship between PV1READ (Reading scores) and PV1MATH (Math scores).  The weakest relationship is between BELONG and PV1MATH (0.055). The residual variance in PV1MATH (math scores), which is the part of the math score variance not explained by the predictors HOMEPOS, PV1READ, and BELONG. The estimate of 0.372 suggests that a significant amount of variance in PV1MATH remains unexplained, even after accounting for the predictors.  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="question">
 <p>Create your own SEM using any continuous variables in some country (e.g, <code>PV1READ</code>, <code>HOMEPOS</code>, <code>BELONG</code> etc.). Describe what your model suggests about the relationship between the variables.</p>
@@ -1816,108 +1881,81 @@ Variances:
 <section id="task-3---a-model-with-a-latent-variable" class="level3" data-number="1.7.3">
 <h3 data-number="1.7.3" class="anchored" data-anchor-id="task-3---a-model-with-a-latent-variable"><span class="header-section-number">1.7.3</span> Task 3 - a model with a latent variable</h3>
 <div class="question">
-<p>There are a number of variables in the PISA data set that could be used to model the digital environment in the home (e.g.&nbsp;number of computers, having internet access etc.). Develop a latent variable for the home digital environment and model it using the variables in the data set.</p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Don’t forget to convert any non-numeric variables to numeric</p>
-</div>
+<p>Performance in science (<code>PV1READ</code>) might be thought to depend on two latent variables. Cognitive ability (you might label this <code>cog</code>) - which loads on <code>PV1MATH</code> and <code>PV1SCIE</code> and the home environment (<code>home</code>) which loads on wealth (<code>HOMEPOS</code>) and social class (<code>ESCS</code>)</p>
+<p>Build an SEM model of reading achievement in the UK with these two latent variables and comment on what the model shows you.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Using:</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="co"># ST253Q01JA</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a><span class="co"># "How many [digital devices] with screens are there in your [home]?"</span></span>
-<span id="cb37-4"><a href="#cb37-4"></a><span class="co"># ST254Q02JA "How many of the following [digital devices] are in your [home]: Desktop computers"</span></span>
-<span id="cb37-5"><a href="#cb37-5"></a><span class="co"># ST254Q03JA "How many of the following [digital devices] are in your [home]: Laptop computers or notebooks"</span></span>
-<span id="cb37-6"><a href="#cb37-6"></a><span class="co"># ST254Q06JA "How many of the following [digital devices] are in your [home]: [Cell phones] with Internet access (i.e. smartphones)"</span></span>
-<span id="cb37-7"><a href="#cb37-7"></a></span>
-<span id="cb37-8"><a href="#cb37-8"></a></span>
-<span id="cb37-9"><a href="#cb37-9"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb37-10"><a href="#cb37-10"></a>  <span class="fu">select</span>(CNT, ST253Q01JA, ST254Q02JA, ST254Q03JA, ST254Q06JA) <span class="sc">%&gt;%</span></span>
-<span id="cb37-11"><a href="#cb37-11"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-12"><a href="#cb37-12"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb37-13"><a href="#cb37-13"></a></span>
-<span id="cb37-14"><a href="#cb37-14"></a><span class="co"># Making likert variables ordered</span></span>
-<span id="cb37-15"><a href="#cb37-15"></a></span>
-<span id="cb37-16"><a href="#cb37-16"></a>UKdata<span class="sc">$</span>ST253Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST253Q01JA)</span>
-<span id="cb37-17"><a href="#cb37-17"></a>UKdata<span class="sc">$</span>ST254Q02JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST254Q02JA)</span>
-<span id="cb37-18"><a href="#cb37-18"></a>UKdata<span class="sc">$</span>ST254Q03JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST254Q03JA)</span>
-<span id="cb37-19"><a href="#cb37-19"></a>UKdata<span class="sc">$</span>ST254Q06JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST254Q06JA)</span>
-<span id="cb37-20"><a href="#cb37-20"></a></span>
-<span id="cb37-21"><a href="#cb37-21"></a></span>
-<span id="cb37-22"><a href="#cb37-22"></a></span>
-<span id="cb37-23"><a href="#cb37-23"></a>model<span class="ot">&lt;-</span><span class="st">"lv =~ ST253Q01JA + ST254Q02JA + ST254Q03JA + ST254Q06JA "</span></span>
-<span id="cb37-24"><a href="#cb37-24"></a></span>
-<span id="cb37-25"><a href="#cb37-25"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, </span>
-<span id="cb37-26"><a href="#cb37-26"></a>           <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST253Q01JA"</span>, <span class="st">"ST254Q02JA"</span>, <span class="st">"ST254Q03JA"</span>, <span class="st">"ST254Q06JA"</span>),</span>
-<span id="cb37-27"><a href="#cb37-27"></a>           <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
-<span id="cb37-28"><a href="#cb37-28"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Create data set</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">select</span>(CNT, PV1SCIE, PV1MATH, PV1READ, HOMEPOS, ESCS) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
+<span id="cb38-5"><a href="#cb38-5"></a></span>
+<span id="cb38-6"><a href="#cb38-6"></a><span class="co"># Set up the model with</span></span>
+<span id="cb38-7"><a href="#cb38-7"></a></span>
+<span id="cb38-8"><a href="#cb38-8"></a></span>
+<span id="cb38-9"><a href="#cb38-9"></a>model<span class="ot">&lt;-</span><span class="st">"PV1MATH ~ cog + home</span></span>
+<span id="cb38-10"><a href="#cb38-10"></a><span class="st">        cog =~ PV1READ + PV1SCIE</span></span>
+<span id="cb38-11"><a href="#cb38-11"></a><span class="st">        home =~ HOMEPOS + ESCS "</span></span>
+<span id="cb38-12"><a href="#cb38-12"></a></span>
+<span id="cb38-13"><a href="#cb38-13"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata)</span>
+<span id="cb38-14"><a href="#cb38-14"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-19 ended normally after 18 iterations
+<pre><code>lavaan 0.6-19 ended normally after 198 iterations
 
-  Estimator                                       DWLS
+  Estimator                                         ML
   Optimization method                           NLMINB
-  Number of model parameters                        22
+  Number of model parameters                        12
 
-  Number of observations                         10808
+                                                  Used       Total
+  Number of observations                         11083       12972
 
 Model Test User Model:
-                                              Standard      Scaled
-  Test Statistic                                41.798      65.909
-  Degrees of freedom                                 2           2
-  P-value (Chi-square)                           0.000       0.000
-  Scaling correction factor                                  0.634
-  Shift parameter                                            0.008
-    simple second-order correction                                
+                                                      
+  Test statistic                                19.888
+  Degrees of freedom                                 3
+  P-value (Chi-square)                           0.000
 
 Parameter Estimates:
 
-  Parameterization                               Delta
-  Standard errors                           Robust.sem
+  Standard errors                             Standard
   Information                                 Expected
-  Information saturated (h1) model        Unstructured
+  Information saturated (h1) model          Structured
 
 Latent Variables:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-  lv =~                                               
-    ST253Q01JA        1.000                           
-    ST254Q02JA        0.673    0.023   29.035    0.000
-    ST254Q03JA        1.005    0.030   33.578    0.000
-    ST254Q06JA        0.981    0.031   31.677    0.000
+  cog =~                                              
+    PV1READ           1.000                           
+    PV1SCIE           1.074    0.008  127.842    0.000
+  home =~                                             
+    HOMEPOS           1.000                           
+    ESCS              0.979    0.018   54.320    0.000
 
-Thresholds:
+Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-    ST253Q01JA|t1    -2.704    0.055  -49.588    0.000
-    ST253Q01JA|t2    -2.355    0.037  -63.685    0.000
-    ST253Q01JA|t3    -2.007    0.027  -75.112    0.000
-    ST253Q01JA|t4    -1.669    0.021  -80.781    0.000
-    ST253Q01JA|t5    -1.299    0.017  -78.294    0.000
-    ST253Q01JA|t6    -0.134    0.012  -11.077    0.000
-    ST254Q02JA|t1    -0.373    0.012  -30.168    0.000
-    ST254Q02JA|t2     1.144    0.015   74.222    0.000
- [ reached getOption("max.print") -- omitted 10 rows ]
+  PV1MATH ~                                           
+    cog               1.004    0.008  119.756    0.000
+    home              1.154    0.698    1.653    0.098
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|)
+  cog ~~                                              
+    home             30.009    0.877   34.209    0.000
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .ST253Q01JA        0.629                           
-   .ST254Q02JA        0.832                           
-   .ST254Q03JA        0.625                           
-   .ST254Q06JA        0.643                           
-    lv                0.371    0.015   24.412    0.000</code></pre>
+   .PV1READ        3276.235   53.122   61.674    0.000
+   .PV1SCIE        1639.871   40.777   40.216    0.000
+   .HOMEPOS           0.209    0.011   19.068    0.000
+   .ESCS              0.192    0.010   18.329    0.000
+   .PV1MATH        1136.426   33.825   33.597    0.000
+    cog            7890.353  146.457   53.875    0.000
+    home              0.624    0.015   41.138    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1926,130 +1964,147 @@ Variances:
 <section id="task-4---a-more-complex-latent-variable" class="level3" data-number="1.7.4">
 <h3 data-number="1.7.4" class="anchored" data-anchor-id="task-4---a-more-complex-latent-variable"><span class="header-section-number">1.7.4</span> Task 4 - a more complex latent variable</h3>
 <div class="question">
-<p>You believe that there are two latent variables underlying UK students’ performance in science - a science self-identity variable (related to the home environment, for example, gender, parents’ level of education) and a cognitive ability variable (indicated by performance in other subjects). Propose a model of science performance based on these two latent variables - linking each latent variable to multiple independent variables. Determine how much variance your model explains.</p>
+<p>Performance in science (<code>PV1MATH</code>) might be thought to depend on a number of latent variables. For example, a latent variable related to cognitive ability (you might label this <code>cog</code>) to school variables (<code>sch</code>) and to the home environment (<code>home</code>).</p>
+<p>Build an SEM model of science achievement in <code>Hong Kong (China)</code> (chosen as it has the least missing data) with these three latent variables and comment on what the model shows you.</p>
+<p>Variables that might be of interest include:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 79%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HOMEPOS</td>
+<td>Family Wealth</td>
+</tr>
+<tr class="even">
+<td>ESCS</td>
+<td>Index of economic, social and cultural status</td>
+</tr>
+<tr class="odd">
+<td>BELONG</td>
+<td>Sense of belonging</td>
+</tr>
+<tr class="even">
+<td>PARINVOL</td>
+<td>Parental involvement</td>
+</tr>
+<tr class="odd">
+<td>DISCLIM</td>
+<td>Disciplinary climate in mathematics (WLE)”</td>
+</tr>
+<tr class="even">
+<td>BULLIED</td>
+<td>Bullied at school</td>
+</tr>
+<tr class="odd">
+<td>PV1SCIE</td>
+<td>Science score</td>
+</tr>
+<tr class="even">
+<td>PV1MATH</td>
+<td>Mathematics score</td>
+</tr>
+<tr class="odd">
+<td>PV1READ</td>
+<td>Reading score</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># Create a UK data frame with plausible values for reading math and science</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="co"># ST005Q01JA "What is the [highest level of schooling] completed by your mother?"</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a><span class="co"># ST007Q01JA "What is the [highest level of schooling] completed by your father?"</span></span>
-<span id="cb40-4"><a href="#cb40-4"></a></span>
-<span id="cb40-5"><a href="#cb40-5"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb40-6"><a href="#cb40-6"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, ST005Q01JA, ST007Q01JA, PV1READ, PV1SCIE, </span>
-<span id="cb40-7"><a href="#cb40-7"></a>         PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb40-8"><a href="#cb40-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb40-9"><a href="#cb40-9"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb40-10"><a href="#cb40-10"></a></span>
-<span id="cb40-11"><a href="#cb40-11"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
-<span id="cb40-12"><a href="#cb40-12"></a></span>
-<span id="cb40-13"><a href="#cb40-13"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
-<span id="cb40-14"><a href="#cb40-14"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
-<span id="cb40-15"><a href="#cb40-15"></a></span>
-<span id="cb40-16"><a href="#cb40-16"></a><span class="co"># Convert categorical variables to factors</span></span>
-<span id="cb40-17"><a href="#cb40-17"></a></span>
-<span id="cb40-18"><a href="#cb40-18"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb40-19"><a href="#cb40-19"></a></span>
-<span id="cb40-20"><a href="#cb40-20"></a></span>
-<span id="cb40-21"><a href="#cb40-21"></a><span class="co"># Scale the test scores</span></span>
-<span id="cb40-22"><a href="#cb40-22"></a></span>
-<span id="cb40-23"><a href="#cb40-23"></a>UKdata<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
-<span id="cb40-24"><a href="#cb40-24"></a>UKdata<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
-<span id="cb40-25"><a href="#cb40-25"></a>UKdata<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
-<span id="cb40-26"><a href="#cb40-26"></a></span>
-<span id="cb40-27"><a href="#cb40-27"></a><span class="co"># Propose a model with two latent variables - one related to identity (lvi), the other ability (lva)</span></span>
-<span id="cb40-28"><a href="#cb40-28"></a></span>
-<span id="cb40-29"><a href="#cb40-29"></a>model<span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
-<span id="cb40-30"><a href="#cb40-30"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
-<span id="cb40-31"><a href="#cb40-31"></a><span class="st">        PV1SCIE ~ lvi + lva"</span></span>
-<span id="cb40-32"><a href="#cb40-32"></a></span>
-<span id="cb40-33"><a href="#cb40-33"></a><span class="co"># Fit the model</span></span>
-<span id="cb40-34"><a href="#cb40-34"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>, <span class="st">"ST004D01T"</span>),</span>
-<span id="cb40-35"><a href="#cb40-35"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
-<span id="cb40-36"><a href="#cb40-36"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Create data set</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>HKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">select</span>(CNT, PV1SCIE, PV1MATH, PV1READ, HOMEPOS, ESCS, BELONG, PARINVOL, DISCLIM, BULLIED) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Hong Kong (China)"</span>) </span>
+<span id="cb41-5"><a href="#cb41-5"></a></span>
+<span id="cb41-6"><a href="#cb41-6"></a><span class="co"># Set up the model with</span></span>
+<span id="cb41-7"><a href="#cb41-7"></a><span class="co"># Cogntive latent variable (cog) - based on academic scores PV1READ and PV1SCIE</span></span>
+<span id="cb41-8"><a href="#cb41-8"></a><span class="co"># Home latent variable (home) - based on HOMEPOS (wealth), ESCS (social class), PARINVOL (parental involvement)</span></span>
+<span id="cb41-9"><a href="#cb41-9"></a><span class="co"># School latent variable (sch) - based on DISCLIM (discipline in maths), BULLIED (level of bullying), BELONG (sense of belonging)</span></span>
+<span id="cb41-10"><a href="#cb41-10"></a></span>
+<span id="cb41-11"><a href="#cb41-11"></a>model<span class="ot">&lt;-</span><span class="st">"PV1MATH ~ cog + home + sch</span></span>
+<span id="cb41-12"><a href="#cb41-12"></a><span class="st">        cog =~ PV1READ + PV1SCIE</span></span>
+<span id="cb41-13"><a href="#cb41-13"></a><span class="st">        home =~ HOMEPOS + ESCS + PARINVOL</span></span>
+<span id="cb41-14"><a href="#cb41-14"></a><span class="st">        sch =~  DISCLIM + BULLIED + BELONG</span></span>
+<span id="cb41-15"><a href="#cb41-15"></a><span class="st">        PV1SCIE ~ PV1MATH"</span></span>
+<span id="cb41-16"><a href="#cb41-16"></a></span>
+<span id="cb41-17"><a href="#cb41-17"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> HKdata)</span>
+<span id="cb41-18"><a href="#cb41-18"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-19 ended normally after 32 iterations
+<pre><code>lavaan 0.6-19 ended normally after 530 iterations
 
-  Estimator                                       DWLS
+  Estimator                                         ML
   Optimization method                           NLMINB
-  Number of model parameters                        29
+  Number of model parameters                        24
 
-  Number of observations                          9683
+                                                  Used       Total
+  Number of observations                          4317        5907
 
 Model Test User Model:
-                                              Standard      Scaled
-  Test Statistic                               608.789     982.073
-  Degrees of freedom                                18          18
-  P-value (Chi-square)                           0.000       0.000
-  Scaling correction factor                                  0.624
-  Shift parameter                                            5.831
-    simple second-order correction                                
+                                                      
+  Test statistic                               174.826
+  Degrees of freedom                                21
+  P-value (Chi-square)                           0.000
 
 Parameter Estimates:
 
-  Parameterization                               Delta
-  Standard errors                           Robust.sem
+  Standard errors                             Standard
   Information                                 Expected
-  Information saturated (h1) model        Unstructured
+  Information saturated (h1) model          Structured
 
 Latent Variables:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)
-  lvi =~                                              
-    ESCS              1.000                           
-    HOMEPOS           0.870    0.010   88.568    0.000
-    ST005Q01JA       -0.906    0.014  -63.231    0.000
-    ST007Q01JA       -0.828    0.014  -59.769    0.000
-    ST004D01T        -0.001    0.020   -0.048    0.962
-  lva =~                                              
-    PV1MATH           1.000                           
- [ reached getOption("max.print") -- omitted 1 row ]
+                   Estimate   Std.Err  z-value  P(&gt;|z|)
+  cog =~                                               
+    PV1READ            1.000                           
+    PV1SCIE           -0.151       NA                  
+  home =~                                              
+    HOMEPOS            1.000                           
+    ESCS               1.144       NA                  
+    PARINVOL           0.065       NA                  
+  sch =~                                               
+ [ reached getOption("max.print") -- omitted 3 rows ]
 
 Regressions:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)
-  PV1SCIE ~                                           
-    lvi               0.009    0.009    1.002    0.316
-    lva               0.975    0.010  101.524    0.000
+                   Estimate   Std.Err  z-value  P(&gt;|z|)
+  PV1MATH ~                                            
+    cog               -9.863       NA                  
+    home             311.802       NA                  
+    sch              389.873       NA                  
+  PV1SCIE ~                                            
+    PV1MATH            0.846       NA                  
 
 Covariances:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)
-  lvi ~~                                              
-    lva               0.340    0.009   37.842    0.000
-
-Intercepts:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)
-   .ESCS              0.197    0.009   21.271    0.000
-   .HOMEPOS           0.198    0.009   21.551    0.000
-   .PV1MATH           0.000    0.010    0.000    1.000
-   .PV1READ          -0.000    0.010   -0.000    1.000
-   .PV1SCIE          -0.000    0.010   -0.000    1.000
-
-Thresholds:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)
-    ST005Q01JA|t1     0.206    0.013   16.035    0.000
-    ST005Q01JA|t2     1.507    0.020   76.595    0.000
-    ST005Q01JA|t3     2.137    0.032   67.548    0.000
-    ST005Q01JA|t4     2.393    0.041   58.925    0.000
-    ST007Q01JA|t1    -0.073    0.013   -5.700    0.000
-    ST007Q01JA|t2     1.142    0.016   70.189    0.000
-    ST007Q01JA|t3     2.062    0.030   69.678    0.000
-    ST007Q01JA|t4     2.341    0.039   60.778    0.000
- [ reached getOption("max.print") -- omitted 1 row ]
+                   Estimate   Std.Err  z-value  P(&gt;|z|)
+  cog ~~                                               
+    home              15.344       NA                  
+    sch                7.462       NA                  
+  home ~~                                              
+    sch                0.016       NA                  
 
 Variances:
-                   Estimate  Std.Err  z-value  P(&gt;|z|)
-   .ESCS              0.198    0.007   30.361    0.000
-   .HOMEPOS           0.396    0.008   52.074    0.000
-   .ST005Q01JA        0.542                           
-   .ST007Q01JA        0.617                           
-   .ST004D01T         1.000                           
-   .PV1MATH           0.116    0.007   15.761    0.000
-   .PV1READ           0.302    0.007   43.548    0.000
-   .PV1SCIE           0.154    0.004   39.989    0.000
- [ reached getOption("max.print") -- omitted 2 rows ]</code></pre>
+                   Estimate   Std.Err  z-value  P(&gt;|z|)
+   .PV1READ         9052.953       NA                  
+   .PV1SCIE         2498.213       NA                  
+   .HOMEPOS            0.186       NA                  
+   .ESCS               0.270       NA                  
+   .PARINVOL           0.777       NA                  
+   .DISCLIM            0.682       NA                  
+   .BULLIED            0.720       NA                  
+   .BELONG             0.448       NA                  
+ [ reached getOption("max.print") -- omitted 4 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2062,32 +2117,32 @@ Variances:
 <p>Hint: remember to turn gender into a factor variable and use <code>estimator = "MLR"</code> for the categorical variable. Remember to scale the test items.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Create a data frame with the required base variables</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a>UKdata<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, PV1READ, PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-5"><a href="#cb43-5"></a>  <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb43-6"><a href="#cb43-6"></a>  <span class="fu">rename</span>(<span class="at">gen =</span> ST004D01T) <span class="co"># for ease of display</span></span>
-<span id="cb43-7"><a href="#cb43-7"></a></span>
-<span id="cb43-8"><a href="#cb43-8"></a><span class="co"># set ST004D01T to a factor</span></span>
-<span id="cb43-9"><a href="#cb43-9"></a></span>
-<span id="cb43-10"><a href="#cb43-10"></a>UKdata<span class="sc">$</span>gen <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>gen, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb43-11"><a href="#cb43-11"></a></span>
-<span id="cb43-12"><a href="#cb43-12"></a></span>
-<span id="cb43-13"><a href="#cb43-13"></a><span class="co"># Scale the numeric variables</span></span>
-<span id="cb43-14"><a href="#cb43-14"></a></span>
-<span id="cb43-15"><a href="#cb43-15"></a>UKdata <span class="ot">&lt;-</span> UKdata <span class="sc">%&gt;%</span></span>
-<span id="cb43-16"><a href="#cb43-16"></a>  <span class="fu">mutate</span>(<span class="at">ESCS =</span> <span class="fu">scale</span>(ESCS),</span>
-<span id="cb43-17"><a href="#cb43-17"></a>         <span class="at">HOMEPOS =</span> <span class="fu">scale</span>(HOMEPOS),</span>
-<span id="cb43-18"><a href="#cb43-18"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ),</span>
-<span id="cb43-19"><a href="#cb43-19"></a>         <span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH))</span>
-<span id="cb43-20"><a href="#cb43-20"></a>         </span>
-<span id="cb43-21"><a href="#cb43-21"></a><span class="co"># Create the model</span></span>
-<span id="cb43-22"><a href="#cb43-22"></a></span>
-<span id="cb43-23"><a href="#cb43-23"></a>model <span class="ot">&lt;-</span> <span class="st">"PV1MATH ~ gen + HOMEPOS + ESCS"</span></span>
-<span id="cb43-24"><a href="#cb43-24"></a></span>
-<span id="cb43-25"><a href="#cb43-25"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
-<span id="cb43-26"><a href="#cb43-26"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Create a data frame with the required base variables</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>UKdata<span class="ot">&lt;-</span>PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, PV1READ, PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-5"><a href="#cb44-5"></a>  <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a>  <span class="fu">rename</span>(<span class="at">gen =</span> ST004D01T) <span class="co"># for ease of display</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a></span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="co"># set ST004D01T to a factor</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a></span>
+<span id="cb44-10"><a href="#cb44-10"></a>UKdata<span class="sc">$</span>gen <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>gen, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb44-11"><a href="#cb44-11"></a></span>
+<span id="cb44-12"><a href="#cb44-12"></a></span>
+<span id="cb44-13"><a href="#cb44-13"></a><span class="co"># Scale the numeric variables</span></span>
+<span id="cb44-14"><a href="#cb44-14"></a></span>
+<span id="cb44-15"><a href="#cb44-15"></a>UKdata <span class="ot">&lt;-</span> UKdata <span class="sc">%&gt;%</span></span>
+<span id="cb44-16"><a href="#cb44-16"></a>  <span class="fu">mutate</span>(<span class="at">ESCS =</span> <span class="fu">scale</span>(ESCS),</span>
+<span id="cb44-17"><a href="#cb44-17"></a>         <span class="at">HOMEPOS =</span> <span class="fu">scale</span>(HOMEPOS),</span>
+<span id="cb44-18"><a href="#cb44-18"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ),</span>
+<span id="cb44-19"><a href="#cb44-19"></a>         <span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH))</span>
+<span id="cb44-20"><a href="#cb44-20"></a>         </span>
+<span id="cb44-21"><a href="#cb44-21"></a><span class="co"># Create the model</span></span>
+<span id="cb44-22"><a href="#cb44-22"></a></span>
+<span id="cb44-23"><a href="#cb44-23"></a>model <span class="ot">&lt;-</span> <span class="st">"PV1MATH ~ gen + HOMEPOS + ESCS"</span></span>
+<span id="cb44-24"><a href="#cb44-24"></a></span>
+<span id="cb44-25"><a href="#cb44-25"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
+<span id="cb44-26"><a href="#cb44-26"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 1 iteration
 
@@ -2119,11 +2174,11 @@ Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
    .PV1MATH           0.851    0.011   74.668    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2194,50 +2249,50 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># Using ST255Q01JA  How many books are there in your home?</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a><span class="co"># ST254Q02JA    How many in your home: Computers (desktop computer, portable laptop, or notebook)</span></span>
-<span id="cb46-3"><a href="#cb46-3"></a></span>
-<span id="cb46-4"><a href="#cb46-4"></a>USdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb46-5"><a href="#cb46-5"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, PV1READ, ST255Q01JA, ST254Q02JA, ST005Q01JA, ST007Q01JA,</span>
-<span id="cb46-6"><a href="#cb46-6"></a>         ST256Q02JA, ST255Q01JA) <span class="sc">%&gt;%</span></span>
-<span id="cb46-7"><a href="#cb46-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United States"</span>)</span>
-<span id="cb46-8"><a href="#cb46-8"></a></span>
-<span id="cb46-9"><a href="#cb46-9"></a><span class="co"># set ordinal variables to ordered</span></span>
-<span id="cb46-10"><a href="#cb46-10"></a></span>
-<span id="cb46-11"><a href="#cb46-11"></a>USdata<span class="sc">$</span>ST254Q02JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST254Q02JA)</span>
-<span id="cb46-12"><a href="#cb46-12"></a>USdata<span class="sc">$</span>ST255Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST255Q01JA)</span>
-<span id="cb46-13"><a href="#cb46-13"></a>USdata<span class="sc">$</span>ST254Q02JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST254Q02JA)</span>
-<span id="cb46-14"><a href="#cb46-14"></a>USdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST005Q01JA)</span>
-<span id="cb46-15"><a href="#cb46-15"></a>USdata<span class="sc">$</span>ST007Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST007Q01JA)</span>
-<span id="cb46-16"><a href="#cb46-16"></a></span>
-<span id="cb46-17"><a href="#cb46-17"></a><span class="co"># Scale the numeric variables</span></span>
-<span id="cb46-18"><a href="#cb46-18"></a></span>
-<span id="cb46-19"><a href="#cb46-19"></a>USdata <span class="ot">&lt;-</span> USdata <span class="sc">%&gt;%</span></span>
-<span id="cb46-20"><a href="#cb46-20"></a>  <span class="fu">mutate</span>(<span class="at">ESCS =</span> <span class="fu">scale</span>(ESCS),</span>
-<span id="cb46-21"><a href="#cb46-21"></a>         <span class="at">HOMEPOS =</span> <span class="fu">scale</span>(HOMEPOS),</span>
-<span id="cb46-22"><a href="#cb46-22"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-23"><a href="#cb46-23"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb46-24"><a href="#cb46-24"></a></span>
-<span id="cb46-25"><a href="#cb46-25"></a></span>
-<span id="cb46-26"><a href="#cb46-26"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb46-27"><a href="#cb46-27"></a><span class="st">  # Latent variable definitions</span></span>
-<span id="cb46-28"><a href="#cb46-28"></a><span class="st">  # Parental ed</span></span>
-<span id="cb46-29"><a href="#cb46-29"></a><span class="st">  par_ed =~ ST005Q01JA + ST007Q01JA</span></span>
-<span id="cb46-30"><a href="#cb46-30"></a><span class="st">  # Home environment</span></span>
-<span id="cb46-31"><a href="#cb46-31"></a><span class="st">  home =~ ST256Q02JA + ST255Q01JA</span></span>
-<span id="cb46-32"><a href="#cb46-32"></a><span class="st">  # social class</span></span>
-<span id="cb46-33"><a href="#cb46-33"></a><span class="st">  clas =~ HOMEPOS + ESCS</span></span>
-<span id="cb46-34"><a href="#cb46-34"></a><span class="st">  </span></span>
-<span id="cb46-35"><a href="#cb46-35"></a><span class="st">  # Observed variable for digital access</span></span>
-<span id="cb46-36"><a href="#cb46-36"></a><span class="st">  dig =~ ST254Q02JA</span></span>
-<span id="cb46-37"><a href="#cb46-37"></a><span class="st">  </span></span>
-<span id="cb46-38"><a href="#cb46-38"></a><span class="st">  # Regression relationships</span></span>
-<span id="cb46-39"><a href="#cb46-39"></a><span class="st">  PV1READ ~ par_ed+ home + clas + dig"</span></span>
-<span id="cb46-40"><a href="#cb46-40"></a></span>
-<span id="cb46-41"><a href="#cb46-41"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> USdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST255Q01JA"</span>, <span class="st">"ST254Q02JA"</span>, <span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>,</span>
-<span id="cb46-42"><a href="#cb46-42"></a>                                           <span class="st">"ST256Q02JA"</span>),</span>
-<span id="cb46-43"><a href="#cb46-43"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
-<span id="cb46-44"><a href="#cb46-44"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Using ST255Q01JA  How many books are there in your home?</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="co"># ST254Q02JA    How many in your home: Computers (desktop computer, portable laptop, or notebook)</span></span>
+<span id="cb47-3"><a href="#cb47-3"></a></span>
+<span id="cb47-4"><a href="#cb47-4"></a>USdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a href="#cb47-5"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, PV1READ, ST255Q01JA, ST254Q02JA, ST005Q01JA, ST007Q01JA,</span>
+<span id="cb47-6"><a href="#cb47-6"></a>         ST256Q02JA, ST255Q01JA) <span class="sc">%&gt;%</span></span>
+<span id="cb47-7"><a href="#cb47-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United States"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8"></a></span>
+<span id="cb47-9"><a href="#cb47-9"></a><span class="co"># set ordinal variables to ordered</span></span>
+<span id="cb47-10"><a href="#cb47-10"></a></span>
+<span id="cb47-11"><a href="#cb47-11"></a>USdata<span class="sc">$</span>ST254Q02JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST254Q02JA)</span>
+<span id="cb47-12"><a href="#cb47-12"></a>USdata<span class="sc">$</span>ST255Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST255Q01JA)</span>
+<span id="cb47-13"><a href="#cb47-13"></a>USdata<span class="sc">$</span>ST254Q02JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST254Q02JA)</span>
+<span id="cb47-14"><a href="#cb47-14"></a>USdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST005Q01JA)</span>
+<span id="cb47-15"><a href="#cb47-15"></a>USdata<span class="sc">$</span>ST007Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(USdata<span class="sc">$</span>ST007Q01JA)</span>
+<span id="cb47-16"><a href="#cb47-16"></a></span>
+<span id="cb47-17"><a href="#cb47-17"></a><span class="co"># Scale the numeric variables</span></span>
+<span id="cb47-18"><a href="#cb47-18"></a></span>
+<span id="cb47-19"><a href="#cb47-19"></a>USdata <span class="ot">&lt;-</span> USdata <span class="sc">%&gt;%</span></span>
+<span id="cb47-20"><a href="#cb47-20"></a>  <span class="fu">mutate</span>(<span class="at">ESCS =</span> <span class="fu">scale</span>(ESCS),</span>
+<span id="cb47-21"><a href="#cb47-21"></a>         <span class="at">HOMEPOS =</span> <span class="fu">scale</span>(HOMEPOS),</span>
+<span id="cb47-22"><a href="#cb47-22"></a>         <span class="at">PV1READ =</span> <span class="fu">scale</span>(PV1READ)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-23"><a href="#cb47-23"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb47-24"><a href="#cb47-24"></a></span>
+<span id="cb47-25"><a href="#cb47-25"></a></span>
+<span id="cb47-26"><a href="#cb47-26"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb47-27"><a href="#cb47-27"></a><span class="st">  # Latent variable definitions</span></span>
+<span id="cb47-28"><a href="#cb47-28"></a><span class="st">  # Parental ed</span></span>
+<span id="cb47-29"><a href="#cb47-29"></a><span class="st">  par_ed =~ ST005Q01JA + ST007Q01JA</span></span>
+<span id="cb47-30"><a href="#cb47-30"></a><span class="st">  # Home environment</span></span>
+<span id="cb47-31"><a href="#cb47-31"></a><span class="st">  home =~ ST256Q02JA + ST255Q01JA</span></span>
+<span id="cb47-32"><a href="#cb47-32"></a><span class="st">  # social class</span></span>
+<span id="cb47-33"><a href="#cb47-33"></a><span class="st">  clas =~ HOMEPOS + ESCS</span></span>
+<span id="cb47-34"><a href="#cb47-34"></a><span class="st">  </span></span>
+<span id="cb47-35"><a href="#cb47-35"></a><span class="st">  # Observed variable for digital access</span></span>
+<span id="cb47-36"><a href="#cb47-36"></a><span class="st">  dig =~ ST254Q02JA</span></span>
+<span id="cb47-37"><a href="#cb47-37"></a><span class="st">  </span></span>
+<span id="cb47-38"><a href="#cb47-38"></a><span class="st">  # Regression relationships</span></span>
+<span id="cb47-39"><a href="#cb47-39"></a><span class="st">  PV1READ ~ par_ed+ home + clas + dig"</span></span>
+<span id="cb47-40"><a href="#cb47-40"></a></span>
+<span id="cb47-41"><a href="#cb47-41"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> USdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST255Q01JA"</span>, <span class="st">"ST254Q02JA"</span>, <span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>,</span>
+<span id="cb47-42"><a href="#cb47-42"></a>                                           <span class="st">"ST256Q02JA"</span>),</span>
+<span id="cb47-43"><a href="#cb47-43"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
+<span id="cb47-44"><a href="#cb47-44"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 54 iterations
 
@@ -2325,11 +2380,11 @@ Variances:
    .PV1READ           0.758       NA                  
  [ reached getOption("max.print") -- omitted 4 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">label.cex =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, <span class="at">label.cex =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2341,35 +2396,35 @@ Variances:
 <p>Using the model you developed in task 6: a) assess the model fit - how good is your model? b) use model modification indices to improve your model</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Create a UK data frame with plausible values for reading math and science</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a></span>
-<span id="cb49-3"><a href="#cb49-3"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb49-4"><a href="#cb49-4"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, ST005Q01JA, ST007Q01JA, PV1READ, PV1SCIE, </span>
-<span id="cb49-5"><a href="#cb49-5"></a>         PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb49-6"><a href="#cb49-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="cb49-7"><a href="#cb49-7"></a></span>
-<span id="cb49-8"><a href="#cb49-8"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
-<span id="cb49-9"><a href="#cb49-9"></a></span>
-<span id="cb49-10"><a href="#cb49-10"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
-<span id="cb49-11"><a href="#cb49-11"></a>UKdata<span class="sc">$</span>ST007Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST007Q01JA)</span>
-<span id="cb49-12"><a href="#cb49-12"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST004D01T)</span>
-<span id="cb49-13"><a href="#cb49-13"></a></span>
-<span id="cb49-14"><a href="#cb49-14"></a><span class="co"># Scale the test scores</span></span>
-<span id="cb49-15"><a href="#cb49-15"></a></span>
-<span id="cb49-16"><a href="#cb49-16"></a>UKdata<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
-<span id="cb49-17"><a href="#cb49-17"></a>UKdata<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
-<span id="cb49-18"><a href="#cb49-18"></a>UKdata<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
-<span id="cb49-19"><a href="#cb49-19"></a></span>
-<span id="cb49-20"><a href="#cb49-20"></a><span class="co"># Propose a model with two latent variables - one related to identity (lvi), the other ability (lva)</span></span>
-<span id="cb49-21"><a href="#cb49-21"></a></span>
-<span id="cb49-22"><a href="#cb49-22"></a>model<span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
-<span id="cb49-23"><a href="#cb49-23"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
-<span id="cb49-24"><a href="#cb49-24"></a><span class="st">        PV1SCIE ~ lvi + lva"</span></span>
-<span id="cb49-25"><a href="#cb49-25"></a></span>
-<span id="cb49-26"><a href="#cb49-26"></a><span class="co"># Fit the model</span></span>
-<span id="cb49-27"><a href="#cb49-27"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data=</span>UKdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>, <span class="st">"ST004D01T"</span>),</span>
-<span id="cb49-28"><a href="#cb49-28"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
-<span id="cb49-29"><a href="#cb49-29"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># Create a UK data frame with plausible values for reading math and science</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a></span>
+<span id="cb50-3"><a href="#cb50-3"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="#cb50-4"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, ST005Q01JA, ST007Q01JA, PV1READ, PV1SCIE, </span>
+<span id="cb50-5"><a href="#cb50-5"></a>         PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="#cb50-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb50-7"><a href="#cb50-7"></a></span>
+<span id="cb50-8"><a href="#cb50-8"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
+<span id="cb50-9"><a href="#cb50-9"></a></span>
+<span id="cb50-10"><a href="#cb50-10"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
+<span id="cb50-11"><a href="#cb50-11"></a>UKdata<span class="sc">$</span>ST007Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST007Q01JA)</span>
+<span id="cb50-12"><a href="#cb50-12"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST004D01T)</span>
+<span id="cb50-13"><a href="#cb50-13"></a></span>
+<span id="cb50-14"><a href="#cb50-14"></a><span class="co"># Scale the test scores</span></span>
+<span id="cb50-15"><a href="#cb50-15"></a></span>
+<span id="cb50-16"><a href="#cb50-16"></a>UKdata<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
+<span id="cb50-17"><a href="#cb50-17"></a>UKdata<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
+<span id="cb50-18"><a href="#cb50-18"></a>UKdata<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
+<span id="cb50-19"><a href="#cb50-19"></a></span>
+<span id="cb50-20"><a href="#cb50-20"></a><span class="co"># Propose a model with two latent variables - one related to identity (lvi), the other ability (lva)</span></span>
+<span id="cb50-21"><a href="#cb50-21"></a></span>
+<span id="cb50-22"><a href="#cb50-22"></a>model<span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
+<span id="cb50-23"><a href="#cb50-23"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
+<span id="cb50-24"><a href="#cb50-24"></a><span class="st">        PV1SCIE ~ lvi + lva"</span></span>
+<span id="cb50-25"><a href="#cb50-25"></a></span>
+<span id="cb50-26"><a href="#cb50-26"></a><span class="co"># Fit the model</span></span>
+<span id="cb50-27"><a href="#cb50-27"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data=</span>UKdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>, <span class="st">"ST004D01T"</span>),</span>
+<span id="cb50-28"><a href="#cb50-28"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
+<span id="cb50-29"><a href="#cb50-29"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 33 iterations
 
@@ -2484,21 +2539,21 @@ Variances:
    .PV1SCIE           0.157    0.004   39.989    0.000
  [ reached getOption("max.print") -- omitted 2 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Evaluating my models fit</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="co"># Chi square is 0.000 which is &lt;0.05 suggesting a poor fit</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="co"># CFI is &gt;0.95 suggesting good fit</span></span>
-<span id="cb51-4"><a href="#cb51-4"></a><span class="co"># TLI is &gt;0.95 suggesting good fit</span></span>
-<span id="cb51-5"><a href="#cb51-5"></a><span class="co"># RMSEA is 0.036 suggesting a very good fit</span></span>
-<span id="cb51-6"><a href="#cb51-6"></a></span>
-<span id="cb51-7"><a href="#cb51-7"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Evaluating my models fit</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="co"># Chi square is 0.000 which is &lt;0.05 suggesting a poor fit</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a><span class="co"># CFI is &gt;0.95 suggesting good fit</span></span>
+<span id="cb52-4"><a href="#cb52-4"></a><span class="co"># TLI is &gt;0.95 suggesting good fit</span></span>
+<span id="cb52-5"><a href="#cb52-5"></a><span class="co"># RMSEA is 0.036 suggesting a very good fit</span></span>
+<span id="cb52-6"><a href="#cb52-6"></a></span>
+<span id="cb52-7"><a href="#cb52-7"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          lhs op        rhs      mi    epc sepc.lv sepc.all sepc.nox
 50       ESCS ~~    HOMEPOS 291.721 -0.229  -0.229   -0.820   -0.820
@@ -2508,20 +2563,20 @@ Variances:
 63 ST005Q01JA ~~ ST007Q01JA 105.884 -0.129  -0.129   -0.223   -0.223
  [ reached 'max' / getOption("max.print") -- omitted 29 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co">#  The top two suggestions here are adding 'lva ~~  HOMEPOS' and 'lva   ~~ST004D01T' Don't seem</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a><span class="co"># to be justified from theory. Ability might not link to wealth and gender</span></span>
-<span id="cb54-3"><a href="#cb54-3"></a><span class="co"># HOMEPOS   ~~  ST007Q01JA is a plausible suggestion - there is likely to be a link between father's lvel of education and wealth. And HOMEPOS  ~~  PV1SCIE - wealth links to science scores</span></span>
-<span id="cb54-4"><a href="#cb54-4"></a></span>
-<span id="cb54-5"><a href="#cb54-5"></a></span>
-<span id="cb54-6"><a href="#cb54-6"></a>model_2 <span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
-<span id="cb54-7"><a href="#cb54-7"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
-<span id="cb54-8"><a href="#cb54-8"></a><span class="st">        PV1SCIE ~ lvi + lva</span></span>
-<span id="cb54-9"><a href="#cb54-9"></a><span class="st">        HOMEPOS ~~  ST007Q01JA</span></span>
-<span id="cb54-10"><a href="#cb54-10"></a><span class="st">        HOMEPOS ~~  PV1SCIE"</span></span>
-<span id="cb54-11"><a href="#cb54-11"></a></span>
-<span id="cb54-12"><a href="#cb54-12"></a><span class="co"># Fit the model</span></span>
-<span id="cb54-13"><a href="#cb54-13"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model_2, <span class="at">data=</span>UKdata)</span>
-<span id="cb54-14"><a href="#cb54-14"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co">#  The top two suggestions here are adding 'lva ~~  HOMEPOS' and 'lva   ~~ST004D01T' Don't seem</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="co"># to be justified from theory. Ability might not link to wealth and gender</span></span>
+<span id="cb55-3"><a href="#cb55-3"></a><span class="co"># HOMEPOS   ~~  ST007Q01JA is a plausible suggestion - there is likely to be a link between father's lvel of education and wealth. And HOMEPOS  ~~  PV1SCIE - wealth links to science scores</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a></span>
+<span id="cb55-5"><a href="#cb55-5"></a></span>
+<span id="cb55-6"><a href="#cb55-6"></a>model_2 <span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
+<span id="cb55-7"><a href="#cb55-7"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
+<span id="cb55-8"><a href="#cb55-8"></a><span class="st">        PV1SCIE ~ lvi + lva</span></span>
+<span id="cb55-9"><a href="#cb55-9"></a><span class="st">        HOMEPOS ~~  ST007Q01JA</span></span>
+<span id="cb55-10"><a href="#cb55-10"></a><span class="st">        HOMEPOS ~~  PV1SCIE"</span></span>
+<span id="cb55-11"><a href="#cb55-11"></a></span>
+<span id="cb55-12"><a href="#cb55-12"></a><span class="co"># Fit the model</span></span>
+<span id="cb55-13"><a href="#cb55-13"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model_2, <span class="at">data=</span>UKdata)</span>
+<span id="cb55-14"><a href="#cb55-14"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 34 iterations
 
@@ -2639,11 +2694,11 @@ Variances:
    .PV1SCIE           0.157    0.004   39.946    0.000
  [ reached getOption("max.print") -- omitted 2 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Evaluating my models fit</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="co"># Chi square is 0.000 suggesting still a poor fit (but the chi-square statistics has come down from:  608.789 to 455.399)</span></span>
-<span id="cb56-3"><a href="#cb56-3"></a><span class="co"># CFI is &gt;0.988 suggesting good fit -this has gone up!</span></span>
-<span id="cb56-4"><a href="#cb56-4"></a><span class="co"># TLI is  0.979 which is an improvement</span></span>
-<span id="cb56-5"><a href="#cb56-5"></a><span class="co"># RMSEA is now 0.054, down from 0.036 a slightly worse fit than before!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Evaluating my models fit</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="co"># Chi square is 0.000 suggesting still a poor fit (but the chi-square statistics has come down from:  608.789 to 455.399)</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a><span class="co"># CFI is &gt;0.988 suggesting good fit -this has gone up!</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="co"># TLI is  0.979 which is an improvement</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="co"># RMSEA is now 0.054, down from 0.036 a slightly worse fit than before!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="task-8---report-factor-loadings-and-r2-for-your-model" class="level3" data-number="1.7.8">
@@ -2653,40 +2708,40 @@ Variances:
 <p>You have modified the model using modification indices. Now extract the factor loadings and the R^2@ of your items. Discuss what the coefficients tell you about the variables in your model.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, ST005Q01JA, ST007Q01JA, PV1READ, PV1SCIE, </span>
-<span id="cb57-3"><a href="#cb57-3"></a>         PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb57-4"><a href="#cb57-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb57-5"><a href="#cb57-5"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb57-6"><a href="#cb57-6"></a></span>
-<span id="cb57-7"><a href="#cb57-7"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
-<span id="cb57-8"><a href="#cb57-8"></a></span>
-<span id="cb57-9"><a href="#cb57-9"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
-<span id="cb57-10"><a href="#cb57-10"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
-<span id="cb57-11"><a href="#cb57-11"></a></span>
-<span id="cb57-12"><a href="#cb57-12"></a><span class="co"># Convert categorical variables to factors</span></span>
-<span id="cb57-13"><a href="#cb57-13"></a></span>
-<span id="cb57-14"><a href="#cb57-14"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb57-15"><a href="#cb57-15"></a></span>
-<span id="cb57-16"><a href="#cb57-16"></a></span>
-<span id="cb57-17"><a href="#cb57-17"></a><span class="co"># Scale the test scores</span></span>
-<span id="cb57-18"><a href="#cb57-18"></a></span>
-<span id="cb57-19"><a href="#cb57-19"></a>UKdata<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
-<span id="cb57-20"><a href="#cb57-20"></a>UKdata<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
-<span id="cb57-21"><a href="#cb57-21"></a>UKdata<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
-<span id="cb57-22"><a href="#cb57-22"></a></span>
-<span id="cb57-23"><a href="#cb57-23"></a><span class="co"># Propose a model with two latent variables - one related to identity (lvi), the other ability (lva)</span></span>
-<span id="cb57-24"><a href="#cb57-24"></a></span>
-<span id="cb57-25"><a href="#cb57-25"></a>model<span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
-<span id="cb57-26"><a href="#cb57-26"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
-<span id="cb57-27"><a href="#cb57-27"></a><span class="st">        PV1SCIE ~ lvi + lva"</span></span>
-<span id="cb57-28"><a href="#cb57-28"></a></span>
-<span id="cb57-29"><a href="#cb57-29"></a><span class="co"># Fit the model</span></span>
-<span id="cb57-30"><a href="#cb57-30"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>, <span class="st">"ST004D01T"</span>),</span>
-<span id="cb57-31"><a href="#cb57-31"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
-<span id="cb57-32"><a href="#cb57-32"></a></span>
-<span id="cb57-33"><a href="#cb57-33"></a><span class="co"># Extract loadings</span></span>
-<span id="cb57-34"><a href="#cb57-34"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>UKdata <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">select</span>(CNT, ESCS, HOMEPOS, ST005Q01JA, ST007Q01JA, PV1READ, PV1SCIE, </span>
+<span id="cb58-3"><a href="#cb58-3"></a>         PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-5"><a href="#cb58-5"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb58-6"><a href="#cb58-6"></a></span>
+<span id="cb58-7"><a href="#cb58-7"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
+<span id="cb58-8"><a href="#cb58-8"></a></span>
+<span id="cb58-9"><a href="#cb58-9"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
+<span id="cb58-10"><a href="#cb58-10"></a>UKdata<span class="sc">$</span>ST005Q01JA <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(UKdata<span class="sc">$</span>ST005Q01JA)</span>
+<span id="cb58-11"><a href="#cb58-11"></a></span>
+<span id="cb58-12"><a href="#cb58-12"></a><span class="co"># Convert categorical variables to factors</span></span>
+<span id="cb58-13"><a href="#cb58-13"></a></span>
+<span id="cb58-14"><a href="#cb58-14"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb58-15"><a href="#cb58-15"></a></span>
+<span id="cb58-16"><a href="#cb58-16"></a></span>
+<span id="cb58-17"><a href="#cb58-17"></a><span class="co"># Scale the test scores</span></span>
+<span id="cb58-18"><a href="#cb58-18"></a></span>
+<span id="cb58-19"><a href="#cb58-19"></a>UKdata<span class="sc">$</span>PV1READ <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1READ)</span>
+<span id="cb58-20"><a href="#cb58-20"></a>UKdata<span class="sc">$</span>PV1MATH <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1MATH)</span>
+<span id="cb58-21"><a href="#cb58-21"></a>UKdata<span class="sc">$</span>PV1SCIE <span class="ot">&lt;-</span> <span class="fu">scale</span>(UKdata<span class="sc">$</span>PV1SCIE)</span>
+<span id="cb58-22"><a href="#cb58-22"></a></span>
+<span id="cb58-23"><a href="#cb58-23"></a><span class="co"># Propose a model with two latent variables - one related to identity (lvi), the other ability (lva)</span></span>
+<span id="cb58-24"><a href="#cb58-24"></a></span>
+<span id="cb58-25"><a href="#cb58-25"></a>model<span class="ot">&lt;-</span><span class="st">"lvi =~ ESCS + HOMEPOS + ST005Q01JA + ST007Q01JA + ST004D01T</span></span>
+<span id="cb58-26"><a href="#cb58-26"></a><span class="st">        lva =~ PV1MATH + PV1READ</span></span>
+<span id="cb58-27"><a href="#cb58-27"></a><span class="st">        PV1SCIE ~ lvi + lva"</span></span>
+<span id="cb58-28"><a href="#cb58-28"></a></span>
+<span id="cb58-29"><a href="#cb58-29"></a><span class="co"># Fit the model</span></span>
+<span id="cb58-30"><a href="#cb58-30"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST005Q01JA"</span>, <span class="st">"ST007Q01JA"</span>, <span class="st">"ST004D01T"</span>),</span>
+<span id="cb58-31"><a href="#cb58-31"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
+<span id="cb58-32"><a href="#cb58-32"></a></span>
+<span id="cb58-33"><a href="#cb58-33"></a><span class="co"># Extract loadings</span></span>
+<span id="cb58-34"><a href="#cb58-34"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  lhs op        rhs est.std    se       z pvalue ci.lower ci.upper
 1 lvi =~       ESCS   0.859 0.005 162.691      0    0.849    0.870
@@ -2695,16 +2750,16 @@ Variances:
 4 lvi =~ ST007Q01JA  -0.619 0.009 -70.304      0   -0.636   -0.602
  [ reached 'max' / getOption("max.print") -- omitted 38 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># The self-identity latent variable loads strongly to social class (0.859) and less strongly to</span></span>
-<span id="cb59-2"><a href="#cb59-2"></a><span class="co"># wealth (0.718). Curiously, the self-identity latent variable has a strong negative loading (-0.636) to # mother's highest level of  schooling (ST005Q01JA) and to father's level of schooling (ST007Q01JA) (-0.619).</span></span>
-<span id="cb59-3"><a href="#cb59-3"></a><span class="co"># Self-identity loads very weakly to gender (-0.001). The loading for gender is not significant. By contrast the achievement  test scores PV1MATH (0.940) and PV1READ (0.836) load strongly on the achievement latent variable (lva)</span></span>
-<span id="cb59-4"><a href="#cb59-4"></a></span>
-<span id="cb59-5"><a href="#cb59-5"></a><span class="co"># Extract R^2</span></span>
-<span id="cb59-6"><a href="#cb59-6"></a></span>
-<span id="cb59-7"><a href="#cb59-7"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb59-8"><a href="#cb59-8"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb59-9"><a href="#cb59-9"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
-<span id="cb59-10"><a href="#cb59-10"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># The self-identity latent variable loads strongly to social class (0.859) and less strongly to</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="co"># wealth (0.718). Curiously, the self-identity latent variable has a strong negative loading (-0.636) to # mother's highest level of  schooling (ST005Q01JA) and to father's level of schooling (ST007Q01JA) (-0.619).</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a><span class="co"># Self-identity loads very weakly to gender (-0.001). The loading for gender is not significant. By contrast the achievement  test scores PV1MATH (0.940) and PV1READ (0.836) load strongly on the achievement latent variable (lva)</span></span>
+<span id="cb60-4"><a href="#cb60-4"></a></span>
+<span id="cb60-5"><a href="#cb60-5"></a><span class="co"># Extract R^2</span></span>
+<span id="cb60-6"><a href="#cb60-6"></a></span>
+<span id="cb60-7"><a href="#cb60-7"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-8"><a href="#cb60-8"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-9"><a href="#cb60-9"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
+<span id="cb60-10"><a href="#cb60-10"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Item    R2
 1    PV1MATH 0.884
@@ -2716,13 +2771,13 @@ Variances:
 7 ST007Q01JA 0.383
 8  ST004D01T 0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># The achievement variables are the best explained by the achievement latent variable</span></span>
-<span id="cb61-2"><a href="#cb61-2"></a><span class="co"># 88.4% of the mathematics score, 84.6% of the science score and 69.8% of the reading score are </span></span>
-<span id="cb61-3"><a href="#cb61-3"></a><span class="co"># explained by the latent achievement variable (lva)</span></span>
-<span id="cb61-4"><a href="#cb61-4"></a><span class="co"># The self-identity variable accounts for 73.8% of social class (ESCS)</span></span>
-<span id="cb61-5"><a href="#cb61-5"></a><span class="co"># 51.6% of wealth (HOMEPOS) and 45.8% of mother's occupation (ST005Q01JA) and  38.3% of father's </span></span>
-<span id="cb61-6"><a href="#cb61-6"></a><span class="co"># occupation (ST007Q01JA). As the loading and its p-value led us to expect - gender is not explained</span></span>
-<span id="cb61-7"><a href="#cb61-7"></a><span class="co"># by the latent variable (0%)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># The achievement variables are the best explained by the achievement latent variable</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a><span class="co"># 88.4% of the mathematics score, 84.6% of the science score and 69.8% of the reading score are </span></span>
+<span id="cb62-3"><a href="#cb62-3"></a><span class="co"># explained by the latent achievement variable (lva)</span></span>
+<span id="cb62-4"><a href="#cb62-4"></a><span class="co"># The self-identity variable accounts for 73.8% of social class (ESCS)</span></span>
+<span id="cb62-5"><a href="#cb62-5"></a><span class="co"># 51.6% of wealth (HOMEPOS) and 45.8% of mother's occupation (ST005Q01JA) and  38.3% of father's </span></span>
+<span id="cb62-6"><a href="#cb62-6"></a><span class="co"># occupation (ST007Q01JA). As the loading and its p-value led us to expect - gender is not explained</span></span>
+<span id="cb62-7"><a href="#cb62-7"></a><span class="co"># by the latent variable (0%)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="task-9---create-your-own-model-of-overall-achievement-in-hong-kong-china" class="level3" data-number="1.7.9">
@@ -2746,65 +2801,65 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># Create a Hong Kong data frame with required variables</span></span>
-<span id="cb62-2"><a href="#cb62-2"></a></span>
-<span id="cb62-3"><a href="#cb62-3"></a>HK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="cb62-4"><a href="#cb62-4"></a>  <span class="fu">select</span>(CNT, PV1READ, PV1SCIE, PV1MATH, BELONG, DISCLIM,</span>
-<span id="cb62-5"><a href="#cb62-5"></a>         ST016Q01NA, WB150Q01HA, WB156Q01HA) <span class="sc">%&gt;%</span> <span class="co"># Rename for ease</span></span>
-<span id="cb62-6"><a href="#cb62-6"></a>         <span class="fu">rename</span>(<span class="at">sat =</span> ST016Q01NA, </span>
-<span id="cb62-7"><a href="#cb62-7"></a>                <span class="at">hel =</span> WB150Q01HA, </span>
-<span id="cb62-8"><a href="#cb62-8"></a>                <span class="at">fri =</span> WB156Q01HA) <span class="sc">%&gt;%</span></span>
-<span id="cb62-9"><a href="#cb62-9"></a>  <span class="fu">mutate</span>(<span class="at">hel =</span> <span class="fu">case_when</span>(hel <span class="sc">==</span> <span class="st">"Very good"</span> <span class="sc">~</span> <span class="dv">5</span>,</span>
-<span id="cb62-10"><a href="#cb62-10"></a>                         hel <span class="sc">==</span> <span class="st">"Good"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb62-11"><a href="#cb62-11"></a>                         hel <span class="sc">==</span> <span class="st">"Fair"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb62-12"><a href="#cb62-12"></a>                         hel <span class="sc">==</span> <span class="st">"Poor"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb62-13"><a href="#cb62-13"></a>                         hel <span class="sc">==</span> <span class="st">"Very poor"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb62-14"><a href="#cb62-14"></a>                         <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span>)) <span class="sc">%&gt;%</span> <span class="co"># Convert to numeric</span></span>
-<span id="cb62-15"><a href="#cb62-15"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Hong Kong (China)"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-16"><a href="#cb62-16"></a>  <span class="fu">mutate</span>(<span class="at">z_pv_overall =</span> <span class="fu">scale</span>(PV1READ <span class="sc">+</span> PV1MATH <span class="sc">+</span> PV1SCIE <span class="sc">/</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="co">#  scaled overall achievement score</span></span>
-<span id="cb62-17"><a href="#cb62-17"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(z_pv_overall),</span>
-<span id="cb62-18"><a href="#cb62-18"></a>         <span class="sc">!</span><span class="fu">is.na</span>(sat),</span>
-<span id="cb62-19"><a href="#cb62-19"></a>         <span class="sc">!</span><span class="fu">is.na</span>(hel),</span>
-<span id="cb62-20"><a href="#cb62-20"></a>         <span class="sc">!</span><span class="fu">is.na</span>(fri))</span>
-<span id="cb62-21"><a href="#cb62-21"></a></span>
-<span id="cb62-22"><a href="#cb62-22"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
-<span id="cb62-23"><a href="#cb62-23"></a></span>
-<span id="cb62-24"><a href="#cb62-24"></a>HK_data<span class="sc">$</span>hel <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(HK_data<span class="sc">$</span>hel)</span>
-<span id="cb62-25"><a href="#cb62-25"></a>HK_data<span class="sc">$</span>sat <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(HK_data<span class="sc">$</span>sat)</span>
-<span id="cb62-26"><a href="#cb62-26"></a>HK_data<span class="sc">$</span>fri <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(HK_data<span class="sc">$</span>fri)</span>
-<span id="cb62-27"><a href="#cb62-27"></a></span>
-<span id="cb62-28"><a href="#cb62-28"></a><span class="co"># Create a model with two latent variables</span></span>
-<span id="cb62-29"><a href="#cb62-29"></a><span class="co"># lvw - wellbeing</span></span>
-<span id="cb62-30"><a href="#cb62-30"></a><span class="co"># ST016Q01NA "Overall, how satisfied are you with your life as a whole these days?"</span></span>
-<span id="cb62-31"><a href="#cb62-31"></a><span class="co"># WB150Q01HA "How is your health?"</span></span>
-<span id="cb62-32"><a href="#cb62-32"></a><span class="co"># WB156Q01HA "At present, how many close friends do you have?"</span></span>
-<span id="cb62-33"><a href="#cb62-33"></a></span>
-<span id="cb62-34"><a href="#cb62-34"></a><span class="co">#</span></span>
-<span id="cb62-35"><a href="#cb62-35"></a><span class="co"># lve - school environment</span></span>
-<span id="cb62-36"><a href="#cb62-36"></a><span class="co"># DISCLIM "Disciplinary climate in mathematics (WLE)"</span></span>
-<span id="cb62-37"><a href="#cb62-37"></a><span class="co"># BELONG  "Sense of belonging (WLE)"</span></span>
-<span id="cb62-38"><a href="#cb62-38"></a><span class="co"># </span></span>
-<span id="cb62-39"><a href="#cb62-39"></a></span>
-<span id="cb62-40"><a href="#cb62-40"></a><span class="co"># define the model</span></span>
-<span id="cb62-41"><a href="#cb62-41"></a>model_well_school <span class="ot">&lt;-</span> <span class="st">"lvw =~  sat + hel + fri</span></span>
-<span id="cb62-42"><a href="#cb62-42"></a><span class="st">        lve =~ BELONG + DISCLIM</span></span>
-<span id="cb62-43"><a href="#cb62-43"></a><span class="st">        z_pv_overall ~ lvw + lve"</span></span>
-<span id="cb62-44"><a href="#cb62-44"></a></span>
-<span id="cb62-45"><a href="#cb62-45"></a><span class="co"># Fit the model</span></span>
-<span id="cb62-46"><a href="#cb62-46"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model_well_school, <span class="at">data =</span> HK_data, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"sat"</span>, <span class="st">"hel"</span>, <span class="st">"fri"</span>),</span>
-<span id="cb62-47"><a href="#cb62-47"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
-<span id="cb62-48"><a href="#cb62-48"></a></span>
-<span id="cb62-49"><a href="#cb62-49"></a><span class="co"># plot</span></span>
-<span id="cb62-50"><a href="#cb62-50"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Create a Hong Kong data frame with required variables</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a></span>
+<span id="cb63-3"><a href="#cb63-3"></a>HK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a>  <span class="fu">select</span>(CNT, PV1READ, PV1SCIE, PV1MATH, BELONG, DISCLIM,</span>
+<span id="cb63-5"><a href="#cb63-5"></a>         ST016Q01NA, WB150Q01HA, WB156Q01HA) <span class="sc">%&gt;%</span> <span class="co"># Rename for ease</span></span>
+<span id="cb63-6"><a href="#cb63-6"></a>         <span class="fu">rename</span>(<span class="at">sat =</span> ST016Q01NA, </span>
+<span id="cb63-7"><a href="#cb63-7"></a>                <span class="at">hel =</span> WB150Q01HA, </span>
+<span id="cb63-8"><a href="#cb63-8"></a>                <span class="at">fri =</span> WB156Q01HA) <span class="sc">%&gt;%</span></span>
+<span id="cb63-9"><a href="#cb63-9"></a>  <span class="fu">mutate</span>(<span class="at">hel =</span> <span class="fu">case_when</span>(hel <span class="sc">==</span> <span class="st">"Very good"</span> <span class="sc">~</span> <span class="dv">5</span>,</span>
+<span id="cb63-10"><a href="#cb63-10"></a>                         hel <span class="sc">==</span> <span class="st">"Good"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb63-11"><a href="#cb63-11"></a>                         hel <span class="sc">==</span> <span class="st">"Fair"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb63-12"><a href="#cb63-12"></a>                         hel <span class="sc">==</span> <span class="st">"Poor"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb63-13"><a href="#cb63-13"></a>                         hel <span class="sc">==</span> <span class="st">"Very poor"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb63-14"><a href="#cb63-14"></a>                         <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span>)) <span class="sc">%&gt;%</span> <span class="co"># Convert to numeric</span></span>
+<span id="cb63-15"><a href="#cb63-15"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Hong Kong (China)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-16"><a href="#cb63-16"></a>  <span class="fu">mutate</span>(<span class="at">z_pv_overall =</span> <span class="fu">scale</span>(PV1READ <span class="sc">+</span> PV1MATH <span class="sc">+</span> PV1SCIE <span class="sc">/</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="co">#  scaled overall achievement score</span></span>
+<span id="cb63-17"><a href="#cb63-17"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(z_pv_overall),</span>
+<span id="cb63-18"><a href="#cb63-18"></a>         <span class="sc">!</span><span class="fu">is.na</span>(sat),</span>
+<span id="cb63-19"><a href="#cb63-19"></a>         <span class="sc">!</span><span class="fu">is.na</span>(hel),</span>
+<span id="cb63-20"><a href="#cb63-20"></a>         <span class="sc">!</span><span class="fu">is.na</span>(fri))</span>
+<span id="cb63-21"><a href="#cb63-21"></a></span>
+<span id="cb63-22"><a href="#cb63-22"></a><span class="co"># Convert to ordinal variables to ordinal</span></span>
+<span id="cb63-23"><a href="#cb63-23"></a></span>
+<span id="cb63-24"><a href="#cb63-24"></a>HK_data<span class="sc">$</span>hel <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(HK_data<span class="sc">$</span>hel)</span>
+<span id="cb63-25"><a href="#cb63-25"></a>HK_data<span class="sc">$</span>sat <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(HK_data<span class="sc">$</span>sat)</span>
+<span id="cb63-26"><a href="#cb63-26"></a>HK_data<span class="sc">$</span>fri <span class="ot">&lt;-</span> <span class="fu">as.ordered</span>(HK_data<span class="sc">$</span>fri)</span>
+<span id="cb63-27"><a href="#cb63-27"></a></span>
+<span id="cb63-28"><a href="#cb63-28"></a><span class="co"># Create a model with two latent variables</span></span>
+<span id="cb63-29"><a href="#cb63-29"></a><span class="co"># lvw - wellbeing</span></span>
+<span id="cb63-30"><a href="#cb63-30"></a><span class="co"># ST016Q01NA "Overall, how satisfied are you with your life as a whole these days?"</span></span>
+<span id="cb63-31"><a href="#cb63-31"></a><span class="co"># WB150Q01HA "How is your health?"</span></span>
+<span id="cb63-32"><a href="#cb63-32"></a><span class="co"># WB156Q01HA "At present, how many close friends do you have?"</span></span>
+<span id="cb63-33"><a href="#cb63-33"></a></span>
+<span id="cb63-34"><a href="#cb63-34"></a><span class="co">#</span></span>
+<span id="cb63-35"><a href="#cb63-35"></a><span class="co"># lve - school environment</span></span>
+<span id="cb63-36"><a href="#cb63-36"></a><span class="co"># DISCLIM "Disciplinary climate in mathematics (WLE)"</span></span>
+<span id="cb63-37"><a href="#cb63-37"></a><span class="co"># BELONG  "Sense of belonging (WLE)"</span></span>
+<span id="cb63-38"><a href="#cb63-38"></a><span class="co"># </span></span>
+<span id="cb63-39"><a href="#cb63-39"></a></span>
+<span id="cb63-40"><a href="#cb63-40"></a><span class="co"># define the model</span></span>
+<span id="cb63-41"><a href="#cb63-41"></a>model_well_school <span class="ot">&lt;-</span> <span class="st">"lvw =~  sat + hel + fri</span></span>
+<span id="cb63-42"><a href="#cb63-42"></a><span class="st">        lve =~ BELONG + DISCLIM</span></span>
+<span id="cb63-43"><a href="#cb63-43"></a><span class="st">        z_pv_overall ~ lvw + lve"</span></span>
+<span id="cb63-44"><a href="#cb63-44"></a></span>
+<span id="cb63-45"><a href="#cb63-45"></a><span class="co"># Fit the model</span></span>
+<span id="cb63-46"><a href="#cb63-46"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model_well_school, <span class="at">data =</span> HK_data, <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"sat"</span>, <span class="st">"hel"</span>, <span class="st">"fri"</span>),</span>
+<span id="cb63-47"><a href="#cb63-47"></a>         <span class="at">estimator =</span> <span class="st">"WLSMV"</span>)</span>
+<span id="cb63-48"><a href="#cb63-48"></a></span>
+<span id="cb63-49"><a href="#cb63-49"></a><span class="co"># plot</span></span>
+<span id="cb63-50"><a href="#cb63-50"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Extract loadings</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># Extract loadings</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  lhs op    rhs est.std    se      z pvalue ci.lower ci.upper
 1 lvw =~    sat   0.552 0.019 29.756      0    0.516    0.588
@@ -2813,18 +2868,18 @@ Tip
 4 lve =~ BELONG   0.557 0.033 16.912      0    0.493    0.622
  [ reached 'max' / getOption("max.print") -- omitted 70 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># For the latent variable lvw (Well-being)  sat (satisfaction): Factor loading = 0.661 has a strong and significant relationship with well-being. Health has a moderate ( 0.421) and significant relationship with well-being. Friends have a very weak (0.077) but statistically significant relationship with well-being, suggesting it contributes very little to the construct.</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a><span class="co"># For lve (School environment) Belonging has a moderate (0.445) and significant relationship with the school environment.Disciplinary climate has a weaker (0.262) but still statistically significant relationship with the school environment.</span></span>
-<span id="cb65-3"><a href="#cb65-3"></a><span class="co"># Overall z_pv_overall ~ lvw (effect of well-being on the outcome):not significant, p=0.518. There is no significant relationship between well-being and z_pv_overall in this model.</span></span>
-<span id="cb65-4"><a href="#cb65-4"></a><span class="co"># z_pv_overall ~ lve (effect of school environment on the outcome): not significant, </span></span>
-<span id="cb65-5"><a href="#cb65-5"></a><span class="co"># p = 0.424. Interpretation: The school environment does not have a significant impact on z_pv_overall in # this model.</span></span>
-<span id="cb65-6"><a href="#cb65-6"></a></span>
-<span id="cb65-7"><a href="#cb65-7"></a><span class="co"># Extract R^2</span></span>
-<span id="cb65-8"><a href="#cb65-8"></a></span>
-<span id="cb65-9"><a href="#cb65-9"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb65-10"><a href="#cb65-10"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb65-11"><a href="#cb65-11"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
-<span id="cb65-12"><a href="#cb65-12"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># For the latent variable lvw (Well-being)  sat (satisfaction): Factor loading = 0.661 has a strong and significant relationship with well-being. Health has a moderate ( 0.421) and significant relationship with well-being. Friends have a very weak (0.077) but statistically significant relationship with well-being, suggesting it contributes very little to the construct.</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="co"># For lve (School environment) Belonging has a moderate (0.445) and significant relationship with the school environment.Disciplinary climate has a weaker (0.262) but still statistically significant relationship with the school environment.</span></span>
+<span id="cb66-3"><a href="#cb66-3"></a><span class="co"># Overall z_pv_overall ~ lvw (effect of well-being on the outcome):not significant, p=0.518. There is no significant relationship between well-being and z_pv_overall in this model.</span></span>
+<span id="cb66-4"><a href="#cb66-4"></a><span class="co"># z_pv_overall ~ lve (effect of school environment on the outcome): not significant, </span></span>
+<span id="cb66-5"><a href="#cb66-5"></a><span class="co"># p = 0.424. Interpretation: The school environment does not have a significant impact on z_pv_overall in # this model.</span></span>
+<span id="cb66-6"><a href="#cb66-6"></a></span>
+<span id="cb66-7"><a href="#cb66-7"></a><span class="co"># Extract R^2</span></span>
+<span id="cb66-8"><a href="#cb66-8"></a></span>
+<span id="cb66-9"><a href="#cb66-9"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb66-10"><a href="#cb66-10"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-11"><a href="#cb66-11"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
+<span id="cb66-12"><a href="#cb66-12"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Item     R2
 1       BELONG  0.311
@@ -2834,12 +2889,12 @@ Tip
 5      DISCLIM  0.044
 6 z_pv_overall -0.403</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># Approximately 43.7% of the variance in life satisfaction is explained by the latent variable lvw (well-being). This is a relatively strong R2 indicating that sat is a meaningful and well-explained indicator of well-being. About 19.8% of the variance in sense of belonging is explained by the latent variable lve (school environment). While this is a moderate level of explanation, it suggests that there may be other unmeasured factors influencing the sense of belonging.</span></span>
-<span id="cb67-2"><a href="#cb67-2"></a></span>
-<span id="cb67-3"><a href="#cb67-3"></a><span class="co"># Outcome Variable (z_pv_overall): The weak R2 (15%)  highlights the need for additional predictors or model refinements to better explain its variance.</span></span>
-<span id="cb67-4"><a href="#cb67-4"></a></span>
-<span id="cb67-5"><a href="#cb67-5"></a><span class="co"># Model fit</span></span>
-<span id="cb67-6"><a href="#cb67-6"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># Approximately 43.7% of the variance in life satisfaction is explained by the latent variable lvw (well-being). This is a relatively strong R2 indicating that sat is a meaningful and well-explained indicator of well-being. About 19.8% of the variance in sense of belonging is explained by the latent variable lve (school environment). While this is a moderate level of explanation, it suggests that there may be other unmeasured factors influencing the sense of belonging.</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a></span>
+<span id="cb68-3"><a href="#cb68-3"></a><span class="co"># Outcome Variable (z_pv_overall): The weak R2 (15%)  highlights the need for additional predictors or model refinements to better explain its variance.</span></span>
+<span id="cb68-4"><a href="#cb68-4"></a></span>
+<span id="cb68-5"><a href="#cb68-5"></a><span class="co"># Model fit</span></span>
+<span id="cb68-6"><a href="#cb68-6"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 146 iterations
 
@@ -2949,13 +3004,13 @@ Variances:
     lvw               0.305    0.020   14.878    0.000
     lve               0.119    0.014    8.318    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># The chi square p-value is 0 - indicating poor fit</span></span>
-<span id="cb69-2"><a href="#cb69-2"></a><span class="co"># The CFI of 0.806 is not adequate</span></span>
-<span id="cb69-3"><a href="#cb69-3"></a><span class="co"># The TLI of 0.585 is poor</span></span>
-<span id="cb69-4"><a href="#cb69-4"></a><span class="co"># The RMSEA of 0.089 suggesting a moderate fit</span></span>
-<span id="cb69-5"><a href="#cb69-5"></a></span>
-<span id="cb69-6"><a href="#cb69-6"></a><span class="co"># Run model improvement indices</span></span>
-<span id="cb69-7"><a href="#cb69-7"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># The chi square p-value is 0 - indicating poor fit</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="co"># The CFI of 0.806 is not adequate</span></span>
+<span id="cb70-3"><a href="#cb70-3"></a><span class="co"># The TLI of 0.585 is poor</span></span>
+<span id="cb70-4"><a href="#cb70-4"></a><span class="co"># The RMSEA of 0.089 suggesting a moderate fit</span></span>
+<span id="cb70-5"><a href="#cb70-5"></a></span>
+<span id="cb70-6"><a href="#cb70-6"></a><span class="co"># Run model improvement indices</span></span>
+<span id="cb70-7"><a href="#cb70-7"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   lhs op     rhs      mi    epc sepc.lv sepc.all sepc.nox
 89 fri ~~  BELONG 129.450 -0.129  -0.129   -0.267   -0.267
@@ -2965,31 +3020,31 @@ Variances:
 81 sat ~~     fri  17.925  0.093   0.093    0.118    0.118
  [ reached 'max' / getOption("max.print") -- omitted 4 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># The improvement indices suggest adding: fri ~~ z_pv_overall, fri ~~ BELONG, lvw =~  BELONG, lvw =~      DISCLIM. These make some sense from a theoretical point of view</span></span>
-<span id="cb71-2"><a href="#cb71-2"></a></span>
-<span id="cb71-3"><a href="#cb71-3"></a><span class="co"># the new model becomes</span></span>
-<span id="cb71-4"><a href="#cb71-4"></a></span>
-<span id="cb71-5"><a href="#cb71-5"></a>model_well_school_2 <span class="ot">&lt;-</span> <span class="st">"lvw =~  sat + hel + fri</span></span>
-<span id="cb71-6"><a href="#cb71-6"></a><span class="st">        lve =~ BELONG + DISCLIM</span></span>
-<span id="cb71-7"><a href="#cb71-7"></a><span class="st">        z_pv_overall ~ lvw + lve</span></span>
-<span id="cb71-8"><a href="#cb71-8"></a><span class="st">        fri ~~ z_pv_overall</span></span>
-<span id="cb71-9"><a href="#cb71-9"></a><span class="st">        fri ~~ BELONG</span></span>
-<span id="cb71-10"><a href="#cb71-10"></a><span class="st">        lvw =~  DISCLIM"</span></span>
-<span id="cb71-11"><a href="#cb71-11"></a></span>
-<span id="cb71-12"><a href="#cb71-12"></a><span class="co"># Fit the revised model</span></span>
-<span id="cb71-13"><a href="#cb71-13"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model_well_school_2, <span class="at">data =</span> HK_data)</span>
-<span id="cb71-14"><a href="#cb71-14"></a></span>
-<span id="cb71-15"><a href="#cb71-15"></a><span class="co"># plot</span></span>
-<span id="cb71-16"><a href="#cb71-16"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># The improvement indices suggest adding: fri ~~ z_pv_overall, fri ~~ BELONG, lvw =~  BELONG, lvw =~      DISCLIM. These make some sense from a theoretical point of view</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a></span>
+<span id="cb72-3"><a href="#cb72-3"></a><span class="co"># the new model becomes</span></span>
+<span id="cb72-4"><a href="#cb72-4"></a></span>
+<span id="cb72-5"><a href="#cb72-5"></a>model_well_school_2 <span class="ot">&lt;-</span> <span class="st">"lvw =~  sat + hel + fri</span></span>
+<span id="cb72-6"><a href="#cb72-6"></a><span class="st">        lve =~ BELONG + DISCLIM</span></span>
+<span id="cb72-7"><a href="#cb72-7"></a><span class="st">        z_pv_overall ~ lvw + lve</span></span>
+<span id="cb72-8"><a href="#cb72-8"></a><span class="st">        fri ~~ z_pv_overall</span></span>
+<span id="cb72-9"><a href="#cb72-9"></a><span class="st">        fri ~~ BELONG</span></span>
+<span id="cb72-10"><a href="#cb72-10"></a><span class="st">        lvw =~  DISCLIM"</span></span>
+<span id="cb72-11"><a href="#cb72-11"></a></span>
+<span id="cb72-12"><a href="#cb72-12"></a><span class="co"># Fit the revised model</span></span>
+<span id="cb72-13"><a href="#cb72-13"></a>fit<span class="ot">&lt;-</span><span class="fu">sem</span>(model_well_school_2, <span class="at">data =</span> HK_data)</span>
+<span id="cb72-14"><a href="#cb72-14"></a></span>
+<span id="cb72-15"><a href="#cb72-15"></a><span class="co"># plot</span></span>
+<span id="cb72-16"><a href="#cb72-16"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-34-2.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># Extract loadings</span></span>
-<span id="cb72-2"><a href="#cb72-2"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># Extract loadings</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="fu">standardizedsolution</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  lhs op    rhs est.std    se      z pvalue ci.lower ci.upper
 1 lvw =~    sat   0.651 0.023 27.754      0    0.605    0.697
@@ -2998,14 +3053,14 @@ Variances:
 4 lve =~ BELONG   0.466 0.019 24.243      0    0.428    0.503
  [ reached 'max' / getOption("max.print") -- omitted 73 rows ]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># The environment latent variable is now significant (p=0.039) where in the first model it was not not significant  (p = 0.424). The wellbeing latent varibale remains not significant (p=0.071) - it was 0.424 in the first model. </span></span>
-<span id="cb74-2"><a href="#cb74-2"></a></span>
-<span id="cb74-3"><a href="#cb74-3"></a><span class="co"># Extract R^2</span></span>
-<span id="cb74-4"><a href="#cb74-4"></a></span>
-<span id="cb74-5"><a href="#cb74-5"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb74-6"><a href="#cb74-6"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb74-7"><a href="#cb74-7"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
-<span id="cb74-8"><a href="#cb74-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># The environment latent variable is now significant (p=0.039) where in the first model it was not not significant  (p = 0.424). The wellbeing latent varibale remains not significant (p=0.071) - it was 0.424 in the first model. </span></span>
+<span id="cb75-2"><a href="#cb75-2"></a></span>
+<span id="cb75-3"><a href="#cb75-3"></a><span class="co"># Extract R^2</span></span>
+<span id="cb75-4"><a href="#cb75-4"></a></span>
+<span id="cb75-5"><a href="#cb75-5"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb75-6"><a href="#cb75-6"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-7"><a href="#cb75-7"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
+<span id="cb75-8"><a href="#cb75-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Item    R2
 1      DISCLIM 0.909
@@ -3015,13 +3070,13 @@ Variances:
 5          fri 0.044
 6 z_pv_overall 0.039</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># Overall the explanatory power of the model is still low - the low latent variables only explaining </span></span>
-<span id="cb76-2"><a href="#cb76-2"></a><span class="co"># 4% of the variation in the outcome variable. This is a reduction from the first model where the </span></span>
-<span id="cb76-3"><a href="#cb76-3"></a><span class="co"># z_pv_overall variable was explained by 15% of the latent variables. The second model does explain</span></span>
-<span id="cb76-4"><a href="#cb76-4"></a><span class="co"># some of the variables - "DISCLIM" R2 rose from 6.9% to 90% and "sat" from 43.7% to  46.2%</span></span>
-<span id="cb76-5"><a href="#cb76-5"></a></span>
-<span id="cb76-6"><a href="#cb76-6"></a><span class="co"># Model fit</span></span>
-<span id="cb76-7"><a href="#cb76-7"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># Overall the explanatory power of the model is still low - the low latent variables only explaining </span></span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="co"># 4% of the variation in the outcome variable. This is a reduction from the first model where the </span></span>
+<span id="cb77-3"><a href="#cb77-3"></a><span class="co"># z_pv_overall variable was explained by 15% of the latent variables. The second model does explain</span></span>
+<span id="cb77-4"><a href="#cb77-4"></a><span class="co"># some of the variables - "DISCLIM" R2 rose from 6.9% to 90% and "sat" from 43.7% to  46.2%</span></span>
+<span id="cb77-5"><a href="#cb77-5"></a></span>
+<span id="cb77-6"><a href="#cb77-6"></a><span class="co"># Model fit</span></span>
+<span id="cb77-7"><a href="#cb77-7"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-19 ended normally after 276 iterations
 
@@ -3136,12 +3191,12 @@ Variances:
     lvw               0.424    0.031   13.877    0.000
     lve               0.083    0.007   11.804    0.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="co"># The chi-square is 0 suggesting poor model fit - but the chi square test statistic has come down</span></span>
-<span id="cb78-2"><a href="#cb78-2"></a><span class="co"># from 201.830 to 27.209 showing improvement</span></span>
-<span id="cb78-3"><a href="#cb78-3"></a><span class="co"># The CFI is now  0.977 a better fit than the 0.806 - now into good fit</span></span>
-<span id="cb78-4"><a href="#cb78-4"></a><span class="co"># The TLI has risen to 0.913 (was 0.585) - it is now good!</span></span>
-<span id="cb78-5"><a href="#cb78-5"></a><span class="co"># The RMSEA has fallen from 0.089 to 0.040 showing an improvement and just gets under the 0.06 cut off</span></span>
-<span id="cb78-6"><a href="#cb78-6"></a><span class="co"># for good fit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># The chi-square is 0 suggesting poor model fit - but the chi square test statistic has come down</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a><span class="co"># from 201.830 to 27.209 showing improvement</span></span>
+<span id="cb79-3"><a href="#cb79-3"></a><span class="co"># The CFI is now  0.977 a better fit than the 0.806 - now into good fit</span></span>
+<span id="cb79-4"><a href="#cb79-4"></a><span class="co"># The TLI has risen to 0.913 (was 0.585) - it is now good!</span></span>
+<span id="cb79-5"><a href="#cb79-5"></a><span class="co"># The RMSEA has fallen from 0.089 to 0.040 showing an improvement and just gets under the 0.06 cut off</span></span>
+<span id="cb79-6"><a href="#cb79-6"></a><span class="co"># for good fit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
