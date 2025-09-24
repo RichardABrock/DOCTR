@@ -544,8 +544,8 @@ window.Quarto = {
 <span id="cb2-65"><a href="#cb2-65"></a><span class="st">      }"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d2a6dbbb861ef5759539" style="width:95%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-d2a6dbbb861ef5759539">{"x":{"diagram":"\n      digraph Random{\n      graph [layout = dot,\n      overlap =T,\n      bgcolor=\"white\",\n      splines=line]#controls l type setup\n      node [shape = box,style=\"filled\",\n      fillcolor=\"skyblue\",\n      fontSize=20,fontcolor=\"darkgrey\",\n      fontname=\"Arial\"]\n     a [label = \"What do you want to do?\"]\n     b [label = \"Test a hypothesis - on what kind of data?\"]\n     c [label = \"Examine a relationship\"]\n     d [label = \"Continuous\"];\n     e [label = \"Normally Distribured/Parametric\"];\n     f [label = \"1 Group\"];\n     g [label = \"One sample t-test\", fillcolor=\"lightyellow\"];\n     h [label = \"Do a test of normality\"];\n     i [label = \"qqplot\", fillcolor=\"lightyellow\"];\n     j [label = \"Tests on skewed distributions\", fillcolor=\"lightyellow\"];\n     k [label = \"Discrete / Categorical\"];\n     l [label = \"2 Groups\"];\n     m [label = \"Unpaired groups\"];\n     n [label = \"Expected counts more than 5\nin more than 75 per cent of cells\"];\n     o [label = \"Chi-squared\", fillcolor=\"lightyellow\"];\n     p [label = \"Expected counts more than 5\n in less than 75 per cent of cells\"];\n     q [label = \"Fisher exact test\", fillcolor=\"lightyellow\"];\n     r [label = \"Continuous variables\"];\n     s [label = \"Linear Regression\", fillcolor=\"lightyellow\"];\n     t [label = \"2 groups\"]\n     u [label = \"Paired groups\"]\n     v [label = \"Unpaired groups\"]\n     w [label = \"Paired t-test\", fillcolor=\"lightyellow\"]\n     x [label = \"Unpaired t-test\", fillcolor=\"lightyellow\"]\n     y [label = \"3 groups or more\"]\n     z [label = \"anova\", fillcolor=\"lightyellow\"]\n     aa [label = \"Not normally distributed\"] \n     a -> b\n     a -> c\n     b -> d\n     d -> h\n     h -> i\n     i -> aa\n     aa -> j\n     i -> e\n     e -> f\n     f -> g\n     b -> k\n     k -> l\n     l -> m\n     m -> n\n     n -> o\n     m -> p\n     p -> q\n     c -> r\n     r -> s\n     e -> t\n     t -> u\n     t -> v\n     u -> w\n     v -> x\n     e -> y\n     y -> z\n\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e9816c4b2f7c1ef8c9f5" style="width:95%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-e9816c4b2f7c1ef8c9f5">{"x":{"diagram":"\n      digraph Random{\n      graph [layout = dot,\n      overlap =T,\n      bgcolor=\"white\",\n      splines=line]#controls l type setup\n      node [shape = box,style=\"filled\",\n      fillcolor=\"skyblue\",\n      fontSize=20,fontcolor=\"darkgrey\",\n      fontname=\"Arial\"]\n     a [label = \"What do you want to do?\"]\n     b [label = \"Test a hypothesis - on what kind of data?\"]\n     c [label = \"Examine a relationship\"]\n     d [label = \"Continuous\"];\n     e [label = \"Normally Distribured/Parametric\"];\n     f [label = \"1 Group\"];\n     g [label = \"One sample t-test\", fillcolor=\"lightyellow\"];\n     h [label = \"Do a test of normality\"];\n     i [label = \"qqplot\", fillcolor=\"lightyellow\"];\n     j [label = \"Tests on skewed distributions\", fillcolor=\"lightyellow\"];\n     k [label = \"Discrete / Categorical\"];\n     l [label = \"2 Groups\"];\n     m [label = \"Unpaired groups\"];\n     n [label = \"Expected counts more than 5\nin more than 75 per cent of cells\"];\n     o [label = \"Chi-squared\", fillcolor=\"lightyellow\"];\n     p [label = \"Expected counts more than 5\n in less than 75 per cent of cells\"];\n     q [label = \"Fisher exact test\", fillcolor=\"lightyellow\"];\n     r [label = \"Continuous variables\"];\n     s [label = \"Linear Regression\", fillcolor=\"lightyellow\"];\n     t [label = \"2 groups\"]\n     u [label = \"Paired groups\"]\n     v [label = \"Unpaired groups\"]\n     w [label = \"Paired t-test\", fillcolor=\"lightyellow\"]\n     x [label = \"Unpaired t-test\", fillcolor=\"lightyellow\"]\n     y [label = \"3 groups or more\"]\n     z [label = \"anova\", fillcolor=\"lightyellow\"]\n     aa [label = \"Not normally distributed\"] \n     a -> b\n     a -> c\n     b -> d\n     d -> h\n     h -> i\n     i -> aa\n     aa -> j\n     i -> e\n     e -> f\n     f -> g\n     b -> k\n     k -> l\n     l -> m\n     m -> n\n     n -> o\n     m -> p\n     p -> q\n     c -> r\n     r -> s\n     e -> t\n     t -> u\n     t -> v\n     u -> w\n     v -> x\n     e -> y\n     y -> z\n\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -947,122 +947,42 @@ WB178Q01HA
 <p>The numbers in the contingency table are hard to interpret - it is challenging to see how far out the numbers for each row are from each other. Alternatively, we can visualise the data from the contingency table by building a mosaic plot, a form of stacked bar chart. Mosaic plots can be a useful visulations before running a chi-squared test.</p>
 <p>To create a mosaic plot, you are going to need to install and load the <code>ggmosaic</code> package. See <strong>?@sec-load-run-pckges</strong> for more details on how to do this.</p>
 <p>Imagine we want to plot the ‘accomplishment’ data (<code>WB178Q01HA</code>) from the previous section for the Netherlands, Mexico and New Zealand.</p>
-<p>To create the mosaic plot we use <code>ggplot</code>, as we used for previous graphs. We have written a custom function to create a mosaic plot (there used to be one in the <code>geom_mosaic</code> library but it is no longer compatible with ggplot. The first step you need to do is run the custom mosaic function <code>mosaic</code> to load the function.</p>
-<p>As before, we first pass the data (in this case <code>Accomp</code>) to <code>ggplot</code>. Then, to create the graph, <code>geom_mosaic</code> is used. <code>geom_mosaic</code> does not have a direct mapping of input to x and y variable so we need to pass it what we want plotted on the y-axis (<code>WB178Q01HA</code>) and x-axis (<code>CNT</code>) within the <code>product</code> function (<code>product(WB178Q01HA, CNT)</code>). We can also specify how we want the rectangles to be coloured (in our case, by <code>CNT</code>).</p>
+<p>To create the mosaic plot we use ggplot, as we used for previous graphs. As before, we first pass the data (in this case Accomp) to ggplot. Then, to create the graph, <code>geom_mosaic</code> is used. <code>geom_mosaic does</code> not have a direct mapping of input to x and y variable so we need to pass it what we want plotted on the y-axis (<code>WB178Q01HA</code>) and x-axis (<code>CNT</code>) within the product function (<code>product(WB178Q01HA, CNT)</code>). We can also specify how we want the rectangles to be coloured (in our case, by <code>CNT</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="co"># The custom mosaic function</span></span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a>mosaic <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">data =</span> <span class="cn">NULL</span>, <span class="at">main =</span> <span class="st">"Mosaic Plot"</span>,</span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>                   <span class="at">col =</span> <span class="cn">NULL</span>, <span class="at">border =</span> <span class="st">"white"</span>, <span class="at">show_labels =</span> <span class="cn">TRUE</span>,</span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>                   <span class="at">show_y_labels =</span> <span class="cn">TRUE</span>, <span class="at">min_height =</span> <span class="fl">0.05</span>) {</span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a>  </span>
-<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a>  <span class="co"># Handle data argument</span></span>
-<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(data)) {</span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a>    x_name <span class="ot">&lt;-</span> <span class="fu">deparse</span>(<span class="fu">substitute</span>(x))</span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a>    y_name <span class="ot">&lt;-</span> <span class="fu">deparse</span>(<span class="fu">substitute</span>(y))</span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a>    x <span class="ot">&lt;-</span> data[[x_name]]</span>
-<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11"></a>    y <span class="ot">&lt;-</span> data[[y_name]]</span>
-<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12"></a>  } <span class="cf">else</span> {</span>
-<span id="annotated-cell-7-13"><a href="#annotated-cell-7-13"></a>    x_name <span class="ot">&lt;-</span> <span class="fu">deparse</span>(<span class="fu">substitute</span>(x))</span>
-<span id="annotated-cell-7-14"><a href="#annotated-cell-7-14"></a>    y_name <span class="ot">&lt;-</span> <span class="fu">deparse</span>(<span class="fu">substitute</span>(y))</span>
-<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15"></a>  }</span>
-<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16"></a>  </span>
-<span id="annotated-cell-7-17"><a href="#annotated-cell-7-17"></a>  <span class="co"># Contingency table</span></span>
-<span id="annotated-cell-7-18"><a href="#annotated-cell-7-18"></a>  tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(x, y)</span>
-<span id="annotated-cell-7-19"><a href="#annotated-cell-7-19"></a>  n_rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(tbl)</span>
-<span id="annotated-cell-7-20"><a href="#annotated-cell-7-20"></a>  n_cols <span class="ot">&lt;-</span> <span class="fu">ncol</span>(tbl)</span>
-<span id="annotated-cell-7-21"><a href="#annotated-cell-7-21"></a>  </span>
-<span id="annotated-cell-7-22"><a href="#annotated-cell-7-22"></a>  prop_col <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tbl, <span class="dv">1</span>)  <span class="co"># proportions within X-axis category</span></span>
-<span id="annotated-cell-7-23"><a href="#annotated-cell-7-23"></a>  </span>
-<span id="annotated-cell-7-24"><a href="#annotated-cell-7-24"></a>  <span class="co"># Colors for X-axis categories</span></span>
-<span id="annotated-cell-7-25"><a href="#annotated-cell-7-25"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(col)) col <span class="ot">&lt;-</span> <span class="fu">rainbow</span>(n_rows, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span>
-<span id="annotated-cell-7-26"><a href="#annotated-cell-7-26"></a>  <span class="cf">if</span> (<span class="fu">length</span>(col) <span class="sc">&lt;</span> n_rows) <span class="fu">stop</span>(<span class="st">"Number of colors should match number of X-axis categories"</span>)</span>
-<span id="annotated-cell-7-27"><a href="#annotated-cell-7-27"></a>  </span>
-<span id="annotated-cell-7-28"><a href="#annotated-cell-7-28"></a>  <span class="co"># Save old par settings</span></span>
-<span id="annotated-cell-7-29"><a href="#annotated-cell-7-29"></a>  op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
-<span id="annotated-cell-7-30"><a href="#annotated-cell-7-30"></a>  <span class="co"># Increase left margin for labels, right for legend</span></span>
-<span id="annotated-cell-7-31"><a href="#annotated-cell-7-31"></a>  <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">8</span>), <span class="at">xpd =</span> <span class="cn">TRUE</span>)  <span class="co"># Set xpd = TRUE here</span></span>
-<span id="annotated-cell-7-32"><a href="#annotated-cell-7-32"></a>  </span>
-<span id="annotated-cell-7-33"><a href="#annotated-cell-7-33"></a>  <span class="co"># Empty plot</span></span>
-<span id="annotated-cell-7-34"><a href="#annotated-cell-7-34"></a>  <span class="fu">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">type=</span><span class="st">"n"</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, n_rows), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="annotated-cell-7-35"><a href="#annotated-cell-7-35"></a>       <span class="at">xlab =</span> x_name, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">main =</span> main, <span class="at">axes =</span> <span class="cn">FALSE</span>)</span>
-<span id="annotated-cell-7-36"><a href="#annotated-cell-7-36"></a>  </span>
-<span id="annotated-cell-7-37"><a href="#annotated-cell-7-37"></a>  <span class="co"># Get better positioning for Y-axis labels (closer to plot area)</span></span>
-<span id="annotated-cell-7-38"><a href="#annotated-cell-7-38"></a>  x_label_pos <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.1</span>  <span class="co"># Simple fixed offset from left edge</span></span>
-<span id="annotated-cell-7-39"><a href="#annotated-cell-7-39"></a>  </span>
-<span id="annotated-cell-7-40"><a href="#annotated-cell-7-40"></a>  <span class="co"># Draw stacked rectangles</span></span>
-<span id="annotated-cell-7-41"><a href="#annotated-cell-7-41"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_rows) {</span>
-<span id="annotated-cell-7-42"><a href="#annotated-cell-7-42"></a>    y_start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="annotated-cell-7-43"><a href="#annotated-cell-7-43"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_cols) {</span>
-<span id="annotated-cell-7-44"><a href="#annotated-cell-7-44"></a>      y_end <span class="ot">&lt;-</span> y_start <span class="sc">+</span> prop_col[i,j]</span>
-<span id="annotated-cell-7-45"><a href="#annotated-cell-7-45"></a>      </span>
-<span id="annotated-cell-7-46"><a href="#annotated-cell-7-46"></a>      <span class="co"># Draw rectangle</span></span>
-<span id="annotated-cell-7-47"><a href="#annotated-cell-7-47"></a>      <span class="fu">rect</span>(i<span class="dv">-1</span>, y_start, i, y_end, <span class="at">col =</span> col[i], <span class="at">border =</span> border)</span>
-<span id="annotated-cell-7-48"><a href="#annotated-cell-7-48"></a>      </span>
-<span id="annotated-cell-7-49"><a href="#annotated-cell-7-49"></a>      <span class="co"># Add counts if box is tall enough</span></span>
-<span id="annotated-cell-7-50"><a href="#annotated-cell-7-50"></a>      <span class="cf">if</span> (show_labels <span class="sc">&amp;&amp;</span> tbl[i,j] <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> (y_end <span class="sc">-</span> y_start) <span class="sc">&gt;=</span> min_height) {</span>
-<span id="annotated-cell-7-51"><a href="#annotated-cell-7-51"></a>        <span class="fu">text</span>(i<span class="fl">-0.5</span>, (y_start <span class="sc">+</span> y_end)<span class="sc">/</span><span class="dv">2</span>, tbl[i,j], <span class="at">cex=</span><span class="fl">0.8</span>)</span>
-<span id="annotated-cell-7-52"><a href="#annotated-cell-7-52"></a>      }</span>
-<span id="annotated-cell-7-53"><a href="#annotated-cell-7-53"></a>      </span>
-<span id="annotated-cell-7-54"><a href="#annotated-cell-7-54"></a>      <span class="co"># Add Y-axis category labels along left side</span></span>
-<span id="annotated-cell-7-55"><a href="#annotated-cell-7-55"></a>      <span class="cf">if</span> (show_y_labels <span class="sc">&amp;&amp;</span> i <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="annotated-cell-7-56"><a href="#annotated-cell-7-56"></a>        <span class="fu">text</span>(x_label_pos, (y_start <span class="sc">+</span> y_end)<span class="sc">/</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">colnames</span>(tbl)[j],</span>
-<span id="annotated-cell-7-57"><a href="#annotated-cell-7-57"></a>             <span class="at">adj =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span>
-<span id="annotated-cell-7-58"><a href="#annotated-cell-7-58"></a>      }</span>
-<span id="annotated-cell-7-59"><a href="#annotated-cell-7-59"></a>      </span>
-<span id="annotated-cell-7-60"><a href="#annotated-cell-7-60"></a>      y_start <span class="ot">&lt;-</span> y_end</span>
-<span id="annotated-cell-7-61"><a href="#annotated-cell-7-61"></a>    }</span>
-<span id="annotated-cell-7-62"><a href="#annotated-cell-7-62"></a>  }</span>
-<span id="annotated-cell-7-63"><a href="#annotated-cell-7-63"></a>  </span>
-<span id="annotated-cell-7-64"><a href="#annotated-cell-7-64"></a>  <span class="co"># X-axis only</span></span>
-<span id="annotated-cell-7-65"><a href="#annotated-cell-7-65"></a>  <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">0</span><span class="sc">:</span>(n_rows<span class="dv">-1</span>)<span class="sc">+</span><span class="fl">0.5</span>, <span class="at">labels =</span> <span class="fu">rownames</span>(tbl))</span>
-<span id="annotated-cell-7-66"><a href="#annotated-cell-7-66"></a>  </span>
-<span id="annotated-cell-7-67"><a href="#annotated-cell-7-67"></a>  <span class="co"># Draw legend outside plot (xpd already TRUE)</span></span>
-<span id="annotated-cell-7-68"><a href="#annotated-cell-7-68"></a>  <span class="fu">legend</span>(<span class="at">x =</span> n_rows <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(tbl), <span class="at">fill =</span> col,</span>
-<span id="annotated-cell-7-69"><a href="#annotated-cell-7-69"></a>         <span class="at">border =</span> border, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">bty=</span><span class="st">"n"</span>, <span class="at">bg=</span><span class="st">"white"</span>)</span>
-<span id="annotated-cell-7-70"><a href="#annotated-cell-7-70"></a>  </span>
-<span id="annotated-cell-7-71"><a href="#annotated-cell-7-71"></a>  <span class="co"># Restore old par</span></span>
-<span id="annotated-cell-7-72"><a href="#annotated-cell-7-72"></a>  <span class="fu">par</span>(op)</span>
-<span id="annotated-cell-7-73"><a href="#annotated-cell-7-73"></a>  </span>
-<span id="annotated-cell-7-74"><a href="#annotated-cell-7-74"></a>  <span class="fu">invisible</span>(tbl)</span>
-<span id="annotated-cell-7-75"><a href="#annotated-cell-7-75"></a>}</span>
-<span id="annotated-cell-7-76"><a href="#annotated-cell-7-76"></a></span>
-<span id="annotated-cell-7-77"><a href="#annotated-cell-7-77"></a></span>
-<span id="annotated-cell-7-78"><a href="#annotated-cell-7-78"></a></span>
-<span id="annotated-cell-7-79"><a href="#annotated-cell-7-79"></a></span>
-<span id="annotated-cell-7-80"><a href="#annotated-cell-7-80"></a></span>
-<span id="annotated-cell-7-81"><a href="#annotated-cell-7-81"></a></span>
-<span id="annotated-cell-7-82"><a href="#annotated-cell-7-82"></a><span class="co"># Create a data frame of accomplishment data for the 3 countries</span></span>
-<span id="annotated-cell-7-83"><a href="#annotated-cell-7-83"></a>Accomp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-7-84"><a href="#annotated-cell-7-84"></a>  <span class="fu">select</span>(WB178Q01HA, CNT) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-7-85"><a href="#annotated-cell-7-85"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Netherlands"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Mexico"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"New Zealand"</span>) <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-7-86"><a href="#annotated-cell-7-86"></a>  <span class="fu">droplevels</span>()</span>
-<span id="annotated-cell-7-87"><a href="#annotated-cell-7-87"></a></span>
-<span id="annotated-cell-7-88"><a href="#annotated-cell-7-88"></a><span class="co"># plot results</span></span>
-<span id="annotated-cell-7-89"><a href="#annotated-cell-7-89"></a><span class="co"># Note that with geom_mosaic you pass the x and y variables using: aes(x = product(WB178Q01HA, CNT))</span></span>
-<span id="annotated-cell-7-90"><a href="#annotated-cell-7-90"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-91" class="code-annotation-target"><a href="#annotated-cell-7-91"></a><span class="fu">mosaic</span>(CNT, WB178Q01HA, <span class="at">data =</span> Accomp,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-92" class="code-annotation-target"><a href="#annotated-cell-7-92"></a>              <span class="at">main =</span> <span class="st">"CNT vs WB178Q01HA"</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-93" class="code-annotation-target"><a href="#annotated-cell-7-93"></a>              <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="co"># Create a data frame of accomplishment data for the 3 countries</span></span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a>Accomp <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>  <span class="fu">select</span>(WB178Q01HA, CNT) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Netherlands"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Mexico"</span><span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"New Zealand"</span>) <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a>  <span class="fu">droplevels</span>()</span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a></span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a><span class="co"># plot results</span></span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a><span class="co"># Note that with geom_mosaic you pass the x and y variables using: aes(x = product(WB178Q01HA, CNT))</span></span>
+<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a></span>
+<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Accomp) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(WB178Q01HA, CNT), <span class="at">fill =</span> WB178Q01HA)) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12"></a>  <span class="fu">ylab</span>(<span class="st">"Feeling of accomplishment"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-7-13"><a href="#annotated-cell-7-13"></a>  <span class="fu">xlab</span>(<span class="st">"Country"</span>) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-14" class="code-annotation-target"><a href="#annotated-cell-7-14"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="91" data-code-annotation="1">set the two varibales to be plotted <code>CNT</code> and <code>WB178Q01HA</code> and pass the data to be plotted <code>(data = Accomp)</code></span>
+<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="1">set the two varibales to be plotted <code>CNT</code> and <code>WB178Q01HA</code> and pass the data to be plotted <code>(data = Accomp)</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="92" data-code-annotation="2">set the title</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="12" data-code-annotation="2">set the title</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="93" data-code-annotation="3">set the colours for the countries</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="14" data-code-annotation="3">rotate the text on the axes</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1525,9 +1445,11 @@ Tip
 <span id="cb21-15"><a href="#cb21-15"></a></span>
 <span id="cb21-16"><a href="#cb21-16"></a><span class="co"># Create a geom mosaic plot of LANGN by CNT</span></span>
 <span id="cb21-17"><a href="#cb21-17"></a></span>
-<span id="cb21-18"><a href="#cb21-18"></a><span class="fu">mosaic</span>(CNT, ST250Q01JA, <span class="at">data =</span> Room,                </span>
-<span id="cb21-19"><a href="#cb21-19"></a>              <span class="at">main =</span> <span class="st">"CNT vs WB178Q01HA"</span>,</span>
-<span id="cb21-20"><a href="#cb21-20"></a>              <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>, <span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-18"><a href="#cb21-18"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Room) <span class="sc">+</span></span>
+<span id="cb21-19"><a href="#cb21-19"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(ST250Q01JA, CNT), <span class="at">fill =</span> ST250Q01JA)) <span class="sc">+</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a>  <span class="fu">ylab</span>(<span class="st">"Number of rooms at home"</span>) <span class="sc">+</span></span>
+<span id="cb21-21"><a href="#cb21-21"></a>  <span class="fu">xlab</span>(<span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb21-22"><a href="#cb21-22"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="co"># Rotate x-axis labels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -1554,9 +1476,11 @@ Tip
 <span id="cb22-14"><a href="#cb22-14"></a></span>
 <span id="cb22-15"><a href="#cb22-15"></a><span class="co"># Produce a mosaic plot by CNT</span></span>
 <span id="cb22-16"><a href="#cb22-16"></a></span>
-<span id="cb22-17"><a href="#cb22-17"></a><span class="fu">mosaic</span>(CNT, ST250Q02JA, <span class="at">data =</span> Comp, </span>
-<span id="cb22-18"><a href="#cb22-18"></a>              <span class="at">main =</span> <span class="st">"CNT vs WB178Q01HA"</span>,</span>
-<span id="cb22-19"><a href="#cb22-19"></a>              <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-17"><a href="#cb22-17"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Comp)<span class="sc">+</span></span>
+<span id="cb22-18"><a href="#cb22-18"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(ST250Q02JA, CNT), <span class="at">fill =</span> ST250Q02JA))<span class="sc">+</span></span>
+<span id="cb22-19"><a href="#cb22-19"></a>  <span class="fu">ylab</span>(<span class="st">"Number of computers at home"</span>)<span class="sc">+</span></span>
+<span id="cb22-20"><a href="#cb22-20"></a>  <span class="fu">xlab</span>(<span class="st">"Country"</span>)<span class="sc">+</span></span>
+<span id="cb22-21"><a href="#cb22-21"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="co"># Rotate x-axis labels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -1600,28 +1524,33 @@ Tip
 <span id="cb23-18"><a href="#cb23-18"></a></span>
 <span id="cb23-19"><a href="#cb23-19"></a><span class="co"># Create a mosaic plot</span></span>
 <span id="cb23-20"><a href="#cb23-20"></a></span>
-<span id="cb23-21"><a href="#cb23-21"></a><span class="fu">mosaic</span>(CNT, ST007Q01JA, <span class="at">data =</span> PatEdTypes, </span>
-<span id="cb23-22"><a href="#cb23-22"></a>              <span class="at">main =</span> <span class="st">"CNT vs ST007Q01JA"</span>,</span>
-<span id="cb23-23"><a href="#cb23-23"></a>              <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>, <span class="st">"purple"</span>))</span>
-<span id="cb23-24"><a href="#cb23-24"></a></span>
-<span id="cb23-25"><a href="#cb23-25"></a></span>
-<span id="cb23-26"><a href="#cb23-26"></a><span class="co"># Follow up Question</span></span>
-<span id="cb23-27"><a href="#cb23-27"></a><span class="co"># Create a data frame of paternal education ST007Q01JA for the 3 countries</span></span>
-<span id="cb23-28"><a href="#cb23-28"></a>PatEdTypes<span class="ot">&lt;-</span>PISA_2022<span class="sc">%&gt;%</span></span>
-<span id="cb23-29"><a href="#cb23-29"></a>  <span class="fu">select</span>(CNT, ST007Q01JA)<span class="sc">%&gt;%</span> <span class="co"># choose country and type of school</span></span>
-<span id="cb23-30"><a href="#cb23-30"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"France"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Germany"</span>)<span class="sc">%&gt;%</span> </span>
-<span id="cb23-31"><a href="#cb23-31"></a>  <span class="fu">droplevels</span>() <span class="co"># Remove other countries which exist as factors</span></span>
-<span id="cb23-32"><a href="#cb23-32"></a></span>
-<span id="cb23-33"><a href="#cb23-33"></a>Conttable<span class="ot">&lt;-</span><span class="fu">xtabs</span>(<span class="at">data =</span> PatEdTypes, <span class="sc">~</span>CNT ,ST007Q01JA)</span>
-<span id="cb23-34"><a href="#cb23-34"></a><span class="fu">chisq.test</span>(Conttable) <span class="co"># Perform the test</span></span>
-<span id="cb23-35"><a href="#cb23-35"></a><span class="co"># The p-value is less than 0.05 (p-value &lt; 2.2e-16), </span></span>
-<span id="cb23-36"><a href="#cb23-36"></a><span class="co"># therefore we reject the null hypothesis that the distributions are the same</span></span>
-<span id="cb23-37"><a href="#cb23-37"></a></span>
-<span id="cb23-38"><a href="#cb23-38"></a><span class="co"># Create a geom_mosaic</span></span>
-<span id="cb23-39"><a href="#cb23-39"></a></span>
-<span id="cb23-40"><a href="#cb23-40"></a><span class="fu">mosaic</span>(CNT, ST007Q01JA, <span class="at">data =</span> PatEdTypes, </span>
-<span id="cb23-41"><a href="#cb23-41"></a>              <span class="at">main =</span> <span class="st">"CNT vs ST007Q01JA"</span>,</span>
-<span id="cb23-42"><a href="#cb23-42"></a>              <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"coral"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-21"><a href="#cb23-21"></a><span class="fu">ggplot</span>(<span class="at">data =</span> PatEdTypes)<span class="sc">+</span></span>
+<span id="cb23-22"><a href="#cb23-22"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(ST007Q01JA, CNT), <span class="at">fill =</span> ST007Q01JA))<span class="sc">+</span></span>
+<span id="cb23-23"><a href="#cb23-23"></a>  <span class="fu">ylab</span>(<span class="st">"Paternal Education"</span>)<span class="sc">+</span></span>
+<span id="cb23-24"><a href="#cb23-24"></a>  <span class="fu">xlab</span>(<span class="st">"Country"</span>)<span class="sc">+</span></span>
+<span id="cb23-25"><a href="#cb23-25"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="co"># Rotate x-axis labels</span></span>
+<span id="cb23-26"><a href="#cb23-26"></a></span>
+<span id="cb23-27"><a href="#cb23-27"></a></span>
+<span id="cb23-28"><a href="#cb23-28"></a></span>
+<span id="cb23-29"><a href="#cb23-29"></a><span class="co"># Follow up Question</span></span>
+<span id="cb23-30"><a href="#cb23-30"></a><span class="co"># Create a data frame of paternal education ST007Q01JA for the 3 countries</span></span>
+<span id="cb23-31"><a href="#cb23-31"></a>PatEdTypes<span class="ot">&lt;-</span>PISA_2022<span class="sc">%&gt;%</span></span>
+<span id="cb23-32"><a href="#cb23-32"></a>  <span class="fu">select</span>(CNT, ST007Q01JA)<span class="sc">%&gt;%</span> <span class="co"># choose country and type of school</span></span>
+<span id="cb23-33"><a href="#cb23-33"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"France"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Germany"</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb23-34"><a href="#cb23-34"></a>  <span class="fu">droplevels</span>() <span class="co"># Remove other countries which exist as factors</span></span>
+<span id="cb23-35"><a href="#cb23-35"></a></span>
+<span id="cb23-36"><a href="#cb23-36"></a>Conttable<span class="ot">&lt;-</span><span class="fu">xtabs</span>(<span class="at">data =</span> PatEdTypes, <span class="sc">~</span>CNT ,ST007Q01JA)</span>
+<span id="cb23-37"><a href="#cb23-37"></a><span class="fu">chisq.test</span>(Conttable) <span class="co"># Perform the test</span></span>
+<span id="cb23-38"><a href="#cb23-38"></a><span class="co"># The p-value is less than 0.05 (p-value &lt; 2.2e-16), </span></span>
+<span id="cb23-39"><a href="#cb23-39"></a><span class="co"># therefore we reject the null hypothesis that the distributions are the same</span></span>
+<span id="cb23-40"><a href="#cb23-40"></a></span>
+<span id="cb23-41"><a href="#cb23-41"></a><span class="co"># Create a geom_mosaic</span></span>
+<span id="cb23-42"><a href="#cb23-42"></a></span>
+<span id="cb23-43"><a href="#cb23-43"></a><span class="fu">ggplot</span>(<span class="at">data =</span> PatEdTypes)<span class="sc">+</span></span>
+<span id="cb23-44"><a href="#cb23-44"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(ST007Q01JA, CNT), <span class="at">fill =</span> ST007Q01JA))<span class="sc">+</span></span>
+<span id="cb23-45"><a href="#cb23-45"></a>  <span class="fu">ylab</span>(<span class="st">"Paternal Education"</span>)<span class="sc">+</span></span>
+<span id="cb23-46"><a href="#cb23-46"></a>  <span class="fu">xlab</span>(<span class="st">"Country"</span>)<span class="sc">+</span></span>
+<span id="cb23-47"><a href="#cb23-47"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="co"># Rotate x-axis labels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -1683,14 +1612,16 @@ Kruskal-Wallis chi-squared = 11.157, df = 1, p-value = 0.000837</code></pre>
 <span id="cb29-2"><a href="#cb29-2"></a></span>
 <span id="cb29-3"><a href="#cb29-3"></a><span class="co"># Create a geom_mosaic</span></span>
 <span id="cb29-4"><a href="#cb29-4"></a></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="fu">mosaic</span>(CNT, ST254Q01JA, <span class="at">data =</span> UKUSTV, </span>
-<span id="cb29-6"><a href="#cb29-6"></a>              <span class="at">main =</span> <span class="st">"CNT vs number of TVs"</span>,</span>
-<span id="cb29-7"><a href="#cb29-7"></a>              <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="fu">ggplot</span>(<span class="at">data =</span> UKUSTV)<span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(ST254Q01JA, CNT), <span class="at">fill =</span> ST254Q01JA))<span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">ylab</span>(<span class="st">"Number of TVs by country"</span>)<span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a>  <span class="fu">xlab</span>(<span class="st">"Country"</span>)<span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="co"># Rotate x-axis labels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1736,7 +1667,7 @@ Kruskal-Wallis chi-squared = 15.366, df = 1, p-value = 8.859e-05</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1781,7 +1712,7 @@ Kruskal-Wallis chi-squared = 19522, df = 1, p-value &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="03-2-ChisqPISA_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
