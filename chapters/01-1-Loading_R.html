@@ -1312,7 +1312,45 @@ Note
 5 Albania    435. -1.05  Agree            </code></pre>
 </div>
 </div>
-<p>The table above has 4 columns, each column has a datatype, <code>CNT</code> is a character vector, PV1MATH is a double (numeric) vector, ESCS is a double (numeric) vector and <code>IC172Q01JA</code> is a factor. For more about datatypes, see <a href="#sec-datatypes" class="quarto-xref">Section&nbsp;3.4</a></p>
+<p>The table above has 4 columns, each column has a datatype, <code>CNT</code> is a character vector, PV1MATH is a double (numeric) vector, ESCS is a double (numeric) vector and <code>IC172Q01JA</code> is a factor. For more about datatypes, see <a href="#sec-datatypes" class="quarto-xref">Section&nbsp;3.4</a>.</p>
+<p>Dataframes are made from a collection of vectors, each column can be treated as if it was a vector, for example you can add one column to another:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb84-2"><a href="#cb84-2"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1SCIE, PV1READ) <span class="sc">%&gt;%</span> </span>
+<span id="cb84-3"><a href="#cb84-3"></a>  <span class="fu">mutate</span>(<span class="at">overall_grade =</span> PV1MATH <span class="sc">+</span> PV1SCIE <span class="sc">+</span> PV1READ) <span class="sc">%&gt;%</span></span>
+<span id="cb84-4"><a href="#cb84-4"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  CNT     PV1MATH PV1SCIE PV1READ overall_grade
+  &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
+1 Albania    180.    335.    248.          763.
+2 Albania    308.    315.    258.          882.
+3 Albania    268.    359.    285.          911.
+4 Albania    273.    215.    322.          809.
+5 Albania    435.    435.    464.         1335.</code></pre>
+</div>
+</div>
+<p>You can also create your own dataframes by combining vectors, note you have to use an equals sign to do this, rather than the arrow assignment:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>my_class_list <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb86-2"><a href="#cb86-2"></a>  <span class="at">maths_grade =</span> <span class="fu">c</span>(<span class="dv">5</span>,    <span class="dv">4</span>,    <span class="dv">4</span>,    <span class="dv">1</span>,     <span class="dv">7</span>,     <span class="dv">5</span>,     <span class="dv">8</span>),</span>
+<span id="cb86-3"><a href="#cb86-3"></a>  <span class="at">english_grade =</span> <span class="fu">c</span>(<span class="dv">8</span>,    <span class="dv">5</span>,    <span class="dv">3</span>,    <span class="dv">2</span>,     <span class="dv">3</span>,     <span class="dv">6</span>,     <span class="dv">9</span>),</span>
+<span id="cb86-4"><a href="#cb86-4"></a>  <span class="at">genders =</span> <span class="fu">c</span>(<span class="st">"F"</span>,  <span class="st">"M"</span>,  <span class="st">"M"</span>,  <span class="st">"F"</span>,   <span class="st">"M"</span>,   <span class="st">"F"</span>,   <span class="st">"M"</span>),</span>
+<span id="cb86-5"><a href="#cb86-5"></a>  <span class="at">students =</span> <span class="fu">c</span>(<span class="st">"Joe"</span>, <span class="st">"Al"</span>, <span class="st">"Mo"</span>, <span class="st">"Flo"</span>, <span class="st">"Olu"</span>, <span class="st">"Sam"</span>, <span class="st">"Jimmy"</span>)</span>
+<span id="cb86-6"><a href="#cb86-6"></a>  )</span>
+<span id="cb86-7"><a href="#cb86-7"></a>  </span>
+<span id="cb86-8"><a href="#cb86-8"></a>my_class_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  maths_grade english_grade genders students
+1           5             8       F      Joe
+2           4             5       M       Al
+3           4             3       M       Mo
+4           1             2       F      Flo
+5           7             3       M      Olu
+6           5             6       F      Sam
+7           8             9       M    Jimmy</code></pre>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1377,7 +1415,7 @@ Tip
 </table>
 </div>
 </div>
-<p>First we need to get some data into R so we can start analysing them. We can load large datatables into R by either providing the online web address, or by loading it from a local file directory on your hard drive. Both methods are covered below:</p>
+<p>First we need to get some data into R so we can start analysing them. We can load large data sets into R by either providing the online web address, or by loading it from a local file directory on your hard drive. Both methods are covered below:</p>
 </section><section id="loading-data-from-the-web" class="level1" data-number="9"><h1 data-number="9">
 <span class="header-section-number">9</span> Loading data from the web</h1>
 <p>To download files from the web you’ll need to find the exact location of the file you are using. For example below we will need another package, <code>openxlsx</code>, which you need to <em>install</em> before you load it (see: <a href="#sec-packages" class="quarto-xref">Section&nbsp;1.3</a>, or use line 1 below). The code shown will download the files from an online Google drive directly into objects in R using <code>read.xlsx(&lt;file_web_address&gt;, &lt;sheet_name&gt;)</code>:</p>
@@ -1395,13 +1433,13 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span>
-<span id="cb84-2"><a href="#cb84-2"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb84-3"><a href="#cb84-3"></a></span>
-<span id="cb84-4"><a href="#cb84-4"></a>results <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
-<span id="cb84-5"><a href="#cb84-5"></a>                      <span class="at">sheet=</span><span class="st">"Results"</span>)</span>
-<span id="cb84-6"><a href="#cb84-6"></a>schools <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
-<span id="cb84-7"><a href="#cb84-7"></a>                      <span class="at">sheet=</span><span class="st">"Schools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb88-3"><a href="#cb88-3"></a></span>
+<span id="cb88-4"><a href="#cb88-4"></a>results <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
+<span id="cb88-5"><a href="#cb88-5"></a>                      <span class="at">sheet=</span><span class="st">"Results"</span>)</span>
+<span id="cb88-6"><a href="#cb88-6"></a>schools <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
+<span id="cb88-7"><a href="#cb88-7"></a>                      <span class="at">sheet=</span><span class="st">"Schools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-loading-computer" class="level1" data-number="10"><h1 data-number="10">
 <span class="header-section-number">10</span> Loading data from your computer</h1>
@@ -1451,18 +1489,18 @@ Note
 </ul>
 <p>To load this particular data into R we need to use the <code>read_parquet</code> command from the <code>arrow</code> package, specifying the location and name of the file we are loading. See the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>)</span>
-<span id="cb85-2"><a href="#cb85-2"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb85-3"><a href="#cb85-3"></a></span>
-<span id="cb85-4"><a href="#cb85-4"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:/Users/Peter/code/PISA_2022_student_subset.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>)</span>
+<span id="cb89-2"><a href="#cb89-2"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb89-3"><a href="#cb89-3"></a></span>
+<span id="cb89-4"><a href="#cb89-4"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:/Users/Peter/code/PISA_2022_student_subset.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="setting-working-directories" class="level1" data-number="11"><h1 data-number="11">
 <span class="header-section-number">11</span> Setting working directories</h1>
 <p>Using the <code>setwd(&lt;location&gt;)</code> you can specify where R will look by default for any datasets. In the example below, the <code>dfe_data.xlsx</code> will have been downloaded and stored in <code>C:/Users/Peter/code</code>. By running <code>setwd("C:/Users/Peter/code")</code> R will always look in that location when trying to load files, meaning that <code>read_parquet(r"[C:/Users/Peter/code/PISA_student_2022.parquet]")</code> will be treated the same as <code>read_parquet(r"[PISA_student_2022.parquet]")</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="co"># context: setup</span></span>
-<span id="cb86-2"><a href="#cb86-2"></a><span class="fu">setwd</span>(r<span class="st">"[C:/Users/Peter/code/]"</span>)</span>
-<span id="cb86-3"><a href="#cb86-3"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[PISA_student_2022.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># context: setup</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="fu">setwd</span>(r<span class="st">"[C:/Users/Peter/code/]"</span>)</span>
+<span id="cb90-3"><a href="#cb90-3"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[PISA_student_2022.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To work out what your current working directory is, you can use <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>.</p>
 <section id="proper-addresses" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="proper-addresses">
@@ -1480,48 +1518,48 @@ Note
 <span class="header-section-number">12</span> .parquet and .feather files</h1>
 <p>For the majority of this workbook you will be using a cut down version of the <code>PISA_2022</code> student table. This data set is huge and we have loaded it into R, selected fields we think are useful, converted column types to work with R and saved in the <code>.parquet</code> format. <code>.parquet</code> files are quick to load and small in size. To load a <code>.parquet</code> file you can use the <code>read_parquet(&lt;location&gt;)</code> command from the <a href="https://github.com/apache/arrow/">arrow</a> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb87-2"><a href="#cb87-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb91-2"><a href="#cb91-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you want to save out any of your findings, you can use <code>write_parquet(&lt;object&gt;, &lt;location&gt;)</code>, where <code>object</code> is the table you are working on and <code>location</code> is where you want to save it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">write_parquet</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>), <span class="st">"&lt;yourfolder&gt;/pisa_france_2022.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb92-2"><a href="#cb92-2"></a><span class="fu">write_parquet</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>), <span class="st">"&lt;yourfolder&gt;/pisa_france_2022.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.parquet</code> files use a column based storage system, which means that they are very quick to load as they can use multiple processors when loading data, you can also specify which columns you want to load when loading the data using the <code>col_select =</code> attribute, meaning you don’t have to waste time loading all columns then de-selecting those you don’t want:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb89-2"><a href="#cb89-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>,</span>
-<span id="cb89-3"><a href="#cb89-3"></a>                          <span class="at">col_select =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"PV1MATH"</span>, <span class="st">"PV1READ"</span>, <span class="st">"PV1SCIE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb93-2"><a href="#cb93-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>,</span>
+<span id="cb93-3"><a href="#cb93-3"></a>                          <span class="at">col_select =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"PV1MATH"</span>, <span class="st">"PV1READ"</span>, <span class="st">"PV1SCIE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.parquet</code> files are compressed meaning the files will also be small as well as fast. If speed is your real focus, you might want to use <code>.feather</code> files instead. They have the same functionality as <code>.parquet</code> files, but are even faster to load. You can use the <code>read_feather</code> and <code>write_feather</code> commands from the <a href="https://github.com/apache/arrow/">arrow</a> package to load and save <code>.feather</code> files.</p>
 </section><section id="csv-files" class="level1" data-number="13"><h1 data-number="13">
 <span class="header-section-number">13</span> .csv files</h1>
 <p>A very common way of distributing data is through <code>.csv</code> files. These files can be easily compressed and opened in common office spreadsheet tools such as Excel. To load a <code>.csv</code> we can use <code>read_csv("&lt;file_location&gt;")</code> from the <a href="https://tidyverse.tidyverse.org">tidyverse</a>. There is also the similarly named <code>read.csv("&lt;file_location&gt;")</code> but this is slower.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb90-2"><a href="#cb90-2"></a><span class="co"># loading from a website</span></span>
-<span id="cb90-3"><a href="#cb90-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://barrolee.github.io/BarroLeeDataSet/BLData/BL_v3_MF.csv"</span>)</span>
-<span id="cb90-4"><a href="#cb90-4"></a></span>
-<span id="cb90-5"><a href="#cb90-5"></a><span class="co"># loading from your hard drive</span></span>
-<span id="cb90-6"><a href="#cb90-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"&lt;your_folder&gt;/BL_v3_MF.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="co"># loading from a website</span></span>
+<span id="cb94-3"><a href="#cb94-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://barrolee.github.io/BarroLeeDataSet/BLData/BL_v3_MF.csv"</span>)</span>
+<span id="cb94-4"><a href="#cb94-4"></a></span>
+<span id="cb94-5"><a href="#cb94-5"></a><span class="co"># loading from your hard drive</span></span>
+<span id="cb94-6"><a href="#cb94-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"&lt;your_folder&gt;/BL_v3_MF.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to save your own work as a <code>.csv</code> for use later or for manipulation in another tool e.g.&nbsp;Excel. To do this we can use <code>write_csv(&lt;your_data&gt;, "&lt;your_folder&gt;&lt;name&gt;.csv")</code>. <strong>NOTE</strong>: don’t forget to add <code>.csv</code> to the end of your “<your_folder><name><strong>.csv</strong>”, otherwise you might struggle to open the file in another program.</name></your_folder></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb91-2"><a href="#cb91-2"></a><span class="co"># saving your results to a file called `summary_stats.csv`</span></span>
-<span id="cb91-3"><a href="#cb91-3"></a><span class="fu">write_csv</span>(my_results, <span class="st">"C:/tmp/summary_stats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb95-2"><a href="#cb95-2"></a><span class="co"># saving your results to a file called `summary_stats.csv`</span></span>
+<span id="cb95-3"><a href="#cb95-3"></a><span class="fu">write_csv</span>(my_results, <span class="st">"C:/tmp/summary_stats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="spss-.sav" class="level1" data-number="14"><h1 data-number="14">
 <span class="header-section-number">14</span> SPSS / .sav</h1>
 <p>SPSS is a common tool in social science and psychology. The data format used by SPSS is <code>.sav</code>. These files can be loaded directly into R using the <a href="https://haven.tidyverse.org">haven</a> package’s <code>read_sav</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb92-2"><a href="#cb92-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb96-2"><a href="#cb96-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.sav</code> files can look very different to your standard R data frame. They will contain information on the types of data stored in each column, as well as the <em>labels</em> for each column. You can see this information by using the <code>attributes</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">attributes</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">attributes</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="xml" class="level1" data-number="15"><h1 data-number="15">
 <span class="header-section-number">15</span> .xml</h1>
@@ -1531,39 +1569,39 @@ Note
 <span class="header-section-number">17</span> Writing excel files</h1>
 <p>You might prefer to save your results in an Excel file, this can be done using the <code>write.xlsx</code> command from the <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> package. This command will save your data frame as an Excel file in the location you specify:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb94-2"><a href="#cb94-2"></a><span class="fu">write.xlsx</span>(my_results, <span class="st">"&lt;your_folder&gt;/data.xlsx"</span>)</span>
-<span id="cb94-3"><a href="#cb94-3"></a></span>
-<span id="cb94-4"><a href="#cb94-4"></a><span class="co"># https://assets.publishing.service.gov.uk/media/65c4903a3f634b001242c696/Confirmed_raac_with_removal_routes.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb98-2"><a href="#cb98-2"></a><span class="fu">write.xlsx</span>(my_results, <span class="st">"&lt;your_folder&gt;/data.xlsx"</span>)</span>
+<span id="cb98-3"><a href="#cb98-3"></a></span>
+<span id="cb98-4"><a href="#cb98-4"></a><span class="co"># https://assets.publishing.service.gov.uk/media/65c4903a3f634b001242c696/Confirmed_raac_with_removal_routes.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Alternatively, you might want to create a new excel file with multiple sheets. <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> allows you to do this by creating a workbook, adding named sheets to it and then saving it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb95-2"><a href="#cb95-2"></a></span>
-<span id="cb95-3"><a href="#cb95-3"></a><span class="co"># get data</span></span>
-<span id="cb95-4"><a href="#cb95-4"></a>df_UK     <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb95-5"><a href="#cb95-5"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"UK"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb95-6"><a href="#cb95-6"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
-<span id="cb95-7"><a href="#cb95-7"></a></span>
-<span id="cb95-8"><a href="#cb95-8"></a>df_France <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb95-9"><a href="#cb95-9"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb95-10"><a href="#cb95-10"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
-<span id="cb95-11"><a href="#cb95-11"></a></span>
-<span id="cb95-12"><a href="#cb95-12"></a><span class="co"># create an empty workbook</span></span>
-<span id="cb95-13"><a href="#cb95-13"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>()</span>
-<span id="cb95-14"><a href="#cb95-14"></a></span>
-<span id="cb95-15"><a href="#cb95-15"></a><span class="co"># add two empty worksheets</span></span>
-<span id="cb95-16"><a href="#cb95-16"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"UK data"</span>)</span>
-<span id="cb95-17"><a href="#cb95-17"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"France data"</span>)</span>
-<span id="cb95-18"><a href="#cb95-18"></a></span>
-<span id="cb95-19"><a href="#cb95-19"></a><span class="co"># add data to sheet: UK data</span></span>
-<span id="cb95-20"><a href="#cb95-20"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
-<span id="cb95-21"><a href="#cb95-21"></a></span>
-<span id="cb95-22"><a href="#cb95-22"></a><span class="co"># add data to sheet: France data</span></span>
-<span id="cb95-23"><a href="#cb95-23"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
-<span id="cb95-24"><a href="#cb95-24"></a></span>
-<span id="cb95-25"><a href="#cb95-25"></a><span class="co"># save the workbook to your computer</span></span>
-<span id="cb95-26"><a href="#cb95-26"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb99-2"><a href="#cb99-2"></a></span>
+<span id="cb99-3"><a href="#cb99-3"></a><span class="co"># get data</span></span>
+<span id="cb99-4"><a href="#cb99-4"></a>df_UK     <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb99-5"><a href="#cb99-5"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"UK"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-6"><a href="#cb99-6"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
+<span id="cb99-7"><a href="#cb99-7"></a></span>
+<span id="cb99-8"><a href="#cb99-8"></a>df_France <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb99-9"><a href="#cb99-9"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-10"><a href="#cb99-10"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
+<span id="cb99-11"><a href="#cb99-11"></a></span>
+<span id="cb99-12"><a href="#cb99-12"></a><span class="co"># create an empty workbook</span></span>
+<span id="cb99-13"><a href="#cb99-13"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>()</span>
+<span id="cb99-14"><a href="#cb99-14"></a></span>
+<span id="cb99-15"><a href="#cb99-15"></a><span class="co"># add two empty worksheets</span></span>
+<span id="cb99-16"><a href="#cb99-16"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"UK data"</span>)</span>
+<span id="cb99-17"><a href="#cb99-17"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"France data"</span>)</span>
+<span id="cb99-18"><a href="#cb99-18"></a></span>
+<span id="cb99-19"><a href="#cb99-19"></a><span class="co"># add data to sheet: UK data</span></span>
+<span id="cb99-20"><a href="#cb99-20"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
+<span id="cb99-21"><a href="#cb99-21"></a></span>
+<span id="cb99-22"><a href="#cb99-22"></a><span class="co"># add data to sheet: France data</span></span>
+<span id="cb99-23"><a href="#cb99-23"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
+<span id="cb99-24"><a href="#cb99-24"></a></span>
+<span id="cb99-25"><a href="#cb99-25"></a><span class="co"># save the workbook to your computer</span></span>
+<span id="cb99-26"><a href="#cb99-26"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> does a lot more, including allowing you to format cells.</p>
 
