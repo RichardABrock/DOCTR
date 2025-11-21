@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Introduction to R – DOCTR</title>
 <style>
@@ -18,9 +18,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -31,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -61,16 +60,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b8dfc931c20402a51e4dbd968455b3c1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-32a9d584668c12b1915c38743ad0f9ee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script><link rel="stylesheet" href="../css/mastemr.css">
 </head>
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -160,7 +158,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Loading packages and exploring data</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction to Stats</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-1-Descriptive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Descriptive Statistics</span></a>
@@ -178,35 +187,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">T-tests</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+      </ul>
+</li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-Intro_to_graphs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making graphs</span></a>
   </div>
 </li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Self-test for Intermediate R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/08-self_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Self assessment questions</span></a>
+  <a href="../chapters/05-Correlation_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Correlation and regression</span></a>
   </div>
-</li>
-      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Intermediate R</span></a>
+ <span class="menu-text">SEM</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -214,17 +212,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-Correlation_and_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Correlation and regression</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../chapters/06-1-SEM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SEM</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Publications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-Rpublications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publishing using R and quarto</span></a>
@@ -234,13 +237,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendicies</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/A1-PISA_analysis.html" class="sidebar-item-text sidebar-link">
@@ -281,6 +284,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../chapters/A7-QandA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Questions and Answers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A8-Bayesian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A9-Corpus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Corpus Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A10-Leaflet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leaflet</span></a>
   </div>
 </li>
       </ul>
@@ -392,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="01-1-Loading_R_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="01-1-Loading_R_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1312,45 +1333,7 @@ Note
 5 Albania    435. -1.05  Agree            </code></pre>
 </div>
 </div>
-<p>The table above has 4 columns, each column has a datatype, <code>CNT</code> is a character vector, PV1MATH is a double (numeric) vector, ESCS is a double (numeric) vector and <code>IC172Q01JA</code> is a factor. For more about datatypes, see <a href="#sec-datatypes" class="quarto-xref">Section&nbsp;3.4</a>.</p>
-<p>Dataframes are made from a collection of vectors, each column can be treated as if it was a vector, for example you can add one column to another:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb84-2"><a href="#cb84-2"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1SCIE, PV1READ) <span class="sc">%&gt;%</span> </span>
-<span id="cb84-3"><a href="#cb84-3"></a>  <span class="fu">mutate</span>(<span class="at">overall_grade =</span> PV1MATH <span class="sc">+</span> PV1SCIE <span class="sc">+</span> PV1READ) <span class="sc">%&gt;%</span></span>
-<span id="cb84-4"><a href="#cb84-4"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 5
-  CNT     PV1MATH PV1SCIE PV1READ overall_grade
-  &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
-1 Albania    180.    335.    248.          763.
-2 Albania    308.    315.    258.          882.
-3 Albania    268.    359.    285.          911.
-4 Albania    273.    215.    322.          809.
-5 Albania    435.    435.    464.         1335.</code></pre>
-</div>
-</div>
-<p>You can also create your own dataframes by combining vectors, note you have to use an equals sign to do this, rather than the arrow assignment:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>my_class_list <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb86-2"><a href="#cb86-2"></a>  <span class="at">maths_grade =</span> <span class="fu">c</span>(<span class="dv">5</span>,    <span class="dv">4</span>,    <span class="dv">4</span>,    <span class="dv">1</span>,     <span class="dv">7</span>,     <span class="dv">5</span>,     <span class="dv">8</span>),</span>
-<span id="cb86-3"><a href="#cb86-3"></a>  <span class="at">english_grade =</span> <span class="fu">c</span>(<span class="dv">8</span>,    <span class="dv">5</span>,    <span class="dv">3</span>,    <span class="dv">2</span>,     <span class="dv">3</span>,     <span class="dv">6</span>,     <span class="dv">9</span>),</span>
-<span id="cb86-4"><a href="#cb86-4"></a>  <span class="at">genders =</span> <span class="fu">c</span>(<span class="st">"F"</span>,  <span class="st">"M"</span>,  <span class="st">"M"</span>,  <span class="st">"F"</span>,   <span class="st">"M"</span>,   <span class="st">"F"</span>,   <span class="st">"M"</span>),</span>
-<span id="cb86-5"><a href="#cb86-5"></a>  <span class="at">students =</span> <span class="fu">c</span>(<span class="st">"Joe"</span>, <span class="st">"Al"</span>, <span class="st">"Mo"</span>, <span class="st">"Flo"</span>, <span class="st">"Olu"</span>, <span class="st">"Sam"</span>, <span class="st">"Jimmy"</span>)</span>
-<span id="cb86-6"><a href="#cb86-6"></a>  )</span>
-<span id="cb86-7"><a href="#cb86-7"></a>  </span>
-<span id="cb86-8"><a href="#cb86-8"></a>my_class_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  maths_grade english_grade genders students
-1           5             8       F      Joe
-2           4             5       M       Al
-3           4             3       M       Mo
-4           1             2       F      Flo
-5           7             3       M      Olu
-6           5             6       F      Sam
-7           8             9       M    Jimmy</code></pre>
-</div>
-</div>
+<p>The table above has 4 columns, each column has a datatype, <code>CNT</code> is a character vector, PV1MATH is a double (numeric) vector, ESCS is a double (numeric) vector and <code>IC172Q01JA</code> is a factor. For more about datatypes, see <a href="#sec-datatypes" class="quarto-xref">Section&nbsp;3.4</a></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1415,7 +1398,7 @@ Tip
 </table>
 </div>
 </div>
-<p>First we need to get some data into R so we can start analysing them. We can load large data sets into R by either providing the online web address, or by loading it from a local file directory on your hard drive. Both methods are covered below:</p>
+<p>First we need to get some data into R so we can start analysing them. We can load large datatables into R by either providing the online web address, or by loading it from a local file directory on your hard drive. Both methods are covered below:</p>
 </section><section id="loading-data-from-the-web" class="level1" data-number="9"><h1 data-number="9">
 <span class="header-section-number">9</span> Loading data from the web</h1>
 <p>To download files from the web you’ll need to find the exact location of the file you are using. For example below we will need another package, <code>openxlsx</code>, which you need to <em>install</em> before you load it (see: <a href="#sec-packages" class="quarto-xref">Section&nbsp;1.3</a>, or use line 1 below). The code shown will download the files from an online Google drive directly into objects in R using <code>read.xlsx(&lt;file_web_address&gt;, &lt;sheet_name&gt;)</code>:</p>
@@ -1433,13 +1416,13 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span>
-<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb88-3"><a href="#cb88-3"></a></span>
-<span id="cb88-4"><a href="#cb88-4"></a>results <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
-<span id="cb88-5"><a href="#cb88-5"></a>                      <span class="at">sheet=</span><span class="st">"Results"</span>)</span>
-<span id="cb88-6"><a href="#cb88-6"></a>schools <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
-<span id="cb88-7"><a href="#cb88-7"></a>                      <span class="at">sheet=</span><span class="st">"Schools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span>
+<span id="cb84-2"><a href="#cb84-2"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb84-3"><a href="#cb84-3"></a></span>
+<span id="cb84-4"><a href="#cb84-4"></a>results <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
+<span id="cb84-5"><a href="#cb84-5"></a>                      <span class="at">sheet=</span><span class="st">"Results"</span>)</span>
+<span id="cb84-6"><a href="#cb84-6"></a>schools <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://drive.google.com/uc?export=download&amp;id=1tp9xe3dS__eg7RrXf0T_oMxcrz_TbMdM"</span>,</span>
+<span id="cb84-7"><a href="#cb84-7"></a>                      <span class="at">sheet=</span><span class="st">"Schools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-loading-computer" class="level1" data-number="10"><h1 data-number="10">
 <span class="header-section-number">10</span> Loading data from your computer</h1>
@@ -1489,18 +1472,18 @@ Note
 </ul>
 <p>To load this particular data into R we need to use the <code>read_parquet</code> command from the <code>arrow</code> package, specifying the location and name of the file we are loading. See the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>)</span>
-<span id="cb89-2"><a href="#cb89-2"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb89-3"><a href="#cb89-3"></a></span>
-<span id="cb89-4"><a href="#cb89-4"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:/Users/Peter/code/PISA_2022_student_subset.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>)</span>
+<span id="cb85-2"><a href="#cb85-2"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb85-3"><a href="#cb85-3"></a></span>
+<span id="cb85-4"><a href="#cb85-4"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:/Users/Peter/code/PISA_2022_student_subset.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="setting-working-directories" class="level1" data-number="11"><h1 data-number="11">
 <span class="header-section-number">11</span> Setting working directories</h1>
 <p>Using the <code>setwd(&lt;location&gt;)</code> you can specify where R will look by default for any datasets. In the example below, the <code>dfe_data.xlsx</code> will have been downloaded and stored in <code>C:/Users/Peter/code</code>. By running <code>setwd("C:/Users/Peter/code")</code> R will always look in that location when trying to load files, meaning that <code>read_parquet(r"[C:/Users/Peter/code/PISA_student_2022.parquet]")</code> will be treated the same as <code>read_parquet(r"[PISA_student_2022.parquet]")</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># context: setup</span></span>
-<span id="cb90-2"><a href="#cb90-2"></a><span class="fu">setwd</span>(r<span class="st">"[C:/Users/Peter/code/]"</span>)</span>
-<span id="cb90-3"><a href="#cb90-3"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[PISA_student_2022.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="co"># context: setup</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a><span class="fu">setwd</span>(r<span class="st">"[C:/Users/Peter/code/]"</span>)</span>
+<span id="cb86-3"><a href="#cb86-3"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[PISA_student_2022.parquet]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To work out what your current working directory is, you can use <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>.</p>
 <section id="proper-addresses" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="proper-addresses">
@@ -1518,48 +1501,48 @@ Note
 <span class="header-section-number">12</span> .parquet and .feather files</h1>
 <p>For the majority of this workbook you will be using a cut down version of the <code>PISA_2022</code> student table. This data set is huge and we have loaded it into R, selected fields we think are useful, converted column types to work with R and saved in the <code>.parquet</code> format. <code>.parquet</code> files are quick to load and small in size. To load a <code>.parquet</code> file you can use the <code>read_parquet(&lt;location&gt;)</code> command from the <a href="https://github.com/apache/arrow/">arrow</a> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb91-2"><a href="#cb91-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb87-2"><a href="#cb87-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you want to save out any of your findings, you can use <code>write_parquet(&lt;object&gt;, &lt;location&gt;)</code>, where <code>object</code> is the table you are working on and <code>location</code> is where you want to save it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb92-2"><a href="#cb92-2"></a><span class="fu">write_parquet</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>), <span class="st">"&lt;yourfolder&gt;/pisa_france_2022.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">write_parquet</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>), <span class="st">"&lt;yourfolder&gt;/pisa_france_2022.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.parquet</code> files use a column based storage system, which means that they are very quick to load as they can use multiple processors when loading data, you can also specify which columns you want to load when loading the data using the <code>col_select =</code> attribute, meaning you don’t have to waste time loading all columns then de-selecting those you don’t want:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb93-2"><a href="#cb93-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>,</span>
-<span id="cb93-3"><a href="#cb93-3"></a>                          <span class="at">col_select =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"PV1MATH"</span>, <span class="st">"PV1READ"</span>, <span class="st">"PV1SCIE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb89-2"><a href="#cb89-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"&lt;yourfolder&gt;/PISA_student_2022_subset.parquet"</span>,</span>
+<span id="cb89-3"><a href="#cb89-3"></a>                          <span class="at">col_select =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"PV1MATH"</span>, <span class="st">"PV1READ"</span>, <span class="st">"PV1SCIE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.parquet</code> files are compressed meaning the files will also be small as well as fast. If speed is your real focus, you might want to use <code>.feather</code> files instead. They have the same functionality as <code>.parquet</code> files, but are even faster to load. You can use the <code>read_feather</code> and <code>write_feather</code> commands from the <a href="https://github.com/apache/arrow/">arrow</a> package to load and save <code>.feather</code> files.</p>
 </section><section id="csv-files" class="level1" data-number="13"><h1 data-number="13">
 <span class="header-section-number">13</span> .csv files</h1>
 <p>A very common way of distributing data is through <code>.csv</code> files. These files can be easily compressed and opened in common office spreadsheet tools such as Excel. To load a <code>.csv</code> we can use <code>read_csv("&lt;file_location&gt;")</code> from the <a href="https://tidyverse.tidyverse.org">tidyverse</a>. There is also the similarly named <code>read.csv("&lt;file_location&gt;")</code> but this is slower.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb94-2"><a href="#cb94-2"></a><span class="co"># loading from a website</span></span>
-<span id="cb94-3"><a href="#cb94-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://barrolee.github.io/BarroLeeDataSet/BLData/BL_v3_MF.csv"</span>)</span>
-<span id="cb94-4"><a href="#cb94-4"></a></span>
-<span id="cb94-5"><a href="#cb94-5"></a><span class="co"># loading from your hard drive</span></span>
-<span id="cb94-6"><a href="#cb94-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"&lt;your_folder&gt;/BL_v3_MF.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="co"># loading from a website</span></span>
+<span id="cb90-3"><a href="#cb90-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://barrolee.github.io/BarroLeeDataSet/BLData/BL_v3_MF.csv"</span>)</span>
+<span id="cb90-4"><a href="#cb90-4"></a></span>
+<span id="cb90-5"><a href="#cb90-5"></a><span class="co"># loading from your hard drive</span></span>
+<span id="cb90-6"><a href="#cb90-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"&lt;your_folder&gt;/BL_v3_MF.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to save your own work as a <code>.csv</code> for use later or for manipulation in another tool e.g.&nbsp;Excel. To do this we can use <code>write_csv(&lt;your_data&gt;, "&lt;your_folder&gt;&lt;name&gt;.csv")</code>. <strong>NOTE</strong>: don’t forget to add <code>.csv</code> to the end of your “<your_folder><name><strong>.csv</strong>”, otherwise you might struggle to open the file in another program.</name></your_folder></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb95-2"><a href="#cb95-2"></a><span class="co"># saving your results to a file called `summary_stats.csv`</span></span>
-<span id="cb95-3"><a href="#cb95-3"></a><span class="fu">write_csv</span>(my_results, <span class="st">"C:/tmp/summary_stats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb91-2"><a href="#cb91-2"></a><span class="co"># saving your results to a file called `summary_stats.csv`</span></span>
+<span id="cb91-3"><a href="#cb91-3"></a><span class="fu">write_csv</span>(my_results, <span class="st">"C:/tmp/summary_stats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="spss-.sav" class="level1" data-number="14"><h1 data-number="14">
 <span class="header-section-number">14</span> SPSS / .sav</h1>
 <p>SPSS is a common tool in social science and psychology. The data format used by SPSS is <code>.sav</code>. These files can be loaded directly into R using the <a href="https://haven.tidyverse.org">haven</a> package’s <code>read_sav</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb96-2"><a href="#cb96-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb92-2"><a href="#cb92-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"&lt;your_folder&gt;/data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.sav</code> files can look very different to your standard R data frame. They will contain information on the types of data stored in each column, as well as the <em>labels</em> for each column. You can see this information by using the <code>attributes</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">attributes</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">attributes</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="xml" class="level1" data-number="15"><h1 data-number="15">
 <span class="header-section-number">15</span> .xml</h1>
@@ -1569,39 +1552,39 @@ Note
 <span class="header-section-number">17</span> Writing excel files</h1>
 <p>You might prefer to save your results in an Excel file, this can be done using the <code>write.xlsx</code> command from the <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> package. This command will save your data frame as an Excel file in the location you specify:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb98-2"><a href="#cb98-2"></a><span class="fu">write.xlsx</span>(my_results, <span class="st">"&lt;your_folder&gt;/data.xlsx"</span>)</span>
-<span id="cb98-3"><a href="#cb98-3"></a></span>
-<span id="cb98-4"><a href="#cb98-4"></a><span class="co"># https://assets.publishing.service.gov.uk/media/65c4903a3f634b001242c696/Confirmed_raac_with_removal_routes.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="fu">write.xlsx</span>(my_results, <span class="st">"&lt;your_folder&gt;/data.xlsx"</span>)</span>
+<span id="cb94-3"><a href="#cb94-3"></a></span>
+<span id="cb94-4"><a href="#cb94-4"></a><span class="co"># https://assets.publishing.service.gov.uk/media/65c4903a3f634b001242c696/Confirmed_raac_with_removal_routes.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Alternatively, you might want to create a new excel file with multiple sheets. <a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> allows you to do this by creating a workbook, adding named sheets to it and then saving it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb99-2"><a href="#cb99-2"></a></span>
-<span id="cb99-3"><a href="#cb99-3"></a><span class="co"># get data</span></span>
-<span id="cb99-4"><a href="#cb99-4"></a>df_UK     <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb99-5"><a href="#cb99-5"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"UK"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb99-6"><a href="#cb99-6"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
-<span id="cb99-7"><a href="#cb99-7"></a></span>
-<span id="cb99-8"><a href="#cb99-8"></a>df_France <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb99-9"><a href="#cb99-9"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb99-10"><a href="#cb99-10"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
-<span id="cb99-11"><a href="#cb99-11"></a></span>
-<span id="cb99-12"><a href="#cb99-12"></a><span class="co"># create an empty workbook</span></span>
-<span id="cb99-13"><a href="#cb99-13"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>()</span>
-<span id="cb99-14"><a href="#cb99-14"></a></span>
-<span id="cb99-15"><a href="#cb99-15"></a><span class="co"># add two empty worksheets</span></span>
-<span id="cb99-16"><a href="#cb99-16"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"UK data"</span>)</span>
-<span id="cb99-17"><a href="#cb99-17"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"France data"</span>)</span>
-<span id="cb99-18"><a href="#cb99-18"></a></span>
-<span id="cb99-19"><a href="#cb99-19"></a><span class="co"># add data to sheet: UK data</span></span>
-<span id="cb99-20"><a href="#cb99-20"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
-<span id="cb99-21"><a href="#cb99-21"></a></span>
-<span id="cb99-22"><a href="#cb99-22"></a><span class="co"># add data to sheet: France data</span></span>
-<span id="cb99-23"><a href="#cb99-23"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
-<span id="cb99-24"><a href="#cb99-24"></a></span>
-<span id="cb99-25"><a href="#cb99-25"></a><span class="co"># save the workbook to your computer</span></span>
-<span id="cb99-26"><a href="#cb99-26"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb95-2"><a href="#cb95-2"></a></span>
+<span id="cb95-3"><a href="#cb95-3"></a><span class="co"># get data</span></span>
+<span id="cb95-4"><a href="#cb95-4"></a>df_UK     <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb95-5"><a href="#cb95-5"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"UK"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-6"><a href="#cb95-6"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
+<span id="cb95-7"><a href="#cb95-7"></a></span>
+<span id="cb95-8"><a href="#cb95-8"></a>df_France <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb95-9"><a href="#cb95-9"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"France"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-10"><a href="#cb95-10"></a>  <span class="fu">select</span>(CNT, PV1MATH, PV1READ, PV1SCIE)</span>
+<span id="cb95-11"><a href="#cb95-11"></a></span>
+<span id="cb95-12"><a href="#cb95-12"></a><span class="co"># create an empty workbook</span></span>
+<span id="cb95-13"><a href="#cb95-13"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>()</span>
+<span id="cb95-14"><a href="#cb95-14"></a></span>
+<span id="cb95-15"><a href="#cb95-15"></a><span class="co"># add two empty worksheets</span></span>
+<span id="cb95-16"><a href="#cb95-16"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"UK data"</span>)</span>
+<span id="cb95-17"><a href="#cb95-17"></a><span class="fu">addWorksheet</span>(wb, <span class="st">"France data"</span>)</span>
+<span id="cb95-18"><a href="#cb95-18"></a></span>
+<span id="cb95-19"><a href="#cb95-19"></a><span class="co"># add data to sheet: UK data</span></span>
+<span id="cb95-20"><a href="#cb95-20"></a><span class="fu">writeData</span>(wb, <span class="st">"UK data"</span>, df_UK)</span>
+<span id="cb95-21"><a href="#cb95-21"></a></span>
+<span id="cb95-22"><a href="#cb95-22"></a><span class="co"># add data to sheet: France data</span></span>
+<span id="cb95-23"><a href="#cb95-23"></a><span class="fu">writeData</span>(wb, <span class="st">"France data"</span>, df_France)</span>
+<span id="cb95-24"><a href="#cb95-24"></a></span>
+<span id="cb95-25"><a href="#cb95-25"></a><span class="co"># save the workbook to your computer</span></span>
+<span id="cb95-26"><a href="#cb95-26"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">"&lt;your_folder&gt;/my_workbook.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://ycphs.github.io/openxlsx/index.html">openxlsx</a> does a lot more, including allowing you to format cells.</p>
 
@@ -1613,242 +1596,236 @@ Note
 <li id="fn3"><p>R was created to allow for <a href="https://en.wikipedia.org/wiki/Array_programming"><em>vector programming</em></a>, that is a programming language where you can apply operations to entire sets of values (vectors) at the same time, rather than having to cycle through them individually. Vector languages work in a way that is close to how mathematical notation works, making them well suited for performing mathematical functions.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>You’ll sometimes see the words package and library used interchangeably, technically the <em>library</em> is the place where the <em>packages</em> are stored.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
       }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1856,161 +1833,185 @@ Note
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 
 
