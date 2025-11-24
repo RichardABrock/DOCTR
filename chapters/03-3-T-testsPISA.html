@@ -762,8 +762,9 @@ mean of x
 <p>Next, we calculate the probability of the null hypothesis being true. As before, we use R’s <code>t.test</code> function and compare the mean scores of males and females in the US.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Plot a two-sided, unpaired t-test</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">t.test</span>(PV1MATH <span class="sc">~</span> ST004D01T, <span class="at">data =</span> USMATH, </span>
-<span id="cb7-3"><a href="#cb7-3"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">t.test</span>(PV1MATH <span class="sc">~</span> ST004D01T, </span>
+<span id="cb7-3"><a href="#cb7-3"></a>       <span class="at">data =</span> USMATH,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -900,8 +901,9 @@ mean difference
 <span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">filter</span>(CNT<span class="sc">==</span><span class="st">"United Kingdom"</span>)</span>
 <span id="cb15-4"><a href="#cb15-4"></a></span>
 <span id="cb15-5"><a href="#cb15-5"></a><span class="co"># Plot a two-sided, unpaired t-test</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="fu">t.test</span>(PV1SCIE <span class="sc">~</span> ST004D01T, <span class="at">data =</span> UKSci,</span>
-<span id="cb15-7"><a href="#cb15-7"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="fu">t.test</span>(PV1SCIE <span class="sc">~</span> ST004D01T, </span>
+<span id="cb15-7"><a href="#cb15-7"></a>       <span class="at">data =</span> UKSci,</span>
+<span id="cb15-8"><a href="#cb15-8"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1099,12 +1101,12 @@ Note
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">|</span></span>
 <span id="annotated-cell-15-4"><a href="#annotated-cell-15-4"></a>           CNT <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"France"</span>)</span>
 <span id="annotated-cell-15-5"><a href="#annotated-cell-15-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-6" class="code-annotation-target"><a href="#annotated-cell-15-6"></a>resaov<span class="ot">&lt;-</span><span class="fu">aov</span>(PV1SCIE <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7"></a>sumresaov<span class="ot">&lt;-</span><span class="fu">summary</span>(resaov)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-6" class="code-annotation-target"><a href="#annotated-cell-15-6"></a>resaov <span class="ot">&lt;-</span> <span class="fu">aov</span>(PV1SCIE <span class="sc">~</span> CNT, <span class="at">data =</span> PISAMULTI)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7"></a>sumresaov <span class="ot">&lt;-</span> <span class="fu">summary</span>(resaov)</span>
 <span id="annotated-cell-15-8"><a href="#annotated-cell-15-8"></a>sumresaov</span>
 <span id="annotated-cell-15-9"><a href="#annotated-cell-15-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-15-10" class="code-annotation-target"><a href="#annotated-cell-15-10"></a>eta<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-15-11" class="code-annotation-target"><a href="#annotated-cell-15-11"></a>eta<span class="ot">&lt;-</span>eta<span class="sc">*</span><span class="dv">100</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-15-10" class="code-annotation-target"><a href="#annotated-cell-15-10"></a>eta <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">etaSquared</span>(resaov))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-15-11" class="code-annotation-target"><a href="#annotated-cell-15-11"></a>eta <span class="ot">&lt;-</span> eta<span class="sc">*</span><span class="dv">100</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-15-12" class="code-annotation-target"><a href="#annotated-cell-15-12"></a>eta</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
@@ -1699,9 +1701,9 @@ Upper-mid-Top       -34.92029 -41.56624 -28.27433     0</code></pre>
 <ul>
 <li>work out the <code>mean()</code> maths score <code>PV1MATH</code> for each country <code>CNT</code> and gender <code>ST004D01T</code> grouping, call this <code>meanmath</code> and create a new data frame to store this</li>
 <li>from this data frame, create two new data frames, one for males only and one for females only</li>
-<li><code>rename()</code> (see <a href="../chapters/01-2-Intro_tidyverse.html#sec-renaming">§renaming columns</a>) the <code>meanmath</code> score in each data frame to <code>male_mean</code> and <code>female_mean</code></li>
+<li><code>rename()</code> (see <strong>?@sec-renaming</strong>) the <code>meanmath</code> score in each data frame to <code>male_mean</code> and <code>female_mean</code></li>
 <li>bind the data frames together using using column bind function <code>cbind(&lt;male_df&gt;, &lt;female_df&gt;)</code> and store this in a new dataframe called <code>Mathgendergap</code>. <strong>NOTE:</strong> cbind only accepts tables with different names, so you’ll need to select <code>select(CNT, male_mean)</code> from the male dataframe and <code>select(female_mean)</code> from the female dataframe.</li>
-<li>use <code>mutate</code> (see <a href="../chapters/01-2-Intro_tidyverse.html#sec-mutate">§mutate</a>) to calculate the difference in male and female mean maths scores for each country</li>
+<li>use <code>mutate</code> (see <strong>?@sec-mutate</strong>) to calculate the difference in male and female mean maths scores for each country</li>
 <li>plot the results for each country</li>
 </ul>
 <div class="cell">

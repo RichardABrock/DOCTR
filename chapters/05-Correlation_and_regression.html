@@ -415,7 +415,7 @@ https://docs.google.com/presentation/d/1j2IhhnBSrg0sM4HuUE5thO0rMLz2W48scylbdPOm
 <span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">geom_text</span>(<span class="at">label=</span><span class="fu">paste</span>(<span class="st">"r = "</span>, corr_est), <span class="fu">aes</span>(<span class="at">x=</span><span class="dv">700</span>,<span class="at">y=</span><span class="sc">-</span><span class="fl">4.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -429,7 +429,7 @@ https://docs.google.com/presentation/d/1j2IhhnBSrg0sM4HuUE5thO0rMLz2W48scylbdPOm
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -498,7 +498,7 @@ Note
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>ICTEFFIC))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -538,7 +538,7 @@ sample estimates:
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1016,7 +1016,7 @@ Tip
 <span id="cb28-4"><a href="#cb28-4"></a><span class="fu">durbinWatsonTest</span>(mdl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     0.002082558      1.995719   0.844
+   1     0.002082558      1.995719   0.826
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>
@@ -1048,7 +1048,7 @@ Tip
 <span id="cb32-5"><a href="#cb32-5"></a><span class="fu">plot</span>(mdl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1091,7 +1091,7 @@ length(stud_resids)
 <span id="cb33-5"><a href="#cb33-5"></a><span class="fu">ols_plot_resid_fit</span>(mdl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1126,7 +1126,7 @@ length(stud_resids)
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1163,7 +1163,7 @@ Tip
 <span id="cb36-6"><a href="#cb36-6"></a><span class="fu">check_model</span>(mdl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1398,23 +1398,23 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <span id="cb51-3"><a href="#cb51-3"></a>    <span class="at">data =</span> PISA_2022_top_5, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb51-4"><a href="#cb51-4"></a>  <span class="fu">tbl_regression</span>(<span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="mxztywxkpp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mxztywxkpp table {
+<div id="tjsgkrxwwl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tjsgkrxwwl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mxztywxkpp thead, #mxztywxkpp tbody, #mxztywxkpp tfoot, #mxztywxkpp tr, #mxztywxkpp td, #mxztywxkpp th {
+#tjsgkrxwwl thead, #tjsgkrxwwl tbody, #tjsgkrxwwl tfoot, #tjsgkrxwwl tr, #tjsgkrxwwl td, #tjsgkrxwwl th {
   border-style: none;
 }
 
-#mxztywxkpp p {
+#tjsgkrxwwl p {
   margin: 0;
   padding: 0;
 }
 
-#mxztywxkpp .gt_table {
+#tjsgkrxwwl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1440,12 +1440,12 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_caption {
+#tjsgkrxwwl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mxztywxkpp .gt_title {
+#tjsgkrxwwl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1457,7 +1457,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-bottom-width: 0;
 }
 
-#mxztywxkpp .gt_subtitle {
+#tjsgkrxwwl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1469,7 +1469,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-top-width: 0;
 }
 
-#mxztywxkpp .gt_heading {
+#tjsgkrxwwl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1481,13 +1481,13 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_bottom_border {
+#tjsgkrxwwl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_col_headings {
+#tjsgkrxwwl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1502,7 +1502,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_col_heading {
+#tjsgkrxwwl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1522,7 +1522,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   overflow-x: hidden;
 }
 
-#mxztywxkpp .gt_column_spanner_outer {
+#tjsgkrxwwl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1534,15 +1534,15 @@ Number of Fisher Scoring iterations: 6</code></pre>
   padding-right: 4px;
 }
 
-#mxztywxkpp .gt_column_spanner_outer:first-child {
+#tjsgkrxwwl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mxztywxkpp .gt_column_spanner_outer:last-child {
+#tjsgkrxwwl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mxztywxkpp .gt_column_spanner {
+#tjsgkrxwwl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1554,11 +1554,11 @@ Number of Fisher Scoring iterations: 6</code></pre>
   width: 100%;
 }
 
-#mxztywxkpp .gt_spanner_row {
+#tjsgkrxwwl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mxztywxkpp .gt_group_heading {
+#tjsgkrxwwl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1584,7 +1584,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   text-align: left;
 }
 
-#mxztywxkpp .gt_empty_group_heading {
+#tjsgkrxwwl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1599,15 +1599,15 @@ Number of Fisher Scoring iterations: 6</code></pre>
   vertical-align: middle;
 }
 
-#mxztywxkpp .gt_from_md > :first-child {
+#tjsgkrxwwl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mxztywxkpp .gt_from_md > :last-child {
+#tjsgkrxwwl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mxztywxkpp .gt_row {
+#tjsgkrxwwl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1626,7 +1626,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   overflow-x: hidden;
 }
 
-#mxztywxkpp .gt_stub {
+#tjsgkrxwwl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1639,7 +1639,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   padding-right: 5px;
 }
 
-#mxztywxkpp .gt_stub_row_group {
+#tjsgkrxwwl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1653,15 +1653,15 @@ Number of Fisher Scoring iterations: 6</code></pre>
   vertical-align: top;
 }
 
-#mxztywxkpp .gt_row_group_first td {
+#tjsgkrxwwl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mxztywxkpp .gt_row_group_first th {
+#tjsgkrxwwl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mxztywxkpp .gt_summary_row {
+#tjsgkrxwwl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1671,16 +1671,16 @@ Number of Fisher Scoring iterations: 6</code></pre>
   padding-right: 5px;
 }
 
-#mxztywxkpp .gt_first_summary_row {
+#tjsgkrxwwl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_first_summary_row.thick {
+#tjsgkrxwwl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mxztywxkpp .gt_last_summary_row {
+#tjsgkrxwwl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1690,7 +1690,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_grand_summary_row {
+#tjsgkrxwwl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1700,7 +1700,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   padding-right: 5px;
 }
 
-#mxztywxkpp .gt_first_grand_summary_row {
+#tjsgkrxwwl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1710,7 +1710,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_last_grand_summary_row_top {
+#tjsgkrxwwl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1720,11 +1720,11 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_striped {
+#tjsgkrxwwl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mxztywxkpp .gt_table_body {
+#tjsgkrxwwl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1733,7 +1733,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_footnotes {
+#tjsgkrxwwl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1747,7 +1747,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_footnote {
+#tjsgkrxwwl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1756,7 +1756,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   padding-right: 5px;
 }
 
-#mxztywxkpp .gt_sourcenotes {
+#tjsgkrxwwl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1770,7 +1770,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mxztywxkpp .gt_sourcenote {
+#tjsgkrxwwl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1778,72 +1778,72 @@ Number of Fisher Scoring iterations: 6</code></pre>
   padding-right: 5px;
 }
 
-#mxztywxkpp .gt_left {
+#tjsgkrxwwl .gt_left {
   text-align: left;
 }
 
-#mxztywxkpp .gt_center {
+#tjsgkrxwwl .gt_center {
   text-align: center;
 }
 
-#mxztywxkpp .gt_right {
+#tjsgkrxwwl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mxztywxkpp .gt_font_normal {
+#tjsgkrxwwl .gt_font_normal {
   font-weight: normal;
 }
 
-#mxztywxkpp .gt_font_bold {
+#tjsgkrxwwl .gt_font_bold {
   font-weight: bold;
 }
 
-#mxztywxkpp .gt_font_italic {
+#tjsgkrxwwl .gt_font_italic {
   font-style: italic;
 }
 
-#mxztywxkpp .gt_super {
+#tjsgkrxwwl .gt_super {
   font-size: 65%;
 }
 
-#mxztywxkpp .gt_footnote_marks {
+#tjsgkrxwwl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mxztywxkpp .gt_asterisk {
+#tjsgkrxwwl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mxztywxkpp .gt_indent_1 {
+#tjsgkrxwwl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mxztywxkpp .gt_indent_2 {
+#tjsgkrxwwl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mxztywxkpp .gt_indent_3 {
+#tjsgkrxwwl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mxztywxkpp .gt_indent_4 {
+#tjsgkrxwwl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mxztywxkpp .gt_indent_5 {
+#tjsgkrxwwl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mxztywxkpp .katex-display {
+#tjsgkrxwwl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mxztywxkpp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tjsgkrxwwl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1949,7 +1949,7 @@ degrees of freedom =  9
 <span id="cb56-2"><a href="#cb56-2"></a>grphs<span class="sc">$</span>PP_CHECK</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1961,7 +1961,7 @@ degrees of freedom =  9
 <li>Create a logistic regression model to predict whether students in the UK are boys or girls (<code>ST004D01T</code>) based on their mathematics score (<code>PV1MATH</code>). Interpret the results of your model and run checks on the model (note you can’t check VIFs as there is only one predictor). Hint: remove the NA values from gender.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">library</span>(gtsummary)</span>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">library</span>(gtsummary)</span>
 <span id="cb57-2"><a href="#cb57-2"></a><span class="fu">library</span>(car)</span>
 <span id="cb57-3"><a href="#cb57-3"></a><span class="fu">library</span>(glmtoolbox)</span>
 <span id="cb57-4"><a href="#cb57-4"></a></span>
@@ -1977,1628 +1977,79 @@ degrees of freedom =  9
 <span id="cb57-14"><a href="#cb57-14"></a>mdl_math_gender <span class="ot">&lt;-</span> <span class="fu">glm</span>(ST004D01T <span class="sc">~</span> PV1MATH, </span>
 <span id="cb57-15"><a href="#cb57-15"></a>           <span class="at">data =</span> UK_data, <span class="at">family=</span><span class="st">"binomial"</span>)</span>
 <span id="cb57-16"><a href="#cb57-16"></a></span>
-<span id="cb57-17"><a href="#cb57-17"></a><span class="fu">summary</span>(mdl_math_gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-glm(formula = ST004D01T ~ PV1MATH, family = "binomial", data = UK_data)
-
-Coefficients:
-             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) -0.706398   0.091443  -7.725 1.12e-14 ***
-PV1MATH      0.001521   0.000186   8.176 2.93e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 17981  on 12971  degrees of freedom
-Residual deviance: 17913  on 12970  degrees of freedom
-AIC: 17917
-
-Number of Fisher Scoring iterations: 3</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">tbl_regression</span>(mdl_math_gender, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="deugfddafl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#deugfddafl table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#deugfddafl thead, #deugfddafl tbody, #deugfddafl tfoot, #deugfddafl tr, #deugfddafl td, #deugfddafl th {
-  border-style: none;
-}
-
-#deugfddafl p {
-  margin: 0;
-  padding: 0;
-}
-
-#deugfddafl .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#deugfddafl .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#deugfddafl .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#deugfddafl .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#deugfddafl .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#deugfddafl .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#deugfddafl .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#deugfddafl .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#deugfddafl .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#deugfddafl .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#deugfddafl .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#deugfddafl .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#deugfddafl .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#deugfddafl .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#deugfddafl .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#deugfddafl .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#deugfddafl .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#deugfddafl .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#deugfddafl .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#deugfddafl .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#deugfddafl .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#deugfddafl .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#deugfddafl .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#deugfddafl .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#deugfddafl .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#deugfddafl .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#deugfddafl .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#deugfddafl .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#deugfddafl .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#deugfddafl .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#deugfddafl .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#deugfddafl .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#deugfddafl .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#deugfddafl .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#deugfddafl .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#deugfddafl .gt_left {
-  text-align: left;
-}
-
-#deugfddafl .gt_center {
-  text-align: center;
-}
-
-#deugfddafl .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#deugfddafl .gt_font_normal {
-  font-weight: normal;
-}
-
-#deugfddafl .gt_font_bold {
-  font-weight: bold;
-}
-
-#deugfddafl .gt_font_italic {
-  font-style: italic;
-}
-
-#deugfddafl .gt_super {
-  font-size: 65%;
-}
-
-#deugfddafl .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#deugfddafl .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#deugfddafl .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#deugfddafl .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#deugfddafl .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#deugfddafl .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#deugfddafl .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#deugfddafl .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#deugfddafl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<thead><tr class="gt_col_headings header">
-<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
-<th id="estimate" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>OR</strong></th>
-<th id="conf.low" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>95% CI</strong></th>
-<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong></th>
-</tr></thead>
-<tbody class="gt_table_body"><tr class="odd">
-<td class="gt_row gt_left" headers="label">Plausible Value 1 in Mathematics</td>
-<td class="gt_row gt_center" headers="estimate">1.00</td>
-<td class="gt_row gt_center" headers="conf.low">1.00, 1.00</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr></tbody>
-<tfoot class="gt_sourcenotes"><tr class="odd">
-<td colspan="4" class="gt_sourcenote">Abbreviations: CI = Confidence Interval, OR = Odds Ratio</td>
-</tr></tfoot>
-</table>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># maths score is not a good predictor of gender - the Odds Ratio is very close to 1 (1.001522)</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a></span>
-<span id="cb60-3"><a href="#cb60-3"></a><span class="co"># Note we can't calculate VIFs (these check multicollinearity between independent variables, and we only have one here)</span></span>
-<span id="cb60-4"><a href="#cb60-4"></a><span class="fu">hltest</span>(mdl_math_gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   The Hosmer-Lemeshow goodness-of-fit test
-
- Group Size Observed Expected
-     1 1297      644 577.9459
-     2 1297      619 607.1793
-     3 1297      575 624.0704
-     4 1297      632 638.2655
-     5 1297      591 650.9737
-     6 1297      650 663.1201
-     7 1297      681 675.4100
-     8 1297      656 689.6854
-     9 1297      736 707.6037
-    10 1297      790 739.4597
- [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
-
-         Statistic =  47.56402 
-degrees of freedom =  9 
-           p-value =  3.0807e-07 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># the p &gt; 0.05 therefore we reject the null that the logistic regression model fits the data well - this is not the best fitting model</span></span>
-<span id="cb62-2"><a href="#cb62-2"></a>grphs <span class="ot">&lt;-</span> <span class="fu">check_model</span>(mdl_math_gender)</span>
-<span id="cb62-3"><a href="#cb62-3"></a>grphs<span class="sc">$</span>PP_CHECK</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="05-Correlation_and_regression_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># the predicted values are in range but the error bars are large - not the best fitting model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb57-17"><a href="#cb57-17"></a><span class="fu">summary</span>(mdl_math_gender)</span>
+<span id="cb57-18"><a href="#cb57-18"></a><span class="fu">tbl_regression</span>(mdl_math_gender, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb57-19"><a href="#cb57-19"></a></span>
+<span id="cb57-20"><a href="#cb57-20"></a><span class="co"># maths score is not a good predictor of gender - the Odds Ratio is very close to 1 (1.001522)</span></span>
+<span id="cb57-21"><a href="#cb57-21"></a></span>
+<span id="cb57-22"><a href="#cb57-22"></a><span class="co"># Note we can't calculate VIFs (these check multicollinearity between independent variables, and we only have one here)</span></span>
+<span id="cb57-23"><a href="#cb57-23"></a><span class="fu">hltest</span>(mdl_math_gender)</span>
+<span id="cb57-24"><a href="#cb57-24"></a><span class="co"># the p &gt; 0.05 therefore we reject the null that the logistic regression model fits the data well - this is not the best fitting model</span></span>
+<span id="cb57-25"><a href="#cb57-25"></a>grphs <span class="ot">&lt;-</span> <span class="fu">check_model</span>(mdl_math_gender)</span>
+<span id="cb57-26"><a href="#cb57-26"></a>grphs<span class="sc">$</span>PP_CHECK</span>
+<span id="cb57-27"><a href="#cb57-27"></a><span class="co"># the predicted values are in range but the error bars are large - not the best fitting model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <ol start="2" type="1">
 <li>The item <code>ST324Q11JA</code> asks “Agree/disagree: School has been a waste of time.” Create a logistic regression model to predict whether students in the UK agree with this statement (i.e.&nbsp;<code>ST324Q11JA</code> == “Agree”) based on their gender (<code>ST004D01T</code>), their wealth (<code>HOMEPOS</code>) and maths score (<code>PV1MATH</code>). Interpret the results of your model.</li>
 </ol>
 <p>Run checks on the model.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># create the data frame for the UK</span></span>
-<span id="cb64-2"><a href="#cb64-2"></a>UK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb64-4"><a href="#cb64-4"></a>  <span class="fu">select</span>(ST004D01T, HOMEPOS, ST324Q11JA, PV1SCIE, PV1MATH, PV1READ) </span>
-<span id="cb64-5"><a href="#cb64-5"></a></span>
-<span id="cb64-6"><a href="#cb64-6"></a><span class="co"># create the logistic regression model</span></span>
-<span id="cb64-7"><a href="#cb64-7"></a></span>
-<span id="cb64-8"><a href="#cb64-8"></a>mdl_waste <span class="ot">&lt;-</span> <span class="fu">glm</span>(ST324Q11JA <span class="sc">~</span> ST004D01T <span class="sc">+</span> HOMEPOS <span class="sc">+</span> PV1MATH, </span>
-<span id="cb64-9"><a href="#cb64-9"></a>           <span class="at">data =</span> UK_data, <span class="at">family=</span><span class="st">"binomial"</span>)</span>
-<span id="cb64-10"><a href="#cb64-10"></a></span>
-<span id="cb64-11"><a href="#cb64-11"></a></span>
-<span id="cb64-12"><a href="#cb64-12"></a><span class="fu">tbl_regression</span>(mdl_waste, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="eyykjskemh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#eyykjskemh table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#eyykjskemh thead, #eyykjskemh tbody, #eyykjskemh tfoot, #eyykjskemh tr, #eyykjskemh td, #eyykjskemh th {
-  border-style: none;
-}
-
-#eyykjskemh p {
-  margin: 0;
-  padding: 0;
-}
-
-#eyykjskemh .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#eyykjskemh .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#eyykjskemh .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#eyykjskemh .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#eyykjskemh .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#eyykjskemh .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#eyykjskemh .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#eyykjskemh .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#eyykjskemh .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#eyykjskemh .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#eyykjskemh .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#eyykjskemh .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#eyykjskemh .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#eyykjskemh .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#eyykjskemh .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#eyykjskemh .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#eyykjskemh .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#eyykjskemh .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#eyykjskemh .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#eyykjskemh .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#eyykjskemh .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#eyykjskemh .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#eyykjskemh .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#eyykjskemh .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#eyykjskemh .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#eyykjskemh .gt_left {
-  text-align: left;
-}
-
-#eyykjskemh .gt_center {
-  text-align: center;
-}
-
-#eyykjskemh .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#eyykjskemh .gt_font_normal {
-  font-weight: normal;
-}
-
-#eyykjskemh .gt_font_bold {
-  font-weight: bold;
-}
-
-#eyykjskemh .gt_font_italic {
-  font-style: italic;
-}
-
-#eyykjskemh .gt_super {
-  font-size: 65%;
-}
-
-#eyykjskemh .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#eyykjskemh .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#eyykjskemh .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#eyykjskemh .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#eyykjskemh .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#eyykjskemh .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#eyykjskemh .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#eyykjskemh .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#eyykjskemh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead><tr class="gt_col_headings header">
-<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
-<th id="estimate" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>OR</strong></th>
-<th id="conf.low" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>95% CI</strong></th>
-<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong></th>
-</tr></thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">ST004D01T</td>
-<td class="gt_row gt_center" headers="estimate"><br></td>
-<td class="gt_row gt_center" headers="conf.low"><br></td>
-<td class="gt_row gt_center" headers="p.value"><br></td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Female</td>
-<td class="gt_row gt_center" headers="estimate">—</td>
-<td class="gt_row gt_center" headers="conf.low">—</td>
-<td class="gt_row gt_center" headers="p.value"><br></td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Male</td>
-<td class="gt_row gt_center" headers="estimate">1.14</td>
-<td class="gt_row gt_center" headers="conf.low">0.99, 1.30</td>
-<td class="gt_row gt_center" headers="p.value">0.062</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Home possessions (WLE)</td>
-<td class="gt_row gt_center" headers="estimate">0.86</td>
-<td class="gt_row gt_center" headers="conf.low">0.79, 0.93</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Plausible Value 1 in Mathematics</td>
-<td class="gt_row gt_center" headers="estimate">1.00</td>
-<td class="gt_row gt_center" headers="conf.low">1.00, 1.00</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-</tbody>
-<tfoot class="gt_sourcenotes"><tr class="odd">
-<td colspan="4" class="gt_sourcenote">Abbreviations: CI = Confidence Interval, OR = Odds Ratio</td>
-</tr></tfoot>
-</table>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># boys are 1.38 times more likely to agree that school is a waste of time</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a><span class="co"># for each increase in home possessions, the odds of agreeing decrease by 0.89</span></span>
-<span id="cb65-3"><a href="#cb65-3"></a><span class="co"># for each point increase in maths score, the odds of agreeing stay the same (the real value is not exactly equal to 1, being better at maths slightly decreases the odds of agreeing, but the effect is very small, the value is 0.9965 but is rounded here)</span></span>
-<span id="cb65-4"><a href="#cb65-4"></a></span>
-<span id="cb65-5"><a href="#cb65-5"></a><span class="fu">vif</span>(mdl_waste)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ST004D01T   HOMEPOS   PV1MATH 
- 1.018384  1.127515  1.145600 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># VIFs are less than 5 which is acceptable and below 2 which is ideal</span></span>
-<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">hltest</span>(mdl_waste)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   The Hosmer-Lemeshow goodness-of-fit test
-
- Group Size Observed Expected
-     1  527      335 338.5071
-     2  527      362 371.0592
-     3  527      374 387.5647
-     4  527      400 400.6294
-     5  527      434 411.6160
-     6  527      433 421.0137
-     7  527      442 430.2484
-     8  527      437 439.6072
-     9  527      442 450.7029
-    10  527      458 466.1806
- [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
-
-         Statistic =  14.28834 
-degrees of freedom =  9 
-           p-value =  0.11243 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># the p&lt;0.05 therefore we accept the null that the logistic regression model fits the data well</span></span>
-<span id="cb69-2"><a href="#cb69-2"></a>grphs <span class="ot">&lt;-</span> <span class="fu">check_model</span>(mdl_waste)</span>
-<span id="cb69-3"><a href="#cb69-3"></a>grphs<span class="sc">$</span>PP_CHECK</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># there seems to be a good alingment between the predicted and observed data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># create the data frame for the UK</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>UK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4"></a>  <span class="fu">select</span>(ST004D01T, HOMEPOS, ST324Q11JA, PV1SCIE, PV1MATH, PV1READ) </span>
+<span id="cb58-5"><a href="#cb58-5"></a></span>
+<span id="cb58-6"><a href="#cb58-6"></a><span class="co"># create the logistic regression model</span></span>
+<span id="cb58-7"><a href="#cb58-7"></a></span>
+<span id="cb58-8"><a href="#cb58-8"></a>mdl_waste <span class="ot">&lt;-</span> <span class="fu">glm</span>(ST324Q11JA <span class="sc">~</span> ST004D01T <span class="sc">+</span> HOMEPOS <span class="sc">+</span> PV1MATH, </span>
+<span id="cb58-9"><a href="#cb58-9"></a>           <span class="at">data =</span> UK_data, <span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb58-10"><a href="#cb58-10"></a></span>
+<span id="cb58-11"><a href="#cb58-11"></a></span>
+<span id="cb58-12"><a href="#cb58-12"></a><span class="fu">tbl_regression</span>(mdl_waste, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-13"><a href="#cb58-13"></a></span>
+<span id="cb58-14"><a href="#cb58-14"></a><span class="co"># boys are 1.38 times more likely to agree that school is a waste of time</span></span>
+<span id="cb58-15"><a href="#cb58-15"></a><span class="co"># for each increase in home possessions, the odds of agreeing decrease by 0.89</span></span>
+<span id="cb58-16"><a href="#cb58-16"></a><span class="co"># for each point increase in maths score, the odds of agreeing stay the same (the real value is not exactly equal to 1, being better at maths slightly decreases the odds of agreeing, but the effect is very small, the value is 0.9965 but is rounded here)</span></span>
+<span id="cb58-17"><a href="#cb58-17"></a></span>
+<span id="cb58-18"><a href="#cb58-18"></a><span class="fu">vif</span>(mdl_waste)</span>
+<span id="cb58-19"><a href="#cb58-19"></a><span class="co"># VIFs are less than 5 which is acceptable and below 2 which is ideal</span></span>
+<span id="cb58-20"><a href="#cb58-20"></a><span class="fu">hltest</span>(mdl_waste)</span>
+<span id="cb58-21"><a href="#cb58-21"></a><span class="co"># the p&lt;0.05 therefore we accept the null that the logistic regression model fits the data well</span></span>
+<span id="cb58-22"><a href="#cb58-22"></a>grphs <span class="ot">&lt;-</span> <span class="fu">check_model</span>(mdl_waste)</span>
+<span id="cb58-23"><a href="#cb58-23"></a>grphs<span class="sc">$</span>PP_CHECK</span>
+<span id="cb58-24"><a href="#cb58-24"></a><span class="co"># there seems to be a good alingment between the predicted and observed data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <ol start="3" type="1">
 <li>An item on the survey <code>IC172Q01JA</code> asks students to: “Agree/disagree: There are enough [digital resources] for every student at my school.” Create a model that predicts UK students’ responses to that question based on the nature of the school. We will simulate the nature of the school from students’ wealth (<code>HOMEPOS</code>) the disciplinary climate at the school (<code>DISCLIM</code>) and whether students are bullied at school (<code>BULLIED</code>). Interpret the results of your model and check its fit.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># create the data frame for the UK</span></span>
-<span id="cb72-2"><a href="#cb72-2"></a>UK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb72-3"><a href="#cb72-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb72-4"><a href="#cb72-4"></a>  <span class="fu">select</span>(IC172Q01JA, DISCLIM, HOMEPOS, BULLIED) </span>
-<span id="cb72-5"><a href="#cb72-5"></a></span>
-<span id="cb72-6"><a href="#cb72-6"></a><span class="co"># create the logistic regression model</span></span>
-<span id="cb72-7"><a href="#cb72-7"></a></span>
-<span id="cb72-8"><a href="#cb72-8"></a>mdl_ict <span class="ot">&lt;-</span> <span class="fu">glm</span>(IC172Q01JA <span class="sc">~</span> DISCLIM <span class="sc">+</span> HOMEPOS <span class="sc">+</span> BULLIED, </span>
-<span id="cb72-9"><a href="#cb72-9"></a>           <span class="at">data =</span> UK_data, <span class="at">family=</span><span class="st">"binomial"</span>)</span>
-<span id="cb72-10"><a href="#cb72-10"></a></span>
-<span id="cb72-11"><a href="#cb72-11"></a></span>
-<span id="cb72-12"><a href="#cb72-12"></a><span class="fu">tbl_regression</span>(mdl_ict, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="jlqirtzuwm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jlqirtzuwm table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#jlqirtzuwm thead, #jlqirtzuwm tbody, #jlqirtzuwm tfoot, #jlqirtzuwm tr, #jlqirtzuwm td, #jlqirtzuwm th {
-  border-style: none;
-}
-
-#jlqirtzuwm p {
-  margin: 0;
-  padding: 0;
-}
-
-#jlqirtzuwm .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#jlqirtzuwm .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#jlqirtzuwm .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#jlqirtzuwm .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#jlqirtzuwm .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#jlqirtzuwm .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#jlqirtzuwm .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#jlqirtzuwm .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#jlqirtzuwm .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#jlqirtzuwm .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#jlqirtzuwm .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#jlqirtzuwm .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#jlqirtzuwm .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#jlqirtzuwm .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#jlqirtzuwm .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jlqirtzuwm .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#jlqirtzuwm .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#jlqirtzuwm .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#jlqirtzuwm .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jlqirtzuwm .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#jlqirtzuwm .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jlqirtzuwm .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#jlqirtzuwm .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jlqirtzuwm .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#jlqirtzuwm .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jlqirtzuwm .gt_left {
-  text-align: left;
-}
-
-#jlqirtzuwm .gt_center {
-  text-align: center;
-}
-
-#jlqirtzuwm .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#jlqirtzuwm .gt_font_normal {
-  font-weight: normal;
-}
-
-#jlqirtzuwm .gt_font_bold {
-  font-weight: bold;
-}
-
-#jlqirtzuwm .gt_font_italic {
-  font-style: italic;
-}
-
-#jlqirtzuwm .gt_super {
-  font-size: 65%;
-}
-
-#jlqirtzuwm .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#jlqirtzuwm .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#jlqirtzuwm .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#jlqirtzuwm .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#jlqirtzuwm .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#jlqirtzuwm .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#jlqirtzuwm .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#jlqirtzuwm .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#jlqirtzuwm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<thead><tr class="gt_col_headings header">
-<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
-<th id="estimate" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>OR</strong></th>
-<th id="conf.low" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>95% CI</strong></th>
-<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong></th>
-</tr></thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Disciplinary climate in mathematics (WLE)</td>
-<td class="gt_row gt_center" headers="estimate">1.36</td>
-<td class="gt_row gt_center" headers="conf.low">1.25, 1.48</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">Home possessions (WLE)</td>
-<td class="gt_row gt_center" headers="estimate">1.18</td>
-<td class="gt_row gt_center" headers="conf.low">1.07, 1.29</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">Being bullied (WLE)</td>
-<td class="gt_row gt_center" headers="estimate">0.83</td>
-<td class="gt_row gt_center" headers="conf.low">0.77, 0.90</td>
-<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
-</tr>
-</tbody>
-<tfoot class="gt_sourcenotes"><tr class="odd">
-<td colspan="4" class="gt_sourcenote">Abbreviations: CI = Confidence Interval, OR = Odds Ratio</td>
-</tr></tfoot>
-</table>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># as disciplinary climate improves, the odds of agreeing to enough resources increase </span></span>
-<span id="cb73-2"><a href="#cb73-2"></a><span class="co"># for each increase in home possessions, the increase in access to digital resources is modest (each additional point increases odds only by 1.02)</span></span>
-<span id="cb73-3"><a href="#cb73-3"></a><span class="co"># for every one point increase in students reporting being bullied at school, there is a 0.83 reduction in the odds of the likelihood of daysing yes to the school having enough resoruces </span></span>
-<span id="cb73-4"><a href="#cb73-4"></a><span class="fu">vif</span>(mdl_ict)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> DISCLIM  HOMEPOS  BULLIED 
-1.075813 1.009836 1.066026 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># VIFs are less than 5 which is acceptable and below 2 which is ideal</span></span>
-<span id="cb75-2"><a href="#cb75-2"></a><span class="fu">hltest</span>(mdl_ict)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   The Hosmer-Lemeshow goodness-of-fit test
-
- Group Size Observed Expected
-     1  976      842 855.1610
-     2  976      891 888.3956
-     3  976      899 900.7209
-     4  976      913 909.0146
-     5  976      931 915.7166
-     6  976      931 921.5931
-     7  976      935 926.9289
-     8  976      942 932.3532
-     9  976      913 938.3553
-    10  975      937 945.7607
-
-         Statistic =  31.9693 
-degrees of freedom =  8 
-           p-value =  9.4328e-05 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># the p &gt; 0.05 therefore the model does not fit the data well</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a><span class="co"># this may be an over sensitivity due to the large data set 12,972</span></span>
-<span id="cb77-3"><a href="#cb77-3"></a>grphs <span class="ot">&lt;-</span> <span class="fu">check_model</span>(mdl_ict)</span>
-<span id="cb77-4"><a href="#cb77-4"></a>grphs<span class="sc">$</span>PP_CHECK</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># there seems to be a good  between the predicted and observed data and we can then ignore the Hosmer-Lemeshow test result as the data set is large</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># create the data frame for the UK</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>UK_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="fu">select</span>(IC172Q01JA, DISCLIM, HOMEPOS, BULLIED) </span>
+<span id="cb59-5"><a href="#cb59-5"></a></span>
+<span id="cb59-6"><a href="#cb59-6"></a><span class="co"># create the logistic regression model</span></span>
+<span id="cb59-7"><a href="#cb59-7"></a></span>
+<span id="cb59-8"><a href="#cb59-8"></a>mdl_ict <span class="ot">&lt;-</span> <span class="fu">glm</span>(IC172Q01JA <span class="sc">~</span> DISCLIM <span class="sc">+</span> HOMEPOS <span class="sc">+</span> BULLIED, </span>
+<span id="cb59-9"><a href="#cb59-9"></a>           <span class="at">data =</span> UK_data, <span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb59-10"><a href="#cb59-10"></a></span>
+<span id="cb59-11"><a href="#cb59-11"></a></span>
+<span id="cb59-12"><a href="#cb59-12"></a><span class="fu">tbl_regression</span>(mdl_ict, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb59-13"><a href="#cb59-13"></a></span>
+<span id="cb59-14"><a href="#cb59-14"></a><span class="co"># as disciplinary climate improves, the odds of agreeing to enough resources increase </span></span>
+<span id="cb59-15"><a href="#cb59-15"></a><span class="co"># for each increase in home possessions, the increase in access to digital resources is modest (each additional point increases odds only by 1.02)</span></span>
+<span id="cb59-16"><a href="#cb59-16"></a><span class="co"># for every one point increase in students reporting being bullied at school, there is a 0.83 reduction in the odds of the likelihood of daysing yes to the school having enough resoruces </span></span>
+<span id="cb59-17"><a href="#cb59-17"></a><span class="fu">vif</span>(mdl_ict)</span>
+<span id="cb59-18"><a href="#cb59-18"></a><span class="co"># VIFs are less than 5 which is acceptable and below 2 which is ideal</span></span>
+<span id="cb59-19"><a href="#cb59-19"></a><span class="fu">hltest</span>(mdl_ict)</span>
+<span id="cb59-20"><a href="#cb59-20"></a><span class="co"># the p &gt; 0.05 therefore the model does not fit the data well</span></span>
+<span id="cb59-21"><a href="#cb59-21"></a><span class="co"># this may be an over sensitivity due to the large data set 12,972</span></span>
+<span id="cb59-22"><a href="#cb59-22"></a>grphs <span class="ot">&lt;-</span> <span class="fu">check_model</span>(mdl_ict)</span>
+<span id="cb59-23"><a href="#cb59-23"></a>grphs<span class="sc">$</span>PP_CHECK</span>
+<span id="cb59-24"><a href="#cb59-24"></a><span class="co"># there seems to be a good  between the predicted and observed data and we can then ignore the Hosmer-Lemeshow test result as the data set is large</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </div>
 </section></section><section id="seminar-tasks" class="level1" data-number="7"><h1 data-number="7">
@@ -3614,9 +2065,9 @@ degrees of freedom =  8
 <li>What are <em>Spearman’s Rho</em> and <em>Pearson’s r</em>? When might you use one rather than the other?</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="co">#&gt; When the data you use has outliers or is not </span></span>
-<span id="cb80-2"><a href="#cb80-2"></a><span class="co">#&gt; normally distributed (non-parametric) you should use Spearman's Rho</span></span>
-<span id="cb80-3"><a href="#cb80-3"></a><span class="co">#&gt; you can test this by checking that shapiro.test p &gt;0.05</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co">#&gt; When the data you use has outliers or is not </span></span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="co">#&gt; normally distributed (non-parametric) you should use Spearman's Rho</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a><span class="co">#&gt; you can test this by checking that shapiro.test p &gt;0.05</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="2" type="1">
@@ -3629,25 +2080,25 @@ degrees of freedom =  8
 <li>A country is trying to find out whether girls or boys are better behaved in schools. They have access to school databases that record the number of bad behaviour slips for each student.</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="co"># The government is trying to understand which groups of people have been affected by a pandemic. They have data on healthcare professionals, education professionals and train drivers and the number of days taken off ill in the last 6 months.</span></span>
-<span id="cb81-2"><a href="#cb81-2"></a><span class="co">#&gt; Dependendent: days off ill</span></span>
-<span id="cb81-3"><a href="#cb81-3"></a><span class="co">#&gt; Independent: job role</span></span>
-<span id="cb81-4"><a href="#cb81-4"></a><span class="co">#&gt; Suggested model: ANOVA to check if there are differences between jobs</span></span>
-<span id="cb81-5"><a href="#cb81-5"></a></span>
-<span id="cb81-6"><a href="#cb81-6"></a><span class="co"># A cigarette company, working in a country that still allows cigarette advertising(!), wants to work out which groups in society are not currently smoking that many cigarettes. They want to find out if city dwellers are more likely to smoke than people living in the countryside.</span></span>
-<span id="cb81-7"><a href="#cb81-7"></a><span class="co">#&gt; Dependent: Smoker / Non Smoker</span></span>
-<span id="cb81-8"><a href="#cb81-8"></a><span class="co">#&gt; Independent: City / Countryside residence</span></span>
-<span id="cb81-9"><a href="#cb81-9"></a><span class="co">#&gt; Suggested model: Chi-square</span></span>
-<span id="cb81-10"><a href="#cb81-10"></a></span>
-<span id="cb81-11"><a href="#cb81-11"></a><span class="co"># A netball team is trying to work out how likely their players are to get injured in a season. They have data on the number of injuries per player and the number of minutes each player has been playing netball.</span></span>
-<span id="cb81-12"><a href="#cb81-12"></a><span class="co">#&gt; Dependent: injuries</span></span>
-<span id="cb81-13"><a href="#cb81-13"></a><span class="co">#&gt; Independent: time on court</span></span>
-<span id="cb81-14"><a href="#cb81-14"></a><span class="co">#&gt; Suggested model: Linear model/regression</span></span>
-<span id="cb81-15"><a href="#cb81-15"></a></span>
-<span id="cb81-16"><a href="#cb81-16"></a><span class="co"># A country is trying to find out whether girls or boys are better behaved in schools. They have access to school databases that record the number of bad behaviour slips for each student.</span></span>
-<span id="cb81-17"><a href="#cb81-17"></a><span class="co">#&gt; Dependent: behaviour slips</span></span>
-<span id="cb81-18"><a href="#cb81-18"></a><span class="co">#&gt; Independent: Gender (Girls/Boys)</span></span>
-<span id="cb81-19"><a href="#cb81-19"></a><span class="co">#&gt; Suggested model: t-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># The government is trying to understand which groups of people have been affected by a pandemic. They have data on healthcare professionals, education professionals and train drivers and the number of days taken off ill in the last 6 months.</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a><span class="co">#&gt; Dependendent: days off ill</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a><span class="co">#&gt; Independent: job role</span></span>
+<span id="cb61-4"><a href="#cb61-4"></a><span class="co">#&gt; Suggested model: ANOVA to check if there are differences between jobs</span></span>
+<span id="cb61-5"><a href="#cb61-5"></a></span>
+<span id="cb61-6"><a href="#cb61-6"></a><span class="co"># A cigarette company, working in a country that still allows cigarette advertising(!), wants to work out which groups in society are not currently smoking that many cigarettes. They want to find out if city dwellers are more likely to smoke than people living in the countryside.</span></span>
+<span id="cb61-7"><a href="#cb61-7"></a><span class="co">#&gt; Dependent: Smoker / Non Smoker</span></span>
+<span id="cb61-8"><a href="#cb61-8"></a><span class="co">#&gt; Independent: City / Countryside residence</span></span>
+<span id="cb61-9"><a href="#cb61-9"></a><span class="co">#&gt; Suggested model: Chi-square</span></span>
+<span id="cb61-10"><a href="#cb61-10"></a></span>
+<span id="cb61-11"><a href="#cb61-11"></a><span class="co"># A netball team is trying to work out how likely their players are to get injured in a season. They have data on the number of injuries per player and the number of minutes each player has been playing netball.</span></span>
+<span id="cb61-12"><a href="#cb61-12"></a><span class="co">#&gt; Dependent: injuries</span></span>
+<span id="cb61-13"><a href="#cb61-13"></a><span class="co">#&gt; Independent: time on court</span></span>
+<span id="cb61-14"><a href="#cb61-14"></a><span class="co">#&gt; Suggested model: Linear model/regression</span></span>
+<span id="cb61-15"><a href="#cb61-15"></a></span>
+<span id="cb61-16"><a href="#cb61-16"></a><span class="co"># A country is trying to find out whether girls or boys are better behaved in schools. They have access to school databases that record the number of bad behaviour slips for each student.</span></span>
+<span id="cb61-17"><a href="#cb61-17"></a><span class="co">#&gt; Dependent: behaviour slips</span></span>
+<span id="cb61-18"><a href="#cb61-18"></a><span class="co">#&gt; Independent: Gender (Girls/Boys)</span></span>
+<span id="cb61-19"><a href="#cb61-19"></a><span class="co">#&gt; Suggested model: t-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="3" type="1">
@@ -3670,9 +2121,9 @@ sample estimates:
 </div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="co">#&gt; The Index of economic, social and cultural status `ESCS` is strongly</span></span>
-<span id="cb83-2"><a href="#cb83-2"></a><span class="co">#&gt; correlated with home posessions `HOMEPOS`, with a correlation coefficient</span></span>
-<span id="cb83-3"><a href="#cb83-3"></a><span class="co">#&gt; of 0.7934311. This model is significant with a p-value of &lt; 0.001</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co">#&gt; The Index of economic, social and cultural status `ESCS` is strongly</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="co">#&gt; correlated with home posessions `HOMEPOS`, with a correlation coefficient</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a><span class="co">#&gt; of 0.7934311. This model is significant with a p-value of &lt; 0.001</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="4" type="1">
@@ -3680,23 +2131,23 @@ sample estimates:
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ozzlsbnuix" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ozzlsbnuix table {
+<div id="vebjlrgnla" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vebjlrgnla table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ozzlsbnuix thead, #ozzlsbnuix tbody, #ozzlsbnuix tfoot, #ozzlsbnuix tr, #ozzlsbnuix td, #ozzlsbnuix th {
+#vebjlrgnla thead, #vebjlrgnla tbody, #vebjlrgnla tfoot, #vebjlrgnla tr, #vebjlrgnla td, #vebjlrgnla th {
   border-style: none;
 }
 
-#ozzlsbnuix p {
+#vebjlrgnla p {
   margin: 0;
   padding: 0;
 }
 
-#ozzlsbnuix .gt_table {
+#vebjlrgnla .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3722,12 +2173,12 @@ sample estimates:
   border-left-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_caption {
+#vebjlrgnla .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ozzlsbnuix .gt_title {
+#vebjlrgnla .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3739,7 +2190,7 @@ sample estimates:
   border-bottom-width: 0;
 }
 
-#ozzlsbnuix .gt_subtitle {
+#vebjlrgnla .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3751,7 +2202,7 @@ sample estimates:
   border-top-width: 0;
 }
 
-#ozzlsbnuix .gt_heading {
+#vebjlrgnla .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3763,13 +2214,13 @@ sample estimates:
   border-right-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_bottom_border {
+#vebjlrgnla .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_col_headings {
+#vebjlrgnla .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3784,7 +2235,7 @@ sample estimates:
   border-right-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_col_heading {
+#vebjlrgnla .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3804,7 +2255,7 @@ sample estimates:
   overflow-x: hidden;
 }
 
-#ozzlsbnuix .gt_column_spanner_outer {
+#vebjlrgnla .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3816,15 +2267,15 @@ sample estimates:
   padding-right: 4px;
 }
 
-#ozzlsbnuix .gt_column_spanner_outer:first-child {
+#vebjlrgnla .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ozzlsbnuix .gt_column_spanner_outer:last-child {
+#vebjlrgnla .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ozzlsbnuix .gt_column_spanner {
+#vebjlrgnla .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3836,11 +2287,11 @@ sample estimates:
   width: 100%;
 }
 
-#ozzlsbnuix .gt_spanner_row {
+#vebjlrgnla .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ozzlsbnuix .gt_group_heading {
+#vebjlrgnla .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3866,7 +2317,7 @@ sample estimates:
   text-align: left;
 }
 
-#ozzlsbnuix .gt_empty_group_heading {
+#vebjlrgnla .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3881,15 +2332,15 @@ sample estimates:
   vertical-align: middle;
 }
 
-#ozzlsbnuix .gt_from_md > :first-child {
+#vebjlrgnla .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ozzlsbnuix .gt_from_md > :last-child {
+#vebjlrgnla .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ozzlsbnuix .gt_row {
+#vebjlrgnla .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3908,7 +2359,7 @@ sample estimates:
   overflow-x: hidden;
 }
 
-#ozzlsbnuix .gt_stub {
+#vebjlrgnla .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3921,7 +2372,7 @@ sample estimates:
   padding-right: 5px;
 }
 
-#ozzlsbnuix .gt_stub_row_group {
+#vebjlrgnla .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3935,15 +2386,15 @@ sample estimates:
   vertical-align: top;
 }
 
-#ozzlsbnuix .gt_row_group_first td {
+#vebjlrgnla .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ozzlsbnuix .gt_row_group_first th {
+#vebjlrgnla .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ozzlsbnuix .gt_summary_row {
+#vebjlrgnla .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3953,16 +2404,16 @@ sample estimates:
   padding-right: 5px;
 }
 
-#ozzlsbnuix .gt_first_summary_row {
+#vebjlrgnla .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_first_summary_row.thick {
+#vebjlrgnla .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ozzlsbnuix .gt_last_summary_row {
+#vebjlrgnla .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3972,7 +2423,7 @@ sample estimates:
   border-bottom-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_grand_summary_row {
+#vebjlrgnla .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3982,7 +2433,7 @@ sample estimates:
   padding-right: 5px;
 }
 
-#ozzlsbnuix .gt_first_grand_summary_row {
+#vebjlrgnla .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3992,7 +2443,7 @@ sample estimates:
   border-top-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_last_grand_summary_row_top {
+#vebjlrgnla .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4002,11 +2453,11 @@ sample estimates:
   border-bottom-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_striped {
+#vebjlrgnla .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ozzlsbnuix .gt_table_body {
+#vebjlrgnla .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4015,7 +2466,7 @@ sample estimates:
   border-bottom-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_footnotes {
+#vebjlrgnla .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4029,7 +2480,7 @@ sample estimates:
   border-right-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_footnote {
+#vebjlrgnla .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4038,7 +2489,7 @@ sample estimates:
   padding-right: 5px;
 }
 
-#ozzlsbnuix .gt_sourcenotes {
+#vebjlrgnla .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4052,7 +2503,7 @@ sample estimates:
   border-right-color: #D3D3D3;
 }
 
-#ozzlsbnuix .gt_sourcenote {
+#vebjlrgnla .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4060,72 +2511,72 @@ sample estimates:
   padding-right: 5px;
 }
 
-#ozzlsbnuix .gt_left {
+#vebjlrgnla .gt_left {
   text-align: left;
 }
 
-#ozzlsbnuix .gt_center {
+#vebjlrgnla .gt_center {
   text-align: center;
 }
 
-#ozzlsbnuix .gt_right {
+#vebjlrgnla .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ozzlsbnuix .gt_font_normal {
+#vebjlrgnla .gt_font_normal {
   font-weight: normal;
 }
 
-#ozzlsbnuix .gt_font_bold {
+#vebjlrgnla .gt_font_bold {
   font-weight: bold;
 }
 
-#ozzlsbnuix .gt_font_italic {
+#vebjlrgnla .gt_font_italic {
   font-style: italic;
 }
 
-#ozzlsbnuix .gt_super {
+#vebjlrgnla .gt_super {
   font-size: 65%;
 }
 
-#ozzlsbnuix .gt_footnote_marks {
+#vebjlrgnla .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ozzlsbnuix .gt_asterisk {
+#vebjlrgnla .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ozzlsbnuix .gt_indent_1 {
+#vebjlrgnla .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ozzlsbnuix .gt_indent_2 {
+#vebjlrgnla .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ozzlsbnuix .gt_indent_3 {
+#vebjlrgnla .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ozzlsbnuix .gt_indent_4 {
+#vebjlrgnla .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ozzlsbnuix .gt_indent_5 {
+#vebjlrgnla .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ozzlsbnuix .katex-display {
+#vebjlrgnla .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ozzlsbnuix div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vebjlrgnla div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4165,58 +2616,58 @@ sample estimates:
 </div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co">#&gt; The model is pretty good at explaining the variance, The Adj. R2</span></span>
-<span id="cb84-2"><a href="#cb84-2"></a><span class="co">#&gt; shows that population explains 72% of the variance in murders.</span></span>
-<span id="cb84-3"><a href="#cb84-3"></a><span class="co">#&gt; The model is significant as p &lt; 0.001. For every increase in </span></span>
-<span id="cb84-4"><a href="#cb84-4"></a><span class="co">#&gt; population of 1000 people, the model predicts another 0.1 deaths.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co">#&gt; The model is pretty good at explaining the variance, The Adj. R2</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="co">#&gt; shows that population explains 72% of the variance in murders.</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a><span class="co">#&gt; The model is significant as p &lt; 0.001. For every increase in </span></span>
+<span id="cb64-4"><a href="#cb64-4"></a><span class="co">#&gt; population of 1000 people, the model predicts another 0.1 deaths.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="5" type="1">
 <li>Work out the correlation between a country’s <em>mean</em> female mathematics grade and <em>mean</em> male mathematics grade. Should you use <em>Spearman’s Rho</em> or <em>Pearson’s r</em> in your model? Why? EXTENSION: try plotting this data to see if the <code>cor.test</code> result is correct</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>df <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
-<span id="cb85-2"><a href="#cb85-2"></a></span>
-<span id="cb85-3"><a href="#cb85-3"></a>maths_male   <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Male"</span>)</span>
-<span id="cb85-4"><a href="#cb85-4"></a>maths_female <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Female"</span>)</span>
-<span id="cb85-5"><a href="#cb85-5"></a></span>
-<span id="cb85-6"><a href="#cb85-6"></a><span class="co">#&gt; As the shapiro wilkes test has a p-value &gt; 0.05 for girls, </span></span>
-<span id="cb85-7"><a href="#cb85-7"></a><span class="co">#&gt; we need to Spearman's Rho as the data is not normally distributed</span></span>
-<span id="cb85-8"><a href="#cb85-8"></a></span>
-<span id="cb85-9"><a href="#cb85-9"></a><span class="fu">shapiro.test</span>(maths_female<span class="sc">$</span>maths)</span>
-<span id="cb85-10"><a href="#cb85-10"></a><span class="co">#&gt; p-value = 0.07514</span></span>
-<span id="cb85-11"><a href="#cb85-11"></a></span>
-<span id="cb85-12"><a href="#cb85-12"></a><span class="fu">shapiro.test</span>(maths_male<span class="sc">$</span>maths)</span>
-<span id="cb85-13"><a href="#cb85-13"></a><span class="co">#&gt; p-value = 0.03921</span></span>
-<span id="cb85-14"><a href="#cb85-14"></a></span>
-<span id="cb85-15"><a href="#cb85-15"></a><span class="fu">cor.test</span>(maths_male<span class="sc">$</span>maths, maths_female<span class="sc">$</span>maths, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb85-16"><a href="#cb85-16"></a><span class="co">#&gt; 0.9874121</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>df <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
+<span id="cb65-2"><a href="#cb65-2"></a></span>
+<span id="cb65-3"><a href="#cb65-3"></a>maths_male   <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Male"</span>)</span>
+<span id="cb65-4"><a href="#cb65-4"></a>maths_female <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ST004D01T <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<span id="cb65-5"><a href="#cb65-5"></a></span>
+<span id="cb65-6"><a href="#cb65-6"></a><span class="co">#&gt; As the shapiro wilkes test has a p-value &gt; 0.05 for girls, </span></span>
+<span id="cb65-7"><a href="#cb65-7"></a><span class="co">#&gt; we need to Spearman's Rho as the data is not normally distributed</span></span>
+<span id="cb65-8"><a href="#cb65-8"></a></span>
+<span id="cb65-9"><a href="#cb65-9"></a><span class="fu">shapiro.test</span>(maths_female<span class="sc">$</span>maths)</span>
+<span id="cb65-10"><a href="#cb65-10"></a><span class="co">#&gt; p-value = 0.07514</span></span>
+<span id="cb65-11"><a href="#cb65-11"></a></span>
+<span id="cb65-12"><a href="#cb65-12"></a><span class="fu">shapiro.test</span>(maths_male<span class="sc">$</span>maths)</span>
+<span id="cb65-13"><a href="#cb65-13"></a><span class="co">#&gt; p-value = 0.03921</span></span>
+<span id="cb65-14"><a href="#cb65-14"></a></span>
+<span id="cb65-15"><a href="#cb65-15"></a><span class="fu">cor.test</span>(maths_male<span class="sc">$</span>maths, maths_female<span class="sc">$</span>maths, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb65-16"><a href="#cb65-16"></a><span class="co">#&gt; 0.9874121</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="6" type="1">
 <li>Create a linear model to explore the relationship between the Index of economic, social and cultural status (<code>ESCS</code>) and the grade in science (<code>PV1SCIE</code>)</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS, <span class="at">data =</span> PISA_2022)</span>
-<span id="cb86-2"><a href="#cb86-2"></a><span class="fu">summary</span>(mdl)</span>
-<span id="cb86-3"><a href="#cb86-3"></a></span>
-<span id="cb86-4"><a href="#cb86-4"></a><span class="co">#&gt; For every increase in ESCS score by 1 </span></span>
-<span id="cb86-5"><a href="#cb86-5"></a><span class="co">#&gt; there is an increase in score of 40.0837 points, </span></span>
-<span id="cb86-6"><a href="#cb86-6"></a><span class="co">#&gt; ESCS is a significant predictor p &lt;2e-16 ***, </span></span>
-<span id="cb86-7"><a href="#cb86-7"></a><span class="co">#&gt; but the overall model has a low R squared value of 0.1837</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS, <span class="at">data =</span> PISA_2022)</span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="fu">summary</span>(mdl)</span>
+<span id="cb66-3"><a href="#cb66-3"></a></span>
+<span id="cb66-4"><a href="#cb66-4"></a><span class="co">#&gt; For every increase in ESCS score by 1 </span></span>
+<span id="cb66-5"><a href="#cb66-5"></a><span class="co">#&gt; there is an increase in score of 40.0837 points, </span></span>
+<span id="cb66-6"><a href="#cb66-6"></a><span class="co">#&gt; ESCS is a significant predictor p &lt;2e-16 ***, </span></span>
+<span id="cb66-7"><a href="#cb66-7"></a><span class="co">#&gt; but the overall model has a low R squared value of 0.1837</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Add the student maths score <code>PV1MATH</code> this model, how does this change the outcome?</p>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS <span class="sc">+</span> PV1MATH, <span class="at">data =</span> PISA_2022)</span>
-<span id="cb87-2"><a href="#cb87-2"></a><span class="fu">summary</span>(mdl)</span>
-<span id="cb87-3"><a href="#cb87-3"></a></span>
-<span id="cb87-4"><a href="#cb87-4"></a><span class="co">#&gt; For every increase in ESCS grade, </span></span>
-<span id="cb87-5"><a href="#cb87-5"></a><span class="co">#&gt; there is now a science score increase of only 3.225, </span></span>
-<span id="cb87-6"><a href="#cb87-6"></a><span class="co">#&gt; i.e. when controlling for maths outcomes, ESCS </span></span>
-<span id="cb87-7"><a href="#cb87-7"></a><span class="co">#&gt;  explains less of the overall science grade. </span></span>
-<span id="cb87-8"><a href="#cb87-8"></a><span class="co">#&gt; Both factors remain significant and the overall model </span></span>
-<span id="cb87-9"><a href="#cb87-9"></a><span class="co">#&gt; now has a very high R squared value of 0.7905</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1SCIE <span class="sc">~</span> ESCS <span class="sc">+</span> PV1MATH, <span class="at">data =</span> PISA_2022)</span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">summary</span>(mdl)</span>
+<span id="cb67-3"><a href="#cb67-3"></a></span>
+<span id="cb67-4"><a href="#cb67-4"></a><span class="co">#&gt; For every increase in ESCS grade, </span></span>
+<span id="cb67-5"><a href="#cb67-5"></a><span class="co">#&gt; there is now a science score increase of only 3.225, </span></span>
+<span id="cb67-6"><a href="#cb67-6"></a><span class="co">#&gt; i.e. when controlling for maths outcomes, ESCS </span></span>
+<span id="cb67-7"><a href="#cb67-7"></a><span class="co">#&gt;  explains less of the overall science grade. </span></span>
+<span id="cb67-8"><a href="#cb67-8"></a><span class="co">#&gt; Both factors remain significant and the overall model </span></span>
+<span id="cb67-9"><a href="#cb67-9"></a><span class="co">#&gt; now has a very high R squared value of 0.7905</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="7" type="1">
@@ -4224,47 +2675,47 @@ sample estimates:
 </ol>
 <p>Using a linear model, how do “Shortage of educational staff” <code>STAFFSHORT</code> and “Shortage of educational material” <code>EDUSHORT</code> relate to “Student behaviour hindering learning” <code>STUBEHA</code></p>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT, <span class="at">data=</span>PISA_2022_school)</span>
-<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">summary</span>(mdl)</span>
-<span id="cb88-3"><a href="#cb88-3"></a></span>
-<span id="cb88-4"><a href="#cb88-4"></a><span class="co">#&gt; STAFFSHORT has a slightly larger estimate, 0.339116, than EDUSHORT, 0.190948</span></span>
-<span id="cb88-5"><a href="#cb88-5"></a><span class="co">#&gt; This means as staff and educational resource shortages increase, so does</span></span>
-<span id="cb88-6"><a href="#cb88-6"></a><span class="co">#&gt; student behaviour hindering learning.</span></span>
-<span id="cb88-7"><a href="#cb88-7"></a><span class="co">#&gt; Both factors are significant p &lt;2e-16 ***</span></span>
-<span id="cb88-8"><a href="#cb88-8"></a><span class="co">#&gt; The effect size of the overall model is relatively low, at 0.1983</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT, <span class="at">data=</span>PISA_2022_school)</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="fu">summary</span>(mdl)</span>
+<span id="cb68-3"><a href="#cb68-3"></a></span>
+<span id="cb68-4"><a href="#cb68-4"></a><span class="co">#&gt; STAFFSHORT has a slightly larger estimate, 0.339116, than EDUSHORT, 0.190948</span></span>
+<span id="cb68-5"><a href="#cb68-5"></a><span class="co">#&gt; This means as staff and educational resource shortages increase, so does</span></span>
+<span id="cb68-6"><a href="#cb68-6"></a><span class="co">#&gt; student behaviour hindering learning.</span></span>
+<span id="cb68-7"><a href="#cb68-7"></a><span class="co">#&gt; Both factors are significant p &lt;2e-16 ***</span></span>
+<span id="cb68-8"><a href="#cb68-8"></a><span class="co">#&gt; The effect size of the overall model is relatively low, at 0.1983</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Adjust the model to incorporate the percentage of boys in a school (see <code>SC002Q01TA</code> and <code>SCHSIZE</code>), what difference does this make?</p>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>tbl_beh_predict <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> </span>
-<span id="cb89-2"><a href="#cb89-2"></a>  <span class="fu">mutate</span>(<span class="at">boy_per =</span> <span class="dv">100</span> <span class="sc">*</span> SC002Q01TA <span class="sc">/</span> SCHSIZE)</span>
-<span id="cb89-3"><a href="#cb89-3"></a></span>
-<span id="cb89-4"><a href="#cb89-4"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, <span class="at">data=</span>tbl_beh_predict)</span>
-<span id="cb89-5"><a href="#cb89-5"></a><span class="fu">summary</span>(mdl)</span>
-<span id="cb89-6"><a href="#cb89-6"></a></span>
-<span id="cb89-7"><a href="#cb89-7"></a><span class="co">#&gt; adding percentage of boys to the model increases the effect size to 0.2058,</span></span>
-<span id="cb89-8"><a href="#cb89-8"></a><span class="co">#&gt; when controlling for boy_per the estimate of staff shortages</span></span>
-<span id="cb89-9"><a href="#cb89-9"></a><span class="co">#&gt; decreases slightly, and the estimate of educational shortages</span></span>
-<span id="cb89-10"><a href="#cb89-10"></a><span class="co">#&gt; increases. The estimate of boy_per is significant, for every </span></span>
-<span id="cb89-11"><a href="#cb89-11"></a><span class="co">#&gt; one percent increase in boys in a school, student behaviour</span></span>
-<span id="cb89-12"><a href="#cb89-12"></a><span class="co">#&gt; hindering learning increases by 0.002, this model shows an all </span></span>
-<span id="cb89-13"><a href="#cb89-13"></a><span class="co">#&gt; girls school would likely have a student behaviour hindering</span></span>
-<span id="cb89-14"><a href="#cb89-14"></a><span class="co">#&gt; learning value 0.2 lower than an all boys school!</span></span>
-<span id="cb89-15"><a href="#cb89-15"></a><span class="co">#&gt; it'd be worth double checking to see if boy_per is parametric</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>tbl_beh_predict <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">mutate</span>(<span class="at">boy_per =</span> <span class="dv">100</span> <span class="sc">*</span> SC002Q01TA <span class="sc">/</span> SCHSIZE)</span>
+<span id="cb69-3"><a href="#cb69-3"></a></span>
+<span id="cb69-4"><a href="#cb69-4"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, <span class="at">data=</span>tbl_beh_predict)</span>
+<span id="cb69-5"><a href="#cb69-5"></a><span class="fu">summary</span>(mdl)</span>
+<span id="cb69-6"><a href="#cb69-6"></a></span>
+<span id="cb69-7"><a href="#cb69-7"></a><span class="co">#&gt; adding percentage of boys to the model increases the effect size to 0.2058,</span></span>
+<span id="cb69-8"><a href="#cb69-8"></a><span class="co">#&gt; when controlling for boy_per the estimate of staff shortages</span></span>
+<span id="cb69-9"><a href="#cb69-9"></a><span class="co">#&gt; decreases slightly, and the estimate of educational shortages</span></span>
+<span id="cb69-10"><a href="#cb69-10"></a><span class="co">#&gt; increases. The estimate of boy_per is significant, for every </span></span>
+<span id="cb69-11"><a href="#cb69-11"></a><span class="co">#&gt; one percent increase in boys in a school, student behaviour</span></span>
+<span id="cb69-12"><a href="#cb69-12"></a><span class="co">#&gt; hindering learning increases by 0.002, this model shows an all </span></span>
+<span id="cb69-13"><a href="#cb69-13"></a><span class="co">#&gt; girls school would likely have a student behaviour hindering</span></span>
+<span id="cb69-14"><a href="#cb69-14"></a><span class="co">#&gt; learning value 0.2 lower than an all boys school!</span></span>
+<span id="cb69-15"><a href="#cb69-15"></a><span class="co">#&gt; it'd be worth double checking to see if boy_per is parametric</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>How does the explanatory value of this model change if you only look at schools in the UK?</p>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, </span>
-<span id="cb90-2"><a href="#cb90-2"></a>          <span class="at">data=</span>tbl_beh_predict <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>))</span>
-<span id="cb90-3"><a href="#cb90-3"></a><span class="fu">summary</span>(mdl)</span>
-<span id="cb90-4"><a href="#cb90-4"></a></span>
-<span id="cb90-5"><a href="#cb90-5"></a><span class="co">#&gt; for the UK the effect size is larger at 0.2291, more of the variance of</span></span>
-<span id="cb90-6"><a href="#cb90-6"></a><span class="co">#&gt; STUBEHA is explained by this model than for other countries</span></span>
-<span id="cb90-7"><a href="#cb90-7"></a><span class="co">#&gt; Educational resource shortages have a smaller impact on STUBEHA, </span></span>
-<span id="cb90-8"><a href="#cb90-8"></a><span class="co">#&gt; than in other countries, with an estimate of 0.142237</span></span>
-<span id="cb90-9"><a href="#cb90-9"></a><span class="co">#&gt; staff shortages have a bigger impact that other countries, with an</span></span>
-<span id="cb90-10"><a href="#cb90-10"></a><span class="co">#&gt; estimate of 0.369571</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(STUBEHA <span class="sc">~</span> STAFFSHORT <span class="sc">+</span> EDUSHORT <span class="sc">+</span> boy_per, </span>
+<span id="cb70-2"><a href="#cb70-2"></a>          <span class="at">data=</span>tbl_beh_predict <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>))</span>
+<span id="cb70-3"><a href="#cb70-3"></a><span class="fu">summary</span>(mdl)</span>
+<span id="cb70-4"><a href="#cb70-4"></a></span>
+<span id="cb70-5"><a href="#cb70-5"></a><span class="co">#&gt; for the UK the effect size is larger at 0.2291, more of the variance of</span></span>
+<span id="cb70-6"><a href="#cb70-6"></a><span class="co">#&gt; STUBEHA is explained by this model than for other countries</span></span>
+<span id="cb70-7"><a href="#cb70-7"></a><span class="co">#&gt; Educational resource shortages have a smaller impact on STUBEHA, </span></span>
+<span id="cb70-8"><a href="#cb70-8"></a><span class="co">#&gt; than in other countries, with an estimate of 0.142237</span></span>
+<span id="cb70-9"><a href="#cb70-9"></a><span class="co">#&gt; staff shortages have a bigger impact that other countries, with an</span></span>
+<span id="cb70-10"><a href="#cb70-10"></a><span class="co">#&gt; estimate of 0.369571</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="8" type="1">
@@ -4272,114 +2723,114 @@ sample estimates:
 </li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>left_join code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="co">#&gt; SC016Q02TA   Percentage of total funding for school year from: Student fees or school charges paid by parents</span></span>
-<span id="cb91-2"><a href="#cb91-2"></a><span class="co">#&gt; SC035Q01NA   How student tests are used: [Standardised tests]: To guide students' learning</span></span>
-<span id="cb91-3"><a href="#cb91-3"></a><span class="co">#&gt; SC035Q10TA   How student tests are used: [Standardised tests]: To compare the school with other schools</span></span>
-<span id="cb91-4"><a href="#cb91-4"></a><span class="co">#&gt; SC035Q08TB   How student tests are used: Teacher-developed tests: To identify aspects of instruction or the curriculum that could be improved</span></span>
-<span id="cb91-5"><a href="#cb91-5"></a><span class="co">#&gt; SC035Q09NA   How student tests are used: [Standardised tests]: To adapt teaching to the students' needs</span></span>
-<span id="cb91-6"><a href="#cb91-6"></a><span class="co">#&gt; SC035Q09NB   How student tests are used: Teacher-developed tests: To adapt teaching to the students' needs</span></span>
-<span id="cb91-7"><a href="#cb91-7"></a></span>
-<span id="cb91-8"><a href="#cb91-8"></a><span class="co">#&gt; STRATIO  Student-Teacher ratio</span></span>
-<span id="cb91-9"><a href="#cb91-9"></a><span class="co">#&gt; CLSIZE   Class Size (cheating here slightly as this is a nominal field which roughly maps to the continuous) - in test English</span></span>
-<span id="cb91-10"><a href="#cb91-10"></a><span class="co">#&gt; EDUSHORT Shortage of educational material (WLE)</span></span>
-<span id="cb91-11"><a href="#cb91-11"></a><span class="co">#&gt; STAFFSHORT   Shortage of educational staff (WLE)</span></span>
-<span id="cb91-12"><a href="#cb91-12"></a><span class="co">#&gt; STUBEHA  Student behaviour hindering learning (WLE)</span></span>
-<span id="cb91-13"><a href="#cb91-13"></a></span>
-<span id="cb91-14"><a href="#cb91-14"></a>PISA_2022_stusch <span class="ot">&lt;-</span> </span>
-<span id="cb91-15"><a href="#cb91-15"></a>  <span class="fu">left_join</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">select</span>(CNT, CNTSCHID, ST004D01T, HOMEPOS, </span>
-<span id="cb91-16"><a href="#cb91-16"></a>                                 ESCS, PV1SCIE, PV1MATH, PV1READ), </span>
-<span id="cb91-17"><a href="#cb91-17"></a>             PISA_2022_school <span class="sc">%&gt;%</span> </span>
-<span id="cb91-18"><a href="#cb91-18"></a>              <span class="fu">select</span>(CNT, CNTSCHID, SC016Q02TA, SC035Q01NA,</span>
-<span id="cb91-19"><a href="#cb91-19"></a>                     SC035Q10TA, SC035Q08TB, SC035Q09NA, SC035Q09NB,</span>
-<span id="cb91-20"><a href="#cb91-20"></a>                     STRATIO, CLSIZE, EDUSHORT, STAFFSHORT, STUBEHA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>left_join code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co">#&gt; SC016Q02TA   Percentage of total funding for school year from: Student fees or school charges paid by parents</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a><span class="co">#&gt; SC035Q01NA   How student tests are used: [Standardised tests]: To guide students' learning</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="co">#&gt; SC035Q10TA   How student tests are used: [Standardised tests]: To compare the school with other schools</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a><span class="co">#&gt; SC035Q08TB   How student tests are used: Teacher-developed tests: To identify aspects of instruction or the curriculum that could be improved</span></span>
+<span id="cb71-5"><a href="#cb71-5"></a><span class="co">#&gt; SC035Q09NA   How student tests are used: [Standardised tests]: To adapt teaching to the students' needs</span></span>
+<span id="cb71-6"><a href="#cb71-6"></a><span class="co">#&gt; SC035Q09NB   How student tests are used: Teacher-developed tests: To adapt teaching to the students' needs</span></span>
+<span id="cb71-7"><a href="#cb71-7"></a></span>
+<span id="cb71-8"><a href="#cb71-8"></a><span class="co">#&gt; STRATIO  Student-Teacher ratio</span></span>
+<span id="cb71-9"><a href="#cb71-9"></a><span class="co">#&gt; CLSIZE   Class Size (cheating here slightly as this is a nominal field which roughly maps to the continuous) - in test English</span></span>
+<span id="cb71-10"><a href="#cb71-10"></a><span class="co">#&gt; EDUSHORT Shortage of educational material (WLE)</span></span>
+<span id="cb71-11"><a href="#cb71-11"></a><span class="co">#&gt; STAFFSHORT   Shortage of educational staff (WLE)</span></span>
+<span id="cb71-12"><a href="#cb71-12"></a><span class="co">#&gt; STUBEHA  Student behaviour hindering learning (WLE)</span></span>
+<span id="cb71-13"><a href="#cb71-13"></a></span>
+<span id="cb71-14"><a href="#cb71-14"></a>PISA_2022_stusch <span class="ot">&lt;-</span> </span>
+<span id="cb71-15"><a href="#cb71-15"></a>  <span class="fu">left_join</span>(PISA_2022 <span class="sc">%&gt;%</span> <span class="fu">select</span>(CNT, CNTSCHID, ST004D01T, HOMEPOS, </span>
+<span id="cb71-16"><a href="#cb71-16"></a>                                 ESCS, PV1SCIE, PV1MATH, PV1READ), </span>
+<span id="cb71-17"><a href="#cb71-17"></a>             PISA_2022_school <span class="sc">%&gt;%</span> </span>
+<span id="cb71-18"><a href="#cb71-18"></a>              <span class="fu">select</span>(CNT, CNTSCHID, SC016Q02TA, SC035Q01NA,</span>
+<span id="cb71-19"><a href="#cb71-19"></a>                     SC035Q10TA, SC035Q08TB, SC035Q09NA, SC035Q09NB,</span>
+<span id="cb71-20"><a href="#cb71-20"></a>                     STRATIO, CLSIZE, EDUSHORT, STAFFSHORT, STUBEHA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Using a linear model, find out how well the student teacher ratio <code>STRATIO</code> in a school predicts the <code>mean</code> maths achievement <code>PV1MATH</code> in that school. <strong>HINT</strong>: you need one row for each school, so use summarise with unique on <code>STRATIO</code> and mean on <code>PV1MATH</code>:</p>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>stu_tch_mat <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
-<span id="cb92-2"><a href="#cb92-2"></a>  <span class="fu">group_by</span>(CNTSCHID) <span class="sc">%&gt;%</span></span>
-<span id="cb92-3"><a href="#cb92-3"></a>  <span class="fu">summarise</span>(<span class="at">stu_tch_rat =</span> <span class="fu">unique</span>(STRATIO),</span>
-<span id="cb92-4"><a href="#cb92-4"></a>            <span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
-<span id="cb92-5"><a href="#cb92-5"></a></span>
-<span id="cb92-6"><a href="#cb92-6"></a>mdl_stu_tch_mat <span class="ot">&lt;-</span> <span class="fu">lm</span>(maths <span class="sc">~</span> stu_tch_rat, <span class="at">data=</span>stu_tch_mat)</span>
-<span id="cb92-7"><a href="#cb92-7"></a><span class="fu">summary</span>(mdl_stu_tch_mat)</span>
-<span id="cb92-8"><a href="#cb92-8"></a></span>
-<span id="cb92-9"><a href="#cb92-9"></a><span class="co">#&gt; it's significant p &lt;2e-16 ***, but with a very low </span></span>
-<span id="cb92-10"><a href="#cb92-10"></a><span class="co">#&gt; estimates/betas, i.e. one extra student per teacher </span></span>
-<span id="cb92-11"><a href="#cb92-11"></a><span class="co">#&gt; decreases the maths score by just 1.3 points, </span></span>
-<span id="cb92-12"><a href="#cb92-12"></a><span class="co">#&gt; additionally the R squared value is low 0.04486 </span></span>
-<span id="cb92-13"><a href="#cb92-13"></a><span class="co">#&gt; this is "low impact" in the EEF toolkit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>stu_tch_mat <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">group_by</span>(CNTSCHID) <span class="sc">%&gt;%</span></span>
+<span id="cb72-3"><a href="#cb72-3"></a>  <span class="fu">summarise</span>(<span class="at">stu_tch_rat =</span> <span class="fu">unique</span>(STRATIO),</span>
+<span id="cb72-4"><a href="#cb72-4"></a>            <span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
+<span id="cb72-5"><a href="#cb72-5"></a></span>
+<span id="cb72-6"><a href="#cb72-6"></a>mdl_stu_tch_mat <span class="ot">&lt;-</span> <span class="fu">lm</span>(maths <span class="sc">~</span> stu_tch_rat, <span class="at">data=</span>stu_tch_mat)</span>
+<span id="cb72-7"><a href="#cb72-7"></a><span class="fu">summary</span>(mdl_stu_tch_mat)</span>
+<span id="cb72-8"><a href="#cb72-8"></a></span>
+<span id="cb72-9"><a href="#cb72-9"></a><span class="co">#&gt; it's significant p &lt;2e-16 ***, but with a very low </span></span>
+<span id="cb72-10"><a href="#cb72-10"></a><span class="co">#&gt; estimates/betas, i.e. one extra student per teacher </span></span>
+<span id="cb72-11"><a href="#cb72-11"></a><span class="co">#&gt; decreases the maths score by just 1.3 points, </span></span>
+<span id="cb72-12"><a href="#cb72-12"></a><span class="co">#&gt; additionally the R squared value is low 0.04486 </span></span>
+<span id="cb72-13"><a href="#cb72-13"></a><span class="co">#&gt; this is "low impact" in the EEF toolkit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Adjust the linear model used above to incorporate <code>STUBEHA</code> “Student behaviour hindering learning” in addition to the student teacher ratio:</p>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>stu_tch_mat_bev <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
-<span id="cb93-2"><a href="#cb93-2"></a>  <span class="fu">group_by</span>(CNTSCHID) <span class="sc">%&gt;%</span></span>
-<span id="cb93-3"><a href="#cb93-3"></a>  <span class="fu">summarise</span>(<span class="at">stu_tch_rat =</span> <span class="fu">unique</span>(STRATIO),</span>
-<span id="cb93-4"><a href="#cb93-4"></a>            <span class="at">behaviour =</span> <span class="fu">unique</span>(STUBEHA),</span>
-<span id="cb93-5"><a href="#cb93-5"></a>            <span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
-<span id="cb93-6"><a href="#cb93-6"></a></span>
-<span id="cb93-7"><a href="#cb93-7"></a><span class="co">#&gt; max(stu_tch_mat_bev$behaviour, na.rm = TRUE)</span></span>
-<span id="cb93-8"><a href="#cb93-8"></a><span class="co">#&gt; min(stu_tch_mat_bev$behaviour, na.rm = TRUE)</span></span>
-<span id="cb93-9"><a href="#cb93-9"></a></span>
-<span id="cb93-10"><a href="#cb93-10"></a>mdl_stu_tch_mat_bev <span class="ot">&lt;-</span> <span class="fu">lm</span>(maths <span class="sc">~</span> stu_tch_rat <span class="sc">+</span> behaviour, <span class="at">data=</span>stu_tch_mat_bev)</span>
-<span id="cb93-11"><a href="#cb93-11"></a><span class="fu">summary</span>(mdl_stu_tch_mat_bev)</span>
-<span id="cb93-12"><a href="#cb93-12"></a></span>
-<span id="cb93-13"><a href="#cb93-13"></a><span class="co">#&gt; both factors are significant p&lt;2e-16 ***, but with low estimates/betas, </span></span>
-<span id="cb93-14"><a href="#cb93-14"></a><span class="co">#&gt; i.e. one extra student per teacher decreases </span></span>
-<span id="cb93-15"><a href="#cb93-15"></a><span class="co">#&gt; the maths score by 1.6 points and the aggregated student behaviour hinder </span></span>
-<span id="cb93-16"><a href="#cb93-16"></a><span class="co">#&gt; learning decreases maths by 11.8 points </span></span>
-<span id="cb93-17"><a href="#cb93-17"></a><span class="co">#&gt; (max behaviour = 4.1448, min = -4.432), additionally the R squared value </span></span>
-<span id="cb93-18"><a href="#cb93-18"></a><span class="co">#&gt; is better, but still low 0.07449</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>stu_tch_mat_bev <span class="ot">&lt;-</span> PISA_2022_stusch <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">group_by</span>(CNTSCHID) <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a>  <span class="fu">summarise</span>(<span class="at">stu_tch_rat =</span> <span class="fu">unique</span>(STRATIO),</span>
+<span id="cb73-4"><a href="#cb73-4"></a>            <span class="at">behaviour =</span> <span class="fu">unique</span>(STUBEHA),</span>
+<span id="cb73-5"><a href="#cb73-5"></a>            <span class="at">maths =</span> <span class="fu">mean</span>(PV1MATH))</span>
+<span id="cb73-6"><a href="#cb73-6"></a></span>
+<span id="cb73-7"><a href="#cb73-7"></a><span class="co">#&gt; max(stu_tch_mat_bev$behaviour, na.rm = TRUE)</span></span>
+<span id="cb73-8"><a href="#cb73-8"></a><span class="co">#&gt; min(stu_tch_mat_bev$behaviour, na.rm = TRUE)</span></span>
+<span id="cb73-9"><a href="#cb73-9"></a></span>
+<span id="cb73-10"><a href="#cb73-10"></a>mdl_stu_tch_mat_bev <span class="ot">&lt;-</span> <span class="fu">lm</span>(maths <span class="sc">~</span> stu_tch_rat <span class="sc">+</span> behaviour, <span class="at">data=</span>stu_tch_mat_bev)</span>
+<span id="cb73-11"><a href="#cb73-11"></a><span class="fu">summary</span>(mdl_stu_tch_mat_bev)</span>
+<span id="cb73-12"><a href="#cb73-12"></a></span>
+<span id="cb73-13"><a href="#cb73-13"></a><span class="co">#&gt; both factors are significant p&lt;2e-16 ***, but with low estimates/betas, </span></span>
+<span id="cb73-14"><a href="#cb73-14"></a><span class="co">#&gt; i.e. one extra student per teacher decreases </span></span>
+<span id="cb73-15"><a href="#cb73-15"></a><span class="co">#&gt; the maths score by 1.6 points and the aggregated student behaviour hinder </span></span>
+<span id="cb73-16"><a href="#cb73-16"></a><span class="co">#&gt; learning decreases maths by 11.8 points </span></span>
+<span id="cb73-17"><a href="#cb73-17"></a><span class="co">#&gt; (max behaviour = 4.1448, min = -4.432), additionally the R squared value </span></span>
+<span id="cb73-18"><a href="#cb73-18"></a><span class="co">#&gt; is better, but still low 0.07449</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="8" type="1">
 <li>Test the model for independence, multi-collinearity, normality and homoscedasticity.</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="co"># Independence</span></span>
-<span id="cb94-2"><a href="#cb94-2"></a><span class="fu">durbinWatsonTest</span>(mdl_stu_tch_mat_bev)</span>
-<span id="cb94-3"><a href="#cb94-3"></a><span class="co">#&gt; lag Autocorrelation D-W Statistic p-value</span></span>
-<span id="cb94-4"><a href="#cb94-4"></a><span class="co">#&gt;   1      0.01650897      1.966672   0.094</span></span>
-<span id="cb94-5"><a href="#cb94-5"></a><span class="co"># p&gt;0.05 therefore we can assume values are independent</span></span>
-<span id="cb94-6"><a href="#cb94-6"></a></span>
-<span id="cb94-7"><a href="#cb94-7"></a><span class="co"># No multicollinearity</span></span>
-<span id="cb94-8"><a href="#cb94-8"></a><span class="fu">vif</span>(mdl_stu_tch_mat_bev)</span>
-<span id="cb94-9"><a href="#cb94-9"></a><span class="co">#&gt; stu_tch_rat   behaviour </span></span>
-<span id="cb94-10"><a href="#cb94-10"></a><span class="co">#&gt;     1.00856     1.00856 </span></span>
-<span id="cb94-11"><a href="#cb94-11"></a><span class="co"># no value over 5, therefore we can assume no multicollinearity</span></span>
-<span id="cb94-12"><a href="#cb94-12"></a></span>
-<span id="cb94-13"><a href="#cb94-13"></a><span class="co"># Normality and Homoscedasticity</span></span>
-<span id="cb94-14"><a href="#cb94-14"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb94-15"><a href="#cb94-15"></a><span class="fu">plot</span>(mdl_stu_tch_mat_bev)</span>
-<span id="cb94-16"><a href="#cb94-16"></a><span class="co"># QQ plot looks good but lots of outliers</span></span>
-<span id="cb94-17"><a href="#cb94-17"></a></span>
-<span id="cb94-18"><a href="#cb94-18"></a><span class="co"># Breusch-Pagan test p&lt;0.05</span></span>
-<span id="cb94-19"><a href="#cb94-19"></a><span class="co"># therefore data is NOT Homoscedastic (which we can see from the graphs)</span></span>
-<span id="cb94-20"><a href="#cb94-20"></a><span class="fu">ols_test_breusch_pagan</span>(mdl_stu_tch_mat_bev)</span>
-<span id="cb94-21"><a href="#cb94-21"></a></span>
-<span id="cb94-22"><a href="#cb94-22"></a><span class="co"># Unfortunately this model doesn't pass the assumptions of:</span></span>
-<span id="cb94-23"><a href="#cb94-23"></a><span class="co"># - Homoscedasticity, and</span></span>
-<span id="cb94-24"><a href="#cb94-24"></a><span class="co"># - Independence</span></span>
-<span id="cb94-25"><a href="#cb94-25"></a><span class="co"># and linear modelling doesn't appear appropriate here.</span></span>
-<span id="cb94-26"><a href="#cb94-26"></a><span class="co"># Maybe a subset of the countries might give a better result?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># Independence</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="fu">durbinWatsonTest</span>(mdl_stu_tch_mat_bev)</span>
+<span id="cb74-3"><a href="#cb74-3"></a><span class="co">#&gt; lag Autocorrelation D-W Statistic p-value</span></span>
+<span id="cb74-4"><a href="#cb74-4"></a><span class="co">#&gt;   1      0.01650897      1.966672   0.094</span></span>
+<span id="cb74-5"><a href="#cb74-5"></a><span class="co"># p&gt;0.05 therefore we can assume values are independent</span></span>
+<span id="cb74-6"><a href="#cb74-6"></a></span>
+<span id="cb74-7"><a href="#cb74-7"></a><span class="co"># No multicollinearity</span></span>
+<span id="cb74-8"><a href="#cb74-8"></a><span class="fu">vif</span>(mdl_stu_tch_mat_bev)</span>
+<span id="cb74-9"><a href="#cb74-9"></a><span class="co">#&gt; stu_tch_rat   behaviour </span></span>
+<span id="cb74-10"><a href="#cb74-10"></a><span class="co">#&gt;     1.00856     1.00856 </span></span>
+<span id="cb74-11"><a href="#cb74-11"></a><span class="co"># no value over 5, therefore we can assume no multicollinearity</span></span>
+<span id="cb74-12"><a href="#cb74-12"></a></span>
+<span id="cb74-13"><a href="#cb74-13"></a><span class="co"># Normality and Homoscedasticity</span></span>
+<span id="cb74-14"><a href="#cb74-14"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb74-15"><a href="#cb74-15"></a><span class="fu">plot</span>(mdl_stu_tch_mat_bev)</span>
+<span id="cb74-16"><a href="#cb74-16"></a><span class="co"># QQ plot looks good but lots of outliers</span></span>
+<span id="cb74-17"><a href="#cb74-17"></a></span>
+<span id="cb74-18"><a href="#cb74-18"></a><span class="co"># Breusch-Pagan test p&lt;0.05</span></span>
+<span id="cb74-19"><a href="#cb74-19"></a><span class="co"># therefore data is NOT Homoscedastic (which we can see from the graphs)</span></span>
+<span id="cb74-20"><a href="#cb74-20"></a><span class="fu">ols_test_breusch_pagan</span>(mdl_stu_tch_mat_bev)</span>
+<span id="cb74-21"><a href="#cb74-21"></a></span>
+<span id="cb74-22"><a href="#cb74-22"></a><span class="co"># Unfortunately this model doesn't pass the assumptions of:</span></span>
+<span id="cb74-23"><a href="#cb74-23"></a><span class="co"># - Homoscedasticity, and</span></span>
+<span id="cb74-24"><a href="#cb74-24"></a><span class="co"># - Independence</span></span>
+<span id="cb74-25"><a href="#cb74-25"></a><span class="co"># and linear modelling doesn't appear appropriate here.</span></span>
+<span id="cb74-26"><a href="#cb74-26"></a><span class="co"># Maybe a subset of the countries might give a better result?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="9" type="1">
 <li>Explore the school data set to look at other interesting models. The school data set has a lot more numeric/continuous fields than the student table! To find these fields use this code:</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>find numeric fields</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="co"># to get the names of numeric fields along with their labels</span></span>
-<span id="cb95-2"><a href="#cb95-2"></a>nms <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span>
-<span id="cb95-3"><a href="#cb95-3"></a>lbls <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(nms,<span class="sc">~</span>{</span>
-<span id="cb95-4"><a href="#cb95-4"></a>  <span class="co">#.x &lt;- "test"</span></span>
-<span id="cb95-5"><a href="#cb95-5"></a>  <span class="fu">message</span>(.x)</span>
-<span id="cb95-6"><a href="#cb95-6"></a>  lbl <span class="ot">&lt;-</span> <span class="fu">attr</span>(PISA_2022_school[[.x]], <span class="st">"label"</span>)</span>
-<span id="cb95-7"><a href="#cb95-7"></a>  nme <span class="ot">&lt;-</span> .x</span>
-<span id="cb95-8"><a href="#cb95-8"></a>  row <span class="ot">&lt;-</span> <span class="fu">c</span>(nme, lbl)</span>
-<span id="cb95-9"><a href="#cb95-9"></a>  <span class="fu">names</span>(row) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"label"</span>)</span>
-<span id="cb95-10"><a href="#cb95-10"></a>  <span class="fu">return</span>(row)</span>
-<span id="cb95-11"><a href="#cb95-11"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>find numeric fields</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># to get the names of numeric fields along with their labels</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a>nms <span class="ot">&lt;-</span> PISA_2022_school <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span>
+<span id="cb75-3"><a href="#cb75-3"></a>lbls <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(nms,<span class="sc">~</span>{</span>
+<span id="cb75-4"><a href="#cb75-4"></a>  <span class="co">#.x &lt;- "test"</span></span>
+<span id="cb75-5"><a href="#cb75-5"></a>  <span class="fu">message</span>(.x)</span>
+<span id="cb75-6"><a href="#cb75-6"></a>  lbl <span class="ot">&lt;-</span> <span class="fu">attr</span>(PISA_2022_school[[.x]], <span class="st">"label"</span>)</span>
+<span id="cb75-7"><a href="#cb75-7"></a>  nme <span class="ot">&lt;-</span> .x</span>
+<span id="cb75-8"><a href="#cb75-8"></a>  row <span class="ot">&lt;-</span> <span class="fu">c</span>(nme, lbl)</span>
+<span id="cb75-9"><a href="#cb75-9"></a>  <span class="fu">names</span>(row) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"label"</span>)</span>
+<span id="cb75-10"><a href="#cb75-10"></a>  <span class="fu">return</span>(row)</span>
+<span id="cb75-11"><a href="#cb75-11"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="10" type="1">
@@ -4387,73 +2838,73 @@ sample estimates:
 <li><p>Recreate the Stoet &amp; Geary analysis (see <strong>?@sec-standard-stoet-geary</strong>) to see if there is a “gender gap in intraindividual <strong>mathematics</strong> scores” that is “larger in more gender-equal countries”. You might expect this to be the case as it exists for science. Is this a STEM wide finding? How does the science model look for 2022 data? Was it a one off finding?</p></li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="co"># standardise the results for each student in line with pg7</span></span>
-<span id="cb96-2"><a href="#cb96-2"></a><span class="co"># https://eprints.leedsbeckett.ac.uk/id/eprint/4753/6/symplectic-version.pdf</span></span>
-<span id="cb96-3"><a href="#cb96-3"></a></span>
-<span id="cb96-4"><a href="#cb96-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb96-5"><a href="#cb96-5"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb96-6"><a href="#cb96-6"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb96-7"><a href="#cb96-7"></a></span>
-<span id="cb96-8"><a href="#cb96-8"></a>PISA_2015_GGGI <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb96-9"><a href="#cb96-9"></a>  PISA_2015 <span class="sc">%&gt;%</span> <span class="fu">select</span>(CNT, ST004D01T, PV1MATH, PV1SCIE, PV1READ),</span>
-<span id="cb96-10"><a href="#cb96-10"></a>  GGGI <span class="sc">%&gt;%</span> <span class="fu">select</span>(Country, Overall.Score),</span>
-<span id="cb96-11"><a href="#cb96-11"></a>  <span class="at">by=</span><span class="fu">c</span>(<span class="st">"CNT"</span><span class="ot">=</span><span class="st">"Country"</span>))</span>
-<span id="cb96-12"><a href="#cb96-12"></a></span>
-<span id="cb96-13"><a href="#cb96-13"></a><span class="co"># step 1</span></span>
-<span id="cb96-14"><a href="#cb96-14"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015_GGGI <span class="sc">%&gt;%</span> </span>
-<span id="cb96-15"><a href="#cb96-15"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb96-16"><a href="#cb96-16"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb96-17"><a href="#cb96-17"></a>  <span class="fu">mutate</span>(<span class="at">zMaths   =</span> <span class="fu">scale</span>(PV1MATH),</span>
-<span id="cb96-18"><a href="#cb96-18"></a>         <span class="at">zScience =</span> <span class="fu">scale</span>(PV1SCIE), </span>
-<span id="cb96-19"><a href="#cb96-19"></a>         <span class="at">zReading =</span> <span class="fu">scale</span>(PV1READ))</span>
-<span id="cb96-20"><a href="#cb96-20"></a></span>
-<span id="cb96-21"><a href="#cb96-21"></a><span class="co"># step 2</span></span>
-<span id="cb96-22"><a href="#cb96-22"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span> </span>
-<span id="cb96-23"><a href="#cb96-23"></a>  <span class="fu">mutate</span>(<span class="at">zGeneral =</span> (zMaths <span class="sc">+</span> zScience <span class="sc">+</span> zReading) <span class="sc">/</span> <span class="dv">3</span>)</span>
-<span id="cb96-24"><a href="#cb96-24"></a></span>
-<span id="cb96-25"><a href="#cb96-25"></a><span class="co"># step 3</span></span>
-<span id="cb96-26"><a href="#cb96-26"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span> </span>
-<span id="cb96-27"><a href="#cb96-27"></a>  <span class="fu">mutate</span>(<span class="at">rel_MATH =</span> zMaths   <span class="sc">-</span> zGeneral,</span>
-<span id="cb96-28"><a href="#cb96-28"></a>         <span class="at">rel_SCIE =</span> zScience <span class="sc">-</span> zGeneral,</span>
-<span id="cb96-29"><a href="#cb96-29"></a>         <span class="at">rel_READ =</span> zReading <span class="sc">-</span> zGeneral)</span>
-<span id="cb96-30"><a href="#cb96-30"></a></span>
-<span id="cb96-31"><a href="#cb96-31"></a><span class="co"># step 4 part 1</span></span>
-<span id="cb96-32"><a href="#cb96-32"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span> </span>
-<span id="cb96-33"><a href="#cb96-33"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
-<span id="cb96-34"><a href="#cb96-34"></a>  <span class="fu">summarise</span>(<span class="at">zMaths =</span> <span class="fu">mean</span>(zMaths, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb96-35"><a href="#cb96-35"></a>            <span class="at">zScience =</span> <span class="fu">mean</span>(zScience, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb96-36"><a href="#cb96-36"></a>            <span class="at">zReading =</span> <span class="fu">mean</span>(zReading, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb96-37"><a href="#cb96-37"></a>            <span class="at">zGeneral =</span> <span class="fu">mean</span>(zGeneral, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb96-38"><a href="#cb96-38"></a>            <span class="at">rel_MATH =</span> zMaths <span class="sc">-</span> zGeneral,</span>
-<span id="cb96-39"><a href="#cb96-39"></a>            <span class="at">rel_SCIE =</span> zScience <span class="sc">-</span> zGeneral,</span>
-<span id="cb96-40"><a href="#cb96-40"></a>            <span class="at">rel_READ =</span> zReading <span class="sc">-</span> zGeneral,</span>
-<span id="cb96-41"><a href="#cb96-41"></a>            <span class="at">gggi =</span> <span class="fu">unique</span>(Overall.Score))</span>
-<span id="cb96-42"><a href="#cb96-42"></a></span>
-<span id="cb96-43"><a href="#cb96-43"></a><span class="co"># step 4 part 2</span></span>
-<span id="cb96-44"><a href="#cb96-44"></a>pisa_gggi_diff <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span></span>
-<span id="cb96-45"><a href="#cb96-45"></a>  <span class="fu">select</span>(CNT, gender, gggi, rel_MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb96-46"><a href="#cb96-46"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> gender,</span>
-<span id="cb96-47"><a href="#cb96-47"></a>              <span class="at">values_from =</span> rel_MATH) <span class="sc">%&gt;%</span></span>
-<span id="cb96-48"><a href="#cb96-48"></a>  <span class="fu">mutate</span>(<span class="at">difference =</span>  Male <span class="sc">-</span> Female)</span>
-<span id="cb96-49"><a href="#cb96-49"></a></span>
-<span id="cb96-50"><a href="#cb96-50"></a><span class="fu">ggplot</span>(pisa_gggi_diff,</span>
-<span id="cb96-51"><a href="#cb96-51"></a>       <span class="fu">aes</span>(<span class="at">x=</span>difference, <span class="at">y=</span>gggi)) <span class="sc">+</span> </span>
-<span id="cb96-52"><a href="#cb96-52"></a>  <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb96-53"><a href="#cb96-53"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb96-54"><a href="#cb96-54"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>CNT),</span>
-<span id="cb96-55"><a href="#cb96-55"></a>            <span class="at">box.padding =</span> <span class="fl">0.2</span>,</span>
-<span id="cb96-56"><a href="#cb96-56"></a>            <span class="at">max.overlaps =</span> <span class="cn">Inf</span>,</span>
-<span id="cb96-57"><a href="#cb96-57"></a>            <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb96-58"><a href="#cb96-58"></a>  <span class="fu">xlab</span>(<span class="fu">paste0</span>(<span class="st">"relative difference in PV1MATH scores (male-female)"</span>))</span>
-<span id="cb96-59"><a href="#cb96-59"></a></span>
-<span id="cb96-60"><a href="#cb96-60"></a><span class="co"># perform correlation analysis</span></span>
-<span id="cb96-61"><a href="#cb96-61"></a>result <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(pisa_gggi_diff<span class="sc">$</span>gggi, </span>
-<span id="cb96-62"><a href="#cb96-62"></a>                    pisa_gggi_diff<span class="sc">$</span>difference, </span>
-<span id="cb96-63"><a href="#cb96-63"></a>                    <span class="at">method=</span><span class="st">"spearman"</span>)</span>
-<span id="cb96-64"><a href="#cb96-64"></a>result</span>
-<span id="cb96-65"><a href="#cb96-65"></a><span class="co">#&gt; this result isn't significant as p-value &gt; 0.05</span></span>
-<span id="cb96-66"><a href="#cb96-66"></a><span class="co">#&gt; additionally the correlation coefficient is negative</span></span>
-<span id="cb96-67"><a href="#cb96-67"></a><span class="co">#&gt; this suggests that the STEM gender paradox doesn't apply to maths.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># standardise the results for each student in line with pg7</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a><span class="co"># https://eprints.leedsbeckett.ac.uk/id/eprint/4753/6/symplectic-version.pdf</span></span>
+<span id="cb76-3"><a href="#cb76-3"></a></span>
+<span id="cb76-4"><a href="#cb76-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb76-5"><a href="#cb76-5"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb76-6"><a href="#cb76-6"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb76-7"><a href="#cb76-7"></a></span>
+<span id="cb76-8"><a href="#cb76-8"></a>PISA_2015_GGGI <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb76-9"><a href="#cb76-9"></a>  PISA_2015 <span class="sc">%&gt;%</span> <span class="fu">select</span>(CNT, ST004D01T, PV1MATH, PV1SCIE, PV1READ),</span>
+<span id="cb76-10"><a href="#cb76-10"></a>  GGGI <span class="sc">%&gt;%</span> <span class="fu">select</span>(Country, Overall.Score),</span>
+<span id="cb76-11"><a href="#cb76-11"></a>  <span class="at">by=</span><span class="fu">c</span>(<span class="st">"CNT"</span><span class="ot">=</span><span class="st">"Country"</span>))</span>
+<span id="cb76-12"><a href="#cb76-12"></a></span>
+<span id="cb76-13"><a href="#cb76-13"></a><span class="co"># step 1</span></span>
+<span id="cb76-14"><a href="#cb76-14"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015_GGGI <span class="sc">%&gt;%</span> </span>
+<span id="cb76-15"><a href="#cb76-15"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb76-16"><a href="#cb76-16"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb76-17"><a href="#cb76-17"></a>  <span class="fu">mutate</span>(<span class="at">zMaths   =</span> <span class="fu">scale</span>(PV1MATH),</span>
+<span id="cb76-18"><a href="#cb76-18"></a>         <span class="at">zScience =</span> <span class="fu">scale</span>(PV1SCIE), </span>
+<span id="cb76-19"><a href="#cb76-19"></a>         <span class="at">zReading =</span> <span class="fu">scale</span>(PV1READ))</span>
+<span id="cb76-20"><a href="#cb76-20"></a></span>
+<span id="cb76-21"><a href="#cb76-21"></a><span class="co"># step 2</span></span>
+<span id="cb76-22"><a href="#cb76-22"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span> </span>
+<span id="cb76-23"><a href="#cb76-23"></a>  <span class="fu">mutate</span>(<span class="at">zGeneral =</span> (zMaths <span class="sc">+</span> zScience <span class="sc">+</span> zReading) <span class="sc">/</span> <span class="dv">3</span>)</span>
+<span id="cb76-24"><a href="#cb76-24"></a></span>
+<span id="cb76-25"><a href="#cb76-25"></a><span class="co"># step 3</span></span>
+<span id="cb76-26"><a href="#cb76-26"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span> </span>
+<span id="cb76-27"><a href="#cb76-27"></a>  <span class="fu">mutate</span>(<span class="at">rel_MATH =</span> zMaths   <span class="sc">-</span> zGeneral,</span>
+<span id="cb76-28"><a href="#cb76-28"></a>         <span class="at">rel_SCIE =</span> zScience <span class="sc">-</span> zGeneral,</span>
+<span id="cb76-29"><a href="#cb76-29"></a>         <span class="at">rel_READ =</span> zReading <span class="sc">-</span> zGeneral)</span>
+<span id="cb76-30"><a href="#cb76-30"></a></span>
+<span id="cb76-31"><a href="#cb76-31"></a><span class="co"># step 4 part 1</span></span>
+<span id="cb76-32"><a href="#cb76-32"></a>PISA_2015z <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span> </span>
+<span id="cb76-33"><a href="#cb76-33"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
+<span id="cb76-34"><a href="#cb76-34"></a>  <span class="fu">summarise</span>(<span class="at">zMaths =</span> <span class="fu">mean</span>(zMaths, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb76-35"><a href="#cb76-35"></a>            <span class="at">zScience =</span> <span class="fu">mean</span>(zScience, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb76-36"><a href="#cb76-36"></a>            <span class="at">zReading =</span> <span class="fu">mean</span>(zReading, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb76-37"><a href="#cb76-37"></a>            <span class="at">zGeneral =</span> <span class="fu">mean</span>(zGeneral, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb76-38"><a href="#cb76-38"></a>            <span class="at">rel_MATH =</span> zMaths <span class="sc">-</span> zGeneral,</span>
+<span id="cb76-39"><a href="#cb76-39"></a>            <span class="at">rel_SCIE =</span> zScience <span class="sc">-</span> zGeneral,</span>
+<span id="cb76-40"><a href="#cb76-40"></a>            <span class="at">rel_READ =</span> zReading <span class="sc">-</span> zGeneral,</span>
+<span id="cb76-41"><a href="#cb76-41"></a>            <span class="at">gggi =</span> <span class="fu">unique</span>(Overall.Score))</span>
+<span id="cb76-42"><a href="#cb76-42"></a></span>
+<span id="cb76-43"><a href="#cb76-43"></a><span class="co"># step 4 part 2</span></span>
+<span id="cb76-44"><a href="#cb76-44"></a>pisa_gggi_diff <span class="ot">&lt;-</span> PISA_2015z <span class="sc">%&gt;%</span></span>
+<span id="cb76-45"><a href="#cb76-45"></a>  <span class="fu">select</span>(CNT, gender, gggi, rel_MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb76-46"><a href="#cb76-46"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> gender,</span>
+<span id="cb76-47"><a href="#cb76-47"></a>              <span class="at">values_from =</span> rel_MATH) <span class="sc">%&gt;%</span></span>
+<span id="cb76-48"><a href="#cb76-48"></a>  <span class="fu">mutate</span>(<span class="at">difference =</span>  Male <span class="sc">-</span> Female)</span>
+<span id="cb76-49"><a href="#cb76-49"></a></span>
+<span id="cb76-50"><a href="#cb76-50"></a><span class="fu">ggplot</span>(pisa_gggi_diff,</span>
+<span id="cb76-51"><a href="#cb76-51"></a>       <span class="fu">aes</span>(<span class="at">x=</span>difference, <span class="at">y=</span>gggi)) <span class="sc">+</span> </span>
+<span id="cb76-52"><a href="#cb76-52"></a>  <span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb76-53"><a href="#cb76-53"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb76-54"><a href="#cb76-54"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>CNT),</span>
+<span id="cb76-55"><a href="#cb76-55"></a>            <span class="at">box.padding =</span> <span class="fl">0.2</span>,</span>
+<span id="cb76-56"><a href="#cb76-56"></a>            <span class="at">max.overlaps =</span> <span class="cn">Inf</span>,</span>
+<span id="cb76-57"><a href="#cb76-57"></a>            <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb76-58"><a href="#cb76-58"></a>  <span class="fu">xlab</span>(<span class="fu">paste0</span>(<span class="st">"relative difference in PV1MATH scores (male-female)"</span>))</span>
+<span id="cb76-59"><a href="#cb76-59"></a></span>
+<span id="cb76-60"><a href="#cb76-60"></a><span class="co"># perform correlation analysis</span></span>
+<span id="cb76-61"><a href="#cb76-61"></a>result <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(pisa_gggi_diff<span class="sc">$</span>gggi, </span>
+<span id="cb76-62"><a href="#cb76-62"></a>                    pisa_gggi_diff<span class="sc">$</span>difference, </span>
+<span id="cb76-63"><a href="#cb76-63"></a>                    <span class="at">method=</span><span class="st">"spearman"</span>)</span>
+<span id="cb76-64"><a href="#cb76-64"></a>result</span>
+<span id="cb76-65"><a href="#cb76-65"></a><span class="co">#&gt; this result isn't significant as p-value &gt; 0.05</span></span>
+<span id="cb76-66"><a href="#cb76-66"></a><span class="co">#&gt; additionally the correlation coefficient is negative</span></span>
+<span id="cb76-67"><a href="#cb76-67"></a><span class="co">#&gt; this suggests that the STEM gender paradox doesn't apply to maths.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>

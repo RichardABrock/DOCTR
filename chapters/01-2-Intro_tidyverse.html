@@ -460,7 +460,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vectors are data structures that bring together one or more data elements of the same datatype. E.g. we might have a numeric vector recording the grades of a class, or a character vector storing the gender of a set of students. To define a vector we use <code>c(item, item, ...)</code>, where <code>c</code> stands for combine. Vectors are very important to R, even declaring a single object, <code>x &lt;- 6</code>, is creating a vector of size one. To find out more about vectors see: <a href="../chapters/01-1-Loading_R.html#sec-vectors">§Vectors</a></p>
+<p>Vectors are data structures that bring together one or more data elements of the same datatype. E.g. we might have a numeric vector recording the grades of a class, or a character vector storing the gender of a set of students. To define a vector we use <code>c(item, item, ...)</code>, where <code>c</code> stands for combine. Vectors are very important to R, even declaring a single object, <code>x &lt;- 6</code>, is creating a vector of size one. To find out more about vectors see: <strong>?@sec-vectors</strong></p>
 </div>
 </div>
 <p>We can find out some general information about the table we have loaded. <code>nrow</code> and <code>ncol</code> tell you about the dimensions of the table</p>
@@ -632,7 +632,7 @@ Tip
 <pre><code>[1] 6.312233</code></pre>
 </div>
 </div>
-<p>This is far from ideal as we are now treating a categorical field as a numeric! Looking at the coding for the numbers in the field and the corresponding levels, we see that <code>1</code> is actually no digital devices. For more details on datatypes, see <a href="../chapters/01-1-Loading_R.html#sec-datatypes">§Datatypes</a>.</p>
+<p>This is far from ideal as we are now treating a categorical field as a numeric! Looking at the coding for the numbers in the field and the corresponding levels, we see that <code>1</code> is actually no digital devices. For more details on datatypes, see <strong>?@sec-datatypes</strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">paste</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(PISA_2022<span class="sc">$</span>ST253Q01JA)), <span class="st">":"</span>, <span class="fu">levels</span>(PISA_2022<span class="sc">$</span>ST253Q01JA))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -845,7 +845,7 @@ Note
 # ℹ 64 more rows</code></pre>
 </div>
 </div>
-<p>Across the top few countries, Males get a slightly better maths score <code>PV1MATH</code> than Females, other scores are available, please read <a href="../chapters/A1-PISA_analysis.html#sec-PV">§Plausible Values</a> to find out more about the limitations of using a “PV” value.</p>
+<p>Across the top few countries, Males get a slightly better maths score <code>PV1MATH</code> than Females, other scores are available, please read <strong>?@sec-PV</strong> to find out more about the limitations of using a “PV” value.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1641,7 +1641,7 @@ Important
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="1"><code>mutate</code> creates a new field called <code>PV1_total</code> made up by adding together the columns for maths, science and reading. Each column acts like a vector and adding them together is the equivalent of adding each students individual grades together, row by row. See <a href="../chapters/01-1-Loading_R.html#sec-vectors">§Vectors</a> for more details on vector addition.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="1"><code>mutate</code> creates a new field called <code>PV1_total</code> made up by adding together the columns for maths, science and reading. Each column acts like a vector and adding them together is the equivalent of adding each students individual grades together, row by row. See <strong>?@sec-vectors</strong> for more details on vector addition.</span>
 </dd>
 <dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
 <dd>
