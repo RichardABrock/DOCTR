@@ -63,3 +63,9 @@ img.figure-img{
 	border-radius: 2px;
 	width: 100%;
 }
+
+/* Target all code inside annotated cells */
+span[data-code-cell] code {
+  color: #1a1a1a;   /* dark gray */
+  font-weight: bold; /* optional, makes it stand out */
+}
