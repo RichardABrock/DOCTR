@@ -104,9 +104,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../images/KCL_logo.png" alt="" class="navbar-logo light-content"><img src="../images/KCL_logo.png" alt="" class="navbar-logo dark-content"></a>
-    <a class="navbar-brand" href="index.qmd">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DOCTR</span>
     </a>
   </div>
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="//index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-3-T-testsPISA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">T-tests</span></a>
+ <span class="menu-text">06 T-tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -327,42 +327,198 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="self-assessment" class="level1" data-number="1"><h1 data-number="1">
 <span class="header-section-number">1</span> Self assessment</h1>
 <p>If you have not taken the Introduction to R course, you should ccomplete the self-assessment questions below to ensure you are at the same level as those you have taken the Introduction course. If you have taken the course, you can skip this section. Using generative AI tools such as ChatGPT to complete the tasks indicates that you do not have sufficient knowledge of R to complete the intermediate course. You should complete the Introduction to R course before continuing with this course.</p>
-<p>The questions require you to use the <code>PISA_student_2022_subset.parquet</code> dataset which you can download here <a href="https://emckclac-my.sharepoint.com/:u:/g/personal/k1926273_kcl_ac_uk/EUT13jrQxKJCp64WnH1MG3MBHoDqkzx1NJZIoVpUFHUYvg?e=pi2ZoD">here</a>.</p>
+<p>The questions require you to use the <code>PISA_student_2025_subset.parquet</code> dataset which you can download here <a href="https://emckclac-my.sharepoint.com/:u:/g/personal/k1926273_kcl_ac_uk/IQDIeo6oO1uxS5b3A_JTsyZHAVtu7lgi1GxUOXsJpXJeJeg?e=Y1OHqh">here</a>.</p>
 <p>To load the PISA data:</p>
 <p>Copy the following code and replace <code>&lt;folder&gt;</code> with the full folder location of where your dataset was saved, make sure that you have <code>.parquet</code> on the end. And keep the <code>(r"[  ]")</code>! Make sure you run all the lines in the code below, including the <code><a href="https://github.com/apache/arrow/">library(arrow)</a></code> and <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> lines.</p>
 <div class="cell">
 <details class="code-fold"><summary>examples of what this should look like for PC and Mac</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># For Pete (PC) the address format was:</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:\Users\Peter\KCL\MASTEMR\PISA_student_2022_subset.parquet]"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>PISA_2025 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[C:\Users\Peter\KCL\MASTEMR\PISA_student_2025_subset.parquet]"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co"># For Richard (Mac) the address format was:</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>PISA_2022 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[/Users/k1765032/Documents/Teaching/STEM MA/Quantitative module/Data sets/PISA_student_2022_subset.parquet]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5"></a>PISA_2025 <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(r<span class="st">"[/Users/k1765032/Documents/Teaching/STEM MA/Quantitative module/Data sets/PISA_student_2025_subset.parquet]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="question-1-data-manipulation" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="question-1-data-manipulation">
 <span class="header-section-number">1.1</span> Question 1: Data manipulation</h2>
 <div class="question">
-<p>Produce a summary table of the mean science scores for countries in PISA 2022 for boys and girls</p>
+<p>Produce a summary table of the mean science scores for countries in PISA 2025 for boys and girls</p>
 <div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>PISA_2022 <span class="sc">%&gt;%</span></span>
+<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>PISA_2025 <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">select</span>(CNT, ST004D01T, PV1SCIE) <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">group_by</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">summarise</span>(<span class="at">mean_sci =</span> <span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm =</span> T))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 165 × 3
-# Groups:   CNT [80]
-   CNT                  ST004D01T mean_sci
-   &lt;fct&gt;                &lt;fct&gt;        &lt;dbl&gt;
- 1 Albania              Female        390.
- 2 Albania              Male          362.
- 3 United Arab Emirates Female        445.
- 4 United Arab Emirates Male          427.
- 5 Argentina            Female        412.
- 6 Argentina            Male          418.
- 7 Australia            Female        507.
- 8 Australia            Male          509.
- 9 Australia            &lt;NA&gt;          566.
-10 Austria              Female        489.
-# ℹ 155 more rows</code></pre>
+<pre><code># A tibble: 167 × 3
+# Groups:   CNT [90]
+    CNT                          ST004D01T mean_sci
+    &lt;fct&gt;                        &lt;fct&gt;        &lt;dbl&gt;
+  1 Albania                      Female        441.
+  2 Albania                      Male          423.
+  3 United Arab Emirates         Female        464.
+  4 United Arab Emirates         Male          451.
+  5 Argentina                    &lt;NA&gt;          413.
+  6 Armenia                      Female        376.
+  7 Armenia                      Male          358.
+  8 Australia                    &lt;NA&gt;          509.
+  9 Austria                      Female        500.
+ 10 Austria                      Male          504.
+ 11 Azerbaijan                   Female        418.
+ 12 Azerbaijan                   Male          406.
+ 13 Belgium                      &lt;NA&gt;          496.
+ 14 Bulgaria                     Female        436.
+ 15 Bulgaria                     Male          412.
+ 16 Brazil                       Female        397.
+ 17 Brazil                       Male          401.
+ 18 Brunei Darussalam            Female        441.
+ 19 Brunei Darussalam            Male          439.
+ 20 Canada                       &lt;NA&gt;          500.
+ 21 Switzerland                  Female        502.
+ 22 Switzerland                  Male          495.
+ 23 Chile                        &lt;NA&gt;          454.
+ 24 Colombia                     &lt;NA&gt;          420.
+ 25 Costa Rica                   Female        416.
+ 26 Costa Rica                   Male          428.
+ 27 Czechia                      Female        506.
+ 28 Czechia                      Male          500.
+ 29 Germany                      &lt;NA&gt;          492.
+ 30 Denmark                      &lt;NA&gt;          468.
+ 31 Dominican Republic           Female        365.
+ 32 Dominican Republic           Male          358.
+ 33 Ecuador                      Female        396.
+ 34 Ecuador                      Male          402.
+ 35 Spain                        &lt;NA&gt;          481.
+ 36 Estonia                      Female        528.
+ 37 Estonia                      Male          528.
+ 38 Finland                      Female        515.
+ 39 Finland                      Male          494.
+ 40 France                       Female        486.
+ 41 France                       Male          478.
+ 42 United Kingdom               Female        497.
+ 43 United Kingdom               Male          502.
+ 44 Georgia                      Female        429.
+ 45 Georgia                      Male          414.
+ 46 Greece                       Female        445.
+ 47 Greece                       Male          434.
+ 48 Guatemala                    Female        346.
+ 49 Guatemala                    Male          356.
+ 50 Hong Kong (China)            Female        484.
+ 51 Hong Kong (China)            Male          500.
+ 52 Croatia                      Female        484.
+ 53 Croatia                      Male          465.
+ 54 Hungary                      Female        480.
+ 55 Hungary                      Male          489.
+ 56 Indonesia                    Female        402.
+ 57 Indonesia                    Male          399.
+ 58 Ireland                      &lt;NA&gt;          500.
+ 59 Iceland                      &lt;NA&gt;          442.
+ 60 Israel                       Female        452.
+ 61 Israel                       Male          438.
+ 62 Italy                        Female        486.
+ 63 Italy                        Male          487.
+ 64 Jordan                       Female        419.
+ 65 Jordan                       Male          403.
+ 66 Japan                        Female        533.
+ 67 Japan                        Male          543.
+ 68 Kazakhstan                   Female        438.
+ 69 Kazakhstan                   Male          438.
+ 70 Kenya                        Female        324.
+ 71 Kenya                        Male          350.
+ 72 Kyrgyzstan                   Female        368.
+ 73 Kyrgyzstan                   Male          355.
+ 74 Cambodia                     Female        381.
+ 75 Cambodia                     Male          365.
+ 76 Korea                        Female        530.
+ 77 Korea                        Male          530.
+ 78 Kosovo                       Female        364.
+ 79 Kosovo                       Male          348.
+ 80 Lebanon                      Female        374.
+ 81 Lebanon                      Male          381.
+ 82 Lithuania                    Female        488.
+ 83 Lithuania                    Male          478.
+ 84 Luxembourg                   Female        475.
+ 85 Luxembourg                   Male          475.
+ 86 Latvia                       Female        472.
+ 87 Latvia                       Male          461.
+ 88 Macao (China)                Female        540.
+ 89 Macao (China)                Male          541.
+ 90 Morocco                      Female        354.
+ 91 Morocco                      Male          350.
+ 92 Moldova                      Female        429.
+ 93 Moldova                      Male          418.
+ 94 Mexico                       Female        410.
+ 95 Mexico                       Male          423.
+ 96 North Macedonia              Female        390.
+ 97 North Macedonia              Male          368.
+ 98 Malta                        Female        464.
+ 99 Malta                        Male          445.
+100 Montenegro                   Female        441.
+101 Montenegro                   Male          431.
+102 Mongolia                     Female        437.
+103 Mongolia                     Male          416.
+104 Mauritius                    Female        441.
+105 Mauritius                    Male          436.
+106 Malaysia                     Female        422.
+107 Malaysia                     Male          420.
+108 Netherlands                  &lt;NA&gt;          489.
+109 Norway                       Female        475.
+110 Norway                       Male          467.
+111 New Zealand                  &lt;NA&gt;          513.
+112 Peru                         Female        401.
+113 Peru                         Male          414.
+114 Philippines                  Female        399.
+115 Philippines                  Male          384.
+116 Poland                       Female        498.
+117 Poland                       Male          499.
+118 Portugal                     Female        489.
+119 Portugal                     Male          485.
+120 Paraguay                     Female        357.
+121 Paraguay                     Male          362.
+122 Palestinian Authority        Female        373.
+123 Palestinian Authority        Male          336.
+124 Qatar                        Female        437.
+125 Qatar                        Male          422.
+126 B-S-J-Z (China)              Female        596.
+127 B-S-J-Z (China)              Male          610.
+128 Kurdistan Region (Iraq)      Female        366.
+129 Kurdistan Region (Iraq)      Male          341.
+130 Dushanbe (Tajikistan)        Female        330.
+131 Dushanbe (Tajikistan)        Male          335.
+132 Ukrainian regions (17 of 27) Female        450.
+133 Ukrainian regions (17 of 27) Male          446.
+134 Romania                      Female        438.
+135 Romania                      Male          435.
+136 Rwanda                       Female        307.
+137 Rwanda                       Male          334.
+138 Saudi Arabia                 Female        424.
+139 Saudi Arabia                 Male          411.
+140 Singapore                    Female        560.
+141 Singapore                    Male          558.
+142 El Salvador                  Female        383.
+143 El Salvador                  Male          389.
+144 Serbia                       Female        436.
+145 Serbia                       Male          420.
+146 Slovak Republic              Female        477.
+147 Slovak Republic              Male          475.
+148 Slovenia                     Female        484.
+149 Slovenia                     Male          461.
+150 Sweden                       Female        492.
+151 Sweden                       Male          479.
+152 Sweden                       &lt;NA&gt;          434.
+153 Chinese Taipei               Female        539.
+154 Chinese Taipei               Male          529.
+155 Thailand                     Female        450.
+156 Thailand                     Male          442.
+157 Türkiye                      Female        494.
+158 Türkiye                      Male          502.
+159 Uruguay                      &lt;NA&gt;          444.
+160 United States                Female        491.
+161 United States                Male          498.
+162 Uzbekistan                   Female        446.
+163 Uzbekistan                   Male          444.
+164 Viet Nam                     Female        459.
+165 Viet Nam                     Male          459.
+166 Zambia                       Female        317.
+167 Zambia                       Male          321.</code></pre>
 </div>
 </div>
 </div>
@@ -373,7 +529,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggrepel)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>plot_data <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>plot_data <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1MATH) <span class="sc">%&gt;%</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
 <span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">summarise</span>(<span class="at">mean_math =</span> <span class="fu">mean</span>(PV1MATH, <span class="at">na.rm =</span> T),</span>
@@ -388,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-15"><a href="#cb4-15"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="08-self_assessment_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figure class="figure"><p><img src="08-self_assessment_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -404,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># a) t-test</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co"># Filter the data for the UK and select relevant columns</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>uk_reading <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>uk_reading <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">select</span>(ST004D01T, PV1READ) <span class="sc">%&gt;%</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">drop_na</span>()</span>
@@ -415,19 +571,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     Welch Two Sample t-test
 
 data:  PV1READ by ST004D01T
-t = 10.159, df = 12960, p-value &lt; 2.2e-16
+t = 14.71, df = 15541, p-value &lt; 2.2e-16
 alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
 95 percent confidence interval:
- 15.03322 22.22110
+ 20.37630 26.64122
 sample estimates:
 mean in group Female   mean in group Male 
-            500.2030             481.5759 </code></pre>
+            497.6237             474.1150 </code></pre>
 </div>
 <details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># p-value &lt; 2.2e-16 so reject the null hypothesis there are statistically signifcant differences in mean reading scores in the UK</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># b) chi-square test</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a>US_UK_gender <span class="ot">&lt;-</span> PISA_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>US_UK_gender <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"United Kingdom"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">select</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
 <span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">droplevels</span>()</span>
@@ -442,9 +598,9 @@ mean in group Female   mean in group Male
     Pearson's Chi-squared test with Yates' continuity correction
 
 data:  contingency_table
-X-squared = 0.028622, df = 1, p-value = 0.8657</code></pre>
+X-squared = 13.143, df = 1, p-value = 0.0002886</code></pre>
 </div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># p-value = 0.8657 - p-value is over 0.05 so accept the null that the proportions of boys and girls in the UK and US is similar</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># p-value = 0.0002886 - p-value is less then 0.05 so fail to accept the null - the proportions of boys and girls in the UK and US is statistically signficantly different</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
