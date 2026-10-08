@@ -476,7 +476,7 @@ Tip
 <section id="installation-on-your-own-machine-for-kcl-staff" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="installation-on-your-own-machine-for-kcl-staff">
 <span class="header-section-number">1.1</span> Installation (on your own machine) for KCL staff</h2>
 <ol type="1">
-<li>Open the KCL Software Centre (using the launchpad on your mac or the start menu on your pc)</li>
+<li>Open the KCL Software Centre (using the launchpad on your Mac or the start menu on your PC)</li>
 </ol>
 <p><img src="images/self_service_main.png" style="width:80.0%;height:80.0%"></p>
 <ol start="2" type="1">
@@ -926,7 +926,7 @@ Tip
 </div>
 </section></section></section><section id="sec-vectors" class="level1" data-number="4"><h1 data-number="4">
 <span class="header-section-number">4</span> Vectors</h1>
-<p>So far we have seen how R does simple calculations and prints out the results. Underlying all of this are <em>vectors</em>. Vectors are data structures that bring together one or data elements of the <em>same</em> datatype. E.g. we might have a <code>numeric</code> vector recording the grades of a class, or a <code>character</code> vector storing the gender of a set of students. To define a vector we use <code>c(&lt;item&gt;, &lt;item&gt;, ...)</code>, where <code>c</code> stands for <em>combine</em>. Vectors are very important to R<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, even declaring a single object, <code>x &lt;- 6</code>, is creating a vector of size one. Larger vectors look like this:</p>
+<p>So far we have seen how R does simple calculations and prints out the results. Underlying all of this are <em>vectors</em>. Vectors are data structures that bring together one or more data elements of the <em>same</em> datatype. E.g. we might have a <code>numeric</code> vector recording the grades of a class, or a <code>character</code> vector storing the gender of a set of students. To define a vector we use <code>c(&lt;item&gt;, &lt;item&gt;, ...)</code>, where <code>c</code> stands for <em>combine</em>. Vectors are very important to R<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, even declaring a single object, <code>x &lt;- 6</code>, is creating a vector of size one. Larger vectors look like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>maths_grade <span class="ot">&lt;-</span>   <span class="fu">c</span>(<span class="dv">5</span>,    <span class="dv">4</span>,    <span class="dv">4</span>,    <span class="dv">1</span>,     <span class="dv">7</span>,     <span class="dv">5</span>,     <span class="dv">8</span>)</span>
 <span id="cb40-2"><a href="#cb40-2"></a>english_grade <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,    <span class="dv">5</span>,    <span class="dv">3</span>,    <span class="dv">2</span>,     <span class="dv">3</span>,     <span class="dv">6</span>,     <span class="dv">9</span>)</span>
@@ -1503,7 +1503,7 @@ Note
 <p>To work out what your current working directory is, you can use <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>.</p>
 <section id="proper-addresses" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="proper-addresses">
 <span class="header-section-number">11.1</span> Proper addresses</h2>
-<p>You might have found that you get an error if you don’t convert your backslashes <code>\</code> into forwardslashes <code>/</code>. It’s common mistake and very annoying. In most programming languages a backslash signifies the start of a special command, for example <code>\n</code> signifies a <code>newline</code>.</p>
+<p>You might have found that you get an error if you don’t convert your backslashes <code>\</code> into forward slashes <code>/</code>. It’s common mistake and very annoying. In most programming languages a backslash signifies the start of a special command, for example <code>\n</code> signifies a <code>newline</code>.</p>
 <p>With R there are three ways to get around the problem of backslashes in file locations, for the location:<code>"C:\myfolder\"</code> we could:</p>
 <ul>
 <li>replace them with forwardslashes (as shown above):<code>"C:/myfolder/"</code>

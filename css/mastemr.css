@@ -69,3 +69,11 @@ span[data-code-cell] code {
   color: #1a1a1a;   /* dark gray */
   font-weight: bold; /* optional, makes it stand out */
 }
+
+h2 code{
+  background-color: #2c3f4f;
+}
+h3 code{
+  background-color: #2c3f4f;
+}
+

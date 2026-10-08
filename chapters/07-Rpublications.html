@@ -120,7 +120,8 @@ div.csl-indent {
 }</script><link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="../site_libs/plotly-binding-4.12.0/plotly.js"></script><script src="../site_libs/typedarray-0.1/typedarray.min.js"></script><script src="../site_libs/jquery-3.5.1/jquery.min.js"></script><link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
 <script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script><link href="../site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="../site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script><link rel="stylesheet" href="../css/mastemr.css">
+<script src="../site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script><link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script><link rel="stylesheet" href="../css/mastemr.css">
 </head>
 <body class="nav-sidebar docked nav-fixed quarto-light">
 
@@ -381,7 +382,7 @@ div.csl-indent {
 <p>Quarto is a publishing framework that works with R and RStudio (and python and Julia) to allow you to produce pdfs, word docs, websites and power points for publication. Using quarto you can combine your data cleaning, data analysis, model building and graph creation, with your writing and bibliography, all in one place. This means</p>
 <ul>
 <li>you don’t need to keep copy and pasting, or exporting results and graphs from R to your write up</li>
-<li>if the underlying data sets or models change any changes automatically filter through to your write up</li>
+<li>if the underlying data sets or models change, those changes automatically filter through to your write up</li>
 <li>it’s easy to include the code that you use so readers can see exactly what you have done</li>
 </ul>
 <p>Quarto also allows you to present your findings alongside your R code. This allows for better reproducibility of work and transparency in terms of methodology.</p>
@@ -521,7 +522,7 @@ Figure&nbsp;3.1: image caption
 <p>Dirt glitters as long as the sun shines. – Goethe</p>
 </blockquote>
 <p>If you want to find out more about how to format your writing in quarto take a look at one of the <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">helpsheet</a> or the help <a href="https://quarto.org/docs/authoring/markdown-basics.html">website</a></p>
-<p>When writing you might want to add academic references to your quarto document. This is very straight forward using `bibtex` - a structured way of recording references. You can find bibtex entries for most academic references through the Google scholar cite menu:</p>
+<p>When writing you might want to add academic references to your quarto document. This is very straightforward using `bibtex` - a structured way of recording references. You can find bibtex entries for most academic references through the Google scholar cite menu:</p>
 <p><img src="../images/bibtex_google_scholar.gif" class="img-fluid" width="497"></p>
 <p>You can also <a href="https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#BibTeX">hand-craft</a> your own references if you can’t find them online. And/or use LLMs such as ChatGPT to construct them for you if you list authors, titles, dates etc (though do check to make sure they don’t make up additional authors, journals etc!).</p>
 <p>You need to add this reference to a <code>.bib</code> file, you can do this by creating a new file in the same folder as your .qmd file and calling it <code>my_references.bib</code>. You then need to go to the YAML block at the top of your .qmd file and add the line <code>bibliography: my_references.bib</code>. This tells quarto where to look for your references file.</p>
@@ -601,147 +602,62 @@ bibliography: my_references.bib
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">select</span>(CNT, TC015Q01NA) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  CNT     TC015Q01NA                                                            
-  &lt;fct&gt;   &lt;fct&gt;                                                                 
-1 Georgia I attended a standard teacher education or training programme at a &lt;e…
-2 Georgia Other                                                                 
-3 Georgia I attended a standard teacher education or training programme at a &lt;e…</code></pre>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["CNT"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TC015Q01NA"],"name":[2],"type":["fct"],"align":["left"]}],"data":[{"1":"Georgia","2":"I attended a standard teacher education or training programme at a <educational institute which is eligible to educate o"},{"1":"Georgia","2":"Other"},{"1":"Georgia","2":"I attended a standard teacher education or training programme at a <educational institute which is eligible to educate o"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>But maybe we want to show the reviewer some code without actually running it. To do this we can pass variables to the code chunks through the use of <code>#| setting: value</code> that tell quarto how to handle each chunk. For example, by adding <code>#| eval: false</code> to the top of the code chunk. The code then displays, but doesn’t run (<em><strong>eval</strong>uate</em>):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We might want to do the opposite, to run the code chunk but display the output and not the code that produced the output. To do this we can either fold the code by adding <code>#| code-fold: true</code> to top of the code chunk:</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#| eval: true</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">select</span>(TC002Q01NA, TC400Q01DA, CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">mutate</span>(<span class="at">TC002Q01NA =</span> <span class="fu">as.numeric</span>(TC002Q01NA),</span>
-<span id="cb11-7"><a href="#cb11-7"></a>         <span class="at">TC400Q01DA =</span> <span class="fu">as.numeric</span>(TC400Q01DA)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>  <span class="fu">group_by</span>(CNT, TC002Q01NA, TC400Q01DA) <span class="sc">%&gt;%</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 43 × 4
-# Groups:   CNT, TC002Q01NA [14]
-   CNT     TC002Q01NA TC400Q01DA     n
-   &lt;fct&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt;
- 1 Germany          1          1   230
- 2 Germany          1          2    85
- 3 Germany          1          3     2
- 4 Germany          1         NA     1
- 5 Germany          2          1   744
- 6 Germany          2          2   422
- 7 Germany          2          3     5
- 8 Germany          2         NA     3
- 9 Germany          3          1   724
-10 Germany          3          2   380
-11 Germany          3          3     4
-12 Germany          3         NA     4
-13 Germany          4          1   708
-14 Germany          4          2   372
-15 Germany          4          3     7
-16 Germany          4         NA     7
-17 Germany         NA          1    14
-18 Germany         NA          2     9
-19 Germany         NA          3     2
-20 Germany         NA         NA    28
-21 Georgia          1          1    39
-22 Georgia          1          2    14
-23 Georgia          2          1    77
-24 Georgia          2          2    21
-25 Georgia          3          1   257
-26 Georgia          3          2    17
-27 Georgia          3         NA     1
-28 Georgia          4          1   825
-29 Georgia          4          2    74
-30 Georgia          4         NA     4
-31 Georgia         NA          1    11
-32 Georgia         NA          2     1
-33 Georgia         NA         NA     9
-34 Korea            1          1   101
-35 Korea            1          2    53
-36 Korea            2          1   140
-37 Korea            2          2   126
-38 Korea            2         NA     1
-39 Korea            3          1   156
-40 Korea            3          2    83
-41 Korea            3         NA     1
-42 Korea            4          1    51
-43 Korea            4          2    68</code></pre>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#| eval: true</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">select</span>(TC002Q01NA, TC400Q01DA, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">mutate</span>(<span class="at">TC002Q01NA =</span> <span class="fu">as.numeric</span>(TC002Q01NA),</span>
+<span id="cb10-7"><a href="#cb10-7"></a>         <span class="at">TC400Q01DA =</span> <span class="fu">as.numeric</span>(TC400Q01DA)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">group_by</span>(CNT, TC002Q01NA, TC400Q01DA) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["CNT"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TC002Q01NA"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["TC400Q01DA"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Germany","2":"1","3":"1","4":"230"},{"1":"Germany","2":"1","3":"2","4":"85"},{"1":"Germany","2":"1","3":"3","4":"2"},{"1":"Germany","2":"1","3":"NA","4":"1"},{"1":"Germany","2":"2","3":"1","4":"744"},{"1":"Germany","2":"2","3":"2","4":"422"},{"1":"Germany","2":"2","3":"3","4":"5"},{"1":"Germany","2":"2","3":"NA","4":"3"},{"1":"Germany","2":"3","3":"1","4":"724"},{"1":"Germany","2":"3","3":"2","4":"380"},{"1":"Germany","2":"3","3":"3","4":"4"},{"1":"Germany","2":"3","3":"NA","4":"4"},{"1":"Germany","2":"4","3":"1","4":"708"},{"1":"Germany","2":"4","3":"2","4":"372"},{"1":"Germany","2":"4","3":"3","4":"7"},{"1":"Germany","2":"4","3":"NA","4":"7"},{"1":"Germany","2":"NA","3":"1","4":"14"},{"1":"Germany","2":"NA","3":"2","4":"9"},{"1":"Germany","2":"NA","3":"3","4":"2"},{"1":"Germany","2":"NA","3":"NA","4":"28"},{"1":"Georgia","2":"1","3":"1","4":"39"},{"1":"Georgia","2":"1","3":"2","4":"14"},{"1":"Georgia","2":"2","3":"1","4":"77"},{"1":"Georgia","2":"2","3":"2","4":"21"},{"1":"Georgia","2":"3","3":"1","4":"257"},{"1":"Georgia","2":"3","3":"2","4":"17"},{"1":"Georgia","2":"3","3":"NA","4":"1"},{"1":"Georgia","2":"4","3":"1","4":"825"},{"1":"Georgia","2":"4","3":"2","4":"74"},{"1":"Georgia","2":"4","3":"NA","4":"4"},{"1":"Georgia","2":"NA","3":"1","4":"11"},{"1":"Georgia","2":"NA","3":"2","4":"1"},{"1":"Georgia","2":"NA","3":"NA","4":"9"},{"1":"Korea","2":"1","3":"1","4":"101"},{"1":"Korea","2":"1","3":"2","4":"53"},{"1":"Korea","2":"2","3":"1","4":"140"},{"1":"Korea","2":"2","3":"2","4":"126"},{"1":"Korea","2":"2","3":"NA","4":"1"},{"1":"Korea","2":"3","3":"1","4":"156"},{"1":"Korea","2":"3","3":"2","4":"83"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>Or we can hide the code entirely by adding <code>#| echo: false</code></p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 43 × 4
-# Groups:   CNT, TC002Q01NA [14]
-   CNT     TC002Q01NA TC400Q01DA     n
-   &lt;fct&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt;
- 1 Germany          1          1   230
- 2 Germany          1          2    85
- 3 Germany          1          3     2
- 4 Germany          1         NA     1
- 5 Germany          2          1   744
- 6 Germany          2          2   422
- 7 Germany          2          3     5
- 8 Germany          2         NA     3
- 9 Germany          3          1   724
-10 Germany          3          2   380
-11 Germany          3          3     4
-12 Germany          3         NA     4
-13 Germany          4          1   708
-14 Germany          4          2   372
-15 Germany          4          3     7
-16 Germany          4         NA     7
-17 Germany         NA          1    14
-18 Germany         NA          2     9
-19 Germany         NA          3     2
-20 Germany         NA         NA    28
-21 Georgia          1          1    39
-22 Georgia          1          2    14
-23 Georgia          2          1    77
-24 Georgia          2          2    21
-25 Georgia          3          1   257
-26 Georgia          3          2    17
-27 Georgia          3         NA     1
-28 Georgia          4          1   825
-29 Georgia          4          2    74
-30 Georgia          4         NA     4
-31 Georgia         NA          1    11
-32 Georgia         NA          2     1
-33 Georgia         NA         NA     9
-34 Korea            1          1   101
-35 Korea            1          2    53
-36 Korea            2          1   140
-37 Korea            2          2   126
-38 Korea            2         NA     1
-39 Korea            3          1   156
-40 Korea            3          2    83
-41 Korea            3         NA     1
-42 Korea            4          1    51
-43 Korea            4          2    68</code></pre>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["CNT"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TC002Q01NA"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["TC400Q01DA"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Germany","2":"1","3":"1","4":"230"},{"1":"Germany","2":"1","3":"2","4":"85"},{"1":"Germany","2":"1","3":"3","4":"2"},{"1":"Germany","2":"1","3":"NA","4":"1"},{"1":"Germany","2":"2","3":"1","4":"744"},{"1":"Germany","2":"2","3":"2","4":"422"},{"1":"Germany","2":"2","3":"3","4":"5"},{"1":"Germany","2":"2","3":"NA","4":"3"},{"1":"Germany","2":"3","3":"1","4":"724"},{"1":"Germany","2":"3","3":"2","4":"380"},{"1":"Germany","2":"3","3":"3","4":"4"},{"1":"Germany","2":"3","3":"NA","4":"4"},{"1":"Germany","2":"4","3":"1","4":"708"},{"1":"Germany","2":"4","3":"2","4":"372"},{"1":"Germany","2":"4","3":"3","4":"7"},{"1":"Germany","2":"4","3":"NA","4":"7"},{"1":"Germany","2":"NA","3":"1","4":"14"},{"1":"Germany","2":"NA","3":"2","4":"9"},{"1":"Germany","2":"NA","3":"3","4":"2"},{"1":"Germany","2":"NA","3":"NA","4":"28"},{"1":"Georgia","2":"1","3":"1","4":"39"},{"1":"Georgia","2":"1","3":"2","4":"14"},{"1":"Georgia","2":"2","3":"1","4":"77"},{"1":"Georgia","2":"2","3":"2","4":"21"},{"1":"Georgia","2":"3","3":"1","4":"257"},{"1":"Georgia","2":"3","3":"2","4":"17"},{"1":"Georgia","2":"3","3":"NA","4":"1"},{"1":"Georgia","2":"4","3":"1","4":"825"},{"1":"Georgia","2":"4","3":"2","4":"74"},{"1":"Georgia","2":"4","3":"NA","4":"4"},{"1":"Georgia","2":"NA","3":"1","4":"11"},{"1":"Georgia","2":"NA","3":"2","4":"1"},{"1":"Georgia","2":"NA","3":"NA","4":"9"},{"1":"Korea","2":"1","3":"1","4":"101"},{"1":"Korea","2":"1","3":"2","4":"53"},{"1":"Korea","2":"2","3":"1","4":"140"},{"1":"Korea","2":"2","3":"2","4":"126"},{"1":"Korea","2":"2","3":"NA","4":"1"},{"1":"Korea","2":"3","3":"1","4":"156"},{"1":"Korea","2":"3","3":"2","4":"83"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>The above examples show how you can output tables and simple sums to the screen, you might also want to output calculated values and graphs. Imagine we want to add the number of male teachers to a report, in the middle of some text, but we might change the focus questions. We don’t want to keep changing this number as we adjust the countries that we are focused on, it would be far better if this automatically updated itself. First we need to calculate this value and store it in an object <code>male_num</code>. Note here that we use the <code>pull(&lt;column&gt;)</code> command, this returns the vector stored in the <code>males</code> column, rather than the column datatype. Next we note the countries that we are studying and store that in an object <code>countries</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#| eval: true</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># get number of male teachers in total</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>male_num <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">summarise</span>(<span class="at">males =</span> <span class="fu">sum</span>(<span class="fu">as.numeric</span>(TC400Q01DA), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(males)</span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a>countries <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(CNT) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(CNT)</span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#| eval: true</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co"># get number of male teachers in total</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>male_num <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">summarise</span>(<span class="at">males =</span> <span class="fu">sum</span>(<span class="fu">as.numeric</span>(TC400Q01DA), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(males)</span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a>countries <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(CNT) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(CNT)</span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that this has been calculated we can insert it into our text using the inline <code>Georgia, Germany, Korea</code> and <code>7587</code> commands:</p>
 <p><code>The number of male teachers in the PISA data set for Georgia, Germany, Korea is 7587</code></p>
@@ -754,25 +670,25 @@ bibliography: my_references.bib
 <p>We saw above how we can include images into our quarto document, you could output ggplot to png and include them in this way. However, quarto allows you to dynamically create the graph each time the document is rendered. This means that if the data changes, the graph will automatically update.</p>
 <p>To add graphs to your booklets use the <code>```{r}</code> coding blocks as normal. Create your graph and it should display. You can add a caption to the graph using the <code>#| fig-cap: &lt;text&gt;</code> command:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#| fig-cap: median age of teacher by country</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#| label: fig-teachers</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#| eval: true</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co"># get number of male teachers in total</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>graph_data <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> TC400Q01DA) <span class="sc">%&gt;%</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="fu">summarise</span>(<span class="at">n_teachers =</span> <span class="fu">n</span>())</span>
-<span id="cb15-12"><a href="#cb15-12"></a></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="fu">ggplot</span>(<span class="at">data=</span>graph_data, </span>
-<span id="cb15-14"><a href="#cb15-14"></a>       <span class="fu">aes</span>(<span class="at">x=</span>CNT, <span class="at">y=</span>n_teachers, <span class="at">fill=</span>gender)) <span class="sc">+</span></span>
-<span id="cb15-15"><a href="#cb15-15"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="#cb15-16"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb15-17"><a href="#cb15-17"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb15-18"><a href="#cb15-18"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
-<span id="cb15-19"><a href="#cb15-19"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co">#| fig-cap: median age of teacher by country</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co">#| label: fig-teachers</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">#| eval: true</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co"># get number of male teachers in total</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>graph_data <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> TC400Q01DA) <span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">summarise</span>(<span class="at">n_teachers =</span> <span class="fu">n</span>())</span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="fu">ggplot</span>(<span class="at">data=</span>graph_data, </span>
+<span id="cb12-14"><a href="#cb12-14"></a>       <span class="fu">aes</span>(<span class="at">x=</span>CNT, <span class="at">y=</span>n_teachers, <span class="at">fill=</span>gender)) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-teachers" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-teachers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -812,25 +728,25 @@ Tip
 <div class="callout-body-container callout-body">
 <p>If you want to quickly make interactive graphs you can using the <a href="https://plotly-r.com">plotly</a> package. This allows you to hover over the graph and see the data points. To do this you need to install plotly and wrap up your plot within a code chunk. For example:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="in">```{r}</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#| eval: true</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>graph_data <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>,<span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> TC400Q01DA) <span class="sc">%&gt;%</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">summarise</span>(<span class="at">n_teachers =</span> <span class="fu">n</span>())</span>
-<span id="cb16-9"><a href="#cb16-9"></a></span>
-<span id="cb16-10"><a href="#cb16-10"></a>plt_teacher_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>graph_data, </span>
-<span id="cb16-11"><a href="#cb16-11"></a>       <span class="fu">aes</span>(<span class="at">x=</span>CNT, <span class="at">y=</span>n_teachers, <span class="at">fill=</span>gender)) <span class="sc">+</span></span>
-<span id="cb16-12"><a href="#cb16-12"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb16-13"><a href="#cb16-13"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
-<span id="cb16-14"><a href="#cb16-14"></a></span>
-<span id="cb16-15"><a href="#cb16-15"></a><span class="fu">ggplotly</span>(plt_teacher_gender)</span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#| eval: true</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>graph_data <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>,<span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">rename</span>(<span class="at">gender =</span> TC400Q01DA) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">group_by</span>(CNT, gender) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">summarise</span>(<span class="at">n_teachers =</span> <span class="fu">n</span>())</span>
+<span id="cb13-9"><a href="#cb13-9"></a></span>
+<span id="cb13-10"><a href="#cb13-10"></a>plt_teacher_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>graph_data, </span>
+<span id="cb13-11"><a href="#cb13-11"></a>       <span class="fu">aes</span>(<span class="at">x=</span>CNT, <span class="at">y=</span>n_teachers, <span class="at">fill=</span>gender)) <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb13-14"><a href="#cb13-14"></a></span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="fu">ggplotly</span>(plt_teacher_gender)</span>
+<span id="cb13-16"><a href="#cb13-16"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-f334e64a5f2bfe504b75" style="width:95%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-f334e64a5f2bfe504b75">{"x":{"data":[{"orientation":"v","width":[0.44999999999999996,0.45000000000000018,0.45000000000000018],"base":[0,0,0],"x":[0.77500000000000002,1.7749999999999999,2.7749999999999999],"y":[2420,1209,448],"text":["CNT: Germany<br />n_teachers: 2420<br />gender: Female","CNT: Georgia<br />n_teachers: 1209<br />gender: Female","CNT: Korea<br />n_teachers:  448<br />gender: Female"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.45000000000000018,0.45000000000000018,0.45000000000000018],"base":[0,0,0],"x":[1.2250000000000001,2.2250000000000001,3.2250000000000001],"y":[1268,127,330],"text":["CNT: Germany<br />n_teachers: 1268<br />gender: Male","CNT: Georgia<br />n_teachers:  127<br />gender: Male","CNT: Korea<br />n_teachers:  330<br />gender: Male"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":47.923444344685095,"l":48.949771689497723},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,3.6000000000000001],"tickmode":"array","ticktext":["Germany","Georgia","Korea"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Germany","Georgia","Korea"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Country code 3-character","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-121,2541],"tickmode":"array","ticktext":["0","500","1000","1500","2000","2500"],"tickvals":[0,500,1000,1500,2000,2500],"categoryorder":"array","categoryarray":["0","500","1000","1500","2000","2500"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"n_teachers","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"What is your gender?","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"16df326953e0a":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"16df326953e0a","visdat":{"16df326953e0a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-25945378ad7be74a7c37" style="width:95%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-25945378ad7be74a7c37">{"x":{"data":[{"orientation":"v","width":[0.44999999999999996,0.45000000000000018,0.45000000000000018],"base":[0,0,0],"x":[0.77500000000000002,1.7749999999999999,2.7749999999999999],"y":[2420,1209,448],"text":["CNT: Germany<br />n_teachers: 2420<br />gender: Female","CNT: Georgia<br />n_teachers: 1209<br />gender: Female","CNT: Korea<br />n_teachers:  448<br />gender: Female"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.45000000000000018,0.45000000000000018,0.45000000000000018],"base":[0,0,0],"x":[1.2250000000000001,2.2250000000000001,3.2250000000000001],"y":[1268,127,330],"text":["CNT: Germany<br />n_teachers: 1268<br />gender: Male","CNT: Georgia<br />n_teachers:  127<br />gender: Male","CNT: Korea<br />n_teachers:  330<br />gender: Male"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":47.923444344685095,"l":48.949771689497723},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,3.6000000000000001],"tickmode":"array","ticktext":["Germany","Georgia","Korea"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Germany","Georgia","Korea"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Country code 3-character","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-121,2541],"tickmode":"array","ticktext":["0","500","1000","1500","2000","2500"],"tickvals":[0,500,1000,1500,2000,2500],"categoryorder":"array","categoryarray":["0","500","1000","1500","2000","2500"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"n_teachers","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"What is your gender?","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"8ee15816f529":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"8ee15816f529","visdat":{"8ee15816f529":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -843,42 +759,42 @@ Tip
 <li>a code chunk <code>```{r} ... ```</code> with libraries and loading the <a href="https://emckclac-my.sharepoint.com/:u:/g/personal/k1926273_kcl_ac_uk/EbFmgVVbQD9DlIIgOKHDhLcB8bA8lfQMDVSEkcjtByM2cQ?e=zYG4Is">PISA teacher data set</a>. Set <code>#| echo: false</code> and <code>#| warning: false</code> to stop the code displaying and the warnings from showing.</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a>teacher_df <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"your_location/pisa/2025/PISA_teacher_2025.parquet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a>teacher_df <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"your_location/pisa/2025/PISA_teacher_2025.parquet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="2" type="1">
 <li>Create a code chunk that displays the first 3 rows of <code>teacher_df %&gt;% select(TC002Q01NA, LANGTEST_QQQ, TC007Q01NA_Q)</code>.</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>teacher_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(TC002Q01NA, LANGTEST_QQQ, TC007Q01NA_Q) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>teacher_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(TC002Q01NA, LANGTEST_QQQ, TC007Q01NA_Q) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="3" type="1">
 <li>Create a code chunk that sets an object <code>n_rows</code> to be the number of rows in the data set. Use this object within some markdown text to tell the reader how many rows are in the data.</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>n_rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(teacher_df)</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="co"># The markdown outside the code chunk would look like this:</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="co">#&gt; "The data set contains `r n_rows` rows."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>n_rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(teacher_df)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># The markdown outside the code chunk would look like this:</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">#&gt; "The data set contains `r n_rows` rows."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="4" type="1">
 <li>Create a code chunk that makes a graph counts of years of a teacher in a school (<code>TC007Q02NA_Q</code>) by country.</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># get number of male teachers in total</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>graph_data <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">group_by</span>(CNT, TC007Q02NA_Q) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">summarise</span>(<span class="at">count_exp =</span> <span class="fu">n</span>())</span>
-<span id="cb20-5"><a href="#cb20-5"></a></span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">ggplot</span>(<span class="at">data=</span>graph_data, </span>
-<span id="cb20-8"><a href="#cb20-8"></a>       <span class="fu">aes</span>(<span class="at">x =</span> CNT, <span class="at">y =</span> count_exp)) <span class="sc">+</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>hint</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># get number of male teachers in total</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>graph_data <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">group_by</span>(CNT, TC007Q02NA_Q) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">summarise</span>(<span class="at">count_exp =</span> <span class="fu">n</span>())</span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="fu">ggplot</span>(<span class="at">data=</span>graph_data, </span>
+<span id="cb17-8"><a href="#cb17-8"></a>       <span class="fu">aes</span>(<span class="at">x =</span> CNT, <span class="at">y =</span> count_exp)) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="5" type="1">
@@ -889,14 +805,14 @@ Tip
 <span class="header-section-number">4.4</span> Loading code files from outside the .qmd file</h2>
 <p>your quarto files can quickly become unwieldy if you have a lot of code in them. To help with this you can load code from external files. This is done by using the <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> command in a code chunk. For example, if you have a file called <code>load_data.R</code> in the same folder as your <code>.qmd</code> file you can load it using:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#| warning: false</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>) <span class="co"># this file contains the libraries and the location of the data</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">source</span>(<span class="st">"load_data.R"</span>) <span class="co"># this file loads the data</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="fu">source</span>(<span class="st">"create_tables.R"</span>) <span class="co"># this file creates tables for display</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="fu">source</span>(<span class="st">"create_graphs.R"</span>) <span class="co"># this file creates graphs for display</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#| warning: false</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>) <span class="co"># this file contains the libraries and the location of the data</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="fu">source</span>(<span class="st">"load_data.R"</span>) <span class="co"># this file loads the data</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="fu">source</span>(<span class="st">"create_tables.R"</span>) <span class="co"># this file creates tables for display</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="fu">source</span>(<span class="st">"create_graphs.R"</span>) <span class="co"># this file creates graphs for display</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The above code will load the <code>setup.R</code>, <code>load_data.R</code>, <code>create_tables.R</code> and <code>create_graphs.R</code> files into your <code>.qmd</code> file. Within these files you might do the following:</p>
 <ul>
@@ -913,13 +829,13 @@ Tip
 </ul>
 <p>Once these files have been loaded you can access the created objects quite easily in code chunks:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="co">#| label: fig-staff_gender</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co">#| warning: false</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a>plt_staff_gender</span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co">#| eval: false</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co">#| label: fig-staff_gender</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co">#| warning: false</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a>plt_staff_gender</span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="adding-tables" class="level1" data-number="5"><h1 data-number="5">
 <span class="header-section-number">5</span> Adding tables</h1>
@@ -958,48 +874,48 @@ Tip
 <span class="header-section-number">5.1</span> gt (great tables)</h2>
 <p>To use <a href="https://gt.rstudio.com">gt</a> you need to install it and load the package. Converting a data frame to a gt table is as simple as using the <code>gt()</code> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb24-2"><a href="#cb24-2"></a></span>
-<span id="cb24-3"><a href="#cb24-3"></a>df_teach_ages <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Korea"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">group_by</span>(CNT, TC400Q01DA) <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb24-7"><a href="#cb24-7"></a>    <span class="at">n_gen =</span> <span class="fu">n</span>(),</span>
-<span id="cb24-8"><a href="#cb24-8"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(<span class="fu">as.numeric</span>(TC002Q01NA), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb24-9"><a href="#cb24-9"></a>    <span class="at">.groups =</span> <span class="st">"drop_last"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-10"><a href="#cb24-10"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-11"><a href="#cb24-11"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(n_gen),</span>
-<span id="cb24-12"><a href="#cb24-12"></a>    <span class="at">pct_gender =</span> n_gen <span class="sc">/</span> total_n) <span class="sc">%&gt;%</span></span>
-<span id="cb24-13"><a href="#cb24-13"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb24-14"><a href="#cb24-14"></a></span>
-<span id="cb24-15"><a href="#cb24-15"></a>df_teach_ages <span class="ot">&lt;-</span> df_teach_ages <span class="sc">%&gt;%</span> </span>
-<span id="cb24-16"><a href="#cb24-16"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-17"><a href="#cb24-17"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(n_gen),              <span class="co"># Sums up n_gen for the whole country</span></span>
-<span id="cb24-18"><a href="#cb24-18"></a>    <span class="at">pct_gender =</span> n_gen <span class="sc">/</span> total_n,      <span class="co"># calculate percentage</span></span>
-<span id="cb24-19"><a href="#cb24-19"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-20"><a href="#cb24-20"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb24-21"><a href="#cb24-21"></a></span>
-<span id="cb24-22"><a href="#cb24-22"></a>df_teach_ages <span class="sc">%&gt;%</span></span>
-<span id="cb24-23"><a href="#cb24-23"></a>  <span class="fu">group_by</span>(CNT, TC400Q01DA) <span class="sc">%&gt;%</span>  <span class="co"># grouping splits the table</span></span>
-<span id="cb24-24"><a href="#cb24-24"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>df_teach_ages <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Korea"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">group_by</span>(CNT, TC400Q01DA) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb21-7"><a href="#cb21-7"></a>    <span class="at">n_gen =</span> <span class="fu">n</span>(),</span>
+<span id="cb21-8"><a href="#cb21-8"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(<span class="fu">as.numeric</span>(TC002Q01NA), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb21-9"><a href="#cb21-9"></a>    <span class="at">.groups =</span> <span class="st">"drop_last"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-11"><a href="#cb21-11"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(n_gen),</span>
+<span id="cb21-12"><a href="#cb21-12"></a>    <span class="at">pct_gender =</span> n_gen <span class="sc">/</span> total_n) <span class="sc">%&gt;%</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb21-14"><a href="#cb21-14"></a></span>
+<span id="cb21-15"><a href="#cb21-15"></a>df_teach_ages <span class="ot">&lt;-</span> df_teach_ages <span class="sc">%&gt;%</span> </span>
+<span id="cb21-16"><a href="#cb21-16"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-17"><a href="#cb21-17"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(n_gen),              <span class="co"># Sums up n_gen for the whole country</span></span>
+<span id="cb21-18"><a href="#cb21-18"></a>    <span class="at">pct_gender =</span> n_gen <span class="sc">/</span> total_n,      <span class="co"># calculate percentage</span></span>
+<span id="cb21-19"><a href="#cb21-19"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-20"><a href="#cb21-20"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb21-21"><a href="#cb21-21"></a></span>
+<span id="cb21-22"><a href="#cb21-22"></a>df_teach_ages <span class="sc">%&gt;%</span></span>
+<span id="cb21-23"><a href="#cb21-23"></a>  <span class="fu">group_by</span>(CNT, TC400Q01DA) <span class="sc">%&gt;%</span>  <span class="co"># grouping splits the table</span></span>
+<span id="cb21-24"><a href="#cb21-24"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="tugklqlvtc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tugklqlvtc table {
+<div id="futynhkxta" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#futynhkxta table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tugklqlvtc thead, #tugklqlvtc tbody, #tugklqlvtc tfoot, #tugklqlvtc tr, #tugklqlvtc td, #tugklqlvtc th {
+#futynhkxta thead, #futynhkxta tbody, #futynhkxta tfoot, #futynhkxta tr, #futynhkxta td, #futynhkxta th {
   border-style: none;
 }
 
-#tugklqlvtc p {
+#futynhkxta p {
   margin: 0;
   padding: 0;
 }
 
-#tugklqlvtc .gt_table {
+#futynhkxta .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1025,12 +941,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_caption {
+#futynhkxta .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tugklqlvtc .gt_title {
+#futynhkxta .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1042,7 +958,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#tugklqlvtc .gt_subtitle {
+#futynhkxta .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1054,7 +970,7 @@ Tip
   border-top-width: 0;
 }
 
-#tugklqlvtc .gt_heading {
+#futynhkxta .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1066,13 +982,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_bottom_border {
+#futynhkxta .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_col_headings {
+#futynhkxta .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1087,7 +1003,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_col_heading {
+#futynhkxta .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1107,7 +1023,7 @@ Tip
   overflow-x: hidden;
 }
 
-#tugklqlvtc .gt_column_spanner_outer {
+#futynhkxta .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1119,15 +1035,15 @@ Tip
   padding-right: 4px;
 }
 
-#tugklqlvtc .gt_column_spanner_outer:first-child {
+#futynhkxta .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tugklqlvtc .gt_column_spanner_outer:last-child {
+#futynhkxta .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tugklqlvtc .gt_column_spanner {
+#futynhkxta .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1139,11 +1055,11 @@ Tip
   width: 100%;
 }
 
-#tugklqlvtc .gt_spanner_row {
+#futynhkxta .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tugklqlvtc .gt_group_heading {
+#futynhkxta .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1169,7 +1085,7 @@ Tip
   text-align: left;
 }
 
-#tugklqlvtc .gt_empty_group_heading {
+#futynhkxta .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1184,15 +1100,15 @@ Tip
   vertical-align: middle;
 }
 
-#tugklqlvtc .gt_from_md > :first-child {
+#futynhkxta .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tugklqlvtc .gt_from_md > :last-child {
+#futynhkxta .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tugklqlvtc .gt_row {
+#futynhkxta .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1211,7 +1127,7 @@ Tip
   overflow-x: hidden;
 }
 
-#tugklqlvtc .gt_stub {
+#futynhkxta .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1224,7 +1140,7 @@ Tip
   padding-right: 5px;
 }
 
-#tugklqlvtc .gt_stub_row_group {
+#futynhkxta .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1238,15 +1154,15 @@ Tip
   vertical-align: top;
 }
 
-#tugklqlvtc .gt_row_group_first td {
+#futynhkxta .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tugklqlvtc .gt_row_group_first th {
+#futynhkxta .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tugklqlvtc .gt_summary_row {
+#futynhkxta .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1256,16 +1172,16 @@ Tip
   padding-right: 5px;
 }
 
-#tugklqlvtc .gt_first_summary_row {
+#futynhkxta .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_first_summary_row.thick {
+#futynhkxta .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tugklqlvtc .gt_last_summary_row {
+#futynhkxta .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1275,7 +1191,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_grand_summary_row {
+#futynhkxta .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1285,7 +1201,7 @@ Tip
   padding-right: 5px;
 }
 
-#tugklqlvtc .gt_first_grand_summary_row {
+#futynhkxta .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1295,7 +1211,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_last_grand_summary_row_top {
+#futynhkxta .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1305,11 +1221,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_striped {
+#futynhkxta .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tugklqlvtc .gt_table_body {
+#futynhkxta .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1318,7 +1234,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_footnotes {
+#futynhkxta .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1332,7 +1248,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_footnote {
+#futynhkxta .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1341,7 +1257,7 @@ Tip
   padding-right: 5px;
 }
 
-#tugklqlvtc .gt_sourcenotes {
+#futynhkxta .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1355,7 +1271,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tugklqlvtc .gt_sourcenote {
+#futynhkxta .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1363,72 +1279,72 @@ Tip
   padding-right: 5px;
 }
 
-#tugklqlvtc .gt_left {
+#futynhkxta .gt_left {
   text-align: left;
 }
 
-#tugklqlvtc .gt_center {
+#futynhkxta .gt_center {
   text-align: center;
 }
 
-#tugklqlvtc .gt_right {
+#futynhkxta .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tugklqlvtc .gt_font_normal {
+#futynhkxta .gt_font_normal {
   font-weight: normal;
 }
 
-#tugklqlvtc .gt_font_bold {
+#futynhkxta .gt_font_bold {
   font-weight: bold;
 }
 
-#tugklqlvtc .gt_font_italic {
+#futynhkxta .gt_font_italic {
   font-style: italic;
 }
 
-#tugklqlvtc .gt_super {
+#futynhkxta .gt_super {
   font-size: 65%;
 }
 
-#tugklqlvtc .gt_footnote_marks {
+#futynhkxta .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tugklqlvtc .gt_asterisk {
+#futynhkxta .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tugklqlvtc .gt_indent_1 {
+#futynhkxta .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tugklqlvtc .gt_indent_2 {
+#futynhkxta .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tugklqlvtc .gt_indent_3 {
+#futynhkxta .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tugklqlvtc .gt_indent_4 {
+#futynhkxta .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tugklqlvtc .gt_indent_5 {
+#futynhkxta .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tugklqlvtc .katex-display {
+#futynhkxta .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tugklqlvtc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#futynhkxta div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1517,31 +1433,31 @@ Tip
 </li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_teach_ages <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">mutate</span>(<span class="at">TC400Q01DA =</span> <span class="fu">as.character</span>(TC400Q01DA)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">select</span>(CNT, TC400Q01DA, n_gen, total_n, pct_gender) <span class="sc">%&gt;%</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="st">"pct_gender"</span>, <span class="at">decimals =</span> <span class="dv">1</span>)  <span class="sc">%&gt;%</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"n_gen"</span>, <span class="st">"total_n"</span>), <span class="at">decimals =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df_teach_ages <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">mutate</span>(<span class="at">TC400Q01DA =</span> <span class="fu">as.character</span>(TC400Q01DA)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">select</span>(CNT, TC400Q01DA, n_gen, total_n, pct_gender) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="st">"pct_gender"</span>, <span class="at">decimals =</span> <span class="dv">1</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"n_gen"</span>, <span class="st">"total_n"</span>), <span class="at">decimals =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="vcracyadsj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vcracyadsj table {
+<div id="xvgdmojeuj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xvgdmojeuj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vcracyadsj thead, #vcracyadsj tbody, #vcracyadsj tfoot, #vcracyadsj tr, #vcracyadsj td, #vcracyadsj th {
+#xvgdmojeuj thead, #xvgdmojeuj tbody, #xvgdmojeuj tfoot, #xvgdmojeuj tr, #xvgdmojeuj td, #xvgdmojeuj th {
   border-style: none;
 }
 
-#vcracyadsj p {
+#xvgdmojeuj p {
   margin: 0;
   padding: 0;
 }
 
-#vcracyadsj .gt_table {
+#xvgdmojeuj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1567,12 +1483,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_caption {
+#xvgdmojeuj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vcracyadsj .gt_title {
+#xvgdmojeuj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1584,7 +1500,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#vcracyadsj .gt_subtitle {
+#xvgdmojeuj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1596,7 +1512,7 @@ Tip
   border-top-width: 0;
 }
 
-#vcracyadsj .gt_heading {
+#xvgdmojeuj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1608,13 +1524,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_bottom_border {
+#xvgdmojeuj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_col_headings {
+#xvgdmojeuj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1629,7 +1545,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_col_heading {
+#xvgdmojeuj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1649,7 +1565,7 @@ Tip
   overflow-x: hidden;
 }
 
-#vcracyadsj .gt_column_spanner_outer {
+#xvgdmojeuj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1661,15 +1577,15 @@ Tip
   padding-right: 4px;
 }
 
-#vcracyadsj .gt_column_spanner_outer:first-child {
+#xvgdmojeuj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vcracyadsj .gt_column_spanner_outer:last-child {
+#xvgdmojeuj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vcracyadsj .gt_column_spanner {
+#xvgdmojeuj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1681,11 +1597,11 @@ Tip
   width: 100%;
 }
 
-#vcracyadsj .gt_spanner_row {
+#xvgdmojeuj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vcracyadsj .gt_group_heading {
+#xvgdmojeuj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1711,7 +1627,7 @@ Tip
   text-align: left;
 }
 
-#vcracyadsj .gt_empty_group_heading {
+#xvgdmojeuj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1726,15 +1642,15 @@ Tip
   vertical-align: middle;
 }
 
-#vcracyadsj .gt_from_md > :first-child {
+#xvgdmojeuj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vcracyadsj .gt_from_md > :last-child {
+#xvgdmojeuj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vcracyadsj .gt_row {
+#xvgdmojeuj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1753,7 +1669,7 @@ Tip
   overflow-x: hidden;
 }
 
-#vcracyadsj .gt_stub {
+#xvgdmojeuj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1766,7 +1682,7 @@ Tip
   padding-right: 5px;
 }
 
-#vcracyadsj .gt_stub_row_group {
+#xvgdmojeuj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1780,15 +1696,15 @@ Tip
   vertical-align: top;
 }
 
-#vcracyadsj .gt_row_group_first td {
+#xvgdmojeuj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vcracyadsj .gt_row_group_first th {
+#xvgdmojeuj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vcracyadsj .gt_summary_row {
+#xvgdmojeuj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1798,16 +1714,16 @@ Tip
   padding-right: 5px;
 }
 
-#vcracyadsj .gt_first_summary_row {
+#xvgdmojeuj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_first_summary_row.thick {
+#xvgdmojeuj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vcracyadsj .gt_last_summary_row {
+#xvgdmojeuj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1817,7 +1733,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_grand_summary_row {
+#xvgdmojeuj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1827,7 +1743,7 @@ Tip
   padding-right: 5px;
 }
 
-#vcracyadsj .gt_first_grand_summary_row {
+#xvgdmojeuj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1837,7 +1753,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_last_grand_summary_row_top {
+#xvgdmojeuj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1847,11 +1763,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_striped {
+#xvgdmojeuj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vcracyadsj .gt_table_body {
+#xvgdmojeuj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1860,7 +1776,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_footnotes {
+#xvgdmojeuj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1874,7 +1790,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_footnote {
+#xvgdmojeuj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1883,7 +1799,7 @@ Tip
   padding-right: 5px;
 }
 
-#vcracyadsj .gt_sourcenotes {
+#xvgdmojeuj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1897,7 +1813,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#vcracyadsj .gt_sourcenote {
+#xvgdmojeuj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1905,72 +1821,72 @@ Tip
   padding-right: 5px;
 }
 
-#vcracyadsj .gt_left {
+#xvgdmojeuj .gt_left {
   text-align: left;
 }
 
-#vcracyadsj .gt_center {
+#xvgdmojeuj .gt_center {
   text-align: center;
 }
 
-#vcracyadsj .gt_right {
+#xvgdmojeuj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vcracyadsj .gt_font_normal {
+#xvgdmojeuj .gt_font_normal {
   font-weight: normal;
 }
 
-#vcracyadsj .gt_font_bold {
+#xvgdmojeuj .gt_font_bold {
   font-weight: bold;
 }
 
-#vcracyadsj .gt_font_italic {
+#xvgdmojeuj .gt_font_italic {
   font-style: italic;
 }
 
-#vcracyadsj .gt_super {
+#xvgdmojeuj .gt_super {
   font-size: 65%;
 }
 
-#vcracyadsj .gt_footnote_marks {
+#xvgdmojeuj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vcracyadsj .gt_asterisk {
+#xvgdmojeuj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vcracyadsj .gt_indent_1 {
+#xvgdmojeuj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vcracyadsj .gt_indent_2 {
+#xvgdmojeuj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vcracyadsj .gt_indent_3 {
+#xvgdmojeuj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vcracyadsj .gt_indent_4 {
+#xvgdmojeuj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vcracyadsj .gt_indent_5 {
+#xvgdmojeuj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vcracyadsj .katex-display {
+#xvgdmojeuj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vcracyadsj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xvgdmojeuj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2023,39 +1939,39 @@ Tip
 <li>there are <code>NA</code> values displayed, we can use <code>sub_missing()</code> to replace the med_age_gender with a <code>-</code> and the gender of the teacher with the word “Missing”:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>df_teach_ages <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span>  <span class="co"># removes the grouping to put everything in columns</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
-<span id="cb26-6"><a href="#cb26-6"></a>              <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"total_n"</span>, <span class="st">"n_gen"</span>),</span>
-<span id="cb26-8"><a href="#cb26-8"></a>             <span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-9"><a href="#cb26-9"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>, <span class="co"># note that you use the data frame column heading</span></span>
-<span id="cb26-10"><a href="#cb26-10"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
-<span id="cb26-11"><a href="#cb26-11"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>,</span>
-<span id="cb26-12"><a href="#cb26-12"></a>             <span class="at">total_n =</span> <span class="st">"total"</span>,</span>
-<span id="cb26-13"><a href="#cb26-13"></a>             <span class="at">n_gen =</span> <span class="st">"n"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-14"><a href="#cb26-14"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),  <span class="co"># note we have to use the original name</span></span>
-<span id="cb26-15"><a href="#cb26-15"></a>              <span class="at">missing_text =</span> <span class="st">"Missing"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df_teach_ages <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span>  <span class="co"># removes the grouping to put everything in columns</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
+<span id="cb23-6"><a href="#cb23-6"></a>              <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"total_n"</span>, <span class="st">"n_gen"</span>),</span>
+<span id="cb23-8"><a href="#cb23-8"></a>             <span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>, <span class="co"># note that you use the data frame column heading</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>,</span>
+<span id="cb23-12"><a href="#cb23-12"></a>             <span class="at">total_n =</span> <span class="st">"total"</span>,</span>
+<span id="cb23-13"><a href="#cb23-13"></a>             <span class="at">n_gen =</span> <span class="st">"n"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),  <span class="co"># note we have to use the original name</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a>              <span class="at">missing_text =</span> <span class="st">"Missing"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ccdwvvvouo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ccdwvvvouo table {
+<div id="rwdzgtbikx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rwdzgtbikx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ccdwvvvouo thead, #ccdwvvvouo tbody, #ccdwvvvouo tfoot, #ccdwvvvouo tr, #ccdwvvvouo td, #ccdwvvvouo th {
+#rwdzgtbikx thead, #rwdzgtbikx tbody, #rwdzgtbikx tfoot, #rwdzgtbikx tr, #rwdzgtbikx td, #rwdzgtbikx th {
   border-style: none;
 }
 
-#ccdwvvvouo p {
+#rwdzgtbikx p {
   margin: 0;
   padding: 0;
 }
 
-#ccdwvvvouo .gt_table {
+#rwdzgtbikx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2081,12 +1997,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_caption {
+#rwdzgtbikx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ccdwvvvouo .gt_title {
+#rwdzgtbikx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2098,7 +2014,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#ccdwvvvouo .gt_subtitle {
+#rwdzgtbikx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2110,7 +2026,7 @@ Tip
   border-top-width: 0;
 }
 
-#ccdwvvvouo .gt_heading {
+#rwdzgtbikx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2122,13 +2038,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_bottom_border {
+#rwdzgtbikx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_col_headings {
+#rwdzgtbikx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2143,7 +2059,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_col_heading {
+#rwdzgtbikx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2163,7 +2079,7 @@ Tip
   overflow-x: hidden;
 }
 
-#ccdwvvvouo .gt_column_spanner_outer {
+#rwdzgtbikx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2175,15 +2091,15 @@ Tip
   padding-right: 4px;
 }
 
-#ccdwvvvouo .gt_column_spanner_outer:first-child {
+#rwdzgtbikx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ccdwvvvouo .gt_column_spanner_outer:last-child {
+#rwdzgtbikx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ccdwvvvouo .gt_column_spanner {
+#rwdzgtbikx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2195,11 +2111,11 @@ Tip
   width: 100%;
 }
 
-#ccdwvvvouo .gt_spanner_row {
+#rwdzgtbikx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ccdwvvvouo .gt_group_heading {
+#rwdzgtbikx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2225,7 +2141,7 @@ Tip
   text-align: left;
 }
 
-#ccdwvvvouo .gt_empty_group_heading {
+#rwdzgtbikx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2240,15 +2156,15 @@ Tip
   vertical-align: middle;
 }
 
-#ccdwvvvouo .gt_from_md > :first-child {
+#rwdzgtbikx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ccdwvvvouo .gt_from_md > :last-child {
+#rwdzgtbikx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ccdwvvvouo .gt_row {
+#rwdzgtbikx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2267,7 +2183,7 @@ Tip
   overflow-x: hidden;
 }
 
-#ccdwvvvouo .gt_stub {
+#rwdzgtbikx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2280,7 +2196,7 @@ Tip
   padding-right: 5px;
 }
 
-#ccdwvvvouo .gt_stub_row_group {
+#rwdzgtbikx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2294,15 +2210,15 @@ Tip
   vertical-align: top;
 }
 
-#ccdwvvvouo .gt_row_group_first td {
+#rwdzgtbikx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ccdwvvvouo .gt_row_group_first th {
+#rwdzgtbikx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ccdwvvvouo .gt_summary_row {
+#rwdzgtbikx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2312,16 +2228,16 @@ Tip
   padding-right: 5px;
 }
 
-#ccdwvvvouo .gt_first_summary_row {
+#rwdzgtbikx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_first_summary_row.thick {
+#rwdzgtbikx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ccdwvvvouo .gt_last_summary_row {
+#rwdzgtbikx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2331,7 +2247,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_grand_summary_row {
+#rwdzgtbikx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2341,7 +2257,7 @@ Tip
   padding-right: 5px;
 }
 
-#ccdwvvvouo .gt_first_grand_summary_row {
+#rwdzgtbikx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2351,7 +2267,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_last_grand_summary_row_top {
+#rwdzgtbikx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2361,11 +2277,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_striped {
+#rwdzgtbikx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ccdwvvvouo .gt_table_body {
+#rwdzgtbikx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2374,7 +2290,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_footnotes {
+#rwdzgtbikx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2388,7 +2304,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_footnote {
+#rwdzgtbikx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2397,7 +2313,7 @@ Tip
   padding-right: 5px;
 }
 
-#ccdwvvvouo .gt_sourcenotes {
+#rwdzgtbikx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2411,7 +2327,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#ccdwvvvouo .gt_sourcenote {
+#rwdzgtbikx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2419,72 +2335,72 @@ Tip
   padding-right: 5px;
 }
 
-#ccdwvvvouo .gt_left {
+#rwdzgtbikx .gt_left {
   text-align: left;
 }
 
-#ccdwvvvouo .gt_center {
+#rwdzgtbikx .gt_center {
   text-align: center;
 }
 
-#ccdwvvvouo .gt_right {
+#rwdzgtbikx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ccdwvvvouo .gt_font_normal {
+#rwdzgtbikx .gt_font_normal {
   font-weight: normal;
 }
 
-#ccdwvvvouo .gt_font_bold {
+#rwdzgtbikx .gt_font_bold {
   font-weight: bold;
 }
 
-#ccdwvvvouo .gt_font_italic {
+#rwdzgtbikx .gt_font_italic {
   font-style: italic;
 }
 
-#ccdwvvvouo .gt_super {
+#rwdzgtbikx .gt_super {
   font-size: 65%;
 }
 
-#ccdwvvvouo .gt_footnote_marks {
+#rwdzgtbikx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ccdwvvvouo .gt_asterisk {
+#rwdzgtbikx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ccdwvvvouo .gt_indent_1 {
+#rwdzgtbikx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ccdwvvvouo .gt_indent_2 {
+#rwdzgtbikx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ccdwvvvouo .gt_indent_3 {
+#rwdzgtbikx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ccdwvvvouo .gt_indent_4 {
+#rwdzgtbikx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ccdwvvvouo .gt_indent_5 {
+#rwdzgtbikx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ccdwvvvouo .katex-display {
+#rwdzgtbikx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ccdwvvvouo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rwdzgtbikx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2537,45 +2453,45 @@ Tip
 </div>
 <p>This is looking even better, but now we have multiple columns with the same name. We need to group these columns so it’s clear which refers to the total and which to the individual gender group. If we have several fields that contain data with a similar theme and we want to put a title over the top of them we can use <code>tab_spanner()</code>. Remember, when performing calculations on gt columns we need to refer to the original column names, not the new ones we have created through <code>cols_label()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>nice_table <span class="ot">&lt;-</span> df_teach_ages <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span>  <span class="co"># removes the grouping to put everything in columns</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
-<span id="cb27-6"><a href="#cb27-6"></a>              <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"total_n"</span>, <span class="st">"n_gen"</span>),</span>
-<span id="cb27-8"><a href="#cb27-8"></a>             <span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>, <span class="co"># note that you use the data frame column heading</span></span>
-<span id="cb27-10"><a href="#cb27-10"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
-<span id="cb27-11"><a href="#cb27-11"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>,</span>
-<span id="cb27-12"><a href="#cb27-12"></a>             <span class="at">total_n =</span> <span class="st">"total"</span>,</span>
-<span id="cb27-13"><a href="#cb27-13"></a>             <span class="at">n_gen =</span> <span class="st">"n"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-14"><a href="#cb27-14"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),  <span class="co"># note we have to use the original name</span></span>
-<span id="cb27-15"><a href="#cb27-15"></a>              <span class="at">missing_text =</span> <span class="st">"Missing"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-16"><a href="#cb27-16"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(n_gen,pct_gender),</span>
-<span id="cb27-17"><a href="#cb27-17"></a>              <span class="at">label=</span><span class="st">"Gender"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-18"><a href="#cb27-18"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> total_n,</span>
-<span id="cb27-19"><a href="#cb27-19"></a>              <span class="at">label=</span><span class="st">"Overall"</span>)</span>
-<span id="cb27-20"><a href="#cb27-20"></a></span>
-<span id="cb27-21"><a href="#cb27-21"></a>nice_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>nice_table <span class="ot">&lt;-</span> df_teach_ages <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">filter</span>(TC400Q01DA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span>  <span class="co"># removes the grouping to put everything in columns</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6"></a>              <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"total_n"</span>, <span class="st">"n_gen"</span>),</span>
+<span id="cb24-8"><a href="#cb24-8"></a>             <span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>, <span class="co"># note that you use the data frame column heading</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb24-11"><a href="#cb24-11"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>,</span>
+<span id="cb24-12"><a href="#cb24-12"></a>             <span class="at">total_n =</span> <span class="st">"total"</span>,</span>
+<span id="cb24-13"><a href="#cb24-13"></a>             <span class="at">n_gen =</span> <span class="st">"n"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),  <span class="co"># note we have to use the original name</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>              <span class="at">missing_text =</span> <span class="st">"Missing"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(n_gen,pct_gender),</span>
+<span id="cb24-17"><a href="#cb24-17"></a>              <span class="at">label=</span><span class="st">"Gender"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> total_n,</span>
+<span id="cb24-19"><a href="#cb24-19"></a>              <span class="at">label=</span><span class="st">"Overall"</span>)</span>
+<span id="cb24-20"><a href="#cb24-20"></a></span>
+<span id="cb24-21"><a href="#cb24-21"></a>nice_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="yodashtqkn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yodashtqkn table {
+<div id="bipexufuti" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bipexufuti table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yodashtqkn thead, #yodashtqkn tbody, #yodashtqkn tfoot, #yodashtqkn tr, #yodashtqkn td, #yodashtqkn th {
+#bipexufuti thead, #bipexufuti tbody, #bipexufuti tfoot, #bipexufuti tr, #bipexufuti td, #bipexufuti th {
   border-style: none;
 }
 
-#yodashtqkn p {
+#bipexufuti p {
   margin: 0;
   padding: 0;
 }
 
-#yodashtqkn .gt_table {
+#bipexufuti .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2601,12 +2517,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_caption {
+#bipexufuti .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yodashtqkn .gt_title {
+#bipexufuti .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2618,7 +2534,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#yodashtqkn .gt_subtitle {
+#bipexufuti .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2630,7 +2546,7 @@ Tip
   border-top-width: 0;
 }
 
-#yodashtqkn .gt_heading {
+#bipexufuti .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2642,13 +2558,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_bottom_border {
+#bipexufuti .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_col_headings {
+#bipexufuti .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2663,7 +2579,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_col_heading {
+#bipexufuti .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2683,7 +2599,7 @@ Tip
   overflow-x: hidden;
 }
 
-#yodashtqkn .gt_column_spanner_outer {
+#bipexufuti .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2695,15 +2611,15 @@ Tip
   padding-right: 4px;
 }
 
-#yodashtqkn .gt_column_spanner_outer:first-child {
+#bipexufuti .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yodashtqkn .gt_column_spanner_outer:last-child {
+#bipexufuti .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yodashtqkn .gt_column_spanner {
+#bipexufuti .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2715,11 +2631,11 @@ Tip
   width: 100%;
 }
 
-#yodashtqkn .gt_spanner_row {
+#bipexufuti .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yodashtqkn .gt_group_heading {
+#bipexufuti .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2745,7 +2661,7 @@ Tip
   text-align: left;
 }
 
-#yodashtqkn .gt_empty_group_heading {
+#bipexufuti .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2760,15 +2676,15 @@ Tip
   vertical-align: middle;
 }
 
-#yodashtqkn .gt_from_md > :first-child {
+#bipexufuti .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yodashtqkn .gt_from_md > :last-child {
+#bipexufuti .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yodashtqkn .gt_row {
+#bipexufuti .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2787,7 +2703,7 @@ Tip
   overflow-x: hidden;
 }
 
-#yodashtqkn .gt_stub {
+#bipexufuti .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2800,7 +2716,7 @@ Tip
   padding-right: 5px;
 }
 
-#yodashtqkn .gt_stub_row_group {
+#bipexufuti .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2814,15 +2730,15 @@ Tip
   vertical-align: top;
 }
 
-#yodashtqkn .gt_row_group_first td {
+#bipexufuti .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yodashtqkn .gt_row_group_first th {
+#bipexufuti .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yodashtqkn .gt_summary_row {
+#bipexufuti .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2832,16 +2748,16 @@ Tip
   padding-right: 5px;
 }
 
-#yodashtqkn .gt_first_summary_row {
+#bipexufuti .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_first_summary_row.thick {
+#bipexufuti .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yodashtqkn .gt_last_summary_row {
+#bipexufuti .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2851,7 +2767,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_grand_summary_row {
+#bipexufuti .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2861,7 +2777,7 @@ Tip
   padding-right: 5px;
 }
 
-#yodashtqkn .gt_first_grand_summary_row {
+#bipexufuti .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2871,7 +2787,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_last_grand_summary_row_top {
+#bipexufuti .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2881,11 +2797,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_striped {
+#bipexufuti .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yodashtqkn .gt_table_body {
+#bipexufuti .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2894,7 +2810,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_footnotes {
+#bipexufuti .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2908,7 +2824,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_footnote {
+#bipexufuti .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2917,7 +2833,7 @@ Tip
   padding-right: 5px;
 }
 
-#yodashtqkn .gt_sourcenotes {
+#bipexufuti .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2931,7 +2847,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#yodashtqkn .gt_sourcenote {
+#bipexufuti .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2939,72 +2855,72 @@ Tip
   padding-right: 5px;
 }
 
-#yodashtqkn .gt_left {
+#bipexufuti .gt_left {
   text-align: left;
 }
 
-#yodashtqkn .gt_center {
+#bipexufuti .gt_center {
   text-align: center;
 }
 
-#yodashtqkn .gt_right {
+#bipexufuti .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yodashtqkn .gt_font_normal {
+#bipexufuti .gt_font_normal {
   font-weight: normal;
 }
 
-#yodashtqkn .gt_font_bold {
+#bipexufuti .gt_font_bold {
   font-weight: bold;
 }
 
-#yodashtqkn .gt_font_italic {
+#bipexufuti .gt_font_italic {
   font-style: italic;
 }
 
-#yodashtqkn .gt_super {
+#bipexufuti .gt_super {
   font-size: 65%;
 }
 
-#yodashtqkn .gt_footnote_marks {
+#bipexufuti .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yodashtqkn .gt_asterisk {
+#bipexufuti .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yodashtqkn .gt_indent_1 {
+#bipexufuti .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yodashtqkn .gt_indent_2 {
+#bipexufuti .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yodashtqkn .gt_indent_3 {
+#bipexufuti .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yodashtqkn .gt_indent_4 {
+#bipexufuti .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yodashtqkn .gt_indent_5 {
+#bipexufuti .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yodashtqkn .katex-display {
+#bipexufuti .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yodashtqkn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bipexufuti div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3075,35 +2991,35 @@ Overall
 </div>
 <p>Finally, we might want to add a footnote to the table, this is done using the <code>tab_footnote()</code> command. <a href="https://gt.rstudio.com">gt</a> also allows you to insert markdown into the table by wrapping text in the <code>md()</code> command, as shown below. If we want to include this table with caption in the same way we used a caption on the figures above, we can use <code>#| tbl-cap: teacher ages by country</code> and provide a label to reference the table in our text: <code>#| label: tbl-teacher_ages</code>.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#| eval: true</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="co">#| label: tbl-teacher_ages</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="co">#| tbl-cap: teacher ages by country</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>nice_table <span class="sc">%&gt;%</span> </span>
-<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="fu">md</span>(<span class="st">"__source__: PISA 2025 teacher survey"</span>))</span>
-<span id="cb28-7"><a href="#cb28-7"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co">#| eval: true</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co">#| label: tbl-teacher_ages</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">#| tbl-cap: teacher ages by country</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>nice_table <span class="sc">%&gt;%</span> </span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="fu">md</span>(<span class="st">"__source__: PISA 2025 teacher survey"</span>))</span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-teacher_ages" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-teacher_ages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.1: teacher ages by country
 </figcaption><div aria-describedby="tbl-teacher_ages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ckrpwrhifv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ckrpwrhifv table {
+<div id="fryhvhwxrp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fryhvhwxrp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ckrpwrhifv thead, #ckrpwrhifv tbody, #ckrpwrhifv tfoot, #ckrpwrhifv tr, #ckrpwrhifv td, #ckrpwrhifv th {
+#fryhvhwxrp thead, #fryhvhwxrp tbody, #fryhvhwxrp tfoot, #fryhvhwxrp tr, #fryhvhwxrp td, #fryhvhwxrp th {
   border-style: none;
 }
 
-#ckrpwrhifv p {
+#fryhvhwxrp p {
   margin: 0;
   padding: 0;
 }
 
-#ckrpwrhifv .gt_table {
+#fryhvhwxrp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3129,12 +3045,12 @@ Table&nbsp;5.1: teacher ages by country
   border-left-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_caption {
+#fryhvhwxrp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ckrpwrhifv .gt_title {
+#fryhvhwxrp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3146,7 +3062,7 @@ Table&nbsp;5.1: teacher ages by country
   border-bottom-width: 0;
 }
 
-#ckrpwrhifv .gt_subtitle {
+#fryhvhwxrp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3158,7 +3074,7 @@ Table&nbsp;5.1: teacher ages by country
   border-top-width: 0;
 }
 
-#ckrpwrhifv .gt_heading {
+#fryhvhwxrp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3170,13 +3086,13 @@ Table&nbsp;5.1: teacher ages by country
   border-right-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_bottom_border {
+#fryhvhwxrp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_col_headings {
+#fryhvhwxrp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3191,7 +3107,7 @@ Table&nbsp;5.1: teacher ages by country
   border-right-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_col_heading {
+#fryhvhwxrp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3211,7 +3127,7 @@ Table&nbsp;5.1: teacher ages by country
   overflow-x: hidden;
 }
 
-#ckrpwrhifv .gt_column_spanner_outer {
+#fryhvhwxrp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3223,15 +3139,15 @@ Table&nbsp;5.1: teacher ages by country
   padding-right: 4px;
 }
 
-#ckrpwrhifv .gt_column_spanner_outer:first-child {
+#fryhvhwxrp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ckrpwrhifv .gt_column_spanner_outer:last-child {
+#fryhvhwxrp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ckrpwrhifv .gt_column_spanner {
+#fryhvhwxrp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3243,11 +3159,11 @@ Table&nbsp;5.1: teacher ages by country
   width: 100%;
 }
 
-#ckrpwrhifv .gt_spanner_row {
+#fryhvhwxrp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ckrpwrhifv .gt_group_heading {
+#fryhvhwxrp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3273,7 +3189,7 @@ Table&nbsp;5.1: teacher ages by country
   text-align: left;
 }
 
-#ckrpwrhifv .gt_empty_group_heading {
+#fryhvhwxrp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3288,15 +3204,15 @@ Table&nbsp;5.1: teacher ages by country
   vertical-align: middle;
 }
 
-#ckrpwrhifv .gt_from_md > :first-child {
+#fryhvhwxrp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ckrpwrhifv .gt_from_md > :last-child {
+#fryhvhwxrp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ckrpwrhifv .gt_row {
+#fryhvhwxrp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3315,7 +3231,7 @@ Table&nbsp;5.1: teacher ages by country
   overflow-x: hidden;
 }
 
-#ckrpwrhifv .gt_stub {
+#fryhvhwxrp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3328,7 +3244,7 @@ Table&nbsp;5.1: teacher ages by country
   padding-right: 5px;
 }
 
-#ckrpwrhifv .gt_stub_row_group {
+#fryhvhwxrp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3342,15 +3258,15 @@ Table&nbsp;5.1: teacher ages by country
   vertical-align: top;
 }
 
-#ckrpwrhifv .gt_row_group_first td {
+#fryhvhwxrp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ckrpwrhifv .gt_row_group_first th {
+#fryhvhwxrp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ckrpwrhifv .gt_summary_row {
+#fryhvhwxrp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3360,16 +3276,16 @@ Table&nbsp;5.1: teacher ages by country
   padding-right: 5px;
 }
 
-#ckrpwrhifv .gt_first_summary_row {
+#fryhvhwxrp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_first_summary_row.thick {
+#fryhvhwxrp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ckrpwrhifv .gt_last_summary_row {
+#fryhvhwxrp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3379,7 +3295,7 @@ Table&nbsp;5.1: teacher ages by country
   border-bottom-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_grand_summary_row {
+#fryhvhwxrp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3389,7 +3305,7 @@ Table&nbsp;5.1: teacher ages by country
   padding-right: 5px;
 }
 
-#ckrpwrhifv .gt_first_grand_summary_row {
+#fryhvhwxrp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3399,7 +3315,7 @@ Table&nbsp;5.1: teacher ages by country
   border-top-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_last_grand_summary_row_top {
+#fryhvhwxrp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3409,11 +3325,11 @@ Table&nbsp;5.1: teacher ages by country
   border-bottom-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_striped {
+#fryhvhwxrp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ckrpwrhifv .gt_table_body {
+#fryhvhwxrp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3422,7 +3338,7 @@ Table&nbsp;5.1: teacher ages by country
   border-bottom-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_footnotes {
+#fryhvhwxrp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3436,7 +3352,7 @@ Table&nbsp;5.1: teacher ages by country
   border-right-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_footnote {
+#fryhvhwxrp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3445,7 +3361,7 @@ Table&nbsp;5.1: teacher ages by country
   padding-right: 5px;
 }
 
-#ckrpwrhifv .gt_sourcenotes {
+#fryhvhwxrp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3459,7 +3375,7 @@ Table&nbsp;5.1: teacher ages by country
   border-right-color: #D3D3D3;
 }
 
-#ckrpwrhifv .gt_sourcenote {
+#fryhvhwxrp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3467,72 +3383,72 @@ Table&nbsp;5.1: teacher ages by country
   padding-right: 5px;
 }
 
-#ckrpwrhifv .gt_left {
+#fryhvhwxrp .gt_left {
   text-align: left;
 }
 
-#ckrpwrhifv .gt_center {
+#fryhvhwxrp .gt_center {
   text-align: center;
 }
 
-#ckrpwrhifv .gt_right {
+#fryhvhwxrp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ckrpwrhifv .gt_font_normal {
+#fryhvhwxrp .gt_font_normal {
   font-weight: normal;
 }
 
-#ckrpwrhifv .gt_font_bold {
+#fryhvhwxrp .gt_font_bold {
   font-weight: bold;
 }
 
-#ckrpwrhifv .gt_font_italic {
+#fryhvhwxrp .gt_font_italic {
   font-style: italic;
 }
 
-#ckrpwrhifv .gt_super {
+#fryhvhwxrp .gt_super {
   font-size: 65%;
 }
 
-#ckrpwrhifv .gt_footnote_marks {
+#fryhvhwxrp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ckrpwrhifv .gt_asterisk {
+#fryhvhwxrp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ckrpwrhifv .gt_indent_1 {
+#fryhvhwxrp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ckrpwrhifv .gt_indent_2 {
+#fryhvhwxrp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ckrpwrhifv .gt_indent_3 {
+#fryhvhwxrp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ckrpwrhifv .gt_indent_4 {
+#fryhvhwxrp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ckrpwrhifv .gt_indent_5 {
+#fryhvhwxrp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ckrpwrhifv .katex-display {
+#fryhvhwxrp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ckrpwrhifv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fryhvhwxrp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3614,55 +3530,26 @@ Overall
 <div class="question">
 <p>Using the following data frame <code>df_extra_curricular</code> about teacher engagement with extra curricular activities, try to answer these questions:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>df_extra_curricular <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">select</span>(CNT, TC400Q01DA, TC216Q08JA_Q) <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Korea"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>  </span>
-<span id="cb29-5"><a href="#cb29-5"></a>  <span class="co"># Step 1: Group by Country and Gender, and summarize down to counts and averages</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">group_by</span>(CNT, TC400Q01DA, TC216Q08JA_Q) <span class="sc">%&gt;%</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb29-8"><a href="#cb29-8"></a>    <span class="at">n_extra =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(TC216Q08JA_Q)),</span>
-<span id="cb29-9"><a href="#cb29-9"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span> <span class="co"># Leaves data grouped ONLY by Country (CNT)</span></span>
-<span id="cb29-10"><a href="#cb29-10"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb29-11"><a href="#cb29-11"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(n_extra),</span>
-<span id="cb29-12"><a href="#cb29-12"></a>    <span class="at">pct_gender =</span> n_extra <span class="sc">/</span> total_n) <span class="sc">%&gt;%</span></span>
-<span id="cb29-13"><a href="#cb29-13"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb29-14"><a href="#cb29-14"></a>df_extra_curricular</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 31 × 6
-   CNT     TC400Q01DA         TC216Q08JA_Q            n_extra total_n pct_gender
-   &lt;fct&gt;   &lt;fct&gt;              &lt;fct&gt;                     &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;
- 1 Germany Female             Bottom international q…    1514    4321   0.350   
- 2 Germany Female             Second international q…     267    4321   0.0618  
- 3 Germany Female             Third international qu…     255    4321   0.0590  
- 4 Germany Female             Top international quar…     265    4321   0.0613  
- 5 Germany Female             &lt;NA&gt;                          0    4321   0       
- 6 Germany Male               Bottom international q…     748    4321   0.173   
- 7 Germany Male               Second international q…     176    4321   0.0407  
- 8 Germany Male               Third international qu…     143    4321   0.0331  
- 9 Germany Male               Top international quar…     139    4321   0.0322  
-10 Germany Male               &lt;NA&gt;                          0    4321   0       
-11 Germany &lt;Country specific&gt; Bottom international q…      10    4321   0.00231 
-12 Germany &lt;Country specific&gt; Second international q…       4    4321   0.000926
-13 Germany &lt;Country specific&gt; Top international quar…       2    4321   0.000463
-14 Germany &lt;Country specific&gt; &lt;NA&gt;                          0    4321   0       
-15 Germany &lt;NA&gt;               Bottom international q…      16    4321   0.00370 
-16 Germany &lt;NA&gt;               Second international q…       2    4321   0.000463
-17 Germany &lt;NA&gt;               Third international qu…       4    4321   0.000926
-18 Germany &lt;NA&gt;               Top international quar…       4    4321   0.000926
-19 Germany &lt;NA&gt;               &lt;NA&gt;                          0    4321   0       
-20 Korea   Female             Bottom international q…     194    4321   0.0449  
-21 Korea   Female             Second international q…      55    4321   0.0127  
-22 Korea   Female             Third international qu…      72    4321   0.0167  
-23 Korea   Female             Top international quar…     122    4321   0.0282  
-24 Korea   Female             &lt;NA&gt;                          0    4321   0       
-25 Korea   Male               Bottom international q…     134    4321   0.0310  
-26 Korea   Male               Second international q…      50    4321   0.0116  
-27 Korea   Male               Third international qu…      48    4321   0.0111  
-28 Korea   Male               Top international quar…      95    4321   0.0220  
-29 Korea   Male               &lt;NA&gt;                          0    4321   0       
-30 Korea   &lt;NA&gt;               Second international q…       1    4321   0.000231
-31 Korea   &lt;NA&gt;               Top international quar…       1    4321   0.000231</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>df_extra_curricular <span class="ot">&lt;-</span> teacher_df <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">select</span>(CNT, TC400Q01DA, TC216Q08JA_Q) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">filter</span>(CNT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Korea"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  </span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="co"># Step 1: Group by Country and Gender, and summarize down to counts and averages</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">group_by</span>(CNT, TC400Q01DA, TC216Q08JA_Q) <span class="sc">%&gt;%</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb26-8"><a href="#cb26-8"></a>    <span class="at">n_extra =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(TC216Q08JA_Q)),</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span> <span class="co"># Leaves data grouped ONLY by Country (CNT)</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(n_extra),</span>
+<span id="cb26-12"><a href="#cb26-12"></a>    <span class="at">pct_gender =</span> n_extra <span class="sc">/</span> total_n) <span class="sc">%&gt;%</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb26-14"><a href="#cb26-14"></a>df_extra_curricular</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["CNT"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TC400Q01DA"],"name":[2],"type":["fct"],"align":["left"]},{"label":["TC216Q08JA_Q"],"name":[3],"type":["fct"],"align":["left"]},{"label":["n_extra"],"name":[4],"type":["int"],"align":["right"]},{"label":["total_n"],"name":[5],"type":["int"],"align":["right"]},{"label":["pct_gender"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Germany","2":"Female","3":"Bottom international quartile - Median: 0","4":"1514","5":"4321","6":"0.3503818561"},{"1":"Germany","2":"Female","3":"Second international quartile - Median: 1","4":"267","5":"4321","6":"0.0617912520"},{"1":"Germany","2":"Female","3":"Third international quartile - Median: 2","4":"255","5":"4321","6":"0.0590141171"},{"1":"Germany","2":"Female","3":"Top international quartile - Median: 5","4":"265","5":"4321","6":"0.0613283962"},{"1":"Germany","2":"Female","3":"NA","4":"0","5":"4321","6":"0.0000000000"},{"1":"Germany","2":"Male","3":"Bottom international quartile - Median: 0","4":"748","5":"4321","6":"0.1731080768"},{"1":"Germany","2":"Male","3":"Second international quartile - Median: 1","4":"176","5":"4321","6":"0.0407313122"},{"1":"Germany","2":"Male","3":"Third international quartile - Median: 2","4":"143","5":"4321","6":"0.0330941912"},{"1":"Germany","2":"Male","3":"Top international quartile - Median: 5","4":"139","5":"4321","6":"0.0321684795"},{"1":"Germany","2":"Male","3":"NA","4":"0","5":"4321","6":"0.0000000000"},{"1":"Germany","2":"<Country specific>","3":"Bottom international quartile - Median: 0","4":"10","5":"4321","6":"0.0023142791"},{"1":"Germany","2":"<Country specific>","3":"Second international quartile - Median: 1","4":"4","5":"4321","6":"0.0009257116"},{"1":"Germany","2":"<Country specific>","3":"Top international quartile - Median: 5","4":"2","5":"4321","6":"0.0004628558"},{"1":"Germany","2":"<Country specific>","3":"NA","4":"0","5":"4321","6":"0.0000000000"},{"1":"Germany","2":"NA","3":"Bottom international quartile - Median: 0","4":"16","5":"4321","6":"0.0037028466"},{"1":"Germany","2":"NA","3":"Second international quartile - Median: 1","4":"2","5":"4321","6":"0.0004628558"},{"1":"Germany","2":"NA","3":"Third international quartile - Median: 2","4":"4","5":"4321","6":"0.0009257116"},{"1":"Germany","2":"NA","3":"Top international quartile - Median: 5","4":"4","5":"4321","6":"0.0009257116"},{"1":"Germany","2":"NA","3":"NA","4":"0","5":"4321","6":"0.0000000000"},{"1":"Korea","2":"Female","3":"Bottom international quartile - Median: 0","4":"194","5":"4321","6":"0.0448970146"},{"1":"Korea","2":"Female","3":"Second international quartile - Median: 1","4":"55","5":"4321","6":"0.0127285351"},{"1":"Korea","2":"Female","3":"Third international quartile - Median: 2","4":"72","5":"4321","6":"0.0166628095"},{"1":"Korea","2":"Female","3":"Top international quartile - Median: 5","4":"122","5":"4321","6":"0.0282342050"},{"1":"Korea","2":"Female","3":"NA","4":"0","5":"4321","6":"0.0000000000"},{"1":"Korea","2":"Male","3":"Bottom international quartile - Median: 0","4":"134","5":"4321","6":"0.0310113400"},{"1":"Korea","2":"Male","3":"Second international quartile - Median: 1","4":"50","5":"4321","6":"0.0115713955"},{"1":"Korea","2":"Male","3":"Third international quartile - Median: 2","4":"48","5":"4321","6":"0.0111085397"},{"1":"Korea","2":"Male","3":"Top international quartile - Median: 5","4":"95","5":"4321","6":"0.0219856515"},{"1":"Korea","2":"Male","3":"NA","4":"0","5":"4321","6":"0.0000000000"},{"1":"Korea","2":"NA","3":"Second international quartile - Median: 1","4":"1","5":"4321","6":"0.0002314279"},{"1":"Korea","2":"NA","3":"Top international quartile - Median: 5","4":"1","5":"4321","6":"0.0002314279"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>Create a table using <a href="https://gt.rstudio.com">gt</a> that has the following formating:</p>
@@ -3670,49 +3557,49 @@ Overall
 <li>use <code>ungroup</code> to create a column for each variable</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
 <li>format <code>pct_gender</code> to be a percentage with one decimal place</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
-<span id="cb32-5"><a href="#cb32-5"></a>              <span class="at">decimals =</span> <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
+<span id="cb28-5"><a href="#cb28-5"></a>              <span class="at">decimals =</span> <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
 <li>replace the <code>NA</code> gender with the word “Missing” (Bonus, make this text bold using markdown!)</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
-<span id="cb33-5"><a href="#cb33-5"></a>              <span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb33-6"><a href="#cb33-6"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
-<span id="cb33-7"><a href="#cb33-7"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
+<span id="cb29-5"><a href="#cb29-5"></a>              <span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
+<span id="cb29-7"><a href="#cb29-7"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
 <li>relabel the CNT to “Country”, TC001Q01NA to “Gender”, n to “Total”, n_gen to “n”, mean_ec_gender to “mean_hours” and pct_gender to “%”.</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
-<span id="cb34-5"><a href="#cb34-5"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-6"><a href="#cb34-6"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
-<span id="cb34-7"><a href="#cb34-7"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
-<span id="cb34-8"><a href="#cb34-8"></a>             <span class="at">total_n =</span> <span class="st">"Total"</span>,</span>
-<span id="cb34-9"><a href="#cb34-9"></a>             <span class="at">n_extra =</span> <span class="st">"n"</span>,</span>
-<span id="cb34-10"><a href="#cb34-10"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
+<span id="cb30-5"><a href="#cb30-5"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb30-8"><a href="#cb30-8"></a>             <span class="at">total_n =</span> <span class="st">"Total"</span>,</span>
+<span id="cb30-9"><a href="#cb30-9"></a>             <span class="at">n_extra =</span> <span class="st">"n"</span>,</span>
+<span id="cb30-10"><a href="#cb30-10"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
@@ -3720,47 +3607,47 @@ Overall
 </li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
-<span id="cb35-5"><a href="#cb35-5"></a>              <span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb35-6"><a href="#cb35-6"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
-<span id="cb35-7"><a href="#cb35-7"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb35-8"><a href="#cb35-8"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
-<span id="cb35-9"><a href="#cb35-9"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
-<span id="cb35-10"><a href="#cb35-10"></a>             <span class="at">TC216Q08JA_Q =</span> <span class="st">"Extracurricular quartile"</span>,</span>
-<span id="cb35-11"><a href="#cb35-11"></a>             <span class="at">total_n =</span> <span class="st">"Total"</span>,</span>
-<span id="cb35-12"><a href="#cb35-12"></a>             <span class="at">n_extra =</span> <span class="st">"number of extra"</span>,</span>
-<span id="cb35-13"><a href="#cb35-13"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb35-14"><a href="#cb35-14"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"n_extra"</span>, <span class="st">"total_n"</span>),</span>
-<span id="cb35-15"><a href="#cb35-15"></a>              <span class="at">label =</span> <span class="st">"totals"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb35-16"><a href="#cb35-16"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"TC400Q01DA"</span>),</span>
-<span id="cb35-17"><a href="#cb35-17"></a>              <span class="at">label =</span> <span class="st">"Demographics"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
+<span id="cb31-5"><a href="#cb31-5"></a>              <span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
+<span id="cb31-7"><a href="#cb31-7"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
+<span id="cb31-9"><a href="#cb31-9"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb31-10"><a href="#cb31-10"></a>             <span class="at">TC216Q08JA_Q =</span> <span class="st">"Extracurricular quartile"</span>,</span>
+<span id="cb31-11"><a href="#cb31-11"></a>             <span class="at">total_n =</span> <span class="st">"Total"</span>,</span>
+<span id="cb31-12"><a href="#cb31-12"></a>             <span class="at">n_extra =</span> <span class="st">"number of extra"</span>,</span>
+<span id="cb31-13"><a href="#cb31-13"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"n_extra"</span>, <span class="st">"total_n"</span>),</span>
+<span id="cb31-15"><a href="#cb31-15"></a>              <span class="at">label =</span> <span class="st">"totals"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"TC400Q01DA"</span>),</span>
+<span id="cb31-17"><a href="#cb31-17"></a>              <span class="at">label =</span> <span class="st">"Demographics"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ul>
 <li>create a footnote that says “source: PISA 2025 teacher survey”</li>
 </ul>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
-<span id="cb36-5"><a href="#cb36-5"></a>              <span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-6"><a href="#cb36-6"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
-<span id="cb36-7"><a href="#cb36-7"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-8"><a href="#cb36-8"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
-<span id="cb36-9"><a href="#cb36-9"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
-<span id="cb36-10"><a href="#cb36-10"></a>             <span class="at">TC216Q08JA_Q =</span> <span class="st">"Extracurricular quartile"</span>,</span>
-<span id="cb36-11"><a href="#cb36-11"></a>             <span class="at">total_n =</span> <span class="st">"Total"</span>,</span>
-<span id="cb36-12"><a href="#cb36-12"></a>             <span class="at">n_extra =</span> <span class="st">"number of extra"</span>,</span>
-<span id="cb36-13"><a href="#cb36-13"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-14"><a href="#cb36-14"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"n_extra"</span>, <span class="st">"total_n"</span>),</span>
-<span id="cb36-15"><a href="#cb36-15"></a>              <span class="at">label =</span> <span class="st">"totals"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-16"><a href="#cb36-16"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"TC400Q01DA"</span>),</span>
-<span id="cb36-17"><a href="#cb36-17"></a>              <span class="at">label =</span> <span class="st">"Demographics"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-18"><a href="#cb36-18"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"source: PISA 2025 teacher survey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>df_extra_curricular <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">fmt_percent</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"pct_gender"</span>),</span>
+<span id="cb32-5"><a href="#cb32-5"></a>              <span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="fu">sub_missing</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"TC400Q01DA"</span>),</span>
+<span id="cb32-7"><a href="#cb32-7"></a>              <span class="at">missing_text =</span> <span class="fu">md</span>(<span class="st">"__Missing__"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a>  <span class="fu">cols_label</span>(<span class="at">CNT =</span> <span class="st">"Country"</span>,</span>
+<span id="cb32-9"><a href="#cb32-9"></a>             <span class="at">TC400Q01DA =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb32-10"><a href="#cb32-10"></a>             <span class="at">TC216Q08JA_Q =</span> <span class="st">"Extracurricular quartile"</span>,</span>
+<span id="cb32-11"><a href="#cb32-11"></a>             <span class="at">total_n =</span> <span class="st">"Total"</span>,</span>
+<span id="cb32-12"><a href="#cb32-12"></a>             <span class="at">n_extra =</span> <span class="st">"number of extra"</span>,</span>
+<span id="cb32-13"><a href="#cb32-13"></a>             <span class="at">pct_gender =</span> <span class="st">"%"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"n_extra"</span>, <span class="st">"total_n"</span>),</span>
+<span id="cb32-15"><a href="#cb32-15"></a>              <span class="at">label =</span> <span class="st">"totals"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-16"><a href="#cb32-16"></a>  <span class="fu">tab_spanner</span>(<span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"CNT"</span>, <span class="st">"TC400Q01DA"</span>),</span>
+<span id="cb32-17"><a href="#cb32-17"></a>              <span class="at">label =</span> <span class="st">"Demographics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-18"><a href="#cb32-18"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"source: PISA 2025 teacher survey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -3774,66 +3661,66 @@ Overall
 <li>create a .qmd file, add your name, add a few headings and some text. Render this to an html file (EXTENSION: render to <code>pdf</code> and <code>docx</code> and work out how to add lists and bold / italic text).</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb37-1"><a href="#cb37-1"></a>---</span>
-<span id="cb37-2"><a href="#cb37-2"></a>title: "My thesis"</span>
-<span id="cb37-3"><a href="#cb37-3"></a>format: html</span>
-<span id="cb37-4"><a href="#cb37-4"></a>author: </span>
-<span id="cb37-5"><a href="#cb37-5"></a>  - name: Peter EJ Kemp</span>
-<span id="cb37-6"><a href="#cb37-6"></a>    affiliation: King's College London</span>
-<span id="cb37-7"><a href="#cb37-7"></a>    email: peter.kemp:kcl.ac.uk</span>
-<span id="cb37-8"><a href="#cb37-8"></a>---</span>
-<span id="cb37-9"><a href="#cb37-9"></a></span>
-<span id="cb37-10"><a href="#cb37-10"></a># My thesis</span>
-<span id="cb37-11"><a href="#cb37-11"></a></span>
-<span id="cb37-12"><a href="#cb37-12"></a>This is _my_ thesis</span>
-<span id="cb37-13"><a href="#cb37-13"></a></span>
-<span id="cb37-14"><a href="#cb37-14"></a>## Literature review</span>
-<span id="cb37-15"><a href="#cb37-15"></a></span>
-<span id="cb37-16"><a href="#cb37-16"></a>## Methodology</span>
-<span id="cb37-17"><a href="#cb37-17"></a></span>
-<span id="cb37-18"><a href="#cb37-18"></a>## Results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb33-1"><a href="#cb33-1"></a>---</span>
+<span id="cb33-2"><a href="#cb33-2"></a>title: "My thesis"</span>
+<span id="cb33-3"><a href="#cb33-3"></a>format: html</span>
+<span id="cb33-4"><a href="#cb33-4"></a>author: </span>
+<span id="cb33-5"><a href="#cb33-5"></a>  - name: Peter EJ Kemp</span>
+<span id="cb33-6"><a href="#cb33-6"></a>    affiliation: King's College London</span>
+<span id="cb33-7"><a href="#cb33-7"></a>    email: peter.kemp:kcl.ac.uk</span>
+<span id="cb33-8"><a href="#cb33-8"></a>---</span>
+<span id="cb33-9"><a href="#cb33-9"></a></span>
+<span id="cb33-10"><a href="#cb33-10"></a># My thesis</span>
+<span id="cb33-11"><a href="#cb33-11"></a></span>
+<span id="cb33-12"><a href="#cb33-12"></a>This is _my_ thesis</span>
+<span id="cb33-13"><a href="#cb33-13"></a></span>
+<span id="cb33-14"><a href="#cb33-14"></a>## Literature review</span>
+<span id="cb33-15"><a href="#cb33-15"></a></span>
+<span id="cb33-16"><a href="#cb33-16"></a>## Methodology</span>
+<span id="cb33-17"><a href="#cb33-17"></a></span>
+<span id="cb33-18"><a href="#cb33-18"></a>## Results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="2" type="1">
 <li>Add a code block to the top of your .qmd file that loads the libraries <code>arrow</code>, <code>tidyverse</code> and <code>glue</code> and load your pisa data set. Create another code block, create a graph showing the <code>geom_density()</code> of PV1MATH scores in France. Render as a webpage. EXTENSION: use <code>#| code-fold:</code> <code>#| warning:</code> <code>#| echo:</code>, <code>#| eval:</code> and <code>#| fig-height: 3</code> to adjust what is displayed.</li>
 </ol>
 <div class="cell">
-<details class="code-fold"><summary>graph code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"France"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PV1MATH, <span class="at">fill =</span> ST004D01T, <span class="at">alpha =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb38-4"><a href="#cb38-4"></a>  <span class="fu">geom_density</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>graph code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"France"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PV1MATH, <span class="at">fill =</span> ST004D01T, <span class="at">alpha =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">geom_density</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb39-1"><a href="#cb39-1"></a>---</span>
-<span id="cb39-2"><a href="#cb39-2"></a>title: "My thesis"</span>
-<span id="cb39-3"><a href="#cb39-3"></a>format: html</span>
-<span id="cb39-4"><a href="#cb39-4"></a>author: </span>
-<span id="cb39-5"><a href="#cb39-5"></a>  - name: Peter EJ Kemp</span>
-<span id="cb39-6"><a href="#cb39-6"></a>    affiliation: King's College London</span>
-<span id="cb39-7"><a href="#cb39-7"></a>    email: peter.kemp:kcl.ac.uk</span>
-<span id="cb39-8"><a href="#cb39-8"></a>---</span>
-<span id="cb39-9"><a href="#cb39-9"></a>```{r setup}</span>
-<span id="cb39-10"><a href="#cb39-10"></a>#| warning: false</span>
-<span id="cb39-11"><a href="#cb39-11"></a>#| echo: false</span>
-<span id="cb39-12"><a href="#cb39-12"></a>library(glue)</span>
-<span id="cb39-13"><a href="#cb39-13"></a>library(arrow)</span>
-<span id="cb39-14"><a href="#cb39-14"></a>library(tidyverse)</span>
-<span id="cb39-15"><a href="#cb39-15"></a>loc <span class="er">&lt;</span>- r"(C:\Users\peter\OneDrive - King's College London\Code\QERKCL_PISA\data\pisa\2025\)"</span>
-<span id="cb39-16"><a href="#cb39-16"></a>pisa_2025 <span class="er">&lt;</span>- read_parquet(glue("{loc}PISA_student_2025.parquet"))</span>
-<span id="cb39-17"><a href="#cb39-17"></a></span>
-<span id="cb39-18"><a href="#cb39-18"></a>```</span>
-<span id="cb39-19"><a href="#cb39-19"></a></span>
-<span id="cb39-20"><a href="#cb39-20"></a># My thesis</span>
-<span id="cb39-21"><a href="#cb39-21"></a></span>
-<span id="cb39-22"><a href="#cb39-22"></a>## Results</span>
-<span id="cb39-23"><a href="#cb39-23"></a></span>
-<span id="cb39-24"><a href="#cb39-24"></a>```{r}</span>
-<span id="cb39-25"><a href="#cb39-25"></a>PISA_2025 %&gt;%</span>
-<span id="cb39-26"><a href="#cb39-26"></a>  filter(CNT == "France") %&gt;%</span>
-<span id="cb39-27"><a href="#cb39-27"></a>  ggplot(aes(x = PV1MATH, fill = ST004D01T), alpha = 0.5) +</span>
-<span id="cb39-28"><a href="#cb39-28"></a>  geom_density()</span>
-<span id="cb39-29"><a href="#cb39-29"></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>answer</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb35-1"><a href="#cb35-1"></a>---</span>
+<span id="cb35-2"><a href="#cb35-2"></a>title: "My thesis"</span>
+<span id="cb35-3"><a href="#cb35-3"></a>format: html</span>
+<span id="cb35-4"><a href="#cb35-4"></a>author: </span>
+<span id="cb35-5"><a href="#cb35-5"></a>  - name: Peter EJ Kemp</span>
+<span id="cb35-6"><a href="#cb35-6"></a>    affiliation: King's College London</span>
+<span id="cb35-7"><a href="#cb35-7"></a>    email: peter.kemp:kcl.ac.uk</span>
+<span id="cb35-8"><a href="#cb35-8"></a>---</span>
+<span id="cb35-9"><a href="#cb35-9"></a>```{r setup}</span>
+<span id="cb35-10"><a href="#cb35-10"></a>#| warning: false</span>
+<span id="cb35-11"><a href="#cb35-11"></a>#| echo: false</span>
+<span id="cb35-12"><a href="#cb35-12"></a>library(glue)</span>
+<span id="cb35-13"><a href="#cb35-13"></a>library(arrow)</span>
+<span id="cb35-14"><a href="#cb35-14"></a>library(tidyverse)</span>
+<span id="cb35-15"><a href="#cb35-15"></a>loc <span class="er">&lt;</span>- r"(C:\Users\peter\OneDrive - King's College London\Code\QERKCL_PISA\data\pisa\2025\)"</span>
+<span id="cb35-16"><a href="#cb35-16"></a>pisa_2025 <span class="er">&lt;</span>- read_parquet(glue("{loc}PISA_student_2025.parquet"))</span>
+<span id="cb35-17"><a href="#cb35-17"></a></span>
+<span id="cb35-18"><a href="#cb35-18"></a>```</span>
+<span id="cb35-19"><a href="#cb35-19"></a></span>
+<span id="cb35-20"><a href="#cb35-20"></a># My thesis</span>
+<span id="cb35-21"><a href="#cb35-21"></a></span>
+<span id="cb35-22"><a href="#cb35-22"></a>## Results</span>
+<span id="cb35-23"><a href="#cb35-23"></a></span>
+<span id="cb35-24"><a href="#cb35-24"></a>```{r}</span>
+<span id="cb35-25"><a href="#cb35-25"></a>PISA_2025 %&gt;%</span>
+<span id="cb35-26"><a href="#cb35-26"></a>  filter(CNT == "France") %&gt;%</span>
+<span id="cb35-27"><a href="#cb35-27"></a>  ggplot(aes(x = PV1MATH, fill = ST004D01T), alpha = 0.5) +</span>
+<span id="cb35-28"><a href="#cb35-28"></a>  geom_density()</span>
+<span id="cb35-29"><a href="#cb35-29"></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <ol start="2" type="1">

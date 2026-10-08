@@ -97,7 +97,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="../css/mastemr.css">
+}</script><link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script><link rel="stylesheet" href="../css/mastemr.css">
 </head>
 <body class="nav-sidebar docked nav-fixed quarto-light">
 
@@ -347,1130 +348,132 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
 <span id="cb2-4"><a href="#cb2-4"></a>diamonds <span class="sc">%&gt;%</span> <span class="fu">select</span>(carat, cut, color)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 53,940 × 3
-    carat cut       color
-    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt;
-  1  0.23 Ideal     E    
-  2  0.21 Premium   E    
-  3  0.23 Good      E    
-  4  0.29 Premium   I    
-  5  0.31 Good      J    
-  6  0.24 Very Good J    
-  7  0.24 Very Good I    
-  8  0.26 Very Good H    
-  9  0.22 Fair      E    
- 10  0.23 Very Good H    
- 11  0.3  Good      J    
- 12  0.23 Ideal     J    
- 13  0.22 Premium   F    
- 14  0.31 Ideal     J    
- 15  0.2  Premium   E    
- 16  0.32 Premium   E    
- 17  0.3  Ideal     I    
- 18  0.3  Good      J    
- 19  0.3  Good      J    
- 20  0.3  Very Good J    
- 21  0.3  Good      I    
- 22  0.23 Very Good E    
- 23  0.23 Very Good H    
- 24  0.31 Very Good J    
- 25  0.31 Very Good J    
- 26  0.23 Very Good G    
- 27  0.24 Premium   I    
- 28  0.3  Very Good J    
- 29  0.23 Very Good D    
- 30  0.23 Very Good F    
- 31  0.23 Very Good F    
- 32  0.23 Very Good F    
- 33  0.23 Very Good E    
- 34  0.23 Very Good E    
- 35  0.23 Very Good D    
- 36  0.23 Good      F    
- 37  0.23 Good      E    
- 38  0.31 Good      H    
- 39  0.26 Very Good D    
- 40  0.33 Ideal     I    
- 41  0.33 Ideal     I    
- 42  0.33 Ideal     J    
- 43  0.26 Good      D    
- 44  0.26 Good      D    
- 45  0.32 Good      H    
- 46  0.29 Premium   F    
- 47  0.32 Very Good H    
- 48  0.32 Good      H    
- 49  0.25 Very Good E    
- 50  0.29 Very Good H    
- 51  0.24 Very Good F    
- 52  0.23 Ideal     G    
- 53  0.32 Ideal     I    
- 54  0.22 Premium   E    
- 55  0.22 Premium   D    
- 56  0.3  Ideal     I    
- 57  0.3  Premium   J    
- 58  0.3  Very Good I    
- 59  0.3  Very Good I    
- 60  0.3  Good      I    
- 61  0.35 Ideal     I    
- 62  0.3  Premium   D    
- 63  0.3  Ideal     D    
- 64  0.3  Ideal     D    
- 65  0.42 Premium   I    
- 66  0.28 Ideal     G    
- 67  0.32 Ideal     I    
- 68  0.31 Very Good G    
- 69  0.31 Premium   G    
- 70  0.24 Premium   E    
- 71  0.24 Very Good D    
- 72  0.3  Very Good H    
- 73  0.3  Premium   H    
- 74  0.3  Premium   H    
- 75  0.3  Good      H    
- 76  0.26 Very Good F    
- 77  0.26 Very Good E    
- 78  0.26 Very Good D    
- 79  0.26 Very Good D    
- 80  0.26 Very Good E    
- 81  0.26 Very Good E    
- 82  0.26 Very Good D    
- 83  0.26 Ideal     E    
- 84  0.38 Ideal     I    
- 85  0.26 Good      E    
- 86  0.24 Premium   G    
- 87  0.24 Premium   H    
- 88  0.24 Premium   H    
- 89  0.24 Premium   H    
- 90  0.32 Premium   I    
- 91  0.7  Ideal     E    
- 92  0.86 Fair      E    
- 93  0.7  Ideal     G    
- 94  0.71 Very Good E    
- 95  0.78 Very Good G    
- 96  0.7  Good      E    
- 97  0.7  Good      F    
- 98  0.96 Fair      F    
- 99  0.73 Very Good E    
-100  0.8  Premium   H    
-101  0.75 Very Good D    
-102  0.75 Premium   E    
-103  0.74 Ideal     G    
-104  0.75 Premium   G    
-105  0.8  Ideal     I    
-106  0.75 Ideal     G    
-107  0.8  Premium   G    
-108  0.74 Ideal     I    
-109  0.81 Ideal     F    
-110  0.59 Ideal     E    
-111  0.8  Ideal     F    
-112  0.74 Ideal     E    
-113  0.9  Premium   I    
-114  0.74 Very Good G    
-115  0.73 Ideal     F    
-116  0.73 Ideal     F    
-117  0.8  Premium   F    
-118  0.71 Ideal     G    
-119  0.7  Ideal     E    
-120  0.8  Ideal     F    
-121  0.71 Ideal     D    
-122  0.74 Ideal     E    
-123  0.7  Very Good F    
-124  0.7  Fair      F    
-125  0.7  Fair      F    
-126  0.7  Premium   F    
-127  0.91 Premium   H    
-128  0.61 Very Good D    
-129  0.91 Fair      H    
-130  0.91 Fair      H    
-131  0.77 Ideal     H    
-132  0.71 Very Good D    
-133  0.71 Ideal     D    
-134  0.7  Very Good E    
-135  0.77 Very Good H    
-136  0.63 Premium   E    
-137  0.71 Very Good F    
-138  0.71 Premium   F    
-139  0.76 Ideal     H    
-140  0.64 Ideal     G    
-141  0.71 Premium   G    
-142  0.71 Premium   G    
-143  0.7  Very Good D    
-144  0.7  Very Good F    
-145  0.71 Ideal     D    
-146  0.7  Good      H    
-147  0.71 Very Good G    
-148  0.73 Very Good D    
-149  0.7  Very Good D    
-150  0.7  Ideal     E    
-151  0.71 Premium   D    
-152  0.74 Ideal     I    
-153  0.71 Premium   D    
-154  0.73 Premium   G    
-155  0.76 Very Good F    
-156  0.76 Ideal     D    
-157  0.71 Ideal     F    
-158  0.73 Premium   G    
-159  0.73 Premium   G    
-160  0.73 Ideal     D    
-161  0.73 Premium   G    
-162  0.72 Very Good H    
-163  0.73 Very Good F    
-164  0.71 Ideal     G    
-165  0.79 Ideal     F    
-166  0.73 Very Good H    
-167  0.8  Very Good F    
-168  0.58 Ideal     G    
-169  0.58 Ideal     F    
-170  0.71 Good      E    
-171  0.75 Ideal     D    
-172  0.7  Premium   D    
-173  1.17 Very Good J    
-174  0.6  Ideal     E    
-175  0.7  Ideal     E    
-176  0.83 Good      I    
-177  0.74 Very Good F    
-178  0.72 Very Good G    
-179  0.71 Premium   E    
-180  0.71 Ideal     E    
-181  0.54 Ideal     E    
-182  0.54 Ideal     E    
-183  0.72 Ideal     G    
-184  0.72 Ideal     G    
-185  0.72 Good      G    
-186  0.71 Ideal     G    
-187  0.7  Very Good D    
-188  0.71 Premium   F    
-189  0.71 Very Good F    
-190  0.71 Good      F    
-191  0.71 Good      F    
-192  0.7  Ideal     E    
-193  0.7  Premium   E    
-194  0.7  Premium   E    
-195  0.7  Premium   E    
-196  0.7  Premium   E    
-197  0.7  Premium   E    
-198  0.7  Premium   E    
-199  0.7  Ideal     E    
-200  0.72 Premium   F    
-201  0.7  Very Good E    
-202  0.7  Premium   E    
-203  0.7  Premium   E    
-204  0.7  Good      E    
-205  0.98 Fair      H    
-206  0.78 Premium   F    
-207  0.7  Very Good E    
-208  0.52 Ideal     F    
-209  0.73 Very Good H    
-210  0.74 Ideal     E    
-211  0.7  Very Good F    
-212  0.77 Premium   G    
-213  0.71 Ideal     F    
-214  0.74 Ideal     G    
-215  0.7  Ideal     G    
-216  1.01 Premium   F    
-217  0.77 Ideal     H    
-218  0.78 Ideal     H    
-219  0.72 Very Good H    
-220  0.53 Very Good D    
-221  0.76 Ideal     G    
-222  0.7  Good      E    
-223  0.7  Premium   E    
-224  0.75 Very Good D    
-225  0.72 Ideal     D    
-226  0.72 Premium   D    
-227  0.7  Premium   D    
-228  0.84 Fair      G    
-229  0.75 Premium   F    
-230  0.52 Ideal     F    
-231  0.72 Very Good F    
-232  0.79 Very Good H    
-233  0.72 Very Good F    
-234  0.51 Ideal     F    
-235  0.64 Ideal     D    
-236  0.7  Very Good H    
-237  0.83 Very Good I    
-238  0.76 Ideal     I    
-239  0.71 Good      D    
-240  0.77 Good      G    
-241  0.71 Ideal     F    
-242  1.01 Fair      E    
-243  1.01 Premium   H    
-244  0.77 Good      F    
-245  0.76 Good      E    
-246  0.76 Premium   E    
-247  0.76 Premium   E    
-248  1.05 Very Good J    
-249  0.81 Ideal     G    
-250  0.7  Ideal     E    
-251  0.55 Ideal     G    
-252  0.81 Good      G    
-253  0.63 Premium   E    
-254  0.63 Premium   E    
-255  0.77 Premium   H    
-256  1.05 Fair      J    
-257  0.64 Ideal     G    
-258  0.76 Premium   I    
-259  0.83 Ideal     F    
-260  0.71 Premium   F    
-261  0.71 Premium   F    
-262  0.87 Very Good I    
-263  0.73 Ideal     E    
-264  0.71 Premium   E    
-265  0.71 Premium   E    
-266  0.71 Ideal     E    
-267  0.7  Premium   F    
-268  0.7  Premium   F    
-269  0.76 Premium   H    
-270  0.7  Ideal     F    
-271  0.79 Very Good G    
-272  0.7  Very Good E    
-273  0.7  Good      E    
-274  0.76 Ideal     I    
-275  0.73 Ideal     H    
-276  0.79 Very Good E    
-277  0.71 Very Good E    
-278  0.81 Premium   I    
-279  0.81 Ideal     F    
-280  0.72 Good      F    
-281  0.72 Premium   D    
-282  0.72 Premium   I    
-283  0.81 Premium   H    
-284  0.72 Premium   G    
-285  1    Premium   I    
-286  0.73 Good      E    
-287  0.81 Very Good H    
-288  0.81 Very Good E    
-289  0.71 Premium   D    
-290  0.71 Premium   D    
-291  0.71 Premium   D    
-292  0.57 Ideal     F    
-293  0.51 Ideal     D    
-294  0.72 Ideal     G    
-295  0.74 Ideal     H    
-296  0.74 Ideal     H    
-297  0.7  Fair      G    
-298  0.8  Premium   F    
-299  1.01 Fair      E    
-300  0.8  Very Good H    
-301  0.77 Ideal     I    
-302  0.83 Very Good E    
-303  0.82 Ideal     F    
-304  0.78 Ideal     D    
-305  0.6  Very Good G    
-306  0.9  Good      I    
-307  0.7  Premium   E    
-308  0.9  Very Good I    
-309  0.83 Ideal     G    
-310  0.83 Ideal     G    
-311  0.83 Very Good H    
-312  0.74 Premium   G    
-313  0.79 Ideal     I    
-314  0.61 Ideal     G    
-315  0.76 Fair      G    
-316  0.96 Ideal     F    
-317  0.73 Ideal     F    
-318  0.73 Premium   F    
-319  0.75 Ideal     H    
-320  0.71 Premium   F    
-321  0.71 Good      F    
-322  0.71 Good      F    
-323  0.71 Premium   F    
-324  1.04 Premium   G    
-325  1    Premium   J    
-326  0.87 Very Good G    
-327  0.53 Ideal     F    
-328  0.72 Premium   E    
-329  0.72 Premium   F    
-330  0.7  Very Good F    
-331  0.74 Very Good E    
-332  0.71 Ideal     G    
-333  0.73 Ideal     E    
-334  0.7  Good      G    
-335  0.71 Premium   F    
-336  0.71 Premium   F    
-337  0.71 Premium   G    
-338  0.77 Premium   G    
-339  0.71 Premium   G    
-340  0.78 Premium   G    
-341  0.71 Very Good G    
-342  0.91 Ideal     D    
-343  0.71 Very Good E    
-344  0.71 Very Good E    
-345  0.8  Very Good E    
-346  0.7  Very Good D    
-347  0.72 Ideal     F    
-348  0.72 Very Good F    
-349  0.82 Ideal     H    
-350  0.7  Ideal     D    
-351  0.72 Ideal     D    
-352  0.72 Ideal     D    
-353  0.9  Fair      I    
-354  0.74 Premium   F    
-355  0.74 Premium   F    
-356  0.73 Ideal     E    
-357  0.57 Fair      E    
-358  0.73 Premium   F    
-359  0.72 Ideal     G    
-360  0.74 Fair      F    
-361  0.82 Good      G    
-362  0.81 Very Good G    
-363  0.75 Very Good H    
-364  0.7  Ideal     F    
-365  0.71 Very Good F    
-366  0.71 Very Good F    
-367  0.93 Premium   J    
-368  0.8  Very Good H    
-369  0.7  Very Good F    
-370  1    Fair      G    
-371  0.75 Very Good G    
-372  0.58 Ideal     E    
-373  0.73 Very Good D    
-374  0.81 Very Good F    
-375  0.81 Premium   D    
-376  0.71 Premium   F    
-377  1.2  Fair      F    
-378  0.7  Very Good F    
-379  0.7  Very Good F    
-380  0.74 Ideal     D    
-381  0.7  Good      F    
-382  0.8  Good      G    
-383  0.75 Very Good F    
-384  0.83 Very Good D    
-385  1    Fair      J    
-386  0.99 Fair      I    
-387  0.7  Very Good G    
-388  0.7  Very Good F    
-389  0.7  Good      E    
-390  0.7  Very Good F    
-391  0.32 Premium   I    
-392  0.32 Premium   I    
-393  0.32 Ideal     I    
-394  0.32 Premium   I    
-395  0.32 Very Good I    
-396  0.32 Ideal     I    
-397  0.3  Premium   H    
-398  0.3  Premium   H    
-399  0.3  Premium   H    
-400  0.3  Very Good H    
-401  0.3  Good      H    
-402  0.3  Ideal     H    
-403  0.3  Very Good H    
-404  0.32 Good      I    
-405  0.33 Ideal     H    
-406  0.29 Very Good E    
-407  0.29 Very Good E    
-408  0.31 Very Good F    
-409  0.34 Ideal     H    
-410  0.34 Ideal     H    
-411  0.34 Ideal     I    
-412  0.34 Ideal     I    
-413  0.3  Ideal     G    
-414  0.29 Ideal     F    
-415  0.35 Ideal     G    
-416  0.43 Very Good E    
-417  0.32 Very Good F    
-418  0.36 Ideal     I    
-419  0.3  Ideal     G    
-420  0.26 Ideal     E    
-421  0.7  Very Good F    
-422  0.7  Very Good F    
-423  0.71 Ideal     D    
-424  0.99 Fair      J    
-425  0.73 Premium   E    
-426  0.51 Ideal     F    
-427  0.91 Premium   G    
-428  0.84 Very Good E    
-429  0.91 Good      I    
-430  0.76 Premium   E    
-431  0.76 Ideal     E    
-432  0.75 Premium   E    
-433  0.55 Very Good D    
-434  0.76 Very Good F    
-435  0.74 Premium   G    
-436  0.7  Ideal     H    
-437  0.7  Ideal     H    
-438  0.7  Ideal     H    
-439  0.7  Ideal     H    
-440  0.9  Fair      J    
-441  0.95 Fair      F    
-442  0.89 Premium   H    
-443  0.72 Premium   E    
-444  0.96 Fair      E    
-445  1.02 Premium   G    
-446  0.78 Very Good I    
-447  0.61 Ideal     G    
-448  0.71 Good      D    
-449  0.78 Premium   F    
-450  0.87 Ideal     H    
-451  0.83 Ideal     H    
-452  0.71 Premium   E    
-453  0.71 Ideal     I    
-454  0.71 Ideal     E    
-455  0.71 Premium   E    
-456  0.63 Ideal     F    
-457  0.71 Premium   E    
-458  0.71 Premium   E    
-459  0.71 Ideal     E    
-460  0.71 Premium   E    
-461  0.9  Ideal     J    
-462  0.71 Good      E    
-463  0.7  Premium   E    
-464  0.7  Premium   E    
-465  0.7  Premium   E    
-466  1    Premium   H    
-467  0.86 Premium   F    
-468  0.8  Ideal     H    
-469  0.7  Ideal     E    
-470  0.7  Premium   E    
-471  0.7  Premium   F    
-472  0.7  Premium   E    
-473  1    Fair      H    
-474  0.72 Very Good G    
-475  0.72 Ideal     H    
-476  0.7  Good      F    
-477  0.86 Good      F    
-478  0.71 Ideal     G    
-479  0.75 Ideal     E    
-480  0.73 Premium   E    
-481  0.53 Ideal     E    
-482  0.73 Premium   E    
-483  0.73 Good      E    
-484  0.73 Premium   E    
-485  0.73 Premium   E    
-486  0.73 Premium   D    
-487  0.73 Very Good E    
-488  0.7  Premium   E    
-489  0.72 Premium   E    
-490  0.72 Premium   E    
-491  0.72 Premium   E    
-492  0.7  Premium   E    
-493  0.6  Ideal     F    
-494  0.74 Ideal     I    
-495  0.73 Ideal     F    
-496  0.71 Premium   D    
-497  0.71 Premium   D    
-498  0.7  Premium   D    
-499  0.7  Ideal     D    
-500  0.9  Good      J    
-# ℹ 53,440 more rows</code></pre>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["carat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cut"],"name":[2],"type":["ord"],"align":["right"]},{"label":["color"],"name":[3],"type":["ord"],"align":["right"]}],"data":[{"1":"0.23","2":"Ideal","3":"E"},{"1":"0.21","2":"Premium","3":"E"},{"1":"0.23","2":"Good","3":"E"},{"1":"0.29","2":"Premium","3":"I"},{"1":"0.31","2":"Good","3":"J"},{"1":"0.24","2":"Very Good","3":"J"},{"1":"0.24","2":"Very Good","3":"I"},{"1":"0.26","2":"Very Good","3":"H"},{"1":"0.22","2":"Fair","3":"E"},{"1":"0.23","2":"Very Good","3":"H"},{"1":"0.30","2":"Good","3":"J"},{"1":"0.23","2":"Ideal","3":"J"},{"1":"0.22","2":"Premium","3":"F"},{"1":"0.31","2":"Ideal","3":"J"},{"1":"0.20","2":"Premium","3":"E"},{"1":"0.32","2":"Premium","3":"E"},{"1":"0.30","2":"Ideal","3":"I"},{"1":"0.30","2":"Good","3":"J"},{"1":"0.30","2":"Good","3":"J"},{"1":"0.30","2":"Very Good","3":"J"},{"1":"0.30","2":"Good","3":"I"},{"1":"0.23","2":"Very Good","3":"E"},{"1":"0.23","2":"Very Good","3":"H"},{"1":"0.31","2":"Very Good","3":"J"},{"1":"0.31","2":"Very Good","3":"J"},{"1":"0.23","2":"Very Good","3":"G"},{"1":"0.24","2":"Premium","3":"I"},{"1":"0.30","2":"Very Good","3":"J"},{"1":"0.23","2":"Very Good","3":"D"},{"1":"0.23","2":"Very Good","3":"F"},{"1":"0.23","2":"Very Good","3":"F"},{"1":"0.23","2":"Very Good","3":"F"},{"1":"0.23","2":"Very Good","3":"E"},{"1":"0.23","2":"Very Good","3":"E"},{"1":"0.23","2":"Very Good","3":"D"},{"1":"0.23","2":"Good","3":"F"},{"1":"0.23","2":"Good","3":"E"},{"1":"0.31","2":"Good","3":"H"},{"1":"0.26","2":"Very Good","3":"D"},{"1":"0.33","2":"Ideal","3":"I"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <p>you can also specify the package that select comes from (in this case from a package within the <code>tidyverse</code> called <code>dplyr</code>):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>diamonds <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(carat, cut, color)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 53,940 × 3
-    carat cut       color
-    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt;
-  1  0.23 Ideal     E    
-  2  0.21 Premium   E    
-  3  0.23 Good      E    
-  4  0.29 Premium   I    
-  5  0.31 Good      J    
-  6  0.24 Very Good J    
-  7  0.24 Very Good I    
-  8  0.26 Very Good H    
-  9  0.22 Fair      E    
- 10  0.23 Very Good H    
- 11  0.3  Good      J    
- 12  0.23 Ideal     J    
- 13  0.22 Premium   F    
- 14  0.31 Ideal     J    
- 15  0.2  Premium   E    
- 16  0.32 Premium   E    
- 17  0.3  Ideal     I    
- 18  0.3  Good      J    
- 19  0.3  Good      J    
- 20  0.3  Very Good J    
- 21  0.3  Good      I    
- 22  0.23 Very Good E    
- 23  0.23 Very Good H    
- 24  0.31 Very Good J    
- 25  0.31 Very Good J    
- 26  0.23 Very Good G    
- 27  0.24 Premium   I    
- 28  0.3  Very Good J    
- 29  0.23 Very Good D    
- 30  0.23 Very Good F    
- 31  0.23 Very Good F    
- 32  0.23 Very Good F    
- 33  0.23 Very Good E    
- 34  0.23 Very Good E    
- 35  0.23 Very Good D    
- 36  0.23 Good      F    
- 37  0.23 Good      E    
- 38  0.31 Good      H    
- 39  0.26 Very Good D    
- 40  0.33 Ideal     I    
- 41  0.33 Ideal     I    
- 42  0.33 Ideal     J    
- 43  0.26 Good      D    
- 44  0.26 Good      D    
- 45  0.32 Good      H    
- 46  0.29 Premium   F    
- 47  0.32 Very Good H    
- 48  0.32 Good      H    
- 49  0.25 Very Good E    
- 50  0.29 Very Good H    
- 51  0.24 Very Good F    
- 52  0.23 Ideal     G    
- 53  0.32 Ideal     I    
- 54  0.22 Premium   E    
- 55  0.22 Premium   D    
- 56  0.3  Ideal     I    
- 57  0.3  Premium   J    
- 58  0.3  Very Good I    
- 59  0.3  Very Good I    
- 60  0.3  Good      I    
- 61  0.35 Ideal     I    
- 62  0.3  Premium   D    
- 63  0.3  Ideal     D    
- 64  0.3  Ideal     D    
- 65  0.42 Premium   I    
- 66  0.28 Ideal     G    
- 67  0.32 Ideal     I    
- 68  0.31 Very Good G    
- 69  0.31 Premium   G    
- 70  0.24 Premium   E    
- 71  0.24 Very Good D    
- 72  0.3  Very Good H    
- 73  0.3  Premium   H    
- 74  0.3  Premium   H    
- 75  0.3  Good      H    
- 76  0.26 Very Good F    
- 77  0.26 Very Good E    
- 78  0.26 Very Good D    
- 79  0.26 Very Good D    
- 80  0.26 Very Good E    
- 81  0.26 Very Good E    
- 82  0.26 Very Good D    
- 83  0.26 Ideal     E    
- 84  0.38 Ideal     I    
- 85  0.26 Good      E    
- 86  0.24 Premium   G    
- 87  0.24 Premium   H    
- 88  0.24 Premium   H    
- 89  0.24 Premium   H    
- 90  0.32 Premium   I    
- 91  0.7  Ideal     E    
- 92  0.86 Fair      E    
- 93  0.7  Ideal     G    
- 94  0.71 Very Good E    
- 95  0.78 Very Good G    
- 96  0.7  Good      E    
- 97  0.7  Good      F    
- 98  0.96 Fair      F    
- 99  0.73 Very Good E    
-100  0.8  Premium   H    
-101  0.75 Very Good D    
-102  0.75 Premium   E    
-103  0.74 Ideal     G    
-104  0.75 Premium   G    
-105  0.8  Ideal     I    
-106  0.75 Ideal     G    
-107  0.8  Premium   G    
-108  0.74 Ideal     I    
-109  0.81 Ideal     F    
-110  0.59 Ideal     E    
-111  0.8  Ideal     F    
-112  0.74 Ideal     E    
-113  0.9  Premium   I    
-114  0.74 Very Good G    
-115  0.73 Ideal     F    
-116  0.73 Ideal     F    
-117  0.8  Premium   F    
-118  0.71 Ideal     G    
-119  0.7  Ideal     E    
-120  0.8  Ideal     F    
-121  0.71 Ideal     D    
-122  0.74 Ideal     E    
-123  0.7  Very Good F    
-124  0.7  Fair      F    
-125  0.7  Fair      F    
-126  0.7  Premium   F    
-127  0.91 Premium   H    
-128  0.61 Very Good D    
-129  0.91 Fair      H    
-130  0.91 Fair      H    
-131  0.77 Ideal     H    
-132  0.71 Very Good D    
-133  0.71 Ideal     D    
-134  0.7  Very Good E    
-135  0.77 Very Good H    
-136  0.63 Premium   E    
-137  0.71 Very Good F    
-138  0.71 Premium   F    
-139  0.76 Ideal     H    
-140  0.64 Ideal     G    
-141  0.71 Premium   G    
-142  0.71 Premium   G    
-143  0.7  Very Good D    
-144  0.7  Very Good F    
-145  0.71 Ideal     D    
-146  0.7  Good      H    
-147  0.71 Very Good G    
-148  0.73 Very Good D    
-149  0.7  Very Good D    
-150  0.7  Ideal     E    
-151  0.71 Premium   D    
-152  0.74 Ideal     I    
-153  0.71 Premium   D    
-154  0.73 Premium   G    
-155  0.76 Very Good F    
-156  0.76 Ideal     D    
-157  0.71 Ideal     F    
-158  0.73 Premium   G    
-159  0.73 Premium   G    
-160  0.73 Ideal     D    
-161  0.73 Premium   G    
-162  0.72 Very Good H    
-163  0.73 Very Good F    
-164  0.71 Ideal     G    
-165  0.79 Ideal     F    
-166  0.73 Very Good H    
-167  0.8  Very Good F    
-168  0.58 Ideal     G    
-169  0.58 Ideal     F    
-170  0.71 Good      E    
-171  0.75 Ideal     D    
-172  0.7  Premium   D    
-173  1.17 Very Good J    
-174  0.6  Ideal     E    
-175  0.7  Ideal     E    
-176  0.83 Good      I    
-177  0.74 Very Good F    
-178  0.72 Very Good G    
-179  0.71 Premium   E    
-180  0.71 Ideal     E    
-181  0.54 Ideal     E    
-182  0.54 Ideal     E    
-183  0.72 Ideal     G    
-184  0.72 Ideal     G    
-185  0.72 Good      G    
-186  0.71 Ideal     G    
-187  0.7  Very Good D    
-188  0.71 Premium   F    
-189  0.71 Very Good F    
-190  0.71 Good      F    
-191  0.71 Good      F    
-192  0.7  Ideal     E    
-193  0.7  Premium   E    
-194  0.7  Premium   E    
-195  0.7  Premium   E    
-196  0.7  Premium   E    
-197  0.7  Premium   E    
-198  0.7  Premium   E    
-199  0.7  Ideal     E    
-200  0.72 Premium   F    
-201  0.7  Very Good E    
-202  0.7  Premium   E    
-203  0.7  Premium   E    
-204  0.7  Good      E    
-205  0.98 Fair      H    
-206  0.78 Premium   F    
-207  0.7  Very Good E    
-208  0.52 Ideal     F    
-209  0.73 Very Good H    
-210  0.74 Ideal     E    
-211  0.7  Very Good F    
-212  0.77 Premium   G    
-213  0.71 Ideal     F    
-214  0.74 Ideal     G    
-215  0.7  Ideal     G    
-216  1.01 Premium   F    
-217  0.77 Ideal     H    
-218  0.78 Ideal     H    
-219  0.72 Very Good H    
-220  0.53 Very Good D    
-221  0.76 Ideal     G    
-222  0.7  Good      E    
-223  0.7  Premium   E    
-224  0.75 Very Good D    
-225  0.72 Ideal     D    
-226  0.72 Premium   D    
-227  0.7  Premium   D    
-228  0.84 Fair      G    
-229  0.75 Premium   F    
-230  0.52 Ideal     F    
-231  0.72 Very Good F    
-232  0.79 Very Good H    
-233  0.72 Very Good F    
-234  0.51 Ideal     F    
-235  0.64 Ideal     D    
-236  0.7  Very Good H    
-237  0.83 Very Good I    
-238  0.76 Ideal     I    
-239  0.71 Good      D    
-240  0.77 Good      G    
-241  0.71 Ideal     F    
-242  1.01 Fair      E    
-243  1.01 Premium   H    
-244  0.77 Good      F    
-245  0.76 Good      E    
-246  0.76 Premium   E    
-247  0.76 Premium   E    
-248  1.05 Very Good J    
-249  0.81 Ideal     G    
-250  0.7  Ideal     E    
-251  0.55 Ideal     G    
-252  0.81 Good      G    
-253  0.63 Premium   E    
-254  0.63 Premium   E    
-255  0.77 Premium   H    
-256  1.05 Fair      J    
-257  0.64 Ideal     G    
-258  0.76 Premium   I    
-259  0.83 Ideal     F    
-260  0.71 Premium   F    
-261  0.71 Premium   F    
-262  0.87 Very Good I    
-263  0.73 Ideal     E    
-264  0.71 Premium   E    
-265  0.71 Premium   E    
-266  0.71 Ideal     E    
-267  0.7  Premium   F    
-268  0.7  Premium   F    
-269  0.76 Premium   H    
-270  0.7  Ideal     F    
-271  0.79 Very Good G    
-272  0.7  Very Good E    
-273  0.7  Good      E    
-274  0.76 Ideal     I    
-275  0.73 Ideal     H    
-276  0.79 Very Good E    
-277  0.71 Very Good E    
-278  0.81 Premium   I    
-279  0.81 Ideal     F    
-280  0.72 Good      F    
-281  0.72 Premium   D    
-282  0.72 Premium   I    
-283  0.81 Premium   H    
-284  0.72 Premium   G    
-285  1    Premium   I    
-286  0.73 Good      E    
-287  0.81 Very Good H    
-288  0.81 Very Good E    
-289  0.71 Premium   D    
-290  0.71 Premium   D    
-291  0.71 Premium   D    
-292  0.57 Ideal     F    
-293  0.51 Ideal     D    
-294  0.72 Ideal     G    
-295  0.74 Ideal     H    
-296  0.74 Ideal     H    
-297  0.7  Fair      G    
-298  0.8  Premium   F    
-299  1.01 Fair      E    
-300  0.8  Very Good H    
-301  0.77 Ideal     I    
-302  0.83 Very Good E    
-303  0.82 Ideal     F    
-304  0.78 Ideal     D    
-305  0.6  Very Good G    
-306  0.9  Good      I    
-307  0.7  Premium   E    
-308  0.9  Very Good I    
-309  0.83 Ideal     G    
-310  0.83 Ideal     G    
-311  0.83 Very Good H    
-312  0.74 Premium   G    
-313  0.79 Ideal     I    
-314  0.61 Ideal     G    
-315  0.76 Fair      G    
-316  0.96 Ideal     F    
-317  0.73 Ideal     F    
-318  0.73 Premium   F    
-319  0.75 Ideal     H    
-320  0.71 Premium   F    
-321  0.71 Good      F    
-322  0.71 Good      F    
-323  0.71 Premium   F    
-324  1.04 Premium   G    
-325  1    Premium   J    
-326  0.87 Very Good G    
-327  0.53 Ideal     F    
-328  0.72 Premium   E    
-329  0.72 Premium   F    
-330  0.7  Very Good F    
-331  0.74 Very Good E    
-332  0.71 Ideal     G    
-333  0.73 Ideal     E    
-334  0.7  Good      G    
-335  0.71 Premium   F    
-336  0.71 Premium   F    
-337  0.71 Premium   G    
-338  0.77 Premium   G    
-339  0.71 Premium   G    
-340  0.78 Premium   G    
-341  0.71 Very Good G    
-342  0.91 Ideal     D    
-343  0.71 Very Good E    
-344  0.71 Very Good E    
-345  0.8  Very Good E    
-346  0.7  Very Good D    
-347  0.72 Ideal     F    
-348  0.72 Very Good F    
-349  0.82 Ideal     H    
-350  0.7  Ideal     D    
-351  0.72 Ideal     D    
-352  0.72 Ideal     D    
-353  0.9  Fair      I    
-354  0.74 Premium   F    
-355  0.74 Premium   F    
-356  0.73 Ideal     E    
-357  0.57 Fair      E    
-358  0.73 Premium   F    
-359  0.72 Ideal     G    
-360  0.74 Fair      F    
-361  0.82 Good      G    
-362  0.81 Very Good G    
-363  0.75 Very Good H    
-364  0.7  Ideal     F    
-365  0.71 Very Good F    
-366  0.71 Very Good F    
-367  0.93 Premium   J    
-368  0.8  Very Good H    
-369  0.7  Very Good F    
-370  1    Fair      G    
-371  0.75 Very Good G    
-372  0.58 Ideal     E    
-373  0.73 Very Good D    
-374  0.81 Very Good F    
-375  0.81 Premium   D    
-376  0.71 Premium   F    
-377  1.2  Fair      F    
-378  0.7  Very Good F    
-379  0.7  Very Good F    
-380  0.74 Ideal     D    
-381  0.7  Good      F    
-382  0.8  Good      G    
-383  0.75 Very Good F    
-384  0.83 Very Good D    
-385  1    Fair      J    
-386  0.99 Fair      I    
-387  0.7  Very Good G    
-388  0.7  Very Good F    
-389  0.7  Good      E    
-390  0.7  Very Good F    
-391  0.32 Premium   I    
-392  0.32 Premium   I    
-393  0.32 Ideal     I    
-394  0.32 Premium   I    
-395  0.32 Very Good I    
-396  0.32 Ideal     I    
-397  0.3  Premium   H    
-398  0.3  Premium   H    
-399  0.3  Premium   H    
-400  0.3  Very Good H    
-401  0.3  Good      H    
-402  0.3  Ideal     H    
-403  0.3  Very Good H    
-404  0.32 Good      I    
-405  0.33 Ideal     H    
-406  0.29 Very Good E    
-407  0.29 Very Good E    
-408  0.31 Very Good F    
-409  0.34 Ideal     H    
-410  0.34 Ideal     H    
-411  0.34 Ideal     I    
-412  0.34 Ideal     I    
-413  0.3  Ideal     G    
-414  0.29 Ideal     F    
-415  0.35 Ideal     G    
-416  0.43 Very Good E    
-417  0.32 Very Good F    
-418  0.36 Ideal     I    
-419  0.3  Ideal     G    
-420  0.26 Ideal     E    
-421  0.7  Very Good F    
-422  0.7  Very Good F    
-423  0.71 Ideal     D    
-424  0.99 Fair      J    
-425  0.73 Premium   E    
-426  0.51 Ideal     F    
-427  0.91 Premium   G    
-428  0.84 Very Good E    
-429  0.91 Good      I    
-430  0.76 Premium   E    
-431  0.76 Ideal     E    
-432  0.75 Premium   E    
-433  0.55 Very Good D    
-434  0.76 Very Good F    
-435  0.74 Premium   G    
-436  0.7  Ideal     H    
-437  0.7  Ideal     H    
-438  0.7  Ideal     H    
-439  0.7  Ideal     H    
-440  0.9  Fair      J    
-441  0.95 Fair      F    
-442  0.89 Premium   H    
-443  0.72 Premium   E    
-444  0.96 Fair      E    
-445  1.02 Premium   G    
-446  0.78 Very Good I    
-447  0.61 Ideal     G    
-448  0.71 Good      D    
-449  0.78 Premium   F    
-450  0.87 Ideal     H    
-451  0.83 Ideal     H    
-452  0.71 Premium   E    
-453  0.71 Ideal     I    
-454  0.71 Ideal     E    
-455  0.71 Premium   E    
-456  0.63 Ideal     F    
-457  0.71 Premium   E    
-458  0.71 Premium   E    
-459  0.71 Ideal     E    
-460  0.71 Premium   E    
-461  0.9  Ideal     J    
-462  0.71 Good      E    
-463  0.7  Premium   E    
-464  0.7  Premium   E    
-465  0.7  Premium   E    
-466  1    Premium   H    
-467  0.86 Premium   F    
-468  0.8  Ideal     H    
-469  0.7  Ideal     E    
-470  0.7  Premium   E    
-471  0.7  Premium   F    
-472  0.7  Premium   E    
-473  1    Fair      H    
-474  0.72 Very Good G    
-475  0.72 Ideal     H    
-476  0.7  Good      F    
-477  0.86 Good      F    
-478  0.71 Ideal     G    
-479  0.75 Ideal     E    
-480  0.73 Premium   E    
-481  0.53 Ideal     E    
-482  0.73 Premium   E    
-483  0.73 Good      E    
-484  0.73 Premium   E    
-485  0.73 Premium   E    
-486  0.73 Premium   D    
-487  0.73 Very Good E    
-488  0.7  Premium   E    
-489  0.72 Premium   E    
-490  0.72 Premium   E    
-491  0.72 Premium   E    
-492  0.7  Premium   E    
-493  0.6  Ideal     F    
-494  0.74 Ideal     I    
-495  0.73 Ideal     F    
-496  0.71 Premium   D    
-497  0.71 Premium   D    
-498  0.7  Premium   D    
-499  0.7  Ideal     D    
-500  0.9  Good      J    
-# ℹ 53,440 more rows</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>diamonds <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(carat, cut, color)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["carat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cut"],"name":[2],"type":["ord"],"align":["right"]},{"label":["color"],"name":[3],"type":["ord"],"align":["right"]}],"data":[{"1":"0.23","2":"Ideal","3":"E"},{"1":"0.21","2":"Premium","3":"E"},{"1":"0.23","2":"Good","3":"E"},{"1":"0.29","2":"Premium","3":"I"},{"1":"0.31","2":"Good","3":"J"},{"1":"0.24","2":"Very Good","3":"J"},{"1":"0.24","2":"Very Good","3":"I"},{"1":"0.26","2":"Very Good","3":"H"},{"1":"0.22","2":"Fair","3":"E"},{"1":"0.23","2":"Very Good","3":"H"},{"1":"0.30","2":"Good","3":"J"},{"1":"0.23","2":"Ideal","3":"J"},{"1":"0.22","2":"Premium","3":"F"},{"1":"0.31","2":"Ideal","3":"J"},{"1":"0.20","2":"Premium","3":"E"},{"1":"0.32","2":"Premium","3":"E"},{"1":"0.30","2":"Ideal","3":"I"},{"1":"0.30","2":"Good","3":"J"},{"1":"0.30","2":"Good","3":"J"},{"1":"0.30","2":"Very Good","3":"J"},{"1":"0.30","2":"Good","3":"I"},{"1":"0.23","2":"Very Good","3":"E"},{"1":"0.23","2":"Very Good","3":"H"},{"1":"0.31","2":"Very Good","3":"J"},{"1":"0.31","2":"Very Good","3":"J"},{"1":"0.23","2":"Very Good","3":"G"},{"1":"0.24","2":"Premium","3":"I"},{"1":"0.30","2":"Very Good","3":"J"},{"1":"0.23","2":"Very Good","3":"D"},{"1":"0.23","2":"Very Good","3":"F"},{"1":"0.23","2":"Very Good","3":"F"},{"1":"0.23","2":"Very Good","3":"F"},{"1":"0.23","2":"Very Good","3":"E"},{"1":"0.23","2":"Very Good","3":"E"},{"1":"0.23","2":"Very Good","3":"D"},{"1":"0.23","2":"Good","3":"F"},{"1":"0.23","2":"Good","3":"E"},{"1":"0.31","2":"Good","3":"H"},{"1":"0.26","2":"Very Good","3":"D"},{"1":"0.33","2":"Ideal","3":"I"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<p>Finally, there is a package that helps your deal with conflicts called <code>conflicted</code>. At the top of your script you can define which version of a function you prefer, this will be the version that will always be used. If you want to specify another version of a function, you can still use other versions of the function using the <code>::</code> notation:</p>
+</div>
+<p>Finally, there is a package that helps you deal with conflicts called <code>conflicted</code>. At the top of your script you can define which version of a function you prefer, this will be the version that will always be used. If you want to specify another version of a function, you can still use other versions of the function using the <code>::</code> notation:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(conflicted)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>select)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>mutate)</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>summarise)</span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter)</span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, age) <span class="co"># uses select from dplyr</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>df <span class="sc">%&gt;%</span> MASS<span class="sc">::</span><span class="fu">select</span>(name) <span class="co"># uses select from MASS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(conflicted)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>select)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>mutate)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>summarise)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, age) <span class="co"># uses select from dplyr</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>df <span class="sc">%&gt;%</span> MASS<span class="sc">::</span><span class="fu">select</span>(name) <span class="co"># uses select from MASS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To find out if you have any conflicts, you can run <code>conflict_scout()</code>.</p>
 </section><section id="how-can-i-unload-packages" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="how-can-i-unload-packages">
 <span class="header-section-number">1.2</span> How can I unload packages</h2>
 <p>If you are finding yourself with a conflict as mentioned above and want to <code>unload</code> packages, then you need to run the following code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># adapted from: @mmfrgmpds https://stackoverflow.com/questions/7505547/detach-all-packages-while-working-in-r</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="cf">while</span>(<span class="sc">!</span><span class="fu">is.null</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>loadedOnly)){</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">lapply</span>(<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>loadedOnly), require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">invisible</span>(<span class="fu">lapply</span>(<span class="fu">paste0</span>(<span class="st">'package:'</span>, <span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs)), detach, <span class="at">character.only=</span><span class="cn">TRUE</span>, <span class="at">unload=</span><span class="cn">TRUE</span>, <span class="at">force=</span><span class="cn">TRUE</span>))    </span>
-<span id="cb7-5"><a href="#cb7-5"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># adapted from: @mmfrgmpds https://stackoverflow.com/questions/7505547/detach-all-packages-while-working-in-r</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="cf">while</span>(<span class="sc">!</span><span class="fu">is.null</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>loadedOnly)){</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">lapply</span>(<span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>loadedOnly), require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">invisible</span>(<span class="fu">lapply</span>(<span class="fu">paste0</span>(<span class="st">'package:'</span>, <span class="fu">names</span>(<span class="fu">sessionInfo</span>()<span class="sc">$</span>otherPkgs)), detach, <span class="at">character.only=</span><span class="cn">TRUE</span>, <span class="at">unload=</span><span class="cn">TRUE</span>, <span class="at">force=</span><span class="cn">TRUE</span>))    </span>
+<span id="cb5-5"><a href="#cb5-5"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="why-am-i-getting-the-error-could-not-find-function" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="why-am-i-getting-the-error-could-not-find-function">
 <span class="header-section-number">1.3</span> Why am I getting the error ‘could not find function “%&gt;%”’</h2>
 <p>The pipe operator <code>%&gt;%</code> is loaded when you load the tidyverse package - make sure you have installed tidyverse and loaded it</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)  <span class="co"># install</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">library</span>(tidyverse)             <span class="co"># load</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)  <span class="co"># install</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span>(tidyverse)             <span class="co"># load</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="i-am-getting-the-error-error-mapping-should-be-created-with-aes-or-aes_.-when-using-ggplot" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="i-am-getting-the-error-error-mapping-should-be-created-with-aes-or-aes_.-when-using-ggplot">
 <span class="header-section-number">1.4</span> I am getting the error: ‘“Error: Mapping should be created with <code>aes()</code> or <code>aes_()</code>.”’ when using ggplot</h2>
 <p>This may be caused by having a bracket after the geom rather than before it</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
-<span id="cb9-2"><a href="#cb9-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y) <span class="sc">+</span>           <span class="co"># Reproduce error message</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>         <span class="fu">geom_point</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<span id="cb7-2"><a href="#cb7-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y) <span class="sc">+</span>           <span class="co"># Reproduce error message</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>         <span class="fu">geom_point</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
-<span id="cb10-2"><a href="#cb10-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span>           <span class="co"># Fixed error by moving bracket</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>         <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span>           <span class="co"># Fixed error by moving bracket</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>         <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="my-axis-labels-are-too-long" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="my-axis-labels-are-too-long">
 <span class="header-section-number">1.5</span> My axis labels are too long</h2>
 <p>If you want to use long axis titles you may find they overrun the space available</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
-<span id="cb11-2"><a href="#cb11-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span>           </span>
-<span id="cb11-4"><a href="#cb11-4"></a>         <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">ylab</span>(<span class="st">"A very long description for the y-axis label that will overflow and not look very nice"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span>           </span>
+<span id="cb9-4"><a href="#cb9-4"></a>         <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">ylab</span>(<span class="st">"A very long description for the y-axis label that will overflow and not look very nice"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To insert a line break in the axis label, add <code>\n</code> to the text where you want line breaks.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
-<span id="cb12-2"><a href="#cb12-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span>           </span>
-<span id="cb12-4"><a href="#cb12-4"></a>         <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">ylab</span>(<span class="st">"A very long description </span><span class="sc">\n</span><span class="st"> for the y-axis label that will </span><span class="sc">\n</span><span class="st"> overflow and not look very nice"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                 <span class="at">y=</span><span class="dv">10</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span>           </span>
+<span id="cb10-4"><a href="#cb10-4"></a>         <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">ylab</span>(<span class="st">"A very long description </span><span class="sc">\n</span><span class="st"> for the y-axis label that will </span><span class="sc">\n</span><span class="st"> overflow and not look very nice"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="how-can-i-find-out-the-full-item-labels-in-the-pisa-data-frame" class="level2" data-number="1.6"><h2 data-number="1.6" class="anchored" data-anchor-id="how-can-i-find-out-the-full-item-labels-in-the-pisa-data-frame">
 <span class="header-section-number">1.6</span> How can I find out the full item labels in the PISA data frame?</h2>
 <p>The code below will give you a list of all the item labels</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># You may want to set the maximun print output to see all the labels</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">1300</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">lapply</span>(PISA_2025, attr, <span class="st">"label"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># You may want to set the maximum print output to see all the labels</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">1300</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">lapply</span>(PISA_2025, attr, <span class="st">"label"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper" class="level2" data-number="1.7"><h2 data-number="1.7" class="anchored" data-anchor-id="how-do-i-turn-a-data-frame-into-a-form-i-can-put-into-an-assingment-or-paper">
 <span class="header-section-number">1.7</span> How do I turn a data frame into a form I can put into an assingment or paper?</h2>
 <p>You can use the <code>gt</code> package to convert data frames to aesthetically pleasing outputs.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># load the gt package - you will need to run install.packages("gt") the first time</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># install.packages("gt")</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">library</span>(gt)</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Make the data frame you want you want to output</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>science_mean_scores <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">summarise</span>(<span class="at">mean_science_score =</span> <span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-9"><a href="#cb14-9"></a>            <span class="at">sd_science =</span> <span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm =</span><span class="cn">TRUE</span>))</span>
-<span id="cb14-10"><a href="#cb14-10"></a></span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="co"># Use gt to produce an output - you can copy and paste the table from the</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a><span class="co"># viewer window to your report</span></span>
-<span id="cb14-13"><a href="#cb14-13"></a></span>
-<span id="cb14-14"><a href="#cb14-14"></a><span class="fu">gt</span>(science_mean_scores)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># load the gt package - you will need to run install.packages("gt") the first time</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># install.packages("gt")</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(gt)</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># Make the data frame you want to output</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>science_mean_scores <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">group_by</span>(CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">summarise</span>(<span class="at">mean_science_score =</span> <span class="fu">mean</span>(PV1SCIE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-9"><a href="#cb12-9"></a>            <span class="at">sd_science =</span> <span class="fu">sd</span>(PV1SCIE, <span class="at">na.rm =</span><span class="cn">TRUE</span>))</span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="co"># Use gt to produce an output - you can copy and paste the table from the</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="co"># viewer window to your report</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="fu">gt</span>(science_mean_scores)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="vbykxxepio" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vbykxxepio table {
+<div id="sjzsaemhpy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sjzsaemhpy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vbykxxepio thead, #vbykxxepio tbody, #vbykxxepio tfoot, #vbykxxepio tr, #vbykxxepio td, #vbykxxepio th {
+#sjzsaemhpy thead, #sjzsaemhpy tbody, #sjzsaemhpy tfoot, #sjzsaemhpy tr, #sjzsaemhpy td, #sjzsaemhpy th {
   border-style: none;
 }
 
-#vbykxxepio p {
+#sjzsaemhpy p {
   margin: 0;
   padding: 0;
 }
 
-#vbykxxepio .gt_table {
+#sjzsaemhpy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1496,12 +499,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_caption {
+#sjzsaemhpy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vbykxxepio .gt_title {
+#sjzsaemhpy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1513,7 +516,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#vbykxxepio .gt_subtitle {
+#sjzsaemhpy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1525,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#vbykxxepio .gt_heading {
+#sjzsaemhpy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1537,13 +540,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_bottom_border {
+#sjzsaemhpy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_col_headings {
+#sjzsaemhpy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1558,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_col_heading {
+#sjzsaemhpy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1578,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#vbykxxepio .gt_column_spanner_outer {
+#sjzsaemhpy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1590,15 +593,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#vbykxxepio .gt_column_spanner_outer:first-child {
+#sjzsaemhpy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vbykxxepio .gt_column_spanner_outer:last-child {
+#sjzsaemhpy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vbykxxepio .gt_column_spanner {
+#sjzsaemhpy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1610,11 +613,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#vbykxxepio .gt_spanner_row {
+#sjzsaemhpy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vbykxxepio .gt_group_heading {
+#sjzsaemhpy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1640,7 +643,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#vbykxxepio .gt_empty_group_heading {
+#sjzsaemhpy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1655,15 +658,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#vbykxxepio .gt_from_md > :first-child {
+#sjzsaemhpy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vbykxxepio .gt_from_md > :last-child {
+#sjzsaemhpy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vbykxxepio .gt_row {
+#sjzsaemhpy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1682,7 +685,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#vbykxxepio .gt_stub {
+#sjzsaemhpy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1695,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vbykxxepio .gt_stub_row_group {
+#sjzsaemhpy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1709,15 +712,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#vbykxxepio .gt_row_group_first td {
+#sjzsaemhpy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vbykxxepio .gt_row_group_first th {
+#sjzsaemhpy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vbykxxepio .gt_summary_row {
+#sjzsaemhpy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1727,16 +730,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vbykxxepio .gt_first_summary_row {
+#sjzsaemhpy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_first_summary_row.thick {
+#sjzsaemhpy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vbykxxepio .gt_last_summary_row {
+#sjzsaemhpy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1746,7 +749,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_grand_summary_row {
+#sjzsaemhpy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1756,7 +759,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vbykxxepio .gt_first_grand_summary_row {
+#sjzsaemhpy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1766,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_last_grand_summary_row_top {
+#sjzsaemhpy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1776,11 +779,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_striped {
+#sjzsaemhpy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vbykxxepio .gt_table_body {
+#sjzsaemhpy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1789,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_footnotes {
+#sjzsaemhpy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1803,7 +806,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_footnote {
+#sjzsaemhpy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1812,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vbykxxepio .gt_sourcenotes {
+#sjzsaemhpy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1826,7 +829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vbykxxepio .gt_sourcenote {
+#sjzsaemhpy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1834,72 +837,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vbykxxepio .gt_left {
+#sjzsaemhpy .gt_left {
   text-align: left;
 }
 
-#vbykxxepio .gt_center {
+#sjzsaemhpy .gt_center {
   text-align: center;
 }
 
-#vbykxxepio .gt_right {
+#sjzsaemhpy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vbykxxepio .gt_font_normal {
+#sjzsaemhpy .gt_font_normal {
   font-weight: normal;
 }
 
-#vbykxxepio .gt_font_bold {
+#sjzsaemhpy .gt_font_bold {
   font-weight: bold;
 }
 
-#vbykxxepio .gt_font_italic {
+#sjzsaemhpy .gt_font_italic {
   font-style: italic;
 }
 
-#vbykxxepio .gt_super {
+#sjzsaemhpy .gt_super {
   font-size: 65%;
 }
 
-#vbykxxepio .gt_footnote_marks {
+#sjzsaemhpy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vbykxxepio .gt_asterisk {
+#sjzsaemhpy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vbykxxepio .gt_indent_1 {
+#sjzsaemhpy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vbykxxepio .gt_indent_2 {
+#sjzsaemhpy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vbykxxepio .gt_indent_3 {
+#sjzsaemhpy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vbykxxepio .gt_indent_4 {
+#sjzsaemhpy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vbykxxepio .gt_indent_5 {
+#sjzsaemhpy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vbykxxepio .katex-display {
+#sjzsaemhpy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vbykxxepio div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sjzsaemhpy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2364,30 +1367,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># You can see more options on formating the table here: https://gt.rstudio.com</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># For example to add a heading</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">gt</span>(science_mean_scores) <span class="sc">%&gt;%</span> <span class="fu">tab_header</span>(</span>
-<span id="cb15-5"><a href="#cb15-5"></a>    <span class="at">title =</span> <span class="st">"Mean science scores"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6"></a>    <span class="at">subtitle =</span> <span class="st">"PISA 2022 data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># You can see more options on formating the table here: https://gt.rstudio.com</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># For example to add a heading</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">gt</span>(science_mean_scores) <span class="sc">%&gt;%</span> <span class="fu">tab_header</span>(</span>
+<span id="cb13-5"><a href="#cb13-5"></a>    <span class="at">title =</span> <span class="st">"Mean science scores"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="at">subtitle =</span> <span class="st">"PISA 2022 data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="nnorrccfbl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nnorrccfbl table {
+<div id="mvujwmtihy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mvujwmtihy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nnorrccfbl thead, #nnorrccfbl tbody, #nnorrccfbl tfoot, #nnorrccfbl tr, #nnorrccfbl td, #nnorrccfbl th {
+#mvujwmtihy thead, #mvujwmtihy tbody, #mvujwmtihy tfoot, #mvujwmtihy tr, #mvujwmtihy td, #mvujwmtihy th {
   border-style: none;
 }
 
-#nnorrccfbl p {
+#mvujwmtihy p {
   margin: 0;
   padding: 0;
 }
 
-#nnorrccfbl .gt_table {
+#mvujwmtihy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2413,12 +1416,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_caption {
+#mvujwmtihy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nnorrccfbl .gt_title {
+#mvujwmtihy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2430,7 +1433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#nnorrccfbl .gt_subtitle {
+#mvujwmtihy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2442,7 +1445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#nnorrccfbl .gt_heading {
+#mvujwmtihy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2454,13 +1457,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_bottom_border {
+#mvujwmtihy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_col_headings {
+#mvujwmtihy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2475,7 +1478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_col_heading {
+#mvujwmtihy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2495,7 +1498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#nnorrccfbl .gt_column_spanner_outer {
+#mvujwmtihy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2507,15 +1510,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#nnorrccfbl .gt_column_spanner_outer:first-child {
+#mvujwmtihy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nnorrccfbl .gt_column_spanner_outer:last-child {
+#mvujwmtihy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nnorrccfbl .gt_column_spanner {
+#mvujwmtihy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2527,11 +1530,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#nnorrccfbl .gt_spanner_row {
+#mvujwmtihy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nnorrccfbl .gt_group_heading {
+#mvujwmtihy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2557,7 +1560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#nnorrccfbl .gt_empty_group_heading {
+#mvujwmtihy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2572,15 +1575,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#nnorrccfbl .gt_from_md > :first-child {
+#mvujwmtihy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nnorrccfbl .gt_from_md > :last-child {
+#mvujwmtihy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nnorrccfbl .gt_row {
+#mvujwmtihy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2599,7 +1602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#nnorrccfbl .gt_stub {
+#mvujwmtihy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2612,7 +1615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#nnorrccfbl .gt_stub_row_group {
+#mvujwmtihy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2626,15 +1629,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#nnorrccfbl .gt_row_group_first td {
+#mvujwmtihy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nnorrccfbl .gt_row_group_first th {
+#mvujwmtihy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nnorrccfbl .gt_summary_row {
+#mvujwmtihy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2644,16 +1647,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#nnorrccfbl .gt_first_summary_row {
+#mvujwmtihy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_first_summary_row.thick {
+#mvujwmtihy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nnorrccfbl .gt_last_summary_row {
+#mvujwmtihy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2663,7 +1666,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_grand_summary_row {
+#mvujwmtihy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2673,7 +1676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#nnorrccfbl .gt_first_grand_summary_row {
+#mvujwmtihy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2683,7 +1686,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_last_grand_summary_row_top {
+#mvujwmtihy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2693,11 +1696,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_striped {
+#mvujwmtihy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nnorrccfbl .gt_table_body {
+#mvujwmtihy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2706,7 +1709,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_footnotes {
+#mvujwmtihy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2720,7 +1723,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_footnote {
+#mvujwmtihy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2729,7 +1732,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#nnorrccfbl .gt_sourcenotes {
+#mvujwmtihy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2743,7 +1746,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#nnorrccfbl .gt_sourcenote {
+#mvujwmtihy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2751,72 +1754,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#nnorrccfbl .gt_left {
+#mvujwmtihy .gt_left {
   text-align: left;
 }
 
-#nnorrccfbl .gt_center {
+#mvujwmtihy .gt_center {
   text-align: center;
 }
 
-#nnorrccfbl .gt_right {
+#mvujwmtihy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nnorrccfbl .gt_font_normal {
+#mvujwmtihy .gt_font_normal {
   font-weight: normal;
 }
 
-#nnorrccfbl .gt_font_bold {
+#mvujwmtihy .gt_font_bold {
   font-weight: bold;
 }
 
-#nnorrccfbl .gt_font_italic {
+#mvujwmtihy .gt_font_italic {
   font-style: italic;
 }
 
-#nnorrccfbl .gt_super {
+#mvujwmtihy .gt_super {
   font-size: 65%;
 }
 
-#nnorrccfbl .gt_footnote_marks {
+#mvujwmtihy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nnorrccfbl .gt_asterisk {
+#mvujwmtihy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nnorrccfbl .gt_indent_1 {
+#mvujwmtihy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nnorrccfbl .gt_indent_2 {
+#mvujwmtihy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nnorrccfbl .gt_indent_3 {
+#mvujwmtihy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nnorrccfbl .gt_indent_4 {
+#mvujwmtihy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nnorrccfbl .gt_indent_5 {
+#mvujwmtihy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nnorrccfbl .katex-display {
+#mvujwmtihy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nnorrccfbl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mvujwmtihy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3289,31 +2292,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Or to change the number of decimal places and a column name</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">gt</span>(science_mean_scores) <span class="sc">%&gt;%</span> <span class="fu">tab_header</span>(</span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="at">title =</span> <span class="st">"Mean science scores"</span>,</span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="at">subtitle =</span> <span class="st">"PISA 2022 data"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(mean_science_score , sd_science), <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">cols_label</span>(<span class="st">"CNT"</span> <span class="ot">=</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Or to change the number of decimal places and a column name</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">gt</span>(science_mean_scores) <span class="sc">%&gt;%</span> <span class="fu">tab_header</span>(</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="at">title =</span> <span class="st">"Mean science scores"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="at">subtitle =</span> <span class="st">"PISA 2022 data"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="fu">c</span>(mean_science_score , sd_science), <span class="at">decimals =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">cols_label</span>(<span class="st">"CNT"</span> <span class="ot">=</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="gxzhnpxrta" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gxzhnpxrta table {
+<div id="fuiwmvetyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fuiwmvetyg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gxzhnpxrta thead, #gxzhnpxrta tbody, #gxzhnpxrta tfoot, #gxzhnpxrta tr, #gxzhnpxrta td, #gxzhnpxrta th {
+#fuiwmvetyg thead, #fuiwmvetyg tbody, #fuiwmvetyg tfoot, #fuiwmvetyg tr, #fuiwmvetyg td, #fuiwmvetyg th {
   border-style: none;
 }
 
-#gxzhnpxrta p {
+#fuiwmvetyg p {
   margin: 0;
   padding: 0;
 }
 
-#gxzhnpxrta .gt_table {
+#fuiwmvetyg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3339,12 +2342,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_caption {
+#fuiwmvetyg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gxzhnpxrta .gt_title {
+#fuiwmvetyg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3356,7 +2359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#gxzhnpxrta .gt_subtitle {
+#fuiwmvetyg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3368,7 +2371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#gxzhnpxrta .gt_heading {
+#fuiwmvetyg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3380,13 +2383,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_bottom_border {
+#fuiwmvetyg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_col_headings {
+#fuiwmvetyg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3401,7 +2404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_col_heading {
+#fuiwmvetyg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3421,7 +2424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#gxzhnpxrta .gt_column_spanner_outer {
+#fuiwmvetyg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3433,15 +2436,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#gxzhnpxrta .gt_column_spanner_outer:first-child {
+#fuiwmvetyg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gxzhnpxrta .gt_column_spanner_outer:last-child {
+#fuiwmvetyg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gxzhnpxrta .gt_column_spanner {
+#fuiwmvetyg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3453,11 +2456,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#gxzhnpxrta .gt_spanner_row {
+#fuiwmvetyg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gxzhnpxrta .gt_group_heading {
+#fuiwmvetyg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3483,7 +2486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#gxzhnpxrta .gt_empty_group_heading {
+#fuiwmvetyg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3498,15 +2501,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#gxzhnpxrta .gt_from_md > :first-child {
+#fuiwmvetyg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gxzhnpxrta .gt_from_md > :last-child {
+#fuiwmvetyg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gxzhnpxrta .gt_row {
+#fuiwmvetyg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3525,7 +2528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#gxzhnpxrta .gt_stub {
+#fuiwmvetyg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3538,7 +2541,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gxzhnpxrta .gt_stub_row_group {
+#fuiwmvetyg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3552,15 +2555,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#gxzhnpxrta .gt_row_group_first td {
+#fuiwmvetyg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gxzhnpxrta .gt_row_group_first th {
+#fuiwmvetyg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gxzhnpxrta .gt_summary_row {
+#fuiwmvetyg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3570,16 +2573,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gxzhnpxrta .gt_first_summary_row {
+#fuiwmvetyg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_first_summary_row.thick {
+#fuiwmvetyg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gxzhnpxrta .gt_last_summary_row {
+#fuiwmvetyg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3589,7 +2592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_grand_summary_row {
+#fuiwmvetyg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3599,7 +2602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gxzhnpxrta .gt_first_grand_summary_row {
+#fuiwmvetyg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3609,7 +2612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_last_grand_summary_row_top {
+#fuiwmvetyg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3619,11 +2622,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_striped {
+#fuiwmvetyg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gxzhnpxrta .gt_table_body {
+#fuiwmvetyg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3632,7 +2635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_footnotes {
+#fuiwmvetyg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3646,7 +2649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_footnote {
+#fuiwmvetyg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3655,7 +2658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gxzhnpxrta .gt_sourcenotes {
+#fuiwmvetyg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3669,7 +2672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gxzhnpxrta .gt_sourcenote {
+#fuiwmvetyg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3677,72 +2680,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gxzhnpxrta .gt_left {
+#fuiwmvetyg .gt_left {
   text-align: left;
 }
 
-#gxzhnpxrta .gt_center {
+#fuiwmvetyg .gt_center {
   text-align: center;
 }
 
-#gxzhnpxrta .gt_right {
+#fuiwmvetyg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gxzhnpxrta .gt_font_normal {
+#fuiwmvetyg .gt_font_normal {
   font-weight: normal;
 }
 
-#gxzhnpxrta .gt_font_bold {
+#fuiwmvetyg .gt_font_bold {
   font-weight: bold;
 }
 
-#gxzhnpxrta .gt_font_italic {
+#fuiwmvetyg .gt_font_italic {
   font-style: italic;
 }
 
-#gxzhnpxrta .gt_super {
+#fuiwmvetyg .gt_super {
   font-size: 65%;
 }
 
-#gxzhnpxrta .gt_footnote_marks {
+#fuiwmvetyg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gxzhnpxrta .gt_asterisk {
+#fuiwmvetyg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gxzhnpxrta .gt_indent_1 {
+#fuiwmvetyg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gxzhnpxrta .gt_indent_2 {
+#fuiwmvetyg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gxzhnpxrta .gt_indent_3 {
+#fuiwmvetyg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gxzhnpxrta .gt_indent_4 {
+#fuiwmvetyg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gxzhnpxrta .gt_indent_5 {
+#fuiwmvetyg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gxzhnpxrta .katex-display {
+#fuiwmvetyg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gxzhnpxrta div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fuiwmvetyg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4215,48 +3218,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="do">## If you have an output from a linear model, there is an additional step to do before using gt</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="co"># You need to use the broom package, which has the `tidy` function which gets the output of `lm`</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># Into a suitable format for turing into a table</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># install.packages("broom")</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="fu">library</span>(broom)</span>
-<span id="cb17-7"><a href="#cb17-7"></a></span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb17-9"><a href="#cb17-9"></a></span>
-<span id="cb17-10"><a href="#cb17-10"></a>UK_PISA <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">select</span>(PV1SCIE, PV1MATH, CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb17-12"><a href="#cb17-12"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="cb17-13"><a href="#cb17-13"></a></span>
-<span id="cb17-14"><a href="#cb17-14"></a><span class="co"># Run the model</span></span>
-<span id="cb17-15"><a href="#cb17-15"></a></span>
-<span id="cb17-16"><a href="#cb17-16"></a>uk_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> UK_PISA, PV1SCIE <span class="sc">~</span> PV1MATH)</span>
-<span id="cb17-17"><a href="#cb17-17"></a></span>
-<span id="cb17-18"><a href="#cb17-18"></a><span class="co"># tidy the model</span></span>
-<span id="cb17-19"><a href="#cb17-19"></a></span>
-<span id="cb17-20"><a href="#cb17-20"></a>uk_mod_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(uk_mod)</span>
-<span id="cb17-21"><a href="#cb17-21"></a></span>
-<span id="cb17-22"><a href="#cb17-22"></a><span class="co"># pass to gt to produce nice output</span></span>
-<span id="cb17-23"><a href="#cb17-23"></a></span>
-<span id="cb17-24"><a href="#cb17-24"></a><span class="fu">gt</span>(uk_mod_tidy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="do">## If you have an output from a linear model, there is an additional step to do before using gt</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># You need to use the broom package, which has the `tidy` function which gets the output of `lm`</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># Into a suitable format for turning into a table</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># install.packages("broom")</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="fu">library</span>(broom)</span>
+<span id="cb15-7"><a href="#cb15-7"></a></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a>UK_PISA <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="fu">select</span>(PV1SCIE, PV1MATH, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co"># Run the model</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a></span>
+<span id="cb15-16"><a href="#cb15-16"></a>uk_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> UK_PISA, PV1SCIE <span class="sc">~</span> PV1MATH)</span>
+<span id="cb15-17"><a href="#cb15-17"></a></span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="co"># tidy the model</span></span>
+<span id="cb15-19"><a href="#cb15-19"></a></span>
+<span id="cb15-20"><a href="#cb15-20"></a>uk_mod_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(uk_mod)</span>
+<span id="cb15-21"><a href="#cb15-21"></a></span>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="co"># pass to gt to produce nice output</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a></span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="fu">gt</span>(uk_mod_tidy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="rqkbpifrbp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rqkbpifrbp table {
+<div id="pjenbpxcus" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pjenbpxcus table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rqkbpifrbp thead, #rqkbpifrbp tbody, #rqkbpifrbp tfoot, #rqkbpifrbp tr, #rqkbpifrbp td, #rqkbpifrbp th {
+#pjenbpxcus thead, #pjenbpxcus tbody, #pjenbpxcus tfoot, #pjenbpxcus tr, #pjenbpxcus td, #pjenbpxcus th {
   border-style: none;
 }
 
-#rqkbpifrbp p {
+#pjenbpxcus p {
   margin: 0;
   padding: 0;
 }
 
-#rqkbpifrbp .gt_table {
+#pjenbpxcus .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4282,12 +3285,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_caption {
+#pjenbpxcus .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rqkbpifrbp .gt_title {
+#pjenbpxcus .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4299,7 +3302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#rqkbpifrbp .gt_subtitle {
+#pjenbpxcus .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4311,7 +3314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#rqkbpifrbp .gt_heading {
+#pjenbpxcus .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4323,13 +3326,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_bottom_border {
+#pjenbpxcus .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_col_headings {
+#pjenbpxcus .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4344,7 +3347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_col_heading {
+#pjenbpxcus .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4364,7 +3367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rqkbpifrbp .gt_column_spanner_outer {
+#pjenbpxcus .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4376,15 +3379,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#rqkbpifrbp .gt_column_spanner_outer:first-child {
+#pjenbpxcus .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rqkbpifrbp .gt_column_spanner_outer:last-child {
+#pjenbpxcus .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rqkbpifrbp .gt_column_spanner {
+#pjenbpxcus .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4396,11 +3399,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#rqkbpifrbp .gt_spanner_row {
+#pjenbpxcus .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rqkbpifrbp .gt_group_heading {
+#pjenbpxcus .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4426,7 +3429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#rqkbpifrbp .gt_empty_group_heading {
+#pjenbpxcus .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4441,15 +3444,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#rqkbpifrbp .gt_from_md > :first-child {
+#pjenbpxcus .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rqkbpifrbp .gt_from_md > :last-child {
+#pjenbpxcus .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rqkbpifrbp .gt_row {
+#pjenbpxcus .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4468,7 +3471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rqkbpifrbp .gt_stub {
+#pjenbpxcus .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4481,7 +3484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rqkbpifrbp .gt_stub_row_group {
+#pjenbpxcus .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4495,15 +3498,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#rqkbpifrbp .gt_row_group_first td {
+#pjenbpxcus .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rqkbpifrbp .gt_row_group_first th {
+#pjenbpxcus .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rqkbpifrbp .gt_summary_row {
+#pjenbpxcus .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4513,16 +3516,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rqkbpifrbp .gt_first_summary_row {
+#pjenbpxcus .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_first_summary_row.thick {
+#pjenbpxcus .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rqkbpifrbp .gt_last_summary_row {
+#pjenbpxcus .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4532,7 +3535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_grand_summary_row {
+#pjenbpxcus .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4542,7 +3545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rqkbpifrbp .gt_first_grand_summary_row {
+#pjenbpxcus .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4552,7 +3555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_last_grand_summary_row_top {
+#pjenbpxcus .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4562,11 +3565,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_striped {
+#pjenbpxcus .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rqkbpifrbp .gt_table_body {
+#pjenbpxcus .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4575,7 +3578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_footnotes {
+#pjenbpxcus .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4589,7 +3592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_footnote {
+#pjenbpxcus .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4598,7 +3601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rqkbpifrbp .gt_sourcenotes {
+#pjenbpxcus .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4612,7 +3615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rqkbpifrbp .gt_sourcenote {
+#pjenbpxcus .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4620,72 +3623,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rqkbpifrbp .gt_left {
+#pjenbpxcus .gt_left {
   text-align: left;
 }
 
-#rqkbpifrbp .gt_center {
+#pjenbpxcus .gt_center {
   text-align: center;
 }
 
-#rqkbpifrbp .gt_right {
+#pjenbpxcus .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rqkbpifrbp .gt_font_normal {
+#pjenbpxcus .gt_font_normal {
   font-weight: normal;
 }
 
-#rqkbpifrbp .gt_font_bold {
+#pjenbpxcus .gt_font_bold {
   font-weight: bold;
 }
 
-#rqkbpifrbp .gt_font_italic {
+#pjenbpxcus .gt_font_italic {
   font-style: italic;
 }
 
-#rqkbpifrbp .gt_super {
+#pjenbpxcus .gt_super {
   font-size: 65%;
 }
 
-#rqkbpifrbp .gt_footnote_marks {
+#pjenbpxcus .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rqkbpifrbp .gt_asterisk {
+#pjenbpxcus .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rqkbpifrbp .gt_indent_1 {
+#pjenbpxcus .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rqkbpifrbp .gt_indent_2 {
+#pjenbpxcus .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rqkbpifrbp .gt_indent_3 {
+#pjenbpxcus .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rqkbpifrbp .gt_indent_4 {
+#pjenbpxcus .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rqkbpifrbp .gt_indent_5 {
+#pjenbpxcus .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rqkbpifrbp .katex-display {
+#pjenbpxcus .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rqkbpifrbp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pjenbpxcus div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4722,18 +3725,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When you have run some tests, the outputs (for example the degrees of freedom, test statistic and p-value) should be formatted in your paper in line with the citation convention of the journal or assessment (for example, KCL assignments follow the American Psychological Association (APA) citation style). You can find a general guide to presenting your results in APA style here: APA <a href="https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf">numbers and statistics style guide</a>.</p>
 <p>For example, to report a chi-square result:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a></span>
-<span id="cb18-3"><a href="#cb18-3"></a>UK_gender_differences <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">select</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb18-7"><a href="#cb18-7"></a></span>
-<span id="cb18-8"><a href="#cb18-8"></a>cont_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> UK_gender_differences, <span class="sc">~</span> ST004D01T)</span>
-<span id="cb18-9"><a href="#cb18-9"></a></span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="co"># Run a chi sqaure goodness of fit test</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a></span>
-<span id="cb18-12"><a href="#cb18-12"></a><span class="fu">chisq.test</span>(cont_tab, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>UK_gender_differences <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">select</span>(CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb16-7"><a href="#cb16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8"></a>cont_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="at">data =</span> UK_gender_differences, <span class="sc">~</span> ST004D01T)</span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># Run a chi sqaure goodness of fit test</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="fu">chisq.test</span>(cont_tab, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
@@ -4745,15 +3748,15 @@ X-squared = 24.886, df = 1, p-value = 6.081e-07</code></pre>
 <p>A chi-square test of goodness-of-fit was conducted to compare the observed frequencies in the contingency table to the expected frequencies (equal numbers of boys and girls). The result was not statistically significant, χ²(1, N = 12973) = 2.44, p = .12, indicating no significant difference between the observed and expected frequencies.</p>
 <p>To report a t-test of the mathematics scores of girls and boys in the UK:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a>UK_PISA <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">select</span>(PV1MATH, CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># Run a t-test</span></span>
-<span id="cb20-8"><a href="#cb20-8"></a></span>
-<span id="cb20-9"><a href="#cb20-9"></a><span class="fu">t.test</span>(<span class="at">data =</span> UK_PISA, PV1MATH <span class="sc">~</span> ST004D01T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>UK_PISA <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">select</span>(PV1MATH, CNT, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># Run a t-test</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="fu">t.test</span>(<span class="at">data =</span> UK_PISA, PV1MATH <span class="sc">~</span> ST004D01T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -4772,16 +3775,16 @@ mean in group Female   mean in group Male
 <p>The results of a Welch’s t-test indicated a statistically significant difference in mean mathematics scores between UK females (M = 475.61) and UK males (M = 489.29), t(12,942) = -8.22, p &lt; .001, 95% CI [-16.95, -10.42].</p>
 <p>Alternatively, consider the output of an anova to look at the difference in wealth scores between Finland, Norway, and Sweden:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a>wealth_scores <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">select</span>(HOMEPOS, CNT) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Finland"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Norway"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Sweden"</span>)</span>
-<span id="cb22-6"><a href="#cb22-6"></a></span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="co"># Run an anova and summarise</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a></span>
-<span id="cb22-9"><a href="#cb22-9"></a>aov_out <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> wealth_scores, HOMEPOS <span class="sc">~</span> CNT)</span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="fu">summary</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>wealth_scores <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">select</span>(HOMEPOS, CNT) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Finland"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Norway"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Sweden"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># Run an anova and summarise</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a>aov_out <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">data =</span> wealth_scores, HOMEPOS <span class="sc">~</span> CNT)</span>
+<span id="cb20-10"><a href="#cb20-10"></a><span class="fu">summary</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Df Sum Sq Mean Sq F value Pr(&gt;F)    
 CNT             2    442  220.76   307.4 &lt;2e-16 ***
@@ -4790,7 +3793,7 @@ Residuals   20186  14495    0.72
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 636 observations deleted due to missingness</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">TukeyHSD</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">TukeyHSD</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
@@ -4809,11 +3812,11 @@ Sweden-Norway  -0.1832723 -0.2185225 -0.1480222     0</code></pre>
 <p>Norway had significantly higher HOMEPOS scores than Finland (M difference = 0.38, 95% CI [0.35, 0.42], p &lt; .001). Sweden had significantly higher HOMEPOS scores than Finland (M difference = 0.16, 95% CI [0.13, 0.20], p &lt; .001). Sweden had significantly lower HOMEPOS scores than Norway (M difference = -0.22, 95% CI [-0.26, -0.18], p &lt; .001). A total of 584 observations were excluded due to missing data.</p>
 <p>Alternatively, you can use the <code>report</code> function in the <code>easystats</code> package to give a summary of an output.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(easystats)</span>
-<span id="cb26-2"><a href="#cb26-2"></a></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="co"># Get a summary of an anova</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a></span>
-<span id="cb26-5"><a href="#cb26-5"></a><span class="fu">report</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co"># Get a summary of an anova</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">report</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The ANOVA (formula: HOMEPOS ~ CNT) suggests that:
 
@@ -4822,11 +3825,11 @@ Sweden-Norway  -0.1832723 -0.2185225 -0.1480222     0</code></pre>
 
 Effect sizes were labelled following Field's (2013) recommendations.</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># And of a linear model</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> wealth_scores, HOMEPOS <span class="sc">~</span> CNT)</span>
-<span id="cb28-4"><a href="#cb28-4"></a></span>
-<span id="cb28-5"><a href="#cb28-5"></a><span class="fu">report</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># And of a linear model</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> wealth_scores, HOMEPOS <span class="sc">~</span> CNT)</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="fu">report</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>We fitted a linear model (estimated using OLS) to predict HOMEPOS with CNT
 (formula: HOMEPOS ~ CNT). The model explains a statistically significant and
@@ -4848,11 +3851,11 @@ computed using a Wald t-distribution approximation.</code></pre>
 </div>
 <p>To produce tables in APA format, you can use the <code>apa.aov.table</code> (for anovas) or <code>apa.reg.table</code> (for linear model outputs) functions from the <code>apaTables</code> package. You will need to install the package first using <code>install.packages("apaTables")</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">library</span>(apaTables)</span>
-<span id="cb30-2"><a href="#cb30-2"></a></span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="co"># Get a summary table from an anova</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a></span>
-<span id="cb30-5"><a href="#cb30-5"></a><span class="fu">apa.aov.table</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">library</span>(apaTables)</span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="co"># Get a summary table from an anova</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="fu">apa.aov.table</span>(aov_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -4866,9 +3869,9 @@ ANOVA results using HOMEPOS as the dependent variable
 
 Note: Values in square brackets indicate the bounds of the 90% confidence interval for partial eta-squared </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># And of a linear model</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a></span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">apa.reg.table</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># And of a linear model</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="fu">apa.reg.table</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -4893,36 +3896,36 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
 </div>
 <p>You can get more aesthetically pleasing versions of both tables using the <code>gt</code> function in the <code>gt</code> package. Before passing the outputs of <code>avo</code> of <code>lm</code> to <code>gt</code>, you will need to use the <code>tidy</code> fucntion from the <code>broom</code> package to tidy the output.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">library</span>(broom)</span>
-<span id="cb34-3"><a href="#cb34-3"></a></span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># Tidy the outputs</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a></span>
-<span id="cb34-6"><a href="#cb34-6"></a>tidied_aov <span class="ot">&lt;-</span> <span class="fu">tidy</span>(aov_out)</span>
-<span id="cb34-7"><a href="#cb34-7"></a>tidied_mod1 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(mod1)</span>
-<span id="cb34-8"><a href="#cb34-8"></a></span>
-<span id="cb34-9"><a href="#cb34-9"></a></span>
-<span id="cb34-10"><a href="#cb34-10"></a><span class="co"># Produced a nicely formatted table from an anova</span></span>
-<span id="cb34-11"><a href="#cb34-11"></a></span>
-<span id="cb34-12"><a href="#cb34-12"></a><span class="fu">gt</span>(tidied_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">library</span>(broom)</span>
+<span id="cb32-3"><a href="#cb32-3"></a></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># Tidy the outputs</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a></span>
+<span id="cb32-6"><a href="#cb32-6"></a>tidied_aov <span class="ot">&lt;-</span> <span class="fu">tidy</span>(aov_out)</span>
+<span id="cb32-7"><a href="#cb32-7"></a>tidied_mod1 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(mod1)</span>
+<span id="cb32-8"><a href="#cb32-8"></a></span>
+<span id="cb32-9"><a href="#cb32-9"></a></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="co"># Produced a nicely formatted table from an anova</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a></span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="fu">gt</span>(tidied_aov)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="vyvqrwllza" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vyvqrwllza table {
+<div id="muwnhpejvr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#muwnhpejvr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vyvqrwllza thead, #vyvqrwllza tbody, #vyvqrwllza tfoot, #vyvqrwllza tr, #vyvqrwllza td, #vyvqrwllza th {
+#muwnhpejvr thead, #muwnhpejvr tbody, #muwnhpejvr tfoot, #muwnhpejvr tr, #muwnhpejvr td, #muwnhpejvr th {
   border-style: none;
 }
 
-#vyvqrwllza p {
+#muwnhpejvr p {
   margin: 0;
   padding: 0;
 }
 
-#vyvqrwllza .gt_table {
+#muwnhpejvr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4948,12 +3951,12 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-left-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_caption {
+#muwnhpejvr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vyvqrwllza .gt_title {
+#muwnhpejvr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4965,7 +3968,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-width: 0;
 }
 
-#vyvqrwllza .gt_subtitle {
+#muwnhpejvr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4977,7 +3980,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-top-width: 0;
 }
 
-#vyvqrwllza .gt_heading {
+#muwnhpejvr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4989,13 +3992,13 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_bottom_border {
+#muwnhpejvr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_col_headings {
+#muwnhpejvr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5010,7 +4013,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_col_heading {
+#muwnhpejvr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5030,7 +4033,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   overflow-x: hidden;
 }
 
-#vyvqrwllza .gt_column_spanner_outer {
+#muwnhpejvr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5042,15 +4045,15 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 4px;
 }
 
-#vyvqrwllza .gt_column_spanner_outer:first-child {
+#muwnhpejvr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vyvqrwllza .gt_column_spanner_outer:last-child {
+#muwnhpejvr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vyvqrwllza .gt_column_spanner {
+#muwnhpejvr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5062,11 +4065,11 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   width: 100%;
 }
 
-#vyvqrwllza .gt_spanner_row {
+#muwnhpejvr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vyvqrwllza .gt_group_heading {
+#muwnhpejvr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5092,7 +4095,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   text-align: left;
 }
 
-#vyvqrwllza .gt_empty_group_heading {
+#muwnhpejvr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5107,15 +4110,15 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   vertical-align: middle;
 }
 
-#vyvqrwllza .gt_from_md > :first-child {
+#muwnhpejvr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vyvqrwllza .gt_from_md > :last-child {
+#muwnhpejvr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vyvqrwllza .gt_row {
+#muwnhpejvr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5134,7 +4137,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   overflow-x: hidden;
 }
 
-#vyvqrwllza .gt_stub {
+#muwnhpejvr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5147,7 +4150,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#vyvqrwllza .gt_stub_row_group {
+#muwnhpejvr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5161,15 +4164,15 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   vertical-align: top;
 }
 
-#vyvqrwllza .gt_row_group_first td {
+#muwnhpejvr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vyvqrwllza .gt_row_group_first th {
+#muwnhpejvr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vyvqrwllza .gt_summary_row {
+#muwnhpejvr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5179,16 +4182,16 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#vyvqrwllza .gt_first_summary_row {
+#muwnhpejvr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_first_summary_row.thick {
+#muwnhpejvr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vyvqrwllza .gt_last_summary_row {
+#muwnhpejvr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5198,7 +4201,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_grand_summary_row {
+#muwnhpejvr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5208,7 +4211,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#vyvqrwllza .gt_first_grand_summary_row {
+#muwnhpejvr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5218,7 +4221,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-top-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_last_grand_summary_row_top {
+#muwnhpejvr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5228,11 +4231,11 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_striped {
+#muwnhpejvr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vyvqrwllza .gt_table_body {
+#muwnhpejvr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5241,7 +4244,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_footnotes {
+#muwnhpejvr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5255,7 +4258,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_footnote {
+#muwnhpejvr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5264,7 +4267,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#vyvqrwllza .gt_sourcenotes {
+#muwnhpejvr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5278,7 +4281,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#vyvqrwllza .gt_sourcenote {
+#muwnhpejvr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5286,72 +4289,72 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#vyvqrwllza .gt_left {
+#muwnhpejvr .gt_left {
   text-align: left;
 }
 
-#vyvqrwllza .gt_center {
+#muwnhpejvr .gt_center {
   text-align: center;
 }
 
-#vyvqrwllza .gt_right {
+#muwnhpejvr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vyvqrwllza .gt_font_normal {
+#muwnhpejvr .gt_font_normal {
   font-weight: normal;
 }
 
-#vyvqrwllza .gt_font_bold {
+#muwnhpejvr .gt_font_bold {
   font-weight: bold;
 }
 
-#vyvqrwllza .gt_font_italic {
+#muwnhpejvr .gt_font_italic {
   font-style: italic;
 }
 
-#vyvqrwllza .gt_super {
+#muwnhpejvr .gt_super {
   font-size: 65%;
 }
 
-#vyvqrwllza .gt_footnote_marks {
+#muwnhpejvr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vyvqrwllza .gt_asterisk {
+#muwnhpejvr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vyvqrwllza .gt_indent_1 {
+#muwnhpejvr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vyvqrwllza .gt_indent_2 {
+#muwnhpejvr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vyvqrwllza .gt_indent_3 {
+#muwnhpejvr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vyvqrwllza .gt_indent_4 {
+#muwnhpejvr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vyvqrwllza .gt_indent_5 {
+#muwnhpejvr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vyvqrwllza .katex-display {
+#muwnhpejvr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vyvqrwllza div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#muwnhpejvr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5385,27 +4388,27 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
 </table>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># And of a linear model</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a></span>
-<span id="cb35-3"><a href="#cb35-3"></a><span class="fu">gt</span>(tidied_mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># And of a linear model</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="fu">gt</span>(tidied_mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ikyhzrvllg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ikyhzrvllg table {
+<div id="qjogjtxsbs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qjogjtxsbs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ikyhzrvllg thead, #ikyhzrvllg tbody, #ikyhzrvllg tfoot, #ikyhzrvllg tr, #ikyhzrvllg td, #ikyhzrvllg th {
+#qjogjtxsbs thead, #qjogjtxsbs tbody, #qjogjtxsbs tfoot, #qjogjtxsbs tr, #qjogjtxsbs td, #qjogjtxsbs th {
   border-style: none;
 }
 
-#ikyhzrvllg p {
+#qjogjtxsbs p {
   margin: 0;
   padding: 0;
 }
 
-#ikyhzrvllg .gt_table {
+#qjogjtxsbs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5431,12 +4434,12 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-left-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_caption {
+#qjogjtxsbs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ikyhzrvllg .gt_title {
+#qjogjtxsbs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5448,7 +4451,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-width: 0;
 }
 
-#ikyhzrvllg .gt_subtitle {
+#qjogjtxsbs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5460,7 +4463,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-top-width: 0;
 }
 
-#ikyhzrvllg .gt_heading {
+#qjogjtxsbs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5472,13 +4475,13 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_bottom_border {
+#qjogjtxsbs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_col_headings {
+#qjogjtxsbs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5493,7 +4496,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_col_heading {
+#qjogjtxsbs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5513,7 +4516,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   overflow-x: hidden;
 }
 
-#ikyhzrvllg .gt_column_spanner_outer {
+#qjogjtxsbs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5525,15 +4528,15 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 4px;
 }
 
-#ikyhzrvllg .gt_column_spanner_outer:first-child {
+#qjogjtxsbs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ikyhzrvllg .gt_column_spanner_outer:last-child {
+#qjogjtxsbs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ikyhzrvllg .gt_column_spanner {
+#qjogjtxsbs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5545,11 +4548,11 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   width: 100%;
 }
 
-#ikyhzrvllg .gt_spanner_row {
+#qjogjtxsbs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ikyhzrvllg .gt_group_heading {
+#qjogjtxsbs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5575,7 +4578,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   text-align: left;
 }
 
-#ikyhzrvllg .gt_empty_group_heading {
+#qjogjtxsbs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5590,15 +4593,15 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   vertical-align: middle;
 }
 
-#ikyhzrvllg .gt_from_md > :first-child {
+#qjogjtxsbs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ikyhzrvllg .gt_from_md > :last-child {
+#qjogjtxsbs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ikyhzrvllg .gt_row {
+#qjogjtxsbs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5617,7 +4620,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   overflow-x: hidden;
 }
 
-#ikyhzrvllg .gt_stub {
+#qjogjtxsbs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5630,7 +4633,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#ikyhzrvllg .gt_stub_row_group {
+#qjogjtxsbs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5644,15 +4647,15 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   vertical-align: top;
 }
 
-#ikyhzrvllg .gt_row_group_first td {
+#qjogjtxsbs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ikyhzrvllg .gt_row_group_first th {
+#qjogjtxsbs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ikyhzrvllg .gt_summary_row {
+#qjogjtxsbs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5662,16 +4665,16 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#ikyhzrvllg .gt_first_summary_row {
+#qjogjtxsbs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_first_summary_row.thick {
+#qjogjtxsbs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ikyhzrvllg .gt_last_summary_row {
+#qjogjtxsbs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5681,7 +4684,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_grand_summary_row {
+#qjogjtxsbs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5691,7 +4694,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#ikyhzrvllg .gt_first_grand_summary_row {
+#qjogjtxsbs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5701,7 +4704,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-top-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_last_grand_summary_row_top {
+#qjogjtxsbs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5711,11 +4714,11 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_striped {
+#qjogjtxsbs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ikyhzrvllg .gt_table_body {
+#qjogjtxsbs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5724,7 +4727,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-bottom-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_footnotes {
+#qjogjtxsbs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5738,7 +4741,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_footnote {
+#qjogjtxsbs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5747,7 +4750,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#ikyhzrvllg .gt_sourcenotes {
+#qjogjtxsbs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5761,7 +4764,7 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   border-right-color: #D3D3D3;
 }
 
-#ikyhzrvllg .gt_sourcenote {
+#qjogjtxsbs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5769,72 +4772,72 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
   padding-right: 5px;
 }
 
-#ikyhzrvllg .gt_left {
+#qjogjtxsbs .gt_left {
   text-align: left;
 }
 
-#ikyhzrvllg .gt_center {
+#qjogjtxsbs .gt_center {
   text-align: center;
 }
 
-#ikyhzrvllg .gt_right {
+#qjogjtxsbs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ikyhzrvllg .gt_font_normal {
+#qjogjtxsbs .gt_font_normal {
   font-weight: normal;
 }
 
-#ikyhzrvllg .gt_font_bold {
+#qjogjtxsbs .gt_font_bold {
   font-weight: bold;
 }
 
-#ikyhzrvllg .gt_font_italic {
+#qjogjtxsbs .gt_font_italic {
   font-style: italic;
 }
 
-#ikyhzrvllg .gt_super {
+#qjogjtxsbs .gt_super {
   font-size: 65%;
 }
 
-#ikyhzrvllg .gt_footnote_marks {
+#qjogjtxsbs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ikyhzrvllg .gt_asterisk {
+#qjogjtxsbs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ikyhzrvllg .gt_indent_1 {
+#qjogjtxsbs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ikyhzrvllg .gt_indent_2 {
+#qjogjtxsbs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ikyhzrvllg .gt_indent_3 {
+#qjogjtxsbs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ikyhzrvllg .gt_indent_4 {
+#qjogjtxsbs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ikyhzrvllg .gt_indent_5 {
+#qjogjtxsbs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ikyhzrvllg .katex-display {
+#qjogjtxsbs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ikyhzrvllg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qjogjtxsbs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5875,23 +4878,23 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
 </div>
 </section><section id="how-do-i-add-the-results-from-statistical-tests-to-ggplot" class="level2" data-number="1.9"><h2 data-number="1.9" class="anchored" data-anchor-id="how-do-i-add-the-results-from-statistical-tests-to-ggplot">
 <span class="header-section-number">1.9</span> How do I add the results from statistical tests to ggplot?</h2>
-<p>There are a number of helpful packages that can add data to charts. First <code>ggpubr</code> lets you add data about the regression line to your plot using the <code>stat_regline_equation()</code> function. You will need to tweak the coordinates (<code>label.x</code> and <code>label.y</code>) to appear appropiately on your chart.</p>
+<p>There are a number of helpful packages that can add data to charts. First <code>ggpubr</code> lets you add data about the regression line to your plot using the <code>stat_regline_equation()</code> function. You will need to tweak the coordinates (<code>label.x</code> and <code>label.y</code>) to appear appropriately on your chart.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Load the ggpbur library (you will need to run install.packages("ggpubr") the first time you use it)</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb36-3"><a href="#cb36-3"></a></span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb36-5"><a href="#cb36-5"></a></span>
-<span id="cb36-6"><a href="#cb36-6"></a>UK_wealth_reading <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb36-7"><a href="#cb36-7"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS) <span class="sc">%&gt;%</span></span>
-<span id="cb36-8"><a href="#cb36-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
-<span id="cb36-9"><a href="#cb36-9"></a></span>
-<span id="cb36-10"><a href="#cb36-10"></a><span class="co"># Plot a scatter plot with the regression equation</span></span>
-<span id="cb36-11"><a href="#cb36-11"></a></span>
-<span id="cb36-12"><a href="#cb36-12"></a><span class="fu">ggplot</span>(UK_wealth_reading, <span class="fu">aes</span>(<span class="at">x =</span> HOMEPOS, <span class="at">y =</span> PV1READ)) <span class="sc">+</span></span>
-<span id="cb36-13"><a href="#cb36-13"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"lightgreen"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb36-14"><a href="#cb36-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb36-15"><a href="#cb36-15"></a>  <span class="fu">stat_regline_equation</span>(<span class="at">label.x =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">label.y =</span> <span class="dv">600</span>)  <span class="co"># Add regression equation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Load the ggpubr library (you will need to run install.packages("ggpubr") the first time you use it)</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a></span>
+<span id="cb34-6"><a href="#cb34-6"></a>UK_wealth_reading <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS) <span class="sc">%&gt;%</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
+<span id="cb34-9"><a href="#cb34-9"></a></span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="co"># Plot a scatter plot with the regression equation</span></span>
+<span id="cb34-11"><a href="#cb34-11"></a></span>
+<span id="cb34-12"><a href="#cb34-12"></a><span class="fu">ggplot</span>(UK_wealth_reading, <span class="fu">aes</span>(<span class="at">x =</span> HOMEPOS, <span class="at">y =</span> PV1READ)) <span class="sc">+</span></span>
+<span id="cb34-13"><a href="#cb34-13"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"lightgreen"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb34-14"><a href="#cb34-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb34-15"><a href="#cb34-15"></a>  <span class="fu">stat_regline_equation</span>(<span class="at">label.x =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">label.y =</span> <span class="dv">600</span>)  <span class="co"># Add regression equation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="A7-QandA_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
@@ -5901,24 +4904,24 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
 </div>
 <p>You can also use <code>stat_regline_equation</code> to add additional information like the p-value of the model and the R<sup>2</sup> value:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Load the ggpbur library (you will need to run install.packages("ggpubr") the first time you use it)</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb37-3"><a href="#cb37-3"></a></span>
-<span id="cb37-4"><a href="#cb37-4"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb37-5"><a href="#cb37-5"></a></span>
-<span id="cb37-6"><a href="#cb37-6"></a>UK_wealth_reading <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb37-7"><a href="#cb37-7"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS) <span class="sc">%&gt;%</span></span>
-<span id="cb37-8"><a href="#cb37-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
-<span id="cb37-9"><a href="#cb37-9"></a></span>
-<span id="cb37-10"><a href="#cb37-10"></a><span class="co"># Plot a scatter plot with the regression equation</span></span>
-<span id="cb37-11"><a href="#cb37-11"></a></span>
-<span id="cb37-12"><a href="#cb37-12"></a><span class="fu">ggplot</span>(UK_wealth_reading, <span class="fu">aes</span>(<span class="at">x =</span> HOMEPOS, <span class="at">y =</span> PV1READ)) <span class="sc">+</span></span>
-<span id="cb37-13"><a href="#cb37-13"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"lightgreen"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb37-14"><a href="#cb37-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span> <span class="co"># Ensure formula is specified here too</span></span>
-<span id="cb37-15"><a href="#cb37-15"></a>  <span class="fu">stat_regline_equation</span>(</span>
-<span id="cb37-16"><a href="#cb37-16"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(..eq.label.., ..adj.rr.label.., <span class="at">sep =</span> <span class="st">"~~~~"</span>)), <span class="co"># Indicate you want the equation and R2 value and the seperator text</span></span>
-<span id="cb37-17"><a href="#cb37-17"></a>    <span class="at">label.x =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">label.y =</span> <span class="dv">600</span>,</span>
-<span id="cb37-18"><a href="#cb37-18"></a>    <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Load the ggpbur library (you will need to run install.packages("ggpubr") the first time you use it)</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a></span>
+<span id="cb35-6"><a href="#cb35-6"></a>UK_wealth_reading <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>  <span class="fu">select</span>(CNT, PV1READ, HOMEPOS) <span class="sc">%&gt;%</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
+<span id="cb35-9"><a href="#cb35-9"></a></span>
+<span id="cb35-10"><a href="#cb35-10"></a><span class="co"># Plot a scatter plot with the regression equation</span></span>
+<span id="cb35-11"><a href="#cb35-11"></a></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="fu">ggplot</span>(UK_wealth_reading, <span class="fu">aes</span>(<span class="at">x =</span> HOMEPOS, <span class="at">y =</span> PV1READ)) <span class="sc">+</span></span>
+<span id="cb35-13"><a href="#cb35-13"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"lightgreen"</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb35-14"><a href="#cb35-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span> <span class="co"># Ensure formula is specified here too</span></span>
+<span id="cb35-15"><a href="#cb35-15"></a>  <span class="fu">stat_regline_equation</span>(</span>
+<span id="cb35-16"><a href="#cb35-16"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(..eq.label.., ..adj.rr.label.., <span class="at">sep =</span> <span class="st">"~~~~"</span>)), <span class="co"># Indicate you want the equation and R2 value and the separator text</span></span>
+<span id="cb35-17"><a href="#cb35-17"></a>    <span class="at">label.x =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">label.y =</span> <span class="dv">600</span>,</span>
+<span id="cb35-18"><a href="#cb35-18"></a>    <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="A7-QandA_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
@@ -5926,26 +4929,26 @@ Square brackets are used to enclose the lower and upper limits of a confidence i
 </div>
 </div>
 </div>
-<p>Another powerful package for adding data to graphs is <code>ggstatsplot</code>. For example, it can anotate a plot with anova data. For example, if you want compare the science scores of the UK, Japan and the US:</p>
+<p>Another powerful package for adding data to graphs is <code>ggstatsplot</code>. For example, it can annotate a plot with anova data. For example, if you want compare the science scores of the UK, Japan and the US:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Load the ggstatplot library (you will need to run install.packages("ggstatsplot") the first time you use it)</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb38-3"><a href="#cb38-3"></a></span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="co"># Create example dataframe</span></span>
-<span id="cb38-5"><a href="#cb38-5"></a></span>
-<span id="cb38-6"><a href="#cb38-6"></a>country_sci_data <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb38-7"><a href="#cb38-7"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
-<span id="cb38-8"><a href="#cb38-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Japan"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>)</span>
-<span id="cb38-9"><a href="#cb38-9"></a></span>
-<span id="cb38-10"><a href="#cb38-10"></a><span class="co"># Use ggstatplot to create an annotated plot with an anova result</span></span>
-<span id="cb38-11"><a href="#cb38-11"></a></span>
-<span id="cb38-12"><a href="#cb38-12"></a><span class="fu">ggbetweenstats</span>(</span>
-<span id="cb38-13"><a href="#cb38-13"></a>  <span class="at">data  =</span> country_sci_data,</span>
-<span id="cb38-14"><a href="#cb38-14"></a>  <span class="at">x     =</span> CNT,</span>
-<span id="cb38-15"><a href="#cb38-15"></a>  <span class="at">y     =</span> PV1SCIE,</span>
-<span id="cb38-16"><a href="#cb38-16"></a>  <span class="at">title =</span> <span class="st">"Science scores in the UK, US and Japan"</span>,</span>
-<span id="cb38-17"><a href="#cb38-17"></a>  <span class="at">type  =</span> <span class="st">"parametric"</span> <span class="co"># Forces the test to be ANOVA</span></span>
-<span id="cb38-18"><a href="#cb38-18"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Load the ggstatplot library (you will need to run install.packages("ggstatsplot") the first time you use it)</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb36-3"><a href="#cb36-3"></a></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="co"># Create example dataframe</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a></span>
+<span id="cb36-6"><a href="#cb36-6"></a>country_sci_data <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a>  <span class="fu">select</span>(CNT, PV1SCIE) <span class="sc">%&gt;%</span></span>
+<span id="cb36-8"><a href="#cb36-8"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"Japan"</span> <span class="sc">|</span> CNT <span class="sc">==</span> <span class="st">"United States"</span>)</span>
+<span id="cb36-9"><a href="#cb36-9"></a></span>
+<span id="cb36-10"><a href="#cb36-10"></a><span class="co"># Use ggstatplot to create an annotated plot with an anova result</span></span>
+<span id="cb36-11"><a href="#cb36-11"></a></span>
+<span id="cb36-12"><a href="#cb36-12"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb36-13"><a href="#cb36-13"></a>  <span class="at">data  =</span> country_sci_data,</span>
+<span id="cb36-14"><a href="#cb36-14"></a>  <span class="at">x     =</span> CNT,</span>
+<span id="cb36-15"><a href="#cb36-15"></a>  <span class="at">y     =</span> PV1SCIE,</span>
+<span id="cb36-16"><a href="#cb36-16"></a>  <span class="at">title =</span> <span class="st">"Science scores in the UK, US and Japan"</span>,</span>
+<span id="cb36-17"><a href="#cb36-17"></a>  <span class="at">type  =</span> <span class="st">"parametric"</span> <span class="co"># Forces the test to be ANOVA</span></span>
+<span id="cb36-18"><a href="#cb36-18"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="A7-QandA_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
