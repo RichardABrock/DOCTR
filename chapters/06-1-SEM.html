@@ -1728,38 +1728,6 @@ Variances:
 </section>
 <section id="fitting-the-structural-model" class="level3" data-number="1.3.5">
 <h3 data-number="1.3.5" class="anchored" data-anchor-id="fitting-the-structural-model"><span class="header-section-number">1.3.5</span> Fitting the structural model</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A useful rule of thumb to check before fitting a structural model is the t-rule. The t-rule is a necessary but insufficient criterion for model identification (i.e.&nbsp;that there is enough information in the observed data to find a single unique solution for all parameter). The t-rule states that the number of knowns (the number of unique variances and covariances in the data) must be greater than or equal to the number of unknowns (the number of parameters to be estimated). If the t-rule is not satisfied, the model is under-identified and cannot be estimated.</p>
-<p>To perform the check, first calculate the number of unknown parameters in the model. The number of unknown parameters is equal to the number of variances, covariances, and regression coefficients that are estimated in the model. In the example, we have 5 observed variables (<code>PA002Q05TA</code>, <code>PA002Q06NA</code>, <code>PA002Q07NA</code>, <code>PA002Q08NA</code>, <code>PA002Q09NA</code>) and 1 latent variable (<code>hands_on_science_capital</code>). The number of unknown parameters is the sum of the following:</p>
-<ul>
-<li>Variances of observed variables: 5 (one for each observed variable)</li>
-<li>Variance of the latent variable: 1</li>
-<li>Covariances between the latent variable and observed variables: 5 (one for each observed variable)</li>
-<li>Regression coefficients: 1 (for the regression of <code>PV1SCIE</code> on <code>hands_on_science_capital</code> and <code>HOMEPOS</code>)</li>
-</ul>
-<p>This gives a total of 12 unknown parameters.</p>
-<p>The number of known parameter is calculated as follows:</p>
-<blockquote class="blockquote">
-<p>observed knowns = (p * (p + 1)) / 2</p>
-</blockquote>
-<p>where p is the number of observed variables. In this case, we have 5 observed variables, so:</p>
-<blockquote class="blockquote">
-<p>observed knowns = (5 * (5 + 1)) / 2 = 15</p>
-</blockquote>
-<p>The t-rule states that the number of observed knowns (the number of unique variances and covariances in the data) must be greater than or equal to the number of unknowns (the number of parameters to be estimated).</p>
-<p>In our case number of knowns (15) is greater than the number of unknowns (12), so the t-rule is satisfied and the model is identified. If the number of knowns is equal to the number of unknowns, the model is just-identified and will have a perfect fit. This means that the model will fit the data perfectly, but it does not provide any information about the quality of the model.</p>
-<p>If the number of knowns is less than the number of unknowns, the model is under-identified and cannot be estimated.</p>
-</div>
-</div>
 <p>To fit the model using <code>sem</code> in the same way as above, and plot the model using <code>semPaths</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-28-1"><a href="#annotated-cell-28-1"></a><span class="co"># Run the full model - we define both the latent variable (the measurement model)</span></span>
@@ -1918,6 +1886,57 @@ R-Square:
     PV1SCIE           0.154</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A useful rule of thumb to check before fitting a structural equation model (SEM) is the t-rule. The t-rule is a necessary, but insufficient, condition for model identification: that is, whether the observed data provide enough information to estimate a unique set of model parameters. The rule states that the number of independent pieces of information in the observed data must be greater than or equal to the number of free parameters to be estimated. If this condition is not satisfied, the model is under-identified and cannot be uniquely estimated.</p>
+<p>To perform this check, we first count the free parameters in the model. These may include factor loadings, regression coefficients, variances, covariances, intercepts and, for categorical indicators, thresholds.</p>
+<p>In our example, we have five categorical variables (<code>PA002Q05TA</code>, <code>PA002Q06NA</code>, <code>PA002Q07NA</code>, <code>PA002Q08NA</code>, <code>PA002Q09NA</code>) which measure the latent variable (<code>hands_on_science_capital</code>). The structural model predicts science achievement (<code>PV1SCIE</code>) from science capital and <code>HOMEPOS.</code></p>
+<p>The number of unknown parameters is the sum of the following (the counting here is complicated because the ordinal scales have thresholds, and the latent variable has a variance):</p>
+<ul>
+<li>4 factor loadings, with one loading fixed to 1 for identification.</li>
+<li>2 regression coefficients, predicting science achievement from science capital and HOMEPOS.</li>
+<li>15 thresholds, with 3 thresholds for each of the 5 categorical indicators.</li>
+<li>1 residual variance for science achievement.</li>
+<li>1 variance for the latent science-capital variable.</li>
+<li>1 intercept for science achievement.</li>
+</ul>
+<p>This gives a total of 24 unknown parameters.</p>
+<p>Rather than counting the parameters (which is hard to do oneself!), we can use the <code>lavInspect()</code> function to get the number of free parameters in the model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># find the number of free parameters in the model</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">lavInspect</span>(fit_sem, <span class="st">"npar"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+</div>
+<p>For a model containing only continuous observed variables and a covariance structure, the number of unique variances and covariances is:</p>
+<blockquote class="blockquote">
+<p>sample parameters = (p * (p + 1)) / 2</p>
+</blockquote>
+<p>Where (p) is the number of observed variables. However, when the model includes ordinal indicators, the calculation is more complicated because thresholds and associations among variables must also be considered.</p>
+<p>In our case, as we have likert items, the counting of sample parameters is more complicated. We can use the <code>fitMeasures()</code>and <code>lavInspect()</code> function to get the number of knowns in the model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># find the number of known parameters in the model</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">fitMeasures</span>(fit_sem, <span class="st">"df"</span>) <span class="sc">+</span> <span class="fu">lavInspect</span>(fit_sem, <span class="st">"npar"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>df 
+38 </code></pre>
+</div>
+</div>
+<p>The t-rule states that the number of observed sample parameters (the number of unique variances and covariances in the data) must be greater than or equal to the number of unknowns (the number of parameters to be estimated).</p>
+<p>In our case, the number of sample parameters (38) is greater than the number of unknowns (24), so the t-rule is satisfied. However, this does not prove that the model is identified; identification also depends on the model’s structure and whether its parameters can be uniquely estimated.</p>
+<p>If the number of sample parameters is equal to the number of unknowns, the model is just-identified and will have a perfect fit. This means that the model will fit the data exactly, but no information about the model fit will be calculated. A just-identified model has zero degrees of freedom and reproduces the sample statistics exactly, leaving no degrees of freedom for testing overall model fit. Such models may be useful for estimating parameters implied by a theoretical model, but they cannot be used to evaluate the model’s overall fit to the data.</p>
+<p>If the number of sample parameters is less than the number of unknowns, the model is under-identified and cannot be estimated.</p>
+</div>
+</div>
 <p>When getting an SEM output, the first thing to look at is the model fit indicators. In this case:</p>
 <table class="caption-top table">
 <thead>
@@ -2020,13 +2039,13 @@ R-Square:
 <h3 data-number="1.3.6" class="anchored" data-anchor-id="formatting-path-diagrams"><span class="header-section-number">1.3.6</span> Formatting path diagrams</h3>
 <p>Once we have both a measurement and structural model, we can use the <code>semPlot</code> pacakage to produce a path diagram. For example, the simplest way to produce a plot from the model above is to use the <code>semPaths()</code> function. That doesn’t give a particularly attractive initial plot:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># plot a simple path diagram</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">semPaths</span>(fit_sem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># plot a simple path diagram</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="fu">semPaths</span>(fit_sem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2045,48 +2064,12 @@ Tip
 <div class="callout-body-container callout-body">
 <p>In your plot, triangles are the observed-variable intercepts/means. If adding an ordinal variable, with the addition of triangles to the plot, makes your path diagram too crowded, you can turn off estimates for thresholds, intercepts and residual variances as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># plot a path diagram without observed-variable intercepts/means. and thresholds</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a></span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="fu">semPaths</span>(fit_sem,</span>
-<span id="cb30-4"><a href="#cb30-4"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb30-5"><a href="#cb30-5"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb30-6"><a href="#cb30-6"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)                              </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>On the plot above, there are not coefficients on the paths. You can use <code>whatLabels = "Estimate"</code> to turn on the coefficients.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># add coefficient estimates to path diagram</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">semPaths</span>(fit_sem, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb31-4"><a href="#cb31-4"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb31-5"><a href="#cb31-5"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb31-6"><a href="#cb31-6"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>To rotate the plot (<code>rotation = 2</code>):</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb32-2"><a href="#cb32-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb32-3"><a href="#cb32-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb32-4"><a href="#cb32-4"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb32-5"><a href="#cb32-5"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb32-6"><a href="#cb32-6"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># plot a path diagram without observed-variable intercepts/means. and thresholds</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a></span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="fu">semPaths</span>(fit_sem,</span>
+<span id="cb34-4"><a href="#cb34-4"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb34-5"><a href="#cb34-5"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-6"><a href="#cb34-6"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)                              </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2095,17 +2078,16 @@ Tip
 </div>
 </div>
 </div>
-<ul>
-<li>To include more letters of variable names in the nodes (<code>nCharNodes = 7</code>) specifies the number of characters displayed (default is 3):</li>
-</ul>
+</div>
+</div>
+<p>On the plot above, there are not coefficients on the paths. You can use <code>whatLabels = "Estimate"</code> to turn on the coefficients.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb33-2"><a href="#cb33-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb33-3"><a href="#cb33-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>,</span>
-<span id="cb33-4"><a href="#cb33-4"></a>         <span class="at">nCharNodes =</span> <span class="dv">7</span>,</span>
-<span id="cb33-5"><a href="#cb33-5"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb33-6"><a href="#cb33-6"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb33-7"><a href="#cb33-7"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># add coefficient estimates to path diagram</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="fu">semPaths</span>(fit_sem, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb35-4"><a href="#cb35-4"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb35-5"><a href="#cb35-5"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb35-6"><a href="#cb35-6"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2115,17 +2097,15 @@ Tip
 </div>
 </div>
 <ul>
-<li>To change the colour of the lines (<code>edge.color="blue"</code>) and the size of the nodes (<code>sizeMan=8</code>):</li>
+<li>To rotate the plot (<code>rotation = 2</code>):</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb34-2"><a href="#cb34-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb34-3"><a href="#cb34-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb34-4"><a href="#cb34-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb34-5"><a href="#cb34-5"></a>         <span class="at">sizeMan =</span> <span class="dv">8</span>, </span>
-<span id="cb34-6"><a href="#cb34-6"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb34-7"><a href="#cb34-7"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb34-8"><a href="#cb34-8"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb36-2"><a href="#cb36-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb36-3"><a href="#cb36-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb36-4"><a href="#cb36-4"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb36-5"><a href="#cb36-5"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb36-6"><a href="#cb36-6"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2135,16 +2115,16 @@ Tip
 </div>
 </div>
 <ul>
-<li>To link the thickness of lines to their value (<code>"std"</code>):</li>
+<li>To include more letters of variable names in the nodes (<code>nCharNodes = 7</code>) specifies the number of characters displayed (default is 3):</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb35-2"><a href="#cb35-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb35-3"><a href="#cb35-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb35-4"><a href="#cb35-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb35-6"><a href="#cb35-6"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb35-7"><a href="#cb35-7"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb37-2"><a href="#cb37-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb37-3"><a href="#cb37-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>,</span>
+<span id="cb37-4"><a href="#cb37-4"></a>         <span class="at">nCharNodes =</span> <span class="dv">7</span>,</span>
+<span id="cb37-5"><a href="#cb37-5"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb37-6"><a href="#cb37-6"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb37-7"><a href="#cb37-7"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2154,18 +2134,17 @@ Tip
 </div>
 </div>
 <ul>
-<li>To make the labels larger (<code>edge.label.cex = 0.8</code>):</li>
+<li>To change the colour of the lines (<code>edge.color="blue"</code>) and the size of the nodes (<code>sizeMan=8</code>):</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">semPaths</span>(fit_sem,</span>
-<span id="cb36-2"><a href="#cb36-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>,</span>
-<span id="cb36-3"><a href="#cb36-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb36-4"><a href="#cb36-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>,</span>
-<span id="cb36-5"><a href="#cb36-5"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>,</span>
-<span id="cb36-6"><a href="#cb36-6"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb36-7"><a href="#cb36-7"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb36-8"><a href="#cb36-8"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb36-9"><a href="#cb36-9"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb38-2"><a href="#cb38-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb38-3"><a href="#cb38-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb38-4"><a href="#cb38-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb38-5"><a href="#cb38-5"></a>         <span class="at">sizeMan =</span> <span class="dv">8</span>, </span>
+<span id="cb38-6"><a href="#cb38-6"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb38-7"><a href="#cb38-7"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb38-8"><a href="#cb38-8"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2175,19 +2154,16 @@ Tip
 </div>
 </div>
 <ul>
-<li>To change the text size in the nodes (<code>label.cex = 0.8</code>):</li>
+<li>To link the thickness of lines to their value (<code>"std"</code>):</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb37-2"><a href="#cb37-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb37-3"><a href="#cb37-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb37-4"><a href="#cb37-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb37-5"><a href="#cb37-5"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>,</span>
-<span id="cb37-6"><a href="#cb37-6"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb37-7"><a href="#cb37-7"></a>         <span class="at">label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb37-8"><a href="#cb37-8"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb37-9"><a href="#cb37-9"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb37-10"><a href="#cb37-10"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb39-2"><a href="#cb39-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb39-3"><a href="#cb39-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb39-4"><a href="#cb39-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb39-6"><a href="#cb39-6"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb39-7"><a href="#cb39-7"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2197,19 +2173,18 @@ Tip
 </div>
 </div>
 <ul>
-<li>To add a title (<code>title("PISA path diagram")</code>):</li>
+<li>To make the labels larger (<code>edge.label.cex = 0.8</code>):</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb38-2"><a href="#cb38-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
-<span id="cb38-3"><a href="#cb38-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb38-4"><a href="#cb38-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb38-5"><a href="#cb38-5"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>, </span>
-<span id="cb38-6"><a href="#cb38-6"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb38-7"><a href="#cb38-7"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb38-8"><a href="#cb38-8"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb38-9"><a href="#cb38-9"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb38-10"><a href="#cb38-10"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">semPaths</span>(fit_sem,</span>
+<span id="cb40-2"><a href="#cb40-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>,</span>
+<span id="cb40-3"><a href="#cb40-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb40-4"><a href="#cb40-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb40-5"><a href="#cb40-5"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>,</span>
+<span id="cb40-6"><a href="#cb40-6"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb40-7"><a href="#cb40-7"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb40-8"><a href="#cb40-8"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb40-9"><a href="#cb40-9"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2219,31 +2194,19 @@ Tip
 </div>
 </div>
 <ul>
-<li>To give longer node names (<code>nodeNames=nodenames</code>), and you can increase the abbreviation of labels to a set number of characters in the nodes using <code>nCharNodes = 3</code>. <code>node.label.cex</code> sets the size of the node label text:</li>
+<li>To change the text size in the nodes (<code>label.cex = 0.8</code>):</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>nodeLabels <span class="ot">=</span> <span class="fu">c</span>(</span>
-<span id="cb39-2"><a href="#cb39-2"></a>    <span class="st">"Science capital"</span>,</span>
-<span id="cb39-3"><a href="#cb39-3"></a>    <span class="st">"Science club"</span>,</span>
-<span id="cb39-4"><a href="#cb39-4"></a>    <span class="st">"Construction"</span>,</span>
-<span id="cb39-5"><a href="#cb39-5"></a>    <span class="st">"Taking apart"</span>,</span>
-<span id="cb39-6"><a href="#cb39-6"></a>    <span class="st">"Fixing"</span>,</span>
-<span id="cb39-7"><a href="#cb39-7"></a>    <span class="st">"Experimenting"</span>,</span>
-<span id="cb39-8"><a href="#cb39-8"></a>    <span class="st">"Science achievement"</span>,</span>
-<span id="cb39-9"><a href="#cb39-9"></a>    <span class="st">"HOMEPOS"</span>)</span>
-<span id="cb39-10"><a href="#cb39-10"></a></span>
-<span id="cb39-11"><a href="#cb39-11"></a><span class="fu">semPaths</span>(fit_sem,</span>
-<span id="cb39-12"><a href="#cb39-12"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>,</span>
-<span id="cb39-13"><a href="#cb39-13"></a>         <span class="at">rotation =</span> <span class="dv">2</span>,</span>
-<span id="cb39-14"><a href="#cb39-14"></a>         <span class="at">edge.color =</span> <span class="st">"black"</span>, </span>
-<span id="cb39-15"><a href="#cb39-15"></a>         <span class="at">sizeMan =</span><span class="dv">5</span>,</span>
-<span id="cb39-16"><a href="#cb39-16"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb39-17"><a href="#cb39-17"></a>         <span class="at">nodeLabels =</span> nodeLabels,</span>
-<span id="cb39-18"><a href="#cb39-18"></a>         <span class="at">nCharNodes =</span> <span class="dv">5</span>, </span>
-<span id="cb39-19"><a href="#cb39-19"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb39-20"><a href="#cb39-20"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb39-21"><a href="#cb39-21"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb39-22"><a href="#cb39-22"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb41-2"><a href="#cb41-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb41-3"><a href="#cb41-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb41-4"><a href="#cb41-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb41-5"><a href="#cb41-5"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>,</span>
+<span id="cb41-6"><a href="#cb41-6"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb41-7"><a href="#cb41-7"></a>         <span class="at">label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb41-8"><a href="#cb41-8"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb41-9"><a href="#cb41-9"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb41-10"><a href="#cb41-10"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2252,83 +2215,139 @@ Tip
 </div>
 </div>
 </div>
+<ul>
+<li>To add a title (<code>title("PISA path diagram")</code>):</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb42-2"><a href="#cb42-2"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>, </span>
+<span id="cb42-3"><a href="#cb42-3"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb42-4"><a href="#cb42-4"></a>         <span class="at">edge.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb42-5"><a href="#cb42-5"></a>         <span class="at">sizeMan =</span> <span class="dv">5</span>, </span>
+<span id="cb42-6"><a href="#cb42-6"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb42-7"><a href="#cb42-7"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb42-8"><a href="#cb42-8"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb42-9"><a href="#cb42-9"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb42-10"><a href="#cb42-10"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>To give longer node names (<code>nodeNames=nodenames</code>), and you can increase the abbreviation of labels to a set number of characters in the nodes using <code>nCharNodes = 3</code>. <code>node.label.cex</code> sets the size of the node label text:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>nodeLabels <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb43-2"><a href="#cb43-2"></a>    <span class="st">"Science capital"</span>,</span>
+<span id="cb43-3"><a href="#cb43-3"></a>    <span class="st">"Science club"</span>,</span>
+<span id="cb43-4"><a href="#cb43-4"></a>    <span class="st">"Construction"</span>,</span>
+<span id="cb43-5"><a href="#cb43-5"></a>    <span class="st">"Taking apart"</span>,</span>
+<span id="cb43-6"><a href="#cb43-6"></a>    <span class="st">"Fixing"</span>,</span>
+<span id="cb43-7"><a href="#cb43-7"></a>    <span class="st">"Experimenting"</span>,</span>
+<span id="cb43-8"><a href="#cb43-8"></a>    <span class="st">"Science achievement"</span>,</span>
+<span id="cb43-9"><a href="#cb43-9"></a>    <span class="st">"HOMEPOS"</span>)</span>
+<span id="cb43-10"><a href="#cb43-10"></a></span>
+<span id="cb43-11"><a href="#cb43-11"></a><span class="fu">semPaths</span>(fit_sem,</span>
+<span id="cb43-12"><a href="#cb43-12"></a>         <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>,</span>
+<span id="cb43-13"><a href="#cb43-13"></a>         <span class="at">rotation =</span> <span class="dv">2</span>,</span>
+<span id="cb43-14"><a href="#cb43-14"></a>         <span class="at">edge.color =</span> <span class="st">"black"</span>, </span>
+<span id="cb43-15"><a href="#cb43-15"></a>         <span class="at">sizeMan =</span><span class="dv">5</span>,</span>
+<span id="cb43-16"><a href="#cb43-16"></a>         <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb43-17"><a href="#cb43-17"></a>         <span class="at">nodeLabels =</span> nodeLabels,</span>
+<span id="cb43-18"><a href="#cb43-18"></a>         <span class="at">nCharNodes =</span> <span class="dv">5</span>, </span>
+<span id="cb43-19"><a href="#cb43-19"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb43-20"><a href="#cb43-20"></a>         <span class="at">intercepts =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb43-21"><a href="#cb43-21"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb43-22"><a href="#cb43-22"></a><span class="fu">title</span>(<span class="st">"PISA path diagram"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>The semPaths() formatting control parameters are summarised below:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">semPaths</span>(</span>
-<span id="cb40-2"><a href="#cb40-2"></a>  <span class="at">object =</span> fit_sem,             <span class="co"># Your fitted lavaan, object</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a>  </span>
-<span id="cb40-4"><a href="#cb40-4"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-5"><a href="#cb40-5"></a>  <span class="co"># Display (Estimates &amp; Labels)</span></span>
-<span id="cb40-6"><a href="#cb40-6"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-7"><a href="#cb40-7"></a></span>
-<span id="cb40-8"><a href="#cb40-8"></a>  <span class="at">whatLabels =</span> <span class="st">"std"</span>,          <span class="co"># Values printed on arrows ("est", "std",     </span></span>
-<span id="cb40-9"><a href="#cb40-9"></a>                                            <span class="st">"name"</span>, <span class="st">"label"</span>, <span class="st">"par"</span>)</span>
-<span id="cb40-10"><a href="#cb40-10"></a>  digits <span class="ot">=</span> <span class="dv">2</span>,                   <span class="co"># Number of decimal places for numeric path                                                  estimates</span></span>
-<span id="cb40-11"><a href="#cb40-11"></a>  </span>
-<span id="cb40-12"><a href="#cb40-12"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-13"><a href="#cb40-13"></a>  <span class="co"># Variable appearance</span></span>
-<span id="cb40-14"><a href="#cb40-14"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-15"><a href="#cb40-15"></a>  label.cex <span class="ot">=</span> <span class="fl">1.2</span>,              <span class="co"># Font size for text insider the nodes</span></span>
-<span id="cb40-16"><a href="#cb40-16"></a>  label.color <span class="ot">=</span> <span class="st">"black"</span>,        <span class="co"># Text color inside the nodes</span></span>
-<span id="cb40-17"><a href="#cb40-17"></a>  label.prop <span class="ot">=</span> <span class="fl">0.9</span>,             <span class="co"># Proportion of node size used for text     </span></span>
-<span id="cb40-18"><a href="#cb40-18"></a>                                   before auto<span class="sc">-</span>scaling</span>
-<span id="cb40-19"><a href="#cb40-19"></a>  nodeLabels <span class="ot">=</span> <span class="cn">NULL</span>,            <span class="co"># Custom character vector of labels (e.g.,                                       c("Resil", "Math"))</span></span>
-<span id="cb40-20"><a href="#cb40-20"></a>  nCharNodes <span class="ot">=</span> <span class="dv">0</span>,               <span class="co"># Max characters before truncating labels (0                                    = no limit)</span></span>
-<span id="cb40-21"><a href="#cb40-21"></a>  </span>
-<span id="cb40-22"><a href="#cb40-22"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-23"><a href="#cb40-23"></a>  <span class="co"># Node sizing and shape</span></span>
-<span id="cb40-24"><a href="#cb40-24"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-25"><a href="#cb40-25"></a>  sizeMan <span class="ot">=</span> <span class="dv">10</span>,                 <span class="co"># Width/size of manifest (observed) variables                                    (rectangles)</span></span>
-<span id="cb40-26"><a href="#cb40-26"></a>  sizeMan2 <span class="ot">=</span> <span class="dv">5</span>,                 <span class="co"># Height of manifest variable rectangles</span></span>
-<span id="cb40-27"><a href="#cb40-27"></a>  sizeLat <span class="ot">=</span> <span class="dv">12</span>,                 <span class="co"># Width/size of latent variables          </span></span>
-<span id="cb40-28"><a href="#cb40-28"></a>                                  (circles<span class="sc">/</span>ellipses)</span>
-<span id="cb40-29"><a href="#cb40-29"></a>  sizeLat2 <span class="ot">=</span> <span class="dv">8</span>,                 <span class="co"># Height of latent variables</span></span>
-<span id="cb40-30"><a href="#cb40-30"></a>  shapeMan <span class="ot">=</span> <span class="st">"rectangle"</span>,       <span class="co"># Shape for manifest vars ("rectangle", </span></span>
-<span id="cb40-31"><a href="#cb40-31"></a>                                  <span class="st">"square"</span>, <span class="st">"ellipse"</span><span class="er">)</span></span>
-<span id="cb40-32"><a href="#cb40-32"></a>  shapeLat <span class="ot">=</span> <span class="st">"ellipse"</span>,         <span class="co"># Shape for latent vars ("ellipse", "circle")</span></span>
-<span id="cb40-33"><a href="#cb40-33"></a>  </span>
-<span id="cb40-34"><a href="#cb40-34"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-35"><a href="#cb40-35"></a>  <span class="co"># Path / edge / arrow appearance</span></span>
-<span id="cb40-36"><a href="#cb40-36"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-37"><a href="#cb40-37"></a>  edge.label.cex <span class="ot">=</span> <span class="fl">1.0</span>,         <span class="co"># Font size for coefficients printed ON  </span></span>
-<span id="cb40-38"><a href="#cb40-38"></a>                                   arrows</span>
-<span id="cb40-39"><a href="#cb40-39"></a>  edge.label.color <span class="ot">=</span> <span class="st">"black"</span>,   <span class="co"># Colour of coefficient text on arrows</span></span>
-<span id="cb40-40"><a href="#cb40-40"></a>  edge.color <span class="ot">=</span> <span class="st">"black"</span>,         <span class="co"># Colour of arrow lines</span></span>
-<span id="cb40-41"><a href="#cb40-41"></a>  edge.width <span class="ot">=</span> <span class="fl">1.5</span>,             <span class="co"># Base thickness of arrow lines</span></span>
-<span id="cb40-42"><a href="#cb40-42"></a>  asymmetric <span class="ot">=</span> <span class="cn">FALSE</span>,           <span class="co"># TRUE forces all paths to be drawn as </span></span>
-<span id="cb40-43"><a href="#cb40-43"></a>                                   directional single arrows</span>
-<span id="cb40-44"><a href="#cb40-44"></a>  </span>
-<span id="cb40-45"><a href="#cb40-45"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-46"><a href="#cb40-46"></a>  <span class="co"># Layout and orientation</span></span>
-<span id="cb40-47"><a href="#cb40-47"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-48"><a href="#cb40-48"></a>  layout <span class="ot">=</span> <span class="st">"tree2"</span>,             <span class="co"># Diagram layout ("tree", "tree2", "circle",                                   "spring", "circle2")</span></span>
-<span id="cb40-49"><a href="#cb40-49"></a>  rotation <span class="ot">=</span> <span class="dv">2</span>,                 <span class="co"># Diagram orientation: 1 = Top-Down, 2 = </span></span>
-<span id="cb40-50"><a href="#cb40-50"></a>                                   Left<span class="sc">-</span>to<span class="sc">-</span>Right,  <span class="dv">3</span> <span class="ot">=</span> Bottom<span class="sc">-</span>Up, <span class="dv">4</span> <span class="ot">=</span> </span>
-<span id="cb40-51"><a href="#cb40-51"></a>                                   Right<span class="sc">-</span>to<span class="sc">-</span>Left</span>
-<span id="cb40-52"><a href="#cb40-52"></a>  mar <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>),          <span class="co"># Outer margins around plot: c(bottom, left, </span></span>
-<span id="cb40-53"><a href="#cb40-53"></a>                                  top, right<span class="er">)</span></span>
-<span id="cb40-54"><a href="#cb40-54"></a>  </span>
-<span id="cb40-55"><a href="#cb40-55"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-56"><a href="#cb40-56"></a>  <span class="co"># Toggle elements</span></span>
-<span id="cb40-57"><a href="#cb40-57"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-58"><a href="#cb40-58"></a>  residuals <span class="ot">=</span> <span class="cn">FALSE</span>,            <span class="co"># Show/hide residual variances (error loops)</span></span>
-<span id="cb40-59"><a href="#cb40-59"></a>  intercepts <span class="ot">=</span> <span class="cn">FALSE</span>,           <span class="co"># Show/hide mean intercepts (triangles)</span></span>
-<span id="cb40-60"><a href="#cb40-60"></a>  thresholds <span class="ot">=</span> <span class="cn">FALSE</span>,           <span class="co"># Show/hide factor threshold lines (for </span></span>
-<span id="cb40-61"><a href="#cb40-61"></a>                                    ordinal data<span class="er">)</span></span>
-<span id="cb40-62"><a href="#cb40-62"></a>  fixedExo <span class="ot">=</span> <span class="cn">FALSE</span>,             <span class="co"># FALSE forces exogenous covariates (like </span></span>
-<span id="cb40-63"><a href="#cb40-63"></a>                                      gender<span class="sc">/</span>ESCS<span class="er">)</span> to be plotted</span>
-<span id="cb40-64"><a href="#cb40-64"></a>  cardinal <span class="ot">=</span> <span class="cn">TRUE</span>,              <span class="co"># TRUE forces arrows to connect at 90-degree </span></span>
-<span id="cb40-65"><a href="#cb40-65"></a>                                    cardinal points of nodes</span>
-<span id="cb40-66"><a href="#cb40-66"></a>  </span>
-<span id="cb40-67"><a href="#cb40-67"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-68"><a href="#cb40-68"></a>  <span class="co"># Colour</span></span>
-<span id="cb40-69"><a href="#cb40-69"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb40-70"><a href="#cb40-70"></a>  groups <span class="ot">=</span> <span class="st">"latents"</span>,           <span class="co"># Group nodes by type ("latents", </span></span>
-<span id="cb40-71"><a href="#cb40-71"></a>                                <span class="st">"manifests"</span><span class="er">)</span> <span class="cf">for</span> colouring</span>
-<span id="cb40-72"><a href="#cb40-72"></a>  color <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb40-73"><a href="#cb40-73"></a>    <span class="at">latents =</span> <span class="st">"lightblue"</span>, </span>
-<span id="cb40-74"><a href="#cb40-74"></a>    <span class="at">man =</span> <span class="st">"white"</span>)               <span class="co"># Fill colours for nodes</span></span>
-<span id="cb40-75"><a href="#cb40-75"></a><span class="er">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">semPaths</span>(</span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="at">object =</span> fit_sem,             <span class="co"># Your fitted lavaan, object</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a>  </span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-5"><a href="#cb44-5"></a>  <span class="co"># Display (Estimates &amp; Labels)</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a></span>
+<span id="cb44-8"><a href="#cb44-8"></a>  <span class="at">whatLabels =</span> <span class="st">"std"</span>,          <span class="co"># Values printed on arrows ("est", "std",     </span></span>
+<span id="cb44-9"><a href="#cb44-9"></a>                                            <span class="st">"name"</span>, <span class="st">"label"</span>, <span class="st">"par"</span>)</span>
+<span id="cb44-10"><a href="#cb44-10"></a>  digits <span class="ot">=</span> <span class="dv">2</span>,                   <span class="co"># Number of decimal places for numeric path                                                  estimates</span></span>
+<span id="cb44-11"><a href="#cb44-11"></a>  </span>
+<span id="cb44-12"><a href="#cb44-12"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-13"><a href="#cb44-13"></a>  <span class="co"># Variable appearance</span></span>
+<span id="cb44-14"><a href="#cb44-14"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-15"><a href="#cb44-15"></a>  label.cex <span class="ot">=</span> <span class="fl">1.2</span>,              <span class="co"># Font size for text insider the nodes</span></span>
+<span id="cb44-16"><a href="#cb44-16"></a>  label.color <span class="ot">=</span> <span class="st">"black"</span>,        <span class="co"># Text color inside the nodes</span></span>
+<span id="cb44-17"><a href="#cb44-17"></a>  label.prop <span class="ot">=</span> <span class="fl">0.9</span>,             <span class="co"># Proportion of node size used for text     </span></span>
+<span id="cb44-18"><a href="#cb44-18"></a>                                   before auto<span class="sc">-</span>scaling</span>
+<span id="cb44-19"><a href="#cb44-19"></a>  nodeLabels <span class="ot">=</span> <span class="cn">NULL</span>,            <span class="co"># Custom character vector of labels (e.g.,                                       c("Resil", "Math"))</span></span>
+<span id="cb44-20"><a href="#cb44-20"></a>  nCharNodes <span class="ot">=</span> <span class="dv">0</span>,               <span class="co"># Max characters before truncating labels (0                                    = no limit)</span></span>
+<span id="cb44-21"><a href="#cb44-21"></a>  </span>
+<span id="cb44-22"><a href="#cb44-22"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-23"><a href="#cb44-23"></a>  <span class="co"># Node sizing and shape</span></span>
+<span id="cb44-24"><a href="#cb44-24"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-25"><a href="#cb44-25"></a>  sizeMan <span class="ot">=</span> <span class="dv">10</span>,                 <span class="co"># Width/size of manifest (observed) variables                                    (rectangles)</span></span>
+<span id="cb44-26"><a href="#cb44-26"></a>  sizeMan2 <span class="ot">=</span> <span class="dv">5</span>,                 <span class="co"># Height of manifest variable rectangles</span></span>
+<span id="cb44-27"><a href="#cb44-27"></a>  sizeLat <span class="ot">=</span> <span class="dv">12</span>,                 <span class="co"># Width/size of latent variables          </span></span>
+<span id="cb44-28"><a href="#cb44-28"></a>                                  (circles<span class="sc">/</span>ellipses)</span>
+<span id="cb44-29"><a href="#cb44-29"></a>  sizeLat2 <span class="ot">=</span> <span class="dv">8</span>,                 <span class="co"># Height of latent variables</span></span>
+<span id="cb44-30"><a href="#cb44-30"></a>  shapeMan <span class="ot">=</span> <span class="st">"rectangle"</span>,       <span class="co"># Shape for manifest vars ("rectangle", </span></span>
+<span id="cb44-31"><a href="#cb44-31"></a>                                  <span class="st">"square"</span>, <span class="st">"ellipse"</span><span class="er">)</span></span>
+<span id="cb44-32"><a href="#cb44-32"></a>  shapeLat <span class="ot">=</span> <span class="st">"ellipse"</span>,         <span class="co"># Shape for latent vars ("ellipse", "circle")</span></span>
+<span id="cb44-33"><a href="#cb44-33"></a>  </span>
+<span id="cb44-34"><a href="#cb44-34"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-35"><a href="#cb44-35"></a>  <span class="co"># Path / edge / arrow appearance</span></span>
+<span id="cb44-36"><a href="#cb44-36"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-37"><a href="#cb44-37"></a>  edge.label.cex <span class="ot">=</span> <span class="fl">1.0</span>,         <span class="co"># Font size for coefficients printed ON  </span></span>
+<span id="cb44-38"><a href="#cb44-38"></a>                                   arrows</span>
+<span id="cb44-39"><a href="#cb44-39"></a>  edge.label.color <span class="ot">=</span> <span class="st">"black"</span>,   <span class="co"># Colour of coefficient text on arrows</span></span>
+<span id="cb44-40"><a href="#cb44-40"></a>  edge.color <span class="ot">=</span> <span class="st">"black"</span>,         <span class="co"># Colour of arrow lines</span></span>
+<span id="cb44-41"><a href="#cb44-41"></a>  edge.width <span class="ot">=</span> <span class="fl">1.5</span>,             <span class="co"># Base thickness of arrow lines</span></span>
+<span id="cb44-42"><a href="#cb44-42"></a>  asymmetric <span class="ot">=</span> <span class="cn">FALSE</span>,           <span class="co"># TRUE forces all paths to be drawn as </span></span>
+<span id="cb44-43"><a href="#cb44-43"></a>                                   directional single arrows</span>
+<span id="cb44-44"><a href="#cb44-44"></a>  </span>
+<span id="cb44-45"><a href="#cb44-45"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-46"><a href="#cb44-46"></a>  <span class="co"># Layout and orientation</span></span>
+<span id="cb44-47"><a href="#cb44-47"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-48"><a href="#cb44-48"></a>  layout <span class="ot">=</span> <span class="st">"tree2"</span>,             <span class="co"># Diagram layout ("tree", "tree2", "circle",                                   "spring", "circle2")</span></span>
+<span id="cb44-49"><a href="#cb44-49"></a>  rotation <span class="ot">=</span> <span class="dv">2</span>,                 <span class="co"># Diagram orientation: 1 = Top-Down, 2 = </span></span>
+<span id="cb44-50"><a href="#cb44-50"></a>                                   Left<span class="sc">-</span>to<span class="sc">-</span>Right,  <span class="dv">3</span> <span class="ot">=</span> Bottom<span class="sc">-</span>Up, <span class="dv">4</span> <span class="ot">=</span> </span>
+<span id="cb44-51"><a href="#cb44-51"></a>                                   Right<span class="sc">-</span>to<span class="sc">-</span>Left</span>
+<span id="cb44-52"><a href="#cb44-52"></a>  mar <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>),          <span class="co"># Outer margins around plot: c(bottom, left, </span></span>
+<span id="cb44-53"><a href="#cb44-53"></a>                                  top, right<span class="er">)</span></span>
+<span id="cb44-54"><a href="#cb44-54"></a>  </span>
+<span id="cb44-55"><a href="#cb44-55"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-56"><a href="#cb44-56"></a>  <span class="co"># Toggle elements</span></span>
+<span id="cb44-57"><a href="#cb44-57"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-58"><a href="#cb44-58"></a>  residuals <span class="ot">=</span> <span class="cn">FALSE</span>,            <span class="co"># Show/hide residual variances (error loops)</span></span>
+<span id="cb44-59"><a href="#cb44-59"></a>  intercepts <span class="ot">=</span> <span class="cn">FALSE</span>,           <span class="co"># Show/hide mean intercepts (triangles)</span></span>
+<span id="cb44-60"><a href="#cb44-60"></a>  thresholds <span class="ot">=</span> <span class="cn">FALSE</span>,           <span class="co"># Show/hide factor threshold lines (for </span></span>
+<span id="cb44-61"><a href="#cb44-61"></a>                                    ordinal data<span class="er">)</span></span>
+<span id="cb44-62"><a href="#cb44-62"></a>  fixedExo <span class="ot">=</span> <span class="cn">FALSE</span>,             <span class="co"># FALSE forces exogenous covariates (like </span></span>
+<span id="cb44-63"><a href="#cb44-63"></a>                                      gender<span class="sc">/</span>ESCS<span class="er">)</span> to be plotted</span>
+<span id="cb44-64"><a href="#cb44-64"></a>  cardinal <span class="ot">=</span> <span class="cn">TRUE</span>,              <span class="co"># TRUE forces arrows to connect at 90-degree </span></span>
+<span id="cb44-65"><a href="#cb44-65"></a>                                    cardinal points of nodes</span>
+<span id="cb44-66"><a href="#cb44-66"></a>  </span>
+<span id="cb44-67"><a href="#cb44-67"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-68"><a href="#cb44-68"></a>  <span class="co"># Colour</span></span>
+<span id="cb44-69"><a href="#cb44-69"></a>  <span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb44-70"><a href="#cb44-70"></a>  groups <span class="ot">=</span> <span class="st">"latents"</span>,           <span class="co"># Group nodes by type ("latents", </span></span>
+<span id="cb44-71"><a href="#cb44-71"></a>                                <span class="st">"manifests"</span><span class="er">)</span> <span class="cf">for</span> colouring</span>
+<span id="cb44-72"><a href="#cb44-72"></a>  color <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb44-73"><a href="#cb44-73"></a>    <span class="at">latents =</span> <span class="st">"lightblue"</span>, </span>
+<span id="cb44-74"><a href="#cb44-74"></a>    <span class="at">man =</span> <span class="st">"white"</span>)               <span class="co"># Fill colours for nodes</span></span>
+<span id="cb44-75"><a href="#cb44-75"></a><span class="er">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2349,29 +2368,29 @@ Tip
 <h2 data-number="1.4" class="anchored" data-anchor-id="fitting-categorical-variables"><span class="header-section-number">1.4</span> Fitting categorical variables</h2>
 <p>To fit a categorical variable like gender, you can use the <code>as.factor</code> function to convert the variable to a factor and then use the <code>fit &lt;- sem(model, UKdata, estimator = "MLR")</code> function to estimate the model. MLR is the default estimator for categorical variables. MLR stands for Maximum Likelihood Robust. It is an estimator used in structural equation modelling (SEM), particularly when dealing with non-normal data or small sample sizes. See the example below using gender:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Create a data frame with the required base variables</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a>UKdata<span class="ot">&lt;-</span>PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">select</span>(CNT, PV1SCIE, PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
-<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb41-5"><a href="#cb41-5"></a>  <span class="fu">na.omit</span>() <span class="co"># Remove the NAs to create a two level variable.</span></span>
-<span id="cb41-6"><a href="#cb41-6"></a></span>
-<span id="cb41-7"><a href="#cb41-7"></a><span class="co"># set ST004D01T to a factor</span></span>
-<span id="cb41-8"><a href="#cb41-8"></a></span>
-<span id="cb41-9"><a href="#cb41-9"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
-<span id="cb41-10"><a href="#cb41-10"></a></span>
-<span id="cb41-11"><a href="#cb41-11"></a></span>
-<span id="cb41-12"><a href="#cb41-12"></a><span class="co"># Scale the numeric variables</span></span>
-<span id="cb41-13"><a href="#cb41-13"></a></span>
-<span id="cb41-14"><a href="#cb41-14"></a>UKdata <span class="ot">&lt;-</span> UKdata <span class="sc">%&gt;%</span></span>
-<span id="cb41-15"><a href="#cb41-15"></a>  <span class="fu">mutate</span>(<span class="at">PV1SCIE =</span> <span class="fu">scale</span>(PV1SCIE),</span>
-<span id="cb41-16"><a href="#cb41-16"></a>         <span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH))</span>
-<span id="cb41-17"><a href="#cb41-17"></a>         </span>
-<span id="cb41-18"><a href="#cb41-18"></a><span class="co"># Create the model</span></span>
-<span id="cb41-19"><a href="#cb41-19"></a></span>
-<span id="cb41-20"><a href="#cb41-20"></a>model <span class="ot">&lt;-</span> <span class="st">"PV1SCIE ~ PV1MATH + ST004D01T"</span></span>
-<span id="cb41-21"><a href="#cb41-21"></a></span>
-<span id="cb41-22"><a href="#cb41-22"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
-<span id="cb41-23"><a href="#cb41-23"></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Create a data frame with the required base variables</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>UKdata<span class="ot">&lt;-</span>PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">select</span>(CNT, PV1SCIE, PV1MATH, ST004D01T) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-5"><a href="#cb45-5"></a>  <span class="fu">na.omit</span>() <span class="co"># Remove the NAs to create a two level variable.</span></span>
+<span id="cb45-6"><a href="#cb45-6"></a></span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="co"># set ST004D01T to a factor</span></span>
+<span id="cb45-8"><a href="#cb45-8"></a></span>
+<span id="cb45-9"><a href="#cb45-9"></a>UKdata<span class="sc">$</span>ST004D01T <span class="ot">&lt;-</span> <span class="fu">factor</span>(UKdata<span class="sc">$</span>ST004D01T, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb45-10"><a href="#cb45-10"></a></span>
+<span id="cb45-11"><a href="#cb45-11"></a></span>
+<span id="cb45-12"><a href="#cb45-12"></a><span class="co"># Scale the numeric variables</span></span>
+<span id="cb45-13"><a href="#cb45-13"></a></span>
+<span id="cb45-14"><a href="#cb45-14"></a>UKdata <span class="ot">&lt;-</span> UKdata <span class="sc">%&gt;%</span></span>
+<span id="cb45-15"><a href="#cb45-15"></a>  <span class="fu">mutate</span>(<span class="at">PV1SCIE =</span> <span class="fu">scale</span>(PV1SCIE),</span>
+<span id="cb45-16"><a href="#cb45-16"></a>         <span class="at">PV1MATH =</span> <span class="fu">scale</span>(PV1MATH))</span>
+<span id="cb45-17"><a href="#cb45-17"></a>         </span>
+<span id="cb45-18"><a href="#cb45-18"></a><span class="co"># Create the model</span></span>
+<span id="cb45-19"><a href="#cb45-19"></a></span>
+<span id="cb45-20"><a href="#cb45-20"></a>model <span class="ot">&lt;-</span> <span class="st">"PV1SCIE ~ PV1MATH + ST004D01T"</span></span>
+<span id="cb45-21"><a href="#cb45-21"></a></span>
+<span id="cb45-22"><a href="#cb45-22"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
+<span id="cb45-23"><a href="#cb45-23"></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-21 ended normally after 1 iteration
 
@@ -2402,11 +2421,11 @@ Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
    .PV1SCIE           0.204    0.002   86.913    0.000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2430,20 +2449,20 @@ Tip
 <p>In SEM, indirect effects occur when the effect of one variable on another is mediated through one or more intervening variables. To calculate indirect effects in <code>lavaan</code>, you need to label the paths in your model using the <code>label</code> argument. This allows you to specify which paths you want to include in the calculation of indirect effects.</p>
 <p>For example, consider a model where variable <code>PV1MATH</code> (math score) affects variable <code>PV1SICE</code> (science score) through a mediator variable <code>HOMEPOS</code> (wealth). We add coefficients to the paths using labels <code>a</code>, <code>b</code> and <code>c</code>, and then define the indirect effect as the product of the paths <code>a</code> and <code>c</code>. Note we use the operator <code>:=</code> to define the indirect effect.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Create a data frame with the required  variables</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a>UKdata <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1MATH, PV1SCIE) <span class="sc">%&gt;%</span></span>
-<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
-<span id="cb44-5"><a href="#cb44-5"></a></span>
-<span id="cb44-6"><a href="#cb44-6"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb44-7"><a href="#cb44-7"></a><span class="st">  PV1SCIE ~ a*PV1MATH + b*HOMEPOS</span></span>
-<span id="cb44-8"><a href="#cb44-8"></a><span class="st">  HOMEPOS ~ c*PV1MATH</span></span>
-<span id="cb44-9"><a href="#cb44-9"></a></span>
-<span id="cb44-10"><a href="#cb44-10"></a><span class="st">  # Indirect effect</span></span>
-<span id="cb44-11"><a href="#cb44-11"></a><span class="st">  indirect_effect := a * c</span></span>
-<span id="cb44-12"><a href="#cb44-12"></a><span class="st">"</span></span>
-<span id="cb44-13"><a href="#cb44-13"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
-<span id="cb44-14"><a href="#cb44-14"></a><span class="fu">summary</span>(fit, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Create a data frame with the required  variables</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>UKdata <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">select</span>(CNT, HOMEPOS, PV1MATH, PV1SCIE) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) </span>
+<span id="cb48-5"><a href="#cb48-5"></a></span>
+<span id="cb48-6"><a href="#cb48-6"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb48-7"><a href="#cb48-7"></a><span class="st">  PV1SCIE ~ a*PV1MATH + b*HOMEPOS</span></span>
+<span id="cb48-8"><a href="#cb48-8"></a><span class="st">  HOMEPOS ~ c*PV1MATH</span></span>
+<span id="cb48-9"><a href="#cb48-9"></a></span>
+<span id="cb48-10"><a href="#cb48-10"></a><span class="st">  # Indirect effect</span></span>
+<span id="cb48-11"><a href="#cb48-11"></a><span class="st">  indirect_effect := a * c</span></span>
+<span id="cb48-12"><a href="#cb48-12"></a><span class="st">"</span></span>
+<span id="cb48-13"><a href="#cb48-13"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> UKdata, <span class="at">estimator =</span> <span class="st">"MLR"</span>)</span>
+<span id="cb48-14"><a href="#cb48-14"></a><span class="fu">summary</span>(fit, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-21 ended normally after 1 iteration
 
@@ -2524,7 +2543,7 @@ Defined Parameters:
                    Estimate   Std.Err  z-value  P(&gt;|z|)   Std.lv   Std.all
     indirect_effct     0.002    0.000   24.423    0.000     0.002    0.178</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2604,7 +2623,7 @@ Defined Parameters:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -2701,8 +2720,8 @@ Variances:
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="local-fit"><span class="header-section-number">1.6.1</span> Local fit</h3>
 <p>Alongside checking the overall fit of the model, it is also important to check the local fit of the model. Local fit looks at how well individual parts of the model fit the data. One way to look at local fit is to examine the standardised residuals. Standardised residuals are the differences between the observed and predicted values, scaled by the standard deviation. Large residuals indicate areas where the model does not fit well.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Standardised residuals</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">residuals</span>(fit, <span class="at">type =</span> <span class="st">"standardized"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Standardised residuals</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="fu">residuals</span>(fit, <span class="at">type =</span> <span class="st">"standardized"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$type
 [1] "standardized"
@@ -2728,7 +2747,7 @@ PARINVOL -1.187 -2.415  2.831  0.000  0.000</code></pre>
 <h2 data-number="1.7" class="anchored" data-anchor-id="improving-model-fit"><span class="header-section-number">1.7</span> Improving model fit</h2>
 <p>After examining the fit of a model, the next step can be to look at the model modification indices which suggest how the model might be improved.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">modificationIndices</span>(fit, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -2746,17 +2765,17 @@ PARINVOL -1.187 -2.415  2.831  0.000  0.000</code></pre>
 <p>The <code>epc</code> is the Expected Parameter Change - the expected value of the new term (covariance, or factor loading). For example, looking at the <code>epc</code> term for <code>PV1MATH    ~~  PV1READ</code> - if this term were added to the model, that relationship would be expected to have a covariance of -0.033.</p>
 <p>We can then add the suggested terms and compare model fit, adding the top two suggestions: <code>PV1MATH ~~  PV1READ</code> (a covariance between math and reading score) and <code>PV1READ ~~  PV1SCIE</code> (a covariance between reading and science scores) . It is important to check those additions cohere with theory. An association between class and reading, science and mathematics score seems plausible from knowledge of the link between class and achievement in the literature.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Propose a modified model </span></span>
-<span id="cb51-2"><a href="#cb51-2"></a></span>
-<span id="cb51-3"><a href="#cb51-3"></a>model2 <span class="ot">&lt;-</span> <span class="st">"lv_ach =~ PV1MATH + PV1READ + PV1SCIE</span></span>
-<span id="cb51-4"><a href="#cb51-4"></a><span class="st">           lv_ach ~ ESCS + PARINVOL</span></span>
-<span id="cb51-5"><a href="#cb51-5"></a><span class="st">        PV1MATH ~~  PV1READ</span></span>
-<span id="cb51-6"><a href="#cb51-6"></a><span class="st">        PV1READ ~~  PV1SCIE"</span></span>
-<span id="cb51-7"><a href="#cb51-7"></a></span>
-<span id="cb51-8"><a href="#cb51-8"></a><span class="co"># Fit the model</span></span>
-<span id="cb51-9"><a href="#cb51-9"></a></span>
-<span id="cb51-10"><a href="#cb51-10"></a>fit_2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(model2, <span class="at">data =</span> Germany_data)                                        </span>
-<span id="cb51-11"><a href="#cb51-11"></a><span class="fu">summary</span>(fit_2, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)                                   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Propose a modified model </span></span>
+<span id="cb55-2"><a href="#cb55-2"></a></span>
+<span id="cb55-3"><a href="#cb55-3"></a>model2 <span class="ot">&lt;-</span> <span class="st">"lv_ach =~ PV1MATH + PV1READ + PV1SCIE</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a><span class="st">           lv_ach ~ ESCS + PARINVOL</span></span>
+<span id="cb55-5"><a href="#cb55-5"></a><span class="st">        PV1MATH ~~  PV1READ</span></span>
+<span id="cb55-6"><a href="#cb55-6"></a><span class="st">        PV1READ ~~  PV1SCIE"</span></span>
+<span id="cb55-7"><a href="#cb55-7"></a></span>
+<span id="cb55-8"><a href="#cb55-8"></a><span class="co"># Fit the model</span></span>
+<span id="cb55-9"><a href="#cb55-9"></a></span>
+<span id="cb55-10"><a href="#cb55-10"></a>fit_2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(model2, <span class="at">data =</span> Germany_data)                                        </span>
+<span id="cb55-11"><a href="#cb55-11"></a><span class="fu">summary</span>(fit_2, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)                                   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6-21 ended normally after 34 iterations
 
@@ -2838,11 +2857,11 @@ Variances:
    .PV1SCIE           0.087    0.016    5.511    0.000
    .lv_ach            0.541    0.021   25.454    0.000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)                                </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">semPaths</span>(fit, <span class="at">whatLabels =</span> <span class="st">"Estimate"</span>)                                </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p><img src="06-1-SEM_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -3004,19 +3023,19 @@ Tip
 <h3 data-number="1.7.1" class="anchored" data-anchor-id="reporting-the-model"><span class="header-section-number">1.7.1</span> Reporting the model</h3>
 <p>Once you have finalised your model, you will want to report various aspects of your SEM. Typically you will be interested in the factor loadings (the standardised coefficients representing the paths between variables). The loadings are displayed on your path diagram but you can produce an output of the loadings separately. For example for <code>model2</code> above which attempts to model science scores with a latent home and cognitive item, you can extract the factor loadings using the <code>standardizedsolution</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># Report the model</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a></span>
-<span id="cb54-3"><a href="#cb54-3"></a>model2 <span class="ot">&lt;-</span> <span class="st">"lv_ach =~ PV1MATH + PV1READ + PV1SCIE</span></span>
-<span id="cb54-4"><a href="#cb54-4"></a><span class="st">           lv_ach ~ ESCS + PARINVOL</span></span>
-<span id="cb54-5"><a href="#cb54-5"></a><span class="st">        PV1MATH ~~  PV1READ</span></span>
-<span id="cb54-6"><a href="#cb54-6"></a><span class="st">        PV1READ ~~  PV1SCIE"</span></span>
-<span id="cb54-7"><a href="#cb54-7"></a></span>
-<span id="cb54-8"><a href="#cb54-8"></a><span class="co"># Fit the model</span></span>
-<span id="cb54-9"><a href="#cb54-9"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model2, <span class="at">data =</span> Germany_data)                                        </span>
-<span id="cb54-10"><a href="#cb54-10"></a></span>
-<span id="cb54-11"><a href="#cb54-11"></a><span class="co"># Extract loadings</span></span>
-<span id="cb54-12"><a href="#cb54-12"></a></span>
-<span id="cb54-13"><a href="#cb54-13"></a><span class="fu">standardizedsolution</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Report the model</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a></span>
+<span id="cb58-3"><a href="#cb58-3"></a>model2 <span class="ot">&lt;-</span> <span class="st">"lv_ach =~ PV1MATH + PV1READ + PV1SCIE</span></span>
+<span id="cb58-4"><a href="#cb58-4"></a><span class="st">           lv_ach ~ ESCS + PARINVOL</span></span>
+<span id="cb58-5"><a href="#cb58-5"></a><span class="st">        PV1MATH ~~  PV1READ</span></span>
+<span id="cb58-6"><a href="#cb58-6"></a><span class="st">        PV1READ ~~  PV1SCIE"</span></span>
+<span id="cb58-7"><a href="#cb58-7"></a></span>
+<span id="cb58-8"><a href="#cb58-8"></a><span class="co"># Fit the model</span></span>
+<span id="cb58-9"><a href="#cb58-9"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model2, <span class="at">data =</span> Germany_data)                                        </span>
+<span id="cb58-10"><a href="#cb58-10"></a></span>
+<span id="cb58-11"><a href="#cb58-11"></a><span class="co"># Extract loadings</span></span>
+<span id="cb58-12"><a href="#cb58-12"></a></span>
+<span id="cb58-13"><a href="#cb58-13"></a><span class="fu">standardizedsolution</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -3042,12 +3061,12 @@ Tip
 <p>Another useful measure are the R<sup>2</sup> values for each item in the model. Each item is treated as a dependent variable and an R<sup>2</sup> value (the proportion of variance it explains) can be calculated using the <code>parameterEstimates</code> function. We then filter for the operator related to R<sup>2</sup> and select the relevant columns to make the data easier to read. An <code>arrange</code> in descending order can also be useful.</p>
 <p>The estimates here should be thought of as the percentage of variance of that item that is explained by the latent variable it is associated with.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Extract R^2 values for the model</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a></span>
-<span id="cb55-3"><a href="#cb55-3"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb55-5"><a href="#cb55-5"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
-<span id="cb55-6"><a href="#cb55-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># Extract R^2 values for the model</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a></span>
+<span id="cb59-3"><a href="#cb59-3"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">rsquare =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">"r2"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-5"><a href="#cb59-5"></a>  <span class="fu">select</span>(<span class="at">Item=</span>rhs, <span class="at">R2 =</span> est) <span class="sc">%&gt;%</span></span>
+<span id="cb59-6"><a href="#cb59-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(R2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -3117,95 +3136,95 @@ Tip
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># create a data frame</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="co"># filter for Dominican Republic"</span></span>
-<span id="cb56-3"><a href="#cb56-3"></a><span class="co"># select items</span></span>
-<span id="cb56-4"><a href="#cb56-4"></a><span class="co"># recode</span></span>
-<span id="cb56-5"><a href="#cb56-5"></a><span class="co"># convert to orderd</span></span>
-<span id="cb56-6"><a href="#cb56-6"></a>childhood_exp <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb56-7"><a href="#cb56-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Dominican Republic"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-8"><a href="#cb56-8"></a>  <span class="fu">select</span>(PA002Q06NA, PA002Q07NA,PA002Q08NA, PA002Q09NA,</span>
-<span id="cb56-9"><a href="#cb56-9"></a>         PA002Q10NA, PA002Q11DA, PA002Q12DA, PA002Q13DA) <span class="sc">%&gt;%</span></span>
-<span id="cb56-10"><a href="#cb56-10"></a>   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"PA002"</span>),</span>
-<span id="cb56-11"><a href="#cb56-11"></a>      <span class="sc">~</span> <span class="fu">case_when</span>(</span>
-<span id="cb56-12"><a href="#cb56-12"></a>        . <span class="sc">==</span> <span class="st">"Very often"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb56-13"><a href="#cb56-13"></a>        . <span class="sc">==</span> <span class="st">"Regularly"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb56-14"><a href="#cb56-14"></a>        . <span class="sc">==</span> <span class="st">"Sometimes"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb56-15"><a href="#cb56-15"></a>        . <span class="sc">==</span> <span class="st">"Never"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb56-16"><a href="#cb56-16"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb56-17"><a href="#cb56-17"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"PA"</span>), as.ordered))</span>
-<span id="cb56-18"><a href="#cb56-18"></a>  </span>
-<span id="cb56-19"><a href="#cb56-19"></a><span class="co"># check missingness</span></span>
-<span id="cb56-20"><a href="#cb56-20"></a>childhood_exp <span class="sc">%&gt;%</span></span>
-<span id="cb56-21"><a href="#cb56-21"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.ordered)) <span class="sc">%&gt;%</span>                        </span>
-<span id="cb56-22"><a href="#cb56-22"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"PA"</span>), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.x))))   </span>
-<span id="cb56-23"><a href="#cb56-23"></a></span>
-<span id="cb56-24"><a href="#cb56-24"></a><span class="co"># max missing across items is 5.14% in PA002Q13DA which is good for a survey.</span></span>
-<span id="cb56-25"><a href="#cb56-25"></a></span>
-<span id="cb56-26"><a href="#cb56-26"></a><span class="co"># check item distributions</span></span>
-<span id="cb56-27"><a href="#cb56-27"></a></span>
-<span id="cb56-28"><a href="#cb56-28"></a>long_data <span class="ot">&lt;-</span> childhood_exp <span class="sc">%&gt;%</span></span>
-<span id="cb56-29"><a href="#cb56-29"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.ordered)) <span class="sc">%&gt;%</span>      </span>
-<span id="cb56-30"><a href="#cb56-30"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),   </span>
-<span id="cb56-31"><a href="#cb56-31"></a>               <span class="at">names_to =</span> <span class="st">"item"</span>, </span>
-<span id="cb56-32"><a href="#cb56-32"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span>
-<span id="cb56-33"><a href="#cb56-33"></a></span>
-<span id="cb56-34"><a href="#cb56-34"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">fill =</span> item)) <span class="sc">+</span></span>
-<span id="cb56-35"><a href="#cb56-35"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb56-36"><a href="#cb56-36"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb56-37"><a href="#cb56-37"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> item)</span>
-<span id="cb56-38"><a href="#cb56-38"></a><span class="co"># generally well distributed - perhaps some zero inflation in PA002Q12DA and PA002Q13DA (in 0 and 1) - but nothing too troubling here </span></span>
-<span id="cb56-39"><a href="#cb56-39"></a></span>
-<span id="cb56-40"><a href="#cb56-40"></a><span class="co"># check correlations</span></span>
-<span id="cb56-41"><a href="#cb56-41"></a>  </span>
-<span id="cb56-42"><a href="#cb56-42"></a>poly_matrix_lav <span class="ot">&lt;-</span> <span class="fu">lavCor</span>(</span>
-<span id="cb56-43"><a href="#cb56-43"></a>  <span class="at">object =</span> childhood_exp <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"PA002"</span>)), </span>
-<span id="cb56-44"><a href="#cb56-44"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>,                                            </span>
-<span id="cb56-45"><a href="#cb56-45"></a>  <span class="at">missing =</span> <span class="st">"pairwise"</span>)                                      </span>
-<span id="cb56-46"><a href="#cb56-46"></a></span>
-<span id="cb56-47"><a href="#cb56-47"></a></span>
-<span id="cb56-48"><a href="#cb56-48"></a><span class="co"># Inspect the matrix</span></span>
-<span id="cb56-49"><a href="#cb56-49"></a><span class="fu">round</span>(poly_matrix_lav, <span class="dv">2</span>)                                    </span>
-<span id="cb56-50"><a href="#cb56-50"></a></span>
-<span id="cb56-51"><a href="#cb56-51"></a><span class="co"># convert to list and sort for pairs under 0.3</span></span>
-<span id="cb56-52"><a href="#cb56-52"></a>low_cor_list <span class="ot">&lt;-</span> poly_matrix_lav <span class="sc">%&gt;%</span></span>
-<span id="cb56-53"><a href="#cb56-53"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span>                                        </span>
-<span id="cb56-54"><a href="#cb56-54"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"item1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-55"><a href="#cb56-55"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>item1, <span class="at">names_to =</span> <span class="st">"item2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-56"><a href="#cb56-56"></a>  <span class="fu">filter</span>(item1 <span class="sc">&lt;</span> item2) <span class="sc">%&gt;%</span>                                 </span>
-<span id="cb56-57"><a href="#cb56-57"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(r) <span class="sc">&lt;</span> <span class="fl">0.30</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-58"><a href="#cb56-58"></a>  <span class="fu">arrange</span>(<span class="fu">abs</span>(r)) </span>
-<span id="cb56-59"><a href="#cb56-59"></a></span>
-<span id="cb56-60"><a href="#cb56-60"></a>low_cor_list</span>
-<span id="cb56-61"><a href="#cb56-61"></a></span>
-<span id="cb56-62"><a href="#cb56-62"></a>item_1_counts <span class="ot">&lt;-</span> low_cor_list <span class="sc">%&gt;%</span>  </span>
-<span id="cb56-63"><a href="#cb56-63"></a>  <span class="fu">group_by</span>(item1) <span class="sc">%&gt;%</span> </span>
-<span id="cb56-64"><a href="#cb56-64"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb56-65"><a href="#cb56-65"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb56-66"><a href="#cb56-66"></a></span>
-<span id="cb56-67"><a href="#cb56-67"></a>item_2_counts <span class="ot">&lt;-</span> low_cor_list <span class="sc">%&gt;%</span> </span>
-<span id="cb56-68"><a href="#cb56-68"></a>  <span class="fu">group_by</span>(item2) <span class="sc">%&gt;%</span> </span>
-<span id="cb56-69"><a href="#cb56-69"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb56-70"><a href="#cb56-70"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb56-71"><a href="#cb56-71"></a></span>
-<span id="cb56-72"><a href="#cb56-72"></a>total_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(item_1_counts, item_2_counts,      </span>
-<span id="cb56-73"><a href="#cb56-73"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"item1"</span> <span class="ot">=</span> <span class="st">"item2"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb56-74"><a href="#cb56-74"></a>                <span class="fu">mutate</span>(<span class="at">n.x =</span> <span class="fu">as.numeric</span>(n.x),</span>
-<span id="cb56-75"><a href="#cb56-75"></a>                       <span class="at">n.y =</span> <span class="fu">as.numeric</span>(n.y)) <span class="sc">%&gt;%</span>            </span>
-<span id="cb56-76"><a href="#cb56-76"></a>                <span class="fu">mutate</span>(<span class="at">n_tot =</span><span class="fu">coalesce</span>(n.x, <span class="dv">0</span>) <span class="sc">+</span> <span class="fu">coalesce</span>(n.y, <span class="dv">0</span>)) <span class="sc">%&gt;%</span>      </span>
-<span id="cb56-77"><a href="#cb56-77"></a>  <span class="fu">select</span>(item1, n_tot) <span class="sc">%&gt;%</span>                         </span>
-<span id="cb56-78"><a href="#cb56-78"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_tot))                                       </span>
-<span id="cb56-79"><a href="#cb56-79"></a></span>
-<span id="cb56-80"><a href="#cb56-80"></a>total_counts</span>
-<span id="cb56-81"><a href="#cb56-81"></a><span class="co"># the highest item here PA002Q07NA only appears in 3 pairs so not too much to worry about</span></span>
-<span id="cb56-82"><a href="#cb56-82"></a>  </span>
-<span id="cb56-83"><a href="#cb56-83"></a><span class="co"># check KMO and Bartlett</span></span>
-<span id="cb56-84"><a href="#cb56-84"></a></span>
-<span id="cb56-85"><a href="#cb56-85"></a><span class="fu">KMO</span>(poly_matrix_lav)</span>
-<span id="cb56-86"><a href="#cb56-86"></a><span class="co"># lowest item here is 0.74 which is middling /good - 6/8 are over 80 - and are good</span></span>
-<span id="cb56-87"><a href="#cb56-87"></a><span class="fu">cortest.bartlett</span>(poly_matrix_lav, </span>
-<span id="cb56-88"><a href="#cb56-88"></a>                 <span class="at">n =</span> <span class="fu">nrow</span>(science_capital))</span>
-<span id="cb56-89"><a href="#cb56-89"></a><span class="co"># with large sample, it is unsurprising to have a p-value = 0, we can rely on the KMO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># create a data frame</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="co"># filter for Dominican Republic"</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a><span class="co"># select items</span></span>
+<span id="cb60-4"><a href="#cb60-4"></a><span class="co"># recode</span></span>
+<span id="cb60-5"><a href="#cb60-5"></a><span class="co"># convert to orderd</span></span>
+<span id="cb60-6"><a href="#cb60-6"></a>childhood_exp <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb60-7"><a href="#cb60-7"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"Dominican Republic"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-8"><a href="#cb60-8"></a>  <span class="fu">select</span>(PA002Q06NA, PA002Q07NA,PA002Q08NA, PA002Q09NA,</span>
+<span id="cb60-9"><a href="#cb60-9"></a>         PA002Q10NA, PA002Q11DA, PA002Q12DA, PA002Q13DA) <span class="sc">%&gt;%</span></span>
+<span id="cb60-10"><a href="#cb60-10"></a>   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"PA002"</span>),</span>
+<span id="cb60-11"><a href="#cb60-11"></a>      <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb60-12"><a href="#cb60-12"></a>        . <span class="sc">==</span> <span class="st">"Very often"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb60-13"><a href="#cb60-13"></a>        . <span class="sc">==</span> <span class="st">"Regularly"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb60-14"><a href="#cb60-14"></a>        . <span class="sc">==</span> <span class="st">"Sometimes"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb60-15"><a href="#cb60-15"></a>        . <span class="sc">==</span> <span class="st">"Never"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb60-16"><a href="#cb60-16"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb60-17"><a href="#cb60-17"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"PA"</span>), as.ordered))</span>
+<span id="cb60-18"><a href="#cb60-18"></a>  </span>
+<span id="cb60-19"><a href="#cb60-19"></a><span class="co"># check missingness</span></span>
+<span id="cb60-20"><a href="#cb60-20"></a>childhood_exp <span class="sc">%&gt;%</span></span>
+<span id="cb60-21"><a href="#cb60-21"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.ordered)) <span class="sc">%&gt;%</span>                        </span>
+<span id="cb60-22"><a href="#cb60-22"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"PA"</span>), <span class="sc">~</span> <span class="fu">mean</span>(<span class="fu">is.na</span>(.x))))   </span>
+<span id="cb60-23"><a href="#cb60-23"></a></span>
+<span id="cb60-24"><a href="#cb60-24"></a><span class="co"># max missing across items is 5.14% in PA002Q13DA which is good for a survey.</span></span>
+<span id="cb60-25"><a href="#cb60-25"></a></span>
+<span id="cb60-26"><a href="#cb60-26"></a><span class="co"># check item distributions</span></span>
+<span id="cb60-27"><a href="#cb60-27"></a></span>
+<span id="cb60-28"><a href="#cb60-28"></a>long_data <span class="ot">&lt;-</span> childhood_exp <span class="sc">%&gt;%</span></span>
+<span id="cb60-29"><a href="#cb60-29"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.ordered)) <span class="sc">%&gt;%</span>      </span>
+<span id="cb60-30"><a href="#cb60-30"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),   </span>
+<span id="cb60-31"><a href="#cb60-31"></a>               <span class="at">names_to =</span> <span class="st">"item"</span>, </span>
+<span id="cb60-32"><a href="#cb60-32"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span>
+<span id="cb60-33"><a href="#cb60-33"></a></span>
+<span id="cb60-34"><a href="#cb60-34"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">fill =</span> item)) <span class="sc">+</span></span>
+<span id="cb60-35"><a href="#cb60-35"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb60-36"><a href="#cb60-36"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb60-37"><a href="#cb60-37"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> item)</span>
+<span id="cb60-38"><a href="#cb60-38"></a><span class="co"># generally well distributed - perhaps some zero inflation in PA002Q12DA and PA002Q13DA (in 0 and 1) - but nothing too troubling here </span></span>
+<span id="cb60-39"><a href="#cb60-39"></a></span>
+<span id="cb60-40"><a href="#cb60-40"></a><span class="co"># check correlations</span></span>
+<span id="cb60-41"><a href="#cb60-41"></a>  </span>
+<span id="cb60-42"><a href="#cb60-42"></a>poly_matrix_lav <span class="ot">&lt;-</span> <span class="fu">lavCor</span>(</span>
+<span id="cb60-43"><a href="#cb60-43"></a>  <span class="at">object =</span> childhood_exp <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"PA002"</span>)), </span>
+<span id="cb60-44"><a href="#cb60-44"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>,                                            </span>
+<span id="cb60-45"><a href="#cb60-45"></a>  <span class="at">missing =</span> <span class="st">"pairwise"</span>)                                      </span>
+<span id="cb60-46"><a href="#cb60-46"></a></span>
+<span id="cb60-47"><a href="#cb60-47"></a></span>
+<span id="cb60-48"><a href="#cb60-48"></a><span class="co"># Inspect the matrix</span></span>
+<span id="cb60-49"><a href="#cb60-49"></a><span class="fu">round</span>(poly_matrix_lav, <span class="dv">2</span>)                                    </span>
+<span id="cb60-50"><a href="#cb60-50"></a></span>
+<span id="cb60-51"><a href="#cb60-51"></a><span class="co"># convert to list and sort for pairs under 0.3</span></span>
+<span id="cb60-52"><a href="#cb60-52"></a>low_cor_list <span class="ot">&lt;-</span> poly_matrix_lav <span class="sc">%&gt;%</span></span>
+<span id="cb60-53"><a href="#cb60-53"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span>                                        </span>
+<span id="cb60-54"><a href="#cb60-54"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"item1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-55"><a href="#cb60-55"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>item1, <span class="at">names_to =</span> <span class="st">"item2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-56"><a href="#cb60-56"></a>  <span class="fu">filter</span>(item1 <span class="sc">&lt;</span> item2) <span class="sc">%&gt;%</span>                                 </span>
+<span id="cb60-57"><a href="#cb60-57"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(r) <span class="sc">&lt;</span> <span class="fl">0.30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-58"><a href="#cb60-58"></a>  <span class="fu">arrange</span>(<span class="fu">abs</span>(r)) </span>
+<span id="cb60-59"><a href="#cb60-59"></a></span>
+<span id="cb60-60"><a href="#cb60-60"></a>low_cor_list</span>
+<span id="cb60-61"><a href="#cb60-61"></a></span>
+<span id="cb60-62"><a href="#cb60-62"></a>item_1_counts <span class="ot">&lt;-</span> low_cor_list <span class="sc">%&gt;%</span>  </span>
+<span id="cb60-63"><a href="#cb60-63"></a>  <span class="fu">group_by</span>(item1) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-64"><a href="#cb60-64"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb60-65"><a href="#cb60-65"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb60-66"><a href="#cb60-66"></a></span>
+<span id="cb60-67"><a href="#cb60-67"></a>item_2_counts <span class="ot">&lt;-</span> low_cor_list <span class="sc">%&gt;%</span> </span>
+<span id="cb60-68"><a href="#cb60-68"></a>  <span class="fu">group_by</span>(item2) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-69"><a href="#cb60-69"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb60-70"><a href="#cb60-70"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb60-71"><a href="#cb60-71"></a></span>
+<span id="cb60-72"><a href="#cb60-72"></a>total_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(item_1_counts, item_2_counts,      </span>
+<span id="cb60-73"><a href="#cb60-73"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"item1"</span> <span class="ot">=</span> <span class="st">"item2"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-74"><a href="#cb60-74"></a>                <span class="fu">mutate</span>(<span class="at">n.x =</span> <span class="fu">as.numeric</span>(n.x),</span>
+<span id="cb60-75"><a href="#cb60-75"></a>                       <span class="at">n.y =</span> <span class="fu">as.numeric</span>(n.y)) <span class="sc">%&gt;%</span>            </span>
+<span id="cb60-76"><a href="#cb60-76"></a>                <span class="fu">mutate</span>(<span class="at">n_tot =</span><span class="fu">coalesce</span>(n.x, <span class="dv">0</span>) <span class="sc">+</span> <span class="fu">coalesce</span>(n.y, <span class="dv">0</span>)) <span class="sc">%&gt;%</span>      </span>
+<span id="cb60-77"><a href="#cb60-77"></a>  <span class="fu">select</span>(item1, n_tot) <span class="sc">%&gt;%</span>                         </span>
+<span id="cb60-78"><a href="#cb60-78"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_tot))                                       </span>
+<span id="cb60-79"><a href="#cb60-79"></a></span>
+<span id="cb60-80"><a href="#cb60-80"></a>total_counts</span>
+<span id="cb60-81"><a href="#cb60-81"></a><span class="co"># the highest item here PA002Q07NA only appears in 3 pairs so not too much to worry about</span></span>
+<span id="cb60-82"><a href="#cb60-82"></a>  </span>
+<span id="cb60-83"><a href="#cb60-83"></a><span class="co"># check KMO and Bartlett</span></span>
+<span id="cb60-84"><a href="#cb60-84"></a></span>
+<span id="cb60-85"><a href="#cb60-85"></a><span class="fu">KMO</span>(poly_matrix_lav)</span>
+<span id="cb60-86"><a href="#cb60-86"></a><span class="co"># lowest item here is 0.74 which is middling /good - 6/8 are over 80 - and are good</span></span>
+<span id="cb60-87"><a href="#cb60-87"></a><span class="fu">cortest.bartlett</span>(poly_matrix_lav, </span>
+<span id="cb60-88"><a href="#cb60-88"></a>                 <span class="at">n =</span> <span class="fu">nrow</span>(science_capital))</span>
+<span id="cb60-89"><a href="#cb60-89"></a><span class="co"># with large sample, it is unsurprising to have a p-value = 0, we can rely on the KMO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3249,47 +3268,47 @@ Tip
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># create a data frame</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a></span>
-<span id="cb57-3"><a href="#cb57-3"></a>resilience <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb57-4"><a href="#cb57-4"></a>  <span class="fu">select</span>(ST307Q01JA, ST307Q02JA, ST307Q03JA, ST307Q09JA)</span>
-<span id="cb57-5"><a href="#cb57-5"></a></span>
-<span id="cb57-6"><a href="#cb57-6"></a><span class="co"># recode to numeric </span></span>
-<span id="cb57-7"><a href="#cb57-7"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
-<span id="cb57-8"><a href="#cb57-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
-<span id="cb57-9"><a href="#cb57-9"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb57-10"><a href="#cb57-10"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb57-11"><a href="#cb57-11"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb57-12"><a href="#cb57-12"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb57-13"><a href="#cb57-13"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>)))</span>
-<span id="cb57-14"><a href="#cb57-14"></a></span>
-<span id="cb57-15"><a href="#cb57-15"></a><span class="co"># label as ordered</span></span>
-<span id="cb57-16"><a href="#cb57-16"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
-<span id="cb57-17"><a href="#cb57-17"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
-<span id="cb57-18"><a href="#cb57-18"></a></span>
-<span id="cb57-19"><a href="#cb57-19"></a></span>
-<span id="cb57-20"><a href="#cb57-20"></a>cfa_model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb57-21"><a href="#cb57-21"></a><span class="st">  resilience =~</span></span>
-<span id="cb57-22"><a href="#cb57-22"></a><span class="st">   ST307Q01JA +</span></span>
-<span id="cb57-23"><a href="#cb57-23"></a><span class="st">   ST307Q02JA + </span></span>
-<span id="cb57-24"><a href="#cb57-24"></a><span class="st">   ST307Q03JA +</span></span>
-<span id="cb57-25"><a href="#cb57-25"></a><span class="st">   ST307Q09JA"</span></span>
-<span id="cb57-26"><a href="#cb57-26"></a></span>
-<span id="cb57-27"><a href="#cb57-27"></a><span class="co"># fit the model </span></span>
-<span id="cb57-28"><a href="#cb57-28"></a></span>
-<span id="cb57-29"><a href="#cb57-29"></a>fit_cfa <span class="ot">&lt;-</span> <span class="fu">cfa</span>(cfa_model,</span>
-<span id="cb57-30"><a href="#cb57-30"></a>  <span class="at">data =</span> resilience,</span>
-<span id="cb57-31"><a href="#cb57-31"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
-<span id="cb57-32"><a href="#cb57-32"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(resilience))</span>
-<span id="cb57-33"><a href="#cb57-33"></a></span>
-<span id="cb57-34"><a href="#cb57-34"></a><span class="fu">summary</span>(fit_cfa,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb57-35"><a href="#cb57-35"></a></span>
-<span id="cb57-36"><a href="#cb57-36"></a><span class="co"># This is a strong unidimensional model. </span></span>
-<span id="cb57-37"><a href="#cb57-37"></a><span class="co"># All factor loadings are strong 0.835 to 0.916.</span></span>
-<span id="cb57-38"><a href="#cb57-38"></a><span class="co"># Excellent model fit indices </span></span>
-<span id="cb57-39"><a href="#cb57-39"></a><span class="co"># Robust CFI (0.993) and Robust TLI (0.979):  exceed the standard cutoff threshold of ≥0.95.</span></span>
-<span id="cb57-40"><a href="#cb57-40"></a><span class="co"># SRMR (0.012): Extremely low residual variance, comfortably under the ≤0.08 threshold.</span></span>
-<span id="cb57-41"><a href="#cb57-41"></a><span class="co"># While the Robust RMSEA is 0.107, this is a known statistical artifact of small models - can ignore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># create a data frame</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a></span>
+<span id="cb61-3"><a href="#cb61-3"></a>resilience <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="#cb61-4"></a>  <span class="fu">select</span>(ST307Q01JA, ST307Q02JA, ST307Q03JA, ST307Q09JA)</span>
+<span id="cb61-5"><a href="#cb61-5"></a></span>
+<span id="cb61-6"><a href="#cb61-6"></a><span class="co"># recode to numeric </span></span>
+<span id="cb61-7"><a href="#cb61-7"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
+<span id="cb61-8"><a href="#cb61-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb61-9"><a href="#cb61-9"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb61-10"><a href="#cb61-10"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb61-11"><a href="#cb61-11"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb61-12"><a href="#cb61-12"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb61-13"><a href="#cb61-13"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>)))</span>
+<span id="cb61-14"><a href="#cb61-14"></a></span>
+<span id="cb61-15"><a href="#cb61-15"></a><span class="co"># label as ordered</span></span>
+<span id="cb61-16"><a href="#cb61-16"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
+<span id="cb61-17"><a href="#cb61-17"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
+<span id="cb61-18"><a href="#cb61-18"></a></span>
+<span id="cb61-19"><a href="#cb61-19"></a></span>
+<span id="cb61-20"><a href="#cb61-20"></a>cfa_model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb61-21"><a href="#cb61-21"></a><span class="st">  resilience =~</span></span>
+<span id="cb61-22"><a href="#cb61-22"></a><span class="st">   ST307Q01JA +</span></span>
+<span id="cb61-23"><a href="#cb61-23"></a><span class="st">   ST307Q02JA + </span></span>
+<span id="cb61-24"><a href="#cb61-24"></a><span class="st">   ST307Q03JA +</span></span>
+<span id="cb61-25"><a href="#cb61-25"></a><span class="st">   ST307Q09JA"</span></span>
+<span id="cb61-26"><a href="#cb61-26"></a></span>
+<span id="cb61-27"><a href="#cb61-27"></a><span class="co"># fit the model </span></span>
+<span id="cb61-28"><a href="#cb61-28"></a></span>
+<span id="cb61-29"><a href="#cb61-29"></a>fit_cfa <span class="ot">&lt;-</span> <span class="fu">cfa</span>(cfa_model,</span>
+<span id="cb61-30"><a href="#cb61-30"></a>  <span class="at">data =</span> resilience,</span>
+<span id="cb61-31"><a href="#cb61-31"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
+<span id="cb61-32"><a href="#cb61-32"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(resilience))</span>
+<span id="cb61-33"><a href="#cb61-33"></a></span>
+<span id="cb61-34"><a href="#cb61-34"></a><span class="fu">summary</span>(fit_cfa,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-35"><a href="#cb61-35"></a></span>
+<span id="cb61-36"><a href="#cb61-36"></a><span class="co"># This is a strong unidimensional model. </span></span>
+<span id="cb61-37"><a href="#cb61-37"></a><span class="co"># All factor loadings are strong 0.835 to 0.916.</span></span>
+<span id="cb61-38"><a href="#cb61-38"></a><span class="co"># Excellent model fit indices </span></span>
+<span id="cb61-39"><a href="#cb61-39"></a><span class="co"># Robust CFI (0.993) and Robust TLI (0.979):  exceed the standard cutoff threshold of ≥0.95.</span></span>
+<span id="cb61-40"><a href="#cb61-40"></a><span class="co"># SRMR (0.012): Extremely low residual variance, comfortably under the ≤0.08 threshold.</span></span>
+<span id="cb61-41"><a href="#cb61-41"></a><span class="co"># While the Robust RMSEA is 0.107, this is a known statistical artifact of small models - can ignore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3337,93 +3356,93 @@ Tip
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Create a data frame for curiosity scores</span></span>
-<span id="cb58-2"><a href="#cb58-2"></a></span>
-<span id="cb58-3"><a href="#cb58-3"></a>cur_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb58-4"><a href="#cb58-4"></a>  <span class="st">"ST301Q01JA"</span>,</span>
-<span id="cb58-5"><a href="#cb58-5"></a>  <span class="st">"ST301Q04JA"</span>,</span>
-<span id="cb58-6"><a href="#cb58-6"></a>  <span class="st">"ST301Q06JA"</span>,</span>
-<span id="cb58-7"><a href="#cb58-7"></a>  <span class="st">"ST301Q10JA"</span>,</span>
-<span id="cb58-8"><a href="#cb58-8"></a>  <span class="st">"ST435Q01DA"</span>)</span>
-<span id="cb58-9"><a href="#cb58-9"></a></span>
-<span id="cb58-10"><a href="#cb58-10"></a>curiosity <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb58-11"><a href="#cb58-11"></a>  <span class="fu">select</span>(cur_cols) </span>
-<span id="cb58-12"><a href="#cb58-12"></a></span>
-<span id="cb58-13"><a href="#cb58-13"></a><span class="co"># recode to numeric </span></span>
-<span id="cb58-14"><a href="#cb58-14"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
-<span id="cb58-15"><a href="#cb58-15"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
-<span id="cb58-16"><a href="#cb58-16"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb58-17"><a href="#cb58-17"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb58-18"><a href="#cb58-18"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb58-19"><a href="#cb58-19"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb58-20"><a href="#cb58-20"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb58-21"><a href="#cb58-21"></a>  <span class="fu">na.omit</span>() </span>
-<span id="cb58-22"><a href="#cb58-22"></a></span>
-<span id="cb58-23"><a href="#cb58-23"></a><span class="co"># label as ordered</span></span>
-<span id="cb58-24"><a href="#cb58-24"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
-<span id="cb58-25"><a href="#cb58-25"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
-<span id="cb58-26"><a href="#cb58-26"></a></span>
-<span id="cb58-27"><a href="#cb58-27"></a></span>
-<span id="cb58-28"><a href="#cb58-28"></a>cfa_model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb58-29"><a href="#cb58-29"></a><span class="st">  curious =~</span></span>
-<span id="cb58-30"><a href="#cb58-30"></a><span class="st">  ST301Q01JA +</span></span>
-<span id="cb58-31"><a href="#cb58-31"></a><span class="st">  ST301Q04JA +</span></span>
-<span id="cb58-32"><a href="#cb58-32"></a><span class="st">  ST301Q06JA +</span></span>
-<span id="cb58-33"><a href="#cb58-33"></a><span class="st">  ST301Q10JA +</span></span>
-<span id="cb58-34"><a href="#cb58-34"></a><span class="st">  ST435Q01DA"</span></span>
-<span id="cb58-35"><a href="#cb58-35"></a></span>
-<span id="cb58-36"><a href="#cb58-36"></a><span class="co"># fit the model </span></span>
-<span id="cb58-37"><a href="#cb58-37"></a></span>
-<span id="cb58-38"><a href="#cb58-38"></a>fit_cfa <span class="ot">&lt;-</span> <span class="fu">cfa</span>(cfa_model,</span>
-<span id="cb58-39"><a href="#cb58-39"></a>  <span class="at">data =</span> curiosity,</span>
-<span id="cb58-40"><a href="#cb58-40"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
-<span id="cb58-41"><a href="#cb58-41"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(curiosity))</span>
-<span id="cb58-42"><a href="#cb58-42"></a></span>
-<span id="cb58-43"><a href="#cb58-43"></a><span class="fu">summary</span>(fit_cfa,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-44"><a href="#cb58-44"></a></span>
-<span id="cb58-45"><a href="#cb58-45"></a><span class="co"># The robust CFI and TLI are over threshold of 0.95 (CFI = 0.994 and TLI =0.989). in general, the items look good - except for ST435Q01DA (which is understandable as it comes from a different construct!). A better model is:</span></span>
-<span id="cb58-46"><a href="#cb58-46"></a></span>
-<span id="cb58-47"><a href="#cb58-47"></a>cur_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb58-48"><a href="#cb58-48"></a>  <span class="st">"ST301Q01JA"</span>,</span>
-<span id="cb58-49"><a href="#cb58-49"></a>  <span class="st">"ST301Q04JA"</span>,</span>
-<span id="cb58-50"><a href="#cb58-50"></a>  <span class="st">"ST301Q06JA"</span>,</span>
-<span id="cb58-51"><a href="#cb58-51"></a>  <span class="st">"ST301Q10JA"</span>)</span>
-<span id="cb58-52"><a href="#cb58-52"></a></span>
-<span id="cb58-53"><a href="#cb58-53"></a>curiosity <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb58-54"><a href="#cb58-54"></a>  <span class="fu">select</span>(cur_cols) </span>
-<span id="cb58-55"><a href="#cb58-55"></a></span>
-<span id="cb58-56"><a href="#cb58-56"></a><span class="co"># recode to numeric </span></span>
-<span id="cb58-57"><a href="#cb58-57"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
-<span id="cb58-58"><a href="#cb58-58"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
-<span id="cb58-59"><a href="#cb58-59"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb58-60"><a href="#cb58-60"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb58-61"><a href="#cb58-61"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb58-62"><a href="#cb58-62"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb58-63"><a href="#cb58-63"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb58-64"><a href="#cb58-64"></a>  <span class="fu">na.omit</span>() </span>
-<span id="cb58-65"><a href="#cb58-65"></a></span>
-<span id="cb58-66"><a href="#cb58-66"></a><span class="co"># label as ordered</span></span>
-<span id="cb58-67"><a href="#cb58-67"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
-<span id="cb58-68"><a href="#cb58-68"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
-<span id="cb58-69"><a href="#cb58-69"></a></span>
-<span id="cb58-70"><a href="#cb58-70"></a></span>
-<span id="cb58-71"><a href="#cb58-71"></a>cfa_model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb58-72"><a href="#cb58-72"></a><span class="st">  curious =~</span></span>
-<span id="cb58-73"><a href="#cb58-73"></a><span class="st">  ST301Q01JA +</span></span>
-<span id="cb58-74"><a href="#cb58-74"></a><span class="st">  ST301Q04JA +</span></span>
-<span id="cb58-75"><a href="#cb58-75"></a><span class="st">  ST301Q06JA +</span></span>
-<span id="cb58-76"><a href="#cb58-76"></a><span class="st">  ST301Q10JA"</span></span>
-<span id="cb58-77"><a href="#cb58-77"></a></span>
-<span id="cb58-78"><a href="#cb58-78"></a><span class="co"># fit the model </span></span>
-<span id="cb58-79"><a href="#cb58-79"></a></span>
-<span id="cb58-80"><a href="#cb58-80"></a>fit_cfa <span class="ot">&lt;-</span> <span class="fu">cfa</span>(cfa_model,</span>
-<span id="cb58-81"><a href="#cb58-81"></a>  <span class="at">data =</span> curiosity,</span>
-<span id="cb58-82"><a href="#cb58-82"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
-<span id="cb58-83"><a href="#cb58-83"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(curiosity))</span>
-<span id="cb58-84"><a href="#cb58-84"></a></span>
-<span id="cb58-85"><a href="#cb58-85"></a><span class="fu">summary</span>(fit_cfa,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-86"><a href="#cb58-86"></a></span>
-<span id="cb58-87"><a href="#cb58-87"></a><span class="co"># a good fit here, robust CFI = 0.997 and robust TLI 0.990. Good laodings on all four items 0.94-0.84.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># Create a data frame for curiosity scores</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a></span>
+<span id="cb62-3"><a href="#cb62-3"></a>cur_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb62-4"><a href="#cb62-4"></a>  <span class="st">"ST301Q01JA"</span>,</span>
+<span id="cb62-5"><a href="#cb62-5"></a>  <span class="st">"ST301Q04JA"</span>,</span>
+<span id="cb62-6"><a href="#cb62-6"></a>  <span class="st">"ST301Q06JA"</span>,</span>
+<span id="cb62-7"><a href="#cb62-7"></a>  <span class="st">"ST301Q10JA"</span>,</span>
+<span id="cb62-8"><a href="#cb62-8"></a>  <span class="st">"ST435Q01DA"</span>)</span>
+<span id="cb62-9"><a href="#cb62-9"></a></span>
+<span id="cb62-10"><a href="#cb62-10"></a>curiosity <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb62-11"><a href="#cb62-11"></a>  <span class="fu">select</span>(cur_cols) </span>
+<span id="cb62-12"><a href="#cb62-12"></a></span>
+<span id="cb62-13"><a href="#cb62-13"></a><span class="co"># recode to numeric </span></span>
+<span id="cb62-14"><a href="#cb62-14"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
+<span id="cb62-15"><a href="#cb62-15"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb62-16"><a href="#cb62-16"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb62-17"><a href="#cb62-17"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb62-18"><a href="#cb62-18"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb62-19"><a href="#cb62-19"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb62-20"><a href="#cb62-20"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb62-21"><a href="#cb62-21"></a>  <span class="fu">na.omit</span>() </span>
+<span id="cb62-22"><a href="#cb62-22"></a></span>
+<span id="cb62-23"><a href="#cb62-23"></a><span class="co"># label as ordered</span></span>
+<span id="cb62-24"><a href="#cb62-24"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
+<span id="cb62-25"><a href="#cb62-25"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
+<span id="cb62-26"><a href="#cb62-26"></a></span>
+<span id="cb62-27"><a href="#cb62-27"></a></span>
+<span id="cb62-28"><a href="#cb62-28"></a>cfa_model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb62-29"><a href="#cb62-29"></a><span class="st">  curious =~</span></span>
+<span id="cb62-30"><a href="#cb62-30"></a><span class="st">  ST301Q01JA +</span></span>
+<span id="cb62-31"><a href="#cb62-31"></a><span class="st">  ST301Q04JA +</span></span>
+<span id="cb62-32"><a href="#cb62-32"></a><span class="st">  ST301Q06JA +</span></span>
+<span id="cb62-33"><a href="#cb62-33"></a><span class="st">  ST301Q10JA +</span></span>
+<span id="cb62-34"><a href="#cb62-34"></a><span class="st">  ST435Q01DA"</span></span>
+<span id="cb62-35"><a href="#cb62-35"></a></span>
+<span id="cb62-36"><a href="#cb62-36"></a><span class="co"># fit the model </span></span>
+<span id="cb62-37"><a href="#cb62-37"></a></span>
+<span id="cb62-38"><a href="#cb62-38"></a>fit_cfa <span class="ot">&lt;-</span> <span class="fu">cfa</span>(cfa_model,</span>
+<span id="cb62-39"><a href="#cb62-39"></a>  <span class="at">data =</span> curiosity,</span>
+<span id="cb62-40"><a href="#cb62-40"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
+<span id="cb62-41"><a href="#cb62-41"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(curiosity))</span>
+<span id="cb62-42"><a href="#cb62-42"></a></span>
+<span id="cb62-43"><a href="#cb62-43"></a><span class="fu">summary</span>(fit_cfa,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-44"><a href="#cb62-44"></a></span>
+<span id="cb62-45"><a href="#cb62-45"></a><span class="co"># The robust CFI and TLI are over threshold of 0.95 (CFI = 0.994 and TLI =0.989). in general, the items look good - except for ST435Q01DA (which is understandable as it comes from a different construct!). A better model is:</span></span>
+<span id="cb62-46"><a href="#cb62-46"></a></span>
+<span id="cb62-47"><a href="#cb62-47"></a>cur_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb62-48"><a href="#cb62-48"></a>  <span class="st">"ST301Q01JA"</span>,</span>
+<span id="cb62-49"><a href="#cb62-49"></a>  <span class="st">"ST301Q04JA"</span>,</span>
+<span id="cb62-50"><a href="#cb62-50"></a>  <span class="st">"ST301Q06JA"</span>,</span>
+<span id="cb62-51"><a href="#cb62-51"></a>  <span class="st">"ST301Q10JA"</span>)</span>
+<span id="cb62-52"><a href="#cb62-52"></a></span>
+<span id="cb62-53"><a href="#cb62-53"></a>curiosity <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb62-54"><a href="#cb62-54"></a>  <span class="fu">select</span>(cur_cols) </span>
+<span id="cb62-55"><a href="#cb62-55"></a></span>
+<span id="cb62-56"><a href="#cb62-56"></a><span class="co"># recode to numeric </span></span>
+<span id="cb62-57"><a href="#cb62-57"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
+<span id="cb62-58"><a href="#cb62-58"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb62-59"><a href="#cb62-59"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb62-60"><a href="#cb62-60"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb62-61"><a href="#cb62-61"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb62-62"><a href="#cb62-62"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb62-63"><a href="#cb62-63"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb62-64"><a href="#cb62-64"></a>  <span class="fu">na.omit</span>() </span>
+<span id="cb62-65"><a href="#cb62-65"></a></span>
+<span id="cb62-66"><a href="#cb62-66"></a><span class="co"># label as ordered</span></span>
+<span id="cb62-67"><a href="#cb62-67"></a>curiosity <span class="ot">&lt;-</span> curiosity <span class="sc">%&gt;%</span></span>
+<span id="cb62-68"><a href="#cb62-68"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
+<span id="cb62-69"><a href="#cb62-69"></a></span>
+<span id="cb62-70"><a href="#cb62-70"></a></span>
+<span id="cb62-71"><a href="#cb62-71"></a>cfa_model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb62-72"><a href="#cb62-72"></a><span class="st">  curious =~</span></span>
+<span id="cb62-73"><a href="#cb62-73"></a><span class="st">  ST301Q01JA +</span></span>
+<span id="cb62-74"><a href="#cb62-74"></a><span class="st">  ST301Q04JA +</span></span>
+<span id="cb62-75"><a href="#cb62-75"></a><span class="st">  ST301Q06JA +</span></span>
+<span id="cb62-76"><a href="#cb62-76"></a><span class="st">  ST301Q10JA"</span></span>
+<span id="cb62-77"><a href="#cb62-77"></a></span>
+<span id="cb62-78"><a href="#cb62-78"></a><span class="co"># fit the model </span></span>
+<span id="cb62-79"><a href="#cb62-79"></a></span>
+<span id="cb62-80"><a href="#cb62-80"></a>fit_cfa <span class="ot">&lt;-</span> <span class="fu">cfa</span>(cfa_model,</span>
+<span id="cb62-81"><a href="#cb62-81"></a>  <span class="at">data =</span> curiosity,</span>
+<span id="cb62-82"><a href="#cb62-82"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
+<span id="cb62-83"><a href="#cb62-83"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(curiosity))</span>
+<span id="cb62-84"><a href="#cb62-84"></a></span>
+<span id="cb62-85"><a href="#cb62-85"></a><span class="fu">summary</span>(fit_cfa,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-86"><a href="#cb62-86"></a></span>
+<span id="cb62-87"><a href="#cb62-87"></a><span class="co"># a good fit here, robust CFI = 0.997 and robust TLI 0.990. Good laodings on all four items 0.94-0.84.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3436,64 +3455,64 @@ Tip
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>resilience <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">select</span>(ST307Q01JA, ST307Q02JA, ST307Q03JA, ST307Q09JA, ESCS, ST004D01T,</span>
-<span id="cb59-4"><a href="#cb59-4"></a>         PV1MATH)</span>
-<span id="cb59-5"><a href="#cb59-5"></a></span>
-<span id="cb59-6"><a href="#cb59-6"></a><span class="co"># recode to numeric </span></span>
-<span id="cb59-7"><a href="#cb59-7"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
-<span id="cb59-8"><a href="#cb59-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
-<span id="cb59-9"><a href="#cb59-9"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb59-10"><a href="#cb59-10"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb59-11"><a href="#cb59-11"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb59-12"><a href="#cb59-12"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb59-13"><a href="#cb59-13"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb59-14"><a href="#cb59-14"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(</span>
-<span id="cb59-15"><a href="#cb59-15"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"1"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb59-16"><a href="#cb59-16"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"2"</span>)   <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb59-17"><a href="#cb59-17"></a>    <span class="cn">TRUE</span>                            <span class="sc">~</span> <span class="cn">NA_real_</span></span>
-<span id="cb59-18"><a href="#cb59-18"></a>  )) </span>
-<span id="cb59-19"><a href="#cb59-19"></a></span>
-<span id="cb59-20"><a href="#cb59-20"></a><span class="co"># label items as ordered</span></span>
-<span id="cb59-21"><a href="#cb59-21"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
-<span id="cb59-22"><a href="#cb59-22"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
-<span id="cb59-23"><a href="#cb59-23"></a></span>
-<span id="cb59-24"><a href="#cb59-24"></a></span>
-<span id="cb59-25"><a href="#cb59-25"></a></span>
-<span id="cb59-26"><a href="#cb59-26"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb59-27"><a href="#cb59-27"></a><span class="st">  resilience =~</span></span>
-<span id="cb59-28"><a href="#cb59-28"></a><span class="st">   ST307Q01JA +</span></span>
-<span id="cb59-29"><a href="#cb59-29"></a><span class="st">   ST307Q02JA + </span></span>
-<span id="cb59-30"><a href="#cb59-30"></a><span class="st">   ST307Q03JA +</span></span>
-<span id="cb59-31"><a href="#cb59-31"></a><span class="st">   ST307Q09JA</span></span>
-<span id="cb59-32"><a href="#cb59-32"></a><span class="st">PV1MATH ~ resilience + ESCS + gender"</span></span>
-<span id="cb59-33"><a href="#cb59-33"></a></span>
-<span id="cb59-34"><a href="#cb59-34"></a>fit_sem <span class="ot">&lt;-</span> <span class="fu">sem</span>(</span>
-<span id="cb59-35"><a href="#cb59-35"></a>  model,</span>
-<span id="cb59-36"><a href="#cb59-36"></a>  <span class="at">data =</span> resilience,</span>
-<span id="cb59-37"><a href="#cb59-37"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
-<span id="cb59-38"><a href="#cb59-38"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST307Q01JA"</span>, <span class="st">"ST307Q02JA"</span>, <span class="st">"ST307Q03JA"</span>, <span class="st">"ST307Q09JA"</span>))</span>
-<span id="cb59-39"><a href="#cb59-39"></a></span>
-<span id="cb59-40"><a href="#cb59-40"></a><span class="fu">summary</span>(fit_sem,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">rsquare =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb59-41"><a href="#cb59-41"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb59-42"><a href="#cb59-42"></a>         <span class="at">whatLabels =</span> <span class="st">"std"</span>, </span>
-<span id="cb59-43"><a href="#cb59-43"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb59-44"><a href="#cb59-44"></a>         <span class="at">sizeMan =</span> <span class="dv">10</span>,</span>
-<span id="cb59-45"><a href="#cb59-45"></a>         <span class="at">sizeLat =</span><span class="dv">10</span>,</span>
-<span id="cb59-46"><a href="#cb59-46"></a>         <span class="at">label.cex =</span><span class="fl">1.3</span>,</span>
-<span id="cb59-47"><a href="#cb59-47"></a>         <span class="at">edge.label.cex =</span> <span class="dv">1</span>,</span>
-<span id="cb59-48"><a href="#cb59-48"></a>         <span class="at">nCharNodes =</span> <span class="dv">0</span>, </span>
-<span id="cb59-49"><a href="#cb59-49"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb59-50"><a href="#cb59-50"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb59-51"><a href="#cb59-51"></a><span class="co"># The model fit here looks good CFI = 0.997; TLI = 0.997</span></span>
-<span id="cb59-52"><a href="#cb59-52"></a><span class="co"># The highest lading here is from social class, which has a standardized</span></span>
-<span id="cb59-53"><a href="#cb59-53"></a><span class="co"># residual of 0.3. A increase in 1 sd of social class leads to 30.7</span></span>
-<span id="cb59-54"><a href="#cb59-54"></a><span class="co"># more PISA points.</span></span>
-<span id="cb59-55"><a href="#cb59-55"></a><span class="co">#Resilience has the same size coefficients as gender</span></span>
-<span id="cb59-56"><a href="#cb59-56"></a><span class="co"># gender differences in the model are of a similar magnitude to </span></span>
-<span id="cb59-57"><a href="#cb59-57"></a><span class="co"># differences due to resilience. The combined model accounts for </span></span>
-<span id="cb59-58"><a href="#cb59-58"></a><span class="co"># 12.7% of the total variance in mathematics score.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>resilience <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">select</span>(ST307Q01JA, ST307Q02JA, ST307Q03JA, ST307Q09JA, ESCS, ST004D01T,</span>
+<span id="cb63-4"><a href="#cb63-4"></a>         PV1MATH)</span>
+<span id="cb63-5"><a href="#cb63-5"></a></span>
+<span id="cb63-6"><a href="#cb63-6"></a><span class="co"># recode to numeric </span></span>
+<span id="cb63-7"><a href="#cb63-7"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
+<span id="cb63-8"><a href="#cb63-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb63-9"><a href="#cb63-9"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb63-10"><a href="#cb63-10"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb63-11"><a href="#cb63-11"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb63-12"><a href="#cb63-12"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb63-13"><a href="#cb63-13"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb63-14"><a href="#cb63-14"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(</span>
+<span id="cb63-15"><a href="#cb63-15"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"1"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb63-16"><a href="#cb63-16"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"2"</span>)   <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb63-17"><a href="#cb63-17"></a>    <span class="cn">TRUE</span>                            <span class="sc">~</span> <span class="cn">NA_real_</span></span>
+<span id="cb63-18"><a href="#cb63-18"></a>  )) </span>
+<span id="cb63-19"><a href="#cb63-19"></a></span>
+<span id="cb63-20"><a href="#cb63-20"></a><span class="co"># label items as ordered</span></span>
+<span id="cb63-21"><a href="#cb63-21"></a>resilience <span class="ot">&lt;-</span> resilience <span class="sc">%&gt;%</span></span>
+<span id="cb63-22"><a href="#cb63-22"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">ordered</span>(.)))</span>
+<span id="cb63-23"><a href="#cb63-23"></a></span>
+<span id="cb63-24"><a href="#cb63-24"></a></span>
+<span id="cb63-25"><a href="#cb63-25"></a></span>
+<span id="cb63-26"><a href="#cb63-26"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb63-27"><a href="#cb63-27"></a><span class="st">  resilience =~</span></span>
+<span id="cb63-28"><a href="#cb63-28"></a><span class="st">   ST307Q01JA +</span></span>
+<span id="cb63-29"><a href="#cb63-29"></a><span class="st">   ST307Q02JA + </span></span>
+<span id="cb63-30"><a href="#cb63-30"></a><span class="st">   ST307Q03JA +</span></span>
+<span id="cb63-31"><a href="#cb63-31"></a><span class="st">   ST307Q09JA</span></span>
+<span id="cb63-32"><a href="#cb63-32"></a><span class="st">PV1MATH ~ resilience + ESCS + gender"</span></span>
+<span id="cb63-33"><a href="#cb63-33"></a></span>
+<span id="cb63-34"><a href="#cb63-34"></a>fit_sem <span class="ot">&lt;-</span> <span class="fu">sem</span>(</span>
+<span id="cb63-35"><a href="#cb63-35"></a>  model,</span>
+<span id="cb63-36"><a href="#cb63-36"></a>  <span class="at">data =</span> resilience,</span>
+<span id="cb63-37"><a href="#cb63-37"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
+<span id="cb63-38"><a href="#cb63-38"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST307Q01JA"</span>, <span class="st">"ST307Q02JA"</span>, <span class="st">"ST307Q03JA"</span>, <span class="st">"ST307Q09JA"</span>))</span>
+<span id="cb63-39"><a href="#cb63-39"></a></span>
+<span id="cb63-40"><a href="#cb63-40"></a><span class="fu">summary</span>(fit_sem,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">rsquare =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-41"><a href="#cb63-41"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb63-42"><a href="#cb63-42"></a>         <span class="at">whatLabels =</span> <span class="st">"std"</span>, </span>
+<span id="cb63-43"><a href="#cb63-43"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb63-44"><a href="#cb63-44"></a>         <span class="at">sizeMan =</span> <span class="dv">10</span>,</span>
+<span id="cb63-45"><a href="#cb63-45"></a>         <span class="at">sizeLat =</span><span class="dv">10</span>,</span>
+<span id="cb63-46"><a href="#cb63-46"></a>         <span class="at">label.cex =</span><span class="fl">1.3</span>,</span>
+<span id="cb63-47"><a href="#cb63-47"></a>         <span class="at">edge.label.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb63-48"><a href="#cb63-48"></a>         <span class="at">nCharNodes =</span> <span class="dv">0</span>, </span>
+<span id="cb63-49"><a href="#cb63-49"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb63-50"><a href="#cb63-50"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb63-51"><a href="#cb63-51"></a><span class="co"># The model fit here looks good CFI = 0.997; TLI = 0.997</span></span>
+<span id="cb63-52"><a href="#cb63-52"></a><span class="co"># The highest lading here is from social class, which has a standardized</span></span>
+<span id="cb63-53"><a href="#cb63-53"></a><span class="co"># residual of 0.3. A increase in 1 sd of social class leads to 30.7</span></span>
+<span id="cb63-54"><a href="#cb63-54"></a><span class="co"># more PISA points.</span></span>
+<span id="cb63-55"><a href="#cb63-55"></a><span class="co">#Resilience has the same size coefficients as gender</span></span>
+<span id="cb63-56"><a href="#cb63-56"></a><span class="co"># gender differences in the model are of a similar magnitude to </span></span>
+<span id="cb63-57"><a href="#cb63-57"></a><span class="co"># differences due to resilience. The combined model accounts for </span></span>
+<span id="cb63-58"><a href="#cb63-58"></a><span class="co"># 12.7% of the total variance in mathematics score.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3506,74 +3525,74 @@ Tip
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>resil_curioisty <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">select</span>(ST307Q01JA, ST307Q02JA, ST307Q03JA, ST307Q09JA,  ST301Q01JA,</span>
-<span id="cb60-4"><a href="#cb60-4"></a>  ST301Q04JA, ST301Q06JA,ST301Q10JA, ST435Q01DA, ESCS, ST004D01T, PV1SCIE)</span>
-<span id="cb60-5"><a href="#cb60-5"></a></span>
-<span id="cb60-6"><a href="#cb60-6"></a><span class="co"># recode to numeric </span></span>
-<span id="cb60-7"><a href="#cb60-7"></a>resil_curioisty <span class="ot">&lt;-</span> resil_curioisty <span class="sc">%&gt;%</span></span>
-<span id="cb60-8"><a href="#cb60-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
-<span id="cb60-9"><a href="#cb60-9"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb60-10"><a href="#cb60-10"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb60-11"><a href="#cb60-11"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb60-12"><a href="#cb60-12"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
-<span id="cb60-13"><a href="#cb60-13"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb60-14"><a href="#cb60-14"></a></span>
-<span id="cb60-15"><a href="#cb60-15"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(</span>
-<span id="cb60-16"><a href="#cb60-16"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"1"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb60-17"><a href="#cb60-17"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"2"</span>)   <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb60-18"><a href="#cb60-18"></a>    <span class="cn">TRUE</span>                            <span class="sc">~</span> <span class="cn">NA_real_</span></span>
-<span id="cb60-19"><a href="#cb60-19"></a>  )) </span>
-<span id="cb60-20"><a href="#cb60-20"></a></span>
-<span id="cb60-21"><a href="#cb60-21"></a><span class="co"># label items as ordered</span></span>
-<span id="cb60-22"><a href="#cb60-22"></a>resil_curioisty <span class="ot">&lt;-</span> resil_curioisty <span class="sc">%&gt;%</span></span>
-<span id="cb60-23"><a href="#cb60-23"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">ordered</span>(.))) </span>
-<span id="cb60-24"><a href="#cb60-24"></a></span>
-<span id="cb60-25"><a href="#cb60-25"></a></span>
-<span id="cb60-26"><a href="#cb60-26"></a></span>
-<span id="cb60-27"><a href="#cb60-27"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb60-28"><a href="#cb60-28"></a><span class="st">  resilience =~</span></span>
-<span id="cb60-29"><a href="#cb60-29"></a><span class="st">   ST307Q01JA +</span></span>
-<span id="cb60-30"><a href="#cb60-30"></a><span class="st">   ST307Q02JA + </span></span>
-<span id="cb60-31"><a href="#cb60-31"></a><span class="st">   ST307Q03JA +</span></span>
-<span id="cb60-32"><a href="#cb60-32"></a><span class="st">   ST307Q09JA</span></span>
-<span id="cb60-33"><a href="#cb60-33"></a><span class="st">  curious =~</span></span>
-<span id="cb60-34"><a href="#cb60-34"></a><span class="st">  ST301Q01JA +</span></span>
-<span id="cb60-35"><a href="#cb60-35"></a><span class="st">  ST301Q04JA +</span></span>
-<span id="cb60-36"><a href="#cb60-36"></a><span class="st">  ST301Q06JA +</span></span>
-<span id="cb60-37"><a href="#cb60-37"></a><span class="st">  ST301Q10JA +</span></span>
-<span id="cb60-38"><a href="#cb60-38"></a><span class="st">  ST435Q01DA</span></span>
-<span id="cb60-39"><a href="#cb60-39"></a></span>
-<span id="cb60-40"><a href="#cb60-40"></a><span class="st">PV1SCIE ~ resilience + ESCS + gender"</span></span>
-<span id="cb60-41"><a href="#cb60-41"></a></span>
-<span id="cb60-42"><a href="#cb60-42"></a>fit_sem <span class="ot">&lt;-</span> <span class="fu">sem</span>(</span>
-<span id="cb60-43"><a href="#cb60-43"></a>  model,</span>
-<span id="cb60-44"><a href="#cb60-44"></a>  <span class="at">data =</span> resil_curioisty,</span>
-<span id="cb60-45"><a href="#cb60-45"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
-<span id="cb60-46"><a href="#cb60-46"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST307Q01JA"</span>, <span class="st">"ST307Q02JA"</span>, <span class="st">"ST307Q03JA"</span>, <span class="st">"ST307Q09JA"</span>,</span>
-<span id="cb60-47"><a href="#cb60-47"></a>              <span class="st">"ST301Q01JA"</span>, <span class="st">"ST301Q04JA"</span>, <span class="st">"ST301Q06JA"</span>,<span class="st">"ST301Q10JA"</span>,</span>
-<span id="cb60-48"><a href="#cb60-48"></a>              <span class="st">"ST435Q01DA"</span>))</span>
-<span id="cb60-49"><a href="#cb60-49"></a></span>
-<span id="cb60-50"><a href="#cb60-50"></a><span class="fu">summary</span>(fit_sem,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">rsquare =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb60-51"><a href="#cb60-51"></a><span class="fu">semPaths</span>(fit_sem, </span>
-<span id="cb60-52"><a href="#cb60-52"></a>         <span class="at">whatLabels =</span> <span class="st">"std"</span>, </span>
-<span id="cb60-53"><a href="#cb60-53"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
-<span id="cb60-54"><a href="#cb60-54"></a>         <span class="at">sizeMan =</span> <span class="dv">10</span>,</span>
-<span id="cb60-55"><a href="#cb60-55"></a>         <span class="at">sizeLat =</span><span class="dv">10</span>,</span>
-<span id="cb60-56"><a href="#cb60-56"></a>         <span class="at">label.cex =</span><span class="fl">1.3</span>,</span>
-<span id="cb60-57"><a href="#cb60-57"></a>         <span class="at">edge.label.cex =</span> <span class="dv">1</span>,</span>
-<span id="cb60-58"><a href="#cb60-58"></a>         <span class="at">nCharNodes =</span> <span class="dv">0</span>, </span>
-<span id="cb60-59"><a href="#cb60-59"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb60-60"><a href="#cb60-60"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb60-61"><a href="#cb60-61"></a><span class="co"># The model fit here looks good CFI = 0.993; TLI = 0.993</span></span>
-<span id="cb60-62"><a href="#cb60-62"></a><span class="co"># Resilience and gender have very similar effects here</span></span>
-<span id="cb60-63"><a href="#cb60-63"></a><span class="co"># resilience 0.263 and ESCS 0.262. By comparison,</span></span>
-<span id="cb60-64"><a href="#cb60-64"></a><span class="co"># gender has a smaller effect of only -0.08</span></span>
-<span id="cb60-65"><a href="#cb60-65"></a><span class="co"># The negative sign suggests girls perform,</span></span>
-<span id="cb60-66"><a href="#cb60-66"></a><span class="co"># on average, slightly worse than boys</span></span>
-<span id="cb60-67"><a href="#cb60-67"></a><span class="co"># For the outcome variable, PV1SCIE,</span></span>
-<span id="cb60-68"><a href="#cb60-68"></a><span class="co"># the model explains 14.5% of total variance in science scores</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>resil_curioisty <span class="ot">&lt;-</span> PISA_2025 <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">filter</span>(CNT <span class="sc">==</span> <span class="st">"United Kingdom"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">select</span>(ST307Q01JA, ST307Q02JA, ST307Q03JA, ST307Q09JA,  ST301Q01JA,</span>
+<span id="cb64-4"><a href="#cb64-4"></a>  ST301Q04JA, ST301Q06JA,ST301Q10JA, ST435Q01DA, ESCS, ST004D01T, PV1SCIE)</span>
+<span id="cb64-5"><a href="#cb64-5"></a></span>
+<span id="cb64-6"><a href="#cb64-6"></a><span class="co"># recode to numeric </span></span>
+<span id="cb64-7"><a href="#cb64-7"></a>resil_curioisty <span class="ot">&lt;-</span> resil_curioisty <span class="sc">%&gt;%</span></span>
+<span id="cb64-8"><a href="#cb64-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb64-9"><a href="#cb64-9"></a>    .x <span class="sc">==</span> <span class="st">"Strongly disagree"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb64-10"><a href="#cb64-10"></a>    .x <span class="sc">==</span> <span class="st">"Disagree"</span>          <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb64-11"><a href="#cb64-11"></a>    .x <span class="sc">==</span> <span class="st">"Agree"</span>             <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb64-12"><a href="#cb64-12"></a>    .x <span class="sc">==</span> <span class="st">"Strongly agree"</span>    <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb64-13"><a href="#cb64-13"></a>    <span class="cn">TRUE</span>                      <span class="sc">~</span> <span class="cn">NA_real_</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb64-14"><a href="#cb64-14"></a></span>
+<span id="cb64-15"><a href="#cb64-15"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(</span>
+<span id="cb64-16"><a href="#cb64-16"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"1"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb64-17"><a href="#cb64-17"></a>    ST004D01T <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"2"</span>)   <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb64-18"><a href="#cb64-18"></a>    <span class="cn">TRUE</span>                            <span class="sc">~</span> <span class="cn">NA_real_</span></span>
+<span id="cb64-19"><a href="#cb64-19"></a>  )) </span>
+<span id="cb64-20"><a href="#cb64-20"></a></span>
+<span id="cb64-21"><a href="#cb64-21"></a><span class="co"># label items as ordered</span></span>
+<span id="cb64-22"><a href="#cb64-22"></a>resil_curioisty <span class="ot">&lt;-</span> resil_curioisty <span class="sc">%&gt;%</span></span>
+<span id="cb64-23"><a href="#cb64-23"></a>              <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"ST30"</span>), <span class="sc">~</span> <span class="fu">ordered</span>(.))) </span>
+<span id="cb64-24"><a href="#cb64-24"></a></span>
+<span id="cb64-25"><a href="#cb64-25"></a></span>
+<span id="cb64-26"><a href="#cb64-26"></a></span>
+<span id="cb64-27"><a href="#cb64-27"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb64-28"><a href="#cb64-28"></a><span class="st">  resilience =~</span></span>
+<span id="cb64-29"><a href="#cb64-29"></a><span class="st">   ST307Q01JA +</span></span>
+<span id="cb64-30"><a href="#cb64-30"></a><span class="st">   ST307Q02JA + </span></span>
+<span id="cb64-31"><a href="#cb64-31"></a><span class="st">   ST307Q03JA +</span></span>
+<span id="cb64-32"><a href="#cb64-32"></a><span class="st">   ST307Q09JA</span></span>
+<span id="cb64-33"><a href="#cb64-33"></a><span class="st">  curious =~</span></span>
+<span id="cb64-34"><a href="#cb64-34"></a><span class="st">  ST301Q01JA +</span></span>
+<span id="cb64-35"><a href="#cb64-35"></a><span class="st">  ST301Q04JA +</span></span>
+<span id="cb64-36"><a href="#cb64-36"></a><span class="st">  ST301Q06JA +</span></span>
+<span id="cb64-37"><a href="#cb64-37"></a><span class="st">  ST301Q10JA +</span></span>
+<span id="cb64-38"><a href="#cb64-38"></a><span class="st">  ST435Q01DA</span></span>
+<span id="cb64-39"><a href="#cb64-39"></a></span>
+<span id="cb64-40"><a href="#cb64-40"></a><span class="st">PV1SCIE ~ resilience + ESCS + gender"</span></span>
+<span id="cb64-41"><a href="#cb64-41"></a></span>
+<span id="cb64-42"><a href="#cb64-42"></a>fit_sem <span class="ot">&lt;-</span> <span class="fu">sem</span>(</span>
+<span id="cb64-43"><a href="#cb64-43"></a>  model,</span>
+<span id="cb64-44"><a href="#cb64-44"></a>  <span class="at">data =</span> resil_curioisty,</span>
+<span id="cb64-45"><a href="#cb64-45"></a>  <span class="at">estimator =</span> <span class="st">"WLSMV"</span>,</span>
+<span id="cb64-46"><a href="#cb64-46"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">"ST307Q01JA"</span>, <span class="st">"ST307Q02JA"</span>, <span class="st">"ST307Q03JA"</span>, <span class="st">"ST307Q09JA"</span>,</span>
+<span id="cb64-47"><a href="#cb64-47"></a>              <span class="st">"ST301Q01JA"</span>, <span class="st">"ST301Q04JA"</span>, <span class="st">"ST301Q06JA"</span>,<span class="st">"ST301Q10JA"</span>,</span>
+<span id="cb64-48"><a href="#cb64-48"></a>              <span class="st">"ST435Q01DA"</span>))</span>
+<span id="cb64-49"><a href="#cb64-49"></a></span>
+<span id="cb64-50"><a href="#cb64-50"></a><span class="fu">summary</span>(fit_sem,  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>, <span class="at">rsquare =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-51"><a href="#cb64-51"></a><span class="fu">semPaths</span>(fit_sem, </span>
+<span id="cb64-52"><a href="#cb64-52"></a>         <span class="at">whatLabels =</span> <span class="st">"std"</span>, </span>
+<span id="cb64-53"><a href="#cb64-53"></a>         <span class="at">rotation =</span> <span class="dv">2</span>, </span>
+<span id="cb64-54"><a href="#cb64-54"></a>         <span class="at">sizeMan =</span> <span class="dv">10</span>,</span>
+<span id="cb64-55"><a href="#cb64-55"></a>         <span class="at">sizeLat =</span><span class="dv">10</span>,</span>
+<span id="cb64-56"><a href="#cb64-56"></a>         <span class="at">label.cex =</span><span class="fl">1.3</span>,</span>
+<span id="cb64-57"><a href="#cb64-57"></a>         <span class="at">edge.label.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb64-58"><a href="#cb64-58"></a>         <span class="at">nCharNodes =</span> <span class="dv">0</span>, </span>
+<span id="cb64-59"><a href="#cb64-59"></a>         <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb64-60"><a href="#cb64-60"></a>         <span class="at">thresholds =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb64-61"><a href="#cb64-61"></a><span class="co"># The model fit here looks good CFI = 0.993; TLI = 0.993</span></span>
+<span id="cb64-62"><a href="#cb64-62"></a><span class="co"># Resilience and gender have very similar effects here</span></span>
+<span id="cb64-63"><a href="#cb64-63"></a><span class="co"># resilience 0.263 and ESCS 0.262. By comparison,</span></span>
+<span id="cb64-64"><a href="#cb64-64"></a><span class="co"># gender has a smaller effect of only -0.08</span></span>
+<span id="cb64-65"><a href="#cb64-65"></a><span class="co"># The negative sign suggests girls perform,</span></span>
+<span id="cb64-66"><a href="#cb64-66"></a><span class="co"># on average, slightly worse than boys</span></span>
+<span id="cb64-67"><a href="#cb64-67"></a><span class="co"># For the outcome variable, PV1SCIE,</span></span>
+<span id="cb64-68"><a href="#cb64-68"></a><span class="co"># the model explains 14.5% of total variance in science scores</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -3586,15 +3605,15 @@ Tip
 <div class="cell">
 <details class="code-fold">
 <summary>Answer</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># Starting from the model fit above</span></span>
-<span id="cb61-2"><a href="#cb61-2"></a></span>
-<span id="cb61-3"><a href="#cb61-3"></a></span>
-<span id="cb61-4"><a href="#cb61-4"></a><span class="fu">modificationIndices</span>(fit_sem, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb61-5"><a href="#cb61-5"></a><span class="co">#  The top three suggestions here are:</span></span>
-<span id="cb61-6"><a href="#cb61-6"></a><span class="co"># resilience =~ ST435Q01DA - item ST435Q01DA is "I enjoy finding solutions to problems." which cross loads between curiosity and resilience seems worth adding</span></span>
-<span id="cb61-7"><a href="#cb61-7"></a><span class="co"># The next suggestion resilience  ~    PV1SCIE proposes science score causes resilience This seems unlikely from a theoretical point of view so can be rejected</span></span>
-<span id="cb61-8"><a href="#cb61-8"></a><span class="co"># ST435Q01DA ~~    PV1SCIE: Whilst this relationship seems intuitively correct - a covariance of enjoying finding solutions to problems and science scores - it violates a core assumption of the measurement model - the latent factor 'resilience' causes the maths score, not any of its items</span></span>
-<span id="cb61-9"><a href="#cb61-9"></a><span class="co"># resilience =~ ST301Q01JA is another cross loading - the curiosity item ("I am curious about many different things") loads on curiosity. Adding the crossloading with stop curiosity being a clean factor and soaks up some cariance from curiosity. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># Starting from the model fit above</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a></span>
+<span id="cb65-3"><a href="#cb65-3"></a></span>
+<span id="cb65-4"><a href="#cb65-4"></a><span class="fu">modificationIndices</span>(fit_sem, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb65-5"><a href="#cb65-5"></a><span class="co">#  The top three suggestions here are:</span></span>
+<span id="cb65-6"><a href="#cb65-6"></a><span class="co"># resilience =~ ST435Q01DA - item ST435Q01DA is "I enjoy finding solutions to problems." which cross loads between curiosity and resilience seems worth adding</span></span>
+<span id="cb65-7"><a href="#cb65-7"></a><span class="co"># The next suggestion resilience  ~    PV1SCIE proposes science score causes resilience This seems unlikely from a theoretical point of view so can be rejected</span></span>
+<span id="cb65-8"><a href="#cb65-8"></a><span class="co"># ST435Q01DA ~~    PV1SCIE: Whilst this relationship seems intuitively correct - a covariance of enjoying finding solutions to problems and science scores - it violates a core assumption of the measurement model - the latent factor 'resilience' causes the maths score, not any of its items</span></span>
+<span id="cb65-9"><a href="#cb65-9"></a><span class="co"># resilience =~ ST301Q01JA is another cross loading - the curiosity item ("I am curious about many different things") loads on curiosity. Adding the crossloading with stop curiosity being a clean factor and soaks up some cariance from curiosity. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
