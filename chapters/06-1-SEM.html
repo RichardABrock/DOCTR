@@ -1728,22 +1728,39 @@ Variances:
 </section>
 <section id="fitting-the-structural-model" class="level3" data-number="1.3.5">
 <h3 data-number="1.3.5" class="anchored" data-anchor-id="fitting-the-structural-model"><span class="header-section-number">1.3.5</span> Fitting the structural model</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A useful rule of thumb to check before fitting a structural model is the t-rule. The t-rule is a necessary but insufficient criterion for model identification (i.e.&nbsp;that there is enough information in the observed data to find a single unique solution for all parameter). The t-rule states that the number of knowns (the number of unique variances and covariances in the data) must be greater than or equal to the number of unknowns (the number of parameters to be estimated). If the t-rule is not satisfied, the model is under-identified and cannot be estimated.</p>
-<p>To perform the check, first calculate the number of unknown parameters in the model. The number of unknown parameters is equal to the number of variances, covariances, and regression coefficients that are estimated in the model. In the example, we have 5 observed variables (PA002Q05TA, PA002Q06NA, PA002Q07NA, PA002Q08NA, PA002Q09NA) and 1 latent variable (hands_on_science_capital). The number of unknown parameters is the sum of the following:</p>
+<p>To perform the check, first calculate the number of unknown parameters in the model. The number of unknown parameters is equal to the number of variances, covariances, and regression coefficients that are estimated in the model. In the example, we have 5 observed variables (<code>PA002Q05TA</code>, <code>PA002Q06NA</code>, <code>PA002Q07NA</code>, <code>PA002Q08NA</code>, <code>PA002Q09NA</code>) and 1 latent variable (<code>hands_on_science_capital</code>). The number of unknown parameters is the sum of the following:</p>
 <ul>
 <li>Variances of observed variables: 5 (one for each observed variable)</li>
 <li>Variance of the latent variable: 1</li>
 <li>Covariances between the latent variable and observed variables: 5 (one for each observed variable)</li>
-<li>Regression coefficients: 1 (for the regression of PV1SCIE on hands_on science_capital and HOMEPOS)</li>
+<li>Regression coefficients: 1 (for the regression of <code>PV1SCIE</code> on <code>hands_on_science_capital</code> and <code>HOMEPOS</code>)</li>
 </ul>
 <p>This gives a total of 12 unknown parameters.</p>
 <p>The number of known parameter is calculated as follows:</p>
+<blockquote class="blockquote">
 <p>observed knowns = (p * (p + 1)) / 2</p>
+</blockquote>
 <p>where p is the number of observed variables. In this case, we have 5 observed variables, so:</p>
+<blockquote class="blockquote">
 <p>observed knowns = (5 * (5 + 1)) / 2 = 15</p>
+</blockquote>
 <p>The t-rule states that the number of observed knowns (the number of unique variances and covariances in the data) must be greater than or equal to the number of unknowns (the number of parameters to be estimated).</p>
-<p>In our case number of knowns (15) is greater than the number of unknowns (12), so the t-rule is satisfied and the model is identified. If the number of knowns is equal to the number of unknowns, the model is just-identified and will have a perfect fit. This means that the model will fit the data perfectly, but it does not provide any information about the quality of the model. If the number of knowns is less than the number of unknowns, the model is under-identified and cannot be estimated.</p>
-<p>Then we run the model using <code>sem</code> in the same way as above, and plot the model using <code>semPaths</code>.</p>
+<p>In our case number of knowns (15) is greater than the number of unknowns (12), so the t-rule is satisfied and the model is identified. If the number of knowns is equal to the number of unknowns, the model is just-identified and will have a perfect fit. This means that the model will fit the data perfectly, but it does not provide any information about the quality of the model.</p>
+<p>If the number of knowns is less than the number of unknowns, the model is under-identified and cannot be estimated.</p>
+</div>
+</div>
+<p>To fit the model using <code>sem</code> in the same way as above, and plot the model using <code>semPaths</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-28-1"><a href="#annotated-cell-28-1"></a><span class="co"># Run the full model - we define both the latent variable (the measurement model)</span></span>
 <span id="annotated-cell-28-2"><a href="#annotated-cell-28-2"></a><span class="co"># and the structural model</span></span>
